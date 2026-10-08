@@ -1,0 +1,169 @@
+{
+  "schema": "metalmaxcn.attack-launch-anchor-profiles",
+  "runtime_order": [
+    "tank-main-gun",
+    "tank-sub-gun",
+    "tank-special",
+    "human-weapon"
+  ],
+  "profiles": [
+    {
+      "id": "tank-main-gun",
+      "label": "战车主炮",
+      "runtime_action_class": 0,
+      "runtime_action_class_hex": "0x00",
+      "actor_reference_x": 232,
+      "actor_reference_x_hex": "0xE8",
+      "anchor_x": 208,
+      "anchor_x_hex": "0xD0",
+      "horizontal_offset_pixels": -24,
+      "forward_offset_pixels": 24,
+      "upward_offset_pixels": 11,
+      "sources": {
+        "upward_offset": {
+          "space": "prg",
+          "offset": 195414,
+          "length": 1,
+          "end_exclusive": 195415
+        },
+        "anchor_x": {
+          "space": "prg",
+          "offset": 195418,
+          "length": 1,
+          "end_exclusive": 195419
+        }
+      },
+      "selection_evidence": "AttackCmd13_SpawnObjectAtActor indexes both tables with runtime action class $D3",
+      "coordinate_policy": "launch_x = edited actor x plus the signed horizontal offset mirrored toward the target; launch_y = edited actor y minus upward_offset_pixels"
+    },
+    {
+      "id": "tank-sub-gun",
+      "label": "战车副炮",
+      "runtime_action_class": 1,
+      "runtime_action_class_hex": "0x01",
+      "actor_reference_x": 232,
+      "actor_reference_x_hex": "0xE8",
+      "anchor_x": 224,
+      "anchor_x_hex": "0xE0",
+      "horizontal_offset_pixels": -8,
+      "forward_offset_pixels": 8,
+      "upward_offset_pixels": 18,
+      "sources": {
+        "upward_offset": {
+          "space": "prg",
+          "offset": 195415,
+          "length": 1,
+          "end_exclusive": 195416
+        },
+        "anchor_x": {
+          "space": "prg",
+          "offset": 195419,
+          "length": 1,
+          "end_exclusive": 195420
+        }
+      },
+      "selection_evidence": "AttackCmd13_SpawnObjectAtActor indexes both tables with runtime action class $D3",
+      "coordinate_policy": "launch_x = edited actor x plus the signed horizontal offset mirrored toward the target; launch_y = edited actor y minus upward_offset_pixels"
+    },
+    {
+      "id": "tank-special",
+      "label": "战车 S-E",
+      "runtime_action_class": 2,
+      "runtime_action_class_hex": "0x02",
+      "actor_reference_x": 232,
+      "actor_reference_x_hex": "0xE8",
+      "anchor_x": 208,
+      "anchor_x_hex": "0xD0",
+      "horizontal_offset_pixels": -24,
+      "forward_offset_pixels": 24,
+      "upward_offset_pixels": 13,
+      "sources": {
+        "upward_offset": {
+          "space": "prg",
+          "offset": 195416,
+          "length": 1,
+          "end_exclusive": 195417
+        },
+        "anchor_x": {
+          "space": "prg",
+          "offset": 195420,
+          "length": 1,
+          "end_exclusive": 195421
+        }
+      },
+      "selection_evidence": "AttackCmd13_SpawnObjectAtActor indexes both tables with runtime action class $D3",
+      "coordinate_policy": "launch_x = edited actor x plus the signed horizontal offset mirrored toward the target; launch_y = edited actor y minus upward_offset_pixels"
+    },
+    {
+      "id": "human-weapon",
+      "label": "人类武器",
+      "runtime_action_class": 3,
+      "runtime_action_class_hex": "0x03",
+      "actor_reference_x": 232,
+      "actor_reference_x_hex": "0xE8",
+      "anchor_x": 216,
+      "anchor_x_hex": "0xD8",
+      "horizontal_offset_pixels": -16,
+      "forward_offset_pixels": 16,
+      "upward_offset_pixels": 6,
+      "sources": {
+        "upward_offset": {
+          "space": "prg",
+          "offset": 195417,
+          "length": 1,
+          "end_exclusive": 195418
+        },
+        "anchor_x": {
+          "space": "prg",
+          "offset": 195421,
+          "length": 1,
+          "end_exclusive": 195422
+        }
+      },
+      "selection_evidence": "AttackCmd13_SpawnObjectAtActor indexes both tables with runtime action class $D3",
+      "coordinate_policy": "launch_x = edited actor x plus the signed horizontal offset mirrored toward the target; launch_y = edited actor y minus upward_offset_pixels"
+    }
+  ],
+  "tables": {
+    "upward_offsets": {
+      "path": "assets/tables/attack-launch-anchor-y-offsets.bin",
+      "prg_offset": 195414,
+      "prg_offset_hex": "0x02FB56",
+      "length": 4,
+      "sha256": "d2fbddf64de8c7b4458d56d49b90adc9900cd271ac0edf451297155f4987490e",
+      "address": {
+        "space": "prg",
+        "offset": 195414,
+        "length": 4,
+        "end_exclusive": 195418
+      },
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    "absolute_x_positions": {
+      "path": "assets/tables/attack-launch-anchor-x-positions.bin",
+      "prg_offset": 195418,
+      "prg_offset_hex": "0x02FB5A",
+      "length": 4,
+      "sha256": "dd28fbb8e4ca935d82605e435d69e25c76e9e9acdbe54f27e77ec5837d0e92bc",
+      "address": {
+        "space": "prg",
+        "offset": 195418,
+        "length": 4,
+        "end_exclusive": 195422
+      },
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    }
+  },
+  "evidence": {
+    "consumer": "AttackCmd13_SpawnObjectAtActor",
+    "consumer_prg": 195383,
+    "consumer_prg_hex": "0x02FB37",
+    "index_register": "$D3 runtime action class"
+  }
+}

@@ -1,0 +1,777 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 212,
+  "scene_id_hex": "0xD4",
+  "width": 44,
+  "height": 16,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 212,
+      "entry_id_hex": "0xD4",
+      "count": 0,
+      "record_source": null,
+      "records": [],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [
+      {
+        "id": 70,
+        "id_hex": "0x46",
+        "field_offsets": {
+          "scene_id": 236678,
+          "x": 236769,
+          "y": 236860,
+          "content_id": 236951
+        },
+        "scene_id": 212,
+        "scene_id_hex": "0xD4",
+        "x": 18,
+        "x_hex": "0x12",
+        "y": 2,
+        "y_hex": "0x02",
+        "content_id": 84,
+        "content_id_hex": "0x54",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 84,
+        "save_flag_bit": 70,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 70,
+          "flag_id_hex": "0x46",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1129,
+          "runtime_byte_hex": "0x0469",
+          "byte_index": 8,
+          "bit_index": 6,
+          "bit_mask": 64,
+          "bit_mask_hex": "0x40",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 71,
+        "id_hex": "0x47",
+        "field_offsets": {
+          "scene_id": 236679,
+          "x": 236770,
+          "y": 236861,
+          "content_id": 236952
+        },
+        "scene_id": 212,
+        "scene_id_hex": "0xD4",
+        "x": 19,
+        "x_hex": "0x13",
+        "y": 2,
+        "y_hex": "0x02",
+        "content_id": 248,
+        "content_id_hex": "0xF8",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "money-reward-code",
+        "money_table_index": 8,
+        "money_base_value": 1080,
+        "save_flag_bit": 71,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 71,
+          "flag_id_hex": "0x47",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1129,
+          "runtime_byte_hex": "0x0469",
+          "byte_index": 8,
+          "bit_index": 7,
+          "bit_mask": 128,
+          "bit_mask_hex": "0x80",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 72,
+        "id_hex": "0x48",
+        "field_offsets": {
+          "scene_id": 236680,
+          "x": 236771,
+          "y": 236862,
+          "content_id": 236953
+        },
+        "scene_id": 212,
+        "scene_id_hex": "0xD4",
+        "x": 22,
+        "x_hex": "0x16",
+        "y": 2,
+        "y_hex": "0x02",
+        "content_id": 98,
+        "content_id_hex": "0x62",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 98,
+        "save_flag_bit": 72,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 72,
+          "flag_id_hex": "0x48",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1130,
+          "runtime_byte_hex": "0x046A",
+          "byte_index": 9,
+          "bit_index": 0,
+          "bit_mask": 1,
+          "bit_mask_hex": "0x01",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 73,
+        "id_hex": "0x49",
+        "field_offsets": {
+          "scene_id": 236681,
+          "x": 236772,
+          "y": 236863,
+          "content_id": 236954
+        },
+        "scene_id": 212,
+        "scene_id_hex": "0xD4",
+        "x": 21,
+        "x_hex": "0x15",
+        "y": 3,
+        "y_hex": "0x03",
+        "content_id": 34,
+        "content_id_hex": "0x22",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 34,
+        "save_flag_bit": 73,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 73,
+          "flag_id_hex": "0x49",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1130,
+          "runtime_byte_hex": "0x046A",
+          "byte_index": 9,
+          "bit_index": 1,
+          "bit_mask": 2,
+          "bit_mask_hex": "0x02",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [],
+    "transitions": {
+      "pointer_cpu": 38810,
+      "pointer_cpu_hex": "0x979A",
+      "pointer_prg": 128922,
+      "pointer_prg_hex": "0x01F79A",
+      "boundary_mode": "dynamic-return",
+      "boundary_exits": [],
+      "dynamic_boundary_return": {
+        "id": 0,
+        "id_hex": "0x00",
+        "direction_code": null,
+        "direction": "all-boundaries",
+        "target_kind": "saved-return-position",
+        "editable": false,
+        "source": {
+          "space": "prg",
+          "offset": 128922,
+          "length": 1,
+          "end_exclusive": 128923
+        }
+      },
+      "point_transition_count": 4,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 41,
+          "y": 12,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128924,
+            "length": 2,
+            "end_exclusive": 128926
+          },
+          "coordinate_offsets": {
+            "x": 128924,
+            "y": 128925
+          },
+          "destination_scene_id": 214,
+          "destination_scene_id_hex": "0xD6",
+          "destination_x": 4,
+          "destination_y": 12,
+          "camera_origin_x": -4,
+          "camera_origin_y": 5,
+          "encoded_x": 4,
+          "encoded_y": 12,
+          "source": {
+            "space": "prg",
+            "offset": 128932,
+            "length": 3,
+            "end_exclusive": 128935
+          },
+          "field_offsets": {
+            "destination_scene_id": 128932,
+            "destination_x": 128933,
+            "destination_y": 128934
+          },
+          "raw": [
+            214,
+            4,
+            12
+          ],
+          "raw_hex": "D6 04 0C"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 4,
+          "y": 4,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128926,
+            "length": 2,
+            "end_exclusive": 128928
+          },
+          "coordinate_offsets": {
+            "x": 128926,
+            "y": 128927
+          },
+          "destination_scene_id": 211,
+          "destination_scene_id_hex": "0xD3",
+          "destination_x": 5,
+          "destination_y": 3,
+          "camera_origin_x": -3,
+          "camera_origin_y": -4,
+          "encoded_x": 5,
+          "encoded_y": 3,
+          "source": {
+            "space": "prg",
+            "offset": 128935,
+            "length": 3,
+            "end_exclusive": 128938
+          },
+          "field_offsets": {
+            "destination_scene_id": 128935,
+            "destination_x": 128936,
+            "destination_y": 128937
+          },
+          "raw": [
+            211,
+            5,
+            3
+          ],
+          "raw_hex": "D3 05 03"
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "x": 35,
+          "y": 2,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128928,
+            "length": 2,
+            "end_exclusive": 128930
+          },
+          "coordinate_offsets": {
+            "x": 128928,
+            "y": 128929
+          },
+          "destination_scene_id": 215,
+          "destination_scene_id_hex": "0xD7",
+          "destination_x": 22,
+          "destination_y": 24,
+          "camera_origin_x": 14,
+          "camera_origin_y": 17,
+          "encoded_x": 22,
+          "encoded_y": 24,
+          "source": {
+            "space": "prg",
+            "offset": 128938,
+            "length": 3,
+            "end_exclusive": 128941
+          },
+          "field_offsets": {
+            "destination_scene_id": 128938,
+            "destination_x": 128939,
+            "destination_y": 128940
+          },
+          "raw": [
+            215,
+            22,
+            24
+          ],
+          "raw_hex": "D7 16 18"
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "x": 36,
+          "y": 2,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128930,
+            "length": 2,
+            "end_exclusive": 128932
+          },
+          "coordinate_offsets": {
+            "x": 128930,
+            "y": 128931
+          },
+          "destination_scene_id": 215,
+          "destination_scene_id_hex": "0xD7",
+          "destination_x": 22,
+          "destination_y": 24,
+          "camera_origin_x": 14,
+          "camera_origin_y": 17,
+          "encoded_x": 22,
+          "encoded_y": 24,
+          "source": {
+            "space": "prg",
+            "offset": 128941,
+            "length": 3,
+            "end_exclusive": 128944
+          },
+          "field_offsets": {
+            "destination_scene_id": 128941,
+            "destination_x": 128942,
+            "destination_y": 128943
+          },
+          "raw": [
+            215,
+            22,
+            24
+          ],
+          "raw_hex": "D7 16 18"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 128922,
+        "length": 22,
+        "end_exclusive": 128944
+      },
+      "raw": [
+        255,
+        4,
+        41,
+        12,
+        4,
+        4,
+        35,
+        2,
+        36,
+        2,
+        214,
+        4,
+        12,
+        211,
+        5,
+        3,
+        215,
+        22,
+        24,
+        215,
+        22,
+        24
+      ],
+      "raw_hex": "FF 04 29 0C 04 04 23 02 24 02 D6 04 0C D3 05 03 D7 16 18 D7 16 18",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 92,
+      "zone_id_hex": "0x5C",
+      "zone": {
+        "zone_id": 92,
+        "zone_id_hex": "0x5C",
+        "config": 127,
+        "config_hex": "0x7F",
+        "class_id": 3,
+        "ambush_threshold_index": 3,
+        "ambush_threshold": 4,
+        "meter_initial_index": 3,
+        "meter_initial_value": 0,
+        "config_reserved_bits": 1,
+        "config_source": {
+          "space": "prg",
+          "offset": 234033,
+          "length": 1,
+          "end_exclusive": 234034
+        },
+        "rolls_encounters": true,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 125,
+            "monster_id_hex": "0x7D",
+            "empty": false,
+            "resource_reference": "monster:7D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 21,
+            "monster_id_hex": "0x15",
+            "empty": false,
+            "resource_reference": "monster:15",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 123,
+            "monster_id_hex": "0x7B",
+            "empty": false,
+            "resource_reference": "monster:7B",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 123,
+            "monster_id_hex": "0x7B",
+            "empty": false,
+            "resource_reference": "monster:7B",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 125,
+            "monster_id_hex": "0x7D",
+            "empty": false,
+            "resource_reference": "monster:7D",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 125,
+            "monster_id_hex": "0x7D",
+            "empty": false,
+            "resource_reference": "monster:7D",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 124,
+            "monster_id_hex": "0x7C",
+            "empty": false,
+            "resource_reference": "monster:7C",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 116,
+            "monster_id_hex": "0x74",
+            "empty": false,
+            "resource_reference": "monster:74",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 117,
+            "monster_id_hex": "0x75",
+            "empty": false,
+            "resource_reference": "monster:75",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 235677,
+          "length": 14,
+          "end_exclusive": 235691
+        },
+        "entries_editable": true,
+        "entries_readonly_reason": null,
+        "active_entry_count": 9,
+        "selection_weight_total": 20,
+        "referenced_by": [
+          "scene:D3",
+          "scene:D4",
+          "scene:D5"
+        ],
+        "reference_count": 3
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234375,
+        "length": 1,
+        "end_exclusive": 234376
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 0,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 4,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 0,
+    "point_transitions": 4,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      92
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

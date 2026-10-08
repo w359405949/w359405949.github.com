@@ -1,0 +1,17 @@
+[data-page="generic-shop"] {
+.workspace-inspector { position: relative; }
+.workspace-inspector .text-runtime-page-panel { position: sticky; right: auto; bottom: 0; max-width: 100%; margin-top: 8px; }
+.workspace-inspector .text-runtime-page-panel > section { max-height: 180px; }
+[data-interface-selection] { position: absolute; box-sizing: border-box; border: 2px solid #40b8ff; pointer-events: none; z-index: 3; }
+select[data-generic-preview] { width: 40px; min-width: 32px; }
+select[data-generic-preview="role"] { width: 64px; }
+[data-generic-inspector] { padding: 8px; }
+.generic-shop-declarations { width: 100%; border-collapse: collapse; }
+.generic-shop-declarations th, .generic-shop-declarations td { text-align: left; padding: 4px; border-bottom: 1px solid var(--border); }
+[data-generic-text-controls] { display: grid; gap: 8px; }
+[data-generic-temporary], [data-generic-frame-status] {
+  min-width: 0; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 12px; color: var(--text-dim);
+}
+[data-generic-temporary]:empty, [data-generic-frame-status]:empty { display: none; }
+}

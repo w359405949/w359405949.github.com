@@ -1,0 +1,1023 @@
+{
+  "schema": "metalmaxcn.weapon-effect-script-asset",
+  "id": 61,
+  "id_hex": "0x3D",
+  "path": "assets/scripts/primary/3D.bin",
+  "prg_offset": 145102,
+  "prg_offset_hex": "0x0236CE",
+  "length": 72,
+  "terminator": 159,
+  "bytes_hex": "01 0A 08 30 DD 13 01 DE 0D 31 1E 09 01 00 E8 13 02 DE 09 32 1E 18 09 01 00 E8 09 02 00 18 13 03 DE 0D 33 1E 09 01 00 E8 09 02 00 18 09 03 00 18 0E 00 09 10 1E E8 0C 14 0D 01 08 0D 02 08 0D 03 08 0D 10 08 A0 00 1F 9F",
+  "decode_status": "decoded",
+  "decode_error": null,
+  "command_count": 22,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 145102,
+      "prg_offset_hex": "0x0236CE",
+      "opcode": 1,
+      "opcode_hex": "0x01",
+      "name": "call_aux_script",
+      "length": 2,
+      "bytes_hex": "01 0A",
+      "operands": [
+        {
+          "name": "script_id",
+          "value": 10,
+          "value_hex": "0x0A"
+        }
+      ],
+      "handler_cpu": 47612,
+      "handler_cpu_hex": "0xB9FC",
+      "handler_prg": 195068,
+      "handler_prg_hex": "0x02F9FC",
+      "handler_far": "17:19FC",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 145104,
+      "prg_offset_hex": "0x0236D0",
+      "opcode": 8,
+      "opcode_hex": "0x08",
+      "name": "set_object_action",
+      "length": 3,
+      "bytes_hex": "08 30 DD",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 48,
+          "value_hex": "0x30"
+        },
+        {
+          "name": "action",
+          "value": 221,
+          "value_hex": "0xDD"
+        }
+      ],
+      "handler_cpu": 47674,
+      "handler_cpu_hex": "0xBA3A",
+      "handler_prg": 195130,
+      "handler_prg_hex": "0x02FA3A",
+      "handler_far": "17:1A3A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 3
+      }
+    },
+    {
+      "offset": 5,
+      "prg_offset": 145107,
+      "prg_offset_hex": "0x0236D3",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 01 DE",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "action",
+          "value": 222,
+          "value_hex": "0xDE"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 8,
+      "prg_offset": 145110,
+      "prg_offset_hex": "0x0236D6",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 31 1E",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 49,
+          "value_hex": "0x31"
+        },
+        {
+          "name": "delta_x",
+          "value": 30,
+          "value_hex": "0x1E",
+          "signed_value": 30
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 3
+      }
+    },
+    {
+      "offset": 11,
+      "prg_offset": 145113,
+      "prg_offset_hex": "0x0236D9",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 01 00 E8",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 232,
+          "value_hex": "0xE8",
+          "signed_value": -24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 15,
+      "prg_offset": 145117,
+      "prg_offset_hex": "0x0236DD",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 02 DE",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 2,
+          "value_hex": "0x02"
+        },
+        {
+          "name": "action",
+          "value": 222,
+          "value_hex": "0xDE"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 2,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 18,
+      "prg_offset": 145120,
+      "prg_offset_hex": "0x0236E0",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 32 1E 18",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 50,
+          "value_hex": "0x32"
+        },
+        {
+          "name": "delta_x",
+          "value": 30,
+          "value_hex": "0x1E",
+          "signed_value": 30
+        },
+        {
+          "name": "delta_y",
+          "value": 24,
+          "value_hex": "0x18",
+          "signed_value": 24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 2,
+        "delay": 3
+      }
+    },
+    {
+      "offset": 22,
+      "prg_offset": 145124,
+      "prg_offset_hex": "0x0236E4",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 01 00 E8",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 232,
+          "value_hex": "0xE8",
+          "signed_value": -24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 26,
+      "prg_offset": 145128,
+      "prg_offset_hex": "0x0236E8",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 02 00 18",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 2,
+          "value_hex": "0x02"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 24,
+          "value_hex": "0x18",
+          "signed_value": 24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 2,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 30,
+      "prg_offset": 145132,
+      "prg_offset_hex": "0x0236EC",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 03 DE",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 3,
+          "value_hex": "0x03"
+        },
+        {
+          "name": "action",
+          "value": 222,
+          "value_hex": "0xDE"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 3,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 33,
+      "prg_offset": 145135,
+      "prg_offset_hex": "0x0236EF",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 33 1E",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 51,
+          "value_hex": "0x33"
+        },
+        {
+          "name": "delta_x",
+          "value": 30,
+          "value_hex": "0x1E",
+          "signed_value": 30
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 3,
+        "delay": 3
+      }
+    },
+    {
+      "offset": 36,
+      "prg_offset": 145138,
+      "prg_offset_hex": "0x0236F2",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 01 00 E8",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 232,
+          "value_hex": "0xE8",
+          "signed_value": -24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 40,
+      "prg_offset": 145142,
+      "prg_offset_hex": "0x0236F6",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 02 00 18",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 2,
+          "value_hex": "0x02"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 24,
+          "value_hex": "0x18",
+          "signed_value": 24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 2,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 44,
+      "prg_offset": 145146,
+      "prg_offset_hex": "0x0236FA",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 03 00 18",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 3,
+          "value_hex": "0x03"
+        },
+        {
+          "name": "delta_x",
+          "value": 0,
+          "value_hex": "0x00",
+          "signed_value": 0
+        },
+        {
+          "name": "delta_y",
+          "value": 24,
+          "value_hex": "0x18",
+          "signed_value": 24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 3,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 48,
+      "prg_offset": 145150,
+      "prg_offset_hex": "0x0236FE",
+      "opcode": 14,
+      "opcode_hex": "0x0E",
+      "name": "increment_object_action",
+      "length": 2,
+      "bytes_hex": "0E 00",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        }
+      ],
+      "handler_cpu": 47690,
+      "handler_cpu_hex": "0xBA4A",
+      "handler_prg": 195146,
+      "handler_prg_hex": "0x02FA4A",
+      "handler_far": "17:1A4A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 50,
+      "prg_offset": 145152,
+      "prg_offset_hex": "0x023700",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 10 1E E8",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 16,
+          "value_hex": "0x10"
+        },
+        {
+          "name": "delta_x",
+          "value": 30,
+          "value_hex": "0x1E",
+          "signed_value": 30
+        },
+        {
+          "name": "delta_y",
+          "value": 232,
+          "value_hex": "0xE8",
+          "signed_value": -24
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 1
+      }
+    },
+    {
+      "offset": 54,
+      "prg_offset": 145156,
+      "prg_offset_hex": "0x023704",
+      "opcode": 12,
+      "opcode_hex": "0x0C",
+      "name": "repeat_command_block",
+      "length": 2,
+      "bytes_hex": "0C 14",
+      "operands": [
+        {
+          "name": "repeat_count",
+          "value": 20,
+          "value_hex": "0x14"
+        }
+      ],
+      "handler_cpu": 47432,
+      "handler_cpu_hex": "0xB948",
+      "handler_prg": 194888,
+      "handler_prg_hex": "0x02F948",
+      "handler_far": "17:1948",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 56,
+      "prg_offset": 145158,
+      "prg_offset_hex": "0x023706",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 01 08",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "delta_x",
+          "value": 8,
+          "value_hex": "0x08",
+          "signed_value": 8
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 59,
+      "prg_offset": 145161,
+      "prg_offset_hex": "0x023709",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 02 08",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 2,
+          "value_hex": "0x02"
+        },
+        {
+          "name": "delta_x",
+          "value": 8,
+          "value_hex": "0x08",
+          "signed_value": 8
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 2,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 62,
+      "prg_offset": 145164,
+      "prg_offset_hex": "0x02370C",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 03 08",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 3,
+          "value_hex": "0x03"
+        },
+        {
+          "name": "delta_x",
+          "value": 8,
+          "value_hex": "0x08",
+          "signed_value": 8
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 3,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 65,
+      "prg_offset": 145167,
+      "prg_offset_hex": "0x02370F",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 10 08",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 16,
+          "value_hex": "0x10"
+        },
+        {
+          "name": "delta_x",
+          "value": 8,
+          "value_hex": "0x08",
+          "signed_value": 8
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 1
+      }
+    },
+    {
+      "offset": 68,
+      "prg_offset": 145170,
+      "prg_offset_hex": "0x023712",
+      "opcode": 160,
+      "opcode_hex": "0xA0",
+      "name": "end_repeat_block",
+      "length": 1,
+      "bytes_hex": "A0",
+      "operands": [],
+      "marker": true
+    },
+    {
+      "offset": 69,
+      "prg_offset": 145171,
+      "prg_offset_hex": "0x023713",
+      "opcode": 0,
+      "opcode_hex": "0x00",
+      "name": "call_visual_script",
+      "length": 2,
+      "bytes_hex": "00 1F",
+      "operands": [
+        {
+          "name": "visual_code",
+          "value": 31,
+          "value_hex": "0x1F"
+        }
+      ],
+      "handler_cpu": 47641,
+      "handler_cpu_hex": "0xBA19",
+      "handler_prg": 195097,
+      "handler_prg_hex": "0x02FA19",
+      "handler_far": "17:1A19",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 71,
+      "prg_offset": 145173,
+      "prg_offset_hex": "0x023715",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "call_aux_script": 1,
+      "call_visual_script": 1,
+      "increment_object_action": 1,
+      "move_object_x": 6,
+      "move_object_xy": 8,
+      "repeat_command_block": 1,
+      "set_object_action": 1,
+      "spawn_object_at_actor": 3
+    },
+    "visual_script_ids": [
+      31
+    ],
+    "auxiliary_script_ids": [
+      10
+    ],
+    "sound_ids": [],
+    "palette_offsets": [],
+    "object_actions": [
+      221,
+      222
+    ],
+    "trail_object_counts": [],
+    "path_parameters": [],
+    "path_durations": [],
+    "object_slots": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "visual_script_ids_hex": [
+      "0x1F"
+    ],
+    "auxiliary_script_ids_hex": [
+      "0x0A"
+    ],
+    "sound_ids_hex": [],
+    "palette_offsets_hex": [],
+    "object_actions_hex": [
+      "0xDD",
+      "0xDE"
+    ],
+    "uses_repeat_block": true,
+    "uses_position_history_trail": false
+  },
+  "sha256": "a6ccba1d7cf462ca158728c5e7e9fb94a58c208490b872947fc186be122db7b5",
+  "address": {
+    "space": "prg",
+    "offset": 145102,
+    "length": 72,
+    "end_exclusive": 145174
+  },
+  "direct_selector_slot": true,
+  "referenced_by_visual_script": false,
+  "component": {
+    "path": "assets/scripts/primary/3D.bin",
+    "prg_offset": 145102,
+    "prg_offset_hex": "0x0236CE",
+    "length": 72,
+    "sha256": "a6ccba1d7cf462ca158728c5e7e9fb94a58c208490b872947fc186be122db7b5",
+    "address": {
+      "space": "prg",
+      "offset": 145102,
+      "length": 72,
+      "end_exclusive": 145174
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

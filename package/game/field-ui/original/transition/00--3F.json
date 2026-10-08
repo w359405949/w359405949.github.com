@@ -1,0 +1,139 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.transition",
+  "resource_id": "transition:00:3F",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 63,
+    "id_hex": "0x3F",
+    "x": 183,
+    "y": 14,
+    "coordinate_source": {
+      "space": "prg",
+      "offset": 125440,
+      "length": 2,
+      "end_exclusive": 125442
+    },
+    "coordinate_offsets": {
+      "x": 125440,
+      "y": 125441
+    },
+    "destination_scene_id": 172,
+    "destination_scene_id_hex": "0xAC",
+    "destination_x": 11,
+    "destination_y": 42,
+    "camera_origin_x": 3,
+    "camera_origin_y": 35,
+    "encoded_x": 11,
+    "encoded_y": 42,
+    "source": {
+      "space": "prg",
+      "offset": 125661,
+      "length": 3,
+      "end_exclusive": 125664
+    },
+    "field_offsets": {
+      "destination_scene_id": 125661,
+      "destination_x": 125662,
+      "destination_y": 125663
+    },
+    "raw": [
+      172,
+      11,
+      42
+    ],
+    "raw_hex": "AC 0B 2A",
+    "transition_kind": "world-location-entrance",
+    "transition_kind_label": "世界地图地点入口",
+    "appearance_condition": {
+      "label": "东京塔尚未倒塌时可进入",
+      "flags": [
+        115
+      ],
+      "flag_labels": {
+        "115": "东京塔倒塌"
+      },
+      "triggers": [
+        {
+          "flag": 115,
+          "label": "东京塔倒塌动作",
+          "href": "?view=actors&actorPart=story&storyKind=autonomous&record=79",
+          "reference": "story-autonomous-script:4F"
+        }
+      ],
+      "states": [
+        {
+          "id": "before",
+          "label": "未倒塌 · 可进",
+          "flags": [],
+          "enterable": true,
+          "cells": []
+        },
+        {
+          "id": "after",
+          "label": "已倒塌 · 不可进",
+          "flags": [
+            115
+          ],
+          "enterable": false,
+          "cells": [
+            {
+              "x": 182,
+              "y": 12,
+              "metatile_id": 15
+            },
+            {
+              "x": 183,
+              "y": 12,
+              "metatile_id": 15
+            },
+            {
+              "x": 182,
+              "y": 13,
+              "metatile_id": 54
+            },
+            {
+              "x": 183,
+              "y": 13,
+              "metatile_id": 55
+            },
+            {
+              "x": 180,
+              "y": 14,
+              "metatile_id": 42
+            },
+            {
+              "x": 182,
+              "y": 14,
+              "metatile_id": 62
+            },
+            {
+              "x": 183,
+              "y": 14,
+              "metatile_id": 63
+            },
+            {
+              "x": 180,
+              "y": 15,
+              "metatile_id": 13
+            },
+            {
+              "x": 181,
+              "y": 15,
+              "metatile_id": 18
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 122180,
+          "length": 5
+        }
+      ]
+    },
+    "resource_id": "transition:00:3F",
+    "scene_id": 0,
+    "scene_id_hex": "0x00"
+  }
+}

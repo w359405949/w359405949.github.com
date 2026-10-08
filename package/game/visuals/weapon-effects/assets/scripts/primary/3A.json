@@ -1,0 +1,189 @@
+{
+  "schema": "metalmaxcn.weapon-effect-script-asset",
+  "id": 58,
+  "id_hex": "0x3A",
+  "path": "assets/scripts/primary/3A.bin",
+  "prg_offset": 145071,
+  "prg_offset_hex": "0x0236AF",
+  "length": 8,
+  "terminator": 159,
+  "bytes_hex": "04 3A 13 00 66 01 09 9F",
+  "decode_status": "decoded",
+  "decode_error": null,
+  "command_count": 3,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 145071,
+      "prg_offset_hex": "0x0236AF",
+      "opcode": 4,
+      "opcode_hex": "0x04",
+      "name": "set_frame_mode_and_wait",
+      "length": 2,
+      "bytes_hex": "04 3A",
+      "operands": [
+        {
+          "name": "mode",
+          "value": 58,
+          "value_hex": "0x3A"
+        }
+      ],
+      "handler_cpu": 47604,
+      "handler_cpu_hex": "0xB9F4",
+      "handler_prg": 195060,
+      "handler_prg_hex": "0x02F9F4",
+      "handler_far": "17:19F4",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 145073,
+      "prg_offset_hex": "0x0236B1",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 00 66",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        },
+        {
+          "name": "action",
+          "value": 102,
+          "value_hex": "0x66"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 5,
+      "prg_offset": 145076,
+      "prg_offset_hex": "0x0236B4",
+      "opcode": 1,
+      "opcode_hex": "0x01",
+      "name": "call_aux_script",
+      "length": 2,
+      "bytes_hex": "01 09",
+      "operands": [
+        {
+          "name": "script_id",
+          "value": 9,
+          "value_hex": "0x09"
+        }
+      ],
+      "handler_cpu": 47612,
+      "handler_cpu_hex": "0xB9FC",
+      "handler_prg": 195068,
+      "handler_prg_hex": "0x02F9FC",
+      "handler_far": "17:19FC",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 7,
+      "prg_offset": 145078,
+      "prg_offset_hex": "0x0236B6",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "call_aux_script": 1,
+      "set_frame_mode_and_wait": 1,
+      "spawn_object_at_actor": 1
+    },
+    "visual_script_ids": [],
+    "auxiliary_script_ids": [
+      9
+    ],
+    "sound_ids": [],
+    "palette_offsets": [],
+    "object_actions": [
+      102
+    ],
+    "trail_object_counts": [],
+    "path_parameters": [],
+    "path_durations": [],
+    "object_slots": [
+      0
+    ],
+    "visual_script_ids_hex": [],
+    "auxiliary_script_ids_hex": [
+      "0x09"
+    ],
+    "sound_ids_hex": [],
+    "palette_offsets_hex": [],
+    "object_actions_hex": [
+      "0x66"
+    ],
+    "uses_repeat_block": false,
+    "uses_position_history_trail": false
+  },
+  "sha256": "9838ec9cedf19b2fc1b0bb3d2a157a6e65bd1af51f9f0c7bee526ebe1a163c96",
+  "address": {
+    "space": "prg",
+    "offset": 145071,
+    "length": 8,
+    "end_exclusive": 145079
+  },
+  "direct_selector_slot": true,
+  "referenced_by_visual_script": false,
+  "component": {
+    "path": "assets/scripts/primary/3A.bin",
+    "prg_offset": 145071,
+    "prg_offset_hex": "0x0236AF",
+    "length": 8,
+    "sha256": "9838ec9cedf19b2fc1b0bb3d2a157a6e65bd1af51f9f0c7bee526ebe1a163c96",
+    "address": {
+      "space": "prg",
+      "offset": 145071,
+      "length": 8,
+      "end_exclusive": 145079
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

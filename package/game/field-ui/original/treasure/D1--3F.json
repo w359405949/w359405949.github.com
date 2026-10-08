@@ -1,0 +1,77 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.treasure",
+  "resource_id": "treasure:D1:3F",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 63,
+    "id_hex": "0x3F",
+    "field_offsets": {
+      "scene_id": 236671,
+      "x": 236762,
+      "y": 236853,
+      "content_id": 236944
+    },
+    "scene_id": 209,
+    "scene_id_hex": "0xD1",
+    "x": 13,
+    "x_hex": "0x0D",
+    "y": 5,
+    "y_hex": "0x05",
+    "content_id": 201,
+    "content_id_hex": "0xC9",
+    "compiled_fields": [
+      "scene_id",
+      "x",
+      "y",
+      "content_id"
+    ],
+    "content_kind": "item",
+    "item_id": 201,
+    "save_flag_bit": 63,
+    "interaction_state": {
+      "class": "treasure-collected-flag",
+      "label": "调查物取得位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 63,
+      "flag_id_hex": "0x3F",
+      "runtime_bitset_base": 1121,
+      "runtime_bitset_base_hex": "0x0461",
+      "runtime_byte": 1128,
+      "runtime_byte_hex": "0x0468",
+      "byte_index": 7,
+      "bit_index": 7,
+      "bit_mask": 128,
+      "bit_mask_hex": "0x80",
+      "test_helper_cpu": 65237,
+      "test_helper_cpu_hex": "0xFED5",
+      "set_helper_cpu": 65211,
+      "set_helper_cpu_hex": "0xFEBB",
+      "clear_helper_cpu": 65224,
+      "clear_helper_cpu_hex": "0xFEC8",
+      "commit": "immediate-after-successful-acquisition",
+      "effects": [
+        "spawn-or-materialize-uncollected-metatile",
+        "interaction-availability",
+        "collected-metatile-selection"
+      ]
+    },
+    "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+    "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+    "resolution_source": {
+      "space": "prg",
+      "offset": 220572,
+      "length": 66,
+      "end_exclusive": 220638
+    },
+    "runtime_metatile_overlay": {
+      "uncollected_metatile_id": 1,
+      "uncollected_behavior_code": 100,
+      "collected_metatile_id": 2,
+      "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+    },
+    "confidence": "confirmed",
+    "inside_scene_canvas": true,
+    "resource_id": "treasure:D1:3F"
+  }
+}

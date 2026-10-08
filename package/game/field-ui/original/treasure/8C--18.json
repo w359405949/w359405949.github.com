@@ -1,0 +1,78 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.treasure",
+  "resource_id": "treasure:8C:18",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 24,
+    "id_hex": "0x18",
+    "field_offsets": {
+      "scene_id": 236632,
+      "x": 236723,
+      "y": 236814,
+      "content_id": 236905
+    },
+    "scene_id": 140,
+    "scene_id_hex": "0x8C",
+    "x": 37,
+    "x_hex": "0x25",
+    "y": 25,
+    "y_hex": "0x19",
+    "content_id": 244,
+    "content_id_hex": "0xF4",
+    "compiled_fields": [
+      "scene_id",
+      "x",
+      "y",
+      "content_id"
+    ],
+    "content_kind": "money-reward-code",
+    "money_table_index": 4,
+    "money_base_value": 80,
+    "save_flag_bit": 24,
+    "interaction_state": {
+      "class": "treasure-collected-flag",
+      "label": "调查物取得位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 24,
+      "flag_id_hex": "0x18",
+      "runtime_bitset_base": 1121,
+      "runtime_bitset_base_hex": "0x0461",
+      "runtime_byte": 1124,
+      "runtime_byte_hex": "0x0464",
+      "byte_index": 3,
+      "bit_index": 0,
+      "bit_mask": 1,
+      "bit_mask_hex": "0x01",
+      "test_helper_cpu": 65237,
+      "test_helper_cpu_hex": "0xFED5",
+      "set_helper_cpu": 65211,
+      "set_helper_cpu_hex": "0xFEBB",
+      "clear_helper_cpu": 65224,
+      "clear_helper_cpu_hex": "0xFEC8",
+      "commit": "immediate-after-successful-acquisition",
+      "effects": [
+        "spawn-or-materialize-uncollected-metatile",
+        "interaction-availability",
+        "collected-metatile-selection"
+      ]
+    },
+    "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+    "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+    "resolution_source": {
+      "space": "prg",
+      "offset": 220572,
+      "length": 66,
+      "end_exclusive": 220638
+    },
+    "runtime_metatile_overlay": {
+      "uncollected_metatile_id": 1,
+      "uncollected_behavior_code": 100,
+      "collected_metatile_id": 2,
+      "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+    },
+    "confidence": "confirmed",
+    "inside_scene_canvas": true,
+    "resource_id": "treasure:8C:18"
+  }
+}

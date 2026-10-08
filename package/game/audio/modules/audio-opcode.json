@@ -1,0 +1,1528 @@
+{
+  "schema": "metalmaxcn.module-asset.audio-opcode",
+  "resource_id": "audio-opcode",
+  "edit_policy": "mutable",
+  "projection_source": "game/audio/sequence-graph.json#opcode_table",
+  "document": {
+    "schema": "metalmaxcn.module-asset.audio-opcode",
+    "module_id": "audio-opcode",
+    "record_count": 84,
+    "owned_byte_count": 168,
+    "confirmed_record_count": 73,
+    "reserved_record_count": 11,
+    "records": [
+      {
+        "handle": "audio-opcode:90",
+        "label": "rest",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "event",
+        "flow": "parser-yield",
+        "channel_variant": null,
+        "handler_pointer": 43820,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240260,
+          "length": 2,
+          "end_exclusive": 240262,
+          "cpu_address": 43652,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:91",
+        "label": "transpose-up-octave",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43831,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240262,
+          "length": 2,
+          "end_exclusive": 240264,
+          "cpu_address": 43654,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:92",
+        "label": "transpose-down-octave",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43841,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240264,
+          "length": 2,
+          "end_exclusive": 240266,
+          "cpu_address": 43656,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:93",
+        "label": "set-transpose",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43851,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240266,
+          "length": 2,
+          "end_exclusive": 240268,
+          "cpu_address": 43658,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:94",
+        "label": "set-gate-ratio",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43858,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240268,
+          "length": 2,
+          "end_exclusive": 240270,
+          "cpu_address": 43660,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:95",
+        "label": "legato-tie-next-note",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43865,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240270,
+          "length": 2,
+          "end_exclusive": 240272,
+          "cpu_address": 43662,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:96",
+        "label": "set-duty-state",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43876,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240272,
+          "length": 2,
+          "end_exclusive": 240274,
+          "cpu_address": 43664,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:97",
+        "label": "enable-auto-duty",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43883,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240274,
+          "length": 2,
+          "end_exclusive": 240276,
+          "cpu_address": 43666,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:98",
+        "label": "disable-auto-duty",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43901,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240276,
+          "length": 2,
+          "end_exclusive": 240278,
+          "cpu_address": 43668,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:99",
+        "label": "set-envelope-mode-40",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "envelope",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43915,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240278,
+          "length": 2,
+          "end_exclusive": 240280,
+          "cpu_address": 43670,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9A",
+        "label": "select-voice-and-rate",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "envelope",
+        "flow": "fallthrough",
+        "channel_variant": "triangle ignores operand 0 and uses $99 flag transform; other channels select voice",
+        "handler_pointer": 43924,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240280,
+          "length": 2,
+          "end_exclusive": 240282,
+          "cpu_address": 43672,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9B",
+        "label": "merge-envelope-mode-50",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "envelope",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43990,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240282,
+          "length": 2,
+          "end_exclusive": 240284,
+          "cpu_address": 43674,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9C",
+        "label": "merge-envelope-mode-70",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "envelope",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 43999,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240284,
+          "length": 2,
+          "end_exclusive": 240286,
+          "cpu_address": 43676,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9D",
+        "label": "clear-envelope-mode-bits",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "envelope",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44011,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240286,
+          "length": 2,
+          "end_exclusive": 240288,
+          "cpu_address": 43678,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9E",
+        "label": "set-sweep",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "apu-control",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44020,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240288,
+          "length": 2,
+          "end_exclusive": 240290,
+          "cpu_address": 43680,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:9F",
+        "label": "enable-note-period-reload",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44027,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240290,
+          "length": 2,
+          "end_exclusive": 240292,
+          "cpu_address": 43682,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A0",
+        "label": "disable-note-period-reload",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44039,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240292,
+          "length": 2,
+          "end_exclusive": 240294,
+          "cpu_address": 43684,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A1",
+        "label": "jump",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "absolute-jump",
+        "channel_variant": null,
+        "handler_pointer": 44048,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240294,
+          "length": 2,
+          "end_exclusive": 240296,
+          "cpu_address": 43686,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A2",
+        "label": "stop-music-channel",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "music-channel-stop",
+        "channel_variant": null,
+        "handler_pointer": 44064,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240296,
+          "length": 2,
+          "end_exclusive": 240298,
+          "cpu_address": 43688,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A3",
+        "label": "begin-counted-loop-a",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "loop-begin-a",
+        "channel_variant": null,
+        "handler_pointer": 44098,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240298,
+          "length": 2,
+          "end_exclusive": 240300,
+          "cpu_address": 43690,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A4",
+        "label": "end-counted-loop-a",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "loop-end-a",
+        "channel_variant": null,
+        "handler_pointer": 44134,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240300,
+          "length": 2,
+          "end_exclusive": 240302,
+          "cpu_address": 43692,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A5",
+        "label": "jump",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "absolute-jump",
+        "channel_variant": null,
+        "handler_pointer": 44174,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240302,
+          "length": 2,
+          "end_exclusive": 240304,
+          "cpu_address": 43694,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A6",
+        "label": "effect-delay",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "event",
+        "flow": "parser-yield",
+        "channel_variant": null,
+        "handler_pointer": 44190,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240304,
+          "length": 2,
+          "end_exclusive": 240306,
+          "cpu_address": 43696,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A7",
+        "label": "set-sfx-volume",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "volume",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44199,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240306,
+          "length": 2,
+          "end_exclusive": 240308,
+          "cpu_address": 43698,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A8",
+        "label": "set-base-timer",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "apu-control",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44206,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240308,
+          "length": 2,
+          "end_exclusive": 240310,
+          "cpu_address": 43700,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:A9",
+        "label": "set-sfx-duty",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44227,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240310,
+          "length": 2,
+          "end_exclusive": 240312,
+          "cpu_address": 43702,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AA",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44234,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240312,
+          "length": 2,
+          "end_exclusive": 240314,
+          "cpu_address": 43704,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AB",
+        "label": "add-sfx-volume",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "volume",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44235,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240314,
+          "length": 2,
+          "end_exclusive": 240316,
+          "cpu_address": 43706,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AC",
+        "label": "add-base-timer-low",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "apu-control",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44246,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240316,
+          "length": 2,
+          "end_exclusive": 240318,
+          "cpu_address": 43708,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AD",
+        "label": "increment-sfx-volume",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "volume",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44275,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240318,
+          "length": 2,
+          "end_exclusive": 240320,
+          "cpu_address": 43710,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AE",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44279,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240320,
+          "length": 2,
+          "end_exclusive": 240322,
+          "cpu_address": 43712,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:AF",
+        "label": "increment-sfx-duty",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44280,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240322,
+          "length": 2,
+          "end_exclusive": 240324,
+          "cpu_address": 43714,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B0",
+        "label": "subtract-sfx-volume",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "volume",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44284,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240324,
+          "length": 2,
+          "end_exclusive": 240326,
+          "cpu_address": 43716,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B1",
+        "label": "subtract-base-timer-low",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "apu-control",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44295,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240326,
+          "length": 2,
+          "end_exclusive": 240328,
+          "cpu_address": 43718,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B2",
+        "label": "decrement-sfx-volume",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "volume",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44324,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240328,
+          "length": 2,
+          "end_exclusive": 240330,
+          "cpu_address": 43720,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B3",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44328,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240330,
+          "length": 2,
+          "end_exclusive": 240332,
+          "cpu_address": 43722,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B4",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44330,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240332,
+          "length": 2,
+          "end_exclusive": 240334,
+          "cpu_address": 43724,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B5",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44329,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240334,
+          "length": 2,
+          "end_exclusive": 240336,
+          "cpu_address": 43726,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B6",
+        "label": "stop-sound-effect-channel",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "channel-stop",
+        "channel_variant": null,
+        "handler_pointer": 44331,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240336,
+          "length": 2,
+          "end_exclusive": 240338,
+          "cpu_address": 43728,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B7",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44387,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240338,
+          "length": 2,
+          "end_exclusive": 240340,
+          "cpu_address": 43730,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B8",
+        "label": "no-op",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44388,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240340,
+          "length": 2,
+          "end_exclusive": 240342,
+          "cpu_address": 43732,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:B9",
+        "label": "write-raw-apu-frame",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "event",
+        "flow": "raw-apu-write-and-yield",
+        "channel_variant": null,
+        "handler_pointer": 44389,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240342,
+          "length": 2,
+          "end_exclusive": 240344,
+          "cpu_address": 43734,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BA",
+        "label": "set-period-table-pointer",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44438,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240344,
+          "length": 2,
+          "end_exclusive": 240346,
+          "cpu_address": 43736,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BB",
+        "label": "set-tempo-increment",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "tempo",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44451,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240346,
+          "length": 2,
+          "end_exclusive": 240348,
+          "cpu_address": 43738,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BC",
+        "label": "begin-counted-loop-b",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "loop-begin-b",
+        "channel_variant": null,
+        "handler_pointer": 44464,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240348,
+          "length": 2,
+          "end_exclusive": 240350,
+          "cpu_address": 43740,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BD",
+        "label": "end-counted-loop-b",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "loop-end-b",
+        "channel_variant": null,
+        "handler_pointer": 44512,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240350,
+          "length": 2,
+          "end_exclusive": 240352,
+          "cpu_address": 43742,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BE",
+        "label": "call-substream",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "substream-call",
+        "channel_variant": null,
+        "handler_pointer": 44556,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240352,
+          "length": 2,
+          "end_exclusive": 240354,
+          "cpu_address": 43744,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:BF",
+        "label": "return-substream",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "substream-return",
+        "channel_variant": null,
+        "handler_pointer": 44598,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240354,
+          "length": 2,
+          "end_exclusive": 240356,
+          "cpu_address": 43746,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C0",
+        "label": "abort-audio-driver-parse-update",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "control-flow",
+        "flow": "driver-parse-update-abort",
+        "channel_variant": null,
+        "handler_pointer": 44636,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240356,
+          "length": 2,
+          "end_exclusive": 240358,
+          "cpu_address": 43748,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C1",
+        "label": "set-fine-timer-offset",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44649,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240358,
+          "length": 2,
+          "end_exclusive": 240360,
+          "cpu_address": 43750,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C2",
+        "label": "consume-padding",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "no-op",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44656,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240360,
+          "length": 2,
+          "end_exclusive": 240362,
+          "cpu_address": 43752,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C3",
+        "label": "set-pitch-modulation-parameters",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "pitch-modulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44660,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240362,
+          "length": 2,
+          "end_exclusive": 240364,
+          "cpu_address": 43754,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C4",
+        "label": "dpcm-trigger-attempt",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "event",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44699,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240364,
+          "length": 2,
+          "end_exclusive": 240366,
+          "cpu_address": 43756,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C5",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240366,
+          "length": 2,
+          "end_exclusive": 240368,
+          "cpu_address": 43758,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C6",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240368,
+          "length": 2,
+          "end_exclusive": 240370,
+          "cpu_address": 43760,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C7",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240370,
+          "length": 2,
+          "end_exclusive": 240372,
+          "cpu_address": 43762,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C8",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240372,
+          "length": 2,
+          "end_exclusive": 240374,
+          "cpu_address": 43764,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:C9",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240374,
+          "length": 2,
+          "end_exclusive": 240376,
+          "cpu_address": 43766,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CA",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240376,
+          "length": 2,
+          "end_exclusive": 240378,
+          "cpu_address": 43768,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CB",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240378,
+          "length": 2,
+          "end_exclusive": 240380,
+          "cpu_address": 43770,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CC",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240380,
+          "length": 2,
+          "end_exclusive": 240382,
+          "cpu_address": 43772,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CD",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240382,
+          "length": 2,
+          "end_exclusive": 240384,
+          "cpu_address": 43774,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CE",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240384,
+          "length": 2,
+          "end_exclusive": 240386,
+          "cpu_address": 43776,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:CF",
+        "label": "reserved-invalid-opcode",
+        "available": false,
+        "status": "invalid-null-handler",
+        "category": null,
+        "flow": null,
+        "channel_variant": null,
+        "handler_pointer": 0,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240386,
+          "length": 2,
+          "end_exclusive": 240388,
+          "cpu_address": 43778,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D0",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240388,
+          "length": 2,
+          "end_exclusive": 240390,
+          "cpu_address": 43780,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D1",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240390,
+          "length": 2,
+          "end_exclusive": 240392,
+          "cpu_address": 43782,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D2",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240392,
+          "length": 2,
+          "end_exclusive": 240394,
+          "cpu_address": 43784,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D3",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240394,
+          "length": 2,
+          "end_exclusive": 240396,
+          "cpu_address": 43786,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D4",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240396,
+          "length": 2,
+          "end_exclusive": 240398,
+          "cpu_address": 43788,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D5",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240398,
+          "length": 2,
+          "end_exclusive": 240400,
+          "cpu_address": 43790,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D6",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240400,
+          "length": 2,
+          "end_exclusive": 240402,
+          "cpu_address": 43792,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D7",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240402,
+          "length": 2,
+          "end_exclusive": 240404,
+          "cpu_address": 43794,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D8",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240404,
+          "length": 2,
+          "end_exclusive": 240406,
+          "cpu_address": 43796,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:D9",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240406,
+          "length": 2,
+          "end_exclusive": 240408,
+          "cpu_address": 43798,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DA",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240408,
+          "length": 2,
+          "end_exclusive": 240410,
+          "cpu_address": 43800,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DB",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240410,
+          "length": 2,
+          "end_exclusive": 240412,
+          "cpu_address": 43802,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DC",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240412,
+          "length": 2,
+          "end_exclusive": 240414,
+          "cpu_address": 43804,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DD",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240414,
+          "length": 2,
+          "end_exclusive": 240416,
+          "cpu_address": 43806,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DE",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240416,
+          "length": 2,
+          "end_exclusive": 240418,
+          "cpu_address": 43808,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:DF",
+        "label": "set-gate-ratio-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "articulation",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44679,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240418,
+          "length": 2,
+          "end_exclusive": 240420,
+          "cpu_address": 43810,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:E0",
+        "label": "set-duty-state-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44689,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240420,
+          "length": 2,
+          "end_exclusive": 240422,
+          "cpu_address": 43812,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:E1",
+        "label": "set-duty-state-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44689,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240422,
+          "length": 2,
+          "end_exclusive": 240424,
+          "cpu_address": 43814,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:E2",
+        "label": "set-duty-state-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44689,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240424,
+          "length": 2,
+          "end_exclusive": 240426,
+          "cpu_address": 43816,
+          "confidence": "confirmed"
+        }
+      },
+      {
+        "handle": "audio-opcode:E3",
+        "label": "set-duty-state-encoded",
+        "available": true,
+        "status": "confirmed-handler",
+        "category": "voice",
+        "flow": "fallthrough",
+        "channel_variant": null,
+        "handler_pointer": 44689,
+        "pointer_field": {
+          "space": "prg",
+          "offset": 240426,
+          "length": 2,
+          "end_exclusive": 240428,
+          "cpu_address": 43818,
+          "confidence": "confirmed"
+        }
+      }
+    ]
+  }
+}

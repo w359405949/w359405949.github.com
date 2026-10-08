@@ -1,0 +1,14 @@
+.text-record-structure-editor { margin-top: 12px; padding: 10px; border: 1px solid var(--line); }
+.text-record-structure-reference { margin-top: 8px; }
+.text-record-structure-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.text-record-structure-field { display: flex; align-items: end; gap: 4px; min-width: 0; }
+.text-record-structure-field > label { display: grid; gap: 4px; flex: 1; min-width: 0; font: 11px var(--mono); }
+.text-record-structure-field small { color: var(--dim); }
+.text-record-structure-field input, .text-record-structure-field select { width: 100%; min-width: 0; }
+.text-record-structure-field button[data-text-structure-tile] { display: flex; align-items: center; gap: 8px; padding: 4px; }
+.text-record-structure-field button.is-active { outline: 1px solid var(--cyan); }
+.text-record-structure-field canvas { width: 24px; height: 24px; image-rendering: pixelated; }
+.text-record-structure-editor [data-text-structure-picker] { width: 256px; max-width: 100%; image-rendering: pixelated; cursor: crosshair; }
+.text-record-structure-consumers { margin-top: 12px; }
+.text-record-structure-consumers a, .text-record-structure-consumers span { display: block; margin: 5px 0; font-size: 11px; }
+.text-record-structure-editor [data-text-structure-error] { color: var(--red); font-size: 12px; }

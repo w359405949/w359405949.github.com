@@ -1,0 +1,432 @@
+{
+  "id": "vending-machine-screen",
+  "label": "自动售货机整屏画面",
+  "kind": "rom-fullscreen-ui",
+  "width": 256,
+  "height": 240,
+  "visual_signature": "a7a3b44c0fa1eefb98b9fd1d50b61de3ee6b4fbdc67359d5f113fe3bff805a74",
+  "sources": {
+    "nametable": {
+      "length": 1024,
+      "address": {
+        "space": "chr",
+        "offset": 261120,
+        "length": 1024,
+        "end_exclusive": 262144
+      },
+      "path": "static/special/vending-machine-screen/nametable-ff.bin",
+      "sha256": "a9fe70d5dadc9ca4ba0a5b505e2e4b9920f4e2f354d793765242ae693a9e0e29",
+      "bank": 255,
+      "bank_hex": "0xFF"
+    },
+    "background_patterns": [
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 55296,
+          "length": 1024,
+          "end_exclusive": 56320
+        },
+        "sha256": "41d4b36dd6fbba66170cd36bead901d370d6991189a64c54cad5d0838fa4ab30",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 54
+        },
+        "bank": 54,
+        "bank_hex": "0x36",
+        "first_row": 0,
+        "last_row": 29,
+        "first_tile": 128,
+        "last_tile": 191,
+        "tile_range": "0x80-0xBF"
+      },
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 56320,
+          "length": 1024,
+          "end_exclusive": 57344
+        },
+        "sha256": "83514ceab5742e6164aca46b9d3e0a74ee1cc7afb4d9e3716c7240e7b2f7d08f",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 55
+        },
+        "bank": 55,
+        "bank_hex": "0x37",
+        "first_row": 0,
+        "last_row": 29,
+        "first_tile": 192,
+        "last_tile": 255,
+        "tile_range": "0xC0-0xFF"
+      }
+    ]
+  },
+  "palette": {
+    "expanded_hex": "0F 30 16 10 0F 30 16 37 0F 10 00 21 0F 30 16 21 0F 37 0F 18 0F 30 16 11 0F 38 28 18 0F 30 10 10",
+    "confidence": "runtime-observed",
+    "note": "构造代码逐色写入，ROM 中没有连续的调色板表；此处为隔离 trace 的观察值，只用于预览着色，不计入静态覆盖率"
+  },
+  "fillable_regions": {
+    "blank_tile": 255,
+    "blank_tile_hex": "0xFF",
+    "count": 42,
+    "cells": 421,
+    "note": "$FF 是这套图块的窗口内空白；12x12 中文字形、核心字体数字和脚本 VM 写入的消息都只落在这些段内。段本身比实际写入范围宽，不等于逐字段的槽位边界。",
+    "regions": [
+      {
+        "id": "slot:03:02",
+        "row": 3,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 98
+      },
+      {
+        "id": "slot:03:12",
+        "row": 3,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 108
+      },
+      {
+        "id": "slot:03:22",
+        "row": 3,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 118
+      },
+      {
+        "id": "slot:04:02",
+        "row": 4,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 130
+      },
+      {
+        "id": "slot:04:12",
+        "row": 4,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 140
+      },
+      {
+        "id": "slot:04:22",
+        "row": 4,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 150
+      },
+      {
+        "id": "slot:05:02",
+        "row": 5,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 162
+      },
+      {
+        "id": "slot:05:12",
+        "row": 5,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 172
+      },
+      {
+        "id": "slot:05:22",
+        "row": 5,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 182
+      },
+      {
+        "id": "slot:06:02",
+        "row": 6,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 194
+      },
+      {
+        "id": "slot:06:12",
+        "row": 6,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 204
+      },
+      {
+        "id": "slot:06:22",
+        "row": 6,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 214
+      },
+      {
+        "id": "slot:08:02",
+        "row": 8,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 258
+      },
+      {
+        "id": "slot:08:12",
+        "row": 8,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 268
+      },
+      {
+        "id": "slot:08:22",
+        "row": 8,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 278
+      },
+      {
+        "id": "slot:09:02",
+        "row": 9,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 290
+      },
+      {
+        "id": "slot:09:12",
+        "row": 9,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 300
+      },
+      {
+        "id": "slot:09:22",
+        "row": 9,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 310
+      },
+      {
+        "id": "slot:10:02",
+        "row": 10,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 322
+      },
+      {
+        "id": "slot:10:12",
+        "row": 10,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 332
+      },
+      {
+        "id": "slot:10:22",
+        "row": 10,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 342
+      },
+      {
+        "id": "slot:11:02",
+        "row": 11,
+        "first_column": 2,
+        "last_column": 9,
+        "width": 8,
+        "logical_position": 354
+      },
+      {
+        "id": "slot:11:12",
+        "row": 11,
+        "first_column": 12,
+        "last_column": 19,
+        "width": 8,
+        "logical_position": 364
+      },
+      {
+        "id": "slot:11:22",
+        "row": 11,
+        "first_column": 22,
+        "last_column": 29,
+        "width": 8,
+        "logical_position": 374
+      },
+      {
+        "id": "slot:19:02",
+        "row": 19,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 610
+      },
+      {
+        "id": "slot:19:12",
+        "row": 19,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 620
+      },
+      {
+        "id": "slot:20:02",
+        "row": 20,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 642
+      },
+      {
+        "id": "slot:20:12",
+        "row": 20,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 652
+      },
+      {
+        "id": "slot:21:04",
+        "row": 21,
+        "first_column": 4,
+        "last_column": 10,
+        "width": 7,
+        "logical_position": 676
+      },
+      {
+        "id": "slot:21:12",
+        "row": 21,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 684
+      },
+      {
+        "id": "slot:22:02",
+        "row": 22,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 706
+      },
+      {
+        "id": "slot:22:12",
+        "row": 22,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 716
+      },
+      {
+        "id": "slot:23:02",
+        "row": 23,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 738
+      },
+      {
+        "id": "slot:23:12",
+        "row": 23,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 748
+      },
+      {
+        "id": "slot:24:12",
+        "row": 24,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 780
+      },
+      {
+        "id": "slot:25:02",
+        "row": 25,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 802
+      },
+      {
+        "id": "slot:25:12",
+        "row": 25,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 812
+      },
+      {
+        "id": "slot:26:02",
+        "row": 26,
+        "first_column": 2,
+        "last_column": 4,
+        "width": 3,
+        "logical_position": 834
+      },
+      {
+        "id": "slot:26:08",
+        "row": 26,
+        "first_column": 8,
+        "last_column": 10,
+        "width": 3,
+        "logical_position": 840
+      },
+      {
+        "id": "slot:26:12",
+        "row": 26,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 844
+      },
+      {
+        "id": "slot:27:02",
+        "row": 27,
+        "first_column": 2,
+        "last_column": 10,
+        "width": 9,
+        "logical_position": 866
+      },
+      {
+        "id": "slot:27:12",
+        "row": 27,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 876
+      }
+    ]
+  },
+  "runtime_contract": {
+    "nametable_source": "CHR bank $FF -> RAM $6000-$63FF -> PPU nametable",
+    "background_pattern_table": "PPU $0800-$0FFF 供 tile $80-$FF；第 0-29 行用 $36/$37",
+    "core_font": "PRG $047800-$048000 上传到 CHR-RAM 的 tile $00-$7F",
+    "investigation_commands": [
+      "0x1B",
+      "0x1C"
+    ]
+  },
+  "writeback": {
+    "mode": "preview-only",
+    "constraint": "all physical sources are fixed-size and read-only"
+  }
+}

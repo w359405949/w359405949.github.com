@@ -1,0 +1,232 @@
+body[data-page-family="boot"] {
+
+
+
+.presentation-timeline .tl-label { min-height: 26px; white-space: nowrap; }
+.presentation-timeline .tl-label > * { flex-shrink: 0; }
+.presentation-timeline .tl-label > .field-object-inline { width: auto; }
+.presentation-timeline .tl-number { width: 58px; }
+.presentation-timeline .tl-lane { height: 26px; }
+
+.boot-presentation {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  align-items: start;
+}
+
+.boot-note {
+  margin: 0;
+  padding: 6px 10px;
+  color: var(--text-faint);
+  font: var(--fs-xs)/1.6 var(--sans);
+}
+
+.boot-swatches { display: grid; gap: 4px; padding: 8px 10px; }
+
+.boot-swatch-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* 透明边框占好位：选中时加框不该让整行跳一下 */
+  border: 1px solid transparent;
+  padding: 2px;
+}
+
+.boot-swatch-row > b {
+  min-width: 68px;
+  color: var(--text-dim);
+  font: 600 var(--fs-xs) var(--sans);
+}
+
+.boot-swatch {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 22px;
+  border: 1px solid var(--border);
+  color: #fff;
+  font: var(--fs-xs) var(--mono);
+  /* 色块本身可能很亮也可能全黑，描边保证十六进制值在两种情况下都读得出 */
+  text-shadow: 0 0 3px #000, 0 0 2px #000;
+}
+
+.boot-note--warn { color: var(--text-dim); }
+
+.boot-timeline-keyframe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  color: var(--text-dim);
+  font: var(--fs-xs)/1.4 var(--sans);
+}
+
+.boot-timeline-keyframe > b { color: var(--text); }
+
+.boot-timeline-keyframe > small { color: var(--text-faint); }
+
+.boot-timeline-keyframe.is-empty { color: var(--text-faint); }
+
+.boot-timeline-reference > summary {
+  cursor: pointer;
+  color: var(--text-dim);
+  font: var(--fs-xs)/1.6 var(--sans);
+}
+
+.boot-timeline-reference[open] > summary { margin-bottom: 6px; color: var(--text); }
+
+.boot-timeline-reference .table-wrap + .table-wrap { margin-top: 8px; }
+
+.boot-component-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.boot-element {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.boot-element > header {
+  display: grid;
+  gap: 2px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.boot-element > header > b { font: 600 var(--fs-sm) var(--sans); }
+
+.boot-element > header > span {
+  color: var(--text-faint);
+  font: var(--fs-xs) var(--mono);
+}
+
+.boot-facts { display: grid; gap: 2px; margin: 0; padding: 8px 10px; }
+
+.boot-facts > div {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.boot-facts dt { color: var(--text-faint); font: var(--fs-xs) var(--sans); }
+
+.boot-facts dd { margin: 0; font: var(--fs-xs) var(--sans); }
+
+.boot-swatch--pick { cursor: pointer; }
+
+.boot-swatch--pick:hover { border-color: var(--border-strong); }
+
+.boot-swatch--pick.is-open { border-color: var(--accent); }
+
+.boot-swatch--pick[disabled] { cursor: default; opacity: .5; }
+
+.boot-group { flex: none; height: 22px; padding: 0 7px; }
+
+.boot-swatch-row.is-current {
+  border-color: var(--border);
+  background: var(--surface-1);
+}
+
+.boot-swatch-row.is-armed {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.boot-group--unused { opacity: .55; }
+
+.boot-group--unused.is-active { opacity: 1; }
+
+.boot-limits { padding: 6px 10px 10px; }
+
+.boot-limits > b {
+  display: inline-block;
+  margin-bottom: 4px;
+  font: 600 var(--fs-xs) var(--sans);
+}
+
+.boot-limits > b[data-status="code-driven"] { color: var(--text-faint); }
+
+.boot-limits ul {
+  margin: 0;
+  padding-left: 16px;
+  color: var(--text-faint);
+  font: var(--fs-xs)/1.6 var(--sans);
+}
+
+.boot-presentation td { vertical-align: top; }
+
+.boot-canvas--paint { cursor: crosshair; touch-action: none; }
+
+.boot-bank-row { display: flex; gap: 6px; align-items: start; }
+
+.boot-bank { display: grid; gap: 3px; flex: 1 1 0; min-width: 0; }
+
+.boot-bank > small { color: var(--text-faint); font: var(--fs-xs) var(--sans); }
+
+.boot-bank > small b { color: var(--text); }
+
+.boot-glyphs {
+  margin: 0;
+  color: var(--text);
+  font: var(--fs-sm)/1.5 var(--mono);
+  word-break: break-all;
+  cursor: help;
+}
+
+.boot-component {
+  display: grid;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  background: var(--surface-2);
+}
+
+.boot-component .boot-note { padding: 0; }
+
+.boot-text-field { display: grid; gap: 3px; }
+
+.boot-text-field small { color: var(--text-faint); font: var(--fs-xs) var(--sans); }
+
+.boot-text-field input {
+  width: 100%;
+  font: var(--fs-md) var(--mono);
+  letter-spacing: .08em;
+}
+
+.boot-component .boot-group.is-active {
+  border-color: var(--border);
+  background: var(--accent-quiet);
+}
+
+.boot-component .button.is-active {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.boot-tool-row { display: grid; gap: 4px; }
+
+.boot-tool-row > small { color: var(--text-faint); font: var(--fs-xs) var(--sans); }
+
+.boot-text-field input.is-unreadable { color: var(--warn); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

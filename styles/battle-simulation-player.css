@@ -1,0 +1,52 @@
+/* 战斗播放器的画面、进度与步骤使用同一套样式。 */
+[data-battle-simulation] {
+.battle-sequence-replay-visual canvas[hidden],
+.battle-sequence-replay-visual [data-battle-sequence-exit][hidden] { display: none; }
+.battle-sequence-replay-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; align-items: center; }
+.battle-sequence-replay-controls label { display: flex; align-items: center; gap: 4px; }
+.battle-sequence-replay-controls select { max-width: 180px; }
+.battle-sequence-replay-controls input { width: 90px; }
+.simulation-progress { width: 100%; }
+.simulation-progress label { display: grid; grid-template-columns: 1fr auto; gap: 4px; font: 12px/1.5 var(--sans); }
+.simulation-progress input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--accent); }
+.simulation-progress-markers { position: relative; height: 44px; margin: 0 8px; }
+.simulation-marker { position: absolute; transform: translateX(-50%); border: 0; padding: 0; width: 16px; height: 14px; font-size: 12px; line-height: 14px; background: transparent; cursor: pointer; }
+.simulation-marker.is-grouped { border-radius: 3px; background: var(--surface-1); box-shadow: inset 0 -2px currentColor; }
+.simulation-marker:hover { background: var(--surface-2); }
+.simulation-marker--attack { color: #ffbf69; }
+.simulation-marker--hit { color: #75df9b; }
+.simulation-marker--dismount { color: #d58cff; z-index: 1; }
+.simulation-marker--end { color: #72e5ff; }
+.simulation-progress-legend { margin: 0; text-align: center; font: 11px/1.5 var(--sans); color: var(--text-dim); }
+[data-simulation-details] { max-height: 340px; overflow: auto; scrollbar-gutter: stable; }
+.simulation-table thead { position: sticky; top: 0; background: var(--surface-1); z-index: 1; }
+[data-simulation-log] tr { cursor: pointer; }
+[data-simulation-log] tr:hover { background: var(--surface-0); }
+[data-simulation-log] tr.is-current { background: #164653; box-shadow: inset 3px 0 #72e5ff; }
+[data-simulation-log] button { border: 0; padding: 0; background: transparent; color: inherit; text-align: left; font: inherit; cursor: pointer; }
+.simulation-marker:focus-visible, [data-simulation-log] button:focus-visible { outline: 2px solid #72e5ff; outline-offset: 2px; }
+.simulation-table { width: 100%; border-collapse: collapse; font: 12px/1.5 var(--sans); table-layout: fixed; }
+.simulation-table th, .simulation-table td { text-align: left; padding: 8px; vertical-align: top; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.simulation-table th:first-child { width: 8%; }
+.simulation-table th:last-child { width: 28%; }
+[data-simulation-details][hidden], [data-simulation-comparison][hidden] { display: none; }
+[data-simulation-trace] .battle-sequence-replay { display: block; }
+[data-simulation-trace] canvas { max-width: 256px; image-rendering: pixelated; }
+.battle-sequence-replay-detail {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-1);
+}
+.battle-sequence-replay-detail p { margin: 0; font: 13px/1.5 var(--sans); }
+.battle-sequence-replay-detail dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px; margin: 0; font: 13px/1.5 var(--sans); }
+.battle-sequence-replay-detail dl > div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px; }
+.battle-sequence-replay-detail dt { color: var(--text-dim); }
+.battle-sequence-replay-detail dd { margin: 0; overflow-wrap: anywhere; }
+.battle-sequence-replay-missing { color: var(--text-dim); }
+@media (max-width: 900px) {
+  .battle-sequence-replay-detail dl { grid-template-columns: 1fr; }
+}
+}

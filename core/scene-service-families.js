@@ -1,0 +1,7 @@
+// @editor-module 场景角色对话入口经 Mesen 验证可触发的配置族及实例容量。
+export const SCENE_SERVICE_INSTANCE_COUNTS = new Map([
+  [0x10, 12], [0x11, 13], [0x12, 14], [0x13, 16],
+  [0x14, 9], [0x15, 10], [0x16, 3], [0x17, 14],
+  [0x18, 14], [0x19, 3],
+  [0x1a, 3], [0x1b, 9], [0x1c, 10], [0x1d, 2], [0x1e, 1], [0x1f, 5],
+]);

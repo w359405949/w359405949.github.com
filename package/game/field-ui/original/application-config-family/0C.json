@@ -1,0 +1,254 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.application-config-family",
+  "resource_id": "application-config-family:0C",
+  "edit_policy": "mutable",
+  "document": {
+    "family_id": 12,
+    "family_id_hex": "0x0C",
+    "label": "炮弹自动售货机配置族",
+    "kind": "ammunition-vending-machine",
+    "semantic_status": "confirmed-purpose",
+    "record_payload": "售货机实例配置",
+    "value_namespace": {
+      "namespace": "shell",
+      "slot_schema": {
+        "schema": "metalmaxcn.facility-slot-schema",
+        "kind": "vending-machine-record",
+        "payload_lengths": [
+          12,
+          13
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "id": "product-0",
+            "role": "product",
+            "label": "商品 1",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 6,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 1,
+            "id": "product-1",
+            "role": "product",
+            "label": "商品 2",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 7,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 2,
+            "id": "product-2",
+            "role": "product",
+            "label": "商品 3",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 8,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 3,
+            "id": "product-3",
+            "role": "product",
+            "label": "商品 4",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 9,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 4,
+            "id": "product-4",
+            "role": "product",
+            "label": "商品 5",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 10,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 5,
+            "id": "product-5",
+            "role": "product",
+            "label": "商品 6",
+            "namespace": "shell",
+            "resource_id": "shell-record",
+            "paired_slot": 11,
+            "encoding": "u8 resource ID"
+          },
+          {
+            "slot": 6,
+            "id": "amount-flags-0",
+            "role": "amount-flags",
+            "label": "商品 1 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 0,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 7,
+            "id": "amount-flags-1",
+            "role": "amount-flags",
+            "label": "商品 2 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 1,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 8,
+            "id": "amount-flags-2",
+            "role": "amount-flags",
+            "label": "商品 3 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 2,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 9,
+            "id": "amount-flags-3",
+            "role": "amount-flags",
+            "label": "商品 4 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 3,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 10,
+            "id": "amount-flags-4",
+            "role": "amount-flags",
+            "label": "商品 5 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 4,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 11,
+            "id": "amount-flags-5",
+            "role": "amount-flags",
+            "label": "商品 6 数量 / 特殊标志",
+            "namespace": "packed-vending-quantity",
+            "paired_slot": 5,
+            "encoding": "bit7 flag + bits0-6 amount",
+            "fields": {
+              "amount": {
+                "mask": 127,
+                "shift": 0,
+                "minimum": 0,
+                "maximum": 127
+              },
+              "special_flag": {
+                "mask": 128,
+                "shift": 7,
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "slot": 12,
+            "id": "prize-item",
+            "role": "prize",
+            "label": "抽奖奖品",
+            "namespace": "item",
+            "resource_id": "item-entry",
+            "encoding": "u8 item ID",
+            "optional": true,
+            "present_when_payload_length": 13
+          }
+        ]
+      }
+    },
+    "target_cpu": 40758,
+    "target_cpu_hex": "0x9F36",
+    "configuration_pointer_low": 54,
+    "configuration_pointer_high": 159,
+    "pointer_address": {
+      "space": "prg",
+      "offset": 146605,
+      "length": 2,
+      "end_exclusive": 146607,
+      "cpu_address": 40109,
+      "confidence": "confirmed"
+    },
+    "record_count": 10,
+    "configuration_resources": [
+      "application-config-instance:0C:00",
+      "application-config-instance:0C:01",
+      "application-config-instance:0C:02",
+      "application-config-instance:0C:03",
+      "application-config-instance:0C:04",
+      "application-config-instance:0C:05",
+      "application-config-instance:0C:06",
+      "application-config-instance:0C:07",
+      "application-config-instance:0C:08",
+      "application-config-instance:0C:09"
+    ]
+  }
+}

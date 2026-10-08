@@ -1,0 +1,137 @@
+body[data-page="save"] {
+#content:has([data-save-entity-editor]) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+[data-save-page]:has([data-save-entity-editor]),
+[data-save-page]:has([data-save-entity-editor]) > .in-page-tabs,
+[data-save-page]:has([data-save-entity-editor]) .in-page-tab-content,
+[data-save-page]:has([data-save-entity-editor]) [data-in-page-tabs-show] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+[data-save-page]:has([data-save-entity-editor]) .in-page-tab-content {
+  overflow: visible;
+}
+
+[data-save-entity-editor] {
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+[data-save-entity-editor] > .entity-detail-list {
+  position: static;
+  min-height: 0;
+  max-height: none;
+  align-content: start;
+}
+
+[data-save-entity-editor] > .entity-detail-content {
+  min-height: 0;
+  overflow: auto;
+}
+
+[data-save-entity-editor] .table-wrap,
+[data-save-entity-editor] .entity-equipment {
+  max-height: none;
+  overflow: visible;
+}
+
+.save-bounded-number { display: flex; align-items: center; gap: 8px; }
+
+.save-bounded-number .inline-data-input { width: 80px; }
+
+.save-bounded-number small { color: var(--text-dim); }
+
+.save-published-bits { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+
+.save-published-bits small { color: var(--text-dim); }
+
+.save-item-slots { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 6px; }
+
+.save-composite-field { min-width: 420px; white-space: normal; }
+
+.save-composite-field > summary { cursor: pointer; }
+
+.save-composite-entry {
+  display: grid;
+  grid-template-columns: 170px minmax(240px, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.save-composite-entry > span { white-space: normal; }
+
+.save-draft-marker { margin-left: 6px; color: var(--amber); font: 12px var(--mono); }
+
+.save-unresolved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(82px, 1fr)); gap: 6px; }
+
+.save-unresolved-grid > label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
+.save-unresolved-grid input { margin: 0; }
+
+.save-location-link {
+  display: inline-block; min-width: 145px; padding: 5px 8px;
+  border: 1px solid var(--border-strong); background: var(--surface-1);
+  color: var(--text); font: 12px/1.4 var(--mono); text-decoration: none;
+}
+
+.save-location-link:hover, .save-location-link:focus-visible {
+  border-color: var(--accent); outline: none;
+}
+
+.entity-detail-group > h3 { display: flex; align-items: center; gap: 12px; }
+
+.save-acquisition-note { color: var(--text-dim); font-size: 12px; font-weight: 400; white-space: nowrap; }
+.save-vehicle-acquisition { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 8px; }
+
+.save-object-direction { display: flex; align-items: center; gap: 8px; }
+
+[data-entity-detail-group="parking"] {
+  th:first-child { width: 76px; }
+  th:nth-child(2) { width: 200px; }
+  th:nth-child(3) { width: 112px; }
+  th:last-child { width: auto; }
+  td:last-child { white-space: normal; overflow-wrap: anywhere; }
+  .editor-inline-link { display: inline-block; max-width: 100%; white-space: normal; }
+}
+
+.save-rental-preset-cell {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; gap: 8px;
+}
+
+[data-save-wanted-progress] td:nth-child(4) { white-space: normal; }
+[data-save-wanted-progress] td:nth-child(4) > .scene-position-picker { margin-bottom: 4px; }
+
+.save-event-reference-table { width: 100%; min-width: 900px; table-layout: fixed; }
+.save-event-context-table { min-width: 1100px; }
+.save-event-context-table[data-save-page-event-group="party"] { min-width: 900px; }
+.save-event-context-table[data-save-page-event-group="party"] th:nth-child(5) { width: 60px; }
+.save-event-reference-table td { white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
+.save-event-reference-table th:first-child { width: 180px; }
+.save-event-reference-table th:nth-child(2) { width: 90px; }
+.save-event-reference-table th:nth-child(3) { width: 180px; }
+.save-event-reference-table th:last-child { width: 36px; }
+.save-event-reference-table[data-save-page-event-group="battles"] {
+  th:first-child { width: 130px; }
+  th:nth-child(2) { width: 80px; }
+  th:nth-child(3) { width: 160px; }
+  th:nth-child(6) { width: 120px; }
+  th:nth-child(7):not(:last-child) { width: 130px; }
+}
+.save-scene-access { display: grid; gap: 4px; margin-bottom: 8px; }
+
+.save-event-groups { display: grid; gap: 10px; }
+
+.save-event-groups > div { min-width: 0; }
+
+}

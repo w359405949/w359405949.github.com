@@ -1,0 +1,55 @@
+body[data-page="wanted"] {
+/* ——— 通缉令：赏金首立绘 ——— */
+.wanted-summary {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin-bottom: 13px;
+}
+
+.wanted-summary div {
+  padding: 10px 12px; border: 1px solid var(--line); background: var(--panel);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.wanted-summary b { color: var(--acid); font: 15px var(--mono); }
+.wanted-summary span { color: var(--muted); font-size: 11px; }
+
+.wanted-gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px;
+}
+.wanted-card { border: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; }
+.wanted-card header {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  padding: 7px 10px; border-bottom: 1px solid var(--line-soft);
+}
+.wanted-card header b { color: var(--acid); font: 11px var(--mono); }
+.wanted-card header span { color: var(--muted); font-size: 11px; }
+.wanted-card footer {
+  margin-top: auto; padding: 6px 10px; border-top: 1px solid var(--line-soft);
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+}
+.wanted-card footer small { color: var(--dim); font-size: 12px; }
+.wanted-card footer code { color: var(--cyan); font: 12px var(--mono); }
+/* 立绘尺寸差异极大（诺亚 12×16 图块，小怪 4×4），统一按高度收进卡片。 */
+.wanted-art { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 10px; }
+.wanted-art figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wanted-art img {
+  max-width: 100%; max-height: 132px; object-fit: contain;
+  image-rendering: pixelated; background: var(--surface-0);
+}
+.wanted-art figcaption { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.wanted-art figcaption small { color: var(--dim); font: 12px var(--mono); }
+.wanted-art-missing {
+  padding: 20px 10px; color: var(--dim); font: 12px var(--mono);
+  border: 1px dashed var(--line); text-align: center;
+}
+.wanted-boss-select {
+  min-width: 140px;
+  max-width: 180px;
+  height: 26px;
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--fg);
+  font-size: 12px;
+}
+
+}

@@ -1,0 +1,604 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 15,
+  "scene_id_hex": "0x0F",
+  "width": 9,
+  "height": 11,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 15,
+      "entry_id_hex": "0x0F",
+      "count": 6,
+      "record_source": {
+        "space": "prg",
+        "offset": 148312,
+        "length": 37,
+        "end_exclusive": 148349
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:0F:00",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "uid": "scene-actor:0F:01",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "uid": "scene-actor:0F:02",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "uid": "scene-actor:0F:03",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "uid": "scene-actor:0F:04",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "uid": "scene-actor:0F:05",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "0F:01:07",
+        "scene_id": 15,
+        "scene_id_hex": "0x0F",
+        "x": 1,
+        "x_hex": "0x01",
+        "y": 7,
+        "y_hex": "0x07",
+        "metatile_id": 73,
+        "metatile_id_hex": "0x49",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231433,
+          "length": 1,
+          "end_exclusive": 231434
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 243875,
+            "length": 77,
+            "end_exclusive": 243952
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231424
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 35812,
+      "pointer_cpu_hex": "0x8BE4",
+      "pointer_prg": 125924,
+      "pointer_prg_hex": "0x01EBE4",
+      "boundary_mode": "shared-target",
+      "boundary_exits": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "direction_code": null,
+          "direction": "all-boundaries",
+          "destination_scene_id": 12,
+          "destination_scene_id_hex": "0x0C",
+          "destination_x": 15,
+          "destination_y": 3,
+          "camera_origin_x": 7,
+          "camera_origin_y": -4,
+          "encoded_x": 15,
+          "encoded_y": 3,
+          "source": {
+            "space": "prg",
+            "offset": 125925,
+            "length": 3,
+            "end_exclusive": 125928
+          },
+          "field_offsets": {
+            "destination_scene_id": 125925,
+            "destination_x": 125926,
+            "destination_y": 125927
+          },
+          "raw": [
+            12,
+            15,
+            3
+          ],
+          "raw_hex": "0C 0F 03"
+        }
+      ],
+      "dynamic_boundary_return": null,
+      "point_transition_count": 2,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 6,
+          "y": 2,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 125929,
+            "length": 2,
+            "end_exclusive": 125931
+          },
+          "coordinate_offsets": {
+            "x": 125929,
+            "y": 125930
+          },
+          "destination_scene_id": 16,
+          "destination_scene_id_hex": "0x10",
+          "destination_x": 9,
+          "destination_y": 2,
+          "camera_origin_x": 1,
+          "camera_origin_y": -5,
+          "encoded_x": 9,
+          "encoded_y": 2,
+          "source": {
+            "space": "prg",
+            "offset": 125933,
+            "length": 3,
+            "end_exclusive": 125936
+          },
+          "field_offsets": {
+            "destination_scene_id": 125933,
+            "destination_x": 125934,
+            "destination_y": 125935
+          },
+          "raw": [
+            16,
+            9,
+            2
+          ],
+          "raw_hex": "10 09 02"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 6,
+          "y": 7,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 125931,
+            "length": 2,
+            "end_exclusive": 125933
+          },
+          "coordinate_offsets": {
+            "x": 125931,
+            "y": 125932
+          },
+          "destination_scene_id": 16,
+          "destination_scene_id_hex": "0x10",
+          "destination_x": 9,
+          "destination_y": 7,
+          "camera_origin_x": 1,
+          "camera_origin_y": 0,
+          "encoded_x": 9,
+          "encoded_y": 7,
+          "source": {
+            "space": "prg",
+            "offset": 125936,
+            "length": 3,
+            "end_exclusive": 125939
+          },
+          "field_offsets": {
+            "destination_scene_id": 125936,
+            "destination_x": 125937,
+            "destination_y": 125938
+          },
+          "raw": [
+            16,
+            9,
+            7
+          ],
+          "raw_hex": "10 09 07"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 125924,
+        "length": 15,
+        "end_exclusive": 125939
+      },
+      "raw": [
+        254,
+        12,
+        15,
+        3,
+        2,
+        6,
+        2,
+        6,
+        7,
+        16,
+        9,
+        2,
+        16,
+        9,
+        7
+      ],
+      "raw_hex": "FE 0C 0F 03 02 06 02 06 07 10 09 02 10 09 07",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "implicit-zone-zero",
+      "editable": false,
+      "zone_id": 0,
+      "zone_id_hex": "0x00",
+      "zone": {
+        "zone_id": 0,
+        "zone_id_hex": "0x00",
+        "config": 0,
+        "config_hex": "0x00",
+        "class_id": 0,
+        "ambush_threshold_index": 0,
+        "ambush_threshold": 32,
+        "meter_initial_index": 0,
+        "meter_initial_value": 48,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 233941,
+          "length": 1,
+          "end_exclusive": 233942
+        },
+        "rolls_encounters": false,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 234389,
+          "length": 14,
+          "end_exclusive": 234403
+        },
+        "entries_editable": false,
+        "entries_readonly_reason": "zone $00 从不抽取，且其候选行与场景 zone 表尾部（场景 $80-$EF）共用同一批物理字节",
+        "active_entry_count": 2,
+        "selection_weight_total": 4,
+        "referenced_by": [
+          "world-block:7,10",
+          "world-block:8,10",
+          "world-block:9,10",
+          "world-block:5,11",
+          "scene:80",
+          "scene:81",
+          "scene:82",
+          "scene:83",
+          "scene:84",
+          "scene:85",
+          "scene:86",
+          "scene:87",
+          "scene:88",
+          "scene:90",
+          "scene:91",
+          "scene:92",
+          "scene:93",
+          "scene:94",
+          "scene:98",
+          "scene:99",
+          "scene:9B",
+          "scene:9C",
+          "scene:9D",
+          "scene:A0",
+          "scene:A1",
+          "scene:A2",
+          "scene:A3",
+          "scene:A4",
+          "scene:A5",
+          "scene:A6",
+          "scene:A7",
+          "scene:AB",
+          "scene:AC",
+          "scene:AD",
+          "scene:AE",
+          "scene:AF",
+          "scene:B4",
+          "scene:B5",
+          "scene:B6",
+          "scene:B7",
+          "scene:B8",
+          "scene:B9",
+          "scene:BA",
+          "scene:BB",
+          "scene:C5",
+          "scene:C6",
+          "scene:C7",
+          "scene:C8",
+          "scene:C9",
+          "scene:CD",
+          "scene:D6",
+          "scene:D9",
+          "scene:DA",
+          "scene:DB",
+          "scene:DC",
+          "scene:DD",
+          "scene:DE",
+          "scene:DF",
+          "scene:E0",
+          "scene:E1",
+          "scene:E2",
+          "scene:E3",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EA",
+          "scene:EB",
+          "scene:EC",
+          "scene:ED",
+          "scene:EE",
+          "scene:EF"
+        ],
+        "reference_count": 72
+      },
+      "reason": "$902B 只对场景 ID >= $80 查 zone 表，其余场景一律 zone $00（不随机遇敌）",
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 6,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 1,
+    "point_transitions": 2,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      0
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

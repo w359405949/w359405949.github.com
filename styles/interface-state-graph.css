@@ -1,0 +1,27 @@
+.interface-state-graph-panel { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+.interface-state-graph-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 4px 8px; border-bottom: 1px solid var(--border); flex: none; }
+.interface-state-graph-toolbar > .canvas-viewport-controls { margin-left: auto; padding: 0; }
+.interface-state-graph-toolbar button[aria-pressed="true"] { background: var(--accent); color: var(--surface-0); }
+.interface-state-graph { padding: 0; flex: 1; min-height: 0; overflow: hidden; }
+.interface-state-graph svg { display: block; }
+.interface-state-node { cursor: pointer; }
+.interface-state-node rect { fill: var(--surface-2); stroke: var(--border); }
+.interface-state-node.selected rect { stroke: var(--accent); stroke-width: 3; }
+.interface-state-node.reference rect { stroke: var(--accent); stroke-dasharray: 7 3; }
+.interface-state-node.unresolved rect { stroke-dasharray: 4 3; }
+.interface-state-node.dimmed { opacity: .25; }
+.interface-state-node.dimmed:is(:hover, :focus-visible) { opacity: .7; }
+.interface-state-node text { fill: var(--text); font-size: 12px; text-anchor: middle; }
+.interface-state-exit circle { fill: var(--surface-2); stroke: var(--text-dim); }
+.interface-state-exit text { fill: var(--text-dim); font-size: 12px; }
+.interface-state-edge { cursor: pointer; }
+.interface-state-edge-hit { fill: none; stroke: transparent; stroke-width: 18; }
+.interface-state-edge-line { fill: none; stroke: var(--text-dim); stroke-width: 1.5; }
+.interface-state-edge.on-path .interface-state-edge-line { stroke: var(--accent); stroke-width: 3; }
+.interface-state-edge.selected .interface-state-edge-line { stroke: #f0b35c; stroke-width: 4; }
+.interface-state-edge text { fill: var(--text-dim); font-size: 11px; text-anchor: middle; }
+.interface-state-edge-label-box { fill: var(--surface-1); stroke: var(--border-soft); }
+.interface-state-graph.full .interface-state-edge-condition { visibility: hidden; }
+.interface-state-graph.full .interface-state-edge:is(:hover, :focus-visible, .selected) .interface-state-edge-condition { visibility: visible; }
+.interface-state-graph.full .interface-state-edge text { paint-order: stroke; stroke: var(--surface-1); stroke-width: 3px; }
+.interface-state-graph marker path { fill: var(--text-dim); }

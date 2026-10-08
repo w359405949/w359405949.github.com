@@ -1,0 +1,240 @@
+body[data-page="monsters"] {
+.monster-module-preview {
+  display: inline-grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  background: #0b0e10;
+}
+
+.monster-module-preview canvas { display: block; max-width: 72px; max-height: 72px; image-rendering: pixelated; }
+
+.monster-module-preview small { max-width: 90px; overflow: hidden; color: var(--text-faint); text-overflow: ellipsis; white-space: nowrap; }
+
+#monster-editor .virtual-table-wrap tr[data-row-id] { height: 92px; }
+
+.monster-drop-readonly {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.monster-drop-readonly b { font-weight: 600; }
+
+.monster-drop-readonly code { font: inherit; }
+
+.monster-drop-readonly small {
+  color: var(--dim);
+  font: 10px/1.3 var(--sans);
+  white-space: normal;
+}
+
+.monster-drop-readonly.missing b { color: var(--danger); }
+
+.monster-drop-editor {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.monster-drop-editor .animated-resource-current { grid-template-columns: minmax(0, 1fr); }
+
+.monster-drop-editor .animated-resource-current-preview { display: none; }
+
+.monster-drop-editor .animated-resource-current-label {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.monster-drop-item-select {
+  width: 100%;
+  min-width: 148px;
+}
+
+.monster-drop-editor small {
+  color: var(--dim);
+  font: 10px/1.3 var(--sans);
+  white-space: normal;
+}
+
+.monster-drop-readonly-note {
+  display: grid;
+  gap: 2px;
+}
+
+.monster-drop-readonly-note span { display: block; }
+
+.monster-drop-readonly-note b { color: var(--text-dim); font-weight: 600; }
+
+.monster-attack-effects { display: grid; gap: 10px; padding: 10px; }
+
+.monster-attack-visual-field { display: grid; gap: 4px; min-width: 0; }
+
+.monster-attack-visual-label { color: var(--text-faint); font-size: var(--fs-xs); }
+
+.monster-attack-visual-field > small { color: var(--text-faint); }
+
+.monster-attack-no-visual {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  padding: 7px;
+  border: 1px dashed var(--border);
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.monster-attack-effects-error { color: var(--danger); }
+
+.monster-attack-visual-cell {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  min-width: 0;
+  overflow-x: scroll;
+}
+
+.monster-attack-visual-cell > * { flex: 0 0 230px; }
+
+
+
+
+
+
+
+
+
+.monster-table-preview {
+  display: grid; place-items: center; width: 128px; height: 88px;
+  overflow: hidden; border: 1px solid var(--line-soft); background: var(--surface-0);
+}
+
+.monster-table-preview:hover { border-color: var(--acid); }
+
+.monster-table-preview img,
+.monster-table-preview canvas { display: block; max-width: 100%; max-height: 100%; image-rendering: pixelated; }
+
+.monster-palette-line { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+
+.monster-palette-line small,
+.monster-palette-line span { color: var(--dim); font: 11px/1 var(--mono); }
+
+.monster-palette-line i {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: var(--swatch);
+  image-rendering: pixelated;
+}
+
+.monster-table td { vertical-align: middle; }
+
+.monster-table td b { color: var(--text); font: 11px var(--mono); }
+
+.monster-table td small { display: block; margin-top: 4px; color: var(--dim); font: 11px var(--mono); }
+
+.monster-stat-thumb { width: 28px; height: 20px; object-fit: contain; image-rendering: pixelated; }
+
+.monster-palette-candidate { display: grid; gap: 2px; justify-content: center; }
+
+.monster-figure-field-label {
+  display: grid; gap: 3px; justify-items: start; min-width: 0;
+}
+
+.monster-attack-anchor-list .monster-attack-effects { gap: 0; padding: 0; }
+
+.monster-attack-anchor-list .section-line { padding: 10px 12px; }
+
+.monster-attack-action-list {
+  display: grid; gap: 2px; margin: 0; padding: 6px; list-style: none;
+}
+
+.monster-attack-action-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 2px 8px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.monster-attack-action-row:hover {
+  color: var(--text); border-color: #354248; background: var(--panel-2);
+}
+
+.monster-attack-action-row.is-selected {
+  color: var(--text); border-color: #506047; background: #181e18;
+  box-shadow: inset 3px 0 var(--acid);
+}
+
+.monster-attack-action-row > b { color: inherit; font: 12px var(--mono); }
+
+.monster-attack-row-name { min-width: 0; overflow-wrap: anywhere; }
+
+.monster-attack-action-row > small { grid-column: 2 / -1; color: var(--dim); }
+
+.monster-attack-action-row .monster-attack-row-anchor { color: var(--text-faint); }
+
+.monster-attack-anchor-stage-bar {
+  display: grid; gap: 6px; justify-items: center; width: 100%;
+}
+
+.monster-attack-anchor-status { color: var(--dim); font: 11px var(--mono); }
+
+.monster-attack-row-all-targets { color: var(--acid); }
+
+.monster-attack-anchor-markers { position: relative; pointer-events: none; }
+
+.monster-attack-anchor-markers i {
+  /* **用 transform 居中，不用负 margin。** 负 margin 要跟尺寸配对，改一次大小就
+     差半个像素——而这个标记的中心就是它代表的那个发射点，拖拽按它取值。 */
+  position: absolute; width: 9px; height: 9px; transform: translate(-50%, -50%);
+  border: 1px solid var(--text); border-radius: 50%;
+  background: rgb(0 0 0 / .35);
+  /* 标记自己要收指针：发射点就在画面上拖。touch-action 关掉，免得拖成滚屏。 */
+  pointer-events: auto; touch-action: none; cursor: pointer;
+}
+
+.monster-attack-anchor-markers i.is-current { cursor: grab; }
+
+.monster-attack-anchor-markers i.is-dragging { cursor: grabbing; }
+
+.monster-attack-anchor-markers i.is-current {
+  border-color: var(--accent); background: var(--accent); width: 11px; height: 11px;
+}
+
+.monster-attack-inspector { display: grid; gap: 10px; align-content: start; }
+
+.monster-attack-inspector .section-line { padding: 10px 12px 0; }
+
+.monster-attack-inspector > .section-line:first-child {
+  padding: 10px 12px; border-bottom: 1px solid var(--line);
+}
+
+.monster-attack-facts { display: grid; gap: 6px; margin: 0; padding: 0 12px; }
+
+.monster-attack-facts > div {
+  display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px;
+}
+
+.monster-attack-facts dt { color: var(--dim); }
+
+.monster-attack-facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+
+.monster-attack-message-editor { display: grid; gap: 3px; min-width: 0; }
+
+.monster-attack-message-editor input { width: 100%; }
+
+.monster-attack-message-error { color: var(--danger, #e06c5a); }
+
+.monster-attack-anchor-fields { display: grid; gap: 6px; padding: 0 12px; }
+
+.monster-attack-anchor-fields input { width: 96px; }
+
+.monster-attack-inspector .monster-attack-visual-field { margin: 0 12px 12px; }
+}

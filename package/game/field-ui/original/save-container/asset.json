@@ -1,0 +1,330 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.save-container",
+  "resource_id": "save-container",
+  "edit_policy": "mutable",
+  "document": {
+    "runtime_state": {
+      "resource_id": "save-container",
+      "spaces": [
+        {
+          "id": "ram",
+          "length": 2048
+        },
+        {
+          "id": "sram",
+          "length": 8192
+        }
+      ],
+      "fields": [
+        {
+          "id": "display.logicalTiles",
+          "handle": "save-container:E0",
+          "count": 1,
+          "width": 1024,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 0,
+            "length": 1024
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "field-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 168539,
+                "length": 578
+              },
+              "raw_hex": "A54548A9008545A57E0AAABD6AB7850ABD6BB7850B20FCB2A67EA568187D5EB7C90F900338E90F0A8501A9008502A9028507A9208505A67EBC76B7BD8EB78576A9008504A200984820BFDFA501186901C91E9003186902291F8501A586F00CA5762901F006A501C576F00620BFDF4CD9B2A50A186920850AA50B6900850BA50485422054E4A501186901C91E9003186902291F850168A888F0034C9BB268854560A5678500A67EBD64B7AAB579D007A5001869108500A500291F0A850060A590D046A47EB95EB7856ABE76B7A90085698A48A2108A48A9008500A56A4A2600A5694A260020E0DCA600A40EBD5BDB49FF19C06399C063E66968AACAD0D7A9008569E66A68AACAD0C860A67EBD64B7AAB579D007A5001869108500A67EBD5EB72060E4A67EBC76B7BD5EB785039848A010984820E0DCA9008500A56A4A2600A5694A2600A40EA600B900023D5BDB8501A56948A56A489848A5028569A503856A20E0DCA9008504A5034A2604A5024A2604A40EA604B9C0638505BD5BDB49FF25058505E8CAF0054A4A4CDEB3850568A8A605BD57DB8505A600BD5BDB49FF2505050199000268856A688569E669E60268A888F0034C8BB3A56938E9108569A50238E9108502E66AE603A56AC90F900338E90F856AA503C90F900338E90F850368A888F0034C87B360A67EBD5EB72060E4A67EBC7CB7A56AC909B0036A9001C89848A56948A200A008A5696A9001C8984820E0DCA40EA50D9D9304A50C9D9404B900029D9504E8E8E8E669E66968A888D0DD86402054E4688569E66AE66A68A888D0BD60"
+            }
+          ]
+        },
+        {
+          "id": "glyph.control",
+          "handle": "save-container:E1",
+          "count": 1,
+          "width": 16,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "sram",
+            "offset": 1920,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ]
+        },
+        {
+          "id": "glyph.addressLow",
+          "handle": "save-container:E2",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1920,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.addressHigh",
+          "handle": "save-container:E3",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1921,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.firstHalf",
+          "handle": "save-container:E4",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1931,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.secondHalf",
+          "handle": "save-container:E5",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1932,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.pending",
+          "handle": "save-container:E6",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1935,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.tiles",
+          "handle": "save-container:E7",
+          "count": 1,
+          "width": 4,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1926,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.patterns",
+          "handle": "save-container:E8",
+          "count": 1,
+          "width": 48,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1936,
+            "length": 48
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ]
+        },
+        {
+          "id": "glyph.pools",
+          "handle": "save-container:E9",
+          "count": 1,
+          "width": 3,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1922,
+            "length": 3
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-execution/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89407,
+                "length": 394
+              },
+              "raw_hex": "AD2A60C9FBF037A2008E8567AD4062C9D0F031AD3060C9FAF02AAD5562C9FDF023ADA062C9ECF033AD8B63C9F7F012BD8267C980B01DC962F0348D8067604CD29D4C6F9EA5B7C962B029A20120C39EC95490E7A9169D82674C799DBD8267C9409004C98090D0A9409D82674C799DA9044C549EC963F006A5B6C95090CD20C39EC9549007C980B0034C759DA9549D82674C799DA5B7C962B024A5B62910D03DA5B6290FC90AB035A20120C39EC922B0048D806760A9169D82678D806760AD9563C9F8F030A20020C39EC9469007C980B0034C759DA9469D82674C799DAD9563C9F8F03CA20220C39EC9229020C946B01C8D806760A20020C39EC9609007C980B0034C759DA9609D82674C799DA9229D82678D806760187D82679D82674C799DA20220C39EC92290E4C960B0E08D806760A5B7C961B011A20120C39EC930900420F39D608D806760C962B018A20220C39EC9309007C960B0034C829EA9309D82674C829EC963F006A5B6C94090DE20C39EC9609007C980B0034C759DA9609D82678D8067608E8567BD8267"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "glyph.half",
+          "handle": "save-container:EA",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1930,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-execution/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212937,
+                "length": 7
+              },
+              "raw_hex": "8D9E058D8A6760"
+            }
+          ],
+          "view_of": "glyph.control"
+        },
+        {
+          "id": "save.active.towed_vehicle",
+          "handle": "save-container:EB",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 1895,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213193,
+                "length": 13
+              },
+              "raw_hex": "AD 67 67 30 06 A9 03 99 70 03 C8 84 64"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

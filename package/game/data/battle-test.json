@@ -1,0 +1,4199 @@
+{
+  "schema": "metalmaxcn.game-data.asset.battle-test",
+  "authority": "special investigation row $04 plus the original scene-$98 wardrobe battle handler",
+  "enabled": false,
+  "mode": "original-underwear-wardrobe",
+  "scene_id": 3,
+  "scene_id_hex": "0x03",
+  "x": 7,
+  "x_hex": "0x07",
+  "y": 2,
+  "y_hex": "0x02",
+  "special_point_id": 4,
+  "special_point_id_hex": "0x04",
+  "handler_pointer_stored": 48424,
+  "handler_pointer_stored_hex": "0xBD28",
+  "handler_cpu": 48425,
+  "handler_cpu_hex": "0xBD29",
+  "handler_prg": 220168,
+  "handler_prg_hex": "0x035C08",
+  "state_flag": 28,
+  "state_flag_hex": "0x1C",
+  "state_flag_consistent": true,
+  "interaction_state": {
+    "class": "global-event-flag",
+    "label": "全局完成位 · 战斗胜利后提交",
+    "owns_state": true,
+    "scope": "global-save-state",
+    "flag_id": 28,
+    "flag_id_hex": "0x1C",
+    "runtime_bitset_base": 1089,
+    "runtime_bitset_base_hex": "0x0441",
+    "runtime_byte": 1092,
+    "runtime_byte_hex": "0x0444",
+    "bit_index": 4,
+    "bit_mask": 16,
+    "bit_mask_hex": "0x10",
+    "test_helper_cpu": 65183,
+    "test_helper_cpu_hex": "0xFE9F",
+    "set_helper_cpu": 65157,
+    "set_helper_cpu_hex": "0xFE85",
+    "pending_flag_runtime": 1154,
+    "pending_flag_runtime_hex": "0x0482",
+    "commit": "deferred-until-battle-victory",
+    "repeatable_behavior": "ignore-completion-flag-check-but-continue-staging-it",
+    "effects": [
+      "battle-spawn-once",
+      "interaction-result-after-completion"
+    ]
+  },
+  "repeatable": false,
+  "repeat_check_bytes": "D0 14",
+  "intro_text_region": "05",
+  "intro_text_record_id": 116,
+  "intro_text_record": "record:05:116",
+  "completed_text_region": "05",
+  "completed_text_record_id": 36,
+  "completed_text_record": "record:05:036",
+  "encounter_id": 25,
+  "encounter_id_hex": "0x19",
+  "encounter_resource": "encounter-formation:19",
+  "selected_formation": {
+    "id": 25,
+    "id_hex": "0x19",
+    "label": "异形×1",
+    "slots": [
+      {
+        "slot": 0,
+        "monster_id": 14,
+        "monster_id_hex": "0x0E",
+        "monster_name_hint": "异形",
+        "count": 1,
+        "active": true,
+        "monster_resource": "monster:0E",
+        "field_prg_offsets": {
+          "monster_id": 236073,
+          "count": 236074
+        }
+      },
+      {
+        "slot": 1,
+        "monster_id": 0,
+        "monster_id_hex": "0x00",
+        "monster_name_hint": "电脑墙",
+        "count": 0,
+        "active": false,
+        "monster_resource": null,
+        "field_prg_offsets": {
+          "monster_id": 236075,
+          "count": 236076
+        }
+      },
+      {
+        "slot": 2,
+        "monster_id": 0,
+        "monster_id_hex": "0x00",
+        "monster_name_hint": "电脑墙",
+        "count": 0,
+        "active": false,
+        "monster_resource": null,
+        "field_prg_offsets": {
+          "monster_id": 236077,
+          "count": 236078
+        }
+      },
+      {
+        "slot": 3,
+        "monster_id": 0,
+        "monster_id_hex": "0x00",
+        "monster_name_hint": "电脑墙",
+        "count": 0,
+        "active": false,
+        "monster_resource": null,
+        "field_prg_offsets": {
+          "monster_id": 236079,
+          "count": 236080
+        }
+      }
+    ],
+    "total_monsters": 1,
+    "within_runtime_limit": true,
+    "source": {
+      "space": "prg",
+      "offset": 236073,
+      "length": 8,
+      "end_exclusive": 236081
+    },
+    "writeback": "four fixed monster/count pairs; total count <= 9"
+  },
+  "formations": [
+    {
+      "id": 0,
+      "id_hex": "0x00",
+      "label": "戈麦斯×9 + 戈麦斯×9 + 弗朗×7 + 戈麦斯×9",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 7,
+          "monster_id_hex": "0x07",
+          "monster_name_hint": "戈麦斯",
+          "count": 9,
+          "active": true,
+          "monster_resource": "monster:07",
+          "field_prg_offsets": {
+            "monster_id": 235873,
+            "count": 235874
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 7,
+          "monster_id_hex": "0x07",
+          "monster_name_hint": "戈麦斯",
+          "count": 9,
+          "active": true,
+          "monster_resource": "monster:07",
+          "field_prg_offsets": {
+            "monster_id": 235875,
+            "count": 235876
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 8,
+          "monster_id_hex": "0x08",
+          "monster_name_hint": "弗朗",
+          "count": 7,
+          "active": true,
+          "monster_resource": "monster:08",
+          "field_prg_offsets": {
+            "monster_id": 235877,
+            "count": 235878
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 7,
+          "monster_id_hex": "0x07",
+          "monster_name_hint": "戈麦斯",
+          "count": 9,
+          "active": true,
+          "monster_resource": "monster:07",
+          "field_prg_offsets": {
+            "monster_id": 235879,
+            "count": 235880
+          }
+        }
+      ],
+      "total_monsters": 34,
+      "within_runtime_limit": false,
+      "source": {
+        "space": "prg",
+        "offset": 235873,
+        "length": 8,
+        "end_exclusive": 235881
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 1,
+      "id_hex": "0x01",
+      "label": "水怪×2 + 水怪×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 1,
+          "monster_id_hex": "0x01",
+          "monster_name_hint": "水怪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:01",
+          "field_prg_offsets": {
+            "monster_id": 235881,
+            "count": 235882
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 1,
+          "monster_id_hex": "0x01",
+          "monster_name_hint": "水怪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:01",
+          "field_prg_offsets": {
+            "monster_id": 235883,
+            "count": 235884
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235885,
+            "count": 235886
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235887,
+            "count": 235888
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235881,
+        "length": 8,
+        "end_exclusive": 235889
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 2,
+      "id_hex": "0x02",
+      "label": "水鬼×1 + 蛙人×2 + 蛙人×3",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 2,
+          "monster_id_hex": "0x02",
+          "monster_name_hint": "水鬼",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:02",
+          "field_prg_offsets": {
+            "monster_id": 235889,
+            "count": 235890
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 47,
+          "monster_id_hex": "0x2F",
+          "monster_name_hint": "蛙人",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:2F",
+          "field_prg_offsets": {
+            "monster_id": 235891,
+            "count": 235892
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 47,
+          "monster_id_hex": "0x2F",
+          "monster_name_hint": "蛙人",
+          "count": 3,
+          "active": true,
+          "monster_resource": "monster:2F",
+          "field_prg_offsets": {
+            "monster_id": 235893,
+            "count": 235894
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235895,
+            "count": 235896
+          }
+        }
+      ],
+      "total_monsters": 6,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235889,
+        "length": 8,
+        "end_exclusive": 235897
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 3,
+      "id_hex": "0x03",
+      "label": "马歇尔×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 3,
+          "monster_id_hex": "0x03",
+          "monster_name_hint": "马歇尔",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:03",
+          "field_prg_offsets": {
+            "monster_id": 235897,
+            "count": 235898
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235899,
+            "count": 235900
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235901,
+            "count": 235902
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235903,
+            "count": 235904
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235897,
+        "length": 8,
+        "end_exclusive": 235905
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 4,
+      "id_hex": "0x04",
+      "label": "大象×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 4,
+          "monster_id_hex": "0x04",
+          "monster_name_hint": "大象",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:04",
+          "field_prg_offsets": {
+            "monster_id": 235905,
+            "count": 235906
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235907,
+            "count": 235908
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235909,
+            "count": 235910
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235911,
+            "count": 235912
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235905,
+        "length": 8,
+        "end_exclusive": 235913
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 5,
+      "id_hex": "0x05",
+      "label": "神密人×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 5,
+          "monster_id_hex": "0x05",
+          "monster_name_hint": "神密人",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:05",
+          "field_prg_offsets": {
+            "monster_id": 235913,
+            "count": 235914
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235915,
+            "count": 235916
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235917,
+            "count": 235918
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235919,
+            "count": 235920
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235913,
+        "length": 8,
+        "end_exclusive": 235921
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 6,
+      "id_hex": "0x06",
+      "label": "蜈蚣×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 6,
+          "monster_id_hex": "0x06",
+          "monster_name_hint": "蜈蚣",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:06",
+          "field_prg_offsets": {
+            "monster_id": 235921,
+            "count": 235922
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235923,
+            "count": 235924
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235925,
+            "count": 235926
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235927,
+            "count": 235928
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235921,
+        "length": 8,
+        "end_exclusive": 235929
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 7,
+      "id_hex": "0x07",
+      "label": "戈麦斯×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 7,
+          "monster_id_hex": "0x07",
+          "monster_name_hint": "戈麦斯",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:07",
+          "field_prg_offsets": {
+            "monster_id": 235929,
+            "count": 235930
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235931,
+            "count": 235932
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235933,
+            "count": 235934
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235935,
+            "count": 235936
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235929,
+        "length": 8,
+        "end_exclusive": 235937
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 8,
+      "id_hex": "0x08",
+      "label": "弗朗×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 8,
+          "monster_id_hex": "0x08",
+          "monster_name_hint": "弗朗",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:08",
+          "field_prg_offsets": {
+            "monster_id": 235937,
+            "count": 235938
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235939,
+            "count": 235940
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235941,
+            "count": 235942
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235943,
+            "count": 235944
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235937,
+        "length": 8,
+        "end_exclusive": 235945
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 9,
+      "id_hex": "0x09",
+      "label": "波特×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 9,
+          "monster_id_hex": "0x09",
+          "monster_name_hint": "波特",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:09",
+          "field_prg_offsets": {
+            "monster_id": 235945,
+            "count": 235946
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235947,
+            "count": 235948
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235949,
+            "count": 235950
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235951,
+            "count": 235952
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235945,
+        "length": 8,
+        "end_exclusive": 235953
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 10,
+      "id_hex": "0x0A",
+      "label": "沙漠之舟×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 10,
+          "monster_id_hex": "0x0A",
+          "monster_name_hint": "沙漠之舟",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0A",
+          "field_prg_offsets": {
+            "monster_id": 235953,
+            "count": 235954
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235955,
+            "count": 235956
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235957,
+            "count": 235958
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235959,
+            "count": 235960
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235953,
+        "length": 8,
+        "end_exclusive": 235961
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 11,
+      "id_hex": "0x0B",
+      "label": "帕鲁×1 + 反坦克炮×1 + 反坦克炮×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 11,
+          "monster_id_hex": "0x0B",
+          "monster_name_hint": "帕鲁",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0B",
+          "field_prg_offsets": {
+            "monster_id": 235961,
+            "count": 235962
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 13,
+          "monster_id_hex": "0x0D",
+          "monster_name_hint": "反坦克炮",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0D",
+          "field_prg_offsets": {
+            "monster_id": 235963,
+            "count": 235964
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 13,
+          "monster_id_hex": "0x0D",
+          "monster_name_hint": "反坦克炮",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0D",
+          "field_prg_offsets": {
+            "monster_id": 235965,
+            "count": 235966
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235967,
+            "count": 235968
+          }
+        }
+      ],
+      "total_monsters": 3,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235961,
+        "length": 8,
+        "end_exclusive": 235969
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 12,
+      "id_hex": "0x0C",
+      "label": "戈斯战车×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 12,
+          "monster_id_hex": "0x0C",
+          "monster_name_hint": "戈斯战车",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0C",
+          "field_prg_offsets": {
+            "monster_id": 235969,
+            "count": 235970
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235971,
+            "count": 235972
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235973,
+            "count": 235974
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235975,
+            "count": 235976
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235969,
+        "length": 8,
+        "end_exclusive": 235977
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 13,
+      "id_hex": "0x0D",
+      "label": "反坦克炮×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 13,
+          "monster_id_hex": "0x0D",
+          "monster_name_hint": "反坦克炮",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0D",
+          "field_prg_offsets": {
+            "monster_id": 235977,
+            "count": 235978
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235979,
+            "count": 235980
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235981,
+            "count": 235982
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235983,
+            "count": 235984
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235977,
+        "length": 8,
+        "end_exclusive": 235985
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 14,
+      "id_hex": "0x0E",
+      "label": "诺亚×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 129,
+          "monster_id_hex": "0x81",
+          "monster_name_hint": "诺亚",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:81",
+          "field_prg_offsets": {
+            "monster_id": 235985,
+            "count": 235986
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235987,
+            "count": 235988
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235989,
+            "count": 235990
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235991,
+            "count": 235992
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235985,
+        "length": 8,
+        "end_exclusive": 235993
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 15,
+      "id_hex": "0x0F",
+      "label": "电脑墙×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:00",
+          "field_prg_offsets": {
+            "monster_id": 235993,
+            "count": 235994
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235995,
+            "count": 235996
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235997,
+            "count": 235998
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 235999,
+            "count": 236000
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 235993,
+        "length": 8,
+        "end_exclusive": 236001
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 16,
+      "id_hex": "0x10",
+      "label": "战狗×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 16,
+          "monster_id_hex": "0x10",
+          "monster_name_hint": "战狗",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:10",
+          "field_prg_offsets": {
+            "monster_id": 236001,
+            "count": 236002
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236003,
+            "count": 236004
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236005,
+            "count": 236006
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236007,
+            "count": 236008
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236001,
+        "length": 8,
+        "end_exclusive": 236009
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 17,
+      "id_hex": "0x11",
+      "label": "流氓×7",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 17,
+          "monster_id_hex": "0x11",
+          "monster_name_hint": "流氓",
+          "count": 7,
+          "active": true,
+          "monster_resource": "monster:11",
+          "field_prg_offsets": {
+            "monster_id": 236009,
+            "count": 236010
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236011,
+            "count": 236012
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236013,
+            "count": 236014
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236015,
+            "count": 236016
+          }
+        }
+      ],
+      "total_monsters": 7,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236009,
+        "length": 8,
+        "end_exclusive": 236017
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 18,
+      "id_hex": "0x12",
+      "label": "瓦鲁部下×3",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 18,
+          "monster_id_hex": "0x12",
+          "monster_name_hint": "瓦鲁部下",
+          "count": 3,
+          "active": true,
+          "monster_resource": "monster:12",
+          "field_prg_offsets": {
+            "monster_id": 236017,
+            "count": 236018
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236019,
+            "count": 236020
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236021,
+            "count": 236022
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236023,
+            "count": 236024
+          }
+        }
+      ],
+      "total_monsters": 3,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236017,
+        "length": 8,
+        "end_exclusive": 236025
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 19,
+      "id_hex": "0x13",
+      "label": "瓦鲁部下×3 + 瓦鲁×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 18,
+          "monster_id_hex": "0x12",
+          "monster_name_hint": "瓦鲁部下",
+          "count": 3,
+          "active": true,
+          "monster_resource": "monster:12",
+          "field_prg_offsets": {
+            "monster_id": 236025,
+            "count": 236026
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 19,
+          "monster_id_hex": "0x13",
+          "monster_name_hint": "瓦鲁",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:13",
+          "field_prg_offsets": {
+            "monster_id": 236027,
+            "count": 236028
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236029,
+            "count": 236030
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236031,
+            "count": 236032
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236025,
+        "length": 8,
+        "end_exclusive": 236033
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 20,
+      "id_hex": "0x14",
+      "label": "异形鱼×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 20,
+          "monster_id_hex": "0x14",
+          "monster_name_hint": "异形鱼",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:14",
+          "field_prg_offsets": {
+            "monster_id": 236033,
+            "count": 236034
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236035,
+            "count": 236036
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236037,
+            "count": 236038
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236039,
+            "count": 236040
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236033,
+        "length": 8,
+        "end_exclusive": 236041
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 21,
+      "id_hex": "0x15",
+      "label": "防御机器×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 21,
+          "monster_id_hex": "0x15",
+          "monster_name_hint": "防御机器",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:15",
+          "field_prg_offsets": {
+            "monster_id": 236041,
+            "count": 236042
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236043,
+            "count": 236044
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236045,
+            "count": 236046
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236047,
+            "count": 236048
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236041,
+        "length": 8,
+        "end_exclusive": 236049
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 22,
+      "id_hex": "0x16",
+      "label": "激光系统×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 22,
+          "monster_id_hex": "0x16",
+          "monster_name_hint": "激光系统",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:16",
+          "field_prg_offsets": {
+            "monster_id": 236049,
+            "count": 236050
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236051,
+            "count": 236052
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236053,
+            "count": 236054
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236055,
+            "count": 236056
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236049,
+        "length": 8,
+        "end_exclusive": 236057
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 23,
+      "id_hex": "0x17",
+      "label": "巨型炮×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 23,
+          "monster_id_hex": "0x17",
+          "monster_name_hint": "巨型炮",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:17",
+          "field_prg_offsets": {
+            "monster_id": 236057,
+            "count": 236058
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236059,
+            "count": 236060
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236061,
+            "count": 236062
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236063,
+            "count": 236064
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236057,
+        "length": 8,
+        "end_exclusive": 236065
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 24,
+      "id_hex": "0x18",
+      "label": "鬼手×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 127,
+          "monster_id_hex": "0x7F",
+          "monster_name_hint": "鬼手",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:7F",
+          "field_prg_offsets": {
+            "monster_id": 236065,
+            "count": 236066
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236067,
+            "count": 236068
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236069,
+            "count": 236070
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236071,
+            "count": 236072
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236065,
+        "length": 8,
+        "end_exclusive": 236073
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 25,
+      "id_hex": "0x19",
+      "label": "异形×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 14,
+          "monster_id_hex": "0x0E",
+          "monster_name_hint": "异形",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:0E",
+          "field_prg_offsets": {
+            "monster_id": 236073,
+            "count": 236074
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236075,
+            "count": 236076
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236077,
+            "count": 236078
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236079,
+            "count": 236080
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236073,
+        "length": 8,
+        "end_exclusive": 236081
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 26,
+      "id_hex": "0x1A",
+      "label": "侦察者×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 119,
+          "monster_id_hex": "0x77",
+          "monster_name_hint": "侦察者",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:77",
+          "field_prg_offsets": {
+            "monster_id": 236081,
+            "count": 236082
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236083,
+            "count": 236084
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236085,
+            "count": 236086
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236087,
+            "count": 236088
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236081,
+        "length": 8,
+        "end_exclusive": 236089
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 27,
+      "id_hex": "0x1B",
+      "label": "水鬼×1 + 水鬼×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 110,
+          "monster_id_hex": "0x6E",
+          "monster_name_hint": "水鬼",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:6E",
+          "field_prg_offsets": {
+            "monster_id": 236089,
+            "count": 236090
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 110,
+          "monster_id_hex": "0x6E",
+          "monster_name_hint": "水鬼",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:6E",
+          "field_prg_offsets": {
+            "monster_id": 236091,
+            "count": 236092
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236093,
+            "count": 236094
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236095,
+            "count": 236096
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236089,
+        "length": 8,
+        "end_exclusive": 236097
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 28,
+      "id_hex": "0x1C",
+      "label": "水鬼×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 110,
+          "monster_id_hex": "0x6E",
+          "monster_name_hint": "水鬼",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:6E",
+          "field_prg_offsets": {
+            "monster_id": 236097,
+            "count": 236098
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236099,
+            "count": 236100
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236101,
+            "count": 236102
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236103,
+            "count": 236104
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236097,
+        "length": 8,
+        "end_exclusive": 236105
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 29,
+      "id_hex": "0x1D",
+      "label": "水鬼×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 110,
+          "monster_id_hex": "0x6E",
+          "monster_name_hint": "水鬼",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:6E",
+          "field_prg_offsets": {
+            "monster_id": 236105,
+            "count": 236106
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236107,
+            "count": 236108
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236109,
+            "count": 236110
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236111,
+            "count": 236112
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236105,
+        "length": 8,
+        "end_exclusive": 236113
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 30,
+      "id_hex": "0x1E",
+      "label": "水鬼×3",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 110,
+          "monster_id_hex": "0x6E",
+          "monster_name_hint": "水鬼",
+          "count": 3,
+          "active": true,
+          "monster_resource": "monster:6E",
+          "field_prg_offsets": {
+            "monster_id": 236113,
+            "count": 236114
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236115,
+            "count": 236116
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236117,
+            "count": 236118
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236119,
+            "count": 236120
+          }
+        }
+      ],
+      "total_monsters": 3,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236113,
+        "length": 8,
+        "end_exclusive": 236121
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 31,
+      "id_hex": "0x1F",
+      "label": "监视器×1 + 监视器×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236121,
+            "count": 236122
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236123,
+            "count": 236124
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236125,
+            "count": 236126
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236127,
+            "count": 236128
+          }
+        }
+      ],
+      "total_monsters": 3,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236121,
+        "length": 8,
+        "end_exclusive": 236129
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 32,
+      "id_hex": "0x20",
+      "label": "生物炮×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 27,
+          "monster_id_hex": "0x1B",
+          "monster_name_hint": "生物炮",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:1B",
+          "field_prg_offsets": {
+            "monster_id": 236129,
+            "count": 236130
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236131,
+            "count": 236132
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236133,
+            "count": 236134
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236135,
+            "count": 236136
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236129,
+        "length": 8,
+        "end_exclusive": 236137
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 33,
+      "id_hex": "0x21",
+      "label": "金蚁×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 44,
+          "monster_id_hex": "0x2C",
+          "monster_name_hint": "金蚁",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:2C",
+          "field_prg_offsets": {
+            "monster_id": 236137,
+            "count": 236138
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236139,
+            "count": 236140
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236141,
+            "count": 236142
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236143,
+            "count": 236144
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236137,
+        "length": 8,
+        "end_exclusive": 236145
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 34,
+      "id_hex": "0x22",
+      "label": "火焰枪×2 + 火焰炮×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 26,
+          "monster_id_hex": "0x1A",
+          "monster_name_hint": "火焰枪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:1A",
+          "field_prg_offsets": {
+            "monster_id": 236145,
+            "count": 236146
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 46,
+          "monster_id_hex": "0x2E",
+          "monster_name_hint": "火焰炮",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:2E",
+          "field_prg_offsets": {
+            "monster_id": 236147,
+            "count": 236148
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236149,
+            "count": 236150
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236151,
+            "count": 236152
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236145,
+        "length": 8,
+        "end_exclusive": 236153
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 35,
+      "id_hex": "0x23",
+      "label": "侦察蝶×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 60,
+          "monster_id_hex": "0x3C",
+          "monster_name_hint": "侦察蝶",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:3C",
+          "field_prg_offsets": {
+            "monster_id": 236153,
+            "count": 236154
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236155,
+            "count": 236156
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236157,
+            "count": 236158
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236159,
+            "count": 236160
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236153,
+        "length": 8,
+        "end_exclusive": 236161
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 36,
+      "id_hex": "0x24",
+      "label": "金蚁毯×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 86,
+          "monster_id_hex": "0x56",
+          "monster_name_hint": "金蚁毯",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:56",
+          "field_prg_offsets": {
+            "monster_id": 236161,
+            "count": 236162
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236163,
+            "count": 236164
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236165,
+            "count": 236166
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236167,
+            "count": 236168
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236161,
+        "length": 8,
+        "end_exclusive": 236169
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 37,
+      "id_hex": "0x25",
+      "label": "铁甲炮×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 98,
+          "monster_id_hex": "0x62",
+          "monster_name_hint": "铁甲炮",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:62",
+          "field_prg_offsets": {
+            "monster_id": 236169,
+            "count": 236170
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236171,
+            "count": 236172
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236173,
+            "count": 236174
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236175,
+            "count": 236176
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236169,
+        "length": 8,
+        "end_exclusive": 236177
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 38,
+      "id_hex": "0x26",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236177,
+            "count": 236178
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236179,
+            "count": 236180
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236181,
+            "count": 236182
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236183,
+            "count": 236184
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236177,
+        "length": 8,
+        "end_exclusive": 236185
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 39,
+      "id_hex": "0x27",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236185,
+            "count": 236186
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236187,
+            "count": 236188
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236189,
+            "count": 236190
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236191,
+            "count": 236192
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236185,
+        "length": 8,
+        "end_exclusive": 236193
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 40,
+      "id_hex": "0x28",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236193,
+            "count": 236194
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236195,
+            "count": 236196
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236197,
+            "count": 236198
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236199,
+            "count": 236200
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236193,
+        "length": 8,
+        "end_exclusive": 236201
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 41,
+      "id_hex": "0x29",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236201,
+            "count": 236202
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236203,
+            "count": 236204
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236205,
+            "count": 236206
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236207,
+            "count": 236208
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236201,
+        "length": 8,
+        "end_exclusive": 236209
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 42,
+      "id_hex": "0x2A",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236209,
+            "count": 236210
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236211,
+            "count": 236212
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236213,
+            "count": 236214
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236215,
+            "count": 236216
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236209,
+        "length": 8,
+        "end_exclusive": 236217
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 43,
+      "id_hex": "0x2B",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236217,
+            "count": 236218
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236219,
+            "count": 236220
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236221,
+            "count": 236222
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236223,
+            "count": 236224
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236217,
+        "length": 8,
+        "end_exclusive": 236225
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 44,
+      "id_hex": "0x2C",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236225,
+            "count": 236226
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236227,
+            "count": 236228
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236229,
+            "count": 236230
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236231,
+            "count": 236232
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236225,
+        "length": 8,
+        "end_exclusive": 236233
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 45,
+      "id_hex": "0x2D",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236233,
+            "count": 236234
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236235,
+            "count": 236236
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236237,
+            "count": 236238
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236239,
+            "count": 236240
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236233,
+        "length": 8,
+        "end_exclusive": 236241
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 46,
+      "id_hex": "0x2E",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236241,
+            "count": 236242
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236243,
+            "count": 236244
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236245,
+            "count": 236246
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236247,
+            "count": 236248
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236241,
+        "length": 8,
+        "end_exclusive": 236249
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 47,
+      "id_hex": "0x2F",
+      "label": "空编队",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236249,
+            "count": 236250
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236251,
+            "count": 236252
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236253,
+            "count": 236254
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236255,
+            "count": 236256
+          }
+        }
+      ],
+      "total_monsters": 0,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236249,
+        "length": 8,
+        "end_exclusive": 236257
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 48,
+      "id_hex": "0x30",
+      "label": "监视器×2 + 防御器×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236257,
+            "count": 236258
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 113,
+          "monster_id_hex": "0x71",
+          "monster_name_hint": "防御器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:71",
+          "field_prg_offsets": {
+            "monster_id": 236259,
+            "count": 236260
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236261,
+            "count": 236262
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236263,
+            "count": 236264
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236257,
+        "length": 8,
+        "end_exclusive": 236265
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 49,
+      "id_hex": "0x31",
+      "label": "监视器×1 + 催眠器×1 + 防御器×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236265,
+            "count": 236266
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 114,
+          "monster_id_hex": "0x72",
+          "monster_name_hint": "催眠器",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:72",
+          "field_prg_offsets": {
+            "monster_id": 236267,
+            "count": 236268
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 113,
+          "monster_id_hex": "0x71",
+          "monster_name_hint": "防御器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:71",
+          "field_prg_offsets": {
+            "monster_id": 236269,
+            "count": 236270
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236271,
+            "count": 236272
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236265,
+        "length": 8,
+        "end_exclusive": 236273
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 50,
+      "id_hex": "0x32",
+      "label": "监视器×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236273,
+            "count": 236274
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236275,
+            "count": 236276
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236277,
+            "count": 236278
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236279,
+            "count": 236280
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236273,
+        "length": 8,
+        "end_exclusive": 236281
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 51,
+      "id_hex": "0x33",
+      "label": "暗堡×2 + 催眠器×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 42,
+          "monster_id_hex": "0x2A",
+          "monster_name_hint": "暗堡",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:2A",
+          "field_prg_offsets": {
+            "monster_id": 236281,
+            "count": 236282
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 114,
+          "monster_id_hex": "0x72",
+          "monster_name_hint": "催眠器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:72",
+          "field_prg_offsets": {
+            "monster_id": 236283,
+            "count": 236284
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236285,
+            "count": 236286
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236287,
+            "count": 236288
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236281,
+        "length": 8,
+        "end_exclusive": 236289
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 52,
+      "id_hex": "0x34",
+      "label": "监视器×2 + 防御器×2 + 声纳车×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 112,
+          "monster_id_hex": "0x70",
+          "monster_name_hint": "监视器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:70",
+          "field_prg_offsets": {
+            "monster_id": 236289,
+            "count": 236290
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 113,
+          "monster_id_hex": "0x71",
+          "monster_name_hint": "防御器",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:71",
+          "field_prg_offsets": {
+            "monster_id": 236291,
+            "count": 236292
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 117,
+          "monster_id_hex": "0x75",
+          "monster_name_hint": "声纳车",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:75",
+          "field_prg_offsets": {
+            "monster_id": 236293,
+            "count": 236294
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236295,
+            "count": 236296
+          }
+        }
+      ],
+      "total_monsters": 6,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236289,
+        "length": 8,
+        "end_exclusive": 236297
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 53,
+      "id_hex": "0x35",
+      "label": "扫描仪×2 + 声纳车×1 + 歼灭者×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 116,
+          "monster_id_hex": "0x74",
+          "monster_name_hint": "扫描仪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:74",
+          "field_prg_offsets": {
+            "monster_id": 236297,
+            "count": 236298
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 117,
+          "monster_id_hex": "0x75",
+          "monster_name_hint": "声纳车",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:75",
+          "field_prg_offsets": {
+            "monster_id": 236299,
+            "count": 236300
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 118,
+          "monster_id_hex": "0x76",
+          "monster_name_hint": "歼灭者",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:76",
+          "field_prg_offsets": {
+            "monster_id": 236301,
+            "count": 236302
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236303,
+            "count": 236304
+          }
+        }
+      ],
+      "total_monsters": 4,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236297,
+        "length": 8,
+        "end_exclusive": 236305
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 54,
+      "id_hex": "0x36",
+      "label": "地狱×1",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 126,
+          "monster_id_hex": "0x7E",
+          "monster_name_hint": "地狱",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:7E",
+          "field_prg_offsets": {
+            "monster_id": 236305,
+            "count": 236306
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236307,
+            "count": 236308
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236309,
+            "count": 236310
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236311,
+            "count": 236312
+          }
+        }
+      ],
+      "total_monsters": 1,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236305,
+        "length": 8,
+        "end_exclusive": 236313
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 55,
+      "id_hex": "0x37",
+      "label": "地狱×1 + 生物枪×2 + 毒液枪×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 126,
+          "monster_id_hex": "0x7E",
+          "monster_name_hint": "地狱",
+          "count": 1,
+          "active": true,
+          "monster_resource": "monster:7E",
+          "field_prg_offsets": {
+            "monster_id": 236313,
+            "count": 236314
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 90,
+          "monster_id_hex": "0x5A",
+          "monster_name_hint": "生物枪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:5A",
+          "field_prg_offsets": {
+            "monster_id": 236315,
+            "count": 236316
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 50,
+          "monster_id_hex": "0x32",
+          "monster_name_hint": "毒液枪",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:32",
+          "field_prg_offsets": {
+            "monster_id": 236317,
+            "count": 236318
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236319,
+            "count": 236320
+          }
+        }
+      ],
+      "total_monsters": 5,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236313,
+        "length": 8,
+        "end_exclusive": 236321
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    },
+    {
+      "id": 56,
+      "id_hex": "0x38",
+      "label": "地狱×2",
+      "slots": [
+        {
+          "slot": 0,
+          "monster_id": 126,
+          "monster_id_hex": "0x7E",
+          "monster_name_hint": "地狱",
+          "count": 2,
+          "active": true,
+          "monster_resource": "monster:7E",
+          "field_prg_offsets": {
+            "monster_id": 236321,
+            "count": 236322
+          }
+        },
+        {
+          "slot": 1,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236323,
+            "count": 236324
+          }
+        },
+        {
+          "slot": 2,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236325,
+            "count": 236326
+          }
+        },
+        {
+          "slot": 3,
+          "monster_id": 0,
+          "monster_id_hex": "0x00",
+          "monster_name_hint": "电脑墙",
+          "count": 0,
+          "active": false,
+          "monster_resource": null,
+          "field_prg_offsets": {
+            "monster_id": 236327,
+            "count": 236328
+          }
+        }
+      ],
+      "total_monsters": 2,
+      "within_runtime_limit": true,
+      "source": {
+        "space": "prg",
+        "offset": 236321,
+        "length": 8,
+        "end_exclusive": 236329
+      },
+      "writeback": "four fixed monster/count pairs; total count <= 9"
+    }
+  ],
+  "sources": {
+    "formations": {
+      "space": "prg",
+      "offset": 235873,
+      "length": 456,
+      "end_exclusive": 236329
+    },
+    "scene-id": {
+      "space": "prg",
+      "offset": 220329,
+      "length": 1,
+      "end_exclusive": 220330
+    },
+    "x": {
+      "space": "prg",
+      "offset": 220335,
+      "length": 1,
+      "end_exclusive": 220336
+    },
+    "y": {
+      "space": "prg",
+      "offset": 220341,
+      "length": 1,
+      "end_exclusive": 220342
+    },
+    "handler-pointer": {
+      "space": "prg",
+      "offset": 220351,
+      "length": 2,
+      "end_exclusive": 220353
+    },
+    "state-flag-check": {
+      "space": "prg",
+      "offset": 220169,
+      "length": 1,
+      "end_exclusive": 220170
+    },
+    "repeat-check": {
+      "space": "prg",
+      "offset": 220173,
+      "length": 2,
+      "end_exclusive": 220175
+    },
+    "intro-text": {
+      "space": "prg",
+      "offset": 220176,
+      "length": 1,
+      "end_exclusive": 220177
+    },
+    "state-flag-set": {
+      "space": "prg",
+      "offset": 220181,
+      "length": 1,
+      "end_exclusive": 220182
+    },
+    "encounter-id": {
+      "space": "prg",
+      "offset": 220186,
+      "length": 1,
+      "end_exclusive": 220187
+    },
+    "completed-text": {
+      "space": "prg",
+      "offset": 220196,
+      "length": 1,
+      "end_exclusive": 220197
+    }
+  },
+  "handler_source": {
+    "space": "prg",
+    "offset": 220168,
+    "length": 32,
+    "end_exclusive": 220200
+  },
+  "formation_loader_source": {
+    "space": "prg",
+    "offset": 219518,
+    "length": 56,
+    "end_exclusive": 219574
+  },
+  "runtime": {
+    "encounter_id_ram": "$B1",
+    "monster_id_slots": "$7002+index",
+    "monster_count_slots": "$7006+index",
+    "maximum_monsters": 9,
+    "completion_flag_storage": "$0441+(flag>>3), bit flag&7",
+    "completion_flag_test": "$FE9F",
+    "completion_flag_pending": "$0482 before battle",
+    "completion_flag_commit": "$FE85 after battle victory"
+  },
+  "original_behavior": {
+    "scene_id": 3,
+    "x": 7,
+    "y": 2,
+    "handler_pointer_stored": 48424,
+    "label": "开场住宅内衣衣柜"
+  },
+  "confidence": "confirmed-loader-handler-text-chain",
+  "writeback_state": {
+    "current_sha256": "e81428a75956320e6b173ac08e799138c67f8f84dcf044ff58b9f73ecef286d2",
+    "modified": false,
+    "components": {
+      "formations": {
+        "component_id": "battle-test-point.formations",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "a77563dad7cb7a05418ddb34ad245e2195c4b671a955c913afb3fdae609e6cc3",
+        "current_sha256": "a77563dad7cb7a05418ddb34ad245e2195c4b671a955c913afb3fdae609e6cc3",
+        "modified": false
+      },
+      "scene-id": {
+        "component_id": "battle-test-point.scene-id",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+        "current_sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+        "modified": false
+      },
+      "x": {
+        "component_id": "battle-test-point.x",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "current_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "modified": false
+      },
+      "y": {
+        "component_id": "battle-test-point.y",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d986",
+        "current_sha256": "dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d986",
+        "modified": false
+      },
+      "handler-pointer": {
+        "component_id": "battle-test-point.handler-pointer",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "74587a276d2ab8c489d26afb6a70792d388afa519052574a04f9ad771084fec1",
+        "current_sha256": "74587a276d2ab8c489d26afb6a70792d388afa519052574a04f9ad771084fec1",
+        "modified": false
+      },
+      "state-flag-check": {
+        "component_id": "battle-test-point.state-flag-check",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018",
+        "current_sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018",
+        "modified": false
+      },
+      "repeat-check": {
+        "component_id": "battle-test-point.repeat-check",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "a9f03e7a5c8385cdd63abfd474297140b7107c19053f59b749c2d39cab26b488",
+        "current_sha256": "a9f03e7a5c8385cdd63abfd474297140b7107c19053f59b749c2d39cab26b488",
+        "modified": false
+      },
+      "intro-text": {
+        "component_id": "battle-test-point.intro-text",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "e3b98a4da31a127d4bde6e43033f66ba274cab0eb7eb1c70ec41402bf6273dd8",
+        "current_sha256": "e3b98a4da31a127d4bde6e43033f66ba274cab0eb7eb1c70ec41402bf6273dd8",
+        "modified": false
+      },
+      "state-flag-set": {
+        "component_id": "battle-test-point.state-flag-set",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018",
+        "current_sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018",
+        "modified": false
+      },
+      "encounter-id": {
+        "component_id": "battle-test-point.encounter-id",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "68aa2e2ee5dff96e3355e6c7ee373e3d6a4e17f75f9518d843709c0c9bc3e3d4",
+        "current_sha256": "68aa2e2ee5dff96e3355e6c7ee373e3d6a4e17f75f9518d843709c0c9bc3e3d4",
+        "modified": false
+      },
+      "completed-text": {
+        "component_id": "battle-test-point.completed-text",
+        "working_asset": "working/battle-test.json",
+        "original_asset": "original/battle-test.json",
+        "original_sha256": "09fc96082d34c2dfc1295d92073b5ea1dc8ef8da95f14dfded011ffb96d3e54b",
+        "current_sha256": "09fc96082d34c2dfc1295d92073b5ea1dc8ef8da95f14dfded011ffb96d3e54b",
+        "modified": false
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "metalmaxcn.expanded-rom-test",
+  "profile": "mapper74-1024k-boot-test",
+  "owner": "expanded-rom-test",
+  "space": "prg",
+  "bank_bytes": 8192,
+  "first_bank": 64,
+  "end_bank_exclusive": 126,
+  "boot_bank": 125,
+  "result_cpu": 768,
+  "stub": {
+    "bank": 127,
+    "cpu": 58757,
+    "capacity": 361,
+    "source_bank": 63,
+    "evidence": "project/evidence/reverse-engineering/story-script-space-coverage/observations.json",
+    "confidence": "confirmed",
+    "scope": "只确认所列现场未读取，其他路径未确认",
+    "purpose": "复位载入、启动 bank 失败回显、字体准备与等待按键"
+  },
+  "reset": {
+    "bank": 127,
+    "bank_offset": 8188,
+    "length": 2,
+    "source_owner": "cpu-interrupt-vector-table",
+    "source_block": "cpu-interrupt-vector-table.hardware-vectors"
+  },
+  "program": {
+    "bank_offset": 512,
+    "cpu": 1024,
+    "capacity": 512,
+    "purpose": "标记读取、扩展区执行验证与结果画面"
+  },
+  "loader": {"bank_offset": 256, "length": 20},
+  "marker": {"bank_offset": 0, "length": 16},
+  "legacy_reader": {"bank_offset": 32, "length": 14},
+  "executor": {"bank_offset": 64, "length": 9},
+  "font": {
+    "bank": 35,
+    "cpu": 47104,
+    "length": 2048,
+    "source_owner": "core-latin",
+    "source_role": "font-template"
+  }
+}

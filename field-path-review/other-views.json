@@ -1,0 +1,1620 @@
+{
+  "sites": [
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project?.game_data || {};",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderCurrentItemUseRecord"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.game_data || {},",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderCurrentItemUseRecord"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.game_data?.characters?.rom_initial?.roles || [],",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderCurrentItemUseRecord"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.game_data || {},",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderCurrentItemUseRecord"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.story?.npc_catalog?.records || [], state.recordId",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderCurrentItemUseRecord"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "return (state.project?.game_data?.items?.records || []).filter(",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "equipmentRecords"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "if (!state.project && ![\"emulator\", \"build\", \"bytemap-sram\"].includes(state.view)) {",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "renderView"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "const missingSchemas = state.project ? await prepareViewData(dataView) : [];",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "markRendered"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "await ensureSequenceExecutions(state.project?.audio);",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "markRendered"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "} else if (state.project) {",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "markRendered"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "state.project = project;",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "init"
+    },
+    {
+      "file": "main.js",
+      "kind": "direct_project_data",
+      "expression": "const digest = state.project?.manifest?.rom?.sha256;",
+      "verdict": "exclude",
+      "reason": "项目身份、目录或渲染前置数据的读取；该处不编辑资源字段。",
+      "symbol": "navigateSidebarItem"
+    },
+    {
+      "file": "views/actors.js",
+      "kind": "direct_project_data",
+      "expression": "const sets = state.project?.visuals?.actors?.sets || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderActorAppearances"
+    },
+    {
+      "file": "views/actors.js",
+      "kind": "direct_project_data",
+      "expression": "options: (state.project?.visuals?.actors?.sets || []).map(item => ({",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "configureActorSetPicker"
+    },
+    {
+      "file": "views/audio.js",
+      "kind": "direct_project_data",
+      "expression": "const audio = state.project?.audio;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindAudioPlayback"
+    },
+    {
+      "file": "views/audio.js",
+      "kind": "direct_project_data",
+      "expression": "const audio = state.project.audio || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderAudio"
+    },
+    {
+      "file": "views/audio.js",
+      "kind": "direct_project_data",
+      "expression": "const audio = state.project?.audio || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "audioRecordContext"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "function selectedModel(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "selectedModel"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "export function renderBattleActors(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderBattleActors"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "state.project,",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindBattleActorWorkbench"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "const previewCatalog = battleScenePreviewCatalog(state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindBattleActorWorkbench"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "const appearance = battleActorCatalog(state.project).appearanceByKey.get(",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindBattleActorWorkbench"
+    },
+    {
+      "file": "views/battle-actors.js",
+      "kind": "direct_project_data",
+      "expression": "state.battleScenePreview = normalizeBattleScenePreview(preview, state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindBattleActorWorkbench"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "function bindPaletteReset(controller, cardState) {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "bindPaletteReset"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "async function saveConfig(controller, cardState) {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "saveConfig"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "async function saveLayout(controller, cardState) {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "saveLayout"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "async function savePaletteColor(controller, cardState, group, slot, color) {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "savePaletteColor"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "const autoSave = createAutoSave(async ({controller, cardState}) => {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "applyInputs"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "page_lifecycle",
+      "expression": "function commitCard(controller, cardState) {",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "commitCard"
+    },
+    {
+      "file": "views/battle-effects/attack-stage-catalog.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project?.visuals?.weapon_effect_catalog?.asset_catalog_data || {};",
+      "verdict": "exclude",
+      "reason": "通过已声明的 action、layout 或 palette 字段对象写入和重置；该处是其保存包装或资源预览读取。",
+      "symbol": "hydrate"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.visuals?.weapon_effect_catalog?.asset_catalog_data || {};",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "effectAssets"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "function refreshDirtyState(rowState, message = \"\") {",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "refreshDirtyState"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "async function saveRow(rowState) {",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "saveRow"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "async function resetRow(rowState) {",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "resetRow"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "const autoSave = createAutoSave(rowState => saveRow(rowState));",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "resetRow"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-segment-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "function commitRow(rowState) {",
+      "verdict": "exclude",
+      "reason": "通过 attack-visual commands 字段对象保存和重置；该处只编排字段提交。",
+      "symbol": "commitRow"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-timeline.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.visuals?.weapon_effect_catalog?.asset_catalog_data || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "baseEffectAssets"
+    },
+    {
+      "file": "views/battle-effects/attack-visual-timeline.js",
+      "kind": "page_lifecycle",
+      "expression": "async function saveAction(controller, select) {",
+      "verdict": "exclude",
+      "reason": "已由字段对象及共用自动保存链提交；该处只是页面调用包装。",
+      "symbol": "saveAction"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "export function ensureBattleScenePreview(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "ensureBattleScenePreview"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "const item = (state.project?.game_data?.items?.records || [])",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "currentItemName"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "custom_editor_control",
+      "expression": "<select aria-label=\"敌群 ${index + 1} 怪物\"",
+      "verdict": "exclude",
+      "reason": "仅供筛选、选择或内存预览使用；不写 Working 资源字段。",
+      "symbol": "enemyGroupInlineControl"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "custom_editor_control",
+      "expression": "<input type=\"number\" min=\"0\" max=\"9\" value=\"${group.count}\"",
+      "verdict": "exclude",
+      "reason": "仅供筛选、选择或内存预览使用；不写 Working 资源字段。",
+      "symbol": "enemyGroupInlineControl"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "project = state.project,",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "battleSceneComposerNodes"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "export function battleSceneComposerControls(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "battleSceneComposerControls"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "export function battleSceneComposerStatus(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "battleSceneComposerStatus"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "const preview = ensureBattleScenePreview(state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "updatePreview"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "state.battleScenePreview = normalizeBattleScenePreview(preview, state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "updatePreview"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "const catalog = battleScenePreviewCatalog(state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindBattleSceneComposer"
+    },
+    {
+      "file": "views/battle-scene-composer.js",
+      "kind": "direct_project_data",
+      "expression": "state.battleScenePreview = battleScenePreviewDefaults(state.project);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "activateControlTab"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "(state.project?.boot_presentation?.screens || []).find(item => item.id === id);",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "analysisScreen"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "(state.project?.boot_presentation_edits?.screens || [])",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "editsScreen"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "page_lifecycle",
+      "expression": "function commit(view) {",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "commit"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "page_lifecycle",
+      "expression": "function cancelPendingSave() {",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "cancelPendingSave"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "page_lifecycle",
+      "expression": "function saySaveState(text) {",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "saySaveState"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "page_lifecycle",
+      "expression": "async function refreshResetState(screenId) {",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "refreshResetState"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "const document_ = state.project.boot_presentation;",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "playbackPages"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "const font = (state.project?.text_fonts?.fonts || []).find(",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "fontGlyphs"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "const font = (state.project?.text_fonts?.fonts || []).find(",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "textComponentEditor"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "const document_ = state.project.boot_presentation;",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "renderBootPresentation"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "direct_project_data",
+      "expression": "const stored = state.project.boot_presentation_dirty;",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "renderBootPresentation"
+    },
+    {
+      "file": "views/boot-presentation.js",
+      "kind": "page_lifecycle",
+      "expression": "async function bindBootScreenReset(view, redraw) {",
+      "verdict": "exclude",
+      "reason": "通过 boot-presentation 字段对象写入或重置，或读取投影资料；该处不直接写文档。",
+      "symbol": "bindBootScreenReset"
+    },
+    {
+      "file": "views/byte-map/chr.js",
+      "kind": "direct_project_data",
+      "expression": "const file = Number(state.project.manifest.rom.chr_file_offset) + region;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderRomChrInspector"
+    },
+    {
+      "file": "views/byte-map/explorer.js",
+      "kind": "custom_editor_control",
+      "expression": "<input value=\"${esc(ui.ownerResourceId)}\" placeholder=\"battle-appearance:vehicle-8 / monster-profile\" autocomplete=\"off\" spellcheck=\"false\" data-byte-owner-resource-input>",
+      "verdict": "exclude",
+      "reason": "仅供筛选、选择或内存预览使用；不写 Working 资源字段。",
+      "symbol": "renderByteMapOwnerPanel"
+    },
+    {
+      "file": "views/byte-map/prg-explain.js",
+      "kind": "direct_project_data",
+      "expression": "romMapHex(Number(state.project.manifest.rom.prg_file_offset) + address),",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "buildRomMapSearchIndex"
+    },
+    {
+      "file": "views/byte-map/prg-explain.js",
+      "kind": "direct_project_data",
+      "expression": "romMapHex(Number(state.project.manifest.rom.prg_file_offset) + offset),",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "buildRomMapSearchIndex"
+    },
+    {
+      "file": "views/byte-map/prg.js",
+      "kind": "direct_project_data",
+      "expression": "romMapHex(Number(state.project.manifest.rom.prg_file_offset) + offset),",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "createRomPrgByteMap"
+    },
+    {
+      "file": "views/byte-map/prg.js",
+      "kind": "direct_project_data",
+      "expression": "parsed = Number.parseInt(fileAddress[1], 16) - Number(state.project.manifest.rom.prg_file_offset);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "parseRomMapGoto"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function saveImportControl(label = \"选择 8 KiB 电池存档\") {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveImportControl"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveByteMapComplete() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveByteMapComplete"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function saveWorkspaceReady() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveWorkspaceReady"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function pendingSaveRecordPage(offset) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "pendingSaveRecordPage"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "async function loadSaveByteMap(options = {}) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "loadSaveByteMap"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function refreshSaveDirtyState(message = null) {",
+      "verdict": "exclude",
+      "reason": "字段对象提交后只更新页面状态回显；字段值来自存档字段对象。",
+      "symbol": "refreshSaveDirtyState"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function patchSaveCurrentFields(edits, {message = null} = {}) {",
+      "verdict": "exclude",
+      "reason": "对外兼容入口委托 save-current 字段对象处理字段写入或重置。",
+      "symbol": "patchSaveCurrentFields"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function setSaveCurrentSlotActivation(slot, active, {message = null} = {}) {",
+      "verdict": "exclude",
+      "reason": "对外兼容入口委托 save-current 字段对象处理字段写入或重置。",
+      "symbol": "setSaveCurrentSlotActivation"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function resetSaveCurrentSlotActivation(slot, {message = null} = {}) {",
+      "verdict": "exclude",
+      "reason": "对外兼容入口委托 save-current 字段对象处理字段写入或重置。",
+      "symbol": "resetSaveCurrentSlotActivation"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function persistSaveCurrent() {",
+      "verdict": "exclude",
+      "reason": "整份存档导入的 Working 落盘入口；单字段编辑由 save-current 字段对象提交。",
+      "symbol": "persistSaveCurrent"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "queueSaveWorking(state, {onError});",
+      "verdict": "exclude",
+      "reason": "整份存档导入的 Working 落盘入口；单字段编辑由 save-current 字段对象提交。",
+      "symbol": "onError"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function resetSaveCurrentFields(fieldIds, {message = null} = {}) {",
+      "verdict": "exclude",
+      "reason": "对外兼容入口委托 save-current 字段对象处理字段写入或重置。",
+      "symbol": "resetSaveCurrentFields"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveRangeRecords(predicate = () => true) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveRangeRecords"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveStructureOverview() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveStructureOverview"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveAddressColumns(offset) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveAddressColumns"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function parseSaveGoto(value) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "parseSaveGoto"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function buildSaveExplorer() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "buildSaveExplorer"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "const bytes = state.saveCurrentBytes;",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "buildSaveExplorer"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function installSaveCurrent(bytes, name, message) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "installSaveCurrent"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function editorSaveRomSha256() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "editorSaveRomSha256"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "const value = state.project?.manifest?.rom?.sha256 ||",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "editorSaveRomSha256"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.rom?.sha256 || \"\";",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "editorSaveRomSha256"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveLibrarySourceLabel(source) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveLibrarySourceLabel"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveLibraryOption(entry) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveLibraryOption"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function saveLibraryMarkup() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveLibraryMarkup"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "${saveLibraryBusy || !repositoryAvailable || !state.saveCurrentBytes ? \"disabled\" : \"\"}>把当前值存一份进库</button>",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "saveLibraryMarkup"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "async function refreshEditorSaveLibrary(repository, {selectedId = saveLibrarySelectedId} = {}) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "refreshEditorSaveLibrary"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export async function storeSaveCurrentInProjectLibrary(repository, {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "storeSaveCurrentInProjectLibrary"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "if (!(state.saveCurrentBytes instanceof Uint8Array)) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "storeSaveCurrentInProjectLibrary"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "return putProjectSave(repository, state.saveCurrentBytes, {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "storeSaveCurrentInProjectLibrary"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export async function loadProjectSaveAsCurrent(repository, id) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "loadProjectSaveAsCurrent"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export function renderSaveEditor() {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "renderSaveEditor"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "function updateSaveStatus(message = \"\") {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "updateSaveStatus"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.saveCurrentBytes && saveByteMapComplete()) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "updateSaveStatus"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "rows: state.saveCurrentBytes ? `${state.saveCurrentBytes.length.toLocaleString()} SRAM 字节` : \"等待存档\",",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "updateSaveStatus"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "address: state.saveCurrentBytes ? `SRAM ${byteMapHex(state.saveSelectedOffset || 0, 4)}` : \"$6000-$7FFF\",",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "updateSaveStatus"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export async function bindSaveEditor({rerender} = {}) {",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "bindSaveEditor"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "state.saveMessage = state.saveCurrentBytes",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "bindSaveEditor"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "direct_project_data",
+      "expression": "downloadBlob(new Blob([state.saveCurrentBytes], {type: \"application/octet-stream\"}), outputName());",
+      "verdict": "exclude",
+      "reason": "存档载入、导航、展示、库操作或导出使用当前字节与字节地图；该处不修改存档字段。",
+      "symbol": "bindSaveEditor"
+    },
+    {
+      "file": "views/emulator.js",
+      "kind": "direct_project_data",
+      "expression": "const roms = state.project?.manifest?.rom;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderEmulator"
+    },
+    {
+      "file": "views/gomez-red-wolf-battle.js",
+      "kind": "direct_project_data",
+      "expression": "export function gomezRedWolfBattleModel(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "gomezRedWolfBattleModel"
+    },
+    {
+      "file": "views/gomez-red-wolf-battle.js",
+      "kind": "direct_project_data",
+      "expression": "export function renderGomezRedWolfBattle(project = state.project) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderGomezRedWolfBattle"
+    },
+    {
+      "file": "views/gomez-red-wolf-battle.js",
+      "kind": "direct_project_data",
+      "expression": "project = state.project,",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintGomezRedWolfBattle"
+    },
+    {
+      "file": "views/home.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderHome"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.ui?.construction?.interfaces?.interfaces || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "interfaceCatalog"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "return (state.project?.ui?.editor?.screens || []).filter(screen => {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "interfacePageScreens"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "const document = state.project?.ui?.editor;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "optionNodesForScreen"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "? battleSceneComposerNodes(state.project, selectedScreen)",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "interfacePageModel"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "const actions = battleActorCatalog(state.project).actions.filter(",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "screenToolbar"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "custom_editor_control",
+      "expression": "<select data-name-entry-vehicle-chassis aria-label=\"战车命名预览车型\">${actions.map(",
+      "verdict": "exclude",
+      "reason": "仅供筛选、选择或内存预览使用；不写 Working 资源字段。",
+      "symbol": "screenToolbar"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "const action = battleActorCatalog(state.project).actionByKey.get(",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "nameEntryVehiclePreview"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "? battleSceneComposerStatus(state.project)",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInterfacePage"
+    },
+    {
+      "file": "views/interface-pages.js",
+      "kind": "direct_project_data",
+      "expression": "? battleSceneComposerControls(state.project) : \"\",",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInterfacePage"
+    },
+    {
+      "file": "views/investigation.js",
+      "kind": "direct_project_data",
+      "expression": "const directory = state.project.facilities?.investigation;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInvestigation"
+    },
+    {
+      "file": "views/investigation.js",
+      "kind": "direct_project_data",
+      "expression": "const audit = state.project.scenes?.logic || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInvestigation"
+    },
+    {
+      "file": "views/investigation.js",
+      "kind": "direct_project_data",
+      "expression": "const sceneNames = new Map((state.project.scenes?.editable_scenes || []).map(scene => [Number(scene.id), scene.name]));",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInvestigation"
+    },
+    {
+      "file": "views/investigation.js",
+      "kind": "direct_project_data",
+      "expression": "const itemNames = new Map((state.project.game_data?.items?.records || []).map(item => [Number(item.id), item.name]));",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderInvestigation"
+    },
+    {
+      "file": "views/investigation.js",
+      "kind": "direct_project_data",
+      "expression": "[\"角色 / 对话交互\", state.project.story?.npc_catalog?.summary?.records || 0, \"角色交互先于当前格/前方格扫描；直接对话、脚本对话、商店、服务和对话触发战斗已在“NPC 对话与交互”页面展开。\", \"角色交互分派\"],",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "matching"
+    },
+    {
+      "file": "views/npcs.js",
+      "kind": "direct_project_data",
+      "expression": "const catalog = state.project.story?.npc_catalog || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderNpcs"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "const story = state.project.story || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyScriptEntries"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "const story = state.project.story || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderStorySequences"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project.story?.playback?.scenarios || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyPlaybackScenarios"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "const playback = state.project.story?.playback || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderStoryTracePlaybackDiagnostic"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "const specialLists = state.project.story?.special_actor_lists || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderStoryTracePlaybackDiagnostic"
+    },
+    {
+      "file": "views/story/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "state.project.story?.story_state_sources?.transition_commands || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "renderStoryTracePlaybackDiagnostic"
+    },
+    {
+      "file": "views/story/playback.js",
+      "kind": "outside_field_readonly",
+      "expression": "const readonly = new Map();",
+      "verdict": "exclude",
+      "reason": "组件展示模式或本地只读索引；不改变字段对象许可。",
+      "symbol": "storyCommandLanes"
+    },
+    {
+      "file": "views/story/playback.js",
+      "kind": "direct_project_data",
+      "expression": "const directionModel = state.project.story?.playback?.actor_direction_model;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "updateStoryScenarioCard"
+    },
+    {
+      "file": "views/story/playback.js",
+      "kind": "direct_project_data",
+      "expression": "? state.project.story?.vm?.handlers?.find(item => item.opcode === command.opcode)",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "updateStoryScenarioCard"
+    },
+    {
+      "file": "views/story/playback.js",
+      "kind": "direct_project_data",
+      "expression": "const vehicles = state.project?.game_data?.vehicles?.presets || [];",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "endingVehicleStatusSnapshot"
+    },
+    {
+      "file": "views/story/playback.js",
+      "kind": "direct_project_data",
+      "expression": "items: state.project?.game_data?.items?.records || [],",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "updateStoryVmCurrentText"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project.story?.browser_vm || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyBrowserVm"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "const roles = state.project?.game_data?.characters?.rom_initial?.roles;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyPartyMembers"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "const document_ = state.project?.story_cutscene_edits || null;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyVmWorkingValueLayer"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "const actorDocument = state.project?.story_scene_actor_edits || null;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyVmWorkingValueLayer"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project !== storyVmCompilationProject",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "prepareStoryVmCompilation"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "storyVmCompilationProject = state.project;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "prepareStoryVmCompilation"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "return (state.project.audio?.commands || []).find(",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyAudioCommand"
+    },
+    {
+      "file": "views/story/vm.js",
+      "kind": "direct_project_data",
+      "expression": "return (state.project.audio?.controls || []).find(",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "storyAudioControl"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "currentOriginalDocument"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "loadOpeningOriginalDocument"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "loadOpeningSceneActorOriginalDocument"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "resetOpeningEncounterFormationSource"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "installOpeningEncounterFormationProjection"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "loadOpeningEncounterFormationSource"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "if (context !== openingWorkbenchContext || project !== state.project",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "loadOpeningEncounterFormationSource"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "(state.project?.story?.autonomous?.entries || []).map(item => [Number(item.id), item]),",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "openingElementNodes"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const textRecords = state.project?.text_record_edits || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "openingElementNodes"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const textEncoding = state.project?.text_record_encoding || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "openingElementNodes"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const textRecords = state.project?.text_record_edits || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "openingElementNodes"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const textEncoding = state.project?.text_record_encoding || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "openingElementNodes"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "if (context !== openingWorkbenchContext || state.project !== context.project) return;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "installSavedOpeningTextDocument"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "if (context !== openingWorkbenchContext || state.project !== context.project) return;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "installSavedOpeningTextDocument"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "&& state.project === context.project) {",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "refreshOpeningResetState"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project !== context.project",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "resetOpeningChanges"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project !== context.project",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "resetOpeningChanges"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project !== context.project",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "resetOpeningChanges"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "custom_editor_control",
+      "expression": "<input type=\"checkbox\"",
+      "verdict": "exclude",
+      "reason": "仅切换 VM 预览中的队伍渲染；不写项目字段。",
+      "symbol": "openingElementTreeOptions"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "outside_field_readonly",
+      "expression": "${pointer ? `<div class=\"story-workbench-readonly-row\" data-story-workbench-readonly=\"pointer\"",
+      "verdict": "exclude",
+      "reason": "只读记录的展示标记；不设置字段写入许可。",
+      "symbol": "immutableScriptMarkup"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "outside_field_readonly",
+      "expression": "data-story-workbench-readonly=\"opcode\"",
+      "verdict": "exclude",
+      "reason": "只读记录的展示标记；不设置字段写入许可。",
+      "symbol": "immutableScriptMarkup"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const currentDocument = state.project?.story_cutscene_edits || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "createEditableStoryWorkbench"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.story_scene_actor_edits || null;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "createEditableStoryWorkbench"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.field_scene_lifecycle || null,",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "createEditableStoryWorkbench"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "project: state.project || null,",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "createEditableStoryWorkbench"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const currentDocument = state.project?.story_cutscene_edits || context.currentDocument;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "rebuildOpeningModel"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.story_scene_actor_edits",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "rebuildOpeningModel"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.field_scene_lifecycle || null,",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "rebuildOpeningModel"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "context.currentDocument = state.project?.story_cutscene_edits || context.currentDocument;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "refreshOpeningSelection"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "context.sceneActorCurrentDocument = state.project?.story_scene_actor_edits",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "refreshOpeningSelection"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "|| state.project !== textEditorContext.project) return;",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "bindStoryWorkbench"
+    },
+    {
+      "file": "views/story/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const inventory = state.project.story?.cutscene_inventory || {};",
+      "verdict": "exclude",
+      "reason": "项目会话身份、演出投影或字段链返回值的读取；该处不绕过字段写入。",
+      "symbol": "renderStoryWorkbench"
+    },
+    {
+      "file": "views/text/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "const gameData = characterMapCandidateSourcesAvailable(state.project?.game_data)",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "candidateGameDataSources"
+    },
+    {
+      "file": "views/text/catalog.js",
+      "kind": "direct_project_data",
+      "expression": "? state.project.game_data",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "candidateGameDataSources"
+    },
+    {
+      "file": "views/text/glyph-editor.js",
+      "kind": "page_lifecycle",
+      "expression": "const saver = createAutoSave(async bytes => {",
+      "verdict": "exclude",
+      "reason": "已由字段对象及共用自动保存链提交；该处只是页面调用包装。",
+      "symbol": "paint"
+    },
+    {
+      "file": "views/tile-grid.js",
+      "kind": "outside_field_readonly",
+      "expression": "readOnly = false,",
+      "verdict": "exclude",
+      "reason": "组件展示模式或本地只读索引；不改变字段对象许可。",
+      "symbol": "renderTileGridCanvas"
+    },
+    {
+      "file": "views/ui-component-editors.js",
+      "kind": "direct_project_data",
+      "expression": "if (!project || state.project !== project || !saved?.value?.document) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "installUiTextDocument"
+    },
+    {
+      "file": "views/ui-component-editors.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "installUiTextDocument"
+    },
+    {
+      "file": "views/ui-component-editors.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "bindUiComponentEditors"
+    },
+    {
+      "file": "views/ui-component-editors.js",
+      "kind": "direct_project_data",
+      "expression": "if (!project || state.project !== project) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "onDraft"
+    },
+    {
+      "file": "views/ui-editor-bind.js",
+      "kind": "direct_project_data",
+      "expression": "const document = state.project?.ui?.editor;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "uiEditorScreenForResource"
+    },
+    {
+      "file": "views/ui-editor.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.ui?.editor || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "uiEditorDocument"
+    },
+    {
+      "file": "views/ui-editor.js",
+      "kind": "direct_project_data",
+      "expression": "const known = (state.project?.ui?.construction?.interfaces?.categories || [])",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "uiEditorScreenCategory"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.ui?.construction || {};",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "uiConstructionModel"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.game_data",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "uiDataPathValue"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "const encoded = characters.map(character => state.project?.text_record_encoding?.glyphs.get(character));",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "unavailable"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "recordDocument: state.project?.text_record_edits,",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintSelectionOutline"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiEditorPreviewCanvas"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project || state.projectRepository !== repository) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiEditorPreviewCanvas"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "records = effectiveTextRecordSources(records, state.project?.text_record_edits);",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiEditorPreviewCanvas"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project || state.projectRepository !== repository) {",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiEditorPreviewCanvas"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "const project = state.project;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiConstructionCanvases"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project || state.projectRepository !== repository) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiConstructionCanvases"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project || state.projectRepository !== repository) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiConstructionCanvases"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "if (state.project !== project || state.projectRepository !== repository) return;",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiConstructionCanvases"
+    },
+    {
+      "file": "views/ui-paint.js",
+      "kind": "direct_project_data",
+      "expression": "state.project?.text_record_edits,",
+      "verdict": "exclude",
+      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
+      "symbol": "paintUiConstructionCanvases"
+    },
+    {
+      "file": "views/byte-map/sram.js",
+      "kind": "page_lifecycle",
+      "expression": "export const currentSaveChangedByteCount = () => saveFields.changedByteCount();",
+      "verdict": "exclude",
+      "reason": "仅委托存档字段对象读取变更字节数。",
+      "symbol": "currentSaveChangedByteCount"
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "schema": "metalmaxcn.module-asset.party-healing-service",
+  "resource_id": "party-healing-service",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via mixed-service owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.party-healing-service",
+    "module_id": "party-healing-service",
+    "record_count": 4,
+    "owned_byte_count": 123,
+    "records": [
+      {
+        "id": 169,
+        "id_hex": "0xA9",
+        "handle": "party-healing-service:A9",
+        "item_reference": "human-item:A9",
+        "base_healing": 85,
+        "random_addend": {
+          "minimum": 0,
+          "maximum": 15
+        },
+        "sources": [
+          {
+            "space": "prg",
+            "offset": 206129,
+            "length": 1,
+            "end_exclusive": 206130
+          },
+          {
+            "space": "prg",
+            "offset": 206133,
+            "length": 1,
+            "end_exclusive": 206134
+          }
+        ]
+      },
+      {
+        "id": 170,
+        "id_hex": "0xAA",
+        "handle": "party-healing-service:AA",
+        "item_reference": "human-item:AA",
+        "base_healing": 296,
+        "random_addend": {
+          "minimum": 0,
+          "maximum": 15
+        },
+        "sources": [
+          {
+            "space": "prg",
+            "offset": 206130,
+            "length": 1,
+            "end_exclusive": 206131
+          },
+          {
+            "space": "prg",
+            "offset": 206134,
+            "length": 1,
+            "end_exclusive": 206135
+          }
+        ]
+      },
+      {
+        "id": 171,
+        "id_hex": "0xAB",
+        "handle": "party-healing-service:AB",
+        "item_reference": "human-item:AB",
+        "base_healing": 992,
+        "random_addend": {
+          "minimum": 0,
+          "maximum": 15
+        },
+        "sources": [
+          {
+            "space": "prg",
+            "offset": 206131,
+            "length": 1,
+            "end_exclusive": 206132
+          },
+          {
+            "space": "prg",
+            "offset": 206135,
+            "length": 1,
+            "end_exclusive": 206136
+          }
+        ]
+      },
+      {
+        "id": 172,
+        "id_hex": "0xAC",
+        "handle": "party-healing-service:AC",
+        "item_reference": "human-item:AC",
+        "base_healing": 4119,
+        "random_addend": {
+          "minimum": 0,
+          "maximum": 15
+        },
+        "sources": [
+          {
+            "space": "prg",
+            "offset": 206132,
+            "length": 1,
+            "end_exclusive": 206133
+          },
+          {
+            "space": "prg",
+            "offset": 206136,
+            "length": 1,
+            "end_exclusive": 206137
+          }
+        ]
+      }
+    ],
+    "TextItemUiStateQuery_19_0539": {
+      "name": "TextItemUiStateQuery_19_0539",
+      "entry_far": "19:0539",
+      "byte_length": 2,
+      "raw_bytes": [
+        164,
+        226
+      ],
+      "raw_hex": "A4 E2",
+      "source": {
+        "space": "prg",
+        "offset": 206137,
+        "length": 2,
+        "end_exclusive": 206139
+      }
+    },
+    "restore_current_hp_to_maximum_code": {
+      "name": "FullyRestoreCurrentPartyMember",
+      "entry_far": "10:1391",
+      "byte_length": 27,
+      "raw_bytes": [
+        164,
+        209,
+        169,
+        0,
+        153,
+        123,
+        100,
+        153,
+        46,
+        3,
+        165,
+        209,
+        10,
+        170,
+        189,
+        96,
+        100,
+        157,
+        102,
+        100,
+        189,
+        97,
+        100,
+        157,
+        103,
+        100,
+        96
+      ],
+      "raw_hex": "A4 D1 A9 00 99 7B 64 99 2E 03 A5 D1 0A AA BD 60 64 9D 66 64 BD 61 64 9D 67 64 60",
+      "source": {
+        "space": "prg",
+        "offset": 136081,
+        "length": 27,
+        "end_exclusive": 136108
+      }
+    },
+    "restore_selected_hp_to_maximum_code": {
+      "name": "RestoreSelectedHpToMaximum",
+      "entry_far": "19:0524",
+      "byte_length": 13,
+      "raw_bytes": [
+        189,
+        96,
+        100,
+        157,
+        102,
+        100,
+        189,
+        97,
+        100,
+        157,
+        103,
+        100,
+        96
+      ],
+      "raw_hex": "BD 60 64 9D 66 64 BD 61 64 9D 67 64 60",
+      "source": {
+        "space": "prg",
+        "offset": 206116,
+        "length": 13,
+        "end_exclusive": 206129
+      }
+    },
+    "writeback_components": [
+      {
+        "fragment_id": "party-healing-service.healing-bases",
+        "source": {
+          "space": "prg",
+          "offset": 206129,
+          "length": 8,
+          "end_exclusive": 206137
+        },
+        "fields": [
+          "records[*].base_healing"
+        ]
+      }
+    ],
+    "heal_selected_party_member_code": {
+      "byte_length": 75,
+      "raw_bytes": [
+        164,
+        226,
+        133,
+        221,
+        166,
+        209,
+        189,
+        123,
+        100,
+        201,
+        255,
+        208,
+        5,
+        169,
+        118,
+        133,
+        221,
+        96,
+        166,
+        210,
+        165,
+        55,
+        41,
+        15,
+        24,
+        121,
+        136,
+        164,
+        141,
+        38,
+        5,
+        125,
+        102,
+        100,
+        157,
+        102,
+        100,
+        185,
+        140,
+        164,
+        141,
+        39,
+        5,
+        125,
+        103,
+        100,
+        157,
+        103,
+        100,
+        56,
+        189,
+        96,
+        100,
+        253,
+        102,
+        100,
+        189,
+        97,
+        100,
+        253,
+        103,
+        100,
+        176,
+        5,
+        32,
+        36,
+        165,
+        230,
+        221,
+        165,
+        226,
+        201,
+        209,
+        240,
+        29
+      ],
+      "raw_hex": "A4 E2 85 DD A6 D1 BD 7B 64 C9 FF D0 05 A9 76 85 DD 60 A6 D2 A5 37 29 0F 18 79 88 A4 8D 26 05 7D 66 64 9D 66 64 B9 8C A4 8D 27 05 7D 67 64 9D 67 64 38 BD 60 64 FD 66 64 BD 61 64 FD 67 64 B0 05 20 24 A5 E6 DD A5 E2 C9 D1 F0 1D",
+      "source": {
+        "space": "prg",
+        "offset": 206137,
+        "length": 75,
+        "end_exclusive": 206212
+      }
+    },
+    "source_ranges": [
+      {
+        "space": "prg",
+        "offset": 136081,
+        "length": 27,
+        "end_exclusive": 136108
+      },
+      {
+        "space": "prg",
+        "offset": 206116,
+        "length": 96,
+        "end_exclusive": 206212
+      }
+    ]
+  }
+}

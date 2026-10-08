@@ -1,0 +1,305 @@
+{
+  "schema": "metalmaxcn.weapon-effect-script-asset",
+  "id": 60,
+  "id_hex": "0x3C",
+  "path": "assets/scripts/primary/3C.bin",
+  "prg_offset": 145087,
+  "prg_offset_hex": "0x0236BF",
+  "length": 15,
+  "terminator": 159,
+  "bytes_hex": "01 0A 08 40 DB 0D 00 28 0E 10 16 14 00 1F 9F",
+  "decode_status": "decoded",
+  "decode_error": null,
+  "command_count": 6,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 145087,
+      "prg_offset_hex": "0x0236BF",
+      "opcode": 1,
+      "opcode_hex": "0x01",
+      "name": "call_aux_script",
+      "length": 2,
+      "bytes_hex": "01 0A",
+      "operands": [
+        {
+          "name": "script_id",
+          "value": 10,
+          "value_hex": "0x0A"
+        }
+      ],
+      "handler_cpu": 47612,
+      "handler_cpu_hex": "0xB9FC",
+      "handler_prg": 195068,
+      "handler_prg_hex": "0x02F9FC",
+      "handler_far": "17:19FC",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 145089,
+      "prg_offset_hex": "0x0236C1",
+      "opcode": 8,
+      "opcode_hex": "0x08",
+      "name": "set_object_action",
+      "length": 3,
+      "bytes_hex": "08 40 DB",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 64,
+          "value_hex": "0x40"
+        },
+        {
+          "name": "action",
+          "value": 219,
+          "value_hex": "0xDB"
+        }
+      ],
+      "handler_cpu": 47674,
+      "handler_cpu_hex": "0xBA3A",
+      "handler_prg": 195130,
+      "handler_prg_hex": "0x02FA3A",
+      "handler_far": "17:1A3A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 4
+      }
+    },
+    {
+      "offset": 5,
+      "prg_offset": 145092,
+      "prg_offset_hex": "0x0236C4",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 00 28",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        },
+        {
+          "name": "delta_x",
+          "value": 40,
+          "value_hex": "0x28",
+          "signed_value": 40
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 8,
+      "prg_offset": 145095,
+      "prg_offset_hex": "0x0236C7",
+      "opcode": 14,
+      "opcode_hex": "0x0E",
+      "name": "increment_object_action",
+      "length": 2,
+      "bytes_hex": "0E 10",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 16,
+          "value_hex": "0x10"
+        }
+      ],
+      "handler_cpu": 47690,
+      "handler_cpu_hex": "0xBA4A",
+      "handler_prg": 195146,
+      "handler_prg_hex": "0x02FA4A",
+      "handler_far": "17:1A4A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 1
+      }
+    },
+    {
+      "offset": 10,
+      "prg_offset": 145097,
+      "prg_offset_hex": "0x0236C9",
+      "opcode": 22,
+      "opcode_hex": "0x16",
+      "name": "animate_linear_path",
+      "length": 2,
+      "bytes_hex": "16 14",
+      "operands": [
+        {
+          "name": "path_parameter",
+          "value": 20,
+          "value_hex": "0x14"
+        }
+      ],
+      "handler_cpu": 48163,
+      "handler_cpu_hex": "0xBC23",
+      "handler_prg": 195619,
+      "handler_prg_hex": "0x02FC23",
+      "handler_far": "17:1C23",
+      "alternate_handler_cpu": 48168,
+      "alternate_handler_cpu_hex": "0xBC28",
+      "alternate_handler_prg": 195624,
+      "alternate_handler_prg_hex": "0x02FC28",
+      "alternate_handler_far": "17:1C28",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "target-to-object path",
+      "alternate_effect": "actor-to-object mirrored path",
+      "marker": false
+    },
+    {
+      "offset": 12,
+      "prg_offset": 145099,
+      "prg_offset_hex": "0x0236CB",
+      "opcode": 0,
+      "opcode_hex": "0x00",
+      "name": "call_visual_script",
+      "length": 2,
+      "bytes_hex": "00 1F",
+      "operands": [
+        {
+          "name": "visual_code",
+          "value": 31,
+          "value_hex": "0x1F"
+        }
+      ],
+      "handler_cpu": 47641,
+      "handler_cpu_hex": "0xBA19",
+      "handler_prg": 195097,
+      "handler_prg_hex": "0x02FA19",
+      "handler_far": "17:1A19",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 14,
+      "prg_offset": 145101,
+      "prg_offset_hex": "0x0236CD",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "animate_linear_path": 1,
+      "call_aux_script": 1,
+      "call_visual_script": 1,
+      "increment_object_action": 1,
+      "move_object_x": 1,
+      "set_object_action": 1
+    },
+    "visual_script_ids": [
+      31
+    ],
+    "auxiliary_script_ids": [
+      10
+    ],
+    "sound_ids": [],
+    "palette_offsets": [],
+    "object_actions": [
+      219
+    ],
+    "trail_object_counts": [],
+    "path_parameters": [
+      20
+    ],
+    "path_durations": [],
+    "object_slots": [
+      0
+    ],
+    "visual_script_ids_hex": [
+      "0x1F"
+    ],
+    "auxiliary_script_ids_hex": [
+      "0x0A"
+    ],
+    "sound_ids_hex": [],
+    "palette_offsets_hex": [],
+    "object_actions_hex": [
+      "0xDB"
+    ],
+    "uses_repeat_block": false,
+    "uses_position_history_trail": false
+  },
+  "sha256": "b8cfade120a791e3c4fd2492963d4b6589f15ee4d114b2a8890ee94f31e21f54",
+  "address": {
+    "space": "prg",
+    "offset": 145087,
+    "length": 15,
+    "end_exclusive": 145102
+  },
+  "direct_selector_slot": true,
+  "referenced_by_visual_script": false,
+  "component": {
+    "path": "assets/scripts/primary/3C.bin",
+    "prg_offset": 145087,
+    "prg_offset_hex": "0x0236BF",
+    "length": 15,
+    "sha256": "b8cfade120a791e3c4fd2492963d4b6589f15ee4d114b2a8890ee94f31e21f54",
+    "address": {
+      "space": "prg",
+      "offset": 145087,
+      "length": 15,
+      "end_exclusive": 145102
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

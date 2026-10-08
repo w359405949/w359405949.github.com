@@ -1,0 +1,72 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.treasure",
+  "resource_id": "treasure:E4:4D",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 77,
+    "id_hex": "0x4D",
+    "field_offsets": {
+      "scene_id": 236685,
+      "x": 236776,
+      "y": 236867,
+      "content_id": 236958
+    },
+    "scene_id": 228,
+    "scene_id_hex": "0xE4",
+    "x": 3,
+    "x_hex": "0x03",
+    "y": 32,
+    "y_hex": "0x20",
+    "content_id": 133,
+    "content_id_hex": "0x85",
+    "compiled_fields": [
+      "scene_id",
+      "x",
+      "y",
+      "content_id"
+    ],
+    "content_kind": "item",
+    "item_id": 133,
+    "save_flag_bit": 77,
+    "interaction_state": {
+      "class": "treasure-collected-flag",
+      "label": "调查物取得位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 77,
+      "flag_id_hex": "0x4D",
+      "runtime_bitset_base": 1121,
+      "runtime_bitset_base_hex": "0x0461",
+      "runtime_byte": 1130,
+      "runtime_byte_hex": "0x046A",
+      "byte_index": 9,
+      "bit_index": 5,
+      "bit_mask": 32,
+      "bit_mask_hex": "0x20",
+      "test_helper_cpu": 65237,
+      "test_helper_cpu_hex": "0xFED5",
+      "set_helper_cpu": 65211,
+      "set_helper_cpu_hex": "0xFEBB",
+      "clear_helper_cpu": 65224,
+      "clear_helper_cpu_hex": "0xFEC8",
+      "commit": "immediate-after-successful-acquisition",
+      "effects": [
+        "spawn-or-materialize-uncollected-metatile",
+        "interaction-availability",
+        "collected-metatile-selection"
+      ]
+    },
+    "investigation_resolution": "pre-metatile-coordinate-scan",
+    "investigation_resolution_detail": "$BE00 scans the coordinate row before the six special points",
+    "resolution_source": {
+      "space": "prg",
+      "offset": 220672,
+      "length": 104,
+      "end_exclusive": 220776
+    },
+    "runtime_metatile_overlay": null,
+    "confidence": "confirmed",
+    "inside_scene_canvas": true,
+    "resource_id": "treasure:E4:4D"
+  }
+}

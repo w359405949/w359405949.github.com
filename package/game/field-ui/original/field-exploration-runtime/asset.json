@@ -1,0 +1,81 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.field-exploration-runtime",
+  "resource_id": "field-exploration-runtime",
+  "edit_policy": "mutable",
+  "document": {
+    "records": [
+      {
+        "handle": "field-exploration-runtime:00",
+        "sources": {
+          "north_high": {
+            "space": "prg",
+            "offset": 164237,
+            "length": 1
+          },
+          "north_low": {
+            "space": "prg",
+            "offset": 164238,
+            "length": 1
+          },
+          "south_high": {
+            "space": "prg",
+            "offset": 164239,
+            "length": 1
+          },
+          "south_low": {
+            "space": "prg",
+            "offset": 164240,
+            "length": 1
+          }
+        },
+        "north_high": 50,
+        "north_low": 52,
+        "south_high": 51,
+        "south_low": 53
+      }
+    ],
+    "event_flag": 136,
+    "persistent": true,
+    "entrance": {
+      "resource_id": "transition:00:3D",
+      "scene_id": 0,
+      "object": "transition:61",
+      "x": 233,
+      "y": 97,
+      "effective_destination_scene_id": 168
+    },
+    "trigger": {
+      "scene_id": 0,
+      "x": 220,
+      "y": 89,
+      "direction": 1
+    },
+    "blocks": [
+      {
+        "x": 232,
+        "y": 92,
+        "high_field": "north_high",
+        "low_field": "north_low",
+        "reload_low": 52,
+        "reload_source": {
+          "space": "prg",
+          "offset": 122171,
+          "length": 1
+        }
+      },
+      {
+        "x": 232,
+        "y": 96,
+        "high_field": "south_high",
+        "low_field": "south_low",
+        "reload_low": 53,
+        "reload_source": {
+          "space": "prg",
+          "offset": 122174,
+          "length": 1
+        }
+      }
+    ],
+    "evidence": "project/evidence/world-tide-entrance/resolution.json"
+  }
+}

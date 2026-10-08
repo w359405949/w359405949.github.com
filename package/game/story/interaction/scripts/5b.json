@@ -1,0 +1,416 @@
+{
+  "schema": "metalmaxcn.story-sequence",
+  "kind": "interaction",
+  "id": 91,
+  "id_hex": "0x5B",
+  "pointer_cpu": 39041,
+  "pointer_cpu_hex": "0x9881",
+  "pointer_prg": 161921,
+  "pointer_prg_hex": "0x027881",
+  "status": "decoded",
+  "reachable_command_count": 5,
+  "reachable_cursors": [
+    0,
+    2,
+    5,
+    7,
+    8
+  ],
+  "reachable_cursors_hex": [
+    "0x00",
+    "0x02",
+    "0x05",
+    "0x07",
+    "0x08"
+  ],
+  "categories": [
+    "flow",
+    "game-state"
+  ],
+  "commands": [
+    {
+      "cursor": 0,
+      "cursor_hex": "0x00",
+      "prg_offset": 161921,
+      "prg_offset_hex": "0x027881",
+      "cpu_address": 39041,
+      "cpu_address_hex": "0x9881",
+      "opcode": 37,
+      "opcode_hex": "0x25",
+      "name": "scene-action-25",
+      "category": "game-state",
+      "handler_cpu": 44225,
+      "handler_cpu_hex": "0xACC1",
+      "raw_window": [
+        37,
+        23,
+        6,
+        95,
+        6,
+        72
+      ],
+      "raw_window_hex": "25 17 06 5F 06 48",
+      "operands": [
+        23,
+        6,
+        95,
+        6,
+        72
+      ],
+      "operands_hex": [
+        "0x17",
+        "0x06",
+        "0x5F",
+        "0x06",
+        "0x48"
+      ],
+      "normal_advance": 2,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [],
+      "waits_or_repeats": false,
+      "edges": [
+        {
+          "kind": "normal",
+          "advance": 2,
+          "advance_hex": "0x02",
+          "operand_index": null,
+          "target_cursor": 2,
+          "target_cursor_hex": "0x02",
+          "target_status": "command"
+        }
+      ],
+      "status": "decoded"
+    },
+    {
+      "cursor": 2,
+      "cursor_hex": "0x02",
+      "prg_offset": 161923,
+      "prg_offset_hex": "0x027883",
+      "cpu_address": 39043,
+      "cpu_address_hex": "0x9883",
+      "opcode": 6,
+      "opcode_hex": "0x06",
+      "name": "scene-action-06",
+      "category": "game-state",
+      "handler_cpu": 43720,
+      "handler_cpu_hex": "0xAAC8",
+      "raw_window": [
+        6,
+        95,
+        6,
+        72,
+        100,
+        0
+      ],
+      "raw_window_hex": "06 5F 06 48 64 00",
+      "operands": [
+        95,
+        6,
+        72,
+        100,
+        0
+      ],
+      "operands_hex": [
+        "0x5F",
+        "0x06",
+        "0x48",
+        "0x64",
+        "0x00"
+      ],
+      "normal_advance": 3,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [
+        2
+      ],
+      "waits_or_repeats": false,
+      "edges": [
+        {
+          "kind": "normal",
+          "advance": 3,
+          "advance_hex": "0x03",
+          "operand_index": null,
+          "target_cursor": 5,
+          "target_cursor_hex": "0x05",
+          "target_status": "command"
+        },
+        {
+          "kind": "conditional",
+          "advance": 6,
+          "advance_hex": "0x06",
+          "operand_index": 2,
+          "target_cursor": 8,
+          "target_cursor_hex": "0x08",
+          "target_status": "command"
+        }
+      ],
+      "status": "decoded"
+    },
+    {
+      "cursor": 5,
+      "cursor_hex": "0x05",
+      "prg_offset": 161926,
+      "prg_offset_hex": "0x027886",
+      "cpu_address": 39046,
+      "cpu_address_hex": "0x9886",
+      "opcode": 72,
+      "opcode_hex": "0x48",
+      "name": "scene-action-48",
+      "category": "game-state",
+      "handler_cpu": 43636,
+      "handler_cpu_hex": "0xAA74",
+      "raw_window": [
+        72,
+        100,
+        0,
+        101,
+        118,
+        101
+      ],
+      "raw_window_hex": "48 64 00 65 76 65",
+      "operands": [
+        100,
+        0,
+        101,
+        118,
+        101
+      ],
+      "operands_hex": [
+        "0x64",
+        "0x00",
+        "0x65",
+        "0x76",
+        "0x65"
+      ],
+      "normal_advance": 2,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [],
+      "waits_or_repeats": false,
+      "edges": [
+        {
+          "kind": "normal",
+          "advance": 2,
+          "advance_hex": "0x02",
+          "operand_index": null,
+          "target_cursor": 7,
+          "target_cursor_hex": "0x07",
+          "target_status": "command"
+        }
+      ],
+      "status": "decoded"
+    },
+    {
+      "cursor": 7,
+      "cursor_hex": "0x07",
+      "prg_offset": 161928,
+      "prg_offset_hex": "0x027888",
+      "cpu_address": 39048,
+      "cpu_address_hex": "0x9888",
+      "opcode": 0,
+      "opcode_hex": "0x00",
+      "name": "end-sequence",
+      "category": "flow",
+      "handler_cpu": 43627,
+      "handler_cpu_hex": "0xAA6B",
+      "raw_window": [
+        0,
+        101,
+        118,
+        101,
+        100,
+        101
+      ],
+      "raw_window_hex": "00 65 76 65 64 65",
+      "operands": [
+        101,
+        118,
+        101,
+        100,
+        101
+      ],
+      "operands_hex": [
+        "0x65",
+        "0x76",
+        "0x65",
+        "0x64",
+        "0x65"
+      ],
+      "normal_advance": 0,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [],
+      "waits_or_repeats": true,
+      "edges": [],
+      "status": "decoded"
+    },
+    {
+      "cursor": 8,
+      "cursor_hex": "0x08",
+      "prg_offset": 161929,
+      "prg_offset_hex": "0x027889",
+      "cpu_address": 39049,
+      "cpu_address_hex": "0x9889",
+      "opcode": 101,
+      "opcode_hex": "0x65",
+      "name": "scene-action-65",
+      "category": "game-state",
+      "handler_cpu": 46432,
+      "handler_cpu_hex": "0xB560",
+      "raw_window": [
+        101,
+        118,
+        101,
+        100,
+        101,
+        118
+      ],
+      "raw_window_hex": "65 76 65 64 65 76",
+      "operands": [
+        118,
+        101,
+        100,
+        101,
+        118
+      ],
+      "operands_hex": [
+        "0x76",
+        "0x65",
+        "0x64",
+        "0x65",
+        "0x76"
+      ],
+      "normal_advance": 2,
+      "terminal_side_effect": true,
+      "dynamic_advance_operands": [],
+      "waits_or_repeats": false,
+      "edges": [],
+      "status": "decoded"
+    }
+  ],
+  "issues": [],
+  "pointer_entry_prg": 160813,
+  "pointer_entry_prg_hex": "0x02742D",
+  "label": "交互动作 5B",
+  "validation_tags": [],
+  "alias_ids": [
+    91
+  ],
+  "alias_ids_hex": [
+    "0x5B"
+  ],
+  "encoded_range": {
+    "start_cpu": 39041,
+    "start_cpu_hex": "0x9881",
+    "end_cpu_exclusive": 39053,
+    "end_cpu_exclusive_hex": "0x988D",
+    "start_prg": 161921,
+    "start_prg_hex": "0x027881",
+    "end_prg_exclusive": 161933,
+    "end_prg_exclusive_hex": "0x02788D",
+    "length": 12
+  },
+  "encoded_bytes": [
+    37,
+    23,
+    6,
+    95,
+    6,
+    72,
+    100,
+    0,
+    101,
+    118,
+    101,
+    100
+  ],
+  "encoded_bytes_hex": "25 17 06 5F 06 48 64 00 65 76 65 64",
+  "references": [
+    {
+      "uid": "scene-actor:64:03",
+      "scene_actor_entry_id": 100,
+      "scene_actor_entry_id_hex": "0x64",
+      "record_id": 3,
+      "record_prg": 150384,
+      "record_prg_hex": "0x024B70",
+      "actor_type": 27,
+      "actor_type_hex": "0x1B",
+      "flags": 2,
+      "direction_index": 2,
+      "direction": "left",
+      "oam_attributes_base": 15,
+      "oam_attributes_base_hex": "0x0F",
+      "palette": 3,
+      "x": 17,
+      "y": 26,
+      "direction_attributes": 0,
+      "render_slot_marker": 0,
+      "text_region": 0,
+      "text_region_hex": "0x00",
+      "interaction_or_record_id": 91,
+      "interaction_or_record_id_hex": "0x5B",
+      "autonomous_script_id": 138,
+      "autonomous_script_id_hex": "0x8A",
+      "frame_base": 98,
+      "frame_base_hex": "0x62",
+      "animation_id": 15,
+      "animation_id_hex": "0x0F",
+      "context_pairs": [
+        102
+      ],
+      "context_pairs_hex": [
+        "0x66"
+      ],
+      "raw": [
+        110,
+        17,
+        26,
+        0,
+        91,
+        138
+      ],
+      "raw_hex": "6E 11 1A 00 5B 8A"
+    }
+  ],
+  "reference_count": 1,
+  "actor_sprite_recipes": [
+    {
+      "schema": "metalmaxcn.actor-sprite-recipe",
+      "resource_id": "actor-visual",
+      "actor_set": 102,
+      "actor_type": 27,
+      "entry_point": "scene-object",
+      "kind": "animation-group",
+      "asset_id": 15
+    }
+  ],
+  "primary_actor_sprite_recipe": {
+    "schema": "metalmaxcn.actor-sprite-recipe",
+    "resource_id": "actor-visual",
+    "actor_set": 102,
+    "actor_type": 27,
+    "entry_point": "scene-object",
+    "kind": "animation-group",
+    "asset_id": 15
+  },
+  "path": "interaction/scripts/5b.json",
+  "state_references": [
+    {
+      "target_resource_id": "global-event-flag:5F",
+      "flag_id": 95,
+      "access": "condition",
+      "operation": "test-and-branch",
+      "source_prg_offset": 161923,
+      "source_prg_offset_hex": "0x027883",
+      "opcode": 6,
+      "opcode_hex": "0x06"
+    },
+    {
+      "target_resource_id": "global-event-flag:76",
+      "flag_id": 118,
+      "access": "read",
+      "operation": "select-dialogue",
+      "source_prg_offset": 161929,
+      "source_prg_offset_hex": "0x027889",
+      "opcode": 101,
+      "opcode_hex": "0x65"
+    }
+  ]
+}

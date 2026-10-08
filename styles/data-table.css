@@ -1,0 +1,9 @@
+/* 单元格约束内容尺寸与文字换行，内部控件保留各自的折行方向。 */
+.data-table :is(th, td) { white-space: normal; overflow-wrap: anywhere; }
+.data-table :is(th, td) :is([class], input, select, textarea, button):not(:where(.module-reference-picker-menu, .module-reference-picker-menu *, dialog, dialog *)) {
+  min-width: 0;
+  max-width: 100%;
+}
+.data-table :is(th, td) :is(a, b, button, summary):not(:where(.module-reference-picker-menu *, dialog *)) { white-space: normal; }
+.data-table .plain-text-reference { white-space: pre-wrap; }
+.data-table .module-reference-picker-preview:not(:where(.module-reference-picker-menu *)) { height: auto; }

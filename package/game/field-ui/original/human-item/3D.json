@@ -1,0 +1,124 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:3D",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 61,
+    "id_hex": "0x3D",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 61,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-weapon",
+      "name": "人类武器",
+      "owner": "human",
+      "first_id": 35,
+      "first_id_hex": "0x23",
+      "last_id": 64,
+      "last_id_hex": "0x40"
+    },
+    "price": {
+      "raw_code": 170,
+      "raw_code_hex": "0xAA",
+      "available": true,
+      "value": 7000,
+      "source": {
+        "space": "prg",
+        "offset": 140430,
+        "length": 1,
+        "end_exclusive": 140431,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": {
+      "raw_code": 48,
+      "raw_code_hex": "0x30",
+      "available": true,
+      "value": 250,
+      "source": {
+        "space": "prg",
+        "offset": 140233,
+        "length": 1,
+        "end_exclusive": 140234,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": {
+      "raw_flags": 160,
+      "raw_flags_hex": "0xA0",
+      "role_mask": 160,
+      "roles": [
+        {
+          "slug": "hunter",
+          "name": "主角（猎人）",
+          "mask": 128,
+          "mask_hex": "0x80"
+        },
+        {
+          "slug": "soldier",
+          "name": "女战士",
+          "mask": 32,
+          "mask_hex": "0x20"
+        }
+      ],
+      "battle_effect_code": 0,
+      "target_scope": {
+        "id": "single",
+        "label": "单体",
+        "marker_tile": 29,
+        "bits": 0,
+        "bits_hex": "0x00",
+        "marker_tile_hex": "0x1D",
+        "decoder_prg": "0x0333B4",
+        "decoder_cpu": "0xB3B4"
+      },
+      "unresolved_bits": 0,
+      "source": {
+        "space": "prg",
+        "offset": 139953,
+        "length": 1,
+        "end_exclusive": 139954,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack_visual": {
+      "visual_code": 56,
+      "visual_code_hex": "0x38",
+      "resource_id": "attack-visual:38",
+      "source": {
+        "space": "prg",
+        "offset": 140036,
+        "length": 1,
+        "end_exclusive": 140037,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "use_effect": null,
+    "battle_use_effect": null,
+    "semantic_status": "static-equipment-record",
+    "equipment_icon": {
+      "item_id": 61,
+      "category_id": "human-weapon",
+      "tile_reference": {
+        "resource_id": "shared-chr-bank",
+        "bank_id": 39,
+        "tile_id": 34
+      },
+      "sprite_palette": [
+        15,
+        55,
+        15,
+        24
+      ],
+      "evidence": "project/evidence/reverse-engineering/equipment-slot-icons/observations.json"
+    }
+  }
+}

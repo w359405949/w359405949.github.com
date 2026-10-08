@@ -1,0 +1,194 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:C9",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 201,
+    "id_hex": "0xC9",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 201,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-item",
+      "name": "人类道具",
+      "owner": "human",
+      "first_id": 153,
+      "first_id_hex": "0x99",
+      "last_id": 202,
+      "last_id_hex": "0xCA"
+    },
+    "price": {
+      "raw_code": 255,
+      "raw_code_hex": "0xFF",
+      "available": false,
+      "value": null,
+      "source": {
+        "space": "prg",
+        "offset": 140570,
+        "length": 1,
+        "end_exclusive": 140571,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-decoded",
+      "registered": true,
+      "dispatch_index": 14,
+      "dispatch_index_hex": "0x0E",
+      "target_required": false,
+      "handler": {
+        "cpu_address": 42176,
+        "cpu_address_hex": "0xA4C0",
+        "prg_offset": 206016,
+        "prg_offset_hex": "0x0324C0",
+        "source": {
+          "space": "prg",
+          "offset": 206016,
+          "length": 1,
+          "end_exclusive": 206017,
+          "cpu_address": 42176,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "scripted-message",
+        "label": "专用文字/剧情反应",
+        "detail": "显示该物品对应的固定反应"
+      },
+      "consumption": "never",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "field-use-message",
+          "label": "非战斗使用反应",
+          "condition": "使用流程到达专用反应入口",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 115,
+            "record_id_hex": "0x73",
+            "node_id": "record:02:115"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206029,
+              "length": 1,
+              "end_exclusive": 206030,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "algorithm": "$A4C2 reads $A4BF + dispatch index"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205806,
+          "length": 1,
+          "end_exclusive": 205807,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 205858,
+          "length": 2,
+          "end_exclusive": 205860,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_C9.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-unregistered",
+      "registered": false,
+      "dispatch_index": null,
+      "dispatch_index_hex": null,
+      "result_selector": 145,
+      "result_selector_hex": "0x91",
+      "inventory_domain": "human",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "默认结果脚本依次显示使用提示与无效果提示",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 21,
+            "record_id_hex": "0x15",
+            "node_id": "record:0A:021"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146420,
+              "length": 1,
+              "end_exclusive": 146421,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        },
+        {
+          "role": "no-effect-message",
+          "label": "未登记工具的无效果结果",
+          "condition": "未登记工具进入默认结果脚本",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 58,
+            "record_id_hex": "0x3A",
+            "node_id": "record:0A:058"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [],
+          "algorithm": "the default battle-result branch selects this message downstream; $A72C renders it and $EB31 fixes region $0A"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190669,
+          "length": 1,
+          "end_exclusive": 190670,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss"
+      }
+    },
+    "semantic_status": "field-use-decoded"
+  }
+}

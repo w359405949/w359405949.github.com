@@ -1,0 +1,347 @@
+{
+  "schema": "metalmaxcn.module-asset.battle-item-service",
+  "resource_id": "battle-item-service",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via battle owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.battle-item-service",
+    "module_id": "battle-item-service",
+    "record_count": 11,
+    "owned_byte_count": 44,
+    "writeback_components": [
+      {
+        "fragment_id": "battle-item-service.profiles",
+        "source": {
+          "space": "prg",
+          "offset": 142737,
+          "length": 33,
+          "end_exclusive": 142770
+        },
+        "fields": [
+          "profiles[*].prepared_attack_amount",
+          "profiles[*].packed_followup_action_selector"
+        ]
+      },
+      {
+        "fragment_id": "battle-item-service.visual-selectors",
+        "source": {
+          "space": "prg",
+          "offset": 519351,
+          "length": 11,
+          "end_exclusive": 519362
+        },
+        "fields": [
+          "profiles[*].visual_reference"
+        ]
+      }
+    ],
+    "profiles": [
+      {
+        "dispatch_index": 0,
+        "prepared_attack_amount": 0,
+        "packed_followup_action_selector": 2,
+        "visual_reference": "attack-visual:1D"
+      },
+      {
+        "dispatch_index": 1,
+        "prepared_attack_amount": 0,
+        "packed_followup_action_selector": 0,
+        "visual_reference": "attack-visual:34"
+      },
+      {
+        "dispatch_index": 2,
+        "prepared_attack_amount": 80,
+        "packed_followup_action_selector": 8,
+        "visual_reference": "attack-visual:43"
+      },
+      {
+        "dispatch_index": 3,
+        "prepared_attack_amount": 250,
+        "packed_followup_action_selector": 8,
+        "visual_reference": "attack-visual:48"
+      },
+      {
+        "dispatch_index": 4,
+        "prepared_attack_amount": 60,
+        "packed_followup_action_selector": 0,
+        "visual_reference": "attack-visual:45"
+      },
+      {
+        "dispatch_index": 5,
+        "prepared_attack_amount": 100,
+        "packed_followup_action_selector": 0,
+        "visual_reference": "attack-visual:49"
+      },
+      {
+        "dispatch_index": 6,
+        "prepared_attack_amount": 50,
+        "packed_followup_action_selector": 1,
+        "visual_reference": "attack-visual:42"
+      },
+      {
+        "dispatch_index": 7,
+        "prepared_attack_amount": 150,
+        "packed_followup_action_selector": 1,
+        "visual_reference": "attack-visual:42"
+      },
+      {
+        "dispatch_index": 8,
+        "prepared_attack_amount": 30,
+        "packed_followup_action_selector": 0,
+        "visual_reference": "attack-visual:44"
+      },
+      {
+        "dispatch_index": 9,
+        "prepared_attack_amount": 500,
+        "packed_followup_action_selector": 0,
+        "visual_reference": "attack-visual:0B"
+      },
+      {
+        "dispatch_index": 10,
+        "prepared_attack_amount": 980,
+        "packed_followup_action_selector": 16,
+        "visual_reference": "attack-visual:41"
+      }
+    ],
+    "human_item_presentations": [
+      {
+        "item_reference": "human-item:99",
+        "result_reference": "battle-result-script:8B",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:9A",
+        "result_reference": "battle-result-script:8B",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:9B",
+        "result_reference": "battle-result-script:8C",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:9C",
+        "result_reference": "battle-result-script:94",
+        "status": "unresolved",
+        "detail": "结果脚本的状态、回复或条件路径尚未判清；不表示游戏没有动画。"
+      },
+      {
+        "item_reference": "human-item:9D",
+        "result_reference": "battle-result-script:90",
+        "status": "unresolved",
+        "detail": "结果脚本的状态、回复或条件路径尚未判清；不表示游戏没有动画。"
+      },
+      {
+        "item_reference": "human-item:9E",
+        "result_reference": "battle-result-script:A9",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:9F",
+        "result_reference": "battle-result-script:8D",
+        "status": "unresolved",
+        "detail": "结果脚本的状态、回复或条件路径尚未判清；不表示游戏没有动画。"
+      },
+      {
+        "item_reference": "human-item:A0",
+        "result_reference": "battle-result-script:A7",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:A1",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 2,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A2",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 3,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A3",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 4,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A4",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 5,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A5",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 6,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A6",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 7,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A7",
+        "result_reference": "battle-result-script:93",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 8,
+        "amount_source": "prepared-attack-profile"
+      },
+      {
+        "item_reference": "human-item:A8",
+        "result_reference": "battle-result-script:B4",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 1,
+        "amount_source": "runtime-wallet-amount"
+      },
+      {
+        "item_reference": "human-item:A9",
+        "result_reference": "battle-result-script:92",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:AA",
+        "result_reference": "battle-result-script:92",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:AB",
+        "result_reference": "battle-result-script:92",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:AC",
+        "result_reference": "battle-result-script:92",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:AD",
+        "result_reference": "battle-result-script:A6",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:AE",
+        "result_reference": "battle-result-script:B3",
+        "status": "unresolved",
+        "detail": "结果脚本的状态、回复或条件路径尚未判清；不表示游戏没有动画。"
+      },
+      {
+        "item_reference": "human-item:B2",
+        "result_reference": "battle-result-script:88",
+        "status": "unresolved",
+        "detail": "结果脚本的状态、回复或条件路径尚未判清；不表示游戏没有动画。"
+      },
+      {
+        "item_reference": "human-item:C3",
+        "result_reference": "battle-result-script:A8",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息尾链；本来不播放攻击视觉。状态文字刷新和消息等待仍会执行。"
+      },
+      {
+        "item_reference": "human-item:C4",
+        "result_reference": "battle-result-script:AB",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 9,
+        "amount_source": "prepared-attack-profile"
+      }
+    ],
+    "vehicle_item_presentations": [
+      {
+        "item_reference": "tank-item:D1",
+        "result_reference": "battle-result-script:AF",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D2",
+        "result_reference": "battle-result-script:A5",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D3",
+        "result_reference": "battle-result-script:AE",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D4",
+        "result_reference": "battle-result-script:AC",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D5",
+        "result_reference": "battle-result-script:AD",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D6",
+        "result_reference": "battle-result-script:A3",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D7",
+        "result_reference": "battle-result-script:8F",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:D8",
+        "result_reference": "battle-result-script:8E",
+        "status": "no-attack-visual",
+        "detail": "已闭合此道具的状态处理与消息路径；本来不播放攻击视觉。文字显示与消息等待仍会执行。"
+      },
+      {
+        "item_reference": "tank-item:DB",
+        "result_reference": "battle-result-script:0B",
+        "status": "attack-visual-confirmed",
+        "detail": "有活动目标且攻击动画未被全局关闭时，经共用攻击视觉入口播放。",
+        "profile_dispatch_index": 0,
+        "amount_source": "prepared-attack-profile"
+      }
+    ],
+    "visual_source": {
+      "space": "prg",
+      "offset": 519351,
+      "length": 11,
+      "end_exclusive": 519362
+    },
+    "source": {
+      "space": "prg",
+      "offset": 142737,
+      "length": 33,
+      "end_exclusive": 142770
+    }
+  }
+}

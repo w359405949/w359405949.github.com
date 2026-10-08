@@ -1,0 +1,4905 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.runtime-workspace",
+  "resource_id": "runtime-workspace",
+  "edit_policy": "mutable",
+  "document": {
+    "runtime_state": {
+      "resource_id": "runtime-workspace",
+      "spaces": [
+        {
+          "id": "ram",
+          "length": 2048
+        },
+        {
+          "id": "sram",
+          "length": 8192
+        }
+      ],
+      "fields": [
+        {
+          "id": "scratch.tileX",
+          "handle": "runtime-workspace:44",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 0,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218567,
+                "length": 9
+              },
+              "raw_hex": "BD 79 03 18 79 3D DB 85 00"
+            }
+          ]
+        },
+        {
+          "id": "scratch.tileY",
+          "handle": "runtime-workspace:45",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218576,
+                "length": 9
+              },
+              "raw_hex": "BD 87 03 18 79 3F DB 85 01"
+            }
+          ]
+        },
+        {
+          "id": "inherited.copyScratch",
+          "handle": "runtime-workspace:00",
+          "count": 1,
+          "width": 4,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 2,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "scratch.savedX",
+          "handle": "runtime-workspace:46",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 6,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/global-event-flag-query-domain/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 523935,
+                "length": 2
+              },
+              "raw_hex": "86 06"
+            }
+          ]
+        },
+        {
+          "id": "scratch.savedY",
+          "handle": "runtime-workspace:47",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 7,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/global-event-flag-query-domain/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 523937,
+                "length": 2
+              },
+              "raw_hex": "84 07"
+            }
+          ]
+        },
+        {
+          "id": "inherited.pointerScratch.0008",
+          "handle": "runtime-workspace:70",
+          "count": 1,
+          "width": 4,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 8,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "scratch.transferPointer",
+          "handle": "runtime-workspace:72",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 12,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 89883,
+                "length": 180
+              },
+              "raw_hex": "AD8B67F038A20820D5D3A20920DED3A20A20E7D3A20B20F0D3AD86678D8067A990850CA967850D20849FAD87678D8067A998850C20849F20B09F4C7E9FAD8C67F02120B09FAD86678D8067A9B0850CA967850D20849FAD87678D8067A9B8850C20849FA9FF8D8F6760A9008D8167A2040E80672E8167CAD0F7AD0220AD81678D0620AD80678D0620A000B10C8D0720C8C008D0F660AD88678D8067A9A0850CA967850D20849FAD89678D8067A9A8850C20849F60"
+            }
+          ]
+        },
+        {
+          "id": "inherited.pointerScratch.000E",
+          "handle": "runtime-workspace:71",
+          "count": 1,
+          "width": 3,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 14,
+            "length": 3
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.ppuCtrlShadow",
+          "handle": "runtime-workspace:61",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 17,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "display.ppuMaskShadow",
+          "handle": "runtime-workspace:62",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 18,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "display.scrollXShadow",
+          "handle": "runtime-workspace:63",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 19,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "display.scrollYShadow",
+          "handle": "runtime-workspace:64",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 21,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "inherited.controllerAndBankScratch.0017",
+          "handle": "runtime-workspace:50",
+          "count": 1,
+          "width": 3,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 23,
+            "length": 3
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.chrShadow",
+          "handle": "runtime-workspace:52",
+          "count": 1,
+          "width": 6,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 26,
+            "length": 6
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "chr-bank-mapping-service",
+              "address": {
+                "space": "prg",
+                "offset": 512902,
+                "length": 61
+              },
+              "raw_hex": "A9808D0080A51A8D0180A9818D0080A51B8D0180A9828D0080A51C8D0180A9838D0080A51D8D0180A9848D0080A51E8D0180A9858D0080A51F8D018060"
+            }
+          ]
+        },
+        {
+          "id": "inherited.controllerAndBankScratch.0020",
+          "handle": "runtime-workspace:51",
+          "count": 1,
+          "width": 8,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 32,
+            "length": 8
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.rasterChrBanks",
+          "handle": "runtime-workspace:53",
+          "count": 1,
+          "width": 6,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 40,
+            "length": 6
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "apply-raster-chr-bank-set",
+              "address": {
+                "space": "prg",
+                "offset": 513176,
+                "length": 30
+              },
+              "raw_hex": "A62820C3D3A62920CCD3A62A20D5D3A62B20DED3A62C20E7D3A62D4CF0D3"
+            }
+          ]
+        },
+        {
+          "id": "control.mainMode",
+          "handle": "runtime-workspace:02",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 47,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-global-controls-and-slot-clear/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-entry-6b",
+                "scene-action-vm.handler-body-fragment-72"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 218508,
+                "length": 4
+              },
+              "raw_hex": "A5 B1 85 2F"
+            }
+          ]
+        },
+        {
+          "id": "display.nmiWorker",
+          "handle": "runtime-workspace:54",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 48,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512324,
+                "length": 50
+              },
+              "raw_hex": "4C40CFEAEAA5343023F006AD02206C30002062D3E636A535D012A59CF00EC69CA59C2901F00420C8E12CE64368A868AA6840"
+            }
+          ]
+        },
+        {
+          "id": "display.irqHandler",
+          "handle": "runtime-workspace:55",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 50,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512544,
+                "length": 15
+              },
+              "raw_hex": "85A90AAABD4BD48532BD4CD4853360"
+            }
+          ]
+        },
+        {
+          "id": "display.nmiMode",
+          "handle": "runtime-workspace:56",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 52,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512324,
+                "length": 50
+              },
+              "raw_hex": "4C40CFEAEAA5343023F006AD02206C30002062D3E636A535D012A59CF00EC69CA59C2901F00420C8E12CE64368A868AA6840"
+            }
+          ]
+        },
+        {
+          "id": "control.displayProfile",
+          "handle": "runtime-workspace:04",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 53,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214963,
+                "length": 15
+              },
+              "raw_hex": "A5 35 F0 07 EC 74 03 F0 36 D0 46 BD A3 03 D0"
+            }
+          ]
+        },
+        {
+          "id": "display.frameCounter",
+          "handle": "runtime-workspace:57",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 54,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512324,
+                "length": 50
+              },
+              "raw_hex": "4C40CFEAEAA5343023F006AD02206C30002062D3E636A535D012A59CF00EC69CA59C2901F00420C8E12CE64368A868AA6840"
+            }
+          ]
+        },
+        {
+          "id": "inherited.frameAndRandom.0037",
+          "handle": "runtime-workspace:58",
+          "count": 1,
+          "width": 9,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 55,
+            "length": 9
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.mainQueueLength",
+          "handle": "runtime-workspace:59",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 64,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.contiguousLength",
+          "handle": "runtime-workspace:5A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 65,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.spanCount",
+          "handle": "runtime-workspace:5B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 66,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.palettePending",
+          "handle": "runtime-workspace:5C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 67,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.secondaryQueueLength",
+          "handle": "runtime-workspace:5D",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 68,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.oamPending",
+          "handle": "runtime-workspace:5E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 69,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512559,
+                "length": 28
+              },
+              "raw_hex": "A545F00CA90085458D0320A9078D1440204BD22086D32097D14C55D1"
+            }
+          ]
+        },
+        {
+          "id": "display.contiguousLow",
+          "handle": "runtime-workspace:5F",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 70,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "display.contiguousHigh",
+          "handle": "runtime-workspace:60",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 71,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "field.sceneId",
+          "handle": "runtime-workspace:06",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 97,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213021,
+                "length": 4
+              },
+              "raw_hex": "A5 61 D0 17"
+            }
+          ]
+        },
+        {
+          "id": "field.cameraX",
+          "handle": "runtime-workspace:07",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 98,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213085,
+                "length": 8
+              },
+              "raw_hex": "A5 62 18 69 08 9D 58 03"
+            }
+          ]
+        },
+        {
+          "id": "field.cameraY",
+          "handle": "runtime-workspace:08",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 99,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213093,
+                "length": 8
+              },
+              "raw_hex": "A5 63 18 69 07 9D 5C 03"
+            }
+          ]
+        },
+        {
+          "id": "field.partyCount",
+          "handle": "runtime-workspace:09",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 100,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213113,
+                "length": 15
+              },
+              "raw_hex": "A2 00 BD 60 03 F0 05 E8 E0 04 90 F6 86 64 60"
+            }
+          ]
+        },
+        {
+          "id": "inherited.fieldContext",
+          "handle": "runtime-workspace:0A",
+          "count": 1,
+          "width": 8,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 101,
+            "length": 8
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "field.movementStatus",
+          "handle": "runtime-workspace:42",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 109,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-gated-dialogue-context-restore/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 215689,
+                "length": 6
+              },
+              "raw_hex": "A9 00 A6 6D 10 20"
+            }
+          ]
+        },
+        {
+          "id": "inherited.fieldControlScratch.006E",
+          "handle": "runtime-workspace:6A",
+          "count": 1,
+          "width": 11,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 110,
+            "length": 11
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.nametablePage",
+          "handle": "runtime-workspace:6E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 121,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "field-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 168539,
+                "length": 578
+              },
+              "raw_hex": "A54548A9008545A57E0AAABD6AB7850ABD6BB7850B20FCB2A67EA568187D5EB7C90F900338E90F0A8501A9008502A9028507A9208505A67EBC76B7BD8EB78576A9008504A200984820BFDFA501186901C91E9003186902291F8501A586F00CA5762901F006A501C576F00620BFDF4CD9B2A50A186920850AA50B6900850BA50485422054E4A501186901C91E9003186902291F850168A888F0034C9BB268854560A5678500A67EBD64B7AAB579D007A5001869108500A500291F0A850060A590D046A47EB95EB7856ABE76B7A90085698A48A2108A48A9008500A56A4A2600A5694A260020E0DCA600A40EBD5BDB49FF19C06399C063E66968AACAD0D7A9008569E66A68AACAD0C860A67EBD64B7AAB579D007A5001869108500A67EBD5EB72060E4A67EBC76B7BD5EB785039848A010984820E0DCA9008500A56A4A2600A5694A2600A40EA600B900023D5BDB8501A56948A56A489848A5028569A503856A20E0DCA9008504A5034A2604A5024A2604A40EA604B9C0638505BD5BDB49FF25058505E8CAF0054A4A4CDEB3850568A8A605BD57DB8505A600BD5BDB49FF2505050199000268856A688569E669E60268A888F0034C8BB3A56938E9108569A50238E9108502E66AE603A56AC90F900338E90F856AA503C90F900338E90F850368A888F0034C87B360A67EBD5EB72060E4A67EBC7CB7A56AC909B0036A9001C89848A56948A200A008A5696A9001C8984820E0DCA40EA50D9D9304A50C9D9404B900029D9504E8E8E8E669E66968A888D0DD86402054E4688569E66AE66A68A888D0BD60"
+            }
+          ]
+        },
+        {
+          "id": "display.nametableXor",
+          "handle": "runtime-workspace:6D",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 122,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "inherited.fieldControlScratch.007B",
+          "handle": "runtime-workspace:6B",
+          "count": 1,
+          "width": 13,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 123,
+            "length": 13
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.rasterPhase",
+          "handle": "runtime-workspace:6F",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 136,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "inherited.fieldControlScratch.0089",
+          "handle": "runtime-workspace:6C",
+          "count": 1,
+          "width": 7,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 137,
+            "length": 7
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.rasterCtrl",
+          "handle": "runtime-workspace:65",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 145,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "inherited.globalScratch",
+          "handle": "runtime-workspace:0B",
+          "count": 1,
+          "width": 2,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 154,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "parameter.frameCountdown",
+          "handle": "runtime-workspace:3E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 156,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-and-state-predicates/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218494,
+                "length": 7
+              },
+              "raw_hex": "A5 B1 85 9C A9 02 60"
+            }
+          ]
+        },
+        {
+          "id": "inherited.animationScratch",
+          "handle": "runtime-workspace:40",
+          "count": 1,
+          "width": 5,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 157,
+            "length": 5
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "parameter.animationStep",
+          "handle": "runtime-workspace:3F",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 162,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-and-state-predicates/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218501,
+                "length": 7
+              },
+              "raw_hex": "A5 B1 85 A2 A9 02 60"
+            }
+          ]
+        },
+        {
+          "id": "inherited.actorSelectorScratch.00A3",
+          "handle": "runtime-workspace:66",
+          "count": 1,
+          "width": 5,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 163,
+            "length": 5
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.dynamicIrqLatch",
+          "handle": "runtime-workspace:68",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 168,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512407,
+                "length": 98
+              },
+              "raw_hex": "A635A5118D00208591A5128D0120AD0220A9008D06208D0620A5138D0520A5158D0520BD06D2D002A5A88D00C08D01C0A9008588BDF9D12020D2A635E000F002A2019D00E0A5118D0020A535F013A435BE13D2F00C2098D4A511457A8D0020859160"
+            }
+          ]
+        },
+        {
+          "id": "display.irqHandlerIndex",
+          "handle": "runtime-workspace:69",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 169,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512544,
+                "length": 15
+              },
+              "raw_hex": "85A90AAABD4BD48532BD4CD4853360"
+            }
+          ]
+        },
+        {
+          "id": "inherited.actorSelectorScratch.00AA",
+          "handle": "runtime-workspace:67",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 170,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "dispatch.actorIndex",
+          "handle": "runtime-workspace:0C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 171,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214958,
+                "length": 5
+              },
+              "raw_hex": "BE D4 02 86 AB"
+            }
+          ]
+        },
+        {
+          "id": "inherited.objectIndex",
+          "handle": "runtime-workspace:0D",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 172,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "dispatch.renderSlot",
+          "handle": "runtime-workspace:0E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 173,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-delay-and-bit-skip-aliases/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-opcode-19"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 216065,
+                "length": 12
+              },
+              "raw_hex": "A6 AD BD E4 02 D0 05 A5 B1 9D E4 02"
+            }
+          ]
+        },
+        {
+          "id": "dispatch.scriptPointer",
+          "handle": "runtime-workspace:0F",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 174,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215005,
+                "length": 4
+              },
+              "raw_hex": "85 AE 84 AF"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-six-byte-dispatch-window/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.dispatch-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215400,
+                "length": 12
+              },
+              "raw_hex": "A2 00 B1 AE 95 B0 C8 E8 E0 06 90 F6"
+            }
+          ]
+        },
+        {
+          "id": "dispatch.commandWindow",
+          "handle": "runtime-workspace:10",
+          "count": 1,
+          "width": 6,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 176,
+            "length": 6
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-six-byte-dispatch-window/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.dispatch-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215400,
+                "length": 12
+              },
+              "raw_hex": "A2 00 B1 AE 95 B0 C8 E8 E0 06 90 F6"
+            }
+          ]
+        },
+        {
+          "id": "text.outputPointer",
+          "handle": "runtime-workspace:75",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 182,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "resource_id": "code-module:application-dialogue-flow-vm",
+              "address": {
+                "space": "prg",
+                "offset": 521724,
+                "length": 13
+              },
+              "raw_hex": "18A94065C485B6A96265C585B7"
+            }
+          ]
+        },
+        {
+          "id": "inherited.actionScratch.00B8",
+          "handle": "runtime-workspace:73",
+          "count": 1,
+          "width": 12,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 184,
+            "length": 12
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "text.windowOffset",
+          "handle": "runtime-workspace:76",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 196,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "resource_id": "code-module:application-dialogue-flow-vm",
+              "address": {
+                "space": "prg",
+                "offset": 518888,
+                "length": 5
+              },
+              "raw_hex": "85C4A90085"
+            }
+          ]
+        },
+        {
+          "id": "inherited.actionScratch.00C6",
+          "handle": "runtime-workspace:74",
+          "count": 1,
+          "width": 6,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 198,
+            "length": 6
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "parameter.recordId",
+          "handle": "runtime-workspace:39",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 204,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 215672,
+                "length": 4
+              },
+              "raw_hex": "A5 B1 85 CC"
+            }
+          ]
+        },
+        {
+          "id": "parameter.regionId",
+          "handle": "runtime-workspace:3A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 205,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 215670,
+                "length": 2
+              },
+              "raw_hex": "85 CD"
+            }
+          ]
+        },
+        {
+          "id": "inherited.serviceScratch",
+          "handle": "runtime-workspace:3C",
+          "count": 1,
+          "width": 7,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 206,
+            "length": 7
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "parameter.result",
+          "handle": "runtime-workspace:3B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 213,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-and-state-predicates/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 215806,
+                "length": 9
+              },
+              "raw_hex": "A9 02 A6 D5 F0 02 A5 B1 60"
+            }
+          ]
+        },
+        {
+          "id": "inherited.itemScratch",
+          "handle": "runtime-workspace:3D",
+          "count": 1,
+          "width": 10,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 214,
+            "length": 10
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "render.marker",
+          "handle": "runtime-workspace:12",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 256,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213065,
+                "length": 3
+              },
+              "raw_hex": "9D 00 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.screenXLow",
+          "handle": "runtime-workspace:13",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 272,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-motion"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214054,
+                "length": 3
+              },
+              "raw_hex": "99 10 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.screenXHigh",
+          "handle": "runtime-workspace:14",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 288,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-motion"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214064,
+                "length": 3
+              },
+              "raw_hex": "99 20 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.screenYLow",
+          "handle": "runtime-workspace:15",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 304,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-motion"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214073,
+                "length": 3
+              },
+              "raw_hex": "99 30 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.screenYHigh",
+          "handle": "runtime-workspace:16",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 320,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-motion"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214083,
+                "length": 3
+              },
+              "raw_hex": "99 40 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.frame",
+          "handle": "runtime-workspace:17",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 336,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213068,
+                "length": 3
+              },
+              "raw_hex": "9D 50 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.attributes",
+          "handle": "runtime-workspace:18",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 352,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.map-actor-frame-selector"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214419,
+                "length": 3
+              },
+              "raw_hex": "9D 60 01"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "display.attributeShadow",
+          "handle": "runtime-workspace:77",
+          "count": 1,
+          "width": 128,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 512,
+            "length": 128
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "nametable-attribute-coordinate-service",
+              "address": {
+                "space": "prg",
+                "offset": 515296,
+                "length": 42
+              },
+              "raw_hex": "A56A0A0A2938850EA5694A2907050E850E09C0850CA5694A4A29040923850DA5690A0A2940050E850E60"
+            }
+          ]
+        },
+        {
+          "id": "display.paletteShadow",
+          "handle": "runtime-workspace:78",
+          "count": 1,
+          "width": 32,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 640,
+            "length": 32
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "render.actorIndex",
+          "handle": "runtime-workspace:19",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 724,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214958,
+                "length": 5
+              },
+              "raw_hex": "BE D4 02 86 AB"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213061,
+                "length": 14
+              },
+              "raw_hex": "A2 0F A9 00 9D 00 01 9D 50 01 CA 10 F7 60"
+            }
+          ]
+        },
+        {
+          "id": "render.waitCounter",
+          "handle": "runtime-workspace:1A",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 740,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-delay-and-bit-skip-aliases/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-opcode-19"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 216065,
+                "length": 22
+              },
+              "raw_hex": "A6 AD BD E4 02 D0 05 A5 B1 9D E4 02 A9 00 DE E4 02 D0 02 A9 02 60"
+            }
+          ]
+        },
+        {
+          "id": "render.actionState",
+          "handle": "runtime-workspace:1B",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 756,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-tail"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 218770,
+                "length": 13
+              },
+              "raw_hex": "B9 F4 02 48 AD 87 04 48 A9 00 99 F4 02"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 218764,
+                "length": 77
+              },
+              "raw_hex": "AE740320BBA8B9F40248AD870448A90099F402A9FF8D87048A48984884ADBDB103F005BDA303D0032074A92058A1201DD068A868AAB9F402D0DEBDB103F005BDA303D0D4688D87046899F40260"
+            }
+          ]
+        },
+        {
+          "id": "render.loopCounter",
+          "handle": "runtime-workspace:1C",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 772,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-loop-counter-0304/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-entry-07",
+                "scene-action-vm.handler-body-fragment-07"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215765,
+                "length": 22
+              },
+              "raw_hex": "A6 AD BD 04 03 D0 05 A5 B2 9D 04 03 A5 B1 DE 04 03 D0 02 A9 03 60"
+            }
+          ]
+        },
+        {
+          "id": "party.x",
+          "handle": "runtime-workspace:1D",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 856,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213075,
+                "length": 36
+              },
+              "raw_hex": "A2 03 A9 00 9D 64 03 9D 68 03 A5 62 18 69 08 9D 58 03 A5 63 18 69 07 9D 5C 03 AD 6C 03 9D 6C 03 CA 10 DF 20"
+            }
+          ]
+        },
+        {
+          "id": "party.y",
+          "handle": "runtime-workspace:1E",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 860,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213075,
+                "length": 36
+              },
+              "raw_hex": "A2 03 A9 00 9D 64 03 9D 68 03 A5 62 18 69 08 9D 58 03 A5 63 18 69 07 9D 5C 03 AD 6C 03 9D 6C 03 CA 10 DF 20"
+            }
+          ]
+        },
+        {
+          "id": "party.renderState",
+          "handle": "runtime-workspace:1F",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 864,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-and-state-predicates/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218515,
+                "length": 14
+              },
+              "raw_hex": "A2 03 A9 00 9D 60 03 CA 10 FA A9 01 60 A2"
+            }
+          ]
+        },
+        {
+          "id": "party.motionPhase",
+          "handle": "runtime-workspace:20",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 868,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-motion"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214000,
+                "length": 5
+              },
+              "raw_hex": "BD 64 03 85 02"
+            }
+          ]
+        },
+        {
+          "id": "party.motionDirection",
+          "handle": "runtime-workspace:21",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 872,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218076,
+                "length": 16
+              },
+              "raw_hex": "A5 B1 4A 4A 4A 4A AA A5 B1 29 0F 9D 68 03 A9 02"
+            }
+          ]
+        },
+        {
+          "id": "party.direction",
+          "handle": "runtime-workspace:22",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 876,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213101,
+                "length": 10
+              },
+              "raw_hex": "AD 6C 03 9D 6C 03 CA 10 DF 20"
+            }
+          ]
+        },
+        {
+          "id": "party.order",
+          "handle": "runtime-workspace:23",
+          "count": 4,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 880,
+            "length": 4
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213193,
+                "length": 14
+              },
+              "raw_hex": "AD 67 67 30 06 A9 03 99 70 03 C8 84 64 60"
+            }
+          ]
+        },
+        {
+          "id": "control.activeActor",
+          "handle": "runtime-workspace:24",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 884,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214963,
+                "length": 15
+              },
+              "raw_hex": "A5 35 F0 07 EC 74 03 F0 36 D0 46 BD A3 03 D0"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215083,
+                "length": 3
+              },
+              "raw_hex": "8E 74 03"
+            }
+          ]
+        },
+        {
+          "id": "control.savedDirection",
+          "handle": "runtime-workspace:25",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 885,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215086,
+                "length": 6
+              },
+              "raw_hex": "BD BF 03 8D 75 03"
+            }
+          ]
+        },
+        {
+          "id": "control.interactionCursor",
+          "handle": "runtime-workspace:26",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 886,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215150,
+                "length": 27
+              },
+              "raw_hex": "A9 00 8D 76 03 AE 74 03 20 BB A8 AC 76 03 20 68 A9 18 6D 76 03 8D 76 03 A5 B0 D0"
+            }
+          ]
+        },
+        {
+          "id": "inherited.actorScratch",
+          "handle": "runtime-workspace:27",
+          "count": 1,
+          "width": 2,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 887,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "actor.x",
+          "handle": "runtime-workspace:28",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 889,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-pair-and-nibbles/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-entry-20",
+                "scene-action-vm.handler-body-fragment-23"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 216172,
+                "length": 5
+              },
+              "raw_hex": "A5 B1 9D 79 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.y",
+          "handle": "runtime-workspace:29",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 903,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-coordinate-pair-and-nibbles/context.asm",
+              "resource_id": "story-action-handler",
+              "block_ids": [
+                "scene-action-vm.handler-body-fragment-23"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 216177,
+                "length": 5
+              },
+              "raw_hex": "A5 B2 9D 87 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.type",
+          "handle": "runtime-workspace:2A",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 917,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214626,
+                "length": 3
+              },
+              "raw_hex": "9D 95 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.motionPhase",
+          "handle": "runtime-workspace:2B",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 931,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215032,
+                "length": 12
+              },
+              "raw_hex": "BD A3 03 F0 07 38 F9 05 A8 9D A3 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.movementResult",
+          "handle": "runtime-workspace:2C",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 945,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 218560,
+                "length": 6
+              },
+              "raw_hex": "9D B1 03 FE B1 03"
+            }
+          ]
+        },
+        {
+          "id": "actor.direction",
+          "handle": "runtime-workspace:2D",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 959,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214835,
+                "length": 7
+              },
+              "raw_hex": "B1 0C 29 03 9D BF 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.motionAttributes",
+          "handle": "runtime-workspace:2E",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 973,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215026,
+                "length": 6
+              },
+              "raw_hex": "BD CD 03 29 03 A8"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.interactionLow",
+          "handle": "runtime-workspace:2F",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 987,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214888,
+                "length": 6
+              },
+              "raw_hex": "C8 B1 0C 9D DB 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.interactionHigh",
+          "handle": "runtime-workspace:30",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1001,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214882,
+                "length": 6
+              },
+              "raw_hex": "C8 B1 0C 9D E9 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.autonomousScript",
+          "handle": "runtime-workspace:31",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1015,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214894,
+                "length": 6
+              },
+              "raw_hex": "C8 B1 0C 9D F7 03"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "actor.cursor",
+          "handle": "runtime-workspace:32",
+          "count": 14,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1029,
+            "length": 14
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 215018,
+                "length": 8
+              },
+              "raw_hex": "A6 AB 7D 05 04 9D 05 04"
+            },
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214622,
+                "length": 21
+              },
+              "raw_hex": "A2 0D A9 FF 9D 95 03 A9 00 9D A3 03 9D CD 03 9D 05 04 CA 10 ED"
+            }
+          ]
+        },
+        {
+          "id": "control.storyState",
+          "handle": "runtime-workspace:33",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1153,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-behavior"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 214734,
+                "length": 3
+              },
+              "raw_hex": "AE 81 04"
+            }
+          ]
+        },
+        {
+          "id": "control.storyAux",
+          "handle": "runtime-workspace:4A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1154,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 217115,
+                "length": 5
+              },
+              "raw_hex": "A5 B2 8D 82 04"
+            }
+          ]
+        },
+        {
+          "id": "control.dialogueGate",
+          "handle": "runtime-workspace:4B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1155,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-dialogue-pair-guard/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 216265,
+                "length": 13
+              },
+              "raw_hex": "AD 83 04 F0 21 A9 00 8D 83 04 A5 AD 48"
+            }
+          ]
+        },
+        {
+          "id": "parameter.targetX",
+          "handle": "runtime-workspace:4C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1156,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 216390,
+                "length": 6
+              },
+              "raw_hex": "BD 1E 04 8D 84 04"
+            }
+          ]
+        },
+        {
+          "id": "parameter.targetY",
+          "handle": "runtime-workspace:4D",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1157,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-parameter-and-state-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 216396,
+                "length": 6
+              },
+              "raw_hex": "BD 29 04 8D 85 04"
+            }
+          ]
+        },
+        {
+          "id": "parameter.story",
+          "handle": "runtime-workspace:4E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1158,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-local-selector-stores/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 217256,
+                "length": 5
+              },
+              "raw_hex": "A5 B1 8D 86 04"
+            }
+          ]
+        },
+        {
+          "id": "control.controlLock",
+          "handle": "runtime-workspace:35",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1159,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "block_ids": [
+                "scene-actor-runtime.bank1a-core"
+              ],
+              "address": {
+                "space": "prg",
+                "offset": 213004,
+                "length": 11
+              },
+              "raw_hex": "A9 00 8D 41 04 8D 86 04 8D 87 04"
+            }
+          ]
+        },
+        {
+          "id": "inherited.inputAndTransfer",
+          "handle": "runtime-workspace:36",
+          "count": 1,
+          "width": 11,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 1160,
+            "length": 11
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "scope": "unknown-semantics-preserve-preimage"
+            }
+          ]
+        },
+        {
+          "id": "display.mainQueue",
+          "handle": "runtime-workspace:79",
+          "count": 1,
+          "width": 352,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1171,
+            "length": 352
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "ppu-transfer-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512587,
+                "length": 209
+              },
+              "raw_hex": "A542F003207FD2A540F00320C3D2A541F00320A8D2A543F0032003D3A544F00320E3D2A93F8D0620A9008D06208D06208D062060A200AD0220BD93048D0620E8BD93048D0620E8BD9304A8F00BE8BD93048D0720E888D0F6C642D0DA60A5478D0620A5468D0620A441A200BD93048D0720E888D0F6844160A200BD93048D0620BD94048D0620BD95048D0720E8E8E8E44090E7A900854060A200BDF3048D0620BDF4048D0620BDF5048D0720E8E8E8E44490E7A900854460A23FA000205FD0A200BD80028D0720E8E020D0F5A900854360"
+            }
+          ]
+        },
+        {
+          "id": "text.command",
+          "handle": "runtime-workspace:7A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1437,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/text-runtime-vm-tail-and-frame-wait-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 521700,
+                "length": 3
+              },
+              "raw_hex": "8E9D05"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.nestedState",
+          "handle": "runtime-workspace:7B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1438,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/status-fixed-tile-permission/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 212937,
+                "length": 3
+              },
+              "raw_hex": "8D9E05"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.active",
+          "handle": "runtime-workspace:7C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1439,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 521721,
+                "length": 3
+              },
+              "raw_hex": "8D9F05"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.windowRow",
+          "handle": "runtime-workspace:7D",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1440,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 519018,
+                "length": 3
+              },
+              "raw_hex": "8DA005"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.unknown05A1",
+          "handle": "runtime-workspace:7E",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 1441,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "scope": "queue-overlay-text-semantics-unknown"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.unknown05A2",
+          "handle": "runtime-workspace:7F",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 1442,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "scope": "queue-overlay-text-semantics-unknown"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.unknown05A3",
+          "handle": "runtime-workspace:80",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 1443,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "scope": "queue-overlay-text-semantics-unknown"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.nextRecord",
+          "handle": "runtime-workspace:81",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1444,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 196827,
+                "length": 3
+              },
+              "raw_hex": "8DA405"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.regionId",
+          "handle": "runtime-workspace:82",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1445,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 196624,
+                "length": 3
+              },
+              "raw_hex": "8DA505"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.unknown05A6",
+          "handle": "runtime-workspace:83",
+          "count": 1,
+          "width": 1,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "ram",
+            "offset": 1446,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "scope": "queue-overlay-text-semantics-unknown"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.clearPreset",
+          "handle": "runtime-workspace:84",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1447,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 519023,
+                "length": 3
+              },
+              "raw_hex": "8DA705"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "parameter.dialogueActor",
+          "handle": "runtime-workspace:4F",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1448,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-local-selector-stores/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 216257,
+                "length": 5
+              },
+              "raw_hex": "A5 B1 8D A8 05"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.recordCounter",
+          "handle": "runtime-workspace:85",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1449,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 520895,
+                "length": 3
+              },
+              "raw_hex": "EEA905"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "display.oamShadow",
+          "handle": "runtime-workspace:37",
+          "count": 1,
+          "width": 256,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1792,
+            "length": 256
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512559,
+                "length": 28
+              },
+              "raw_hex": "A545F00CA90085458D0320A9078D1440204BD22086D32097D14C55D1"
+            }
+          ]
+        },
+        {
+          "id": "inherited.modeWorkspace",
+          "handle": "runtime-workspace:38",
+          "count": 1,
+          "width": 4096,
+          "encoding": "bytes",
+          "knowledge": "unknown",
+          "physical": {
+            "space": "sram",
+            "offset": 4096,
+            "length": 4096
+          },
+          "evidence": [
+            {
+              "location": "engine/maintainer/generators/byte-narrative-projections.js#save.partition.runtime-workspace.0",
+              "scope": "mode-overlaid-boundary-only"
+            }
+          ]
+        },
+        {
+          "id": "controller.current",
+          "handle": "runtime-workspace:86",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 23,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "controller-input-service",
+              "address": {
+                "space": "prg",
+                "offset": 512243,
+                "length": 81
+              },
+              "raw_hex": "A202A0018C1640888C1640A008AD16406AB0016A363D88D0F4CA10E6A53DC53EF00AC53FF006A53EC53FD014853D4517253D8518A53D8517290FAABD34D185196000040300020000000100000000000000"
+            }
+          ],
+          "view_of": "inherited.controllerAndBankScratch.0017"
+        },
+        {
+          "id": "controller.edges",
+          "handle": "runtime-workspace:87",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 24,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "controller-input-service",
+              "address": {
+                "space": "prg",
+                "offset": 512243,
+                "length": 81
+              },
+              "raw_hex": "A202A0018C1640888C1640A008AD16406AB0016A363D88D0F4CA10E6A53DC53EF00AC53FF006A53EC53FD014853D4517253D8518A53D8517290FAABD34D185196000040300020000000100000000000000"
+            }
+          ],
+          "view_of": "inherited.controllerAndBankScratch.0017"
+        },
+        {
+          "id": "controller.direction",
+          "handle": "runtime-workspace:88",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 25,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "controller-input-service",
+              "address": {
+                "space": "prg",
+                "offset": 512243,
+                "length": 81
+              },
+              "raw_hex": "A202A0018C1640888C1640A008AD16406AB0016A363D88D0F4CA10E6A53DC53EF00AC53FF006A53EC53FD014853D4517253D8518A53D8517290FAABD34D185196000040300020000000100000000000000"
+            }
+          ],
+          "view_of": "inherited.controllerAndBankScratch.0017"
+        },
+        {
+          "id": "random.high",
+          "handle": "runtime-workspace:89",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 55,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "global-random-service",
+              "address": {
+                "space": "prg",
+                "offset": 512046,
+                "length": 31
+              },
+              "raw_hex": "A5378539A538853A0A26390A2639A538653A69118538A53765396937853760"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "random.low",
+          "handle": "runtime-workspace:8A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 56,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "global-random-service",
+              "address": {
+                "space": "prg",
+                "offset": 512046,
+                "length": 31
+              },
+              "raw_hex": "A5378539A538853A0A26390A2639A538653A69118538A53765396937853760"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "random.workspaceHigh",
+          "handle": "runtime-workspace:8B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 57,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "global-random-service",
+              "address": {
+                "space": "prg",
+                "offset": 512046,
+                "length": 31
+              },
+              "raw_hex": "A5378539A538853A0A26390A2639A538653A69118538A53765396937853760"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "random.workspaceLow",
+          "handle": "runtime-workspace:8C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 58,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "global-random-service",
+              "address": {
+                "space": "prg",
+                "offset": 512046,
+                "length": 31
+              },
+              "raw_hex": "A5378539A538853A0A26390A2639A538653A69118538A53765396937853760"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "wait.frameCount",
+          "handle": "runtime-workspace:8D",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 59,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "frame-nmi-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 512077,
+                "length": 18
+              },
+              "raw_hex": "201DD0A53BD002C63CC63BA53B053CD0EF60"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "controller.samples",
+          "handle": "runtime-workspace:8E",
+          "count": 1,
+          "width": 3,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 61,
+            "length": 3
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "controller-input-service",
+              "address": {
+                "space": "prg",
+                "offset": 512243,
+                "length": 81
+              },
+              "raw_hex": "A202A0018C1640888C1640A008AD16406AB0016A363D88D0F4CA10E6A53DC53EF00AC53FF006A53EC53FD014853D4517253D8518A53D8517290FAABD34D185196000040300020000000100000000000000"
+            }
+          ],
+          "view_of": "inherited.frameAndRandom.0037"
+        },
+        {
+          "id": "text.streamPointer",
+          "handle": "runtime-workspace:8F",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 184,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "code-module",
+              "address": {
+                "space": "prg",
+                "offset": 522925,
+                "length": 20
+              },
+              "raw_hex": "20BAFAA000B1B860E60020BAFAE6B8D002E6B960"
+            }
+          ],
+          "view_of": "inherited.actionScratch.00B8"
+        },
+        {
+          "id": "text.mode",
+          "handle": "runtime-workspace:90",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 230,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212039,
+                "length": 7
+              },
+              "raw_hex": "A5E6490185E660"
+            }
+          ]
+        },
+        {
+          "id": "text.outputCount",
+          "handle": "runtime-workspace:91",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 231,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 211963,
+                "length": 11
+              },
+              "raw_hex": "91B6E6B6D002E6B7E6E760"
+            }
+          ]
+        },
+        {
+          "id": "text.characterDelay",
+          "handle": "runtime-workspace:92",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1455,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/runtime-frame-wait/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 521829,
+                "length": 10
+              },
+              "raw_hex": "AEAF0520F4F7CA10FA60"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "display.textCameraX",
+          "handle": "runtime-workspace:93",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 103,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-execution/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 522241,
+                "length": 24
+              },
+              "raw_hex": "A5670A1865D78500A5680A1865D8C91E900338E91E850160"
+            }
+          ],
+          "view_of": "inherited.fieldContext"
+        },
+        {
+          "id": "display.textCameraY",
+          "handle": "runtime-workspace:94",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 104,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-execution/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 522241,
+                "length": 24
+              },
+              "raw_hex": "A5670A1865D78500A5680A1865D8C91E900338E91E850160"
+            }
+          ],
+          "view_of": "inherited.fieldContext"
+        },
+        {
+          "id": "text.recordBank",
+          "handle": "runtime-workspace:95",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 32,
+            "length": 1
+          },
+          "view_of": "inherited.controllerAndBankScratch.0020",
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-execution/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 211692,
+                "length": 23
+              },
+              "raw_hex": "A6CDBDD6BAC520F007AA20F4F720F9D3A5CD0AAABDAABA"
+            }
+          ]
+        },
+        {
+          "id": "display.primaryChrBanks",
+          "handle": "runtime-workspace:01",
+          "count": 1,
+          "width": 6,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 34,
+            "length": 6
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/raster-irq-display/observations.json",
+              "resource_id": "chr-bank-mapping-service",
+              "address": {
+                "space": "prg",
+                "offset": 513146,
+                "length": 30
+              },
+              "raw_hex": "A62220C3D3A62320CCD3A62420D5D3A62520DED3A62620E7D3A6274CF0D3"
+            }
+          ],
+          "view_of": "inherited.controllerAndBankScratch.0020"
+        },
+        {
+          "id": "display.rasterAddress",
+          "handle": "runtime-workspace:03",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 86,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/raster-irq-display/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 513408,
+                "length": 36
+              },
+              "raw_hex": "8D00E0AD0220A5578D0620A5568D0620A5138D0520A5158D0520A5078D00208591207AD4"
+            }
+          ]
+        },
+        {
+          "id": "display.rasterTransferCount",
+          "handle": "runtime-workspace:05",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 95,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/raster-irq-display/observations.json",
+              "resource_id": "raster-interrupt-runtime-service",
+              "address": {
+                "space": "prg",
+                "offset": 513513,
+                "length": 42
+              },
+              "raw_hex": "A9002020D2A99038E5A88D00C0A59149018D00208591A282A0A4A903855F8E00808C0180E8C8C65FD0F4"
+            }
+          ]
+        },
+        {
+          "id": "text.choiceOrigin",
+          "handle": "runtime-workspace:96",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 1428,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212640,
+                "length": 12
+              },
+              "raw_hex": "6885B78D95056885B68D9405"
+            }
+          ],
+          "view_of": "display.mainQueue"
+        },
+        {
+          "id": "text.choiceX",
+          "handle": "runtime-workspace:97",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 215,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212652,
+                "length": 8
+              },
+              "raw_hex": "0A0A0A38E90A85D7"
+            }
+          ],
+          "view_of": "inherited.itemScratch"
+        },
+        {
+          "id": "selection.sprite",
+          "handle": "runtime-workspace:98",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 816,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212691,
+                "length": 5
+              },
+              "raw_hex": "A9308D3003"
+            }
+          ],
+          "view_of": "oam.secondaryFrames"
+        },
+        {
+          "id": "selection.x",
+          "handle": "runtime-workspace:99",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 832,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212696,
+                "length": 5
+              },
+              "raw_hex": "A5D78D4003"
+            }
+          ],
+          "view_of": "oam.secondaryXs"
+        },
+        {
+          "id": "selection.y",
+          "handle": "runtime-workspace:9A",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 848,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212672,
+                "length": 9
+              },
+              "raw_hex": "38AD9405E9088D5003"
+            }
+          ],
+          "view_of": "oam.secondaryYs"
+        },
+        {
+          "id": "display.subroutineBank",
+          "handle": "runtime-workspace:9B",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 33,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/story-text-interaction/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 523635,
+                "length": 24
+              },
+              "raw_hex": "85B0A52048A521482046D4208CB668AA2014D468AA4CF9D3"
+            }
+          ],
+          "view_of": "inherited.controllerAndBankScratch.0020"
+        },
+        {
+          "id": "display.logicalProfile",
+          "handle": "runtime-workspace:9C",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 126,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "field-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 168539,
+                "length": 578
+              },
+              "raw_hex": "A54548A9008545A57E0AAABD6AB7850ABD6BB7850B20FCB2A67EA568187D5EB7C90F900338E90F0A8501A9008502A9028507A9208505A67EBC76B7BD8EB78576A9008504A200984820BFDFA501186901C91E9003186902291F8501A586F00CA5762901F006A501C576F00620BFDF4CD9B2A50A186920850AA50B6900850BA50485422054E4A501186901C91E9003186902291F850168A888F0034C9BB268854560A5678500A67EBD64B7AAB579D007A5001869108500A500291F0A850060A590D046A47EB95EB7856ABE76B7A90085698A48A2108A48A9008500A56A4A2600A5694A260020E0DCA600A40EBD5BDB49FF19C06399C063E66968AACAD0D7A9008569E66A68AACAD0C860A67EBD64B7AAB579D007A5001869108500A67EBD5EB72060E4A67EBC76B7BD5EB785039848A010984820E0DCA9008500A56A4A2600A5694A2600A40EA600B900023D5BDB8501A56948A56A489848A5028569A503856A20E0DCA9008504A5034A2604A5024A2604A40EA604B9C0638505BD5BDB49FF25058505E8CAF0054A4A4CDEB3850568A8A605BD57DB8505A600BD5BDB49FF2505050199000268856A688569E669E60268A888F0034C8BB3A56938E9108569A50238E9108502E66AE603A56AC90F900338E90F856AA503C90F900338E90F850368A888F0034C87B360A67EBD5EB72060E4A67EBC7CB7A56AC909B0036A9001C89848A56948A200A008A5696A9001C8984820E0DCA40EA50D9D9304A50C9D9404B900029D9504E8E8E8E669E66968A888D0DD86402054E4688569E66AE66A68A888D0BD60"
+            }
+          ],
+          "view_of": "inherited.fieldControlScratch.007B"
+        },
+        {
+          "id": "display.logicalSkipGate",
+          "handle": "runtime-workspace:9D",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 134,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "field-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 168539,
+                "length": 578
+              },
+              "raw_hex": "A54548A9008545A57E0AAABD6AB7850ABD6BB7850B20FCB2A67EA568187D5EB7C90F900338E90F0A8501A9008502A9028507A9208505A67EBC76B7BD8EB78576A9008504A200984820BFDFA501186901C91E9003186902291F8501A586F00CA5762901F006A501C576F00620BFDF4CD9B2A50A186920850AA50B6900850BA50485422054E4A501186901C91E9003186902291F850168A888F0034C9BB268854560A5678500A67EBD64B7AAB579D007A5001869108500A500291F0A850060A590D046A47EB95EB7856ABE76B7A90085698A48A2108A48A9008500A56A4A2600A5694A260020E0DCA600A40EBD5BDB49FF19C06399C063E66968AACAD0D7A9008569E66A68AACAD0C860A67EBD64B7AAB579D007A5001869108500A67EBD5EB72060E4A67EBC76B7BD5EB785039848A010984820E0DCA9008500A56A4A2600A5694A2600A40EA600B900023D5BDB8501A56948A56A489848A5028569A503856A20E0DCA9008504A5034A2604A5024A2604A40EA604B9C0638505BD5BDB49FF25058505E8CAF0054A4A4CDEB3850568A8A605BD57DB8505A600BD5BDB49FF2505050199000268856A688569E669E60268A888F0034C8BB3A56938E9108569A50238E9108502E66AE603A56AC90F900338E90F856AA503C90F900338E90F850368A888F0034C87B360A67EBD5EB72060E4A67EBC7CB7A56AC909B0036A9001C89848A56948A200A008A5696A9001C8984820E0DCA40EA50D9D9304A50C9D9404B900029D9504E8E8E8E669E66968A888D0DD86402054E4688569E66AE66A68A888D0BD60"
+            }
+          ],
+          "view_of": "inherited.fieldControlScratch.007B"
+        },
+        {
+          "id": "display.logicalAttributeGate",
+          "handle": "runtime-workspace:9E",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 144,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/logic-window-commit/observations.json",
+              "resource_id": "field-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 168539,
+                "length": 578
+              },
+              "raw_hex": "A54548A9008545A57E0AAABD6AB7850ABD6BB7850B20FCB2A67EA568187D5EB7C90F900338E90F0A8501A9008502A9028507A9208505A67EBC76B7BD8EB78576A9008504A200984820BFDFA501186901C91E9003186902291F8501A586F00CA5762901F006A501C576F00620BFDF4CD9B2A50A186920850AA50B6900850BA50485422054E4A501186901C91E9003186902291F850168A888F0034C9BB268854560A5678500A67EBD64B7AAB579D007A5001869108500A500291F0A850060A590D046A47EB95EB7856ABE76B7A90085698A48A2108A48A9008500A56A4A2600A5694A260020E0DCA600A40EBD5BDB49FF19C06399C063E66968AACAD0D7A9008569E66A68AACAD0C860A67EBD64B7AAB579D007A5001869108500A67EBD5EB72060E4A67EBC76B7BD5EB785039848A010984820E0DCA9008500A56A4A2600A5694A2600A40EA600B900023D5BDB8501A56948A56A489848A5028569A503856A20E0DCA9008504A5034A2604A5024A2604A40EA604B9C0638505BD5BDB49FF25058505E8CAF0054A4A4CDEB3850568A8A605BD57DB8505A600BD5BDB49FF2505050199000268856A688569E669E60268A888F0034C8BB3A56938E9108569A50238E9108502E66AE603A56AC90F900338E90F856AA503C90F900338E90F850368A888F0034C87B360A67EBD5EB72060E4A67EBC7CB7A56AC909B0036A9001C89848A56948A200A008A5696A9001C8984820E0DCA40EA50D9D9304A50C9D9404B900029D9504E8E8E8E669E66968A888D0DD86402054E4688569E66AE66A68A888D0BD60"
+            }
+          ]
+        },
+        {
+          "id": "text.runtimeRecordPair",
+          "handle": "runtime-workspace:9F",
+          "count": 1,
+          "width": 2,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 226,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/text-token-dispatch-and-resume/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212611,
+                "length": 11
+              },
+              "raw_hex": "A9E2850CA900850D4C56BD"
+            }
+          ]
+        },
+        {
+          "id": "text.runtimeNumberTail",
+          "handle": "runtime-workspace:A0",
+          "count": 1,
+          "width": 2,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 224,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/text-token-dispatch-and-resume/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212907,
+                "length": 14
+              },
+              "raw_hex": "A9DF850CA900850DA902201ABF4C"
+            }
+          ]
+        },
+        {
+          "id": "text.runtimeNumberHead",
+          "handle": "runtime-workspace:A1",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 223,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/text-token-dispatch-and-resume/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212907,
+                "length": 14
+              },
+              "raw_hex": "A9DF850CA900850DA902201ABF4C"
+            }
+          ],
+          "view_of": "inherited.itemScratch"
+        },
+        {
+          "id": "text.runtimeProvider38",
+          "handle": "runtime-workspace:A2",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 222,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/text-token-dispatch-and-resume/context.asm",
+              "resource_id": "text-render-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 212250,
+                "length": 2
+              },
+              "raw_hex": "DE00"
+            }
+          ],
+          "view_of": "inherited.itemScratch"
+        },
+        {
+          "id": "oam.secondaryDescriptors",
+          "handle": "runtime-workspace:C0",
+          "count": 1,
+          "width": 16,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 788,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213603,
+                "length": 3
+              },
+              "raw_hex": "BD1403"
+            }
+          ]
+        },
+        {
+          "id": "oam.secondaryDescriptor",
+          "handle": "runtime-workspace:C1",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 788,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213603,
+                "length": 3
+              },
+              "raw_hex": "BD1403"
+            }
+          ],
+          "view_of": "oam.secondaryDescriptors"
+        },
+        {
+          "id": "oam.secondaryFrames",
+          "handle": "runtime-workspace:C2",
+          "count": 1,
+          "width": 16,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 804,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213598,
+                "length": 3
+              },
+              "raw_hex": "BC2403"
+            }
+          ]
+        },
+        {
+          "id": "oam.secondaryFrame",
+          "handle": "runtime-workspace:C3",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 804,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213598,
+                "length": 3
+              },
+              "raw_hex": "BC2403"
+            }
+          ],
+          "view_of": "oam.secondaryFrames"
+        },
+        {
+          "id": "oam.secondaryXs",
+          "handle": "runtime-workspace:C4",
+          "count": 1,
+          "width": 16,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 820,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213610,
+                "length": 5
+              },
+              "raw_hex": "BD34038500"
+            }
+          ]
+        },
+        {
+          "id": "oam.secondaryX",
+          "handle": "runtime-workspace:C5",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 820,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213610,
+                "length": 5
+              },
+              "raw_hex": "BD34038500"
+            }
+          ],
+          "view_of": "oam.secondaryXs"
+        },
+        {
+          "id": "oam.secondaryYs",
+          "handle": "runtime-workspace:C6",
+          "count": 1,
+          "width": 16,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 836,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213615,
+                "length": 5
+              },
+              "raw_hex": "BD44038501"
+            }
+          ]
+        },
+        {
+          "id": "oam.secondaryY",
+          "handle": "runtime-workspace:C7",
+          "count": 16,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 836,
+            "length": 16
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/oam-actor-borrow-census/context.asm",
+              "resource_id": "oam-object-rendering-service",
+              "address": {
+                "space": "prg",
+                "offset": 213615,
+                "length": 5
+              },
+              "raw_hex": "BD44038501"
+            }
+          ],
+          "view_of": "oam.secondaryYs"
+        },
+        {
+          "id": "projection.motionPhase",
+          "handle": "runtime-workspace:D0",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 2,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214130,
+                "length": 4
+              },
+              "raw_hex": "46 02 05 02"
+            }
+          ],
+          "view_of": "inherited.copyScratch",
+          "meaning": "A468 的移动相位临时值；方向非零时原位右移一位。"
+        },
+        {
+          "id": "projection.motionDirection",
+          "handle": "runtime-workspace:D1",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 3,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214120,
+                "length": 15
+              },
+              "raw_hex": "A4 03 F0 0B 88 98 0A 0A 0A 0A 46 02 05 02 A8"
+            }
+          ],
+          "view_of": "inherited.copyScratch",
+          "meaning": "A468 的移动方向临时值；零选择静止偏移，1..4 选择方向偏移组。"
+        },
+        {
+          "id": "projection.tileX",
+          "handle": "runtime-workspace:D2",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 4,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214010,
+                "length": 5
+              },
+              "raw_hex": "BD 58 03 85 04"
+            }
+          ],
+          "view_of": "inherited.copyScratch"
+        },
+        {
+          "id": "projection.tileY",
+          "handle": "runtime-workspace:D3",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 5,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214015,
+                "length": 5
+              },
+              "raw_hex": "BD 5C 03 85 05"
+            }
+          ],
+          "view_of": "inherited.copyScratch"
+        },
+        {
+          "id": "projection.worldX",
+          "handle": "runtime-workspace:D4",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 8,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214171,
+                "length": 30
+              },
+              "raw_hex": "A5 04 18 69 09 0A 26 09 0A 26 09 0A 26 09 0A 26 09 18 79 DA A4 85 08 A5 09 79 3A A5 85 09"
+            }
+          ],
+          "view_of": "inherited.pointerScratch.0008",
+          "meaning": "A468 输出的世界像素横坐标，低字节在前。"
+        },
+        {
+          "id": "projection.worldY",
+          "handle": "runtime-workspace:D5",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 10,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 214141,
+                "length": 30
+              },
+              "raw_hex": "A5 05 18 69 08 0A 26 0B 0A 26 0B 0A 26 0B 0A 26 0B 18 79 BA A4 85 0A A5 0B 79 1A A5 85 0B"
+            }
+          ],
+          "view_of": "inherited.pointerScratch.0008",
+          "meaning": "A468 输出的世界像素纵坐标，低字节在前。"
+        },
+        {
+          "id": "field.cameraMotionDirection",
+          "handle": "runtime-workspace:D6",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 107,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213340,
+                "length": 4
+              },
+              "raw_hex": "A5 6B 85 03"
+            }
+          ],
+          "view_of": "inherited.fieldContext"
+        },
+        {
+          "id": "field.cameraPixelX",
+          "handle": "runtime-workspace:D7",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 852,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213355,
+                "length": 10
+              },
+              "raw_hex": "A5 08 8D 54 03 A5 09 8D 55 03"
+            }
+          ],
+          "meaning": "A158 从当前相机地图坐标及移动状态推导的世界像素横坐标。"
+        },
+        {
+          "id": "field.cameraPixelY",
+          "handle": "runtime-workspace:D8",
+          "count": 1,
+          "width": 2,
+          "encoding": "u16le",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 854,
+            "length": 2
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213365,
+                "length": 10
+              },
+              "raw_hex": "A5 0A 8D 56 03 A5 0B 8D 57 03"
+            }
+          ],
+          "meaning": "A158 从当前相机地图坐标及移动状态推导的世界像素纵坐标。"
+        },
+        {
+          "id": "party.motionSpeed",
+          "handle": "runtime-workspace:D9",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 110,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213785,
+                "length": 14
+              },
+              "raw_hex": "BD 64 03 F0 09 38 A4 6E F9 39 DB 9D 64 03"
+            }
+          ],
+          "view_of": "inherited.fieldControlScratch.006E",
+          "meaning": "队伍相位减量表的索引，已确认范围为 0..2。"
+        },
+        {
+          "id": "party.animationGate",
+          "handle": "runtime-workspace:DA",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 127,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213806,
+                "length": 16
+              },
+              "raw_hex": "A5 7F 0A BD 6C 03 85 00 BC 70 03 B9 7B 64 30 21"
+            }
+          ],
+          "view_of": "inherited.fieldControlScratch.007B",
+          "meaning": "bit 7 抑制队伍步态选择并把步态相位置零。"
+        },
+        {
+          "id": "party.blinkDirection",
+          "handle": "runtime-workspace:DB",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 131,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213824,
+                "length": 31
+              },
+              "raw_hex": "A4 83 F0 18 30 16 A5 A2 F0 12 88 CC 6C 03 D0 0A A5 6E C9 02 D0 09 A5 36 85 01 06 01 A5 01 2C"
+            }
+          ],
+          "view_of": "inherited.fieldControlScratch.007B",
+          "meaning": "队伍闪烁方向选择子；零或负值保持移动步态，正值按队首方向及速度选择帧计数步态。"
+        },
+        {
+          "id": "dispatch.encounterIndex",
+          "handle": "runtime-workspace:DC",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 172,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213951,
+                "length": 5
+              },
+              "raw_hex": "BE D4 02 86 AC"
+            }
+          ],
+          "view_of": "inherited.objectIndex"
+        },
+        {
+          "id": "random.sceneHigh",
+          "handle": "runtime-workspace:E0",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 887,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213526,
+                "length": 5
+              },
+              "raw_hex": "A5 37 8D 77 03"
+            }
+          ],
+          "view_of": "inherited.actorScratch"
+        },
+        {
+          "id": "random.sceneLow",
+          "handle": "runtime-workspace:E1",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 888,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-actor-remaining-census/context.asm",
+              "resource_id": "scene-actor-runtime",
+              "address": {
+                "space": "prg",
+                "offset": 213531,
+                "length": 5
+              },
+              "raw_hex": "A5 38 8D 78 03"
+            }
+          ],
+          "view_of": "inherited.actorScratch"
+        },
+        {
+          "id": "map.attribute",
+          "handle": "runtime-workspace:E2",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "ram",
+            "offset": 2,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/assets/runtime/metalmaxcn/analysis/disassembly/full.asm",
+              "resource_id": "field-map-query-service",
+              "address": {
+                "space": "prg",
+                "offset": 515735,
+                "length": 4
+              },
+              "raw_hex": "B1 5B 85 02"
+            }
+          ],
+          "view_of": "inherited.copyScratch"
+        },
+        {
+          "id": "field.worldCoarseMap",
+          "handle": "runtime-workspace:E6",
+          "count": 1,
+          "width": 4096,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 4096,
+            "length": 4096
+          },
+          "view_of": "inherited.modeWorkspace",
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/special-scene-entry/entry-contract.json",
+              "scope": "PRG 028AD1-028AF5 copies the world coarse map to 7000-7FFF"
+            }
+          ]
+        },
+        {
+          "id": "field.sceneMap",
+          "handle": "runtime-workspace:E3",
+          "count": 1,
+          "width": 3456,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 4096,
+            "length": 3456
+          },
+          "view_of": "inherited.modeWorkspace",
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/remaining-owner-census/field-scene-lifecycle-service.asm",
+              "scope": "scene-mode-map-cells-only"
+            }
+          ]
+        },
+        {
+          "id": "field.metatileDefinitions",
+          "handle": "runtime-workspace:E4",
+          "count": 1,
+          "width": 512,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 7552,
+            "length": 512
+          },
+          "view_of": "inherited.modeWorkspace",
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/remaining-owner-census/field-scene-lifecycle-service.asm",
+              "scope": "scene-mode-metatile-definition-pages"
+            }
+          ]
+        },
+        {
+          "id": "field.metatileAttributes",
+          "handle": "runtime-workspace:E5",
+          "count": 1,
+          "width": 128,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "physical": {
+            "space": "sram",
+            "offset": 8064,
+            "length": 128
+          },
+          "view_of": "inherited.modeWorkspace",
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/remaining-owner-census/field-scene-lifecycle-service.asm",
+              "scope": "scene-mode-metatile-attributes-zero-forced-solid"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

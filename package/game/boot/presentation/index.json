@@ -1,0 +1,3050 @@
+{
+  "schema": "metalmaxcn.boot-presentation",
+  "source_rom": "metalmaxcn.nes",
+  "source_sha256": "a02e6d3e619a47930149298a6bc4f90a30af1939e7905a2a1c7115bc6eb92bf2",
+  "editable_resource_id": "boot-presentation",
+  "program": {
+    "address": {
+      "space": "prg",
+      "offset": 170056,
+      "length": 60,
+      "end_exclusive": 170116,
+      "confidence": "confirmed"
+    },
+    "entry_cpu": "0xB848",
+    "reached_from": "mode 0 ($D695) → $E4D0 → bank $14",
+    "nametable_loader": {
+      "space": "prg",
+      "offset": 517344,
+      "length": 3,
+      "end_exclusive": 517347,
+      "confidence": "confirmed"
+    },
+    "nametable_blitter": {
+      "space": "prg",
+      "offset": 170779,
+      "length": 3,
+      "end_exclusive": 170782,
+      "confidence": "confirmed"
+    },
+    "palette_uploader": {
+      "space": "prg",
+      "offset": 512771,
+      "length": 3,
+      "end_exclusive": 512774,
+      "confidence": "confirmed"
+    },
+    "routines": {
+      "frame_wait": {
+        "label": "等一帧例程 $D01D",
+        "note": "等 NMI 把帧计数 $36 加一；演出里每一次等待最终都落在它上面",
+        "address": {
+          "space": "prg",
+          "offset": 512029,
+          "length": 17,
+          "end_exclusive": 512046,
+          "confidence": "confirmed"
+        }
+      },
+      "segment_wait": {
+        "label": "分段等待例程 $BA69",
+        "note": "逐帧等待并查确认/取消键：超时回 CLC 继续，按键回 SEC。帧数上限是入口那条 LDX 的立即数，作为可编辑参数单独登记",
+        "address": {
+          "space": "prg",
+          "offset": 170603,
+          "length": 16,
+          "end_exclusive": 170619,
+          "confidence": "confirmed"
+        }
+      },
+      "skip_to_final": {
+        "label": "跳过演出例程 $BA7B",
+        "note": "按键跳过时直接装整版调色板并把纵向滚动归零，等于把时间轴拉到终态",
+        "address": {
+          "space": "prg",
+          "offset": 170619,
+          "length": 29,
+          "end_exclusive": 170648,
+          "confidence": "confirmed"
+        }
+      },
+      "fade_writer": {
+        "label": "单目标渐变例程 $BA98",
+        "note": "每步先等 $00 帧再把 4 字节写进一个调色板组；步数由入口 LDX 锁死为 4",
+        "address": {
+          "space": "prg",
+          "offset": 170650,
+          "length": 53,
+          "end_exclusive": 170703,
+          "confidence": "confirmed"
+        }
+      },
+      "fade_writer_dual": {
+        "label": "双目标渐变例程 $BACF",
+        "note": "同上，但同一份 4 字节同时写进背景与精灵两个调色板组",
+        "address": {
+          "space": "prg",
+          "offset": 170705,
+          "length": 74,
+          "end_exclusive": 170779,
+          "confidence": "confirmed"
+        }
+      }
+    }
+  },
+  "ppu": {
+    "mirroring": "vertical",
+    "mirroring_note": "$A000 ← $00 是纵向镜像：$2000 与 $2400 左右相邻，纵向滚动在同一页内绕回",
+    "mirroring_address": {
+      "space": "prg",
+      "offset": 524146,
+      "length": 5,
+      "end_exclusive": 524151,
+      "confidence": "confirmed"
+    },
+    "base_nametable": 8192,
+    "base_nametable_hex": "0x2000",
+    "control_value": 136,
+    "control_note": "PPUCTRL 影子 $11 = $88：基底 nametable $2000、背景图案表 $0000、精灵图案表 $1000；开机演出全程不改它",
+    "control_address": {
+      "space": "prg",
+      "offset": 524242,
+      "length": 7,
+      "end_exclusive": 524249,
+      "confidence": "confirmed"
+    },
+    "note": "屏幕不等于 nametable 原点：看到的是滚动影子 ($13, $15) 截出来的窗口，越过右边界接的是另一屏那一页"
+  },
+  "code_driven": [
+    {
+      "id": "sequence",
+      "label": "演出编排",
+      "detail": "两屏顺序、各自等哪几段、渐显调用次序都写死在 $B848 的直线代码里",
+      "status": "code-driven"
+    },
+    {
+      "id": "scroll-pacing",
+      "label": "归位的每格帧数",
+      "detail": "归位循环体是两次 JSR $D01D 再 INC $15，所以恒为每 2 帧挪 1 像素",
+      "status": "code-driven",
+      "addresses": [
+        {
+          "space": "prg",
+          "offset": 170359,
+          "length": 6,
+          "end_exclusive": 170365,
+          "confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "id": "fade-step-count",
+      "label": "每段渐变步数",
+      "detail": "$BA98 / $BACF 都是 LDX #$04；渐变表因此恒为 4 步 × 4 字节",
+      "status": "code-driven",
+      "addresses": [
+        {
+          "space": "prg",
+          "offset": 170648,
+          "length": 2,
+          "end_exclusive": 170650,
+          "confidence": "confirmed"
+        },
+        {
+          "space": "prg",
+          "offset": 170703,
+          "length": 2,
+          "end_exclusive": 170705,
+          "confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "id": "fade-targets",
+      "label": "渐变写入的调色板位置",
+      "detail": "$0284 / $0280+$0290 / $028C+$029C 三个落点由代码给出",
+      "status": "code-driven"
+    },
+    {
+      "id": "sprite-expansion",
+      "label": "精灵展开公式",
+      "detail": "Y = 行×8−1、X = 列×8−5、属性恒 0，全在 $B8ED 的指令里",
+      "status": "code-driven"
+    },
+    {
+      "id": "nametable-routing",
+      "label": "两页各写进哪个 nametable",
+      "detail": "CHR 页 $FC→PPU $2400、$FD→PPU $2000 是 $B848 里的常量",
+      "status": "code-driven"
+    },
+    {
+      "id": "standby-demo",
+      "label": "待机演示",
+      "detail": "$B9F4 是无超时等键循环；本 ROM 没有待机演示，要加必须写新代码",
+      "status": "code-driven"
+    }
+  ],
+  "screens": [
+    {
+      "id": "boot-logo",
+      "label": "启动 Logo",
+      "nametable": {
+        "chr_page": 252,
+        "chr_page_hex": "0xFC",
+        "address": {
+          "space": "chr",
+          "offset": 258048,
+          "length": 1024,
+          "end_exclusive": 259072,
+          "confidence": "confirmed"
+        },
+        "columns": 32,
+        "rows": 30,
+        "tile_bytes": 960,
+        "attribute_bytes": 64,
+        "bytes": {
+          "schema": "metalmaxcn.web-byte-array",
+          "encoding": "base64",
+          "length": 1024,
+          "sha256": "c6569ef7a26607c8ce2835c14e4a75b7c8983452e61ad06b41b72d99111ed215",
+          "source_addresses": [
+            {
+              "space": "chr",
+              "offset": 258048,
+              "length": 1024,
+              "end_exclusive": 259072,
+              "confidence": "confirmed"
+            }
+          ],
+          "data": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJCgsMDQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBkaGxwdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKSorLC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg5Ojs8PQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASElKS0xNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWVpbXF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI2KnYoAjoqcnQCZm46cjpednAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEpSEAAADA8PDw8PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+        },
+        "ppu_base": 9216,
+        "ppu_base_hex": "0x2400"
+      },
+      "chr_slots": [
+        {
+          "register": 2,
+          "ppu_base": 0,
+          "ppu_base_hex": "0x0000",
+          "length": 1024,
+          "bank": 144,
+          "bank_hex": "0x90",
+          "banks": [
+            144
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170161,
+            "length": 1,
+            "end_exclusive": 170162,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170160,
+            "length": 4,
+            "end_exclusive": 170164,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1C",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 147456,
+              "length": 1024,
+              "end_exclusive": 148480,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 144
+          }
+        },
+        {
+          "register": 3,
+          "ppu_base": 1024,
+          "ppu_base_hex": "0x0400",
+          "length": 1024,
+          "bank": 145,
+          "bank_hex": "0x91",
+          "banks": [
+            145
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170165,
+            "length": 1,
+            "end_exclusive": 170166,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170164,
+            "length": 4,
+            "end_exclusive": 170168,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1D",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 148480,
+              "length": 1024,
+              "end_exclusive": 149504,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 145
+          }
+        },
+        {
+          "register": 4,
+          "ppu_base": 2048,
+          "ppu_base_hex": "0x0800",
+          "length": 1024,
+          "bank": 8,
+          "bank_hex": "0x08",
+          "banks": [
+            8
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170169,
+            "length": 1,
+            "end_exclusive": 170170,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170168,
+            "length": 4,
+            "end_exclusive": 170172,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1E",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变",
+              "CHR-RAM 的图元来自 PRG 字模，不在 shared-chr-bank 里"
+            ]
+          },
+          "storage": "chr-ram",
+          "uploaded_from": {
+            "space": "prg",
+            "offset": 292864,
+            "length": 2048,
+            "end_exclusive": 294912,
+            "confidence": "confirmed"
+          },
+          "note": "mapper 74 的 2 KiB CHR-RAM；开机由 PRG $047800 上传",
+          "bytes": {
+            "schema": "metalmaxcn.web-byte-array",
+            "encoding": "base64",
+            "length": 1024,
+            "sha256": "01525ee44b196597bcaf824d6964721b64bb859b025225306988e07dc9c0d55d",
+            "source_addresses": [
+              {
+                "space": "prg",
+                "offset": 292864,
+                "length": 1024,
+                "end_exclusive": 293888,
+                "confidence": "confirmed"
+              }
+            ],
+            "data": "fMbGxsbGfAAAAAAAAAAAABg4GBgYGDwAAAAAAAAAAAB8xgY8YMD+AAAAAAAAAAAAfgwYPAbGfAAAAAAAAAAAABw8bMz+DAwAAAAAAAAAAAD+wPzGBsZ8AAAAAAAAAAAAfMbA/MbGfAAAAAAAAAAAAP7GDBgwMDAAAAAAAAAAAAB8xsZ8xsZ8AAAAAAAAAAAAfMbGfgbGfAAAAAAAAAAAADhsxsb+xsYAAAAAAAAAAAD8xsb8xsb8AAAAAAAAAAAAPGbAwMBmPAAAAAAAAAAAAPzGxsbGxvwAAAAAAAAAAAD+wMD8wMD+AAAAAAAAAAAA/sDA/MDAwAAAAAAAAAAAAHzGwM7GxnwAAAAAAAAAAADGxsb+xsbGAAAAAAAAAAAAfhgYGBgYfgAAAAAAAAAAAAYGBgYGxnwAAAAAAAAAAADGzNjw+MzGAAAAAAAAAAAAYGBgYGBgfgAAAAAAAAAAAMbu/v7WxsYAAAAAAAAAAADG5vb+3s7GAAAAAAAAAAAAfMbGxsbGfAAAAAAAAAAAAPzGxsb8wMAAAAAAAAAAAAB8xsbG9sx6AAAAAAAAAAAA/MbGxvzGxgAAAAAAAAAAAHzGwHwGxnwAAAAAAAAAAAB+GBgYGBgYAAAAAAAAAAAAxsbGxsbGfAAAAAAAAAAAAMbGbGw4OBAAAAAAAAAAAADGxtb+/u7GAAAAAAAAAAAAxu58OHzuxgAAAAAAAAAAAGZmZjwYGBgAAAAAAAAAAAD+Dhw4cOD+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          }
+        },
+        {
+          "register": 5,
+          "ppu_base": 3072,
+          "ppu_base_hex": "0x0C00",
+          "length": 1024,
+          "bank": 9,
+          "bank_hex": "0x09",
+          "banks": [
+            9
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170173,
+            "length": 1,
+            "end_exclusive": 170174,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170172,
+            "length": 4,
+            "end_exclusive": 170176,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1F",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变",
+              "CHR-RAM 的图元来自 PRG 字模，不在 shared-chr-bank 里"
+            ]
+          },
+          "storage": "chr-ram",
+          "uploaded_from": {
+            "space": "prg",
+            "offset": 292864,
+            "length": 2048,
+            "end_exclusive": 294912,
+            "confidence": "confirmed"
+          },
+          "note": "mapper 74 的 2 KiB CHR-RAM；开机由 PRG $047800 上传",
+          "bytes": {
+            "schema": "metalmaxcn.web-byte-array",
+            "encoding": "base64",
+            "length": 1024,
+            "sha256": "7e3a10f52afeb711d1b606c137919e4b15f07dc45166b113ba07f878eb115201",
+            "source_addresses": [
+              {
+                "space": "prg",
+                "offset": 293888,
+                "length": 1024,
+                "end_exclusive": 294912,
+                "confidence": "confirmed"
+              }
+            ],
+            "data": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAAAAAAAAAAAAAP58OBAAAAAAAAAAAAAAAAAAAHBQcAAAAAAAAAAAAAAAAAAAYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          }
+        }
+      ],
+      "background_pattern_base": 0,
+      "palette": {
+        "address": {
+          "space": "prg",
+          "offset": 171187,
+          "length": 32,
+          "end_exclusive": 171219,
+          "confidence": "confirmed"
+        },
+        "entries": [
+          15,
+          12,
+          28,
+          44,
+          15,
+          60,
+          48,
+          6,
+          15,
+          23,
+          39,
+          48,
+          15,
+          48,
+          16,
+          0,
+          15,
+          7,
+          15,
+          15,
+          15,
+          23,
+          7,
+          15,
+          15,
+          39,
+          23,
+          7,
+          15,
+          55,
+          39,
+          23
+        ],
+        "entries_hex": [
+          "0x0F",
+          "0x0C",
+          "0x1C",
+          "0x2C",
+          "0x0F",
+          "0x3C",
+          "0x30",
+          "0x06",
+          "0x0F",
+          "0x17",
+          "0x27",
+          "0x30",
+          "0x0F",
+          "0x30",
+          "0x10",
+          "0x00",
+          "0x0F",
+          "0x07",
+          "0x0F",
+          "0x0F",
+          "0x0F",
+          "0x17",
+          "0x07",
+          "0x0F",
+          "0x0F",
+          "0x27",
+          "0x17",
+          "0x07",
+          "0x0F",
+          "0x37",
+          "0x27",
+          "0x17"
+        ]
+      },
+      "elements": [
+        {
+          "id": "vendor-mark",
+          "label": "厂商标（蝶形）",
+          "kind": "background",
+          "territory": {
+            "top": 10,
+            "left": 0,
+            "bottom": 15,
+            "right": 31,
+            "rows": 6,
+            "columns": 32,
+            "attribute_group": null
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 80,
+            "width": 256,
+            "height": 48
+          },
+          "bounds": {
+            "top": 10,
+            "left": 11,
+            "bottom": 15,
+            "right": 16,
+            "rows": 6,
+            "columns": 6
+          },
+          "pixel_bounds": {
+            "x": 88,
+            "y": 80,
+            "width": 48,
+            "height": 48
+          },
+          "tile_count": 36,
+          "distinct_tiles": 36,
+          "tile_range": [
+            8,
+            93
+          ],
+          "palette_groups": [
+            0,
+            1,
+            2
+          ],
+          "fade": null,
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 258368,
+            "length": 192,
+            "end_exclusive": 258560,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "palette": {
+            "groups": [
+              0,
+              1,
+              2
+            ],
+            "addresses": [
+              {
+                "space": "prg",
+                "offset": 171187,
+                "length": 4,
+                "end_exclusive": 171191,
+                "confidence": "confirmed"
+              },
+              {
+                "space": "prg",
+                "offset": 171191,
+                "length": 4,
+                "end_exclusive": 171195,
+                "confidence": "confirmed"
+              },
+              {
+                "space": "prg",
+                "offset": 171195,
+                "length": 4,
+                "end_exclusive": 171199,
+                "confidence": "confirmed"
+              }
+            ],
+            "note": "本元素跨多个属性组，改色要按组分别落点"
+          }
+        },
+        {
+          "id": "presents-line",
+          "label": "DATA EAST PRESENTS",
+          "kind": "text",
+          "territory": {
+            "top": 19,
+            "left": 0,
+            "bottom": 19,
+            "right": 31,
+            "rows": 1,
+            "columns": 32,
+            "attribute_group": 3
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 152,
+            "width": 256,
+            "height": 8
+          },
+          "bounds": {
+            "top": 19,
+            "left": 5,
+            "bottom": 19,
+            "right": 22,
+            "rows": 1,
+            "columns": 18
+          },
+          "pixel_bounds": {
+            "x": 40,
+            "y": 152,
+            "width": 144,
+            "height": 8
+          },
+          "tile_count": 16,
+          "distinct_tiles": 8,
+          "tile_range": [
+            138,
+            157
+          ],
+          "palette_groups": [
+            3
+          ],
+          "fade": null,
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 258656,
+            "length": 32,
+            "end_exclusive": 258688,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "text": {
+            "value": "DATA EAST PRESENTS",
+            "row": 19,
+            "column": 5,
+            "glyphs": {
+              "D": 141,
+              "A": 138,
+              "T": 157,
+              " ": 0,
+              "E": 142,
+              "S": 156,
+              "P": 153,
+              "R": 155,
+              "N": 151
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "这一行显示的字",
+              "constraints": [
+                "最多 18 个字符，写不下就得先缩短",
+                "只能用本屏字形表里有的字符；没有字模的字打不出来",
+                "改字改的是 nametable 的 tile 编号，行列位置不动"
+              ]
+            }
+          },
+          "palette": {
+            "group": 3,
+            "address": {
+              "space": "prg",
+              "offset": 171199,
+              "length": 4,
+              "end_exclusive": 171203,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        }
+      ],
+      "font": {
+        "kind": "font-ref",
+        "font_ref": "core-latin",
+        "storage": "chr-ram",
+        "window_first_tile": 128,
+        "blank_tile": 0,
+        "note": "字形表归 mm_text_font 的核心字库，本屏只登记装载方式"
+      },
+      "parameters": [
+        {
+          "id": "scroll_x",
+          "label": "横向滚动影子 $13",
+          "value": 244,
+          "address": {
+            "space": "prg",
+            "offset": 170123,
+            "length": 1,
+            "end_exclusive": 170124,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170122,
+            "length": 4,
+            "end_exclusive": 170126,
+            "confidence": "confirmed"
+          },
+          "note": "写进滚动影子 $13；本屏静止，只决定画面横向对齐",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表"
+            ]
+          }
+        },
+        {
+          "id": "scroll_y",
+          "label": "纵向滚动影子 $15",
+          "value": 8,
+          "address": {
+            "space": "prg",
+            "offset": 170127,
+            "length": 1,
+            "end_exclusive": 170128,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170126,
+            "length": 4,
+            "end_exclusive": 170130,
+            "confidence": "confirmed"
+          },
+          "note": "写进滚动影子 $15",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表"
+            ]
+          }
+        },
+        {
+          "id": "sound_command",
+          "label": "声音命令",
+          "value": 3,
+          "address": {
+            "space": "prg",
+            "offset": 170177,
+            "length": 1,
+            "end_exclusive": 170178,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170176,
+            "length": 5,
+            "end_exclusive": 170181,
+            "confidence": "confirmed"
+          },
+          "note": "交给 $D33B 去重后提交音频驱动；值必须是已登记的声音命令",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表"
+            ]
+          }
+        },
+        {
+          "id": "hold_frames",
+          "label": "停留帧数",
+          "value": 120,
+          "address": {
+            "space": "prg",
+            "offset": 170195,
+            "length": 1,
+            "end_exclusive": 170196,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170194,
+            "length": 4,
+            "end_exclusive": 170198,
+            "confidence": "confirmed"
+          },
+          "note": "$78 = 120 帧 ≈ 2 秒；只在首次进入时生效",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "停留写入许可为1–255帧；0在16位等待例程中表示65536次等待"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 1,
+              "maximum": 255
+            },
+            "iteration_count": "value",
+            "unit": "calls to D01D per first-entry hold",
+            "preconditions": [
+              "normal frame/NMI service remains active",
+              "3C is zero; 3B/3C remain stable except D04D"
+            ],
+            "evidence": [
+              "project/evidence/reverse-engineering/boot-parameter-writeback/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "first_run_marker",
+          "label": "首次进入标记值",
+          "value": 37,
+          "address": {
+            "space": "prg",
+            "offset": 170184,
+            "length": 1,
+            "end_exclusive": 170185,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170181,
+            "length": 10,
+            "end_exclusive": 170191,
+            "confidence": "confirmed"
+          },
+          "note": "RAM $48 等于此值就跳过停留；比较值与写入值必须一起改",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "比较值与写入值是同一个语义，必须同时改成一样"
+            ]
+          },
+          "paired_address": {
+            "space": "prg",
+            "offset": 170188,
+            "length": 1,
+            "end_exclusive": 170189,
+            "confidence": "confirmed"
+          },
+          "paired_value": 37
+        }
+      ],
+      "timeline": {
+        "label": "演出时间轴",
+        "note": "第 0 帧是打开显示的那一帧。这一屏没有渐显也没有滚动：整版调色板一次装完，停留若干帧再整体压黑。",
+        "initial": {
+          "palette_fill": 15,
+          "sprites_visible": false,
+          "background_visible": true,
+          "scroll_x_parameter": "scroll_x",
+          "scroll_y_parameter": "scroll_y",
+          "setup": [
+            {
+              "id": "mask",
+              "label": "背景开、精灵关",
+              "note": "$12 清 bit1（裁掉最左 8 像素的背景，正好遮住滚动接缝）与 bit4（不画精灵）",
+              "address": {
+                "space": "prg",
+                "offset": 170116,
+                "length": 6,
+                "end_exclusive": 170122,
+                "confidence": "confirmed"
+              }
+            },
+            {
+              "id": "blackout",
+              "label": "整版调色板压成 $0F",
+              "note": "打开显示之前先全黑，避免上一屏的颜色闪出来",
+              "address": {
+                "space": "prg",
+                "offset": 170130,
+                "length": 14,
+                "end_exclusive": 170144,
+                "confidence": "confirmed"
+              }
+            },
+            {
+              "id": "render_on",
+              "label": "打开显示",
+              "note": "$D066：PPUMASK 影子置显示位并等一帧；时间轴第 0 帧就是这一帧",
+              "address": {
+                "space": "prg",
+                "offset": 170144,
+                "length": 3,
+                "end_exclusive": 170147,
+                "confidence": "confirmed"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "id": "palette-load",
+            "kind": "palette",
+            "label": "整版调色板装载",
+            "palette_source": "screen",
+            "note": "32 字节一次写进 $0280-$029F，画面就在这一刻出现；没有渐显",
+            "address": {
+              "space": "prg",
+              "offset": 170147,
+              "length": 13,
+              "end_exclusive": 170160,
+              "confidence": "confirmed"
+            },
+            "frames": 0
+          },
+          {
+            "id": "sound",
+            "kind": "sound",
+            "label": "声音命令",
+            "value_parameter": "sound_command",
+            "note": "交给 $D33B 去重后提交音频驱动",
+            "address": {
+              "space": "prg",
+              "offset": 170178,
+              "length": 3,
+              "end_exclusive": 170181,
+              "confidence": "confirmed"
+            },
+            "frames": 0
+          },
+          {
+            "id": "hold",
+            "kind": "wait",
+            "label": "停留",
+            "frames_parameter": "hold_frames",
+            "note": "$D04D 按 $3B 计数逐帧等；只在首次进入（RAM $48 ≠ $25）时执行",
+            "address": {
+              "space": "prg",
+              "offset": 170198,
+              "length": 3,
+              "end_exclusive": 170201,
+              "confidence": "confirmed"
+            },
+            "frames": 120
+          },
+          {
+            "id": "blackout",
+            "kind": "palette",
+            "label": "压黑",
+            "palette_fill": 15,
+            "note": "整版压回 $0F；同一段字节也是标题屏时间轴的起点",
+            "address": {
+              "space": "prg",
+              "offset": 170204,
+              "length": 14,
+              "end_exclusive": 170218,
+              "confidence": "confirmed"
+            },
+            "frames": 0
+          }
+        ],
+        "total_frames": 120
+      },
+      "scroll": {
+        "x_shadow": 244,
+        "y_shadow": 8
+      },
+      "sprites": {
+        "count": 0
+      },
+      "timing": {
+        "hold_frames": 120,
+        "hold_condition": "仅首次进入（RAM $48 ≠ $25）时保持，其后直接跳过",
+        "sound_command": 3
+      }
+    },
+    {
+      "id": "title",
+      "label": "标题画面",
+      "nametable": {
+        "chr_page": 253,
+        "chr_page_hex": "0xFD",
+        "address": {
+          "space": "chr",
+          "offset": 259072,
+          "length": 1024,
+          "end_exclusive": 260096,
+          "confidence": "confirmed"
+        },
+        "columns": 32,
+        "rows": 30,
+        "tile_bytes": 960,
+        "attribute_bytes": 64,
+        "bytes": {
+          "schema": "metalmaxcn.web-byte-array",
+          "encoding": "base64",
+          "length": 1024,
+          "sha256": "5bf84acb8eb5c4a037d43c520f9bcc5335dbe1befddc96bbefca6dfd5a22ff68",
+          "source_addresses": [
+            {
+              "space": "chr",
+              "offset": 259072,
+              "length": 1024,
+              "end_exclusive": 260096,
+              "confidence": "confirmed"
+            }
+          ],
+          "data": "AAAAAACLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACPAAAAAACPAAAAAACPAAAAAACPAAAAAAAAAAAAAAAAiouMAAAAiouMAAAAioeMAAAAioeMAAAAAAAAAAAAAACam5wAAACam5wAAACWl5gAAACWl5gAAAAAAAAAAAAAiqqbrIwAiqqbrIwAiqaXqIwAiqaXqIwAAAAAAAAAAACaupu8nACaupu8nACWtpe4mACWtpe4mAAAAAAAAAAAiqq6jrysiaq6jrysiaa2jbioiaa2jbiojAAAAAAAAAABAgMRBAUGBwgJCgsMDURFRkdISUpLTE2nAAAAAAAAiiEiLj4UFRYXGBkaGxwdVFVWV1hZWltcXbcAAAAAAACicHEQICQlJicoKSorLC1kZWZnaGlqa2xtmacAAAAAirIwb4CCNDU2Nzg5Ojs8PXR1dnd4eXp7fH2ptwAAAACQoKGGAAAAAIEAAACwsZ2enwAAg4SFAAAAv5mZpwAAipKTowAAAAAAkQAAiq2ur72+jAAAlAAAAAAAqau3AACQkyOlAAAAAAAAAABurjEyM70PAAAAAAAAAAC5u6svirO0tQAAAAAAAAAAin5/AAAOHh+MAAAAAAAAAACIlT8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBhUHIAUFFTUlEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABBQkL8AGJTUVMAY1NQUQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQUJC/ABzUmNTX1Fjc3IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/yKPDyuPD/+7AAAAAAAAzyBVVVVVVVXMAMCwAADAogD/8P////P////v8/Dw//////7/D7////8PDw8Piw8PDw=="
+        },
+        "ppu_base": 8192,
+        "ppu_base_hex": "0x2000"
+      },
+      "chr_slots": [
+        {
+          "register": 0,
+          "ppu_base": 4096,
+          "ppu_base_hex": "0x1000",
+          "length": 2048,
+          "bank": 10,
+          "bank_hex": "0x0A",
+          "banks": [
+            10,
+            11
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170275,
+            "length": 1,
+            "end_exclusive": 170276,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170274,
+            "length": 4,
+            "end_exclusive": 170278,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1A",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 10240,
+              "length": 1024,
+              "end_exclusive": 11264,
+              "confidence": "confirmed"
+            },
+            {
+              "space": "chr",
+              "offset": 11264,
+              "length": 1024,
+              "end_exclusive": 12288,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-pattern-table-reference",
+            "resource_id": "shared-chr-bank",
+            "banks": [
+              10,
+              11
+            ]
+          }
+        },
+        {
+          "register": 1,
+          "ppu_base": 6144,
+          "ppu_base_hex": "0x1800",
+          "length": 2048,
+          "bank": 114,
+          "bank_hex": "0x72",
+          "banks": [
+            114,
+            115
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170279,
+            "length": 1,
+            "end_exclusive": 170280,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170278,
+            "length": 4,
+            "end_exclusive": 170282,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1B",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 116736,
+              "length": 1024,
+              "end_exclusive": 117760,
+              "confidence": "confirmed"
+            },
+            {
+              "space": "chr",
+              "offset": 117760,
+              "length": 1024,
+              "end_exclusive": 118784,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-pattern-table-reference",
+            "resource_id": "shared-chr-bank",
+            "banks": [
+              114,
+              115
+            ]
+          }
+        },
+        {
+          "register": 2,
+          "ppu_base": 0,
+          "ppu_base_hex": "0x0000",
+          "length": 1024,
+          "bank": 112,
+          "bank_hex": "0x70",
+          "banks": [
+            112
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170283,
+            "length": 1,
+            "end_exclusive": 170284,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170282,
+            "length": 4,
+            "end_exclusive": 170286,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1C",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 114688,
+              "length": 1024,
+              "end_exclusive": 115712,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 112
+          }
+        },
+        {
+          "register": 3,
+          "ppu_base": 1024,
+          "ppu_base_hex": "0x0400",
+          "length": 1024,
+          "bank": 113,
+          "bank_hex": "0x71",
+          "banks": [
+            113
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170287,
+            "length": 1,
+            "end_exclusive": 170288,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170286,
+            "length": 4,
+            "end_exclusive": 170290,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1D",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 115712,
+              "length": 1024,
+              "end_exclusive": 116736,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 113
+          }
+        },
+        {
+          "register": 4,
+          "ppu_base": 2048,
+          "ppu_base_hex": "0x0800",
+          "length": 1024,
+          "bank": 114,
+          "bank_hex": "0x72",
+          "banks": [
+            114
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170291,
+            "length": 1,
+            "end_exclusive": 170292,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170290,
+            "length": 4,
+            "end_exclusive": 170294,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1E",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 116736,
+              "length": 1024,
+              "end_exclusive": 117760,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 114
+          }
+        },
+        {
+          "register": 5,
+          "ppu_base": 3072,
+          "ppu_base_hex": "0x0C00",
+          "length": 1024,
+          "bank": 115,
+          "bank_hex": "0x73",
+          "banks": [
+            115
+          ],
+          "bank_address": {
+            "space": "prg",
+            "offset": 170295,
+            "length": 1,
+            "end_exclusive": 170296,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170294,
+            "length": 4,
+            "end_exclusive": 170298,
+            "confidence": "confirmed"
+          },
+          "shadow": "0x1F",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "映射到这个窗口的 CHR bank 号",
+            "constraints": [
+              "一个立即数字节，$00-$FF",
+              "2 KiB 窗口（寄存器 0/1）忽略最低位，成对取 bank",
+              "换 bank 会整片换掉本窗口的图形，nametable 的 tile 编号不变"
+            ]
+          },
+          "storage": "chr-rom",
+          "addresses": [
+            {
+              "space": "chr",
+              "offset": 117760,
+              "length": 1024,
+              "end_exclusive": 118784,
+              "confidence": "confirmed"
+            }
+          ],
+          "patterns": {
+            "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+            "resource_id": "shared-chr-bank",
+            "bank": 115
+          }
+        }
+      ],
+      "background_pattern_base": 0,
+      "sprite_pattern_base": 4096,
+      "palette": {
+        "address": {
+          "space": "prg",
+          "offset": 171251,
+          "length": 16,
+          "end_exclusive": 171267,
+          "confidence": "confirmed"
+        },
+        "entries": [
+          15,
+          17,
+          33,
+          1,
+          15,
+          55,
+          39,
+          23,
+          15,
+          15,
+          15,
+          15,
+          15,
+          48,
+          38,
+          15
+        ],
+        "entries_hex": [
+          "0x0F",
+          "0x11",
+          "0x21",
+          "0x01",
+          "0x0F",
+          "0x37",
+          "0x27",
+          "0x17",
+          "0x0F",
+          "0x0F",
+          "0x0F",
+          "0x0F",
+          "0x0F",
+          "0x30",
+          "0x26",
+          "0x0F"
+        ]
+      },
+      "palette_note": "背景与精灵两组都装同一份 16 字节",
+      "elements": [
+        {
+          "id": "mountains",
+          "label": "蓝色山形背景",
+          "kind": "background",
+          "territory": {
+            "top": 2,
+            "left": 0,
+            "bottom": 15,
+            "right": 31,
+            "rows": 14,
+            "columns": 32,
+            "attribute_group": 0
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 16,
+            "width": 256,
+            "height": 112
+          },
+          "bounds": {
+            "top": 2,
+            "left": 0,
+            "bottom": 15,
+            "right": 31,
+            "rows": 14,
+            "columns": 32
+          },
+          "pixel_bounds": {
+            "x": 0,
+            "y": 16,
+            "width": 256,
+            "height": 112
+          },
+          "tile_count": 165,
+          "distinct_tiles": 74,
+          "tile_range": [
+            14,
+            191
+          ],
+          "palette_groups": [
+            0
+          ],
+          "fade": "mountains",
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 259136,
+            "length": 448,
+            "end_exclusive": 259584,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "palette": {
+            "group": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171251,
+              "length": 4,
+              "end_exclusive": 171255,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        },
+        {
+          "id": "title-letters",
+          "label": "「重装机兵」标题字",
+          "kind": "background",
+          "territory": {
+            "top": 8,
+            "left": 0,
+            "bottom": 11,
+            "right": 31,
+            "rows": 4,
+            "columns": 32,
+            "attribute_group": 1
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 64,
+            "width": 256,
+            "height": 32
+          },
+          "bounds": {
+            "top": 8,
+            "left": 4,
+            "bottom": 11,
+            "right": 27,
+            "rows": 4,
+            "columns": 24
+          },
+          "pixel_bounds": {
+            "x": 32,
+            "y": 64,
+            "width": 192,
+            "height": 32
+          },
+          "tile_count": 96,
+          "distinct_tiles": 96,
+          "tile_range": [
+            1,
+            130
+          ],
+          "palette_groups": [
+            1
+          ],
+          "fade": "title-letters",
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 259328,
+            "length": 128,
+            "end_exclusive": 259456,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "palette": {
+            "group": 1,
+            "address": {
+              "space": "prg",
+              "offset": 171255,
+              "length": 4,
+              "end_exclusive": 171259,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        },
+        {
+          "id": "push-start",
+          "label": "PUSH START",
+          "kind": "text",
+          "territory": {
+            "top": 19,
+            "left": 0,
+            "bottom": 19,
+            "right": 31,
+            "rows": 1,
+            "columns": 32,
+            "attribute_group": 3
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 152,
+            "width": 256,
+            "height": 8
+          },
+          "bounds": {
+            "top": 19,
+            "left": 11,
+            "bottom": 19,
+            "right": 20,
+            "rows": 1,
+            "columns": 10
+          },
+          "pixel_bounds": {
+            "x": 88,
+            "y": 152,
+            "width": 80,
+            "height": 8
+          },
+          "tile_count": 9,
+          "distinct_tiles": 7,
+          "tile_range": [
+            80,
+            114
+          ],
+          "palette_groups": [
+            3
+          ],
+          "fade": "captions",
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 259680,
+            "length": 32,
+            "end_exclusive": 259712,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "text": {
+            "value": "PUSH START",
+            "row": 19,
+            "column": 11,
+            "glyphs": {
+              "P": 96,
+              "U": 97,
+              "S": 80,
+              "H": 114,
+              " ": 0,
+              "T": 81,
+              "A": 83,
+              "R": 82
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "这一行显示的字",
+              "constraints": [
+                "最多 10 个字符，写不下就得先缩短",
+                "只能用本屏字形表里有的字符；没有字模的字打不出来",
+                "改字改的是 nametable 的 tile 编号，行列位置不动"
+              ]
+            }
+          },
+          "palette": {
+            "group": 3,
+            "address": {
+              "space": "prg",
+              "offset": 171263,
+              "length": 4,
+              "end_exclusive": 171267,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        },
+        {
+          "id": "copyright-publisher",
+          "label": "© 1996 DATA EAST",
+          "kind": "text",
+          "territory": {
+            "top": 23,
+            "left": 0,
+            "bottom": 23,
+            "right": 31,
+            "rows": 1,
+            "columns": 32,
+            "attribute_group": 3
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 184,
+            "width": 256,
+            "height": 8
+          },
+          "bounds": {
+            "top": 23,
+            "left": 8,
+            "bottom": 23,
+            "right": 23,
+            "rows": 1,
+            "columns": 16
+          },
+          "pixel_bounds": {
+            "x": 64,
+            "y": 184,
+            "width": 128,
+            "height": 8
+          },
+          "tile_count": 13,
+          "distinct_tiles": 9,
+          "tile_range": [
+            64,
+            252
+          ],
+          "palette_groups": [
+            3
+          ],
+          "fade": "captions",
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 259808,
+            "length": 32,
+            "end_exclusive": 259840,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "text": {
+            "value": "© 1996 DATA EAST",
+            "row": 23,
+            "column": 8,
+            "glyphs": {
+              "©": 64,
+              " ": 0,
+              "1": 65,
+              "9": 66,
+              "6": 252,
+              "D": 98,
+              "A": 83,
+              "T": 81,
+              "E": 99,
+              "S": 80
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "这一行显示的字",
+              "constraints": [
+                "最多 16 个字符，写不下就得先缩短",
+                "只能用本屏字形表里有的字符；没有字模的字打不出来",
+                "改字改的是 nametable 的 tile 编号，行列位置不动"
+              ]
+            }
+          },
+          "palette": {
+            "group": 3,
+            "address": {
+              "space": "prg",
+              "offset": 171263,
+              "length": 4,
+              "end_exclusive": 171267,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        },
+        {
+          "id": "copyright-developer",
+          "label": "© 1996 CREA-TECH",
+          "kind": "text",
+          "territory": {
+            "top": 25,
+            "left": 0,
+            "bottom": 25,
+            "right": 31,
+            "rows": 1,
+            "columns": 32,
+            "attribute_group": 3
+          },
+          "territory_pixel_bounds": {
+            "x": 0,
+            "y": 200,
+            "width": 256,
+            "height": 8
+          },
+          "bounds": {
+            "top": 25,
+            "left": 8,
+            "bottom": 25,
+            "right": 23,
+            "rows": 1,
+            "columns": 16
+          },
+          "pixel_bounds": {
+            "x": 64,
+            "y": 200,
+            "width": 128,
+            "height": 8
+          },
+          "tile_count": 14,
+          "distinct_tiles": 11,
+          "tile_range": [
+            64,
+            252
+          ],
+          "palette_groups": [
+            3
+          ],
+          "fade": "captions",
+          "tile_bytes_address": {
+            "space": "chr",
+            "offset": 259872,
+            "length": 32,
+            "end_exclusive": 259904,
+            "confidence": "confirmed"
+          },
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "tile 编号与属性组",
+            "constraints": [
+              "整页 1 KiB 定长，逐格原位改写，不能增删格子",
+              "tile 编号必须落在本屏已映射的图案表里，否则画出别的图形",
+              "属性表一格管 4×4 tile，改一格会同时影响相邻元素"
+            ]
+          },
+          "text": {
+            "value": "© 1996 CREA-TECH",
+            "row": 25,
+            "column": 8,
+            "glyphs": {
+              "©": 64,
+              " ": 0,
+              "1": 65,
+              "9": 66,
+              "6": 252,
+              "C": 115,
+              "R": 82,
+              "E": 99,
+              "A": 83,
+              "-": 95,
+              "T": 81,
+              "H": 114
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "这一行显示的字",
+              "constraints": [
+                "最多 16 个字符，写不下就得先缩短",
+                "只能用本屏字形表里有的字符；没有字模的字打不出来",
+                "改字改的是 nametable 的 tile 编号，行列位置不动"
+              ]
+            }
+          },
+          "palette": {
+            "group": 3,
+            "address": {
+              "space": "prg",
+              "offset": 171263,
+              "length": 4,
+              "end_exclusive": 171267,
+              "confidence": "confirmed"
+            },
+            "editable": {
+              "status": "editable-fixed-size",
+              "what": "4 个 NES 颜色号",
+              "constraints": [
+                "每字节 $00-$3F",
+                "第 0 色是整屏通用色，四组共用同一个字节"
+              ]
+            }
+          }
+        }
+      ],
+      "font": {
+        "kind": "opportunistic",
+        "storage": "chr-rom",
+        "blank_tile": 0,
+        "glyphs": {
+          " ": 0,
+          "-": 95,
+          "1": 65,
+          "6": 252,
+          "9": 66,
+          "A": 83,
+          "C": 115,
+          "D": 98,
+          "E": 99,
+          "H": 114,
+          "P": 96,
+          "R": 82,
+          "S": 80,
+          "T": 81,
+          "U": 97,
+          "©": 64
+        },
+        "confidence": "confirmed",
+        "note": "字模散落在本屏映射的 CHR-ROM 图形页里，只有用到的那几个字存在，不可扩展"
+      },
+      "parameters": [
+        {
+          "id": "scroll_x",
+          "label": "横向滚动影子 $13",
+          "value": 5,
+          "address": {
+            "space": "prg",
+            "offset": 170299,
+            "length": 1,
+            "end_exclusive": 170300,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170298,
+            "length": 4,
+            "end_exclusive": 170302,
+            "confidence": "confirmed"
+          },
+          "note": "写进滚动影子 $13",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表"
+            ]
+          }
+        },
+        {
+          "id": "scroll_y_start",
+          "label": "纵向滚动起点 $15",
+          "value": 192,
+          "address": {
+            "space": "prg",
+            "offset": 170303,
+            "length": 1,
+            "end_exclusive": 170304,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170302,
+            "length": 4,
+            "end_exclusive": 170306,
+            "confidence": "confirmed"
+          },
+          "note": "归位动画的起点：$15 越大窗口越往下，画面看上去越靠上；随后逐帧 INC $15",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "paired_parameters": [
+              "scroll_y_start",
+              "scroll_y_end"
+            ],
+            "iteration_count": "((scroll_y_end - scroll_y_start - 1) & 255) + 1",
+            "frame_wait_calls_per_iteration": 2,
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "input checked after two frame waits and before increment",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "scroll_y_end",
+          "label": "纵向滚动终点",
+          "value": 240,
+          "address": {
+            "space": "prg",
+            "offset": 170382,
+            "length": 1,
+            "end_exclusive": 170383,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170379,
+            "length": 4,
+            "end_exclusive": 170383,
+            "confidence": "confirmed"
+          },
+          "note": "$15 先递增再比较；终点低于起点会跨零，相等则递增256次，每次等两帧",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "paired_parameters": [
+              "scroll_y_start",
+              "scroll_y_end"
+            ],
+            "iteration_count": "((scroll_y_end - scroll_y_start - 1) & 255) + 1",
+            "frame_wait_calls_per_iteration": 2,
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "input checked after two frame waits and before increment",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "segment_frames",
+          "label": "每段等待上限",
+          "value": 90,
+          "address": {
+            "space": "prg",
+            "offset": 170602,
+            "length": 1,
+            "end_exclusive": 170603,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170601,
+            "length": 2,
+            "end_exclusive": 170603,
+            "confidence": "confirmed"
+          },
+          "note": "$5A = 90 次等帧；先等待再递减，0表示256次；检测到按键可提前返回",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "iteration_count": "value if value != 0 else 256",
+            "unit": "calls to D01D per wait segment or per fade step",
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "segment_frames may return on input; fade steps do not poll input",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "fade_frames_title_letters",
+          "label": "金字渐显每步帧数",
+          "value": 6,
+          "address": {
+            "space": "prg",
+            "offset": 170337,
+            "length": 1,
+            "end_exclusive": 170338,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170336,
+            "length": 4,
+            "end_exclusive": 170340,
+            "confidence": "confirmed"
+          },
+          "note": "$06 = 6 帧；渐变例程每步之间等这么多帧，4 步共 4×N 帧",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "iteration_count": "value if value != 0 else 256",
+            "unit": "calls to D01D per wait segment or per fade step",
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "segment_frames may return on input; fade steps do not poll input",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "fade_frames_mountains",
+          "label": "山形渐显每步帧数",
+          "value": 6,
+          "address": {
+            "space": "prg",
+            "offset": 170436,
+            "length": 1,
+            "end_exclusive": 170437,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170435,
+            "length": 4,
+            "end_exclusive": 170439,
+            "confidence": "confirmed"
+          },
+          "note": "同上，驱动蓝色山形那一段",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "iteration_count": "value if value != 0 else 256",
+            "unit": "calls to D01D per wait segment or per fade step",
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "segment_frames may return on input; fade steps do not poll input",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        },
+        {
+          "id": "fade_frames_captions",
+          "label": "文字渐显每步帧数",
+          "value": 3,
+          "address": {
+            "space": "prg",
+            "offset": 170478,
+            "length": 1,
+            "end_exclusive": 170479,
+            "confidence": "confirmed"
+          },
+          "instruction_address": {
+            "space": "prg",
+            "offset": 170477,
+            "length": 4,
+            "end_exclusive": 170481,
+            "confidence": "confirmed"
+          },
+          "note": "同上，驱动 PUSH START 与版权行那一段",
+          "editable": {
+            "status": "editable-fixed-size",
+            "what": "一个立即数字节",
+            "constraints": [
+              "$00-$FF；改的是指令操作数，不是独立数据表",
+              "先执行再比较计数：0倒数为256次；滚动起终点相等为256次递增"
+            ]
+          },
+          "semantic_edit_domain": {
+            "status": "confirmed",
+            "allowed_integer_values": {
+              "minimum": 0,
+              "maximum": 255
+            },
+            "iteration_count": "value if value != 0 else 256",
+            "unit": "calls to D01D per wait segment or per fade step",
+            "preconditions": [
+              "normal frame/NMI service remains active"
+            ],
+            "early_exit": "segment_frames may return on input; fade steps do not poll input",
+            "evidence": [
+              "project/evidence/reverse-engineering/title-timing-value-domain/observations.json"
+            ]
+          }
+        }
+      ],
+      "fades": [
+        {
+          "id": "title-letters",
+          "label": "BG 调色板 1：金色「重装机兵」字体",
+          "address": {
+            "space": "prg",
+            "offset": 171203,
+            "length": 16,
+            "end_exclusive": 171219,
+            "confidence": "confirmed"
+          },
+          "step_bytes": 4,
+          "max_frames_per_segment": 90,
+          "palette_ram_targets": [
+            "0x0284"
+          ],
+          "palette_offsets": [
+            4
+          ],
+          "steps": [
+            [
+              15,
+              7,
+              15,
+              15
+            ],
+            [
+              15,
+              23,
+              7,
+              15
+            ],
+            [
+              15,
+              39,
+              23,
+              7
+            ],
+            [
+              15,
+              55,
+              39,
+              23
+            ]
+          ]
+        },
+        {
+          "id": "mountains",
+          "label": "BG/精灵调色板 0：蓝色山形",
+          "address": {
+            "space": "prg",
+            "offset": 171219,
+            "length": 16,
+            "end_exclusive": 171235,
+            "confidence": "confirmed"
+          },
+          "step_bytes": 4,
+          "max_frames_per_segment": 90,
+          "palette_ram_targets": [
+            "0x0280",
+            "0x0290"
+          ],
+          "palette_offsets": [
+            0,
+            16
+          ],
+          "steps": [
+            [
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              15,
+              15,
+              1,
+              15
+            ],
+            [
+              15,
+              1,
+              17,
+              15
+            ],
+            [
+              15,
+              17,
+              33,
+              1
+            ]
+          ]
+        },
+        {
+          "id": "captions",
+          "label": "BG/精灵调色板 3：PUSH START 与版权行",
+          "address": {
+            "space": "prg",
+            "offset": 171235,
+            "length": 16,
+            "end_exclusive": 171251,
+            "confidence": "confirmed"
+          },
+          "step_bytes": 4,
+          "max_frames_per_segment": 90,
+          "palette_ram_targets": [
+            "0x028C",
+            "0x029C"
+          ],
+          "palette_offsets": [
+            12,
+            28
+          ],
+          "steps": [
+            [
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              15,
+              0,
+              6,
+              15
+            ],
+            [
+              15,
+              16,
+              22,
+              15
+            ],
+            [
+              15,
+              48,
+              38,
+              15
+            ]
+          ]
+        }
+      ],
+      "scroll": {
+        "x_shadow": 5,
+        "y_shadow": 192,
+        "y_shadow_end": 240
+      },
+      "sprites": {
+        "address": {
+          "space": "prg",
+          "offset": 171267,
+          "length": 76,
+          "end_exclusive": 171343,
+          "confidence": "confirmed"
+        },
+        "stride": 3,
+        "terminator": 255,
+        "terminator_address": {
+          "space": "prg",
+          "offset": 171342,
+          "length": 1,
+          "end_exclusive": 171343,
+          "confidence": "confirmed"
+        },
+        "headroom_bytes": 0,
+        "editable": {
+          "status": "editable-fixed-size",
+          "what": "每条的行、列、tile",
+          "constraints": [
+            "表尾紧贴可执行代码，条目数只能减不能增",
+            "行 × 8 − 1 必须 < 240，列 × 8 − 5 必须 < 256，否则精灵跑出屏幕",
+            "tile 取自精灵图案表；本屏映射的是 CHR 页 $72/$73",
+            "OAM 一屏最多 64 个精灵"
+          ]
+        },
+        "row_scale": 8,
+        "row_bias": -1,
+        "column_scale": 8,
+        "column_bias": -5,
+        "count": 25,
+        "entries": [
+          {
+            "index": 0,
+            "row": 8,
+            "column": 5,
+            "tile": 210,
+            "tile_hex": "0xD2",
+            "y": 63,
+            "x": 35,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171267,
+              "length": 3,
+              "end_exclusive": 171270,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 1,
+            "row": 8,
+            "column": 6,
+            "tile": 211,
+            "tile_hex": "0xD3",
+            "y": 63,
+            "x": 43,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171270,
+              "length": 3,
+              "end_exclusive": 171273,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 2,
+            "row": 8,
+            "column": 15,
+            "tile": 214,
+            "tile_hex": "0xD6",
+            "y": 63,
+            "x": 115,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171273,
+              "length": 3,
+              "end_exclusive": 171276,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 3,
+            "row": 8,
+            "column": 16,
+            "tile": 215,
+            "tile_hex": "0xD7",
+            "y": 63,
+            "x": 123,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171276,
+              "length": 3,
+              "end_exclusive": 171279,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 4,
+            "row": 8,
+            "column": 18,
+            "tile": 193,
+            "tile_hex": "0xC1",
+            "y": 63,
+            "x": 139,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171279,
+              "length": 3,
+              "end_exclusive": 171282,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 5,
+            "row": 8,
+            "column": 21,
+            "tile": 197,
+            "tile_hex": "0xC5",
+            "y": 63,
+            "x": 163,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171282,
+              "length": 3,
+              "end_exclusive": 171285,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 6,
+            "row": 8,
+            "column": 22,
+            "tile": 198,
+            "tile_hex": "0xC6",
+            "y": 63,
+            "x": 171,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171285,
+              "length": 3,
+              "end_exclusive": 171288,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 7,
+            "row": 8,
+            "column": 28,
+            "tile": 205,
+            "tile_hex": "0xCD",
+            "y": 63,
+            "x": 219,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171288,
+              "length": 3,
+              "end_exclusive": 171291,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 8,
+            "row": 9,
+            "column": 4,
+            "tile": 216,
+            "tile_hex": "0xD8",
+            "y": 71,
+            "x": 27,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171291,
+              "length": 3,
+              "end_exclusive": 171294,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 9,
+            "row": 9,
+            "column": 16,
+            "tile": 203,
+            "tile_hex": "0xCB",
+            "y": 71,
+            "x": 123,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171294,
+              "length": 3,
+              "end_exclusive": 171297,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 10,
+            "row": 9,
+            "column": 17,
+            "tile": 195,
+            "tile_hex": "0xC3",
+            "y": 71,
+            "x": 131,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171297,
+              "length": 3,
+              "end_exclusive": 171300,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 11,
+            "row": 9,
+            "column": 18,
+            "tile": 196,
+            "tile_hex": "0xC4",
+            "y": 71,
+            "x": 139,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171300,
+              "length": 3,
+              "end_exclusive": 171303,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 12,
+            "row": 9,
+            "column": 24,
+            "tile": 204,
+            "tile_hex": "0xCC",
+            "y": 71,
+            "x": 187,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171303,
+              "length": 3,
+              "end_exclusive": 171306,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 13,
+            "row": 9,
+            "column": 26,
+            "tile": 199,
+            "tile_hex": "0xC7",
+            "y": 71,
+            "x": 203,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171306,
+              "length": 3,
+              "end_exclusive": 171309,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 14,
+            "row": 9,
+            "column": 27,
+            "tile": 200,
+            "tile_hex": "0xC8",
+            "y": 71,
+            "x": 211,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171309,
+              "length": 3,
+              "end_exclusive": 171312,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 15,
+            "row": 10,
+            "column": 4,
+            "tile": 217,
+            "tile_hex": "0xD9",
+            "y": 79,
+            "x": 27,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171312,
+              "length": 3,
+              "end_exclusive": 171315,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 16,
+            "row": 10,
+            "column": 10,
+            "tile": 212,
+            "tile_hex": "0xD4",
+            "y": 79,
+            "x": 75,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171315,
+              "length": 3,
+              "end_exclusive": 171318,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 17,
+            "row": 10,
+            "column": 11,
+            "tile": 213,
+            "tile_hex": "0xD5",
+            "y": 79,
+            "x": 83,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171318,
+              "length": 3,
+              "end_exclusive": 171321,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 18,
+            "row": 10,
+            "column": 26,
+            "tile": 201,
+            "tile_hex": "0xC9",
+            "y": 79,
+            "x": 203,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171321,
+              "length": 3,
+              "end_exclusive": 171324,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 19,
+            "row": 10,
+            "column": 27,
+            "tile": 202,
+            "tile_hex": "0xCA",
+            "y": 79,
+            "x": 211,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171324,
+              "length": 3,
+              "end_exclusive": 171327,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 20,
+            "row": 11,
+            "column": 10,
+            "tile": 194,
+            "tile_hex": "0xC2",
+            "y": 87,
+            "x": 75,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171327,
+              "length": 3,
+              "end_exclusive": 171330,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 21,
+            "row": 11,
+            "column": 21,
+            "tile": 206,
+            "tile_hex": "0xCE",
+            "y": 87,
+            "x": 163,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171330,
+              "length": 3,
+              "end_exclusive": 171333,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 22,
+            "row": 11,
+            "column": 22,
+            "tile": 207,
+            "tile_hex": "0xCF",
+            "y": 87,
+            "x": 171,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171333,
+              "length": 3,
+              "end_exclusive": 171336,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 23,
+            "row": 11,
+            "column": 28,
+            "tile": 208,
+            "tile_hex": "0xD0",
+            "y": 87,
+            "x": 219,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171336,
+              "length": 3,
+              "end_exclusive": 171339,
+              "confidence": "confirmed"
+            }
+          },
+          {
+            "index": 24,
+            "row": 12,
+            "column": 28,
+            "tile": 209,
+            "tile_hex": "0xD1",
+            "y": 95,
+            "x": 219,
+            "attributes": 0,
+            "address": {
+              "space": "prg",
+              "offset": 171339,
+              "length": 3,
+              "end_exclusive": 171342,
+              "confidence": "confirmed"
+            }
+          }
+        ]
+      },
+      "timeline": {
+        "label": "演出时间轴",
+        "note": "第 0 帧是打开显示的那一帧。每步的帧数由立即数参数决定，改参数时间轴跟着变；步与步的顺序是 $B848 的直线代码，改不了。",
+        "initial": {
+          "palette_fill": 15,
+          "sprites_visible": false,
+          "background_visible": true,
+          "scroll_x_parameter": "scroll_x",
+          "scroll_y_parameter": "scroll_y_start",
+          "setup": [
+            {
+              "id": "blackout",
+              "label": "整版调色板压成 $0F",
+              "note": "$0280-$029F 全填 $0F 并置上传标记；标题的每一组颜色都是从这里渐显上来的",
+              "address": {
+                "space": "prg",
+                "offset": 170204,
+                "length": 14,
+                "end_exclusive": 170218,
+                "confidence": "confirmed"
+              }
+            },
+            {
+              "id": "render_on",
+              "label": "打开显示",
+              "note": "$D066：PPUMASK 影子 $12 置显示位并等一帧；时间轴第 0 帧就是这一帧",
+              "address": {
+                "space": "prg",
+                "offset": 170306,
+                "length": 3,
+                "end_exclusive": 170309,
+                "confidence": "confirmed"
+              }
+            },
+            {
+              "id": "mask",
+              "label": "背景开、精灵关",
+              "note": "$12 置 bit1（左 8 像素也画背景）、清 bit4（先不画精灵）",
+              "address": {
+                "space": "prg",
+                "offset": 170309,
+                "length": 8,
+                "end_exclusive": 170317,
+                "confidence": "confirmed"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "id": "wait-open",
+            "kind": "wait",
+            "label": "黑屏等待",
+            "frames_parameter": "segment_frames",
+            "note": "整屏还是全黑的：颜色都还是 $0F",
+            "address": {
+              "space": "prg",
+              "offset": 170317,
+              "length": 3,
+              "end_exclusive": 170320,
+              "confidence": "confirmed"
+            },
+            "frames": 90
+          },
+          {
+            "id": "fade-title-letters",
+            "kind": "fade",
+            "label": "金色标题字渐显",
+            "fade": "title-letters",
+            "frames_parameter": "fade_frames_title_letters",
+            "address": {
+              "space": "prg",
+              "offset": 170340,
+              "length": 3,
+              "end_exclusive": 170343,
+              "confidence": "confirmed"
+            },
+            "steps": 4,
+            "frames": 24
+          },
+          {
+            "id": "wait-after-letters",
+            "kind": "wait",
+            "label": "等待",
+            "frames_parameter": "segment_frames",
+            "address": {
+              "space": "prg",
+              "offset": 170343,
+              "length": 3,
+              "end_exclusive": 170346,
+              "confidence": "confirmed"
+            },
+            "frames": 90
+          },
+          {
+            "id": "scroll-down",
+            "kind": "scroll",
+            "label": "画面上移归位",
+            "axis": "y",
+            "from_parameter": "scroll_y_start",
+            "to_parameter": "scroll_y_end",
+            "frames_per_increment": 2,
+            "reset_value": 0,
+            "note": "每两帧 INC $15 一次：窗口下移、画面上移 48 像素到最终位置，加到终点后 $15 归 0；240 与 0 是同一处，看不出跳变",
+            "address": {
+              "space": "prg",
+              "offset": 170377,
+              "length": 2,
+              "end_exclusive": 170379,
+              "confidence": "confirmed"
+            },
+            "reset_address": {
+              "space": "prg",
+              "offset": 170385,
+              "length": 4,
+              "end_exclusive": 170389,
+              "confidence": "confirmed"
+            },
+            "frames": 96
+          },
+          {
+            "id": "sprites-on",
+            "kind": "sprites",
+            "label": "精灵开始显示",
+            "sprites_visible": true,
+            "note": "归位结束才置 PPUMASK bit4；此前精灵一直在 OAM 里，只是没画",
+            "address": {
+              "space": "prg",
+              "offset": 170389,
+              "length": 6,
+              "end_exclusive": 170395,
+              "confidence": "confirmed"
+            },
+            "frames": 0
+          },
+          {
+            "id": "wait-before-mountains",
+            "kind": "wait",
+            "label": "等待",
+            "frames_parameter": "segment_frames",
+            "address": {
+              "space": "prg",
+              "offset": 170395,
+              "length": 3,
+              "end_exclusive": 170398,
+              "confidence": "confirmed"
+            },
+            "frames": 90
+          },
+          {
+            "id": "fade-mountains",
+            "kind": "fade",
+            "label": "蓝色山形渐显",
+            "fade": "mountains",
+            "frames_parameter": "fade_frames_mountains",
+            "address": {
+              "space": "prg",
+              "offset": 170439,
+              "length": 3,
+              "end_exclusive": 170442,
+              "confidence": "confirmed"
+            },
+            "steps": 4,
+            "frames": 24
+          },
+          {
+            "id": "wait-before-captions",
+            "kind": "wait",
+            "label": "等待",
+            "frames_parameter": "segment_frames",
+            "address": {
+              "space": "prg",
+              "offset": 170442,
+              "length": 3,
+              "end_exclusive": 170445,
+              "confidence": "confirmed"
+            },
+            "frames": 90
+          },
+          {
+            "id": "fade-captions",
+            "kind": "fade",
+            "label": "PUSH START 与版权行渐显",
+            "fade": "captions",
+            "frames_parameter": "fade_frames_captions",
+            "address": {
+              "space": "prg",
+              "offset": 170481,
+              "length": 3,
+              "end_exclusive": 170484,
+              "confidence": "confirmed"
+            },
+            "steps": 4,
+            "frames": 12
+          },
+          {
+            "id": "hold-end",
+            "kind": "hold",
+            "label": "终态等键",
+            "note": "$B9F4 是无超时的等键循环；本 ROM 没有待机演示",
+            "address": {
+              "space": "prg",
+              "offset": 170484,
+              "length": 4,
+              "end_exclusive": 170488,
+              "confidence": "confirmed"
+            },
+            "frames": 0
+          }
+        ],
+        "total_frames": 516
+      },
+      "timing": {
+        "max_frames_per_segment": 90,
+        "standby_demo": null,
+        "standby_demo_note": "$B9F4 是无超时的等键循环，本 ROM 没有待机演示"
+      }
+    }
+  ]
+}

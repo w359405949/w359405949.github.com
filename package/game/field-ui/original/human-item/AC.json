@@ -1,0 +1,264 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:AC",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 172,
+    "id_hex": "0xAC",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 172,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-item",
+      "name": "人类道具",
+      "owner": "human",
+      "first_id": 153,
+      "first_id_hex": "0x99",
+      "last_id": 202,
+      "last_id_hex": "0xCA"
+    },
+    "price": {
+      "raw_code": 23,
+      "raw_code_hex": "0x17",
+      "available": true,
+      "value": 100,
+      "source": {
+        "space": "prg",
+        "offset": 140541,
+        "length": 1,
+        "end_exclusive": 140542,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-decoded",
+      "registered": true,
+      "dispatch_index": 4,
+      "dispatch_index_hex": "0x04",
+      "target_required": true,
+      "handler": {
+        "cpu_address": 42505,
+        "cpu_address_hex": "0xA609",
+        "prg_offset": 206345,
+        "prg_offset_hex": "0x032609",
+        "source": {
+          "space": "prg",
+          "offset": 206345,
+          "length": 1,
+          "end_exclusive": 206346,
+          "cpu_address": 42505,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "heal-hp",
+        "label": "回复 HP",
+        "detail": "按四档基础值加随机 0–15 点"
+      },
+      "consumption": "on-success",
+      "parameters": [
+        {
+          "id": "hp",
+          "label": "HP 回复",
+          "value": 4119,
+          "minimum": 4119,
+          "maximum": 4134,
+          "formula": "base + ($37 & $0F)",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206132,
+              "length": 1,
+              "end_exclusive": 206133,
+              "confidence": "confirmed",
+              "width": 1
+            },
+            {
+              "space": "prg",
+              "offset": 206136,
+              "length": 1,
+              "end_exclusive": 206137,
+              "confidence": "confirmed",
+              "width": 1
+            }
+          ]
+        }
+      ],
+      "text_outputs": [
+        {
+          "role": "invalid-target-message",
+          "label": "目标选择失败提示",
+          "condition": "目标状态不允许使用",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 22,
+            "record_id_hex": "0x16",
+            "node_id": "record:02:022"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 205961,
+              "length": 1,
+              "end_exclusive": 205962,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "success-message",
+          "label": "HP 回复成功提示",
+          "condition": "目标可治疗",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 89,
+            "record_id_hex": "0x59",
+            "node_id": "record:02:089"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206346,
+              "length": 1,
+              "end_exclusive": 206347,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "invalid-target-message",
+          "label": "死亡目标不可治疗提示",
+          "condition": "目标死亡标志为 $FF",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 118,
+            "record_id_hex": "0x76",
+            "node_id": "record:02:118"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206151,
+              "length": 1,
+              "end_exclusive": 206152,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205796,
+          "length": 1,
+          "end_exclusive": 205797,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 205838,
+          "length": 2,
+          "end_exclusive": 205840,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_AC.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-decoded",
+      "registered": true,
+      "dispatch_index": 21,
+      "dispatch_index_hex": "0x15",
+      "result_selector": 146,
+      "result_selector_hex": "0x92",
+      "inventory_domain": "human",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "已确认主要使用提示；后续伤害、闪避与状态结果由战斗状态动态选择",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 77,
+            "record_id_hex": "0x4D",
+            "node_id": "record:0A:077"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146425,
+              "length": 1,
+              "end_exclusive": 146426,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190622,
+          "length": 1,
+          "end_exclusive": 190623,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 190656,
+          "length": 1,
+          "end_exclusive": 190657,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss",
+        "human_hp_guard": "$6466=$FF, $6467=$00",
+        "vehicle_slot_confirmation": "save-state 2 + $65CF=$CB displays 传真 in the battle tool menu"
+      }
+    },
+    "semantic_status": "field-use-decoded"
+  }
+}

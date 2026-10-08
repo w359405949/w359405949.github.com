@@ -1,0 +1,1467 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.transition",
+  "resource_id": "transition:00:47",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 71,
+    "id_hex": "0x47",
+    "x": 66,
+    "y": 231,
+    "coordinate_source": {
+      "space": "prg",
+      "offset": 125456,
+      "length": 2,
+      "end_exclusive": 125458
+    },
+    "coordinate_offsets": {
+      "x": 125456,
+      "y": 125457
+    },
+    "destination_scene_id": 191,
+    "destination_scene_id_hex": "0xBF",
+    "destination_x": 26,
+    "destination_y": 26,
+    "camera_origin_x": 18,
+    "camera_origin_y": 19,
+    "encoded_x": 26,
+    "encoded_y": 26,
+    "source": {
+      "space": "prg",
+      "offset": 125685,
+      "length": 3,
+      "end_exclusive": 125688
+    },
+    "field_offsets": {
+      "destination_scene_id": 125685,
+      "destination_x": 125686,
+      "destination_y": 125687
+    },
+    "raw": [
+      191,
+      26,
+      26
+    ],
+    "raw_hex": "BF 1A 1A",
+    "transition_kind": "world-location-entrance",
+    "transition_kind_label": "世界地图地点入口",
+    "appearance_condition": {
+      "label": "山火扑灭后出现入口",
+      "flags": [
+        112,
+        118,
+        119
+      ],
+      "flag_labels": {
+        "112": "发现山火",
+        "118": "山火燃烧",
+        "119": "山火已扑灭"
+      },
+      "triggers": [
+        {
+          "flag": 112,
+          "label": "发现山火",
+          "href": "?view=interaction-67-61",
+          "reference": "story-interaction-script:61"
+        },
+        {
+          "flag": 118,
+          "label": "发现山火后与角色交谈",
+          "scene_id": 134,
+          "object": "actor:0",
+          "reference": "scene-actor:86:00"
+        },
+        {
+          "flag": 119,
+          "label": "面对火场使用消火栓",
+          "href": "?view=items&record=160",
+          "reference": "item-entry:A0"
+        }
+      ],
+      "states": [
+        {
+          "id": "before",
+          "label": "未起火 · 不可进",
+          "flags": [],
+          "enterable": false,
+          "cells": []
+        },
+        {
+          "id": "burning",
+          "label": "燃烧中 · 不可进",
+          "flags": [
+            118
+          ],
+          "enterable": false,
+          "cells": [
+            {
+              "x": 60,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 61,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 60,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 61,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 60,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 61,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 60,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 61,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 67,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 64,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 65,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 66,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 67,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 65,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 66,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 67,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 64,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 65,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 66,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 67,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 68,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 69,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 70,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 71,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 68,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 69,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 70,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 71,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 68,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 69,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 70,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 71,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 68,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 69,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 70,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 71,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 72,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 73,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 74,
+              "y": 228,
+              "metatile_id": 93
+            },
+            {
+              "x": 75,
+              "y": 228,
+              "metatile_id": 94
+            },
+            {
+              "x": 72,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 73,
+              "y": 229,
+              "metatile_id": 93
+            },
+            {
+              "x": 74,
+              "y": 229,
+              "metatile_id": 94
+            },
+            {
+              "x": 72,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 73,
+              "y": 230,
+              "metatile_id": 94
+            },
+            {
+              "x": 74,
+              "y": 230,
+              "metatile_id": 93
+            },
+            {
+              "x": 72,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 73,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 74,
+              "y": 231,
+              "metatile_id": 94
+            },
+            {
+              "x": 75,
+              "y": 231,
+              "metatile_id": 93
+            },
+            {
+              "x": 60,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 61,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 61,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 65,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 66,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 67,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 64,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 65,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 66,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 67,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 65,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 66,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 67,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 64,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 65,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 66,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 67,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 68,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 69,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 70,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 71,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 68,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 69,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 70,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 71,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 68,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 69,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 70,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 71,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 68,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 69,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 70,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 71,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 72,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 73,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 74,
+              "y": 232,
+              "metatile_id": 93
+            },
+            {
+              "x": 75,
+              "y": 232,
+              "metatile_id": 94
+            },
+            {
+              "x": 72,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 73,
+              "y": 233,
+              "metatile_id": 93
+            },
+            {
+              "x": 74,
+              "y": 233,
+              "metatile_id": 94
+            },
+            {
+              "x": 72,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 73,
+              "y": 234,
+              "metatile_id": 94
+            },
+            {
+              "x": 74,
+              "y": 234,
+              "metatile_id": 93
+            },
+            {
+              "x": 72,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 73,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 74,
+              "y": 235,
+              "metatile_id": 94
+            },
+            {
+              "x": 75,
+              "y": 235,
+              "metatile_id": 93
+            },
+            {
+              "x": 60,
+              "y": 236,
+              "metatile_id": 93
+            },
+            {
+              "x": 61,
+              "y": 236,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 236,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 236,
+              "metatile_id": 94
+            },
+            {
+              "x": 61,
+              "y": 237,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 237,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 237,
+              "metatile_id": 93
+            },
+            {
+              "x": 62,
+              "y": 238,
+              "metatile_id": 93
+            },
+            {
+              "x": 63,
+              "y": 238,
+              "metatile_id": 94
+            },
+            {
+              "x": 62,
+              "y": 239,
+              "metatile_id": 94
+            },
+            {
+              "x": 63,
+              "y": 239,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 236,
+              "metatile_id": 93
+            },
+            {
+              "x": 65,
+              "y": 236,
+              "metatile_id": 94
+            },
+            {
+              "x": 66,
+              "y": 236,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 237,
+              "metatile_id": 94
+            },
+            {
+              "x": 65,
+              "y": 237,
+              "metatile_id": 93
+            },
+            {
+              "x": 64,
+              "y": 238,
+              "metatile_id": 93
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "已灭火 · 可进",
+          "flags": [
+            118,
+            119
+          ],
+          "enterable": true,
+          "cells": [
+            {
+              "x": 60,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 60,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 60,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 60,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 230,
+              "metatile_id": 160
+            },
+            {
+              "x": 67,
+              "y": 230,
+              "metatile_id": 161
+            },
+            {
+              "x": 64,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 231,
+              "metatile_id": 168
+            },
+            {
+              "x": 67,
+              "y": 231,
+              "metatile_id": 169
+            },
+            {
+              "x": 68,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 75,
+              "y": 228,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 229,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 230,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 75,
+              "y": 231,
+              "metatile_id": 48
+            },
+            {
+              "x": 60,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 67,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 68,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 69,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 70,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 71,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 75,
+              "y": 232,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 233,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 234,
+              "metatile_id": 48
+            },
+            {
+              "x": 72,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 73,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 74,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 75,
+              "y": 235,
+              "metatile_id": 48
+            },
+            {
+              "x": 60,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 61,
+              "y": 237,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 237,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 237,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 238,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 238,
+              "metatile_id": 48
+            },
+            {
+              "x": 62,
+              "y": 239,
+              "metatile_id": 48
+            },
+            {
+              "x": 63,
+              "y": 239,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 66,
+              "y": 236,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 237,
+              "metatile_id": 48
+            },
+            {
+              "x": 65,
+              "y": 237,
+              "metatile_id": 48
+            },
+            {
+              "x": 64,
+              "y": 238,
+              "metatile_id": 48
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 122190,
+          "length": 32
+        },
+        {
+          "space": "prg",
+          "offset": 122222,
+          "length": 32
+        }
+      ]
+    },
+    "resource_id": "transition:00:47",
+    "scene_id": 0,
+    "scene_id_hex": "0x00"
+  }
+}

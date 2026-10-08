@@ -1,0 +1,64 @@
+:root {
+  /* 表面：从最深的应用底色到最亮的浮层，四级足够，不要再加中间值 */
+  --surface-0: #17181a;   /* 应用底色 */
+  --surface-1: #1d1f21;   /* 面板、表格背景 */
+  --surface-2: #232629;   /* 表头、工具条、悬停行 */
+  --surface-3: #2b2f33;   /* 输入框、浮层、选中行 */
+
+  /* 描边：分隔线与容器边框分开，避免整页被同一条线切碎 */
+  --border: #34383d;      /* 容器边框 */
+  --border-soft: #26292c; /* 行分隔线 */
+  --border-strong: #454a50;
+
+  /* 文本：三级，数据用 --text，其余递减 */
+  --text: #e6e8ea;
+  --text-dim: #a0a6ab;
+  --text-faint: #6f767c;
+
+  /* 强调：焦点、选中与链接；链接在深色选中行使用更亮的颜色。 */
+  --accent: #4c9be8;
+  --link: #73baff;
+  --accent-soft: #35618c;
+  --accent-quiet: #24384d;
+
+  /* 语义：脏、成功、警告、错误。面积必须小 */
+  --dirty: #d8a24a;
+  --ok: #62b47a;
+  --warn: #d8a24a;
+  --danger: #e0685f;
+
+  /* 兼容旧规则的别名。视图样式仍在引用它们，一并指到新刻度上，
+     这样 3000 行视图样式不必逐条改写就能跟着换肤。 */
+  --bg: var(--surface-0);
+  --panel: var(--surface-1);
+  --panel-2: var(--surface-2);
+  --line: var(--border);
+  --line-soft: var(--border-soft);
+  --muted: var(--text-dim);
+  --dim: var(--text-faint);
+  --acid: var(--accent);
+  --cyan: var(--accent);
+  --amber: var(--warn);
+  --red: var(--danger);
+
+  /* 字号刻度：五级。低于 --fs-xs 的字号不允许出现 */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-lg: 15px;
+  --fs-xl: 18px;
+
+  /* 密度 */
+  --row-h: 26px;
+  --cell-x: 10px;
+  --cell-y: 5px;
+
+  /* 外壳尺寸 */
+  --topbar-h: 40px;
+  --statusbar-h: 26px;
+  --sidebar-w: 280px;
+  --mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Courier New", monospace;
+  --sans: "Segoe UI", Inter, "Microsoft YaHei UI", "PingFang SC", sans-serif;
+}
+
+a:any-link { color: var(--link); }

@@ -1,0 +1,768 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.application-command",
+  "resource_id": "application-command:35",
+  "edit_policy": "mutable",
+  "document": {
+    "command_id": 53,
+    "command_id_hex": "0x35",
+    "label": "下一等级经验值终端",
+    "kind": "experience-information-terminal",
+    "semantic_status": "confirmed-purpose",
+    "hypothesis": "标题和逐队员循环明确显示升级所需经验值。",
+    "evidence": "场景 $02/$18/$68/$DE 的 4 个调查点；record:02:081/$079、layout record:03:023；helper $EEAA -> bank $10:$A199。",
+    "application_script_pointer_entry": {
+      "space": "prg",
+      "offset": 201595,
+      "length": 2,
+      "end_exclusive": 201597,
+      "cpu_address": 45947,
+      "confidence": "confirmed"
+    },
+    "application_script": {
+      "space": "prg",
+      "offset": 204316,
+      "length": 16,
+      "end_exclusive": 204332,
+      "cpu_address": 48668,
+      "confidence": "type-confirmed",
+      "format": "application-command-script-envelope",
+      "boundary": "next-distinct-application-script-pointer",
+      "boundary_note": "物理包络可含内嵌表或处理体；读取不以此边界停止。",
+      "source_reference": {
+        "source_id": "application-command:35",
+        "resource_id": "application-command:35",
+        "access": "read-reference"
+      }
+    },
+    "dialogue_flow": {
+      "schema": "metalmaxcn.application-dialogue-flow",
+      "id": "application-dialogue-flow:35",
+      "command_id": 53,
+      "command_id_hex": "0x35",
+      "entry_segment_id": "application-dialogue-flow:35:segment:00",
+      "initial_text_region": 6,
+      "source": "application-command-script-read-references",
+      "source_application_script": {
+        "space": "prg",
+        "offset": 204316,
+        "length": 16,
+        "end_exclusive": 204332,
+        "cpu_address": 48668,
+        "confidence": "type-confirmed"
+      },
+      "runtime_read_range": {
+        "offset": 204317,
+        "length": 16,
+        "end_exclusive": 204333,
+        "references": [
+          {
+            "source_id": "application-command:35",
+            "resource_id": "application-command:35",
+            "source_relative_offset": 1,
+            "offset": 204317,
+            "length": 15,
+            "access": "read-reference"
+          },
+          {
+            "source_id": "application-command:1B",
+            "resource_id": "application-command:1B",
+            "source_relative_offset": 0,
+            "offset": 204332,
+            "length": 1,
+            "access": "read-reference"
+          }
+        ],
+        "confirmation_status": "candidate",
+        "runtime_execution_confirmed": false,
+        "scope": "conditional-decoding-of-segments-starting-in-physical-envelope",
+        "read_window_end_exclusive": 204800,
+        "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+      },
+      "entry_bias": 1,
+      "entry_prefix_hex": "FE",
+      "runtime_record_slots": null,
+      "ui_context": {
+        "frame_layout_record": "record:03:007",
+        "frame_shift": 576,
+        "prefix_record": "record:0C:000",
+        "prefix_cursor": 652,
+        "text_cursor": 654,
+        "logical_output_base": 652,
+        "runtime_line_column": 14,
+        "text_state_setup": {
+          "resource_id": "code-module:application-dialogue-flow-vm",
+          "offset": 519016,
+          "length": 11,
+          "confirmation_status": "confirmed",
+          "scope": "text-state-setup-only"
+        },
+        "ram_output_base": "$628C",
+        "reset_policy": "per-record"
+      },
+      "segments": [
+        {
+          "id": "application-dialogue-flow:35:segment:00",
+          "index": 0,
+          "script_relative_offset": 1,
+          "prg_offset": 204317,
+          "length": 16,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:35:segment:00:callback:204319:read:0",
+              "kind": "text-record",
+              "segment_id": "application-dialogue-flow:35:segment:00",
+              "segment_index": 0,
+              "prg_offset": 204322,
+              "script_relative_offset": 6,
+              "region_id": 2,
+              "region_id_hex": "0x02",
+              "record_id": 81,
+              "record_id_hex": "0x51",
+              "record": "record:02:081",
+              "source": "application-callback-record",
+              "reader": {
+                "resource_id": "application-command",
+                "offset": 200269,
+                "cpu_address": 44621
+              },
+              "action_index": 0,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 6,
+                  "offset": 204322,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "region_selection": {
+                "kind": "callback-fixed-region",
+                "value": 2,
+                "sources": [
+                  {
+                    "id": "bank-18-entry-AE4D",
+                    "resource_id": "application-command",
+                    "space": "prg",
+                    "offset": 200269,
+                    "length": 9,
+                    "bytes_hex": "205AA0200FEB203AF5"
+                  },
+                  {
+                    "id": "next-byte",
+                    "resource_id": "code-module:application-dialogue-flow-vm",
+                    "space": "prg",
+                    "offset": 196698,
+                    "length": 15,
+                    "bytes_hex": "2062A0A000B1BA60E6BAD002E6BB60"
+                  },
+                  {
+                    "id": "region02",
+                    "resource_id": "item-entry",
+                    "space": "prg",
+                    "offset": 518927,
+                    "length": 7,
+                    "bytes_hex": "85CCA90285CD60"
+                  }
+                ],
+                "confirmation_status": "confirmed",
+                "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              },
+              "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+              "confirmation_status": "candidate",
+              "runtime_execution_confirmed": false,
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 205,
+              "operands": [
+                23
+              ],
+              "prg_offset": 204317,
+              "length": 2,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 1,
+                  "offset": 204317,
+                  "length": 2,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 210,
+              "operands": [
+                77,
+                174
+              ],
+              "prg_offset": 204319,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 3,
+                  "offset": 204319,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "script_consumption": {
+                "helper": "bank-18-entry-AE4D",
+                "source_ids": [
+                  "bank-18-entry-AE4D",
+                  "next-byte",
+                  "region02"
+                ],
+                "reads": [
+                  {
+                    "relative_offset": 0,
+                    "role": "text-record",
+                    "region": 2,
+                    "reader": {
+                      "resource_id": "application-command",
+                      "offset": 200269,
+                      "cpu_address": 44621
+                    }
+                  }
+                ],
+                "continuation": "return",
+                "pointer_effect": {
+                  "kind": "advance",
+                  "bytes": 1
+                },
+                "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+                "confirmation_status": "confirmed",
+                "confirmed_scope": "conditional-reader-only",
+                "sources": [
+                  {
+                    "id": "bank-18-entry-AE4D",
+                    "resource_id": "application-command",
+                    "space": "prg",
+                    "offset": 200269,
+                    "length": 9,
+                    "bytes_hex": "205AA0200FEB203AF5"
+                  },
+                  {
+                    "id": "next-byte",
+                    "resource_id": "code-module:application-dialogue-flow-vm",
+                    "space": "prg",
+                    "offset": 196698,
+                    "length": 15,
+                    "bytes_hex": "2062A0A000B1BA60E6BAD002E6BB60"
+                  },
+                  {
+                    "id": "region02",
+                    "resource_id": "item-entry",
+                    "space": "prg",
+                    "offset": 518927,
+                    "length": 7,
+                    "bytes_hex": "85CCA90285CD60"
+                  }
+                ],
+                "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              }
+            },
+            {
+              "opcode": 210,
+              "operands": [
+                170,
+                238
+              ],
+              "prg_offset": 204323,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 7,
+                  "offset": 204323,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 211,
+              "operands": [
+                90,
+                12
+              ],
+              "prg_offset": 204326,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 10,
+                  "offset": 204326,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 247,
+              "operands": [
+                0,
+                254,
+                254
+              ],
+              "prg_offset": 204329,
+              "length": 4,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 13,
+                  "offset": 204329,
+                  "length": 3,
+                  "access": "read-reference"
+                },
+                {
+                  "source_id": "application-command:1B",
+                  "resource_id": "application-command:1B",
+                  "source_relative_offset": 0,
+                  "offset": 204332,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 247,
+            "opcode_hex": "0xF7",
+            "operands": [
+              0,
+              254,
+              254
+            ],
+            "operands_hex": [
+              "0x00",
+              "0xFE",
+              "0xFE"
+            ],
+            "expected_operand_count": 3,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 13,
+            "prg_offset": 204329,
+            "successor_segment_ids": [],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [
+              254,
+              254
+            ],
+            "successor_operand_indices": [
+              1,
+              2
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:35",
+                "resource_id": "application-command:35",
+                "source_relative_offset": 14,
+                "offset": 204330,
+                "length": 2,
+                "access": "read-reference"
+              },
+              {
+                "source_id": "application-command:1B",
+                "resource_id": "application-command:1B",
+                "source_relative_offset": 0,
+                "offset": 204332,
+                "length": 1,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 0,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 204317,
+            "end_exclusive": 204333,
+            "length": 16,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 1,
+              "offset": 204317,
+              "length": 15,
+              "access": "read-reference"
+            },
+            {
+              "source_id": "application-command:1B",
+              "resource_id": "application-command:1B",
+              "source_relative_offset": 0,
+              "offset": 204332,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "envelope_boundary": {
+            "offset": 204332,
+            "conclusion": "continued-through-next-entry",
+            "confirmation_status": "candidate",
+            "reading_rule_status": "confirmed",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "extension_length": 1
+          },
+          "execution_roles": [
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 1,
+              "offset": 204317,
+              "length": 5,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 6,
+              "offset": 204322,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "callback-text-record",
+              "confirmation_status": "confirmed",
+              "reader": {
+                "resource_id": "application-command",
+                "offset": 200269,
+                "cpu_address": 44621
+              },
+              "confirmed_scope": "conditional-callback-reader",
+              "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+              "evidence": [
+                "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              ]
+            },
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 7,
+              "offset": 204323,
+              "length": 9,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:1B",
+              "resource_id": "application-command:1B",
+              "source_relative_offset": 0,
+              "offset": 204332,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 37,
+            "segment_selector": 0,
+            "pointer_before_first_read": 48668,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": [
+            {
+              "relative_offset": 0,
+              "role": "text-record",
+              "region": 2,
+              "reader": {
+                "resource_id": "application-command",
+                "offset": 200269,
+                "cpu_address": 44621
+              },
+              "id": "application-dialogue-flow:35:segment:00:callback:204319:read:0",
+              "helper": "bank-18-entry-AE4D",
+              "prg_offset": 204322,
+              "value": 81,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 6,
+                  "offset": 204322,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+              "confirmation_status": "confirmed",
+              "confirmed_scope": "conditional-callback-reader",
+              "runtime_execution_confirmed": false,
+              "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+            }
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "application-dialogue-flow:35:segment:00:callback:204319:read:0",
+          "kind": "text-record",
+          "segment_id": "application-dialogue-flow:35:segment:00",
+          "segment_index": 0,
+          "prg_offset": 204322,
+          "script_relative_offset": 6,
+          "region_id": 2,
+          "region_id_hex": "0x02",
+          "record_id": 81,
+          "record_id_hex": "0x51",
+          "record": "record:02:081",
+          "source": "application-callback-record",
+          "reader": {
+            "resource_id": "application-command",
+            "offset": 200269,
+            "cpu_address": 44621
+          },
+          "action_index": 0,
+          "read_references": [
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 6,
+              "offset": 204322,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "region_selection": {
+            "kind": "callback-fixed-region",
+            "value": 2,
+            "sources": [
+              {
+                "id": "bank-18-entry-AE4D",
+                "resource_id": "application-command",
+                "space": "prg",
+                "offset": 200269,
+                "length": 9,
+                "bytes_hex": "205AA0200FEB203AF5"
+              },
+              {
+                "id": "next-byte",
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "space": "prg",
+                "offset": 196698,
+                "length": 15,
+                "bytes_hex": "2062A0A000B1BA60E6BAD002E6BB60"
+              },
+              {
+                "id": "region02",
+                "resource_id": "item-entry",
+                "space": "prg",
+                "offset": 518927,
+                "length": 7,
+                "bytes_hex": "85CCA90285CD60"
+              }
+            ],
+            "confirmation_status": "confirmed",
+            "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+          },
+          "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+          "confirmation_status": "candidate",
+          "runtime_execution_confirmed": false,
+          "reachability": "graph-reachable"
+        }
+      ],
+      "step_order_semantics": "physical-source-order-not-runtime-timeline",
+      "graph": {
+        "edge_semantics": "candidate-opcode-specific-segment-links",
+        "timeline_inferred": false,
+        "edges": [],
+        "entry_reachable_segment_ids": [
+          "application-dialogue-flow:35:segment:00"
+        ],
+        "unreached_segment_ids": []
+      },
+      "summary": {
+        "segments": 1,
+        "dialogue_steps": 1,
+        "static_text_steps": 1,
+        "runtime_text_steps": 0,
+        "resolved_runtime_text_steps": 0,
+        "unique_resolved_slot_records": 0,
+        "indexed_segment_tables": 0,
+        "indexed_segment_alternatives": 0,
+        "unique_static_records": 1,
+        "confirmed_graph_edges": 0,
+        "candidate_graph_edges": 0,
+        "entry_graph_reachable_segments": 1,
+        "entry_graph_unreached_segments": 0,
+        "truncated_segments": 0,
+        "reviewed_segments": 1,
+        "non_script_segments": 0,
+        "callback_reads": 1
+      },
+      "non_script_segments": [],
+      "alternate_text_reads": [],
+      "segment_role_reviews": [
+        {
+          "id": "application-dialogue-flow:35:segment:00",
+          "index": 0,
+          "prg_offset": 204317,
+          "length": 16,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 1,
+              "offset": 204317,
+              "length": 5,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 6,
+              "offset": 204322,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "callback-text-record",
+              "confirmation_status": "confirmed",
+              "reader": {
+                "resource_id": "application-command",
+                "offset": 200269,
+                "cpu_address": 44621
+              },
+              "confirmed_scope": "conditional-callback-reader",
+              "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+              "evidence": [
+                "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              ]
+            },
+            {
+              "source_id": "application-command:35",
+              "resource_id": "application-command:35",
+              "source_relative_offset": 7,
+              "offset": 204323,
+              "length": 9,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:1B",
+              "resource_id": "application-command:1B",
+              "source_relative_offset": 0,
+              "offset": 204332,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 204317,
+            "end_exclusive": 204333,
+            "length": 16,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 37,
+            "segment_selector": 0,
+            "pointer_before_first_read": 48668,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [
+            {
+              "relative_offset": 0,
+              "role": "text-record",
+              "region": 2,
+              "reader": {
+                "resource_id": "application-command",
+                "offset": 200269,
+                "cpu_address": 44621
+              },
+              "id": "application-dialogue-flow:35:segment:00:callback:204319:read:0",
+              "helper": "bank-18-entry-AE4D",
+              "prg_offset": 204322,
+              "value": 81,
+              "read_references": [
+                {
+                  "source_id": "application-command:35",
+                  "resource_id": "application-command:35",
+                  "source_relative_offset": 6,
+                  "offset": 204322,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "execution_condition": "Callback enters AE4D with BA/BB at the D2 address high byte; A05A increments BA/BB before the read.",
+              "confirmation_status": "confirmed",
+              "confirmed_scope": "conditional-callback-reader",
+              "runtime_execution_confirmed": false,
+              "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+            }
+          ],
+          "callback_continuation": null
+        }
+      ]
+    },
+    "shared_script_command_ids": [
+      53
+    ],
+    "shared_script_command_ids_hex": [
+      "0x35"
+    ],
+    "investigation_command_resource_id": "investigation-command:35",
+    "instance_resources": [
+      "investigation:02:02",
+      "investigation:18:0E",
+      "investigation:68:30",
+      "investigation:DE:73"
+    ]
+  }
+}

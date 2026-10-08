@@ -1,0 +1,2429 @@
+{
+  "schema": "metalmaxcn.module-asset.character-growth",
+  "resource_id": "character-growth",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via mixed-service owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.character-growth",
+    "module_id": "character-growth",
+    "record_count": 461,
+    "writeback_components": [
+      {
+        "fragment_id": "character-growth.random-growth-increment-table",
+        "source": {
+          "space": "prg",
+          "offset": 162518,
+          "length": 16,
+          "end_exclusive": 162534
+        }
+      },
+      {
+        "fragment_id": "character-growth.experience-thresholds",
+        "source": {
+          "space": "prg",
+          "offset": 162882,
+          "length": 297,
+          "end_exclusive": 163179
+        }
+      },
+      {
+        "fragment_id": "character-growth.max-hp-contributions",
+        "source": {
+          "space": "prg",
+          "offset": 163179,
+          "length": 49,
+          "end_exclusive": 163228
+        }
+      },
+      {
+        "fragment_id": "character-growth.battle-skill-requirements",
+        "source": {
+          "space": "prg",
+          "offset": 163521,
+          "length": 99,
+          "end_exclusive": 163620
+        }
+      },
+      {
+        "fragment_id": "character-growth.repair-skill-requirements",
+        "source": {
+          "space": "prg",
+          "offset": 163620,
+          "length": 99,
+          "end_exclusive": 163719
+        }
+      },
+      {
+        "fragment_id": "character-growth.driving-skill-requirements",
+        "source": {
+          "space": "prg",
+          "offset": 163719,
+          "length": 99,
+          "end_exclusive": 163818
+        }
+      }
+    ],
+    "random_growth_increment_tiers": [
+      {
+        "roll": 0,
+        "increment_tier": 0
+      },
+      {
+        "roll": 1,
+        "increment_tier": 0
+      },
+      {
+        "roll": 2,
+        "increment_tier": 0
+      },
+      {
+        "roll": 3,
+        "increment_tier": 0
+      },
+      {
+        "roll": 4,
+        "increment_tier": 0
+      },
+      {
+        "roll": 5,
+        "increment_tier": 0
+      },
+      {
+        "roll": 6,
+        "increment_tier": 1
+      },
+      {
+        "roll": 7,
+        "increment_tier": 1
+      },
+      {
+        "roll": 8,
+        "increment_tier": 1
+      },
+      {
+        "roll": 9,
+        "increment_tier": 1
+      },
+      {
+        "roll": 10,
+        "increment_tier": 2
+      },
+      {
+        "roll": 11,
+        "increment_tier": 2
+      },
+      {
+        "roll": 12,
+        "increment_tier": 2
+      },
+      {
+        "roll": 13,
+        "increment_tier": 3
+      },
+      {
+        "roll": 14,
+        "increment_tier": 3
+      },
+      {
+        "roll": 15,
+        "increment_tier": 4
+      }
+    ],
+    "experience_thresholds": [
+      {
+        "current_level": 1,
+        "next_level": 2,
+        "required_total_experience": 10,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 2,
+        "next_level": 3,
+        "required_total_experience": 30,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 3,
+        "next_level": 4,
+        "required_total_experience": 70,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 4,
+        "next_level": 5,
+        "required_total_experience": 140,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 5,
+        "next_level": 6,
+        "required_total_experience": 260,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 6,
+        "next_level": 7,
+        "required_total_experience": 460,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 7,
+        "next_level": 8,
+        "required_total_experience": 780,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 8,
+        "next_level": 9,
+        "required_total_experience": 1270,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 9,
+        "next_level": 10,
+        "required_total_experience": 1990,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 10,
+        "next_level": 11,
+        "required_total_experience": 3020,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 11,
+        "next_level": 12,
+        "required_total_experience": 4450,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 12,
+        "next_level": 13,
+        "required_total_experience": 6410,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 13,
+        "next_level": 14,
+        "required_total_experience": 9060,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 14,
+        "next_level": 15,
+        "required_total_experience": 12600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 15,
+        "next_level": 16,
+        "required_total_experience": 17280,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 16,
+        "next_level": 17,
+        "required_total_experience": 23390,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 17,
+        "next_level": 18,
+        "required_total_experience": 31250,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 18,
+        "next_level": 19,
+        "required_total_experience": 41200,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 19,
+        "next_level": 20,
+        "required_total_experience": 53580,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 20,
+        "next_level": 21,
+        "required_total_experience": 68710,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 21,
+        "next_level": 22,
+        "required_total_experience": 86890,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 22,
+        "next_level": 23,
+        "required_total_experience": 108400,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 23,
+        "next_level": 24,
+        "required_total_experience": 133500,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 24,
+        "next_level": 25,
+        "required_total_experience": 162430,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 25,
+        "next_level": 26,
+        "required_total_experience": 195410,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 26,
+        "next_level": 27,
+        "required_total_experience": 232640,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 27,
+        "next_level": 28,
+        "required_total_experience": 274290,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 28,
+        "next_level": 29,
+        "required_total_experience": 320500,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 29,
+        "next_level": 30,
+        "required_total_experience": 371380,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 30,
+        "next_level": 31,
+        "required_total_experience": 427000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 31,
+        "next_level": 32,
+        "required_total_experience": 487400,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 32,
+        "next_level": 33,
+        "required_total_experience": 552600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 33,
+        "next_level": 34,
+        "required_total_experience": 622600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 34,
+        "next_level": 35,
+        "required_total_experience": 697300,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 35,
+        "next_level": 36,
+        "required_total_experience": 776600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 36,
+        "next_level": 37,
+        "required_total_experience": 860400,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 37,
+        "next_level": 38,
+        "required_total_experience": 948600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 38,
+        "next_level": 39,
+        "required_total_experience": 1041000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 39,
+        "next_level": 40,
+        "required_total_experience": 1137700,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 40,
+        "next_level": 41,
+        "required_total_experience": 1238500,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 41,
+        "next_level": 42,
+        "required_total_experience": 1343500,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 42,
+        "next_level": 43,
+        "required_total_experience": 1452600,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 43,
+        "next_level": 44,
+        "required_total_experience": 1565700,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 44,
+        "next_level": 45,
+        "required_total_experience": 1682700,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 45,
+        "next_level": 46,
+        "required_total_experience": 1803500,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 46,
+        "next_level": 47,
+        "required_total_experience": 1928000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 47,
+        "next_level": 48,
+        "required_total_experience": 2056000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 48,
+        "next_level": 49,
+        "required_total_experience": 2188000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 49,
+        "next_level": 50,
+        "required_total_experience": 2324000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 50,
+        "next_level": 51,
+        "required_total_experience": 2464000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 51,
+        "next_level": 52,
+        "required_total_experience": 2604000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 52,
+        "next_level": 53,
+        "required_total_experience": 2744000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 53,
+        "next_level": 54,
+        "required_total_experience": 2884000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 54,
+        "next_level": 55,
+        "required_total_experience": 3024000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 55,
+        "next_level": 56,
+        "required_total_experience": 3164000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 56,
+        "next_level": 57,
+        "required_total_experience": 3304000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 57,
+        "next_level": 58,
+        "required_total_experience": 3444000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 58,
+        "next_level": 59,
+        "required_total_experience": 3584000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 59,
+        "next_level": 60,
+        "required_total_experience": 3734000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 60,
+        "next_level": 61,
+        "required_total_experience": 3884000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 61,
+        "next_level": 62,
+        "required_total_experience": 4034000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 62,
+        "next_level": 63,
+        "required_total_experience": 4184000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 63,
+        "next_level": 64,
+        "required_total_experience": 4334000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 64,
+        "next_level": 65,
+        "required_total_experience": 4484000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 65,
+        "next_level": 66,
+        "required_total_experience": 4634000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 66,
+        "next_level": 67,
+        "required_total_experience": 4784000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 67,
+        "next_level": 68,
+        "required_total_experience": 4934000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 68,
+        "next_level": 69,
+        "required_total_experience": 5084000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 69,
+        "next_level": 70,
+        "required_total_experience": 5244000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 70,
+        "next_level": 71,
+        "required_total_experience": 5404000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 71,
+        "next_level": 72,
+        "required_total_experience": 5564000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 72,
+        "next_level": 73,
+        "required_total_experience": 5724000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 73,
+        "next_level": 74,
+        "required_total_experience": 5884000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 74,
+        "next_level": 75,
+        "required_total_experience": 6044000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 75,
+        "next_level": 76,
+        "required_total_experience": 6204000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 76,
+        "next_level": 77,
+        "required_total_experience": 6364000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 77,
+        "next_level": 78,
+        "required_total_experience": 6524000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 78,
+        "next_level": 79,
+        "required_total_experience": 6684000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 79,
+        "next_level": 80,
+        "required_total_experience": 6844000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 80,
+        "next_level": 81,
+        "required_total_experience": 7004000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 81,
+        "next_level": 82,
+        "required_total_experience": 7164000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 82,
+        "next_level": 83,
+        "required_total_experience": 7324000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 83,
+        "next_level": 84,
+        "required_total_experience": 7484000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 84,
+        "next_level": 85,
+        "required_total_experience": 7644000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 85,
+        "next_level": 86,
+        "required_total_experience": 7804000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 86,
+        "next_level": 87,
+        "required_total_experience": 7964000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 87,
+        "next_level": 88,
+        "required_total_experience": 8124000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 88,
+        "next_level": 89,
+        "required_total_experience": 8284000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 89,
+        "next_level": 90,
+        "required_total_experience": 8444000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 90,
+        "next_level": 91,
+        "required_total_experience": 8604000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 91,
+        "next_level": 92,
+        "required_total_experience": 8764000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 92,
+        "next_level": 93,
+        "required_total_experience": 8924000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 93,
+        "next_level": 94,
+        "required_total_experience": 9084000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 94,
+        "next_level": 95,
+        "required_total_experience": 9244000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 95,
+        "next_level": 96,
+        "required_total_experience": 9404000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 96,
+        "next_level": 97,
+        "required_total_experience": 9564000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 97,
+        "next_level": 98,
+        "required_total_experience": 9724000,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 98,
+        "next_level": 99,
+        "required_total_experience": 9999999,
+        "is_level_cap": false
+      },
+      {
+        "current_level": 99,
+        "next_level": null,
+        "required_total_experience": 9999999,
+        "is_level_cap": true
+      }
+    ],
+    "max_hp_contributions": [
+      {
+        "level": 0,
+        "contribution": 30
+      },
+      {
+        "level": 1,
+        "contribution": 15
+      },
+      {
+        "level": 2,
+        "contribution": 35
+      },
+      {
+        "level": 3,
+        "contribution": 15
+      },
+      {
+        "level": 4,
+        "contribution": 25
+      },
+      {
+        "level": 5,
+        "contribution": 25
+      },
+      {
+        "level": 6,
+        "contribution": 25
+      },
+      {
+        "level": 7,
+        "contribution": 10
+      },
+      {
+        "level": 8,
+        "contribution": 35
+      },
+      {
+        "level": 9,
+        "contribution": 30
+      },
+      {
+        "level": 10,
+        "contribution": 20
+      },
+      {
+        "level": 11,
+        "contribution": 35
+      },
+      {
+        "level": 12,
+        "contribution": 35
+      },
+      {
+        "level": 13,
+        "contribution": 30
+      },
+      {
+        "level": 14,
+        "contribution": 55
+      },
+      {
+        "level": 15,
+        "contribution": 20
+      },
+      {
+        "level": 16,
+        "contribution": 40
+      },
+      {
+        "level": 17,
+        "contribution": 35
+      },
+      {
+        "level": 18,
+        "contribution": 50
+      },
+      {
+        "level": 19,
+        "contribution": 60
+      },
+      {
+        "level": 20,
+        "contribution": 60
+      },
+      {
+        "level": 21,
+        "contribution": 50
+      },
+      {
+        "level": 22,
+        "contribution": 20
+      },
+      {
+        "level": 23,
+        "contribution": 70
+      },
+      {
+        "level": 24,
+        "contribution": 70
+      },
+      {
+        "level": 25,
+        "contribution": 70
+      },
+      {
+        "level": 26,
+        "contribution": 60
+      },
+      {
+        "level": 27,
+        "contribution": 90
+      },
+      {
+        "level": 28,
+        "contribution": 60
+      },
+      {
+        "level": 29,
+        "contribution": 60
+      },
+      {
+        "level": 30,
+        "contribution": 90
+      },
+      {
+        "level": 31,
+        "contribution": 40
+      },
+      {
+        "level": 32,
+        "contribution": 60
+      },
+      {
+        "level": 33,
+        "contribution": 100
+      },
+      {
+        "level": 34,
+        "contribution": 110
+      },
+      {
+        "level": 35,
+        "contribution": 110
+      },
+      {
+        "level": 36,
+        "contribution": 60
+      },
+      {
+        "level": 37,
+        "contribution": 110
+      },
+      {
+        "level": 38,
+        "contribution": 100
+      },
+      {
+        "level": 39,
+        "contribution": 120
+      },
+      {
+        "level": 40,
+        "contribution": 80
+      },
+      {
+        "level": 41,
+        "contribution": 90
+      },
+      {
+        "level": 42,
+        "contribution": 90
+      },
+      {
+        "level": 43,
+        "contribution": 120
+      },
+      {
+        "level": 44,
+        "contribution": 200
+      },
+      {
+        "level": 45,
+        "contribution": 200
+      },
+      {
+        "level": 46,
+        "contribution": 100
+      },
+      {
+        "level": 47,
+        "contribution": 100
+      },
+      {
+        "level": 48,
+        "contribution": 150
+      }
+    ],
+    "skill_requirement_curves": {
+      "battle_skill": {
+        "primary_attribute": "strength",
+        "requirements": [
+          {
+            "resulting_skill_level": 1,
+            "primary_attribute_increment": 15,
+            "vitality_increment": 15
+          },
+          {
+            "resulting_skill_level": 2,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 3,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 4,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 5,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 6,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 7,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 8,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 9,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 10,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 11,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 12,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 13,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 14,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 15,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 16,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 17,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 18,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 19,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 20,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 21,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 22,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 23,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 24,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 25,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 26,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 27,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 28,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 29,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 30,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 31,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 32,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 33,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 34,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 35,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 36,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 37,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 38,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 39,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 40,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 41,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 42,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 43,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 44,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 45,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 46,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 47,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 48,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 49,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 50,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 51,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 52,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 53,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 54,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 55,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 56,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 4
+          },
+          {
+            "resulting_skill_level": 57,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 58,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 59,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 60,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 61,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 62,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 63,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 64,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 65,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 66,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 67,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 68,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 69,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 70,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 71,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 72,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 73,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 74,
+            "primary_attribute_increment": 5,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 75,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 76,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 77,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 78,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 79,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 80,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 81,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 82,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 83,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 84,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 85,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 86,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 87,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 88,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 89,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 90,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 91,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 92,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 93,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 94,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 95,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 96,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 97,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 98,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 99,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          }
+        ]
+      },
+      "repair_skill": {
+        "primary_attribute": "intelligence",
+        "requirements": [
+          {
+            "resulting_skill_level": 1,
+            "primary_attribute_increment": 15,
+            "vitality_increment": 10
+          },
+          {
+            "resulting_skill_level": 2,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 3,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 4,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 5,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 6,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 7,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 8,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 9,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 10,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 11,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 12,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 13,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 14,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 15,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 16,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 17,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 18,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 19,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 20,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 21,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 22,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 23,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 24,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 25,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 26,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 27,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 28,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 29,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 30,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 31,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 32,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 33,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 34,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 35,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 36,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 37,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 38,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 39,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 40,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 41,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 42,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 43,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 44,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 45,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 46,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 47,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 48,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 49,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 50,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 51,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 52,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 53,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 54,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 55,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 56,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 57,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 58,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 59,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 60,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 61,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 62,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 63,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 64,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 65,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 66,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 67,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 68,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 69,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 70,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 71,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 72,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 73,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 74,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 75,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 76,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 77,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 78,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 79,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 80,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 81,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 82,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 83,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 84,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 85,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 86,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 87,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 88,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 89,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 90,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 91,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 92,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 93,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 94,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 95,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 96,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 97,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 98,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 99,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          }
+        ]
+      },
+      "driving_skill": {
+        "primary_attribute": "speed",
+        "requirements": [
+          {
+            "resulting_skill_level": 1,
+            "primary_attribute_increment": 15,
+            "vitality_increment": 10
+          },
+          {
+            "resulting_skill_level": 2,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 3,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 4,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 5,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 6,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 7,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 8,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 9,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 10,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 11,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 12,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 13,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 14,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 15,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 16,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 17,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 18,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 19,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 20,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 21,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 22,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 23,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 24,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 25,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 26,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 27,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 28,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 29,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 30,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 31,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 32,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 33,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 34,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 35,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 36,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 37,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 38,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 39,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 40,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 41,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 42,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 43,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 44,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 45,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 46,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 47,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 48,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 49,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 50,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 51,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 52,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 53,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 54,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 55,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 56,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 57,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 58,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 59,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 60,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 61,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 62,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 63,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 64,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 65,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 66,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 67,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 68,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 69,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 70,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 71,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 72,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 73,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 74,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 75,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 76,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 77,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 78,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 79,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 80,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 81,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 82,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 83,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 84,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 12
+          },
+          {
+            "resulting_skill_level": 85,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 86,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 87,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 88,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 89,
+            "primary_attribute_increment": 2,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 90,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 91,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 92,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 93,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 94,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 95,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 96,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 97,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 3
+          },
+          {
+            "resulting_skill_level": 98,
+            "primary_attribute_increment": 3,
+            "vitality_increment": 2
+          },
+          {
+            "resulting_skill_level": 99,
+            "primary_attribute_increment": 4,
+            "vitality_increment": 3
+          }
+        ]
+      }
+    }
+  }
+}

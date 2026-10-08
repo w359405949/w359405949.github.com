@@ -1,0 +1,73 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.investigation-special",
+  "resource_id": "investigation-special:76:02",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 2,
+    "id_hex": "0x02",
+    "field_offsets": {
+      "scene_id": 220327,
+      "x": 220333,
+      "y": 220339
+    },
+    "scene_id": 118,
+    "scene_id_hex": "0x76",
+    "x": 11,
+    "x_hex": "0x0B",
+    "y": 11,
+    "y_hex": "0x0B",
+    "kind": "hidden-item",
+    "label": "隐藏的再生丸",
+    "description": "取得状态位清零时发现再生丸，成功取得后置位，成功使用后清零。",
+    "text_records": [],
+    "item_ids": [
+      177
+    ],
+    "interaction_state": {
+      "class": "global-event-flag",
+      "label": "全局事件位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 77,
+      "flag_id_hex": "0x4D",
+      "runtime_bitset_base": 1089,
+      "runtime_bitset_base_hex": "0x0441",
+      "runtime_byte": 1098,
+      "runtime_byte_hex": "0x044A",
+      "byte_index": 9,
+      "bit_index": 5,
+      "bit_mask": 32,
+      "bit_mask_hex": "0x20",
+      "test_helper_cpu": 65183,
+      "test_helper_cpu_hex": "0xFE9F",
+      "set_helper_cpu": 65157,
+      "set_helper_cpu_hex": "0xFE85",
+      "clear_helper_cpu": 65170,
+      "clear_helper_cpu_hex": "0xFE92",
+      "commit": "immediate-after-successful-item-acquisition",
+      "effects": [
+        "interaction-availability",
+        "item-acquisition-until-successful-use"
+      ]
+    },
+    "semantic_status": "confirmed-purpose",
+    "handler_pointer_stored": 48359,
+    "handler_pointer_stored_hex": "0xBCE7",
+    "handler_cpu": 48360,
+    "handler_cpu_hex": "0xBCE8",
+    "handler_prg": 220392,
+    "handler_prg_hex": "0x035CE8",
+    "handler_pointer_source": {
+      "space": "prg",
+      "offset": 220347,
+      "length": 2,
+      "end_exclusive": 220349
+    },
+    "scan_priority": 4,
+    "activation": "Investigate checks the current cell first, then the cell in front; scene $00/$81/$E0-$EF treasure rows may match first, followed by this six-point table and metatile behavior",
+    "confidence": "confirmed",
+    "editable": false,
+    "inside_scene_canvas": true,
+    "resource_id": "investigation-special:76:02"
+  }
+}

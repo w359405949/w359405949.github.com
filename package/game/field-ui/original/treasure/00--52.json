@@ -1,0 +1,73 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.treasure",
+  "resource_id": "treasure:00:52",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 82,
+    "id_hex": "0x52",
+    "field_offsets": {
+      "scene_id": 236690,
+      "x": 236781,
+      "y": 236872,
+      "content_id": 236963
+    },
+    "scene_id": 0,
+    "scene_id_hex": "0x00",
+    "x": 115,
+    "x_hex": "0x73",
+    "y": 192,
+    "y_hex": "0xC0",
+    "content_id": 246,
+    "content_id_hex": "0xF6",
+    "compiled_fields": [
+      "scene_id",
+      "x",
+      "y",
+      "content_id"
+    ],
+    "content_kind": "money-reward-code",
+    "money_table_index": 6,
+    "money_base_value": 2010,
+    "save_flag_bit": 82,
+    "interaction_state": {
+      "class": "treasure-collected-flag",
+      "label": "调查物取得位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 82,
+      "flag_id_hex": "0x52",
+      "runtime_bitset_base": 1121,
+      "runtime_bitset_base_hex": "0x0461",
+      "runtime_byte": 1131,
+      "runtime_byte_hex": "0x046B",
+      "byte_index": 10,
+      "bit_index": 2,
+      "bit_mask": 4,
+      "bit_mask_hex": "0x04",
+      "test_helper_cpu": 65237,
+      "test_helper_cpu_hex": "0xFED5",
+      "set_helper_cpu": 65211,
+      "set_helper_cpu_hex": "0xFEBB",
+      "clear_helper_cpu": 65224,
+      "clear_helper_cpu_hex": "0xFEC8",
+      "commit": "immediate-after-successful-acquisition",
+      "effects": [
+        "spawn-or-materialize-uncollected-metatile",
+        "interaction-availability",
+        "collected-metatile-selection"
+      ]
+    },
+    "investigation_resolution": "pre-metatile-coordinate-scan",
+    "investigation_resolution_detail": "$BE00 scans the coordinate row before the six special points",
+    "resolution_source": {
+      "space": "prg",
+      "offset": 220672,
+      "length": 104,
+      "end_exclusive": 220776
+    },
+    "runtime_metatile_overlay": null,
+    "confidence": "confirmed",
+    "inside_scene_canvas": true,
+    "resource_id": "treasure:00:52"
+  }
+}

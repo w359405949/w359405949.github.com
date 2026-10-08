@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MM // 游戏模拟器</title>
+  <!--
+    独立文档，不共用编辑器的 /styles.css。
+
+    EmulatorJS 会把 emulator.min.css 追加到本页 <head>、把 emscripten 核心的 blob
+    <script> 追加到本页 <body>，并接管 #game 的整个子树。放在独立文档里，这些副
+    作用全部关在本页内；编辑器 SPA 通过 <iframe> 引用本页，卸载 iframe 就能停掉
+    WASM 和音频——EmulatorJS 本身没有 destroy API，这是唯一可靠的停止方式。
+    详见 engine/vendor/README.md。
+  -->
+  <style>
+    :root {
+      --bg: #0b0e10;
+      --panel: #12171a;
+      --line: #273136;
+      --text: #e9eee8;
+      --muted: #89969a;
+      --acid: #d8f231;
+      --red: #ef7068;
+      --mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: Inter, "Microsoft YaHei UI", "PingFang SC", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+    }
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 10px 16px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+    }
+    .bar b {
+      font-family: var(--mono);
+      letter-spacing: .12em;
+      color: var(--acid);
+      font-size: 11px;
+    }
+    .bar label { color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    select, button, a.button {
+      font: inherit;
+      font-size: 12px;
+      color: var(--text);
+      background: #0e1315;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    select { max-width: 46ch; }
+    input[type="file"] {
+      max-width: 34ch;
+      color: var(--muted);
+      font: 11px var(--mono);
+    }
+    input[type="file"]::file-selector-button {
+      margin-right: 8px;
+      font: 12px var(--sans);
+      color: var(--text);
+      background: #0e1315;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    button:hover, a.button:hover, select:hover { border-color: var(--acid); }
+    #meta { color: var(--muted); font-family: var(--mono); font-size: 11px; }
+    #meta.error { color: var(--red); }
+    #game { flex: 1 1 auto; min-height: 0; background: #000; }
+    #fallback {
+      margin: auto;
+      padding: 40px;
+      max-width: 62ch;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    #fallback b { display: block; color: var(--red); margin-bottom: 8px; }
+    #fallback code {
+      font-family: var(--mono);
+      color: var(--acid);
+    }
+    .save-bar {
+      display: grid;
+      gap: 6px;
+      padding: 10px 16px;
+      background: #0e1315;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+    }
+    .save-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .save-row label { color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .save-row select, #current-save-display { width: min(54ch, 60vw); }
+    #rom-select { width: auto; max-width: min(110ch, 85vw); }
+    #current-save-display { display: inline-block; padding: 5px 10px; border: 1px solid var(--line);
+      border-radius: 4px; background: #1c2427; color: var(--muted); font: 12px var(--mono); }
+    .save-bar button:disabled, .save-bar select:disabled { opacity: .45; cursor: default; }
+  </style>
+</head>
+<body data-emulator-runtime>
+  <header class="bar">
+    <b>游戏模拟器</b>
+    <button id="reload" disabled>重启模拟器</button>
+    <span id="meta" hidden></span>
+  </header>
+  <section class="save-bar" aria-label="ROM 与电池存档">
+    <div class="save-row">
+      <label>ROM <select id="rom-select" disabled><option>正在读取 ROM 列表…</option></select></label>
+      <button id="rom-download" disabled>下载 ROM</button>
+      <label>本地 ROM <input id="rom-file" type="file" accept=".nes,application/octet-stream"></label>
+    </div>
+    <div class="save-row">
+      <label>存档 <select id="save-select" disabled><option>正在读取存档列表…</option></select></label>
+      <button id="selected-save-download" disabled>下载存档</button>
+      <button id="save-delete" type="button" disabled>删除所选</button>
+    </div>
+    <div class="save-row">
+      <label>当前存档 <output id="current-save-display" aria-live="polite">尚未启动游戏</output></label>
+      <button id="current-save-download" disabled>下载当前存档</button>
+    </div>
+  </section>
+  <div id="game"></div>
+  <div id="fallback" hidden></div>
+  <script type="module" src="./emulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,3525 @@
+{
+  "schema": "metalmaxcn.module-graph",
+  "note": "整个项目的数据关系图。人工维护，是权威——拆解与编码之前先在这里声明，编码之后用 mm_module_graph --check 验证实现是否符合。",
+  "modules": {
+    "application-command": {
+      "summary": "应用命令：持有原版 41 项入口与扩展 199 项目录；程序入口只持应用程序句柄。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-config-family": "application-command:10-1F 的精确 owner 字节随源数据中的 configuration_family.family_id 发布 application-config-family:00-0F；不是按命令号另行猜测",
+        "audio-command": "frog-race presentation callback 18:1383 以 A=$77 尾跳 3E:1324；state setup callback 18:1397 以 A=$0E 尾跳 3E:133B",
+        "battle-engine": "UiCommand33Handler@19:17EE 先调用 3F:1AEA 的 battle-engine 固定 bank 包装器，再尾跳字段场景重载",
+        "chr-bank-mapping-service": "opcode D3 的 OpenApplicationMenuFromTwoOperands@18:0E28 以第二操作数选择共享二字节 CHR preset，并同时初始化 primary/raster 两套 bank shadow",
+        "code-module": "41 项应用命令的精确 owner 字节均发布 code-module:application-dialogue-flow-vm；共享解释器与 111 项 opcode 表由该代码模块单独持有",
+        "item-entry": "opcodes 93/9A/9D/9F/A8-AA/B2/B5/B9/D7/EA/EB/EF 的设施商品、库存条目、战车武器分类、弹药容量码与价格字段",
+        "shell-record": "opcode C5 私有闭包 18:02CF-02EC 在 18:02D8 以 X 索引读取 18:02EC 的 shell-record.vending-price-codes",
+        "vehicle-preset": "opcode C0 的 rental preset $D3 引用及 18:0367 完整车型初始化合同",
+        "eight-slot-inventory-service": "18:11C5 调用 3F:1BDD；该包装器以 X=$10 经 3F:1AFC 映射 bank $10，再调用 10:1369，在三名人物八槽背包中查找指定 item；不是同 CPU 地址的 bank-$19 队伍总览",
+        "facility-config": "opcodes AD/B2/B9/BA/C4-C5/E4/EF/FC 读取设施配置记录及其值槽；command $1F 读取族 $0F 的电梯楼层列表",
+        "facility-property-storage": "command 0x26 财产保管处的 51 个可达段经 7 个私有 D2 目标完成存入、取出、类别路由、容量判断与战车装备 condition 往返；bank18 私有体经 3F:1B30/1B42/1B4B/1B54 调用 bank10 保管流程，opcode EC 经 3F:1B39 调用 10:0AE4 排序/计数；脚本包络与通用 opcode handler 仍由本模块拥有",
+        "frame-nmi-runtime-service": "赛青蛙比赛循环 1C:10F6 每轮调用 WaitForNextFrameAndPollController，再推进三槽状态并重绘 OAM",
+        "oam-object-rendering-service": "赛青蛙循环经 3F:1CED 调用共享 secondary object renderer，消费槽 13..15 的 descriptor、animation、X 与 Y 投影",
+        "global-random-service": "赛青蛙阵容用 $37&3 随机省略一个身份；比赛循环每帧推进随机状态并向三槽分配连续 2-bit 切片",
+        "index-stride-table": "1C:10AE 以 $37&3 消费共享 index×3 表的条目 0..3，选择四行青蛙阵容表的行首；18:0EFD/0F03 的私有 opcode B9 路径消费 index×8 表定位八槽记录",
+        "integer-arithmetic-service": "bank18 的商品、容量、价格和脚本数值路径调用共享无符号乘除法",
+        "indirect-control-transfer-service": "fixed-dialogue-menu-dispatch@3F:0D50 尾跳 3F:09FA 的固定 bank 间接控制转移入口",
+        "inventory-ui-working-set": "opcodes 93/99/9D/9F/A1-A4/B3-B4/B9/D9 的运行时列表、条目状态与选择工作集",
+        "field-scene-lifecycle-service": "UiCommand33Handler@19:17EE 尾跳 3E:1D38，重载事件调整后的字段场景",
+        "palette-runtime-service": "opcode D3 私有闭包 18:0E2B 尾跳 3F:0BFA 的共享 palette runtime 入口",
+        "party-entity-selection-provider": "opcodes 91/95/BF/C2-C3/DB/D8/DE-DF/E1/E5/F9/FA 的人物选择与队伍状态查询",
+        "party-vehicle-selection-provider": "fixed-dialogue-menu-dispatch@3F:0D63 先映射 bank $19，再于 3F:0D76 调用 19:032B 的精确 owner provider",
+        "ppu-transfer-runtime-service": "opcode CC/CD 私有闭包 18:0E00 尾跳 3F:04E0 的 PPU transfer runtime 入口",
+        "property-storage": "opcodes E9/EB/EC 读取、分类和排序 64 槽财产保管数组",
+        "prg-bank-mapping-service": "3F:1EFF/1F05 经固定 bank-1C wrapper 调用共享 SetPrgBank8000，再进入青蛙初始化/比赛循环",
+        "raster-interrupt-runtime-service": "opcode 93/B3/D9 私有闭包 18:099C 调用 3F:0A2A；该固定包装器装入已确认的 display profile $02 后进入共享 IRQ 路径",
+        "rental-vehicle-lifecycle-service": "opcode C0 分配首个空闲出租实例；opcode 98 归还三个出租实例",
+        "save-container": "opcodes 9C/AE-AF/BC/DC/EE/F2/F8 的金钱、金铃与全局事件标志字段",
+        "save-role": "party_role_current_vehicle_references",
+        "save-vehicle": "active_rental_vehicle_preset_slots",
+        "shared-indexed-byte-overlays": "opcode A9 的 3F:06E7 弹药容量码表，以及 18:10DF 的主炮追加量上限校验",
+        "runtime-workspace": "赛青蛙在 $00、$C6-$CB、$D2-$D3、$DF-$E1、$0544-$0552 与 $0321-$0353 建立上下文工作集；这些 RAM 槽不由 application-command 拥有",
+        "text-record": "每个单命令脚本包络中经真实 VM 角色扫描判定为 text-record 的精确字节发布 text-record；$8F selector、opcode operand 与 D2 地址不冒充文字记录",
+        "text-render-runtime": "opcode 93/B3/D9 私有闭包 18:0999 调用 3F:0B16 的共享文字渲染入口",
+        "ui-adventure-data-mode": "18:0D46 与私有表 3F:0D61 经 3F:13FD/1406 调用 bank19 冒险资料设置 provider",
+        "ui-equipment-control": "18:0A01 经 3F:142A 映射 bank $19，调用共享的选中装备移除、容器压缩与人物/战车装备派生刷新入口",
+        "ui-facility": "12 个既有函数入口以及 opcode 9B/9E/B1/B3-B4/B6/B9/C3-C4/CC-CD/D0/D3-D4/DA/DD/F7 所调用的设施 UI provider；command 10-13/22/25/2F/35/37 等 D2 回调经 3F:0EAA-0ED6/0EE7/0EF9-0F0A 进入 bank10 设施流程；command 34 segment02 的 D2 00 A0 指向记忆中心停止游戏/关机提示入口",
+        "ui-vehicle-armor-tile-removal": "18:1063 经 3F:140F 调用 bank19 装甲瓦拆除 provider",
+        "ui-vehicle-shells": "18:0566/0FC4 及 command 15 的 D2 目标经 3F:1421/145C/149B 调用 bank19 特殊炮弹 provider",
+        "ui-text-provider-workspace": "opcodes 复用 $0524/$0534/$0544/$0559/$0582 的上下文 UI provider 槽；provider 39 读取本模块 $05A6 的赛青蛙回合计数",
+        "ui-party-paired-selector": "fixed-dialogue-menu-dispatch 映射 bank $19 后调用 19:02D5/0306，并调用固定包装器 3F:13B4，均落入成对人物/战车 selector 的精确 owner",
+        "ui-text-provider-zero-page-overlays": "frog-race state setup callback 写 $DF，racer result provider 写 $DF-$E1，向文字 provider 发布三槽赛果上下文",
+        "ui-tile-rectangle-service": "opcode 93/B3/D9 私有闭包 18:098F 调用 3F:1A99；fixed-dialogue-menu-dispatch 另调用 3F:1A9D/1A55 的矩形绘制入口",
+        "ui-wanted": "opcode 99 私有闭包 18:0816 尾跳 3F:0BE7 的 ui-wanted.bounty-context-binder；赏金数据由该 provider 内部消费，不在本模块重复挂 wanted-record",
+        "vehicle-equipment-service": "opcodes A0-A4/A6/A8-AA/AC/BE/E6-E8/FD 的战车装备定位、损坏状态、主炮/S-E 补弹与改装资格服务；opcode BE 的表项进入 3F:0E9B，18:0BBB 经 3F:13F4 调用 19:0C63；command 20 装甲瓦补充流程消费非负引擎载重余量",
+        "vehicle-wash-service": "application-command:2E 的 D2 $F514 经固定包装映入 bank $19、调用 19:A98D 清洗，再映回 bank $18",
+        "scene": "controller_switches.targets 的事件位地图替换消费者与场景坐标",
+        "scene-actor": "controller_switches.targets.actor_reference 的事件位角色消费者",
+        "story-autonomous-script": "controller_switches.targets.script_reference 的事件位测试与动作消费者",
+        "world-event": "controller_switches.targets.source_reference 的固定坐标事件消费者",
+        "selection-layout": "共享选择器坐标与行列索引来源",
+        "application-program": "命令 10、11、12、13 共同引用 application-program:00。"
+      }
+    },
+    "application-config-family": {
+      "summary": "应用配置族：共 32-byte 的 16 项小端指针，只按 family 选择设施配置记录；记录内商品类型由 facility-config 自己解释",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "facility-config": "configuration_loader.pointer_entries[*].config_pointer 直接指向各族配置记录起点"
+      }
+    },
+    "asset": {
+      "summary": "具名资产：整屏 nametable 与属性表（青蛙赛跑、点唱机、世界地图道具屏等）",
+      "owns_spaces": [
+        "chr"
+      ],
+      "references": {}
+    },
+    "attack-visual": {
+      "summary": "攻击视觉：79 个 delimiter-indexed primary 槽，共 1,371-byte PRG；其中 78 个是已解码命令流。$46 无 selector 或脚本调用，首字节 $1C 超出正式 $00-$1B opcode 域：方向位 0 只会越界复用 $12 的变体槽，方向位 1 则继续越过 handler 表尾，不能据此定义稳定语义。故 $46 明确不解码，16-byte 原记录（含 $9F）必须作为独立 opaque blob 原样保留并禁止命令级编辑；表级写回可移动该记录但不得改其字节、ID 顺序或 delimiter，raw bytes 不得伪装成 commands[]",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "attack-visual-aux-script": "commands[opcode=0x01].script_id",
+        "audio-command": "commands[opcode=0x02].sound_id",
+        "battle-action": "commands[opcode=0x08/0x12/0x13].action 以及 opcode $0E/$0F/$1A/$1B 运行时推导出的 action",
+        "weapon-attack-parameter": "commands[opcode=0x13] 按主炮/副炮/S-E/人类武器索引 4 项发射 Y 偏移与 X 锚点",
+        "sprite-palette": "commands[opcode=0x0B].palette_offset 归一为 3-byte 记录句柄",
+        "shared-chr-bank": "默认 mode $38 与 commands[opcode=0x04].mode"
+      }
+    },
+    "attack-visual-runtime": {
+      "summary": "攻击视觉运行时：选择并解释 primary/aux 攻击脚本，按 38 项指针表分派命令，生成效果对象、建立目标轨迹并逐帧推进；79 个脚本、战斗引擎和固定核只经该共享 provider 协作",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "attack-visual": "primary visual script records and opcode 0x00 nested visual handles",
+        "attack-visual-aux-script": "opcode 0x01 auxiliary script handles",
+        "audio-command": "opcode 0x02 sound command",
+        "battle-action": "object action selectors and runtime action transforms",
+        "battle-engine": "handler pointer slot 0x05 enters battle-engine:17:0C05",
+        "battle-party-vertical-layout": "17:1B4A/1B69 shared party actor Y origins",
+        "chr-bank-mapping-service": "InitializeWeaponAttackChrMode@17:1908 与 opcode04@17:19F4 写 raster register1 shadow，随后由扫描线 IRQ 应用",
+        "code-module": "fixed-bank byte reader, remaining arithmetic helpers and CPU $FABA handler",
+        "frame-nmi-runtime-service": "attack opcodes 04/05 与 AdvanceAttackEffectFrame@17:1C69 调用逐帧屏障",
+        "oam-object-rendering-service": "17:1C6C 经 3F:1CED 逐帧绘制 secondary attack-effect slots；bit7 action slots 由共享 battle-action layout writer 输出",
+        "weapon-attack-parameter": "17:1B56-1B5D four-domain weapon spawn adjustment and anchor fields",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-formation-and-actor-slots；使用 $705B-$705E、$7067、$70E5-$70E7 视觉上下文，17:1B22-1B36 按敌方槽读取编队格坐标并换算攻击视觉目标偏移",
+        "save-container": "17:1901 读取 field:save.*.adventure_data_settings.bit6；置位时跳过武器攻击视觉脚本",
+        "sprite-palette": "opcode 0x0B three-colour sprite palette record",
+        "shared-chr-bank": "default mode 0x38 and opcode 0x04 attack CHR context"
+      }
+    },
+    "attack-visual-aux-script": {
+      "summary": "攻击视觉辅助脚本：26 个独立寻址的共享字节码实体，共 558-byte PRG；25 个有引用，$01 是行为已完全解码、当前不可达但维持后续分隔记录序号的休眠槽",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "attack-visual": "commands[opcode=0x00].visual_code",
+        "audio-command": "commands[opcode=0x02].sound_id",
+        "battle-action": "显式 action operand 与 opcode $0E/$0F/$1A/$1B 的运行时 action 推导",
+        "weapon-attack-parameter": "commands[opcode=0x13] 按运行时 action class 选择四项发射 Y 偏移与 X 锚点",
+        "sprite-palette": "commands[opcode=0x0B].palette_offset",
+        "shared-chr-bank": "commands[opcode=0x04].mode"
+      }
+    },
+    "audio-command": {
+      "summary": "音频命令表：命令目录、命令头与指向共享序列图的轨道指针",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-sequence": "field:header:track-sequence-pointer-high / field:header:track-sequence-pointer-low"
+      }
+    },
+    "audio-driver-section": {
+      "summary": "音频驱动执行体与参数：公共逐帧更新、淡出与节拍溢出、音乐/音效请求差异重载、四声道音序初始化与事件解释、$90-$E3 操作码分派/处理、包络/音高调制/auto-duty、声道恢复与序列 bank 映射、pulse/triangle/noise APU 写入，以及从 DPCM 参数记录启动采样",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "1D:014A/0190/021D/0235 只引用 directory pointer、header channel-mask-and-kind 与 compatibility-mask pointer；不复制命令头或位图字节",
+        "audio-opcode": "1D:0A73 按 opcode-$90 索引 1D:0A84-0B2C 的 84 项小端指针；73 项有效槽引用本节点的 55 个处理器，$C5-$CF 为 11 项 $0000 保留/非法槽",
+        "audio-voice": "1D:055B 通过 voice/envelope 指针初始化非 triangle 声道；音色与包络数据字节仍由 audio-voice 独占",
+        "dpcm-sample": "DMC 启动路径读取采样控制、start-register 与 length-register 参数并写入 `$4010-$4013`",
+        "audio-sequence": "code:music-event-parser / code:sfx-event-parser / range:local-sequence-leading-padding",
+        "runtime-workspace": "$05F0-$05FE 请求/锁存/节拍/掩码，$05FF-$0667 音乐与音效流、时值、timer、voice/envelope/gate/duty，$0668-$06D7 循环/子流/包络游标/音高调制，$06F8 bank 上下文，$06FB-$06FF 淡出与临界 I/O；均只持读写引用"
+      }
+    },
+    "audio-opcode": {
+      "summary": "音频操作码：$90-$E3 的 84 项小端处理器指针表；73 项有效逻辑操作码引用 audio-driver-section，$C5-$CF 为 11 项 $0000 保留/非法槽",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-driver-section": "field:handler-pointer-low / field:handler-pointer-high；每个非零值引用已确认的处理器入口，指针表不拥有处理器代码"
+      }
+    },
+    "audio-voice": {
+      "summary": "音色包络：voice 的包络指针",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-driver-section": "voice[0x0A-0x0F].envelope_pointer -> reserved $FF sentinel",
+        "audio-sequence": "field:envelope-pointer-high / field:envelope-pointer-low"
+      }
+    },
+    "battle-action": {
+      "summary": "战斗对象动作：$01-$FE 的 254 个静态 action 槽持有 LE16 指针与 packed 配置，共 762-byte PRG；battle-action:00 是共享 OAM renderer 代码尾形成的 $60AD runtime-layout view",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-object-layout": "action[$01-$FE].pointer（$FFFF 空洞除外）",
+        "oam-object-rendering-service": "battle-action:00.runtime-layout-view -> 13:07FA-07FC；物理字节由 renderer code owner 独占"
+      }
+    },
+    "battle-object-layout": {
+      "summary": "战斗效果对象布局：226 个由 action 指针指向的独立布局实体，共 1,338-byte PRG；PRG $026E4B 的 $C6 已证明没有指针、直接引用或相邻记录越界读取，归为按定义无主的记录间残留",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "shared-chr-bank": "layout.tile_ids；具体图块由调用方攻击视觉的 CHR context 解算",
+        "battle-action": "layout action selectors",
+        "effect-stream": "layout effect-stream selectors"
+      }
+    },
+    "battle-amount-scaling-service": {
+      "summary": "战斗数值比例缩放服务：12 项倍率因子、u16×u8 缩放器、五类运行时字段选择体与指针表；结果 opcode 和通用伤害公式共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-damage-visual-latch / runtime-workspace:battle-formation-and-actor-slots；读取 $707C/$707F/$70CD 的队伍活动倍率，opcode C9 关闭视觉编号自动倍率，selector 6 读取敌方火焰倍率 tier",
+        "integer-arithmetic-service": "17:0D82 调用3E:1654，将其0F/10作为缩放输出；乘法适用范围见本线battle-scaling-control证据",
+        "battle-result-script": "17:0D93 调用17:11FE取得字段selector；该入口归结果脚本的code-116B-1241物理块"
+      }
+    },
+    "battle-damage-fraction-service": {
+      "summary": "战斗伤害分数服务：保存原始 16-bit 值并把准备值替换为无符号除以 5 的商；敌方护盾和人物/战车来袭结算共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "integer-arithmetic-service": "DivideUnsigned16By8@3E:1632；该入口属于四函数共享无符号算术库",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state；$70DB-$70DC 保存缩放前的 16-bit 原始量"
+      }
+    },
+    "battle-engine": {
+      "summary": "战斗引擎：主模式 02、bank $10 的敌方阵型展开、特殊怪物格搜索参数及 10:0973-0A4B/0B52-0B65 私有控制器 handler，bank $17 私有初始化/指令菜单/回合队列/武器与敌方结算编排、耗尽特殊炮弹槽压缩，以及结局通缉回顾共用的阵型预览入口；共享结果 VM、消息输出/等待、表现、目标、伤害、攻击视觉、奖励取得、交互列表和布局实体均已从私有闭包剥离",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "attack-visual-runtime": "17:09DA/0B2B 等武器与敌方路径运行攻击视觉脚本；视觉 handler 0x05 反向进入 17:0C05",
+        "audio-command": "战斗提示、攻击表现及人物升级成功演出",
+        "battle-action": "排队动作与攻击视觉共享 battle object action selector",
+        "battle-amount-scaling-service": "伤害与结果路径共用的准备量比例缩放",
+        "battle-damage-fraction-service": "敌方护盾与来袭伤害共用的除以 5 provider",
+        "battle-enemy-group-state-service": "敌人移除、变形与战斗初始化共用敌群类型槽/活动计数",
+        "battle-message-service": "17:072C ShowBattleTextRecord 及其共享适配入口",
+        "battle-party-entity-sync-service": "战斗初始化、死亡和全灭恢复时同步人物/战车实体",
+        "battle-party-vertical-layout": "17:004A/0093 按在队人数与人物槽读取垂直布局",
+        "battle-probability-thresholds": "17:0ABB 的怪物闪避 tier 读取共享五档概率阈值",
+        "battle-presentation-service": "回合、文字、武器与结果路径共用帧推进/效果状态 provider；17:14C4 还把武器结算、敌人移除、攻击命令05及怪物0x80-0x82映射出的模式1-7交给3F:0102八项子模式分派器",
+        "nametable-attribute-coordinate-service": "17:1E26 调用 3E:1CE0，把战斗 metatile 坐标换算为 attribute 索引",
+        "packed-attribute-quadrant-mask-set": "17:1E26 读取共享 keep/clear 象限掩码合成战斗 nametable attribute",
+        "battle-random-amount-service": "回合队列、结果与伤害公式共用随机量 profile",
+        "battle-result-script": "战斗道具、武器和敌方路径选择并执行结果记录",
+        "battle-status-scheduler": "回合维护与异常状态结果共用调度计数",
+        "battle-target-context-service": "武器/敌方路径从 17:1052 装载当前目标视觉上下文",
+        "battle-target-hp-update-service": "敌方伤害与结果 opcode 共用 HP/状态更新体",
+        "character-growth": "胜利结果人物循环经固定 wrapper 调用经验/升级服务",
+        "chr-bank-mapping-service": "10:07D8、10:0E2D、17:0008 以 preset offsets 2/4/0 初始化 split-screen CHR；怪物和战斗初始化继续生产 raster register2-5 shadow",
+        "controller-input-service": "战斗命令、消息确认与控制状态读取 `$17/$18/$19`，由三采样输入服务统一生产",
+        "frame-nmi-runtime-service": "10:07D3、10:0DC6、10:0EB7 与 bank17 回合/消息/攻击路径调用共享渲染切换和逐帧屏障",
+        "prg-bank-mapping-service": "LoadBattleEnemySlotStatsAndActions、战斗辅助 bank 和 battle-runtime bank wrappers 调用 MMC3 PRG setter",
+        "raster-interrupt-runtime-service": "战斗 UI 复用 profiles 02/03/05；PPU submodes 02/04/07 临时选择 profiles 09/12 并在循环后恢复原值",
+        "scene-actor-runtime": "17:0242 在战斗队伍状态结算后经 3F:13D6/1DB6 重建第四队伍实体与字段 render slots",
+        "item-entry": "武器/护具/战斗道具值及 34 项战斗道具选择表",
+        "monster-profile": "敌方属性、奖励、flags 与击破分类计数器；10:11E7 的 18 项特殊怪物 ID 决定阵型安放 profile",
+        "shell-record": "17:07FB-0814 的两张 13 项特殊炮弹参数/视觉表，普通弹 0D 不占表项",
+        "encounter-formation": "10:0DD3 按当前 formation selector 构造结局通缉目标预览",
+        "enemy-action": "17:075E 按行动 ID 读取消息、攻击/结果与视觉/计数三列",
+        "enemy-action-selection-service": "战斗初始化和重选调用 bank $10 策略选择器",
+        "enemy-action-targeting-service": "敌方行动执行构造目标列表",
+        "eight-slot-inventory-service": "3F:143E-1449 的 battle-engine 私有 wrapper 映射 bank $19，并直接调用 19:0584 八槽删除/压缩入口",
+        "item-acquisition-service": "17:025D-0278 以 $7068 怪物 ID 查表，把所得道具 ID 放入 $E2/$E3，再调用 3F:10A6 的字段/战斗共用取得链；消费成功、容量不足或战车装备不可拿的结果记录",
+        "integer-arithmetic-service": "敌方行动、阵型、伤害、攻击路径与战斗量缩放共同调用固定核无符号乘除法",
+        "index-stride-table": "bank $10/$17 的战斗记录、状态与 3×11 攻击 profile 路径消费共享 index×5/×6/×8/×11 偏移表",
+        "inventory-ui-working-set": "10:0A38/0B52 的私有控制器 handler 调用共享 10:0A4B/0A8D/0B65 交互列表输入、展开与条目尾链；10:06F0/0740/0751/0857 还直接复用其入口",
+        "monster-graphic": "17:1EF3-1FF3 按 graphic bank code、special-bank-roots、tile-offset 与布局流安装怪物 CHR 并生成 tile index",
+        "party-damage-and-defeat-service": "动作后全灭检查、人物 HP 扣减与恢复",
+        "party-healing-service": "3F:1433-143D 的 battle-engine 私有 wrapper 映射 bank $19，并直接调用 19:0539 人物 HP 回复入口",
+        "save-role": "胜利经验结算遍历在队人物并写回成长字段；10:118F 解码 $6714-$6716 bits0-3，其中 bit3 兼容火焰+冷气同时免疫但当前 ROM 不可生成",
+        "save-vehicle": "战车 presence/status/SP/equipment/defense 字段",
+        "save-container": "战斗 flags、队伍/战车绑定、奖励、持久计数，以及 17:0529-052E 战斗指令菜单读写 field:save.*.adventure_data_settings.bit6",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-enemy-groups / runtime-workspace:battle-target-context / runtime-workspace:battle-formation-and-actor-slots / runtime-workspace:battle-damage-visual-latch；战斗初始化、编队、回合、武器与敌方结算共同读写的模式叠加运行态",
+        "shared-indexed-byte-overlays": "3F:06EE/06F6 的正序、逆序 bit-mask 视图用于战斗实体、状态和装备位选择",
+        "text-record": "战斗提示、结果脚本文字、record:02:006 战斗指令菜单及 record:0A:007、record:02:092/093 等胜利成长记录",
+        "text-render-runtime": "战斗提示、结果与敌方行动共用的 region 定位、控制码 VM 和动态字形输出",
+        "ui-tile-rectangle-service": "bank $17 的战斗流程调用 3F:1A51/1A55/1A59/1A63 等共享逻辑矩形预设、清除与选择入口",
+        "ui-adventure-data-mode": "17:04E8/0523 经 3F:1480/1489 映射 bank $19 调用 19:195A/197C，进入冒险资料设置并刷新同一战斗指令菜单",
+        "ui-equipment-control": "17:0584 经 3F:144A 调用 bank19 装备控制 provider",
+        "ui-text-provider-zero-page-overlays": "$C0:$C1 的待显示伤害/回复/能力变化量，以及战斗车辆列表的当前/有效最大 SP、底盘名称、车况与“无洞”替代文本视图",
+        "ui-vehicle-status": "10:06C0/0809 的战斗 UI 路径经 3F:1492/1AF6 调用 bank19 战车状态 provider",
+        "metasprite-record": "17:00AB-00B0 六项战斗角色 selector；首字节 0x60 同时充当本模块状态查询 RTS",
+        "prg-bank-window-restore-service": "3F:0C6A、1AF3、1447 尾跳共享 F4C1，以栈上保存的 21 恢复 A000 window",
+        "vehicle-field-driveability": "3F:0C67 在 bank10 调用 B956，更新不能行驶的队伍载具绑定计数",
+        "ui-facility": "3F:0EDF 在 bank10 调用 A25C 的既有 callback owner，输入 X 先暂存 DB",
+        "role-equipment-derived": "3F:1456 在 bank19 调用 A063 的人物装备派生重算入口",
+        "ui-vehicle-shells": "3F:1B04/1B0D 在 bank19 调用 AA40/AA63 的炮弹 UI 入口",
+        "code-module": "code-module:seek-delimited-record-b8-b9；17:1ED6-1EE0 初始化 B8:B9=8BB5、A=FF 后顺序进入共享 BEE0 分隔记录查找器，以 CD 为记录索引",
+        "ui-wanted": "17:0644 从 X=0F 起比较 ECC2[X]，首读为 ui-wanted.formation-preview-bridge 的 ECD1 opcode 20；其余 15 个比较值由 battle-engine 持有"
+      }
+    },
+    "battle-enemy-group-state-service": {
+      "summary": "战斗敌群状态服务：登记敌人类型槽、活动数量与当前视觉组，并在固定 bank 重建总敌人数、非空组列表及四组数量快照；初始化、结果、武器和回合运行时共同消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-enemy-groups / runtime-workspace:battle-target-context；敌群初始化和变更同时使用 $7000-$7011 组投影及 $70EC/$70F0 更新上下文"
+      }
+    },
+    "battle-enemy-palette-refresh-service": {
+      "summary": "战斗敌方调色板刷新服务：敌群变更和武器/敌群运行路径共用的 7-byte 怪物调色板上传与表现状态入口",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-palette": "UploadMonsterPaletteRecords at 17:1DB3"
+      }
+    },
+    "battle-item-service": {
+      "summary": "战斗道具攻击 profile：11 项准备量低/高字节、packed follow-up selector 与攻击视觉句柄，跨 bank 共 44-byte；发布的道具/结果展示是 item-entry 结果选择表与 battle-result-script 路由的派生关联，不是本服务持有的结果脚本字段",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "dispatch index 0..10 对应 battle-item ID、名称和结果 selector；human_item_presentations[*].item_reference 指向登记的人类道具；dispatch index 0..10 对应 battle-item ID、名称和结果 selector；vehicle_item_presentations[*].item_reference 指向登记的战车道具；dispatch index 0..10 对应 battle-item ID、名称和结果 selector",
+        "attack-visual": "profiles[*].visual_reference；human_item_presentations[*] 与 vehicle_item_presentations[*] 通过 profile_dispatch_index 查询当前 profile 的视觉；profiles[*].visual_reference 与 human_item_presentations[*].visual_reference；3F:0CB7 的 11-byte 表由 17:09A0 装入 $70E7"
+      }
+    },
+    "battle-message-service": {
+      "summary": "战斗文字共享服务：17:072C 接受任意 region $0A 记录并完成窗口/帧输出，17:073D 按设置等待固定帧或玩家确认，17:0B8F 是选择记录后落入同一尾部的适配器；结果、武器、道具、敌方行动和固定核共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-engine": "17:075B 尾跳 battle-engine 持有的 3F:0B4F，把战斗 UI 主状态与子状态设为 $02",
+        "battle-presentation-service": "17:072D 直接调用 battle-presentation-service 持有的 17:114E，选择表现状态 $42 后进入共享初始化",
+        "battle-result-script": "17:0729 直接调用 battle-result-script 持有的 17:11FE，读取下一字节结果脚本",
+        "code-module": "17:0737/073A/0755 直接调用 code-module 及其 application-dialogue-flow-vm 子资源持有的固定核入口；被调入口内部依赖不向本服务铺边",
+        "item-entry": "17:0731 与 17:0B8F 直接调用 item-entry 持有的 3F:0B31，把 A 选择为 region $0A 文本记录",
+        "frame-nmi-runtime-service": "ShowBattleTextRecord@17:072C 在显示后调用 3E:101D；自动档按 2/4/8/16 帧等待，手动档逐帧等待确认",
+        "save-container": "17:073D 读取 field:save.*.adventure_data_settings.bits0-2，选择 2/4/8/16 帧等待或玩家确认",
+        "shared-indexed-byte-overlays": "17:0747 按冒险资料中的战斗信息速度读取 2/4/8/16 帧等待值；手动确认档不查表",
+        "text-render-runtime": "17:072C/0B8F 最终进入共享文本记录选择与输出运行时",
+        "text-record": "17:072C 接受调用方传入的 region $0A record handle；17:0B8F 适配已选记录并落入同一输出尾"
+      }
+    },
+    "battle-party-entity-sync-service": {
+      "summary": "战斗队伍实体同步服务：按人物当前战车描述符、车辆状态与运行时位置恢复或重建战斗场景实体；普通状态与死亡/全灭恢复路径共享",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-engine": "17:15E3 调用 3F:1BB2 战斗业务固定包装入口，17:15E6 尾跳 17:005C 战斗队伍状态更新入口",
+        "code-module": "17:15E0 调用 3F:0B88 的人物在队状态位切换入口",
+        "encounter-trigger-runtime": "17:15CE 调用 3F:1DA2 的带 PRG bank 保护队员遭遇对象生成入口；依赖止于该入口",
+        "runtime-workspace": "17:15B7-15D8 直接读写 $0358/$035C 的实体坐标并清零 $70F3 战斗状态快照",
+        "save-role": "17:15A8 从 $6764-$6766 读取人物当前战车描述符，17:15DB 直接读取 $6478+人物索引的在队状态",
+        "save-vehicle": "17:15AD-15B2 以当前战车描述符直接读写 $6514+战车索引的状态字段"
+      }
+    },
+    "battle-party-vertical-layout": {
+      "summary": "战斗队伍垂直布局：三个人物槽的 Y 原点与按在队人数选择的四项整体基线，共享首尾重叠字节 17:00B3；战斗角色构造与攻击视觉对象生成共同消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "battle-probability-thresholds": {
+      "summary": "战斗概率阈值：怪物异常状态抗性四档与敌我闪避五档两张重叠表；17:1415 的零阈值只计一次，由战斗引擎和结果脚本共同消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "battle-presentation-service": {
+      "summary": "战斗表现共享服务：效果初始化、帧推进、状态查询、按 UI 原点选择表现、字段画面纵向滚入战斗，以及八项 PPU/光栅子模式分派；结果、武器、文字、敌方行动和特殊怪物画面更新共同使用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "17:14C7-14CB 装入不透明的 audio-command:29 并调用共享音频命令分派入口",
+        "battle-enemy-group-state-service": "17:14DE 直接调用 17:180E 登记当前敌人状态",
+        "battle-enemy-palette-refresh-service": "17:14BD/14E1 直接调用 17:1DB3 UploadMonsterPaletteRecords；调用点属于本服务的 presentation-submode-setup，不属于 battle-engine 私有闭包",
+        "battle-engine": "17:14D2 直接调用 battle-engine 持有的 17:1CF4 战斗帧协调入口",
+        "battle-message-service": "17:0B6B 尾跳 battle-message-service 持有的 17:0731 region-0A 消息输出入口",
+        "chr-bank-mapping-service": "14:0EB7-0ED5 直接保存并替换 normal/primary CHR shadow；3F:019F-01A9 写 raster register2-4 shadow",
+        "code-module": "17:060C 尾跳 3F:0A54 的共享帧/UI 包装器，17:0989/1142/1150 调用 3F:0AE8 初始化通用 UI 原点；物理 provider 仍由 code-module 独占",
+        "field-rendering-service": "14:0E7D/0E80/0E83/0E86 与 0E9C 直接调用字段视口/坐标 provider；3F:0105 直接调用 3F:0414 mode2 视口刷新入口",
+        "frame-nmi-runtime-service": "14:0E89、0EEB/0F3A 与 3F:0102/0108、0147、0159、0174、0193/01BD 直接调用渲染模式或逐帧屏障入口",
+        "ppu-transfer-runtime-service": "17:14C0/14E4 在敌人 palette 刷新后递增 `$43`，直接请求 NMI 的 palette shadow 上传 ABI",
+        "prg-bank-mapping-service": "3F:00F7/00FF 调用 SetPrgBankA000 安装并恢复 bank14 表现代码窗口",
+        "raster-interrupt-runtime-service": "14:0E6D 与 3F:0133-01C7 直接生产 `$35/$7A/$A8` 的 profiles 06/03/09/0C 及滚动阶段 ABI",
+        "runtime-workspace": "$05A6 表现子模式 selector、$C4/$C5 UI 原点、$35/$7A/$A8 光栅状态、$2A-$2C CHR shadow 与战斗状态工作区",
+        "scene": "14:0E8C-0EAD 直接读取并保存 `$11/$13/$15/$67-$6A` 字段相机与视口状态",
+        "ui-tile-rectangle-service": "17:0609 直接调用 3F:1970，把 `$C4/$C5` UI 原点换算为 tile rectangle 参数",
+        "shared-chr-bank": "14:0EC7-0ED5 的 08/09/12/13 与 3F:019F-01A9 的 A8-AA 是不透明 CHR bank 资源句柄"
+      }
+    },
+    "battle-random-amount-service": {
+      "summary": "战斗随机量服务：20 项 {minimum, exclusive span} profile、RNG 生成体和最低值扩展 helper；结果脚本、回合队列及伤害公式共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "global-random-service": "bounded-random-index(A=profile span)"
+      }
+    },
+    "battle-target-context-service": {
+      "summary": "战斗目标上下文服务：装载并完成当前目标的视觉/运行时上下文；结果 opcode、敌方行动准备和武器结算共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "runtime-workspace:battle-target-context / runtime-workspace:battle-enemy-groups",
+        "text-render-runtime": "17:1079 尾调用 3F:0AD5，提交当前目标的文本 provider 上下文"
+      }
+    },
+    "battle-target-hp-update-service": {
+      "summary": "战斗目标 HP 更新服务：把准备量施加到当前敌方 HP/状态；结果 opcode C4/C6 与回合队列从两个入口进入同一函数包络",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-formation-and-actor-slots；读写准备量、攻防技能、结果上下文，以及敌方当前 HP、状态、行动防御锁存与两层特殊防御运行字段"
+      }
+    },
+    "party-damage-and-defeat-service": {
+      "summary": "人物伤害与全灭恢复服务：扣减当前 HP、统计存活人数并处理全灭；战斗结果、武器路径和地图状态伤害共同调用；固定 bank 还持有战斗伤害目标记录选择与表现协调入口",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "17:0A7A 装入 X=$0F，并在 17:0A85/0A92 以 A=$0F 直接调用共享音频命令分派入口",
+        "battle-engine": "17:0A74 在 bank $17 的当前 A000 window 直接调用 17:065A 战斗运行体",
+        "battle-message-service": "战斗内全灭分支的消息/退出表现",
+        "battle-party-entity-sync-service": "全灭恢复逐队员同步场景实体",
+        "battle-presentation-service": "17:0A88 直接调用同 bank 的 17:114E 效果选择与初始化入口",
+        "code-module": "17:0A85/0A92 调用共享音频分派，17:0A8B 调用共享文字准备入口；恢复尾另调用全局事件 flag helper",
+        "item-entry": "17:0A81 与 3F:191E/194E 直接调用 item-entry 持有的 region 0A/02 记录选择入口",
+        "prg-bank-mapping-service": "3F:0C70 固定包装器直接安装 battle-runtime bank $17 到 A000 window",
+        "prg-bank-window-restore-service": "3F:0C7C 固定包装器尾跳共享 A000 window 恢复入口",
+        "runtime-workspace": "17:0A6E/0A77、0F05/0F0E 与 1035/1049 直接读写 $70xx/$71xx 战斗伤害和当前目标运行态",
+        "save-role": "party presence/status/current HP",
+        "save-container": "recovery snapshot and global field coordinates",
+        "text-record": "3F:191C/194C 直接选择 region 02 的 record $1D/$2C",
+        "text-render-runtime": "3F:1903 的伤害目标记录选择与输出协调调用共享文本运行时",
+        "ui-tile-rectangle-service": "3F:1903 的伤害表现协调调用共享逻辑矩形服务",
+        "vehicle-sp-damage-service": "17:0F36 在本服务 apply-current-target-damage 的战车分支直接调用 17:0FE7 扣减当前 SP"
+      }
+    },
+    "vehicle-sp-damage-service": {
+      "summary": "战车当前 SP/装甲扣减服务：按准备伤害执行封底 u16 减法；战斗内战车受击和地图状态伤害共用同一物理实体",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "save-role": "party-to-vehicle association",
+        "save-vehicle": "vehicle current SP/armor array",
+        "prg-bank-mapping-service": "3F:0C82调用FB82映入银行17执行当前SP扣减",
+        "prg-bank-window-restore-service": "3F:0C88尾跳F4C1消费先前压栈的21恢复A000银行",
+        "runtime-workspace": "C0/C1为准备扣减量；D0经ASL得到SP地址索引，零/借位结果设置05A4=FF",
+        "party-entity-selection-provider": "AFE4调用EBAC；该既有provider从6764+D1读取队员关联实体到D0"
+      }
+    },
+    "battle-result-script": {
+      "summary": "战斗结果脚本：185 条变长记录、66 个 opcode 的解释器/handler 闭包，以及人物/战车异常状态施加、解除和私有配置表；记录选择器、状态索引与 region-0A 结果文本选择器分属三种类型",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-amount-scaling-service": "opcode C9 以 selector 0..4 进入共享字段比例缩放体",
+        "battle-damage-fraction-service": "敌方护盾与人物/战车来袭结算共用的除以 5 并保留原值 helper",
+        "battle-engine": "66 项 opcode handler 指针表的槽 08/14/2A/35 分别复用 17:1153、17:1164、17:0ACA、17:0B7E 的既有战斗编排入口",
+        "battle-enemy-group-state-service": "opcode E8 在 17:174D、EB/F8 在 17:1808 直接进入敌人类型槽和活动数量更新体",
+        "battle-item-service": "opcode E6/EA 按 battle-item dispatch index 读取准备量、后续结果选择与攻击视觉 profile",
+        "battle-message-service": "opcode D2 的私有适配器落入共享 region-0A 战斗文字输出",
+        "battle-probability-thresholds": "17:142D 直接读取 17:1415 的人物/战车闪避阈值",
+        "battle-presentation-service": "结果码、武器路径与文字输出共用效果初始化和帧推进",
+        "battle-random-amount-service": "opcodes D4/C4/DD 与回合队列共用 20 项随机数值 profile",
+        "battle-status-scheduler": "records 57-60/70-71/B5-B8 及 opcodes F3/F4/F9/FA 共用 combined_status_index 与 maintenance_counter ABI",
+        "battle-target-context-service": "opcode BD 读取当前战斗目标的共享视觉上下文",
+        "battle-target-hp-update-service": "opcode C6 从 17:1353 进入共享敌方 HP/状态更新体",
+        "index-stride-table": "结果脚本与 3×11 攻击 profile 路径消费共享 index×11 偏移表",
+        "shared-indexed-byte-overlays": "opcodes D9/F3/F4/F9/FA 引用 3F:06EE/06F6 的共享正序/逆序 bit-mask 视图",
+        "item-entry": "17:1447 以当前装备 ID 索引 11:038C 起的人物/战车防御数值视图；opcode E6 另按 battle-item dispatch index 读取攻击 profile；17:1447 以装备 ID 索引 11:038C 起的人物防御数值视图；FB 读取八个通用装备物理列并执行损坏概率门；17:1447 以装备 ID 索引 11:038C 起的战车部件防御数值视图；FB 读取八个通用装备物理列并执行损坏概率门",
+        "monster-profile": "opcode E8 在 17:1747-174A 把当前怪物类型 ID 直接复制到新敌人槽，C5/C9 继续消费其战斗运行时投影",
+        "party-damage-and-defeat-service": "来袭伤害、存活计数与战斗/地图状态伤害共用的全灭恢复实体",
+        "rental-vehicle-lifecycle-service": "opcode FB 在出租实例 8..10 成功受击时调用共享归还入口",
+        "save-role": "field:save.*.role.*.status_flags",
+        "save-vehicle": "field:save.*.vehicle.*.status_flags、八个通用装备物理列、equipped mask 与 vehicle defense",
+        "save-container": "global event flag 0x4C",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-enemy-groups / runtime-workspace:battle-target-context / runtime-workspace:battle-formation-and-actor-slots / runtime-workspace:battle-damage-visual-latch；opcodes F0/F6/E8 等直接读写当前敌人、敌群、复制关系、状态与目标运行态，opcode CB 关闭视觉编号自动倍率，其余路径经共享战斗服务访问",
+        "text-render-runtime": "opcodes EB/F8 在 17:17FB 直接调用 3F:0AD5 绑定文本 region 上下文；FB 的 17:151A 另准备装备受损结果的 provider 上下文",
+        "text-record": "opcode D2 operand、F9/FA/D9/F3/F4 状态结果，以及 FB 的 record:0A:030-033/099",
+        "ui-text-provider-zero-page-overlays": "结果 opcode 在 $C0:$C1 准备、缩放并提交随后由 provider 3E 显示的战斗量",
+        "prg-bank-mapping-service": "opcode DB/DF分别经3F:0C94/0C8B映射A000银行10、调用自有A000/A017处理体后固定映回银行17；这18B包装归本模块，非SP服务"
+      }
+    },
+    "battle-status-scheduler": {
+      "summary": "战斗异常状态调度：10:0033-00C0 的队员/战车状态快照、16 位扫描、前后回合相位与 3×16 维护计数器调度，以及 10:00C1-00F0 三张 16 项结果脚本表",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-engine": "10:0038 直接调用 battle-engine 持有的 10:00F1 敌方状态处理入口；10:009B/00B8/00BE 尾跳其 3F:0CDD 结果脚本包装器",
+        "battle-result-script": "10:00C1-00F0 三张 16 项表直接持有回合前、计数已为零和刚归零三类结果脚本 ID",
+        "code-module": "10:0081/0086 直接调用 code-module 持有的 3F:0A51 与 application-dialogue-flow-vm 子资源 3F:0AE8；被调入口内部依赖不向本调度器铺边",
+        "index-stride-table": "10:00A0 直接读取 3F:071F 的 index×8 表，定位 3×16 维护计数器",
+        "runtime-workspace": "10:0033-00BE 直接读写 $7097-$70C6 的 3×16 维护计数器、$70D6 回合相位、$70F2-$70F3 状态快照及零页调度状态",
+        "save-role": "10:004A/005C/0074 直接读取三名人物的存在与状态字段，并从 $6764-$6766 读取当前战车描述符",
+        "save-vehicle": "10:0056 以人物当前战车描述符直接读取对应战车状态字段 $6514+Y"
+      }
+    },
+    "boot-presentation": {
+      "summary": "开机与标题演示：LOGO/标题的时间轴、调色板与驱动代码；固定 bank 的 bank-14 演出入口已按唯一调用方闭合，误聚合的三个 PPU provider 入口片段已归还共享 PPU 传输服务；静态标题图形不反向引用消费它的文本运行时",
+      "owns_spaces": [
+        "chr",
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "BootPresentationSequence@14:1848 写 normal CHR register0-5 shadow，由共享 restore 入口安装",
+        "code-module": "ppu.mirroring_address / ppu.control_address / program.nametable_loader / program.nametable_blitter / program.palette_uploader",
+        "controller-input-service": "TitleScreenWaitForStart 和限时确认循环读取 `$17/$18` 当前/新按下位图",
+        "core-latin": "font_ref",
+        "frame-nmi-runtime-service": "BootPresentationSequence、标题淡入淡出和确认循环调用渲染开关、16-bit 定帧等待及逐帧屏障",
+        "prg-bank-mapping-service": "TitleScreenWaitForStart 及标题流程的固定 bank guard",
+        "raster-interrupt-runtime-service": "TitleScreenWaitForStart@14:19F4 把 $35 清为 profile00，明确关闭扫描线 IRQ 配置",
+        "ppu-transfer-runtime-service": "presentation-component#2 原先只截取 3E:1303 与 3F:04E0 各三个入口字节；实际完整函数由共享 PPU 服务拥有，标题只持调用引用",
+        "save-slot-runtime-service": "TitleScreenWaitForStart@14:1A31 调用 3F:052D，装载所选 1 KiB 存档槽",
+        "shared-chr-bank": "chr_banks"
+      }
+    },
+    "char": {
+      "summary": "字符：1,672 个 12×12 正文字形（30,096-byte PRG）与核心字库中已确认的 39 个 8×8 字形（624-byte PRG）；Unicode 只作标注，不是 ROM 数据",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "character-growth": {
+      "summary": "人物成长服务：经验累加与 9,999,999 封顶、等级阈值判定、四属性成长、最大 HP 重算及三项派生技能更新；独占 99 级经验阈值、49 项 HP 贡献和三条技能需求私表",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "character-initial-record": "13:1A5E/1A6C/1A7A/1A88 直接读取 character-initial-record 持有的 A-D 成长曲线；经验阈值、HP 贡献与三条技能需求曲线则由本服务自己持有",
+        "global-random-service": "13:1AA2 直接调用 3E:102E 的全局伪随机状态推进入口，用于属性成长增量",
+        "index-stride-table": "13:194D 以角色索引 0..2 消费共享 index×3 表前三项，选择三个 u24 经验字段",
+        "integer-arithmetic-service": "13:1910/1A9F/1BB9/1BCE 直接调用 3E:1614/1654 的无符号乘除入口，完成经验、HP 与属性成长计算",
+        "prg-bank-mapping-service": "3F:1F0B 直接调用 3E:143C，将人物成长所在 bank $13 映射到 $8000 窗口",
+        "save-role": "13:190B-1C3E 直接读写当前人物等级、经验、属性、最大 HP 与技能字段",
+        "ui-text-provider-workspace": "13:199E-1C32 直接写入 `$0544-$054C` 的最大 HP、属性与技能成长差值上下文视图"
+      }
+    },
+    "controller-input-service": {
+      "summary": "一号手柄输入服务：每帧完整读取 $4016 三次，以任意两份相同样本消除瞬态差异，生成当前按键、新按下边沿和 0/1-4 四方向归一码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$17 current buttons、$18 newly pressed、$19 normalized D-pad direction 与 $3D-$3F three-sample workspace"
+      }
+    },
+    "cpu-interrupt-vector-table": {
+      "summary": "6502 CPU 固定中断向量表：NMI、RESET、IRQ/BRK 三项 u16le 指针分别引用帧/NMI 服务、reset 生命周期和光栅 IRQ 服务",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "reset-vector = $FF3B -> code-module:ResetLifecycleEntry@3F:1F3B",
+        "frame-nmi-runtime-service": "nmi-vector = $D144 -> frame-nmi-runtime-service:EnterNmiThroughDynamicGlyphPrelude@3E:1144",
+        "raster-interrupt-runtime-service": "irq-brk-vector = $D176 -> raster-interrupt-runtime-service:DispatchRasterIrqHandlerOrReturn@3E:1176"
+      }
+    },
+    "frame-nmi-runtime-service": {
+      "summary": "共享帧与 NMI 运行时：等待下一 NMI 并轮询手柄，切换渲染/NMI 模式，从 CPU NMI 向量执行动态字形前置，提交 OAM/VRAM/CHR/光栅状态，并运行音频、帧计数和剧情倒计时尾链",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-driver-section": "3E:1155 调用 UpdateAudioDriverWithBankGuard@3E:1362",
+        "chr-bank-mapping-service": "普通 NMI worker 在 3E:1242 调用 RestoreAllChrBanks@3E:1386",
+        "controller-input-service": "WaitForNextFrameAndPollController 在 `$36` 改变后调用 3E:10F3",
+        "global-random-service": "帧屏障等待循环每轮调用 AdvanceGlobalPseudoRandomState@3E:102E",
+        "oam-object-rendering-service": "消费 `$45` OAM DMA pending latch 和 `$0700-$07FF` OAM shadow",
+        "palette-runtime-service": "profile00 下的 `$9C` 倒计时奇数相位在 3E:116A 调用 3F:01C8，偶数相位从重叠入口 3E:116E 执行 INC $43",
+        "ppu-transfer-runtime-service": "普通 NMI worker 在 3E:123F 调用 3E:124B 提交 VRAM queues",
+        "prg-bank-mapping-service": "动态字形 NMI 前置临时映射 bank0A 后恢复 `$20` 的 $8000 window",
+        "raster-interrupt-runtime-service": "普通 NMI worker 在 3E:1245 调用 3E:1197 配置 `$35` display profile",
+        "runtime-workspace": "$12、$30:$31、$34-$36、$3B:$3C、$45、$9C、$0700-$07FF 的共享运行态",
+        "text-render-runtime": "动态字形 pending latch `$678F==0` 时调用 UploadPendingDynamicGlyph@0A:1A96"
+      }
+    },
+    "code-module": {
+      "summary": "代码模块：保留全局主模式表、reset 生命周期与尚未独立成域的固定共享 UI/数值核；bank 1A 的调查解释器、actor marker 共用体和主模式 06 新战车命名链已拆到专门 provider，code-module 不再借资源节点名持有业务代码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "main-mode-pointer-table.entries[0B].application-command = application-command:33；3E:177A 以 A=$33 调用 3F:0CFA 的共享 application/NPC service dispatcher 并在返回后切到 mode $08",
+        "audio-command": "反汇编把 3E:133B QueueSoundCommandIfChanged（21 B）与 3E:1350 CallAudioDriverCommand（18 B）归入 ActiveFixedBank3EScope / shared-core；两者消费 A 中的 audio-command，后者映射 bank $1D 后调用 $A003",
+        "battle-engine": "main-mode-pointer-table.entries[02] 指向战斗帧编排 provider",
+        "chr-bank-mapping-service": "reset 与尚留固定核的预设入口调用 MMC3 CHR setter、shadow applier 和共享初始化器；NMI/IRQ 调用边已分别移到 frame-nmi-runtime-service 与 raster-interrupt-runtime-service",
+        "encounter-trigger-runtime": "通用场景装载/重载经 3F:1E25 初始化随机遇敌计量；字段探索不再自行拥有 zone 解析、计量或编队规则",
+        "field-exploration-runtime": "main-mode-pointer-table.entries[01] 指向字段探索帧 provider；code-module 不再拥有其移动、转场、遭遇或持续伤害实现",
+        "field-scene-lifecycle-service": "main mode 08、字段转场和 UI command 33 复用 3E:1D18/1D38/1D51/1D6F 的场景装载与刷新 provider",
+        "field-item-use": "3E:1000 主模式分派表的模式 09/0A/0B/0C 入口，以及模式 65 的共用未使用提示体",
+        "frame-nmi-runtime-service": "主模式帧前置、固定核等待/渲染 wrappers 与 reset 安装的 `$30:$31=$D22F` 普通 NMI worker 均引用共享帧/NMI 服务；不再拥有其 83-byte 旧 bridge",
+        "indirect-control-transfer-service": "18:011A application-dialogue-flow-vm 的 opcode 分派把低字节放 $0C、高字节放 A，再尾跳 3F:09FA 共享间接入口；其余表驱动分派也复用同一句柄",
+        "index-stride-table": "尚留固定共享核的记录定位路径消费 index×5/×6/×7 偏移表",
+        "integer-arithmetic-service": "仍在共享核内的数值解码与包装入口调用无符号乘除法",
+        "new-game-bootstrap": "main mode 00 在 3E:16B0 调用新游戏序列化活动段初始化入口",
+        "palette-runtime-service": "尚留固定核的场景装载与过场包装复用字段 palette 和亮度淡入淡出；NMI 倒计时调用边已移到 frame-nmi-runtime-service",
+        "runtime-workspace": "runtime-workspace:field-map / runtime-workspace:ppu-pattern-snapshot；通用场景装载、地图循环和 reset 只持共享工作区视图；NMI 专用字段消费者已移到 frame-nmi-runtime-service",
+        "ppu-transfer-runtime-service": "渲染暂停和固定 PPU wrappers 提交 span、连续、triple 与 palette 队列；NMI 提交调用边已移到 frame-nmi-runtime-service",
+        "prg-bank-mapping-service": "尚留共享核的 bank-specific wrappers、主模式和音频包装入口调用两个 MMC3 PRG window setter",
+        "prg-bank-window-restore-service": "多个固定核包装器尾跳 3F:14BC/14C1，从栈恢复一个或两个可切换 PRG window",
+        "save-container": "3E:132F/1342 与 3F:0C07-0C0C 读取或切换 field:save.*.adventure_data_settings.bit5；3F:0E05-0E31 的应用命令共享核读取并清除 bit7",
+        "save-slot-runtime-service": "main mode 00 在 3E:169A 调用 3F:054D，启动时复算并校验两个持久槽；application-dialogue-flow-vm 所有的 18:1259 opcode $92 指针项直接选择 3F:053D 写回所选存档槽",
+        "scene-actor-runtime": "通用场景装载 actor records、投影渲染槽并运行面向交互/阻塞动作；字段逐帧更新由 field-exploration-runtime 直接引用",
+        "shared-indexed-byte-overlays": "3F:1E85-1EDE 的全局事件位与调查物取得位 helper 使用 3F:06EF 的 interaction-flag-set-masks 视图",
+        "sprite-palette": "InitializeBattleSpritePalettes.records[00-03] / UiCommand4BHandler.records[14-15] / RenderSelectedVehicleStatusEquipmentAndPortraitPage.records[12-13]",
+        "cutscene": "main-mode-pointer-table.entries[07/0D/0E] 指向传送与结局过场 provider",
+        "text-render-runtime": "application-dialogue-flow-vm 在 18:013B 把 $00-$8E 文本值送入 3F:12B8 的记录分派；reset 生命周期、通用 UI 状态与尚留固定核调用也消费文本渲染运行时，NMI 动态字形调用边已移到 frame-nmi-runtime-service",
+        "ui-facility": "main-mode-pointer-table.entries[05] 指向设施一次性回调与返回链",
+        "field-vehicle-acquisition-and-tow-service": "main-mode-pointer-table.entries[06] 指向新战车取得后的命名与字段场景重建 provider",
+        "investigation-command": "调查命令处理器（实现里仍有此边）",
+        "selection-layout": "共享选择器坐标与行列索引来源",
+        "fixed-text-slot": "3F:F118/F11E 读取十八个双字节状态文字槽，数据由 fixed-text-slot 独占。",
+        "ui-adventure-data-mode": "ui-mode-command-handlers 的 41..44 表项引用既有模式与冒险数据处理器。",
+        "application-script-reader": "应用 VM 通过 A05A/A06C/A0D4 门桩读取脚本与选段。"
+      }
+    },
+    "global-random-service": {
+      "summary": "全局伪随机服务：31-byte 两字节状态推进器与 10-byte [0,A) 有界随机索引；字段、NPC、战斗、敌方行动和人物成长共同消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "integer-arithmetic-service": "bounded-index 尾调用 multiply-unsigned-8-by-8-to-16",
+        "runtime-workspace": "$37:$38 全局随机状态及 $39:$3A 临时旧状态"
+      }
+    },
+    "indirect-control-transfer-service": {
+      "summary": "共享间接尾跳服务：以 $0C 为低字节、A 为高字节构造 $0C:$0D 目标并执行 JMP ($000C)",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "core-latin": {
+      "summary": "基础拉丁字库：2-KiB 核心字模模板；已确认身份的 39 个字形由 char 持有，其余未识别槽仍留在模板",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "char": "glyph"
+      }
+    },
+    "battle-test-point": {
+      "summary": "战斗测试点：12-byte 独占配置；57×8-byte 遭遇编成已拆为 encounter-formation",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "nearby-object-investigation-service": "component:handler-pointer / field:handler-pointer；stored $BC07/$BD28 分别选择该 owner 的 code:battle-test-handler / code:original-wardrobe-handler",
+        "encounter-formation": "component:encounter-id / field:encounter-id",
+        "scene": "component:scene-id / field:scene-id；component:scene-id / component:x / component:y 对应的专用调查点",
+        "text-record": "component:intro-text / field:intro-text / component:completed-text / field:completed-text"
+      }
+    },
+    "character-initial-record": {
+      "summary": "人物初始数据：成长曲线、三名人物的初始记录与姓名槽引用。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "records[*].equipment[0..7] / inventory[0..7]（空槽 item-entry:00）",
+        "fixed-text-slot": "name_initialization 中每个 source 只持文字槽引用"
+      }
+    },
+    "item-entry": {
+      "summary": "物品数据：共享码表、使用目录及人类和战车物品记录，由同一字段对象持有。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-result-script": "battle-use result selector values",
+        "field-item-dispatch": "field-text-region-02 与 field-text-output 两个共享入口的 direct-address consumer",
+        "text-record": "field/battle text entrypoints select text records",
+        "asset": "numeric-codebook 存成具名资产（asset:item-entry.numeric-codebook）",
+        "attack-visual": "field:attack-visual-code 的单字节 selector",
+        "effect-stream": "field:equipment-flags 的低三位核心效果 selector"
+      }
+    },
+    "monster-profile": {
+      "summary": "怪物表：属性、掉落、掉落概率档位，以及 131 项与怪物行同寿命的行动/六槽模式联合选择字段；四项全局掉落阈值引用共享索引覆盖表，策略低四位决定联合字段引用 enemy-action 还是 enemy-action-pattern；掉落槽 $00 是空哨兵，非零 ID 按既有物品分域规则引用 human-item 或 tank-item",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "records[*].drop.item（非零 ID 落在人类物品域时）；records[*].drop.item（非零 ID 落在战车物品域时；与 human-item 是同一 nullable 槽的两个真实目标，不另造总 item 节点）",
+        "shared-indexed-byte-overlays": "3F:0735-0739 的掉落概率阈值视图与 3F:0732-0739 逆序装备掩码视图共用尾部字节"
+      }
+    },
+    "shell-record": {
+      "summary": "炮弹表：炮弹属性与售价",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "records[*].price.raw_code 直接索引共享 numeric-codebook"
+      }
+    },
+    "vehicle-preset": {
+      "summary": "战车表：预设、各部位装备与八辆玩家战车的初始停放位置",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "scene": "component:initial-placement 的八个有效 scene ID；X/Y 是坐标原值，不是场景引用",
+        "item-entry": "field:vehicle-preset:-index-:equipment:main_gun / field:vehicle-preset:-index-:equipment:sub_gun / field:vehicle-preset:-index-:equipment:special / field:vehicle-preset:-index-:equipment:engine / field:vehicle-preset:-index-:equipment:c_unit 的非空物品 ID"
+      }
+    },
+    "wanted-record": {
+      "summary": "通缉目标表：1 个默认目标对、12 个场景目标对，以及 wanted ID 1..11 的 11-byte 压缩赏金码；索引 0 的前驱字节仍归共享代码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "bounty_code 字节使用 item-entry 的不透明共享 numeric-codebook 解码服务",
+        "encounter-formation": "default_pair 与 targets[*] 的单字节高低半字节直接编码编队 ID"
+      }
+    },
+    "direct-frame": {
+      "summary": "直接帧：69 个静态 packed direct-frame 的 frame-pointer 槽（138-byte PRG）；direct-frame:00 是共享 OAM renderer 代码尾形成的 $60AD runtime-frame view；记录池仍由 metasprite-record 聚合",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "oam-object-rendering-service": "direct-frame:00.runtime-frame-view -> 13:10CE-10D0；物理字节由 renderer code owner 独占",
+        "shared-chr-bank": "resource-index references[relation=uses-sprite-context] / packed direct-frame record 的 tile slots",
+        "metasprite-record": "frame-pointer:pointer（IDs 01-45 指向 metasprite-record 聚合的 packed direct-frame record pool）"
+      }
+    },
+    "dpcm-sample": {
+      "summary": "DPCM 采样：采样参数（速率与标志）",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "dpcm-storage": "field:parameters:start-register / field:parameters:length-register"
+      }
+    },
+    "dpcm-storage": {
+      "summary": "DPCM 存储：采样的 delta 比特流本体",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "dpcm-sample": "样本池内的单条样本（实现里仍有此边）"
+      }
+    },
+    "effect-stream": {
+      "summary": "核心效果流：效果码 $00 是运行时对象，$01-$07 是 battle-action $0E-$14 的只读派生引用；自身不复制 61-byte 对象字节",
+      "owns_spaces": [],
+      "observation": "zero-byte-view",
+      "references": {
+        "battle-action": "records[*].action"
+      }
+    },
+    "enemy-action": {
+      "summary": "112 个敌方行动实体；每项独占 1-byte 消息引用、1-byte 战斗结果脚本引用，以及 1-byte 视觉选择/重复计数初始化字段，共 336-byte PRG",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "attack-visual": "records[*].visual_and_counter_initializer.visual_selector（raw != 0xFF 时取低 6 位）",
+        "battle-result-script": "records[*].result_script.value",
+        "text-record": "records[*].message.value"
+      }
+    },
+    "enemy-action-pattern": {
+      "summary": "99 个可独立引用的六槽敌方行动模式；每个槽 bit7 表示全体目标，低 7 位引用 enemy-action，共 594-byte PRG",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "enemy-action": "records[*].slots[0..5].action_reference"
+      }
+    },
+    "enemy-action-selection-service": {
+      "summary": "敌方行动选择服务：乱了阵脚状态覆盖优先，否则按怪物 4-bit 策略号在 13 个已逐项闭合的处理器间分派；包括固定、全表加权、相邻槽对轮转、普通 HP/第一阶段耐久/可破坏防御/开场先制/行动计数/队员死亡条件，并把本地六槽索引解析为敌方行动",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "battle-presentation-service": "策略 0x0B 的战斗条件分支读取共享的演出/效果推进上下文",
+        "battle-target-context-service": "状态覆盖与目标条件型策略读取当前敌方目标的共享战斗上下文",
+        "code-module": "shared_six_slot_row_offsets[enemy_slot]",
+        "monster-profile": "records[*].flags.strategy_id、selector_or_pattern、HP 与特殊防护运行时投影",
+        "enemy-action": "最终行动及六项乱阵状态覆盖行动",
+        "enemy-action-pattern": "selected six-slot record and slot",
+        "global-random-service": "策略权重、乱阵状态覆盖和单体目标选择使用全局状态或 bounded-random-index",
+        "indirect-control-transfer-service": "策略 handler pointer table 的最终 $0C:A 间接尾跳",
+        "index-stride-table": "六槽行动记录与条件行定位消费共享 index×6 偏移表",
+        "prg-bank-mapping-service": "3F:1ADD 固定包装器调用 3F:1AFC 安装 bank $10，选择结束后尾跳 3F:1B82 恢复 battle-runtime bank $17",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-formation-and-actor-slots；读取敌方状态、flags、AI 周期、HP/特殊防御阈值，使用 $7118-$716E 的六槽行动、计数器和选中索引，并写入已选行动与行动防御锁存",
+        "save-role": "strategy 0x0B 的队员存在/死亡状态条件"
+      }
+    },
+    "enemy-action-targeting-service": {
+      "summary": "敌方行动目标服务：按已选行动 bit7 构造全体或单体存活队员目标表，并复用既定目标或随机选择单体目标",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "global-random-service": "bounded-random-index(A=living target count)",
+        "enemy-action": "packed selected action bit7 and low7 id",
+        "runtime-workspace": "runtime-workspace:battle-global-party-and-turn-state / runtime-workspace:battle-formation-and-actor-slots；读取已选行动的全体目标位与单体优先队员槽，并构造 $70F4-$70FD 目标列表",
+        "save-role": "party presence/death runtime fields"
+      }
+    },
+    "encounter-event-flag-map": {
+      "summary": "16 项遭遇 selector 到全局事件 flag ID 的映射；首字节同时承载固定坐标遭遇第 43 行的 formation 00 引用，由本节点唯一拥有并向 world-event 提供叠加视图",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "encounter-formation": "logical_views[fixed-coordinate-row43-formation] -> encounter-formation:00",
+        "save-container": "16 个值是全局事件 bitmap 的 flag ID",
+        "event": "首字节039C30发布event:00:2B的field:encounter_formation_id地址视图；与world-event发布其余event字段相同，物理owner仍唯一"
+      }
+    },
+    "encounter-formation": {
+      "summary": "遭遇编成：57 条固定 8-byte 记录，每条四组（monster-id, count）槽",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-profile": "field:formation:-index-:monster:-index"
+      }
+    },
+    "encounter-trigger-runtime": {
+      "summary": "遭遇触发共享运行时：解析当前 encounter zone、初始化/推进随机计量、按四种 profile 生成随机敌群、扫描固定坐标遭遇、装载固定编队、维护战斗编队工作区，按地形与战车状态生成遭遇对象，并为剧情 opcode 37、调查战斗和字段奖励结果提供统一分派入口",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "1C:1097 对字段效果结果尾跳 3F:0DC5 的共享 application/dialogue 分派入口",
+        "audio-command": "EnterEncounterBattleMode submits audio-command:1A",
+        "battle-engine": "成功装载编队后写 global main mode 02；1C:105B/1064/1094 的 $BD48 多 bank 调用也实测命中 17:1D48 的战斗入口",
+        "code-module": "1A:17DC 调用固定核状态初始化，剧情/随机 flag 路径调用 TestGlobalEventFlag；3F:1DAD 尾调 3F:0B73，固定安装 8000=11",
+        "encounter-event-flag-map": "1A:1A23-1A49 maps encounter selectors to global event flag IDs",
+        "encounter-formation": "fixed/scripted loader reads four (monster-id,count) pairs；random secondary table entries 40..47 reference formation 00 bytes",
+        "scene-encounter-zone": "zone config controls threshold/profile and zone entries supply weighted random monster candidates",
+        "field-interaction-dispatch-service": "1C:105B/1064/1094 的 $BD48 调用在字段 bank $1A 下实测落到 ShowFieldTextRecord05@1A:1D48",
+        "field-map-query-service": "1C:0F26 经本模块 3F:1DB0 wrapper 调用 3E:1E88，读取队伍实体脚下 terrain attribute",
+        "field-reward-resolution-service": "1C:104C 对 F0-FA 金额结果按 (result-F0)×2 消费共享 money-result-multipliers",
+        "field-vehicle-acquisition-and-tow-service": "1C:0EE7 的遭遇对象取得路径调用共享新战车登记与 mode06 命名 provider",
+        "global-random-service": "chance、weighted-entry、group-count 与 secondary-group 选择",
+        "integer-arithmetic-service": "随机遇敌计量与候选权重计算使用共享无符号乘除法",
+        "item-acquisition-service": "1C:1069 对 01-EF 道具结果尾跳 3F:10A6 的共享容量判定、写入与反馈链",
+        "prg-bank-mapping-service": "随机遇敌初始化、固定/调查遭遇 wrappers 安装并恢复业务 PRG bank",
+        "runtime-workspace": "$0544-$0555 and $7002-$7009 encounter/battle formation views；type85 encounter object 以 $02D4-$02E3 保存渲染槽来源索引",
+        "save-container": "1C:0E67 直接读取 $6767 第四队伍实体描述符，并读写 $6764+实体号的持久场景对象槽",
+        "scene": "fixed trigger rows and current-zone resolver compare current scene/player coordinates；ResolveCurrentEncounterZoneId reads world-grid and scene-table zone handles",
+        "scene-actor-runtime": "1A:1711-1722 扫描 11 个遭遇对象槽，按当前 scene 匹配后调用共享字段 render-slot 分配入口",
+        "world-event": "44 fixed coordinate rows provide scene、X、Y、pending flag、story state and formation handle",
+        "text-render-runtime": "1C:105B/1064/1094 的 $BD48 调用在 UI bank $19 下实测落到 text-render-runtime.ui-control-handlers-a@19:1D48",
+        "text-record": "views.dispatch_result_parameters 的 5 个上下文各持 zero/standard/field-effect 三个 region-05 消息记录号；唯一 15-byte 物理表由本模块持有，field-reward-resolution-service 正文明确不复制",
+        "vehicle-field-driveability": "3F:1C34 先用 MapBattleAuxBank10AtA000 固定映射 bank $10，再由 3F:1C37 调用 TestVehicleFieldDriveability@10:1973"
+      }
+    },
+    "facility-config": {
+      "summary": "设施配置：16 个紧凑配置族的 138 条长度前缀记录；已确认的商品、炮弹和点唱机族分别持有人类/战车道具、特殊炮弹与声音命令 ID，其余混合业务值保持不透明",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "配置族 $0A 的十个 payload 字节直接编码点唱机声音命令 ID",
+        "shell-record": "配置族 $05 的特殊炮弹商品 ID，以及配置族 $0B/$0C 炮弹型售货记录的商品代码",
+        "item-entry": "配置族 $02/$03 的人类装备/道具 ID，以及配置族 $0B/$0C 道具型售货记录和各型售货机奖品 ID；配置族 $00/$01 的战车装备与战车道具 ID",
+        "ui-facility": "点唱机配置字节同时发布为 ui-facility:jukebox:*:track:* 的结构化曲目投影",
+        "save-container": "装饰品配置值由 application-command:19 的 EE 检查与 AF 置位为 global-event-flag:28–2F",
+        "text-record": "服务商品名按文本记录引用；装饰品为 record:0D:040–047"
+      }
+    },
+    "facility-property-storage": {
+      "summary": "财产保管设施服务：闭合 command 0x26 的存入、取出、人物/战车目标选择、四类物品目标容器路由、容量检查、64 槽降序压紧及战车装备 condition 往返；bank $10 的分页交互列表由共享工作集服务提供，通用 application opcode、选择菜单与文本 provider 只持引用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "18:0146 直接调用 application-command:26 共用 opcode 处理体 18:0A74；脚本包络与通用 opcode 仍由 application-command 持有",
+        "code-module": "18:00EF/0144/014E 经 application dialogue dispatcher 选择分段或记录；18:0BF6/0C30 与 10:0B1E 调用固定 bank 通用 UI 原语",
+        "item-entry": "18:0BD6-0BE3/0C1D-0C2A/0C3E-0C46 与 3F:14C8-14F8 只按不透明 item ID 及 $41/$99/$CB 域边界分类、排序和路由；18:0BD6-0BE3/0C1D-0C2A/0C3E-0C46 与 3F:14C8-14F8 覆盖人物物品域，不复制人物物品记录；18:0BD6-0BE3/0C1D-0C2A/0C3E-0C46 与 3F:14C8-14F8 覆盖战车装备/道具域，不复制战车物品记录",
+        "inventory-ui-working-set": "3F:1B30/1B42/1B4B/1B54 分别调用 10:0A4B/0A8D/0B24/0B65；18:0BD6-0BE6/0C12-0C1C/0C36 继续消费其当前条目与所选槽上下文",
+        "item-acquisition-service": "18:0C33 经 3F:150B 映射 bank $19 后调用 19:01CD，把取出的物品插入选定人物或战车容器",
+        "party-entity-selection-provider": "18:00DF 消费人物选择结果 $D0/$D1 并按 $647B-$647D 死亡状态选择确认分支；18:0C12-0C2E 返回人物/战车接收域",
+        "party-vehicle-selection-provider": "18:0C12-0C2E 返回战车接收域，18:0C48-0C4D 以所选战车槽 $D3 恢复装备 condition",
+        "property-storage": "18:0BD1/0BD8/0BE6、0C1D/0C39 与 10:0AEA-0B17 直接读写 item_ids[0..63] / paired_condition[0..63]",
+        "prg-bank-mapping-service": "3F:1B30-1B5A 的四个包装入口经 3F:1AFC 安装 bank $10，再经 3F:151A 恢复 application bank $18",
+        "save-role": "18:00E7 直接读取人物状态 $647B-$647D；3F:14E9-14F0 的私有指针表含人物装备与道具容器基址",
+        "save-vehicle": "18:0C4D 直接写回战车装备 condition $6535,Y；3F:14E9-14F0 的私有指针表含战车装备与道具容器基址",
+        "text-render-runtime": "18:0BEC 直接调用 3F:1528 的共享记录输出入口，再进入本服务的 bank-$10 列表包装器",
+        "text-record": "18:013E-014E 计算 region 07 的空分类/状态反馈记录号；18:0BF2 选择同区 record $9E",
+        "ui-equipment-control": "18:0BE9 在装备存入财产保管后经 3F:142A 进入选中装备移除、容器压缩与人物/战车装备派生刷新链",
+        "ui-facility": "18:0BD6/0C1D/0C3E 消费 18:09D9 发布的当前设施物品 $E2 与持有/condition 上下文，不把通用设施 helper 的内部依赖铺过来",
+        "ui-text-provider-workspace": "18:0BE3/0C19/0C36 与 3F:14D7 直接读写 $0559-$055B 的目标域、condition 和所选财产槽 provider 状态"
+      }
+    },
+    "field-item-dispatch": {
+      "summary": "场景道具分发服务：从所选人物或战车八槽容器取 item ID，在 38 项登记表中选择 handler，未命中走默认 handler；前九项先经成对目标选择器选择人物，再由共享间接尾跳调用 handler",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:03CB/03DA/03DD 与 19:0461/0491/04A5/04AD 直接调用或尾跳固定共享 UI state、action 与结果循环入口",
+        "item-entry": "19:0488 以 A=$16 直接尾跳 item-entry 持有的 3F:12CF field-item 文本输出入口",
+        "field-item-use": "19:0468/047D/0482 直接读取 38 项 item ID、handler 指针与默认 handler 登记表",
+        "index-stride-table": "19:03BF 直接读取 3F:071F 的 index×8 偏移表，定位调用方给出的八槽容器",
+        "indirect-control-transfer-service": "19:0485 把 handler 低字节放入 $0C、高字节留在 A 后直接尾跳 3F:09FA",
+        "save-role": "19:03C8 可读取调用方安装的 $64AE 人物工具容器；19:045C/0494/0497 另直接读取人物 status/present 字段",
+        "save-vehicle": "19:03C8 可读取调用方安装的 $65CF 战车工具容器",
+        "text-record": "19:03D2 与 19:0488 分别选择 region 02 的 record $A9/$16 后进入 field-item 文本输出入口",
+        "ui-party-paired-selector": "19:049F/04A2 直接调用 19:0304/02AA 的人物-战车成对选择与渲染入口",
+        "ui-tile-rectangle-service": "19:049C 直接调用 3F:1A55 的共享逻辑矩形入口",
+        "ui-tool-inventory-control": "19:03D4 对 $DC/$DD 的拒绝路径直接回到 19:03B6 的工具 UI 文本结果入口"
+      }
+    },
+    "field-item-use": {
+      "summary": "38 项场景道具行为、私有参数、目标后效果及主模式 09/0A/0B/0C；持有世界地图道具模式的地图双值准备、数值拆分与 OAM 构造代码，OAM 模板实体由 metasprite-record 提供；扳手/钥匙类 facing row 0C 门控与双格地图改写入口只引用公共地图写入/重绘服务",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "主模式 0B 包装器 3E:177A 把 typed command $33 送入 3F:0CFA 的共享 application dispatcher，选择赛青蛙命令族",
+        "asset": "RenderWorldMapItemScreen@14:03E4 以 CHR bank $FE 构造 field-item-world-map nametable/attribute 画面，不复用行走大地图底图",
+        "chr-bank-mapping-service": "RenderWorldMapItemScreen@14:03E4 写 normal CHR register0/2/3/4/5 shadow",
+        "controller-input-service": "世界地图道具画面与场景道具 UI 消费共享 `$17-$19` 输入状态",
+        "audio-command": "场景道具结果/修理命令以及 application-command:33 的不透明声音值",
+        "code-module": "19:04D8/04DD、19:0682/0691/0694 等直接调用共享声音、UI state/action 与分派 provider；主模式 0B 还调用 3F:0CFA",
+        "item-entry": "19:04BA/04C5、19:05D0、19:074F 等结果路径直接调用 item-entry 所有的 3F:12CF field-item 文本输出入口；38 项场景道具登记表中 01-40 与 99-CA 范围的 item ID；38 项场景道具登记表中 41-98 与 CB-DD 范围的 item ID",
+        "eight-slot-inventory-service": "成功消耗道具后的调用方八槽删除/压缩；AE 世界地图入口经 3F:1BE6 调用 10:1361，扫描三名人物背包中的指定 item",
+        "field-map-query-service": "1C:0000 对世界坐标偏移调用共享 cell/attribute 查询，为世界地图道具模式准备双值；消火栓条件入口读取队伍前方 metatile，并只允许 0x5D/0x5E",
+        "field-movement-execution-service": "世界地图道具模式 3E:1B18 以 `$6E=2` 调用 3E:1B2C 的方向化移动固定包装器",
+        "field-rendering-service": "消火栓 mode 0C 每次改写可见地图格后，经 3F:05B9 调用共享单 metatile 重绘与 PPU queue",
+        "field-scene-lifecycle-service": "世界地图道具模式退出段 3E:1B1E 直接调用 3E:1737 恢复字段画面状态",
+        "frame-nmi-runtime-service": "RenderWorldMapItemScreen@14:03E4 调用关闭渲染、OAM 全隐藏与逐帧屏障",
+        "indirect-control-transfer-service": "场景道具 handler/state 表把目标低字节放 $0C、高字节放 A 后尾跳共享入口",
+        "palette": "field-item-use:AE -> palette:field-item-world-map",
+        "palette-runtime-service": "RenderWorldMapItemScreen@14:03F3/045F 直接调用 3F:0059/006B 的亮度渐变入口",
+        "party-entity-selection-provider": "19:04F4 与 19:078F 直接调用 3F:0BA9 读取所选队伍实体",
+        "party-healing-service": "A9-AC 药物、战车药箱与再生丸共用的 HP 回复/封顶体",
+        "party-vehicle-selection-provider": "战车道具目标入口 19:075D 直接调用 19:0355 构造战车名称行与选择上下文",
+        "ppu-transfer-runtime-service": "RenderWorldMapItemScreen@14:0406 直接调用 3F:04E0 的 direct-PPUDATA 读取入口装入专用 nametable",
+        "prg-bank-mapping-service": "EnterWorldMapItemMode 和场景道具固定 bank wrappers 安装/恢复 PRG window",
+        "prg-bank-window-restore-service": "3F:1BE6 的地图道具包装器完成 bank $10 查询后尾跳 3F:14C1 恢复 A000 window",
+        "runtime-workspace": "field-item-use:A0 主模式 0C 更新 runtime-workspace:field-map，不重新拥有运行时缓存",
+        "save-container": "消火栓门控检查全局事件 0x76，成功消耗后由调用方提交事件 0x77",
+        "save-role": "人物状态/HP、背包与当前人物选择上下文",
+        "save-slot-runtime-service": "世界地图道具模式 3E:1AE8 暂存 `$67F2`、以值 2 调用 3F:053D 写回所选存档槽，再恢复该值",
+        "save-vehicle": "战车状态/SP、装备列与当前战车选择上下文",
+        "scene": "field-item-use:A0 主模式 0C 读取当前场景 metatile 并提交局部地图刷新",
+        "scene-actor-runtime": "B3/B4 handler 在 19:05D6 选择 autonomous script $52/$53 后尾跳 3F:1CA7 的场景 actor 固定服务",
+        "story-autonomous-script": "field-item-use:B3/B4 动态安装 autonomous scripts 52/53",
+        "text-record": "item names、scripted reactions 与场景使用结果文本",
+        "text-render-runtime": "19:0642 直接尾跳 3F:109E，Fax 路径 19:068E 直接调用 3F:153A；3F:12CF 物理上归 item-entry，不再拿它代替此边",
+        "ui-facility": "Fax handler 19:067F 直接调用紧随其后的 19:0697 BuildTeleportDestinationList；该目标物理 owner 是 ui-facility:teleport-terminal，不是 facility-config",
+        "ui-party-paired-selector": "战车场景道具入口 19:0760/0763 直接调用 19:02AA 与 3F:13B4 的成对目标选择服务",
+        "ui-tile-rectangle-service": "bank $19 的世界地图道具、对象选择与场景道具结果界面调用共享逻辑矩形预设和清除入口",
+        "vehicle-equipment-service": "19:07A6 经 3F:1C71 调用战车装备服务；19:07DF/083C 与 19:0843 还直接调用 3F:0B93/0E9D",
+        "metasprite-record": "field-item-use:AE -> metasprite-record:field-item-world-map-oam-template；3E:1A9D 从 1C:00CA 复制 22 项 metasprite-record:world-map-item-mode-overlay-oam-template，再由 1C:0091 构造补充 OAM 项",
+        "nearby-object-investigation-service": "1A:1F20 复用调查服务的 ComputePlayerFacingInvestigationCoordinate，不复制坐标规则",
+        "field-item-dispatch": "A4C0读取A464-A475写入E0的道具分派索引；同一14B反应表经resource-index-direct-addresses以field-item-dispatch / field-item-use-table:scripted_reactions:source发布视图，物理owner仍是field-item-use"
+      }
+    },
+    "field-reward-resolution-service": {
+      "summary": "字段奖励共享服务：持有 bank $1A 的场景表现与逐帧等待体、F0-FA 的 11 项金额乘数表，以及映射 bank $1C 后进入遭遇结果分派器的固定 bank guard；结果分类及其道具、文本和存档副作用由 encounter-trigger-runtime 持有",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "3F:1E63 直接调用固定核入口 3F:0ACE，保存当前两个可切换 PRG window 的 bank shadow",
+        "encounter-trigger-runtime": "3F:1E72 直接调用映射到 bank $1C 的 1C:104C 统一结果分派入口；本模块不穿透登记其后续道具、文本和存档依赖",
+        "frame-nmi-runtime-service": "1A:1DF0 直接调用 3E:101D WaitForNextFrameAndPollController，等待场景表现状态变化",
+        "prg-bank-mapping-service": "3F:1E6C/1E6F/1E77/1E7C 直接调用共享 PRG bank 映射与恢复入口",
+        "scene-actor-runtime": "1A:1DE0 和 1A:1DF3 直接调用 1A:0797、1A:0158 的场景 actor 状态与刷新入口"
+      }
+    },
+    "investigation-command": {
+      "summary": "调查命令：11 项 selector 表把场景调查动作映射到 application command ID",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "11 个 selector table entry 字节各自直接存储 application command ID；配置、UI 与 VM 依赖止于该公开入口"
+      }
+    },
+    "world-map-random-investigation-reward": {
+      "summary": "大地图普通调查默认处理：动作发生时先以 $37<0x0C 门控，再以 $38 在六段阈值中选择石子、金额、回旋镖、参丸、布手套或钢刀；五个物品结果直接使用 human-item 公开入口，没有固定随机物坐标表",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "field-reward-resolution-service": "handler 尾跳 dispatch-with-bank-guard，使用 feedback context 0；result code F1 选择 money_result_multipliers[1]",
+        "item-entry": "reward_result_codes[1/3/4/5/6] -> item:A7/item:2E/item:A9/item:1D/item:2F"
+      }
+    },
+    "metasprite": {
+      "summary": "通用元精灵：54 个静态 metasprite-pointer 槽（108-byte PRG）；metasprite:00 是共享 OAM renderer 代码尾形成的 $60AD runtime-record view；记录池仍由 metasprite-record 聚合",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "oam-object-rendering-service": "metasprite:00.runtime-record-view -> 13:0048-004A；物理字节由 renderer code owner 独占",
+        "shared-chr-bank": "resource-index references[relation=uses-sprite-context] / metasprite record 的 tile 字段",
+        "metasprite-record": "metasprite-pointer:pointer（IDs 01-36 指向 metasprite-record 聚合的 counted metasprite record pool）"
+      }
+    },
+    "metatile-page": {
+      "summary": "元图块页：55 个可独立复用的 definition/attribute 配对页（每页 256+64-byte，共 17,600-byte CHR）",
+      "owns_spaces": [
+        "chr"
+      ],
+      "references": {}
+    },
+    "metatile-set": {
+      "summary": "元图块集：44 种普通双页组合加 1 套世界地图；世界地图独占 935-byte PRG",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "metatile-page": "lower-metatile-page / upper-metatile-page"
+      },
+      "reference_observations": {
+        "metatile-page": {
+          "observation": "zero-byte-entity-view",
+          "entities": [
+            "metatile-set:01",
+            "metatile-set:02",
+            "metatile-set:03",
+            "metatile-set:04",
+            "metatile-set:05",
+            "metatile-set:06",
+            "metatile-set:07",
+            "metatile-set:08",
+            "metatile-set:09",
+            "metatile-set:0A",
+            "metatile-set:0B",
+            "metatile-set:0C",
+            "metatile-set:0D",
+            "metatile-set:0E",
+            "metatile-set:0F",
+            "metatile-set:10",
+            "metatile-set:11",
+            "metatile-set:12",
+            "metatile-set:13",
+            "metatile-set:14",
+            "metatile-set:15",
+            "metatile-set:16",
+            "metatile-set:17",
+            "metatile-set:18",
+            "metatile-set:19",
+            "metatile-set:1A",
+            "metatile-set:1B",
+            "metatile-set:1C",
+            "metatile-set:1D",
+            "metatile-set:1E",
+            "metatile-set:1F",
+            "metatile-set:20",
+            "metatile-set:21",
+            "metatile-set:22",
+            "metatile-set:23",
+            "metatile-set:24",
+            "metatile-set:25",
+            "metatile-set:26",
+            "metatile-set:27",
+            "metatile-set:28",
+            "metatile-set:29",
+            "metatile-set:2A",
+            "metatile-set:2B",
+            "metatile-set:2C"
+          ],
+          "why": "实体 01-2C 由 scene header 的两个 page selector 组合派生；物理 selector 仍由 scene-header-map 持有，set 只在 semantic-owner 文档发布 lower/upper page 句柄。scene-header-visual-reference-resolution 已核定这条来源；实体 00 独占世界地图 PRG 且没有 page 句柄，所以本模块没有可承载这条边的物理 owner 记录。"
+        }
+      }
+    },
+    "monster-figure": {
+      "summary": "怪物战斗形象：131 条 graphic-selector 与 palette-selector 配对记录（每条 2-byte PRG）",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-graphic": "graphic-selector",
+        "monster-palette": "palette-selector（single palette code 0x00-0x49）",
+        "monster-palette-pair": "palette-selector（paired palette code 0x80-0x9A）"
+      }
+    },
+    "monster-graphic": {
+      "summary": "怪物图形：79 个共享 graphic 句柄；布局流物理并集 862-byte PRG，另由 bank/dimension/tile-offset/pointer 字段描述",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "shared-chr-bank": "graphic-bank-codes / special-bank-roots"
+      }
+    },
+    "monster-palette": {
+      "summary": "怪物调色板：74 条 3-byte NES 色号记录（222-byte PRG），由单色形象与双色组合共同引用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "monster-palette-pair": {
+      "summary": "怪物双色组合：27 条 2-byte palette ID 配对记录（54-byte PRG）",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-palette": "first_palette_id / second_palette_id"
+      }
+    },
+    "new-game-bootstrap": {
+      "summary": "新游戏存档初始化：11-byte mode-1 handoff、17-byte bank wrapper、97-byte 根过程及其 54-byte 私有 copy/fill/length 尾共同复制混合 ROM 模板并分段填充首个 878-byte 序列化活动段",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "character-initial-record": "14:0010 把 14:00C0-0131 的三名人物初始字段模板复制到活动人物记录；14:0010 同一次 183-byte 复制直接读取 14:00BC-00BF 的保留字节与初始金钱",
+        "frame-nmi-runtime-service": "3E:1753 直接调用 frame-nmi-runtime-service 持有的 3E:1066 渲染模式切换入口",
+        "prg-bank-mapping-service": "3E:1789/1791 直接调用 SetPrgBankA000，安装 bank14 并在初始化后恢复原 $A000 window",
+        "property-storage": "14:0056 的连续清零直接覆盖三份序列化财产保管数组的活动区",
+        "runtime-workspace": "14:0010-00A6 使用 $00/$08-$0F 复制填充工作区；3E:174F/1751 写 $2F 主模式，3E:1784 读取 $21 PRG window shadow",
+        "save-role": "14:0010-006D 直接复制或填充活动人物记录、名字、装备效果与实体映射字段",
+        "save-vehicle": "14:0010 直接读取 14:00A7-00BB/0132-015D 的战车模板，并复制或填充活动战车字段",
+        "save-container": "14:0010-006D 直接复制或填充 adventure settings、gold 及首个 878-byte 序列化活动段中的通用字段"
+      }
+    },
+    "palette": {
+      "summary": "调色板：53 套 9-byte background palette source，以及场景道具世界地图页的 8-byte palette seed",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "party-field-actor-type-map": {
+      "summary": "队伍场景角色类型映射：三名人物的存活/死亡 actor-type 两列，由通用队伍实体构造器和剧情复活动作共用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "actor-visual": "living_actor_types[0..2] / dead_actor_types[0..2]"
+      }
+    },
+    "party-healing-service": {
+      "summary": "人物 HP 共用回复服务：全回复入口、A9-AC 四级药物基值、随机增量、最大 HP 封顶与非 D1 成功消耗续流；战斗结果和场景道具共同调用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "records[*].item_reference 指向 A9-AC 四级药物记录",
+        "eight-slot-inventory-service": "19:0582 的 D1 分支复用 19:05A1 的公开 RTS 边界；非 D1 药物成功后顺落 19:0584 删除并压缩调用方八槽容器",
+        "save-role": "10:1391-13AB 与 19:053D-0574 直接读写所选人物的状态、最大 HP 和当前 HP 字段",
+        "ui-text-provider-workspace": "19:0555/0561 直接写入 $0526:$0527 的治疗量 u16le provider 上下文"
+      }
+    },
+    "sprite-palette": {
+      "summary": "共享 sprite 调色板：PRG $022B56-$022BB5 的 32 条 3-byte 非透明颜色记录，运行时补通用色 $0F；7 个固定拷贝组覆盖 $00-$1D，攻击脚本覆盖 $00-$03/$1E-$1F，32 条消费者全部确认",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "audio-sequence": {
+      "summary": "共享音频序列图：channel stream 与 voice envelope 字节；track/seq/voice-i 均为内部句柄",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "channel-stream-byte（命令上下文）",
+        "audio-opcode": "channel-stream-byte（事件 opcode）",
+        "audio-voice": "channel-stream-byte（voice selector）",
+        "dpcm-sample": "channel-stream-byte（DPCM sample selector）"
+      }
+    },
+    "weapon-attack-parameter": {
+      "summary": "武器发射表现参数：AttackCmd13 使用的 4 项 Y 偏移与 4 项固定布局 X 锚点，以及 131 项怪物到直接行动/六槽模式的选择字节；敌方行动与六槽模式记录已拆给各自实体 owner",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-profile": "table:monster-action-selector-or-pattern-ids（monster 归一后的名字）"
+      }
+    },
+    "property-storage": {
+      "summary": "财产保管集合：每份活动/槽存档中的 64 个道具 ID 与 64 个平行战车装备状态字节；三份物理实例共同形成同一种可序列化资源",
+      "owns_spaces": [
+        "sram"
+      ],
+      "references": {
+        "item-entry": "item_ids[0..63].value",
+        "save-vehicle": "vehicle equipment IDs 41-98 存取时同步往返 paired_condition[0..63]"
+      }
+    },
+    "save-role": {
+      "summary": "存档人物记录：三名人物的姓名、属性、HP、等级、经验、技能、背包/装备，以及当前战车绑定、护具槽和装备特殊战斗效果；特殊效果 bit3 仅由战斗解码器兼容、当前 ROM 不可生成；活动区与两个槽各一份",
+      "owns_spaces": [
+        "sram"
+      ],
+      "references": {
+        "battle-engine": "role[*].equipment_special_effects_raw 的 bits0-3 由战斗运行时直接解码",
+        "char": "role[*].name_codes 的不透明字符编码",
+        "item-entry": "role[*].equipment 与 role[*].inventory 的人类物品 ID",
+        "role-equipment-derived": "装备重算直接写 role[*].equipment_special_effects_raw 的 bits0-2",
+        "save-vehicle": "role[*].current_vehicle 的自有/出租战车槽 ID",
+        "text-render-runtime": "role[*].name_codes 由共享 runtime-text 解释器消费"
+      }
+    },
+    "save-vehicle": {
+      "summary": "存档战车记录：11 个持久槽的名称、SP、重量、防御、状态、装备/道具/炮弹列、挂载许可和三个出租槽；另持有 65-byte 新游戏战车默认模板",
+      "owns_spaces": [
+        "prg",
+        "sram"
+      ],
+      "references": {
+        "char": "vehicle[*].name_codes 的不透明字符编码",
+        "shell-record": "vehicle[*].shell_type[*] 的炮弹类型 ID",
+        "vehicle-preset": "自有战车取得时的预设 Working 与 active_rental_vehicle_preset[*] 的出租初始化预设 ID",
+        "item-entry": "vehicle[*].item[*] 与 vehicle[*].equipment[*] 的战车物品 ID",
+        "text-render-runtime": "vehicle[*].name_codes 由共享 runtime-text 解释器消费",
+        "shared-indexed-byte-overlays": "取得初始化按装备容量码读取 level_value_codebook，码 7 读取重叠的零前缀掩码首字节",
+        "save-container": "全局事件位 08–0F、掩埋位 51 与对应场景对象停放位置",
+        "save-role": "取得与取消取得时的人物乘坐绑定及在队状态"
+      }
+    },
+    "runtime-workspace": {
+      "summary": "共享 RAM 现场与模式叠加的 4-KiB SRAM 运行工作区：场景动作槽、分派窗口、指针、计数、闸门与继承工作区由所属字段读写；RAM 现场不计 ROM 覆盖，未确认的语义保持未知",
+      "owns_spaces": [
+        "sram"
+      ],
+      "references": {}
+    },
+    "save-slot-runtime-service": {
+      "summary": "双存档槽运行时服务：在活动状态与两个 1 KiB 持久槽之间搬运五个序列化段，维护有效标记和 16 位校验，启动时验证并失效损坏槽，并保留完整槽克隆入口",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "linear-memory-copy-service": "装载/写回各配置五次 16 位长度复制，槽克隆配置一次 1024-byte 复制",
+        "prg-bank-mapping-service": "四个固定 bank 包装器安装 bank14，并以 $21 的旧 bank shadow 恢复 $A000 window",
+        "runtime-workspace": "$00/$08-$0F/$9A/$D2 的选择、指针、长度、校验和完成状态 scratch",
+        "save-container": "两槽目录、$6800/$6C00 的 1 KiB serialized slots 及活动持久状态聚合"
+      }
+    },
+    "save-container": {
+      "summary": "存档容器与全局字段：SRAM 目录、校验/槽框架及场景、事件、调查物、通缉、统计和金钱字段；$7000-$7FFF 运行工作区已拆出，人物、战车和财产记录由独立实体唯一持有",
+      "owns_spaces": [
+        "sram"
+      ],
+      "references": {
+        "monster-profile": "field:save.*.wanted_defeat_level_at_victory[*] 的 monster ID 按 monster:* 实体引用怪物记录",
+        "wanted-record": "field:save.*.wanted_defeat_level_at_victory[*] 的位置索引 wanted_id",
+        "scene": "field:save.slot.*.scene_id / field:save.slot.*.field_object.*.scene_id",
+        "application-command": "global_event_flag 的控制器写入路径与受控对象关联",
+        "text-record": "装饰品购买标志的用途引用 record:0D:040–047"
+      }
+    },
+    "rental-vehicle-lifecycle-service": {
+      "summary": "出租战车生命周期服务：实例槽 8..10 的分配与归还；由应用 VM 的租借/归还流程及战斗结果 opcode FB 共同消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "encounter-trigger-runtime": "1C:1008 归还出租实例后直接调用 3F:1DE9 ReleaseEncounterObjectRenderSlot，释放该实例占用的字段渲染槽",
+        "prg-bank-mapping-service": "3F:1DD7/1DE0 包装器安装并恢复出租战车业务 PRG bank",
+        "runtime-workspace": "1C:0FBC/0FC9/1005 直接读写 $0413+出租实例号的场景对象槽 scene-id 运行态",
+        "save-role": "party_role_current_vehicle_reference / role status bit7",
+        "save-vehicle": "active_rental_vehicle_preset_slots",
+        "save-container": "fourth_field_party_entity_descriptor / persistent scene-object slots"
+      }
+    },
+    "eight-slot-inventory-service": {
+      "summary": "人物/战车共用的八槽容器计数、删除与压缩，以及三名人物背包中的指定道具查找/替换服务；调用方只提供实体、槽位与道具上下文，不复制容器偏移或压缩编码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "index-stride-table": "人物与战车八槽容器定位消费共享 index×8 偏移表",
+        "prg-bank-mapping-service": "3F:1BDD调用FAFC映A000银行10、进入B369查找体，随后尾跳F51A固定映A000银行18；不保存任意调用前银行",
+        "save-role": "caller-selected role eight-slot item container and offsets",
+        "save-vehicle": "caller-selected vehicle eight-slot item container and offsets"
+      }
+    },
+    "inventory-discard-policy": {
+      "summary": "工具与人物装备共用的丢弃确认/保护策略；按 item-entry.price_code 是否为 $FF 选择确认或拒绝文本",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "item-entry": "19:119F 以调用方给出的 item ID 直接索引 bank $11:$8451,X 的共享 price_code 表",
+        "text-record": "19:119B/11A8 选择 record:02:109 / record:02:110，并在 19:11AA 调 item-entry 的公开文字入口"
+      }
+    },
+    "inventory-transfer-feedback": {
+      "summary": "人物/战车工具与装备转交共用的成功或出租战车拒绝反馈；按接收实体准备姓名并选择三条文本",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "PRG 19:1155/1169 调用固定共享 UI 核入口 $F37F/$F38A 准备当前接收实体的字符串基址",
+        "item-entry": "PRG 19:117F 尾跳公开的非战斗工具文本输出入口 $F2CF",
+        "index-stride-table": "PRG 19:1150/1164 直接读取固定 bank 的 index×6 / index×7 偏移表 $E6FE/$E714",
+        "text-record": "PRG 19:1158/115C/116C 直接选择 record:02:023 / record:02:151 / record:02:116"
+      }
+    },
+    "inventory-ui-working-set": {
+      "summary": "八槽物品容器与财产保管数组到分页交互列表的共享展开、方向输入和条目尾链服务；bank $10 的入口同时由战斗控制器与财产保管固定包装调用，不拥有物品、存档、输入或文本编码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "10:0A4B/0A8D/0B24/0B65 与 3F:134F 调用固定 bank 列表控制、application dialogue 适配和通用 UI 原语",
+        "controller-input-service": "10:0A4E 读取共享 current input $17 的上/下方向位，再经 3F:0B5E 更新分页光标",
+        "item-entry": "10:0AC7-0AD1 按 $41/$65/$99 边界分类财产条目；3F:1354 经 item-entry.field-text-region-02 选择物品名记录；10:0AC7-0AD1 与 3F:1365 展开的人物物品 ID 只作不透明句柄，不复制物品记录；10:0AC7-0AD1 与 3F:1365 展开的战车装备/道具 ID 只作不透明句柄，不复制物品记录",
+        "property-storage": "10:0A9C/0AB6 分页读取 item_ids[0..63] 与 paired_condition[0..63]",
+        "save-role": "3F:1365 从调用方选定的人物八槽容器指针展开八个 item ID",
+        "save-vehicle": "10:0B24 读取八个战车装备状态；3F:1365 也接受调用方选定的战车八槽容器指针",
+        "shared-indexed-byte-overlays": "10:0B92 直接读取 3F:06EE 正序 bit-mask 表，结合 $0442 运行时事件位筛选列表行",
+        "text-render-runtime": "10:0ADA/0B7E/0BB1/0BB4 与 3F:135F 调用共享条目、数值及固定宽度列表文本输出",
+        "text-record": "3F:1354 选择 item-entry 提供的 record:02:004 物品名记录",
+        "ui-text-provider-workspace": "10:0AA1-0ABC/0B2A-0B3E 与 3F:1365-137A 写入 $0524-$0557 的 item-ID、condition 和列表 provider 工作集",
+        "ui-tile-rectangle-service": "10:0A8D/0B65 经 3F:1AA9 选取列表矩形，3F:135C 经 3F:1A55 清理同一逻辑 tile 区",
+        "vehicle-equipment-service": "10:0AD4 经 3F:0B96 分类装备状态；10:0BAC 经 3F:1B5D 进入所选战车装备列处理入口"
+      }
+    },
+    "party-entity-selection-provider": {
+      "summary": "四队伍实体描述符的共享读取服务：成对光标入口先折半索引，通用入口按给定索引读取 $6764-$6767 到 $D0",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "save-role": "role current vehicle references",
+        "save-container": "field:save.*.party.fourth_entity_descriptor"
+      }
+    },
+    "party-vehicle-selection-provider": {
+      "summary": "补 SP、工具和装甲瓦片拆卸等流程共用的四队伍槽战车名称列表；按实体引用过滤并渲染有效战车行",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:032B/0346 直接调用 code-module 子资源 application-dialogue-flow-vm 持有的 3F:0AE8/15FC；19:0343 直接调用 code-module 持有的 3F:138C 名称复制 helper；被调 helper 的内部依赖不向本调用者铺边",
+        "item-entry": "19:0330 直接调用 item-entry 持有的 3F:0B0F，选择地区 $02 的文本记录",
+        "save-role": "19:0339 的四槽循环直接读取 $6764-$6766 三名人物的当前载具描述符",
+        "save-container": "19:0339 的同一循环直接读取 $6767 第四队伍实体描述符",
+        "text-render-runtime": "19:0349 直接调用 text-render-runtime 持有的 3F:0B01，推进一行文本输出状态",
+        "text-record": "19:032E 把 record $02:$008 交给地区 $02 文本记录选择入口"
+      }
+    },
+    "role-equipment-derived": {
+      "summary": "人物装备派生重算：扫描八个已装备背包槽，重算攻防/护具索引，并将草帽、铜衣、铁衣映射为 masks 01/02/04；先清字段且绝不生成 bit3",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:0063 直接调用 code-module 持有的 3F:0B73 安装 bank $11；19:00AD 直接调用其 decode-shared-numeric-value 子资源 3F:0E41；被调入口内部依赖不向本服务铺边",
+        "item-entry": "19:00AA 以 11:038C 为基址直接读取人物装备攻防数值码视图；19:0122-0124 私表的 07/0D/0C 是物品记录句柄；19:00AA 以当前装备 ID 直接读取人物武器/护具攻防数值码；19:0122-0124 私表直接保存 human-item:07/0D/0C 句柄",
+        "index-stride-table": "19:0096 直接读取 3F:071F 的共享 index×8 偏移表，定位人物八个装备槽",
+        "save-role": "19:0068-011B 直接读取人物装备、基础攻防，写回派生攻防、护具索引与 special battle effect flags",
+        "shared-indexed-byte-overlays": "19:00CE 直接读取 3F:06EE 的零前缀正序 bit-mask 视图，把三项特殊装备映射为 masks 01/02/04",
+        "ui-text-provider-workspace": "19:006B/0106-011E 直接写入 $0534 与 $0540-$0543 的人物属性文本 provider 工作视图"
+      }
+    },
+    "role-equipment-service": {
+      "summary": "人物 equipped mask 与八槽物品删除同步压缩的共享服务；删除槽后保留前序位并左移后序位",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "eight-slot-inventory-service": "compact selected eight-slot container",
+        "save-role": "role equipped masks and equipment item slots",
+        "shared-indexed-byte-overlays": "equipped-mask 压缩使用逆序位掩码视图；该视图尾部与怪物掉落阈值共享"
+      }
+    },
+    "vehicle-field-driveability": {
+      "summary": "战车大地图可驾驶判定：统计队伍中不可驾驶绑定，并检查所选战车载重/引擎容量、C 装置与引擎装备位及三个必检部件 bit7 状态",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "10:199C 直接调用 3F:0B3F，把当前战车装备列偏移按 11 字节推进",
+        "party-entity-selection-provider": "10:1961 直接调用 3F:0BAC，按队伍实体索引取得当前战车引用",
+        "save-container": "10:1958 初始化 field:save.*.undriveable_party_vehicle_negative_count，随后每个不可驾驶的队伍战车绑定令其递减",
+        "save-vehicle": "chassis weight、equipped mask、engine/C-unit item/state columns",
+        "vehicle-equipment-service": "当前总载重与已安装引擎容量服务"
+      }
+    },
+    "vehicle-wash-service": {
+      "summary": "战车清洗共享服务：按队伍战车状态计算价格、扣款并处理三个独占代码块；应用命令与设施角色仍保留各自入口字节",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:098F/0994/09DB/09F3 直接调用 3F:1B67、0ADC、0ACE 与 code-module:test-global-event-flag",
+        "eight-slot-inventory-service": "19:09E3 直调 19:0584，移除并压紧八槽战车道具行",
+        "index-stride-table": "19:09B1 以战车索引直读 3F:071F 的 index×8 偏移表",
+        "prg-bank-mapping-service": "3F:1514 直调 3F:1BBD，把 bank $19 映射到 $A000 窗口",
+        "save-role": "18:035C 与 19:09A5 直接遍历角色侧队伍实体描述符 $6764-$6766",
+        "save-vehicle": "19:09AE-09D9 直接读写战车状态、道具槽与底盘重量",
+        "save-container": "18:035C 与 19:09A5 直接读取第四队伍实体描述符 $6767",
+        "item-entry": "19:09BC/09C0 直接比较战车道具 ID $DC/$DD；两者均属 tank-item，不再重复指向 item-entry",
+        "text-record": "19:098D-09F0 选择 record:08:025/026 与 record:0D:065",
+        "ui-text-provider-workspace": "19:098D 经 3F:1B67 构造 $0524:$0525 工作项，并在 19:09E0 直接更新 $0524"
+      }
+    },
+    "vehicle-equipment-service": {
+      "summary": "战车装备、载重与 SP 回复共享服务：八物理列暂存、按类别偏好重排与 equipped mask 重建，汇总所选战车总载重/引擎容量/非负余量，并把 SP 回复量钳制到引擎载重边界；主炮/S-E 状态低六位在补给链中确认为当前弹数，其他类别仍按上下文解释；初始化顺序与重排偏好在列 1/2 不同，因此不定义固定类别存档列",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "shared add-11 and fixed-width numeric UI record helpers",
+        "item-entry": "equipment category upper-bound/code provider, item weight and 24 engine-capacity values",
+        "integer-arithmetic-service": "装备重量、引擎容量和 SP 回复边界计算使用无符号乘法",
+        "prg-bank-mapping-service": "战车容量、载重和装备整理 wrappers 安装/恢复业务 PRG window",
+        "save-vehicle": "chassis weight, current SP, eight generic vehicle equipment item/state columns and equipped mask",
+        "shared-indexed-byte-overlays": "3F:06F6 descending bit-mask 视图与 3F:06E7 战车武器弹药容量码表",
+        "text-render-runtime": "10:1861 直接调用 3F:0ACE，准备所选战车非负载重余量的数值文本上下文",
+        "ui-text-provider-workspace": "loaded-weight, engine-capacity and overload/headroom numeric display slots",
+        "ui-text-provider-zero-page-overlays": "$E2:$E3 selected-vehicle nonnegative remaining engine load capacity provider view"
+      }
+    },
+    "shared-indexed-byte-overlays": {
+      "summary": "固定 bank 的两段共 31-byte 重叠查表资源：3F:06E7-06FD 的战车武器弹药容量/战斗消息等待值、零前缀正序位掩码、事件位置位掩码和逆序位掩码共享物理字节；3F:0732-0739 的逆序装备掩码后五字节同时承载怪物掉落概率阈值视图；3F:06FE 是另一张名称偏移表的首字节，不属于本节点",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "ui-tile-rectangle-service": {
+      "summary": "共享逻辑矩形服务：固定 bank 3F:1964-1AAC 的矩形描述、预设选择、逻辑 tile 缓冲区清除与游标变换入口；战斗、设施、场景角色、文本和字段道具界面共同消费，物理字节只由本节点持有",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "矩形原点、跨度与零页临时指针",
+        "text-record": "frame_source 引用 record:03:007 的外框与父菜单字样。",
+        "text-render-runtime": "window_boundaries.discard-confirm.selector_source 引用 F61D 的清除预设索引。",
+        "save-container": "$6000-$63FF 逻辑画面"
+      }
+    },
+    "event": {
+      "summary": "场景事件实体：44 个按场景发布的世界事件视图；物理并列表由 world-event 拥有，但第 43 行 encounter_formation_id 与 encounter-event-flag-map:00 是同一字节、由后者唯一拥有。",
+      "owns_spaces": [],
+      "observation": "zero-byte-view",
+      "references": {
+        "scene": "belongs-scene",
+        "world-event": "typed view of the corresponding world-event record"
+      }
+    },
+    "investigation-tile": {
+      "summary": "调查图块实体：662 个由 metatile、对象与触发资源组合出的零字节 typed view；不复制被引用实体的物理字段。",
+      "owns_spaces": [],
+      "observation": "zero-byte-view",
+      "references": {
+        "application-command": "handler",
+        "battle-test-point": "battle-test reference",
+        "monster-profile": "monster",
+        "encounter-formation": "triggers-resource",
+        "scene": "object；belongs-scene",
+        "metatile-page": "metatile-id / metatile-attribute",
+        "field-scene-lifecycle-service": "控制器事件位对应的场景映射字段与目的地预览。"
+      }
+    },
+    "scene-direction-transform": {
+      "summary": "场景方向变换：四个 cardinal direction 的 180° 对向映射，以及字段输入方向 0..4 到 actor-facing index 的共享映射",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "scene-actor": {
+      "summary": "场景角色：NPC 与物件记录；旧称字段渲染槽扫描策略的 1A:0221-022D 已证实只由共享 OAM compositor 按 NMI frame parity 读取，不属于 actor records",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "actor-visual": "field:actor-record.actor-type-direction 的 0x00-0x3E 角色类型索引；0x3F 是无外观保留值",
+        "application-command": "角色交互选择子 $10..$38 引用原版命令；$3F 的参数引用扩展命令 $39..$FF。",
+        "story-autonomous-script": "field:actor-record.autonomous-script-id",
+        "story-interaction-script": "selector 0x00 且参数非零时，field:actor-record.interaction-record-service-parameter 是交互脚本 ID",
+        "text-record": "field:actor-record.interaction-selector-render-slot / field:actor-record.interaction-record-service-parameter"
+      }
+    },
+    "story-action-handler": {
+      "summary": "剧情原子动作运行时：116 项 opcode 分发表、107 个物理 handler 入口、处理器代码闭包与剧情私有查找表；另持有 main mode 05 的复活恢复续流/35 行目的地私表，以及 opcode 67 经 bank $10 初始化剧情单人战斗态的入口；三个 actor marker/type 共用入口归 scene-actor-runtime",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "actor-visual": "opcode 54 的移动日程选择器；动作 operand 中的角色类型句柄",
+        "audio-command": "音效/音乐动作与复活转场音频选择器",
+        "battle-engine": "opcode 67 经 3F:1C7F 调用 10:1A17，初始化剧情单人战斗态后落入 battle-engine 的 10:1A74 共享状态复制/回合队列后协调体",
+        "code-module": "恢复流程及尚未独立成域的固定核心通用 helper",
+        "character-initial-record": "队员 operand 与人物槽运行时效果",
+        "item-entry": "opcodes 39/3A/49 的道具 operand",
+        "vehicle-preset": "持久战车槽、乘坐绑定、HP/SP 伤害路由与 opcode 5B 槽号",
+        "eight-slot-inventory-service": "opcodes 39/3A 经 3F:1BE6/1BF2 调用 10:1361/1388，在三名人物的八槽背包中查找并替换 item",
+        "encounter-formation": "opcode 37 operand1",
+        "encounter-trigger-runtime": "opcode 37 写入剧情状态/待提交事件 flag 后调用共享 StartScriptedEncounter",
+        "field-reward-resolution-service": "opcode 49 以 Y=4 调用 silent item transfer 上下文；3F:1E5E 两字节前缀由共享服务持有",
+        "field-map-query-service": "opcode 42 随机地雷落点筛选与 opcode 4F 面向双格探测调用共享地图 cell/attribute 查询",
+        "field-rendering-service": "opcode 59 写入并重绘角色所在 metatile；opcode 4F 对面向方向双格应用交互覆盖",
+        "global-random-service": "opcode 0A 随机漫步与 opcode 42 随机地雷落点选择消费共享随机状态",
+        "oam-object-rendering-service": "opcode 61 以 marker $42 与 owner index 调用参数化 OAM 对象槽释放入口",
+        "palette-runtime-service": "opcode 73 场景切换前调用共享调色板淡黑入口",
+        "party-healing-service": "main mode 05 的 10:13AC 遍历存活队员并调用 10:139D 全回复入口",
+        "party-field-actor-type-map": "opcode 58 复活路径读取人物槽到存活 actor-type 的共享映射",
+        "save-role": "人物状态、等级、HP、背包与当前战车绑定",
+        "save-vehicle": "战车状态、SP、装备与持久槽",
+        "save-container": "金钱、事件、宝箱、持久场景物件字段，以及 10:13F3 恢复转场结束时读取 field:save.*.adventure_data_settings.bit5 决定是否恢复背景声音",
+        "scene": "35 行复活目的地的 scene ID 与当前场景",
+        "scene-actor-runtime": "opcode 的角色移动/面向/阻塞动作效果经共享 actor runtime 执行；动作 VM 不复制 actor 坐标与渲染槽布局",
+        "scene-direction-transform": "opcode 10 与场景角色 helper 共用的反向 cardinal direction 表",
+        "scene-actor": "当前场景角色运行时字段与 opcode 41 渲染槽扫描模式",
+        "text-record": "opcodes 02/48/63/64/65 的文本 operand 与内联 F5 消费者",
+        "text-render-runtime": "剧情文本输出及 F5 内联钩子由共享 E2-FE 文本 VM 解释",
+        "runtime-workspace": "opcode 07 与自主动作共享 $02E4-$0313 每渲染槽计数/状态；opcode 69 写 $009C global_frame_countdown 供 NMI palette 交替",
+        "vehicle-visual-selector": "opcode 30 读取持久战车槽到 field actor-type 映射的前八项",
+        "ui-facility": "场景动作 $4C 强制目的地 $0D 的 scene/X/Y 项由 ui-facility:teleport-terminal:config:0C 持有"
+      }
+    },
+    "story-autonomous-script": {
+      "summary": "剧情自律流：自动播放的剧情流池",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "story-script-reader": "迁出入口通过共享读取器预取六字节并恢复原窗口",
+        "audio-command": "stream 中的音频命令",
+        "story-action-handler": "stream.commands[*].opcode；116 项分发表决定 operand 结构和原子动作",
+        "cutscene": "scripts A1/A5 分别生产 main modes 0D/0E 的结局阶段入口"
+      }
+    },
+    "cutscene": {
+      "summary": "剧情过场：特殊传送 F6 演出、结局 modes 0D/0E 的镜头/通缉/战车回顾/字幕/终端画面，以及结局第二阶段字段画面与自主脚本初始化闭包；场景/相机选择表归字段场景生命周期服务，传送中复用的队伍 actor 转场体归共享 scene-actor-runtime",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "结局音频命令 05/47/76/78/7A 与控制命令 F2",
+        "battle-engine": "ending-wanted-review 通过 10:0DD3 准备通缉目标阵型预览",
+        "chr-bank-mapping-service": "传送与结局/过场路径写 normal CHR bank shadow；3F:0661 的终端 helper 由共享终端服务引用",
+        "code-module": "尚留固定核的共享 palette fade 表与 PPU 包装入口",
+        "controller-input-service": "结局交互循环在 1C:02C2 等待新按键边沿 `$18`；输入状态由逐帧屏障调用共享三采样控制器服务刷新",
+        "encounter-formation": "1C:038A/0390 以通缉序号乘 8 读取 1C:1969 起的 8-byte 遭遇编队记录并投影到战斗预览工作区；这里不读取 wanted-record 表",
+        "field-scene-lifecycle-service": "ending stage2 在 3F:0632 调用 3E:1D38，重载事件调整后的字段场景",
+        "frame-nmi-runtime-service": "结局/传送路径在 1C:022F/0264/0275/02C2 等位置使用渲染开关、逐帧屏障和 16-bit 定帧等待",
+        "palette-runtime-service": "ending stage2 初始化前后的 palette shadow 淡出/恢复",
+        "ppu-transfer-runtime-service": "ending stage2 字段帧和 palette 的队列提交",
+        "prg-bank-mapping-service": "传送及 ending stage2 固定 bank wrappers 安装/恢复 PRG window",
+        "raster-interrupt-runtime-service": "ending credits 初始化在 1C:0453 写 profile00，关闭共享扫描线 IRQ 配置",
+        "runtime-workspace": "结局与 F6 传送使用 $18 控制器边沿、$20/$21 bank 状态、$35 raster profile、$52 文本/通缉选择、$61-$63 场景/相机上下文、$A2 文本 provider 以及 $0100-$015F 等运行时工作槽",
+        "save-container": "ending-wanted-review 读取 $667F-$6689 的击破时猎人等级持久字段",
+        "save-vehicle": "ending-vehicle-review 从 SRAM $6478 起读取持久战车槽 0..7 并交给战车状态页；这里不读取 ROM vehicle-preset 预设",
+        "scene": "结局/传送当前场景上下文；场景/相机选择表经 field-scene-lifecycle-service 消费，不在本模块重复持有",
+        "scene-actor-runtime": "特殊传送 F6 复用队伍 actor 阻塞转场服务；ending stage2 启动字段实体与 autonomous scene action runtime",
+        "terminal-presentation-service": "结局终端的 region-$15 文本、CHR、淡入淡出与 PRG-RAM 保护尾均经共享终端服务句柄调用",
+        "text-render-runtime": "结局通过 terminal-presentation-service 的 region-$15 渲染入口进入共享文本构造协调器",
+        "text-record": "结局 region 15 records 000..014；其中 decimal record:15:012 是 SHOJI MASUDA 字幕，不是记忆中心的十六进制 $12 选择值",
+        "ui-text-provider-zero-page-overlays": "1C:03A6-03A9 把通缉目标击破时等级写入 provider 38/$DE，供 record:15:016 显示",
+        "ui-role-status": "ending-credits 经 3F:060F 显示当前人物状态页",
+        "ui-vehicle-status": "ending-vehicle-review 经 3F:05F7 显示所选战车状态页",
+        "shared-chr-bank": "结局 CHR banks 90/91 与 shadow banks 08-0B",
+        "scene-actor": "editable_fields[kind=actor-record].owner_ref.record_uid 引用角色记录；byte_index 由场景编码器处理",
+        "story-autonomous-script": "editable_fields[kind=script-operand].owner_ref.script_resource_id 与 byte_index 引用已有自主脚本操作数",
+        "world-map-landmine-runtime-service": "application command 从 1A:1EF0 进入时复用地雷尾指令的两字节重叠视图 `05 60`，随后落入本模块 1A:1EF2 的 F6 传送主体",
+        "field-terrain-behavior-service": "剧情字段移动按当前元图块行为与传送带方向表推进队伍和镜头。",
+        "scene-transition-runtime": "剧情字段移动在坐标入口提交目的场景与落点。"
+      }
+    },
+    "story-interaction-script": {
+      "summary": "剧情交互流：需要玩家参与的剧情流池",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "story-script-reader": "迁出入口通过共享读取器预取六字节并恢复原窗口",
+        "audio-driver-section": "interaction 0A 在 13:1507 的 opcode $1D 以立即数 $F7 引用 audio-control:F7",
+        "save-container": "interaction 35 opcode 63 operand2 -> global event flag 0x4C",
+        "story-action-handler": "stream.commands[*].opcode；116 项分发表决定 operand 结构和原子动作",
+        "text-record": "interaction 35 opcode 63 operand1/operand3 -> record:05:128 / record:05:075"
+      }
+    },
+    "story-script-reader": {
+      "summary": "剧情远跳读取器：持有目标绑定的定值代码，目录与脚本页由对应剧情字段对象持有",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "prg-bank-mapping-service": "通过固定 bank 的 D3F9 与 D414 安装和恢复两个窗口",
+        "story-action-handler": "尾跳恢复窗口后沿 A974 分发原处理器",
+        "runtime-workspace": "调用期间借用 AE/AF、B0..B5 与栈"
+      }
+    },
+    "world-event": {
+      "summary": "固定坐标遭遇：44 行场景/X/Y、完成 flag、剧情状态和编队引用并列表；第 43 行编队字节与 encounter-event-flag-map:00 共用物理字节并由后者唯一拥有，因此本节点只从自己的物理字节发布第 0-42 行编队引用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "encounter-formation": "fixed-coordinate-encounter:00-42.encounter_formation_id；第 43 行的共用字节由 encounter-event-flag-map 唯一拥有并从该 owner 发布 formation 00 引用",
+        "event": "44 行物理字段分别发布 event:00:00-2B typed view 句柄",
+        "save-container": "fixed-coordinate-encounter:00-43.pending_event_flag 指向全局事件 bitmap",
+        "scene": "fixed-coordinate-encounter:00-43.scene_id"
+      }
+    },
+    "text-render-runtime": {
+      "summary": "共享文本运行时：22 个 region 的 record 定位、E2-FE 控制码 VM、70 项运行值 provider、正文字形栅格化/动态 tile 上传、EB 后继记录调度、输出指针行列推导，以及一个入口未恢复的 region/record 十六进制快照诊断叶函数；bank 0A 动态字形闭包的 12 个内部入口已按调用条件、字段与实际效果取得确认操作名；对话、战斗、设施与场景道具共用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "provider 39 -> $05A6 赛青蛙回合计数",
+        "char": "0A:1A90-1FCE 读取 18-byte 正文字形并栅格化为动态 tile",
+        "chr-bank-mapping-service": "UploadDynamicGlyphPattern@0A:1F1B 在 0A:1F22-1F31 临时调用 CHR register2-5 setter",
+        "code-module": "B8:B9 通用流指针、固定 PPU 包装与 reset 生命周期；F5F7 落入 code-module:application-dialogue-flow-vm 的 F5FC 地址解析，后继对 C4/C5 加 6240",
+        "controller-input-service": "choice/confirm 控制流程读取 `$17/$18/$19` 的稳定按键与方向状态",
+        "field-movement-resolution-service": "19:1E1B 的 JMP E404 尾调用；3F:0404 物理归属该模块，安装 bank14 后调用 B6C5 并恢复 A000",
+        "frame-nmi-runtime-service": "动态字形 NMI 前置回调、逐帧屏障和定帧等待；文本模块不再拥有 NMI 字节",
+        "indirect-control-transfer-service": "19:1C17 控制码分派以 0C/A 传递表项地址，尾调 3F:09FA 的 STA 0D; JMP(000C) 共享入口",
+        "ppu-transfer-runtime-service": "动态字形和文本 tile 的 queued PPU transfer/flush",
+        "prg-bank-mapping-service": "SelectTextRecordByRegion、RunSelectedUiTextRecord 和文本固定 bank wrappers 安装/恢复 PRG window",
+        "raster-interrupt-runtime-service": "0A:1B62 文本控制初始化写 display profile01，后续帧由共享 IRQ 服务解释",
+        "runtime-workspace": "provider 0D -> $70D0 本场战斗累计经验",
+        "save-role": "provider 00-05/0C/3F-42 的人物名字、最大 HP 与等级数组",
+        "save-container": "provider 06/0E/43-45 的金钱、金铃阈值与三类击破计数；$6000-$63FF 逻辑画面与 $6780-$67BF 动态字形现场",
+        "text-record": "region 00-15 的 record payload 与 E2-FE 内联控制码",
+        "ui-text-provider-workspace": "provider 07/0F-37/3A-3D -> $051D-$058B 上下文运行态别名",
+        "ui-text-provider-zero-page-overlays": "provider 08/09/0A/0B/38/3E -> $C0:$C1、$C6:$C9、$DE:$E3 的 12-byte 零页叠加视图",
+        "ui-tile-rectangle-service": "3F:1534/1543/1564 等固定文本构造入口调用 3F:1A51/1A59/1A63 的共享逻辑矩形服务"
+      }
+    },
+    "text-record": {
+      "summary": "文本记录：玩家可见文字的权威出处；自身只编码字符与内联动作，文本运行时从消费侧引用记录",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "char": "每个字符的编码（lead+selector）",
+        "story-action-handler": "records[*].commands[run-ui-hook].hook；12 个内联 F5 调用进入剧情原子动作运行时",
+        "item-entry": "名称槽（item 归一后的名字）",
+        "shell-record": "名称槽（shell 归一后的名字）"
+      }
+    },
+    "fixed-text-slot": {
+      "summary": "定长运行时文字槽：固定长度、按槽编码的玩家可见文字字段对象。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "char": "文字槽中的字符编码"
+      }
+    },
+    "terminal-presentation-service": {
+      "summary": "共享终端呈现服务：为结局与记忆中心提供 region-$15 记录渲染、终端文字 CHR、画面复位、淡入淡出以及 PRG-RAM 保护自循环；调用方只持句柄",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "FixedCore3FStateInit@3F:0661 写 normal CHR register2-5 shadow，供结局与记忆中心终端呈现共用",
+        "field-rendering-service": "3F:064E 在明确映射 bank $14 后调用 14:0B82 的 camera shadow / overlay 更新入口",
+        "frame-nmi-runtime-service": "终端初始化/退出调用渲染开关、OAM 全隐藏、逐帧屏障和定帧等待",
+        "palette-runtime-service": "3F:0643/0654/067C/068D 调用固定核亮度渐变，3F:0651 在 bank $14 调用调色板动画入口",
+        "prg-bank-mapping-service": "终端呈现的 bank18/固定核 wrappers 安装并恢复 PRG window",
+        "raster-interrupt-runtime-service": "3F:0693 终端/固定核复位同时清零 display profile 与两项 PPUCTRL XOR mask",
+        "text-render-runtime": "按 RAM $52 的记录号渲染 region $15 文本",
+        "text-record": "调用方提供的 region-$15 record 句柄；记忆中心使用 record:15:018",
+        "shared-chr-bank": "终端文字 CHR shadow banks $08-$0B 与结局 tile grid banks $90/$91（后者仍由 cutscene 选择）"
+      }
+    },
+    "ui-adventure-data-mode": {
+      "summary": "模式/冒险资料 UI：资料显示设置、战斗动画与声音开关、通缉击破履历、三类怪物击破计数，以及 7 位十进制金钟阈值编辑",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "19:1328/132C 直接写 primary CHR register0/5 shadow `$22/$27`",
+        "code-module": "19:12F5-1AA9 直接调用固定核的 UI state/action、数值转换、应用文字状态与全局事件 flag 公开入口",
+        "controller-input-service": "19:19E9 直接读取 `$19` 的四方向归一码，驱动七位金铃阈值增减",
+        "item-entry": "19:1A13/1A39 直接调用 item-entry 持有的 region-$02 记录选择入口，19:1A3E 调用其文字输出包装入口",
+        "wanted-record": "19:1A64-1A91 直接枚举 wanted ID 1..11，并以该句柄读取击破履历、绑定赏金显示上下文",
+        "palette-runtime-service": "19:130B/1337/133A/1A51/1A93 直接调用共享 palette copy 与淡入淡出入口",
+        "prg-bank-mapping-service": "3F:13FD/1406/1480/1489 四个包装入口直接安装 bank19，并分别恢复 facility/battle PRG bank",
+        "save-container": "19:195A-1A37 直接读写 `$645C` 冒险设置、`$667E-$6689` 通缉击破履历与 `$6690-$6692` 金铃阈值",
+        "text-render-runtime": "19:1313 与 19:1A1D-1A88 直接调用共享 region 选择、布局、输出及 provider 控制入口",
+        "text-record": "直接选择 record:03:007 与 record:02:018/027/028/029/05E/05F；其他被调 provider 的内部记录不传递展开",
+        "ui-party-overview": "19:130E 直接调用 19:1760 的队伍人物/战车总览公开入口",
+        "ui-party-paired-selector": "19:131A/1320 直接调用 19:02B6/02D5 的成对人物/战车 selector 入口",
+        "ui-text-provider-workspace": "19:19D0-1A20 直接写入 `$0534-$053A` 的七位金铃阈值编辑视图",
+        "ui-text-provider-zero-page-overlays": "19:195A-1A91 直接构造 `$E2:$E3` 通缉目标上下文、`$C8` 击破等级与 `$DE-$E1` 数值视图",
+        "ui-wanted": "19:1A74 直接调用 3F:0BDB 的通缉目标赏金码绑定公开入口"
+      }
+    },
+    "ui-name-entry": {
+      "summary": "主角/自有战车命名界面：十行选择表、界面构造、车辆键盘光标移动、输入循环、两种字形变换、退格、留空前进、确认提交、九项目标指针，以及新游戏三名人物姓名预设匹配/确定性后备初始化",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "constructor.audio_command -> audio-command:04",
+        "char": "selection_grid 的普通字符格与两种字形变换均消费不透明字符编码",
+        "chr-bank-mapping-service": "VehicleNameUiConstructor@10:1534 以 X=$02 初始化 primary/raster 两套 bank，并覆写 raster register0",
+        "code-module": "窗口、光标、逻辑 nametable 和输入缓冲单字节写入 provider",
+        "controller-input-service": "VehicleNameUiInputLoop 消费 `$18` 新按下位图与 `$19` 四方向归一码",
+        "character-initial-record": "14:1B67/1B91/1BBC 以 $BC07/$BC57/$BC83 为基址读取 character-initial-record 的联动预设与两组后备姓名候选",
+        "item-entry": "10:15A2 直接调用 item-entry 持有的 3F:0B0F region-02 record 选择入口",
+        "integer-arithmetic-service": "14:1B57/1B86/1BB3 直接调用 3E:1614 的共享 8×8→16 乘法，定位联动预设与确定性后备姓名槽",
+        "palette-runtime-service": "10:15F6/15FC 直接调用 3F:0BB8/0BFA 的 palette triplet copy 与淡入包装入口",
+        "prg-bank-mapping-service": "固定 wrapper 在 3F:1BC5 调用 3F:1AFC 安装 bank $10 的 $A000 window",
+        "prg-bank-window-restore-service": "固定 wrapper 在命名流程返回时从 3F:1BCE 尾跳 3F:14C1 恢复 $A000 window",
+        "save-role": "10:16C6 目标指针首项指向主角姓名；14:1BF8/1C03 把新游戏三名人物姓名写入活动人物记录",
+        "save-vehicle": "destination_pointers[1..8] -> eight active owned-vehicle name_codes；每车六个可输入字符",
+        "text-render-runtime": "10:1587/15A5/15ED 与 10:162A/164C/1695 直接调用共享位置准备、输出和字符写入入口",
+        "text-record": "10:1592/15A0 按 D5 选择 region 02 的 record 076 或 078",
+        "ui-facility": "10:1673 直接调用 ui-facility 持有的 3F:0E92 bank-$18 包装入口；依赖止于该公开 wrapper，不把其内部回调扩成传递边",
+        "ui-text-provider-workspace": "10:1555-1561/165F-16C3 与 14:1B71-1BAA 直接读写 $051D-$0520 的姓名输入/provider 工作视图",
+        "vehicle-field-driveability": "车辆命名确认路径在 10:1676 直接调用 10:1956 的不可驾驶队伍绑定计数入口"
+      }
+    },
+    "ui-equipment-control": {
+      "summary": "人物/战车装备控制：持有主命令 $24 的页面、动作状态、兼容性、转交、丢弃、战车八列重排与载重/容量预览，并向 application-command 和财产保管提供选中装备移除、容器压缩及派生刷新编排；共享策略与容器服务均走引用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:004D-114B 的装备状态机直接调用尚留固定核的 UI 状态、文本复位与数值解码 helper",
+        "item-entry": "equipment category, compatibility, item weight and price code",
+        "eight-slot-inventory-service": "eight-slot removal and compaction",
+        "field-exploration-runtime": "19:0254 直接调用 19:0269 restore-field-after-command-ui，在装备会话结束时恢复字段",
+        "inventory-discard-policy": "shared discard prompt/protection",
+        "inventory-transfer-feedback": "shared role/vehicle transfer feedback",
+        "inventory-ui-working-set": "expanded interactive equipment list",
+        "palette-runtime-service": "19:0B00/0B16 直接调用 3F:0BF4/0BFA 的共享淡入淡出包装",
+        "party-entity-selection-provider": "19:0B4C/0BB6 直接调用 3F:0BA9 读取队伍实体描述符",
+        "prg-bank-mapping-service": "3F:142A/144A 的包装器安装 bank $19 后分别调用装备控制入口并恢复 bank $18/$17；3F:1C5F 安装/恢复 bank $10 后调用战车装备服务",
+        "role-equipment-service": "equipped-mask compaction",
+        "role-equipment-derived": "装备变更后重算攻防、护具索引与三项特殊战斗效果标志",
+        "save-role": "role equipment",
+        "save-vehicle": "eight generic vehicle equipment columns",
+        "save-container": "19:08B9 按成对光标索引直接读取 $6764-$6767；第四队伍实体描述符属于 save-container",
+        "text-render-runtime": "出租限制、人物/战车装备页、详情与兼容性反馈的 15 个直接记录选择/输出调用点",
+        "text-record": "record:02:016/017/043/080/104-110/112/144 and layouts",
+        "ui-party-paired-selector": "19:08A1/0B06/0B10/0B3D/0B64/0B91/1100 直接调用成对人物-战车光标与可用性 provider",
+        "ui-tile-rectangle-service": "19:08A4/0BBF/0BCB/0BE9/0BEC/0D86/0E52/0FBA/10F3 直接调用共享逻辑矩形入口",
+        "ui-tool-inventory-control": "19:1119/1134 复用工具转交续流，19:1344 直接尾跳 19:029F 的工具根入口",
+        "vehicle-equipment-service": "category markers, eight-column repack and selected-equipment-removal load/capacity preview"
+      }
+    },
+    "ui-item-session-service": {
+      "summary": "工具 UI 共用的 30-byte 会话初始化/结束服务；19:024C 的 8-byte 结束入口从调用者选择上下文恢复 UI 状态，不拥有物品或存档编码",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:0243 直接调用 3F:11F9 的共享 UI 状态处理入口；19:0251 把返回 selector 直接交给 3F:09EC 的固定 UI 分派入口",
+        "controller-input-service": "19:023C 直接读取 $17 current buttons，移位后按 bit7/bit6 选择重绘、共享状态处理或文本退出路径",
+        "field-exploration-runtime": "19:0236 直接调用 19:0269 restore-field-after-command-ui，19:0246 直接尾跳 19:0221 重绘字段命令 UI",
+        "runtime-workspace": "19:024D 直接读取调用者留下的会话上下文 $D3，加 $37 后生成固定 UI 返回 selector",
+        "text-render-runtime": "19:0239 直接调用 3F:18C5 的文本等待确认控制码实现，19:0249 直接尾跳 3F:109E 的共享文本退出链"
+      }
+    },
+    "ui-party-overview": {
+      "summary": "队伍人物与战车总览：主命令 $22 进入总览，遍历三个人物与四个队伍实体描述符，准备人物/战车姓名、状态、HP/SP、载重与装备概览并渲染共享布局；command $49 按选择类型转入人物或战车详情",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:12E5/12EC/12F2、1359/135F/1369 与 1755/1796/17D8 直接调用固定 UI 状态、文本 provider ABI 与数值格式化原语",
+        "item-entry": "19:17C7 直接调用 item-entry 持有的 3F:0B0F field-text-region-02 入口；总览只消费该接口，不读取 tank-item 记录布局",
+        "palette-runtime-service": "19:12DF/12EF 直接调用 3F:0BF4/0BFA 的共享淡出、淡入包装入口",
+        "party-entity-selection-provider": "command $49 战车分支在 19:135C 直接调用 3F:0BA9 取得当前队伍实体，再进入战车状态页",
+        "save-role": "19:176C 读取人物存在字段 $6478,X；19:178A 的前三项 $6764-$6766 是三名人物队伍描述符",
+        "save-vehicle": "19:17CE/17D3 按所选战车槽直接读取 $64E8/$64E9,X 的战车 SP 字段",
+        "save-container": "19:17B3 单独读取第四队伍实体描述符 $6767；该字段不属于前三名人物的 save-role 范围",
+        "text-render-runtime": "19:1760、1774/179E、1781/17AB、17B0/17C3 与 17EB 直接调用共享记录布局、输出和 region 选择入口",
+        "text-record": "19:175B/17A9/17AE/17BC/17C1 与 1799 直接提交 region 02 的 record $20-$23/$2B 及人物状态行记录",
+        "ui-party-status": "19:1758 直接调用 19:172E 的共享人物标题与状态缩写行 provider",
+        "ui-role-status": "19:1357 把 typed command $4A 交给 3F:09EC 的共享命令转移入口，进入人物详情页",
+        "ui-text-provider-zero-page-overlays": "19:134D-1364 与 1768-17E9 直接生产/消费 $C6:$C7、$D0:$D2、$E2:$E3 的人物/战车总览文本 provider 上下文",
+        "ui-vehicle-status": "command $49 战车分支在 19:1366 直接调用 19:1485 的战车状态页 provider",
+        "vehicle-equipment-service": "19:17DB 直接调用 3F:1C0F 的战车装备汇总包装入口，再把当前载重/容量结果并入总览 provider"
+      }
+    },
+    "ui-party-paired-selector": {
+      "summary": "工具/装备流程共用的成对人物-战车光标与接收方选择状态机；后续确认的四战车名称列表已拆给独立 provider，因此本节点为 203-byte",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:02AA/02B0/02EB/0306/0317/031A 直接调用固定 UI 状态与 application-dialogue-flow-vm 子资源入口",
+        "controller-input-service": "19:0360 直接读取 `$19` 四方向归一码，用于跳过不可用的成对光标位置",
+        "item-entry": "19:02CA/030D 直接调用 item-entry 持有的 3F:0B0F field-text-region-02 入口",
+        "prg-bank-mapping-service": "3F:13CD 直接调用 3F:1BBD，将 bank $19 映射到 $A000 窗口",
+        "prg-bank-window-restore-service": "3F:13D3 直接尾跳 3F:14C1，在刷新成对光标后恢复 PRG 窗口",
+        "save-role": "19:02EE/02F5/0312 直接读取三名人物的存在字段与当前战车描述符 $6478-$647A/$6764-$6766",
+        "save-container": "19:02BF/02D5 直接读取第四队伍实体描述符 $6767",
+        "text-render-runtime": "19:02CF/031D 直接调用 3F:0AEF/0B01 的共享文本输出入口",
+        "text-record": "19:02C8/030B 直接选择 region $02 的 record $15/$08",
+        "ui-tile-rectangle-service": "19:02B6 直接调用 3F:1A55 的共享逻辑矩形入口，不展开其内部依赖"
+      }
+    },
+    "ui-role-status": {
+      "summary": "人物详细状态与装备页：19:167A 初始化页面并循环选择三个有效人物，进入 19:169B 的 141-byte 渲染函数及其 6-byte 经验偏移/性别文本私表；共享姓名和状态头走 ui-party-status/code-module，装备页止于 ui-equipment-control 的公开入口",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:167A 直接调用共享 UI 缓冲区初始化，19:1698 尾跳共享命令转移入口",
+        "item-entry": "19:1705 直接调用 item-entry 所有的 region 02 物品文字记录选择入口",
+        "inventory-ui-working-set": "19:1717 直接调用八槽记录到 $0524 起 provider 对的复制入口",
+        "palette-runtime-service": "19:169B 与 19:1725 直接调用共享淡出、淡入包装入口",
+        "save-role": "19:167A-1717 直接读取所选人物的有效标记、姓名、等级、HP、属性、技能与经验",
+        "text-render-runtime": "19:16A0-171F 含 7 个直接 region 03 选择、位置初始化和文字输出调用点",
+        "text-record": "19:1728-172D 的 6-byte 私表保存人物偏移与性别记录号，页面另选择标题、标签及物品文字记录",
+        "ui-equipment-control": "19:1722 直接调用 19:0C16 的人物装备页公开入口；依赖止于该入口，不把其内部 human-item 铺成传递边",
+        "ui-party-status": "19:16A6 直接调用共享人物姓名与状态头准备入口",
+        "ui-text-provider-workspace": "直接写入 $0524 起装备/等级/HP provider 对与 $052C-$053B 属性、经验视图"
+      }
+    },
+    "ui-text-provider-workspace": {
+      "summary": "UI 文本 provider 的 111-byte internal-RAM 运行态视图：统一表示 $051D-$058B 的编码名称、两排 provider 对、八个 7-byte 内联脚本槽及尾部装备/记录叠加区；不拥有 ROM/SRAM 字节",
+      "owns_spaces": [],
+      "observation": "zero-byte-view",
+      "references": {
+        "item-entry": "item-ID 与装备列表视图只持物品句柄，不复制名称或编码定义",
+        "text-record": "[record,region] 对与内联 provider script 只持文本记录引用"
+      }
+    },
+    "ui-text-provider-zero-page-overlays": {
+      "summary": "六个文本 provider 的 12-byte 零页叠加视图：$C0:$C1、$C6:$C9、$DE:$E3 在战斗、状态、设施、商店与资料页之间按上下文复用；所有可达记录生产链均已闭合，不拥有 ROM/SRAM 字节",
+      "owns_spaces": [],
+      "observation": "zero-byte-view",
+      "references": {
+        "application-command": "$DE:$E3 的设施、售货机、旅馆、战车补给与赛青蛙上下文生产视图",
+        "battle-engine": "$C0:$C1 的伤害/回复/能力变化量，以及战斗车辆行的当前/有效最大 SP、底盘名称和替代文本生产视图",
+        "battle-result-script": "结果 opcode 在 $C0:$C1 准备、缩放并提交战斗量",
+        "item-entry": "$E2:$E3 的 item record/context 与 $DF-$E1 的价格视图",
+        "item-acquisition-service": "$E2 是待取得物品 ID；服务在人物/战车容器间选择落点并把结果文本记录写入 $CC",
+        "wanted-record": "$E2:$E3 的通缉目标记录/序号与 $C8 的击破等级视图",
+        "save-container": "$DE 的通缉目标击破时等级持久值来源",
+        "save-role": "$E2:$E3 当前 HP/等级及 $DF-$E1 下一级所需经验视图",
+        "save-vehicle": "$C6:$C9 当前/工作量和上限、$E2:$E3 有效最大 SP 视图",
+        "cutscene": "结局通缉目标回顾把击破时等级写入 provider 38",
+        "text-record": "$E2:$E3 作为 [record,region] 对时只持文本记录引用",
+        "ui-facility": "装备属性、电梯楼层、出租战车名称与固定零 SP 的 provider 生产视图",
+        "ui-party-overview": "已取得战车一览把一基战车槽编号写入 provider 38"
+      }
+    },
+    "ui-tool-inventory-control": {
+      "summary": "主命令 $23 的人物/战车工具物品 UI：入口、列表、使用、转交和丢弃编排；共享光标、容器、反馈和场景使用分派均只持引用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:02A2/03B1/0892 直接进入固定核 UI 命令表，19:0886/0889/0952/0967 调用共享 UI helper",
+        "item-entry": "19:03B6/0957/096C 直接调用 item-entry 持有的 3F:12CF field-item 文本输出入口；19:038E-03A5 选择人物/$64AE 或战车/$65CF 工具容器，其中条目均持 human-item 不透明 ID",
+        "eight-slot-inventory-service": "19:03A5/0903/091F/1195 直接调用八槽计数、删除与压紧入口",
+        "field-item-dispatch": "19:03AA 选择 action base $14；$EF14[$14]=$1C，对应命令指针 $A3BC 直达 field-item-dispatch",
+        "index-stride-table": "19:0937/0987 直接读取 3F:071F 的 index×8 偏移表",
+        "indirect-control-transfer-service": "19:02A2/03B1/0892 经 3F:09EA-09F9 构造命令目标后落入 3F:09FA 共享间接尾跳",
+        "inventory-discard-policy": "19:1190 直接调用 19:119B 共享丢弃策略",
+        "inventory-transfer-feedback": "19:0949/097B 直接调用 19:115C/114E 的战车/人物转交反馈",
+        "inventory-ui-working-set": "19:03AE 直接调用 3F:134F 展开并打开八槽列表",
+        "party-entity-selection-provider": "19:038E/094F 直接调用 3F:0BAC/0BA9 读取成对光标所选队伍实体",
+        "party-vehicle-selection-provider": "19:0883 直接调用 19:0355 构造四个队伍战车名称行",
+        "save-role": "19:039D-03A3/086C-0872 直接安装 $64AE 人物工具容器指针",
+        "save-vehicle": "19:0391-0397/0877-087D 直接安装 $65CF 战车工具容器指针",
+        "save-container": "19:0931 以成对光标索引直接读取 $6764-$6767 四队伍实体描述符",
+        "text-record": "19:03B4/0955/096A 直接选择 record:02:014/019/012 工具列表与容量反馈记录",
+        "ui-item-session-service": "19:03B9/094C/095A/0960/097E/1198 直接尾跳共享工具 UI 结果循环",
+        "ui-party-paired-selector": "19:02A7/0865 直接调用 19:02B6/0304 的人物-战车成对选择器",
+        "ui-tile-rectangle-service": "19:085B 直接调用 3F:1A55 的共享逻辑矩形入口"
+      }
+    },
+    "ui-vehicle-armor-tile-removal": {
+      "summary": "战车装甲瓦片拆卸 UI：车辆选择、十进制步长调整、边界校验、确认与当前 SP 写回；342 字节为无缺口单一状态机",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "UI state/action dispatch and accept/cancel helpers",
+        "indirect-control-transfer-service": "固定核状态分派在 3F:09EC-09F9 构造目标后落入共享 3F:09FA 尾跳",
+        "party-entity-selection-provider": "selected paired-cursor party entity reference",
+        "party-vehicle-selection-provider": "four party vehicle name rows",
+        "save-vehicle": "field:save.active.vehicle.{index}.sp",
+        "text-render-runtime": "战车选择、SP/载重面板和确认等待的 10 个直接记录选择、provider 初始化与输出调用点",
+        "text-record": "record:02:008/013/045/046 and record:03:003",
+        "ui-text-provider-zero-page-overlays": "$C6:$C7 待保留 SP 与 $C8:$C9 原值/上限叠加视图",
+        "vehicle-equipment-service": "所选战车当前总载重、已安装引擎容量和非负容量余量"
+      }
+    },
+    "ui-vehicle-shells": {
+      "summary": "战车炮弹库存：主命令 $25 与 selector $2E 的炮弹容量、六槽数量、购买/装填动作与状态编排",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:09FE-0AD7 直接调用 application-dialogue-flow-vm 所属的 ResetTextOutputState，以及尚留固定核的 UI state/action 与数值 helper",
+        "item-entry": "19:09F8 直接调用 item-entry 持有的 ShowFieldItemTextRecord@3F:12CF；依赖止于该公开入口；19:0AAD 从持久战车装备列取得战车武器 ID；只作为不透明实体句柄，不复制物品记录",
+        "index-stride-table": "19:0AE3 按战车槽读取 3F:0701 的共享 index×6 表，定位六项炮弹数量",
+        "palette-runtime-service": "19:09FE/0A22 调用 3F:0BF4，19:0A13/0A38 尾跳/调用 3F:0BFA",
+        "party-entity-selection-provider": "19:0A60 直接调用 3F:0BA9，取得当前成对 selector 的实体描述符",
+        "party-vehicle-selection-provider": "19:0A2B 直接调用 19:0355 的战车名称行 provider",
+        "prg-bank-mapping-service": "3F:1421/145C/149B 三个包装入口调用 3F:1BBD 安装 bank19，并尾跳 3F:151A 恢复 bank18",
+        "save-vehicle": "19:0A7D/0AAD/0ABE/0ADD/0AEC 直接读取 equipped mask、战车武器 ID/当前弹数、弹仓容量与六项炮弹数量",
+        "shared-indexed-byte-overlays": "19:0AC9 以战车武器 ID 直接读取 3F:06E7 的弹药容量码视图",
+        "text-render-runtime": "19:0A40-0AD4 的 8 个直接 region 选择、布局和输出调用点",
+        "text-record": "19:09F6/0A43/0A88/0AA0 直接选择 record:02:00D 与 record:04:001/003/000",
+        "ui-item-session-service": "19:09FB 尾跳 19:0236 的 UI session 收口入口",
+        "ui-party-paired-selector": "19:0A16-0A25 直接调用 19:02D5/0359 与 3F:13B4 的成对人物/战车 selector 入口",
+        "ui-text-provider-workspace": "19:0AC3-0AFF 直接写入 $0526:$0527、$0534-$0539 与 $0544:$0545 的炮弹文本 provider 工作视图",
+        "ui-text-provider-zero-page-overlays": "19:0A82-0AB7 以 $DE 保存并消费当前装备物理列的文本 provider 上下文",
+        "ui-tile-rectangle-service": "19:0A28/0A65-0A6F 直接调用 3F:1A55/1A63 的共享逻辑矩形入口"
+      }
+    },
+    "ui-vehicle-status": {
+      "summary": "所选战车详细状态、八列装备状态/重量、底盘 raw-tile 背景与前五物理列部件叠加页；19:136C 起准备装备/重量 provider，19:1439 起提交状态页并等待输入；列 1/2 不固化为类别字段",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "TextItemUiCoordinator@19:1485 写 primary CHR register0/5 shadow",
+        "code-module": "19:13C2 的共享数值解码、19:1440/1458/14B0/1526 的 fixed UI helpers 与 3F:1C20 调用的固定宽度数值记录构造器",
+        "controller-input-service": "19:1469-1476 的状态页等待循环读取共享 `$17` 输入状态",
+        "item-entry": "equipment item weight/category 与战车武器 ammunition_capacity_code 视图",
+        "field-rendering-service": "19:146D/1482 调用 3F:0404；该包装器明确映射 bank $14 后调用 14:16C5 的 viewport core，提交并退出状态页",
+        "frame-nmi-runtime-service": "19:145F/146F 的状态页提交与等待循环调用共享逐帧屏障",
+        "integer-arithmetic-service": "3F:1C4D 固定包装器初始化操作数后尾跳 3E:1614 的共享整数运算入口",
+        "palette-runtime-service": "19:1488/1512/1529 直接调用 3F:0BF4 fade、3F:0BB8 palette-triplet-copy 与 3F:006B brightness-ramp",
+        "prg-bank-mapping-service": "3F:1492/1AF6 的 bank $19 包装入口与 3F:1C20/1C68 的 bank $10 包装入口安装并恢复 A000 PRG window",
+        "save-vehicle": "vehicle name/SP/equipped mask and eight generic equipment item/state columns",
+        "shared-indexed-byte-overlays": "19:13A7 的武器最大弹数表与 19:1494 的装备列 bit-mask 视图",
+        "text-render-runtime": "战车状态/装备/画像页及状态重量子页的 11 个直接记录选择、provider 初始化与输出调用点",
+        "text-record": "record:0C:014/016-018, record:0D:078-085, record:08:006-008 and record:03:003",
+        "ui-text-provider-workspace": "$0544-$058B 的八个内联脚本槽、装备 ID/状态列表及 record/value 叠加视图",
+        "ui-text-provider-zero-page-overlays": "$C6:$C7 当前 SP 与 $E2:$E3 有效最大 SP provider 视图",
+        "ui-tile-rectangle-service": "19:1443/1478 直接调用 3F:1A61 的共享逻辑 tile 矩形入口",
+        "vehicle-equipment-service": "shared category markers, eight-column repack, loaded weight, installed engine capacity and nonnegative headroom",
+        "shared-chr-bank": "selected sprite/background CHR through vehicle-visual-selector",
+        "vehicle-visual-selector": "status sprite/background CHR bank selectors",
+        "battle-action": "19:B52C写80描述符和type，1A:A284分派13:8701按type读取pointer/config；状态图像复用已发布action句柄",
+        "battle-object-layout": "状态部件图像投影消费battle-action的canonical layout_reference，逐行tile与原点经ROM及16组OAM比对",
+        "sprite-palette": "19:B50C经EBB8把11:0B8C两个三色记录12/13装到sprite槽1/2，正常复入实机读映射已核",
+        "oam-object-rendering-service": "19:B52C构造次槽2..6的80描述符，经1A:A25B槽扫描至13:8701矩形布局写OAM"
+      }
+    },
+    "ui-facility": {
+      "summary": "设施界面：设施 UI、共享设施交互 provider、详情记录构造器、NPC 服务 selector 参数表，以及主模式 05 的一次性设施回调与返回链；bank $10:$017A-$03B8 是固定 bank 设施包装入口调用的私有回调与私表闭包；selector $16 的 15 个 packed 参数已明确拆成低两位记录号和高六位服务实例配置",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "18:0169 尾跳 application-command 所有的 18:0D79；18:0F82 尾跳其 18:034A 公开体",
+        "application-config-family": "facility-configuration-pointer",
+        "audio-command": "resources[*].references[relation=plays-audio-command|selects-audio-command]",
+        "item-entry": "configuration[*].product / lottery-prize-item",
+        "shell-record": "configuration[*].product（shell namespace）",
+        "facility-config": "facility-configuration records",
+        "frame-nmi-runtime-service": "RunFacilityItemSelectionMenu@18:084E 在 18:08D2 调用逐帧屏障",
+        "integer-arithmetic-service": "设施商品、战车详情和列表记录偏移使用共享无符号乘法",
+        "raster-interrupt-runtime-service": "设施呈现调用 3F:0A1C/0A23/0A2A 等固定包装器，选择 profiles 05/03/02",
+        "save-vehicle": "selected vehicle ammunition, defense and chassis weight fields used by the detail record builder",
+        "text-record": "resources[*].references[relation=uses-ui-script]；memory-center power-off instruction -> record:15:018",
+        "text-render-runtime": "设施 UI 记录定位、选择控制码、数值 provider 与动态字形输出",
+        "ui-tile-rectangle-service": "18:02A5/081F/084E 等设施菜单入口调用 3F:1A63/1A95/1A99/1AA1 的共享逻辑矩形服务",
+        "ui-text-provider-zero-page-overlays": "设施费用、装备攻防值、电梯楼层、出租战车名称/固定零 SP、商品记录/价格、赛青蛙标量与战车补给当前值/上限的零页 provider 视图",
+        "vehicle-equipment-service": "selected vehicle engine/load numeric context used by facility detail output",
+        "scene": "隐藏传送目的场景与大门所在场景"
+      }
+    },
+    "ui-party-status": {
+      "summary": "人物标题行共享 provider：由 $D1 选择人物，经固定共享入口准备姓名，再直接读取等级、最大 HP 与当前 HP，写入详情页和队伍总览共用的 UI 文本 provider 工作区",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "19:172E 直接调用 3F:1399，以 $D1 选择人物并经固定共享入口准备权威姓名",
+        "save-role": "19:1733-1751 直接读取所选人物的 level、max_hp 与 current_hp",
+        "ui-text-provider-workspace": "19:1736-1751 直接写 $0524 与 $0534-$0537 的姓名、等级和 HP provider 字节"
+      }
+    },
+    "ui-wanted": {
+      "summary": "通缉界面：bank $10 的 16-byte 页面包装入口调用共享战斗编队预览并等待输入；独占 CHR bank 0x92 的 1-KiB 击破覆盖图案，并组合目标表、文本、共享 CHR 与 packed direct-frame",
+      "owns_spaces": [
+        "chr",
+        "prg"
+      ],
+      "references": {
+        "battle-engine": "BuildWantedPosterScreen@10:0DC3 调用共享通缉目标编队预览体",
+        "code-module": "bounty_code_table / code_sites[name=DecodeSharedNumericValue]",
+        "controller-input-service": "10:0DC9-0DCD 等待确认/取消输入位",
+        "core-latin": "web_reconstruction.core_font",
+        "wanted-record": "target_table.values / default_pair.packed",
+        "direct-frame": "defeated_overlay.direct_frame.resource_id",
+        "encounter-formation": "default_pair.high.formation_resource / default_pair.low.formation_resource / entries[*].high.formation_resource / entries[*].low.formation_resource",
+        "frame-nmi-runtime-service": "10:0DC6 的等待循环调用共享逐帧屏障",
+        "oam-object-rendering-service": "defeated_overlay 的 direct-frame:45 由共享 packed direct-frame writer 输出；原 wanted-specific renderer 伪定义已移除",
+        "raster-interrupt-runtime-service": "通缉画面只消费共享 display profile03；原 wanted-poster IRQ/profile/handler 伪定义已归一到共享服务",
+        "sprite-palette": "wanted_poster_palette_states -> sprite-palette:0C-0E",
+        "text-record": "resolution.text_record / web_reconstruction.record_ids / current_poster.monster_name_record",
+        "shared-chr-bank": "visual.segments[*].chr_sources[*].web_source.resource_id / visual.sprite_patterns.web_source.resource_id",
+        "metasprite-record": "defeated_overlay.visual_components[value=metasprite-record.direct-frame-records]"
+      }
+    },
+    "actor-visual": {
+      "summary": "角色视觉数据：动作、类型、图块和场景角色外观字段，由同一字段对象持有。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "shared-chr-bank": "sets[*].chr_banks / pattern_table 中的 tile 编号由场景选择的四-bank actor rendering context 解释；像素只由 shared-chr-bank 提供；frame-descriptor / tile-a / tile-b 中的图块编号"
+      }
+    },
+    "shared-chr-bank": {
+      "summary": "共享 CHR 图块库：持有被多个模块复用的 pixel-bank 图块；仅有单一消费者的专用 CHR bank 仍由该消费者模块直接持有",
+      "owns_spaces": [
+        "chr"
+      ],
+      "references": {}
+    },
+    "metasprite-record": {
+      "summary": "元精灵共享记录池与选择表：持有两类记录池、六项战斗角色选择表、场景道具 AE 世界地图页的 23-entry OAM template，以及通用世界地图道具模式的 22-entry overlay OAM template；battle sprite 调色板与 direct-frame / metasprite 静态指针槽已归各自实体 owner，三个 runtime $60AD pointer 均为共享 OAM renderer 代码尾的非拥有视图",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "metasprite": "battle-actor-selectors[*].metasprite_id"
+      }
+    },
+    "monster-visual-layout": {
+      "summary": "怪物视觉共享布局与攻击锚点聚合；前 79 组锚点和 18 条双色布局由 monster graphic ID 直接索引；figure、palette 与 palette-pair 字段已拆给各自实体 owner；dual-palette 实际流从 PRG $022BB6 开始，$022BB5 只作前置地址锚点",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-graphic": "attack-source-anchors 前 79 组与 dual-palette-layouts 18 条记录均由 monster graphic ID 直接索引"
+      }
+    },
+    "field-map-query-service": {
+      "summary": "字段地图查询共享服务：统一处理本地/世界地图坐标，返回 cell code、terrain/interaction attribute、4x4 world block 和朝向邻格属性，并持有朝向 X/Y 增量及 world-map source bank guard",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "integer-arithmetic-service": "本地地图行指针、世界地图 4x4 block 和属性索引使用共享无符号乘法",
+        "prg-bank-mapping-service": "3F:0283 在 world scene 00 时调用 SetPrgBank8000 安装 bank07 地图源",
+        "runtime-workspace": "field-map dimensions, decoded map buffers, source pointers and scratch coordinates",
+        "scene": "current scene distinguishes local decoded-map and world-map addressing"
+      }
+    },
+    "field-rendering-service": {
+      "summary": "字段视口渲染共享服务：视口/条带/单 metatile/attribute、双 shadow nametable、滚动与临时双格覆盖物完整生命周期；bank 1A 尾部负责交互格测试、运行时地图写入、可见格刷新和逐帧收尾",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "14:03D9 把不透明命令 4C 交给 14:03DB 的共享音频命令入口",
+        "field-map-query-service": "14:0337/035F/0368、05E5/062C/0699/06A5、1A:1F79、3E:1C31 与 3F:01F8 调用字段坐标或地图查询入口",
+        "field-scroll-coordinate-delta-set": "14:059A 按方向直接读取 exposed-strip 坐标增量 `$DB52,X`",
+        "frame-nmi-runtime-service": "14:1234/1237/1240、1514/1537/1543/15B2/1639/1648 与 1A:1FFC 直接调用渲染模式或逐帧屏障入口",
+        "integer-arithmetic-service": "14:15F9、1A:1FE8 与 3F:020C/0221 调用共享无符号乘法",
+        "metatile-set": "14:033C-0357 与 3E/3F 展开体通过 `$59:$5A` 不透明 metatile-set 指针读取四象限 tile",
+        "nametable-attribute-coordinate-service": "14:05C0、133F/138D/13BA/146A 与 3F:0271 调用 metatile 坐标到 shadow/PPU attribute 地址换算",
+        "packed-attribute-quadrant-mask-set": "14:1346/13A5/13D4/13EC/13F3 与 3E:1CC9/1CCE/1CDA 直接读取 `$DB57-$DB5E` keep/clear 掩码",
+        "ppu-transfer-runtime-service": "14:05C3、0BB9-0BCF、12A3/12C6/12DD/148D/1737/1753、3F:0274/027B 与 `$40/$0493` ABI 构造并提交 span/triple 队列",
+        "prg-bank-mapping-service": "14:14BA、3F:0419/0425/05C1 与 3F:0280 安装或恢复字段地图、视口和单格重绘所需 PRG window",
+        "runtime-workspace": "field-map、双 nametable tile shadow、$0200-$023F/$0240-$027F 双 attribute shadow、$02C0-$02CB 两记录六列临时双格覆盖物 SoA、$40 主 triple 队列字节长度与 $0493 起 PPU queue 工作集",
+        "scene": "owner 代码直接消费 `$61-$68` 当前 scene、相机与 viewport 上下文，以及场景装载阶段提供的 metatile-set 指针",
+        "scene-actor-runtime": "14:036D/0373 读取字段 actor 坐标；14:122B/150D/175B 调用 3F:1CD7 的字段实体渲染 bank guard"
+      }
+    },
+    "field-exploration-runtime": {
+      "summary": "main mode 01 字段探索帧：更新 palette/邻格属性，处理非移动输入与字段命令 UI，并提供命令 UI 结束后的字段状态/实体渲染恢复入口；解析移动、碰撞和地形行为，更新相机与 actor，并串联转场、步后遭遇、覆盖物回收和持续状态伤害",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "3E:17BF 与 3E:19A4 直接调用 3E:1350，播放字段命令/坐标切换音频命令",
+        "battle-engine": "$18 bit4 路径在 3E:1A5F 直接调用 3F:1AEA 的 bank10 UI/state dispatcher",
+        "chr-bank-mapping-service": "TextItemUiCoordinator@19:0205 在 19:0207 以 X=$02 调用 3F:0C24 初始化 primary/raster 两套 CHR bank shadow",
+        "code-module": "固定 UI/window 初始化与尚未独立的固定核 helper",
+        "controller-input-service": "字段主循环消费 `$17` current、`$18` newly pressed 与 `$19` normalized direction",
+        "encounter-trigger-runtime": "3E:19AA 直接调用 3F:1E25 初始化随机遭遇步数计量器",
+        "field-item-dispatch": "19:0233 直接调用 19:0454 的字段道具 action 分派入口",
+        "field-item-use": "$18 bit5 且 scene 00 时在 3E:1A4E 选择 main mode 0A，并交回主 mode 分派器",
+        "field-map-query-service": "当前/邻接地图格属性与朝向坐标增量",
+        "field-movement-execution-service": "3E:1910 调用方向化逐子步移动、相机与渲染执行循环",
+        "field-movement-resolution-service": "3E:193B 直接调用 14:0272 的方向/step profile 解析入口",
+        "field-scene-lifecycle-service": "3E:19A7/1A62 分别直接调用 3E:1D18/1D38，完成坐标切换与事件调整后的字段场景重载",
+        "field-status-damage-service": "3E:1933/1943 直接调用 14:0191/01D8，生产并消费人物 HP/战车 SP 持续伤害量",
+        "field-step-resolution-service": "3E:192B 直接调用 3F:1E35 的移动完成后遭遇与状态效果入口",
+        "field-terrain-behavior-service": "移动前后三套 metatile 行为白名单与回调",
+        "palette-runtime-service": "3F:0304 每帧更新当前场景/世界区域 palette",
+        "prg-bank-mapping-service": "字段主循环、状态刷新和步后包装入口直接安装 PRG window",
+        "prg-bank-window-restore-service": "字段命令初始化顺落 3F:14BC 恢复两个 bank window",
+        "raster-interrupt-runtime-service": "字段输入 bit4 分支在 3E:1A5D/1A67 直接写 display_raster_profile `$35=0`，供共享 IRQ profile ABI 消费",
+        "runtime-workspace": "$17-$19、$61-$84、$92/$97-$A5、$0481-$048F 与字段 UI/覆盖物工作区",
+        "save-container": "3E:1880 读取不可驾驶队伍战车计数，14:A175/A17A 读取并翻转潮汐存档事件位 global-event-flag:88。",
+        "scene": "字段对象消费当前场景与镜头坐标；潮汐切换表改写世界粗格 (58,23)/(58,24)，场景00提供字典展开，退潮洞口为 transition:00:3D。",
+        "scene-actor-runtime": "角色坐标/渲染槽、推动碰撞、方向历史与阻塞转场",
+        "scene-direction-transform": "3E:187A 按输入方向读取 field actor-facing index",
+        "scene-transition-runtime": "离开当前边界后的方向化 transition record 解释",
+        "text-render-runtime": "3E:1896 在不可驾驶队伍战车计数非零时把 `$CC:$CD` 设为 `$069F`，再直接调用 3F:106D 的共享文本入口",
+        "ui-facility": "3E:1901 先安装 bank $18，随后 3E:1904 直接调用 ui-facility 持有的 18:02AB 光标位置保存入口",
+        "ui-party-paired-selector": "3E:191D 先安装 bank $19，随后 3E:1920 直接调用 19:0301 的人物/战车成对选择 provider",
+        "vehicle-equipment-service": "3E:1857 先安装 bank $10，随后 3E:185A 直接调用 10:17BE 的战车装备入口",
+        "vehicle-field-driveability": "3F:14B6 安装 bank $10 后，14B9 直接调用 10:1956 重算不可驾驶队伍战车绑定负计数"
+      }
+    },
+    "field-movement-resolution-service": {
+      "summary": "字段移动方向与step profile选择、半步方向组比较、临时覆盖物配对扫描及三个bank14字段渲染调用包装；CMP的Z/C不自动代表可通行结论",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "14:02F1-02F3 把不透明命令 $4C 交给 3E:1350 的共享音频命令入口",
+        "field-rendering-service": "14:0301/030C/0317 直接调用 3E:1C5D/1C29/1BF5 的字段坐标 provider；3F:03EA/03FC/040C 分别进入 14:1220/149D/16C5 的视口与刷新入口",
+        "prg-bank-mapping-service": "14:1842 与 3F:03E6/03F8/0409 直接调用 SetPrgBank8000/SetPrgBankA000，安装移动解析及字段渲染入口所需的 PRG window",
+        "runtime-workspace": "14:0272-031A、17BE-183D 与 1C:0122-0130 直接读写 $19、$40、$61-$72、$82-$84、$9B、$A2/$A3、$02C0-$02CB 与 $0358/$035C 的移动、坐标及临时覆盖物状态",
+        "scene": "14:17BE-17C2 直接比较当前 scene 句柄 $5B，选择该场景的移动特例",
+        "scene-actor-runtime": "14:1832 直接调用 3F:1D03 的队伍 actor 方向重置公开入口；依赖止于该入口"
+      }
+    },
+    "field-status-damage-service": {
+      "summary": "字段持续状态伤害服务：生成并消费逐人物 HP/逐绑定战车 SP 待结算量，处理死亡/毁坏文本、主模式切换及字段队伍显示重建；正式状态称呼仍诚实保留未知",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "sprite-object 清理、文本确认协调和当前人物名称 provider",
+        "party-damage-and-defeat-service": "3F:0C6D 扣减人物 HP 并返回死亡结果",
+        "runtime-workspace": "$0481/$0487、$048C-$0491 与 $C0:$C1 结果量",
+        "save-role": "人物存在性、持续状态 byte、当前 HP 与战车绑定",
+        "save-vehicle": "战车持续状态 byte 与当前 SP",
+        "scene-actor-runtime": "3F:1CA7 重建字段队伍 render slots",
+        "text-record": "record:0A:006 / record:0A:011 死亡或毁坏结果",
+        "text-render-runtime": "region0A 输出与确认等待",
+        "vehicle-sp-damage-service": "3F:0C7F 扣减当前战车 SP"
+      }
+    },
+    "chr-bank-mapping-service": {
+      "summary": "MMC3 六个 CHR bank 寄存器的写入、normal/primary/raster 三套 shadow 应用，以及共享四 bank 前缀和七项二 bank 预设初始化服务",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$1A-$1F normal、$22-$27 primary、$28-$2D raster 三套六寄存器 CHR bank shadow；$20/$21 是相邻但归 PRG 映射服务的 shadow",
+        "shared-chr-bank": "预设表及调用方写入的 bank ID 是对 CHR 图样资源的 opaque 引用；本服务只映射，不拥有图样字节"
+      }
+    },
+    "raster-interrupt-runtime-service": {
+      "summary": "MMC3 扫描线 IRQ 分派、13 项逐帧显示 profile、16 项 handler 指针选择，以及按光栅阶段切换 PPUCTRL、PPUMASK、PPUSCROLL 与 CHR bank set 的共享显示服务",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "配置器与 handlers 调用 normal restore、primary/raster set applier 和 register0-5 setters；CHR bank shadow 及物理映射仍由 CHR 服务独占",
+        "runtime-workspace": "$32-$33 selected handler vector、$35 display profile、$79/$7A PPUCTRL XOR masks、$88 stage、$91 active control shadow、$A8 dynamic latch、$A9 selector"
+      }
+    },
+    "prg-bank-mapping-service": {
+      "summary": "MMC3 的两个可切换 8 KiB PRG 窗口映射服务：X 指定 bank；包含各调用域共用的常量 bank 包装入口；仅在 shadow 不同时，在临界区写寄存器 6/7 并更新 $20/$21",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$20 mapped-bank-$8000 shadow、$21 mapped-bank-$A000 shadow 与 $34 nmi_work_mode；更新 MMC3 register6/7 时临时置 FF 使 NMI body 立即退出，随后恢复原值"
+      }
+    },
+    "prg-bank-window-restore-service": {
+      "summary": "共享 PRG window 栈恢复服务：3F:14BC 恢复 $8000+$A000 两窗，3F:14C1 只恢复 $A000；字段、战斗、文本、命名与设施固定包装器共同尾跳",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "prg-bank-mapping-service": "3F:14BC/14C1 弹栈后分别调用 SetPrgBank8000 与 SetPrgBankA000"
+      }
+    },
+    "scene-transition-runtime": {
+      "summary": "字段坐标转场运行时：解释同址 boundary / point-transition 流，匹配入口坐标并暂存目标场景、落点与返回状态；实际场景装载和随机遇敌重置留在调用方",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "14:11DB/11DD 直接装入 transition cue `$47` 并调用共享 audio wrapper",
+        "scene": "14:1152-116F 直接读取 `$54:$55` 所指逻辑流的 `$FF` / `$FE` / 四向 boundary 头，以 1 / 4 / 12 字节宽度定位 point-transition 段；14:11C0-11D2 直接把目标 scene / X / Y 写入 `$61-$63`；3E:19C7-19DF 在 `$61-$63/$6B` 与 `$02D0-$02D3` 间保存返回状态；14:117E-11D2 直接读取 point count、入口坐标对与三字节目标 scene / X / Y 记录",
+        "code-module": "14:11D6/11DD/11E4 与 3E:19FC 直接调用全局事件位、audio wrapper、主模式分派和共享状态查询公开入口",
+        "runtime-workspace": "14:1150-11F1 直接使用 `$00`、`$0C:$0D`、`$54:$55`、`$65:$66`、`$89`，3E:19C7-1A33 使用 `$82-$84`、`$A2/$A4` 及 `$02D0-$02D3` 转场工作视图"
+      }
+    },
+    "field-step-resolution-service": {
+      "summary": "字段移动后的结算服务：固定坐标遭遇优先、随机遇敌计量后备；编队形成后进入战斗，随后处理一个人物状态位的随机解除和绑定持久战车槽 02 的人物每步 1 HP 恢复",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "encounter-trigger-runtime": "1A:173F/1747/174F/1752 直接调用固定坐标遭遇、随机计量、编队收束和进入战斗入口",
+        "global-random-service": "1A:1755-1769 直接读取 $37/$38 随机状态，选择人物槽并控制状态解除概率",
+        "prg-bank-mapping-service": "3F:1E37/1E3C 直接调用两个 MMC3 PRG bank setter，依次安装 bank1C 与 bank1A",
+        "runtime-workspace": "1A:1723-1752 直接读写 $83/$A5、$0481/$0482/$0487 与 $0544/$0545 的步后结算工作区",
+        "save-role": "1A:175C-1790 直接读写人物状态、当前/最大 HP 与当前战车绑定；绑定值 02 是持久战车槽索引，不是车型预设或底盘物品号"
+      }
+    },
+    "field-terrain-behavior-service": {
+      "summary": "字段 metatile 行为分发服务：从 packed terrain attribute 提取高六位行为码，经三套调用方白名单和 22 项稀疏回调表，执行强制移动、临时覆盖物触发、普通/特殊坐标转场、电梯应用、传送模式或上一场景重载",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "14:1202-1206 装入不透明的 application-command:1F 并调用 application 分派入口；五组 scene 区间只选择配置索引",
+        "audio-command": "14:11DB-11DF 以不透明命令 47 调用音频分派；3F:03BC-03C0 与 03CF-03D3 同样传入命令 5F",
+        "code-module": "14:112A/11D6 调用全局事件标志 provider，14:11E4 尾跳主 mode 分派器，14:1204 调用 application 分派器；调用方只传不透明 ID",
+        "encounter-trigger-runtime": "3F:03DC 直接调用 3F:1E25 的随机遇敌计量初始化入口",
+        "field-map-query-service": "3F:0378/0386/0394 三个固定 wrapper 直接调用 3E:1F8B 查询当前或邻接地图格，取得 $78 packed terrain attribute",
+        "field-rendering-service": "3F:03B9 直接调用 3F:01F5 刷新可见 metatile",
+        "field-scene-lifecycle-service": "3F:03D9 直接调用 3E:1D18 装载并刷新字段场景",
+        "prg-bank-mapping-service": "14:113D 与 3F:03A1/03C4 直接调用 SetPrgBank8000 安装 terrain 行为或场景重载所需的 PRG window",
+        "runtime-workspace": "$00/$0A-$0C、$2F、$63/$65/$66、$78 与字段移动、覆盖物触发和转场工作区",
+        "scene": "14:11F2-121F 读取当前 scene 句柄并以五组区间选择电梯配置；terrain handlers 读写当前 scene 坐标",
+        "scene-actor-runtime": "3F:03C1/03D4 直接调用 3F:1D11 的队伍字段实体转场入口",
+        "scene-transition-runtime": "14:113B-114D 计算目标 scene 坐标并在 14:114E 顺落到独立 owner 持有的 transition record 解释入口"
+      }
+    },
+    "item-acquisition-service": {
+      "summary": "字段奖励与战斗掉落共用的道具取得服务：人物/战车容量判定、容器写入、特殊取得音效和结果文本记录选择",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "19:01B5-01C1 compares the acquired item against the six IDs at 19:01C7-01CD; a match loads fixed command $77 in code before calling the audio dispatcher, so the 6-byte table itself contains no audio-command byte",
+        "item-entry": "reward item identity, category, weight and vehicle-equipment classification; 19:01C7-01CD independently owns the six human-item IDs projected by records[*].item_reference；reward item identity, category, weight and vehicle-equipment classification; the six bytes at 19:01C7-01CD are exactly the six published human-item references whose match selects fixed audio-command:77",
+        "save-role": "role inventory capacity and insertion destination",
+        "save-vehicle": "vehicle inventory, engine/load capacity and insertion destination",
+        "text-record": "record:05:003 success / record:05:004 no capacity / record:05:170 vehicle equipment cannot be carried",
+        "text-render-runtime": "region05 result output and confirmation wait",
+        "vehicle-equipment-service": "selected vehicle load and engine capacity check"
+      }
+    },
+    "oam-object-rendering-service": {
+      "summary": "共享 OAM 对象渲染服务：按 NMI frame parity 遍历主/次对象槽，依据 descriptor 类型位调用 counted metasprite、字段角色四象限、battle-action layout 或 packed direct-frame writer；维护 $0700-$07FF OAM shadow 与 $AD cursor，并提供全隐藏初始化和 $45 DMA pending 请求",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "actor-visual": "13:0383/0395/03A0按直接frame读取descriptor/tile A/tile B；13:043E的8474索引7借读actor-motion.frame-descriptors-00，物理归属不扩入OAM；13:035C/0422 使用 field actor frame/tile、坐标 delta、quadrant order 与 flip tables",
+        "battle-action": "$0324,X action ID 查 action[$01-$FE] pointer/config；battle-action:00 是本服务 13:07FA-07FC 代码尾的非拥有 $60AD view",
+        "battle-object-layout": "13:0701 经 battle-action pointer 读取 origin 与 tile grid；布局实体字节仍由 battle-object-layout 独占",
+        "direct-frame": "descriptor bit6 选择 direct-frame pointer；direct-frame:00 是本服务 13:10CE-10D0 代码尾的非拥有 $60AD view",
+        "frame-nmi-runtime-service": "本服务生产 `$45` OAM DMA pending latch 和 page07 OAM shadow；普通 NMI 清 latch 并执行 `$4014=7` DMA",
+        "global-random-service": "主槽合成结束把 $37/$38 快照到 $0377/$0378",
+        "metasprite": "默认 descriptor 路径使用 metasprite pointer；metasprite:00 是本服务 13:0048-004A 代码尾的非拥有 $60AD view",
+        "prg-bank-mapping-service": "1A:01B1/022D 映射 bank13；3F:1CED 映射 bank1A 并恢复两个 PRG window",
+        "runtime-workspace": "$00-$10 renderer scratch，$35 display profile，$36 NMI frame counter/parity，$45 OAM DMA pending，$AD OAM cursor，primary/secondary slots 与 $0700-$07FF OAM shadow",
+        "metasprite-record": "13:0000/1031 使用 counted metasprite 与 packed direct-frame record pools"
+      }
+    },
+    "palette-runtime-service": {
+      "summary": "调色板运行时共享服务：世界区域/本地场景的 CHR 与背景 palette 动画、保持颜色低 nibble 的三阶段亮度淡入淡出，以及剧情全局倒计时驱动的普通/去色增亮 16 色 palette 交替",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "GameplayHelper@14:0F42 的字段 palette 动画路径同时更新 normal CHR register2/4 shadow",
+        "shared-chr-bank": "field_chr_animation.banks 引用本地场景动画图案页",
+        "frame-nmi-runtime-service": "3F:009C 亮度渐变每个延迟单位递增 `$45` 请求 OAM DMA并调用逐帧屏障；普通 NMI 又在 `$9C` 奇数相位反向调用 3F:01C8 提交去色增亮 palette",
+        "prg-bank-mapping-service": "3F:0304 palette wrapper 安装并恢复 $A000 PRG window",
+        "palette": "field palette sources and color records",
+        "ppu-transfer-runtime-service": "palette shadow upload、连续 VRAM payload 队列与提交；倒计时奇数相位使用 $41/$47:$46/$0493 ABI 写入 PPU $3F00-$3F0F",
+        "runtime-workspace": "$009C 全局帧倒计时、$0280-$028F palette shadow、$0493-$04A2 payload，以及 $41/$46/$47 连续上传参数",
+        "save-container": "global event flags selecting world-region animation state",
+        "scene": "current scene and world coordinates"
+      }
+    },
+    "ppu-transfer-runtime-service": {
+      "summary": "PPU 传输运行时：span/连续/triple 队列构造与提交、同步 flush、palette upload，以及直接 PPUDATA 读取临界区",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-driver-section": "$06FF direct_ppu_read_disable_dmc_latch；非零使音频帧末写 $4015=$0F，关闭 DMC 后再开始直接 PPUDATA 读取",
+        "chr-bank-mapping-service": "3F:04E0 直接 PPUDATA 读取临界区在 3F:04ED 临时调用 CHR register0 setter",
+        "frame-nmi-runtime-service": "队列同步提交路径使用逐帧屏障；普通 NMI 反向调用本模块 flush queues",
+        "runtime-workspace": "$34 三值 NMI work mode、$06FF DMC-disable latch；$42 span 记录数、$40/$44 主副 triple 字节长度、$41 连续 payload 长度、$47:$46 连续目标；$0200-$023F/$0240-$027F 双 attribute shadow；$0493 为 span/连续/main triple 三 ABI 复用基址，$0494/$0495 为 main triple low/value lanes，$04F3-$04F5 为 secondary triple high/low/value lanes；$0280 palette shadow 与 direct-read destination buffers",
+        "scene-data-stream-service": "14:0C3C 调用 14:0C94 建立线性源/目标地址后执行 PPUDATA span 读取"
+      }
+    },
+    "scene-actor-runtime": {
+      "summary": "场景角色运行时：从字段场景 actor/队伍实体初始化、五类 render-slot 间接分派、坐标投影、frame 选择，到交互、推动、阻塞动作和队伍历史移位；1A:01A7 的 entry-minus-one 表已闭合 1A:030D/0368 等 handler，步后地雷判断只引用独立地雷服务",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "story-script-reader": "剧情取指门桩在字形上传完成后转入共享读取器",
+        "actor-visual": "decoded actor type and render slot class",
+        "code-module": "1A:06AE-06E5 调用固定 bank 的全局事件 flag 查询/设置 helper；3F:1DCA 调用其持有的 bank-$11 恢复尾",
+        "vehicle-preset": "队伍实体排序和 actor-type 选择读取持久战车槽与 preset 身份",
+        "encounter-trigger-runtime": "1A:0009 调用其持有的当前 scene 遭遇对象 render-slot 分配器；1A:1927/192A 与 3F:1DC4 进入遭遇对象状态协调入口",
+        "field-interaction-dispatch-service": "1A:0825/0853 把字段交互记录与 scene actor interaction selector 交给共享分发入口",
+        "field-map-query-service": "terrain and counter attribute probes",
+        "frame-nmi-runtime-service": "阻塞 actor 动作、随机行为和 runtime metatile 更新调用 WaitForNextFrameAndPollController",
+        "global-random-service": "1A:191C 调用共享全局随机状态推进器后协调遭遇对象状态",
+        "oam-object-rendering-service": "1A:0158/015E 的字段实体刷新最终尾跳 1A:01B1；角色 runtime 不复制 slot scan、descriptor dispatch 或 OAM 编码规则",
+        "palette-runtime-service": "阻塞队伍 actor 转场期间逐帧更新当前场景/世界区域 palette 动画",
+        "party-field-actor-type-map": "1A:0109/0110 按人物槽读取存活/死亡 actor-type；这两处消费者字节归 scene-actor-runtime，不再挂在 code-module",
+        "prg-bank-mapping-service": "actor 装载、交互、阻塞动作和渲染 wrappers 安装/恢复 PRG window",
+        "raster-interrupt-runtime-service": "ActorBehaviorHelper@1A:041B 与 RunSceneActorAutonomousTick@1A:07AE 读取 display profile，选择 culling 阈值并区分 profile00/非零显示状态",
+        "runtime-workspace": "scene actor arrays $0395-$0413、field render slots $0100-$016F、slot auxiliary SoA $02D4-$0313，以及 $0360-$0367 队伍 actor type/transition countdown；$02-$05 tile/步进投影输入与 $08-$0B 世界像素 X/Y 输出",
+        "save-role": "队伍实体排序读取人物存活/可用状态与当前战车绑定",
+        "save-vehicle": "队伍实体排序和车辆 actor 投影读取持久战车槽状态",
+        "save-container": "1A:00F1 与 3F:1DB6 读取第四队伍实体描述符 $6767；前三名人物绑定仍归 save-role",
+        "scene": "current actor-list selector and camera coordinates",
+        "scene-direction-transform": "facing and opposite-facing conversion",
+        "scene-actor": "actor records and interaction selector values",
+        "story-action-handler": "scene action command dispatch",
+        "text-render-runtime": "1A:170E 在场景角色界面投影完成后尾跳共享文本行布局入口 3F:15F7",
+        "ui-tile-rectangle-service": "1A:16FE 的场景角色界面投影调用 3F:1A51 的共享逻辑矩形预设入口",
+        "vehicle-visual-selector": "1A:0101 按战车 preset 读取共享 field actor-type 映射",
+        "world-map-landmine-runtime-service": "1A:02AB 的队伍位置/方向历史移位完成后尾跳步后地雷触发 provider",
+        "field-movement-execution-service": "队伍槽相位推进读取所属速度减量参数"
+      }
+    },
+    "scene-data-stream-service": {
+      "summary": "线性场景数据流服务：把 PRG $0000-$BFFF 与 CHR $C000-$FFFF 统一为一个源地址空间，并提供普通复制、7-bit/零标记 RLE 解压，以及当前无引用的 FF 标记 RLE 解压 provider",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "chr-bank-mapping-service": "14:0C9B 把 CHR 线性源页换算成 register0/1 bank，并在 14:0CB5/0CBA 直接调用 setter",
+        "ppu-transfer-runtime-service": "14:0D55 直接调用 3F:02F9，在 CHR 源读取前进入 direct-PPUDATA 临界区",
+        "prg-bank-mapping-service": "场景 PRG/CHR 线性源读取 wrappers 安装/恢复 PRG window",
+        "runtime-workspace": "$050E-$051C packed/unpacked staging；$08-$0F 线性流长度、源/目标指针与当前字节 scratch；$00 为 FF-RLE repeat value",
+        "shared-chr-bank": "logical CHR source bytes selected through the opaque stream address",
+        "scene": "扩展目录按场景号与原地图指针匹配，地图片段仍归场景字段对象。"
+      }
+    },
+    "field-movement-execution-service": {
+      "summary": "字段方向化移动执行：按 step profile 推进 0x20 单位预算，在四类阶段间分派地图增量渲染、相机/scroll、字段实体与 palette 更新并逐子步等待帧",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "frame-nmi-runtime-service": "每个完整移动子步调用 WaitForNextFrameAndPollController",
+        "prg-bank-mapping-service": "方向化移动执行安装并恢复 $A000 PRG window",
+        "field-rendering-service": "方向 attribute、相机/scroll、地图缓冲和 exposed strip 更新",
+        "field-scroll-coordinate-delta-set": "方向化地图缓冲与 PPU 行列增量",
+        "palette-runtime-service": "每个完整移动子步更新字段 palette",
+        "runtime-workspace": "$67-$77 的地图缓冲、方向、阶段、预算和相机工作区",
+        "scene-actor-runtime": "每个完整移动子步刷新字段实体"
+      }
+    },
+    "field-scroll-coordinate-delta-set": {
+      "summary": "字段增量渲染的三张五项方向坐标表：地图缓冲 origin、exposed strip 与 attribute cell 的方向化增量；正式游戏内表名未知但用途和全部消费者已确认",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "nametable-attribute-coordinate-service": {
+      "summary": "共享 nametable attribute 坐标换算：把 metatile X/Y 转为 shadow attribute 索引和 $23C0/$27C0 PPU attribute 地址，供字段和战斗共同使用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$69/$6A 输入 metatile 坐标；$0D:$0C 输出 $23C0/$27C0 attribute PPU 地址，$0E 输出 $0200-$027F dual-shadow index"
+      }
+    },
+    "packed-attribute-quadrant-mask-set": {
+      "summary": "共享 packed attribute 象限 keep/clear 掩码：按 metatile X/Y 低位选择 2-bit 象限，供字段 shadow attribute 与战斗 nametable attribute 合成",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "field-scene-lifecycle-service": {
+      "summary": "字段场景生命周期：固定 bank 包装、渲染暂停、事件驱动 scene/坐标变体、地图/PPU/actor/宝物装载、初始视口构建、帧刷新和条件背景声音同步",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "audio-command": "固定命令 F2、场景目标声音和条件刷新",
+        "chr-bank-mapping-service": "场景装载写 normal register0/1、14:0AC9/0ACE 直接设置 CHR0/1，并在 3E:1748 恢复六个 normal bank",
+        "raster-interrupt-runtime-service": "场景载入、重载与字段生命周期路径把 $35 复位为 profile00，避免旧画面 IRQ 配置泄漏",
+        "code-module": "尚留固定核的渲染底层 helper",
+        "field-rendering-service": "初始 attribute/nametable 构建和字段视口重绘",
+        "frame-nmi-runtime-service": "场景装载/刷新调用 WaitForNextFrameAndPollController 与关闭渲染后提交一帧的过渡入口",
+        "integer-arithmetic-service": "场景数据源、目标地址和布局偏移计算",
+        "linear-memory-copy-service": "14:0873 复制 scene load memory span",
+        "palette-runtime-service": "场景 palette 初始化与淡入淡出",
+        "ppu-transfer-runtime-service": "直接 PPUDATA span 读取及队列提交",
+        "prg-bank-mapping-service": "场景装载、事件重映射和刷新 wrappers 安装/恢复 PRG window",
+        "runtime-workspace": "$43、$61-$8F、$0481 及地图/PPU/scene-load 工作区",
+        "scene": "当前/目标 scene、相机坐标、scene header 与变体选择",
+        "scene-actor-runtime": "装载 actor records、清空/重绘字段实体",
+        "scene-data-stream-service": "场景 PRG/CHR 线性源复制、7-bit 解包与 RLE 解压",
+        "shared-indexed-byte-overlays": "条件场景映射与背景音频按事件位选中记录。",
+        "story-action-handler": "复用 opcode 6E provider 同步替换当前 scene 与匹配持久战车 scene",
+        "actor-visual": "3E:1737 读取 field-sprite-palettes-mirror 并写入 sprite palette shadow",
+        "nearby-object-investigation-service": "14:0894 调用该服务持有的 3F:1E50 bank guard，再由它进入 1A:1D9C 准备当前 scene 的宝物 metatile 覆盖；生命周期代码不直接读取 treasure 记录"
+      }
+    },
+    "integer-arithmetic-service": {
+      "summary": "共享无符号整数运算库：8×8→16 乘法、8÷8 包装、16÷8 除法和 8×16→24 乘法；跨字段、战斗、随机数、成长、设施和命名流程复用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$00-$03/$08-$10 的调用者保存 scratch ABI；服务不拥有调用者的业务值"
+      }
+    },
+    "linear-memory-copy-service": {
+      "summary": "共享线性内存复制器：从 ($08:$09) 向 ($0A:$0B) 逐字节复制 $0D:$0C 个字节，递增源/目标指针并递减 16 位长度；场景装载和存档五段 marshal/整槽克隆共同使用",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "runtime-workspace": "$08-$0D source/destination/16-bit-length scratch ABI"
+      }
+    },
+    "index-stride-table": {
+      "summary": "共享 index-stride 字节偏移表族：index×3 表 16 项，index×5/×6/×7/×8/×11 表分别为 3/19/11/11/8 项；人物成长、赛青蛙、战斗、装备、八槽容器和固定共享核按各自记录宽度消费",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {}
+    },
+    "vehicle-visual-selector": {
+      "summary": "战车视觉选择器：18 项 preset→actor-type 与两张 8 项状态页 CHR 选择表（共 34-byte PRG；无战斗外观选择表）",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "actor-visual": "field:map-actor-types",
+        "shared-chr-bank": "field:status-sprite-chr-banks / field:status-background-chr-banks"
+      }
+    },
+    "nearby-object-investigation-service": {
+      "summary": "邻近对象调查服务：主菜单调查从当前格角色、当前格/前方坐标、91 条对象记录、6 条专用坐标、metatile 行为与 123 条设施记录逐层分派；持有自己的 handler 表和宝物覆盖/取得解释代码，不持有被解释的资源记录。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "专用调查和设施 selector 转入共享 application/service 分派",
+        "audio-command": "1A:1AE1/1B00 分别把不透明命令 58/56 送入 3E:1350 CallAudioDriverCommand",
+        "code-module": "通缉令 metatile 行为 1C:1FAE/1FB8 调用 code-module:lookup-wanted-poster-target-by-scene",
+        "battle-test-point": "专用调查记录可请求测试战斗与 overlay 行为",
+        "item-entry": "宝物与随机/固定调查奖励结果中的道具句柄",
+        "vehicle-preset": "调查到可取得战车对象时传递持久战车身份",
+        "encounter-formation": "调查战斗记录中的编队句柄",
+        "encounter-trigger-runtime": "调查触发战斗时调用共享剧情/固定编队启动服务",
+        "field-interaction-dispatch-service": "文本、剧情交互和 NPC 服务记录通过统一字段交互入口分发",
+        "field-map-query-service": "当前格、面前格、metatile 与属性查询",
+        "field-reward-resolution-service": "宝物和专用调查结果交给共享奖励解析",
+        "field-rendering-service": "宝物 overlay 与调查机关改写运行时地图并刷新可见格",
+        "field-vehicle-acquisition-and-tow-service": "调查到车辆对象时尝试登记取得；否则进入拖车交互",
+        "integer-arithmetic-service": "运行时地图行、记录偏移和坐标索引计算",
+        "investigation-command": "调查行为 selector 与 application script 记录",
+        "metatile-page": "调查 metatile id 与 interaction attribute",
+        "prg-bank-mapping-service": "固定包装与跨 bank 调查/奖励调用安装 PRG window",
+        "runtime-workspace": "$04/$05 调查坐标、$07 行为结果、$AC 对象索引、$CC/$CD 记录参数及运行时地图缓存",
+        "save-container": "调查取得位、全局事件 flag 与持久宝物状态",
+        "scene": "当前场景、相机/玩家坐标与专用坐标记录的 scene 字段；123 条普通调查记录；6 条专用坐标记录；91 条宝物/奖励记录",
+        "story-action-handler": "乌鲁米井处理器 1A:1D0F-1D20 逐队伍实体调用 3F:1C00 scene-action-vm 执行动作 0A",
+        "text-record": "调查结果和对象对话记录",
+        "ui-facility": "设施 selector、下注/服务参数与设施 UI provider",
+        "ui-wanted": "通缉令 metatile 处理器 1C:1FD2 直接尾跳 3F:1B70 的通缉画面入口",
+        "world-map-random-investigation-reward": "场景 00 的普通默认 metatile 行为进入独立随机调查奖励 provider"
+      }
+    },
+    "field-interaction-dispatch-service": {
+      "summary": "字段交互分发服务：把已准备的文本记录、场景角色 interaction selector 或 NPC 服务参数统一分流到文本、剧情交互和 application/facility 服务。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "3F:14F9 直接调用固定 UI 状态入口 3F:0A60；不展开其内部依赖",
+        "field-movement-resolution-service": "3F:1502 直接调用 3F:03F2 的字段状态处理入口",
+        "field-scene-lifecycle-service": "3F:1505 直接调用 3E:1737，恢复交互后的字段视觉状态",
+        "runtime-workspace": "19:0285、1A:1D48-1D58 与 3F:14FC-1508 直接读写 `$CC/$CD`、`$0487`、`$05A4/$05A8`、`$43/$7E`",
+        "scene-actor-runtime": "19:027C/0282 直接调用 3F:1D3D/1D4B 的场景角色交互与朝向恢复公开入口",
+        "text-render-runtime": "19:027F/028D 与 1A:1D5D 直接调用确认等待及字段文本输出入口",
+        "text-record": "1A:1D48 的 ShowFieldTextRecord05 直接接受 region $05 record ID，1D56 亦以 `$CC/$CD` 接受已选文本记录",
+        "ui-facility": "1A:1D5B 在当前场景对象槽为零时直接进入 1A:1D60 的设施服务参数分派入口"
+      }
+    },
+    "field-vehicle-boarding-service": {
+      "summary": "字段战车乘降服务：主命令 $21 构造三名人物的乘降选择，动态 command $4D 按人物/战车绑定生成或撤下字段实体、重建队伍渲染槽，并在特定 encounter zone 下修正对象坐标。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "主命令 UI state/action provider 与 3F:1DCE 的固定 bank 调用包装",
+        "encounter-trigger-runtime": "SpawnEncounterObjectForPartyEntityWithBankGuard 与 ResolveCurrentEncounterZoneId",
+        "field-exploration-runtime": "19:1278 复用 restore-field-after-command-ui，不复制字段恢复/重绘规则",
+        "prg-bank-mapping-service": "3F:1DCE wrapper 安装 bank 1C 后调用区域条件化坐标修正体",
+        "role-equipment-service": "无可用人物时分支复用 19:11D1 的 compact-equipped-mask 终止 RTS",
+        "runtime-workspace": "$D1-$E0、$0370-$0373 与字段对象/渲染槽工作集",
+        "save-role": "三名人物的存在状态、当前战车绑定与队伍实体描述符",
+        "save-vehicle": "持久战车槽状态与字段对象绑定",
+        "save-container": "第四队伍实体描述符及活动字段状态",
+        "scene-actor-runtime": "command $4D 调用 RebuildFieldPartyRenderSlotsWithBankGuard",
+        "text-record": "record:0A:019 与 record:02:020/099 等乘降提示记录",
+        "text-render-runtime": "人物/战车名称与乘降结果文本输出"
+      }
+    },
+    "field-vehicle-acquisition-and-tow-service": {
+      "summary": "字段战车取得与拖车服务：场景遭遇对象或调查对象把初始战车对象索引交给同一登记入口；首次取得设置 flag、映射持久槽并进入 mode 06 命名，已取得路径显示持久战车名和拖车提示并重建字段队伍。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "1C:0F3F/0F46 调用固定核的全局事件 flag 查询/设置；19:11D4/11DC/11EA 调用固定核的持久名称投影与字段状态 helper",
+        "item-entry": "19:11D9/11E3 把记录 78/7F 交给 item-entry 持有的 3F:12CF 字段记录输出 provider",
+        "vehicle-preset": "$AC 的 0..7 取值是 vehicle-preset.initial-placement 前八个初始战车对象的身份句柄，并稳定映射到持久槽 1..8",
+        "palette-runtime-service": "3E:1767 在进入命名界面前调用 3F:0059 的亮度渐变 provider",
+        "prg-bank-mapping-service": "3F:13E1 调用 3F:1BBD 安装 bank 19 后才在 3F:13E4 调用拖车交互体",
+        "prg-bank-window-restore-service": "3F:13E7 尾跳 3F:14C1，从栈恢复原 PRG window",
+        "runtime-workspace": "$AC 初始战车对象、$D5 持久命名槽、$2F 主模式、$21 PRG window 及交互 scratch",
+        "save-vehicle": "19:11D2 以 $AC 选择 $640F 起的七字节持久战车名；首次取得把 $D5 设为对应持久槽 1..8",
+        "save-container": "1C:0F35 把对象索引 + 8 作为全局取得 flag 交给查询/设置 provider",
+        "scene-actor-runtime": "19:11ED/11F0 调用 3F:1DB6/1CA7 重建字段队伍实体和 render slots",
+        "text-record": "19:11D7/11E1 选择 region 02 的车辆拖车提示记录 120/127",
+        "ui-name-entry": "3E:176A 以 $D5=1..8 调用 3F:1BC2 的共享人物/战车命名编辑器"
+      }
+    },
+    "world-map-landmine-runtime-service": {
+      "summary": "世界地图地雷运行时：检查待处理方向位、扫描四个固定且未取得的世界坐标、在 actor 步进中阻挡/命中，并在字段步后设置取得位和安装 autonomous script 54；四组固定坐标与方向掩码为本服务私有字段。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "1A:1EA5/1ED9 直接调用固定核的调查物取得位查询/置位 helper",
+        "field-map-query-service": "1A:1E76/1E81 直接读取其持有的朝向 X/Y 增量表 $DB3D/$DB3F",
+        "runtime-workspace": "$04/$05 actor 目标坐标、$0358/$035C 玩家坐标、$036C 当前方向与 $05AB pending mask",
+        "save-container": "四行固定坐标分别使用 $FC-$FF 一次性取得 flag",
+        "scene": "只在 world scene 00 启用固定坐标扫描",
+        "scene-actor-runtime": "命中后直接调用 1A:0797 分配场景 actor 槽并写入该槽运行态",
+        "story-autonomous-script": "命中时把 autonomous script 54 安装到新分配的场景 actor 槽"
+      }
+    },
+    "scene-encounter-zone": {
+      "summary": "遇敌区数据：配置、权重及怪物或固定编队候选。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "monster-profile": "候选槽 0–9 的怪物引用",
+        "encounter-formation": "候选槽 10–13 的固定编队引用",
+        "encounter-trigger-runtime": "候选过滤、随机选择与多编组重映射规则"
+      }
+    },
+    "scene": {
+      "summary": "场景数据：各 scene:XX 字段对象持有场景头、地图、边界、调查、转场、宝物和场景配置。",
+      "owns_spaces": [
+        "chr",
+        "prg"
+      ],
+      "references": {
+        "metatile-set": "field:header:lower-metatile-page / field:header:upper-metatile-page",
+        "audio-command": "场景入口音乐",
+        "palette": "field:header:background-palette-pointer",
+        "shared-chr-bank": "field:header:object-sprite-chr-bank-pair / field:header:background-mmc3-bank-registers",
+        "investigation-command": "packed_handler_instance 低 4 位直接选择 11 项 investigation-command 表中的一项",
+        "item-entry": "human item reward；tank equipment reward",
+        "scene-encounter-zone": "component:scene.encounter.world-grid / component:scene.encounter.scene-table 中的 zone ID",
+        "save-container": "入口地图替换按 global-event-flag:22/4C/70/73/76/77 显示条件与存档引用",
+        "story-interaction-script": "条件入口的发现山火 $61、起火 $3C、战斗 $35/$67 触发者",
+        "story-autonomous-script": "东京塔入口引用倒塌动作 $4F",
+        "text-record": "name_reference 引用传送目的地名称；归属依据见 project/config/scene-town-names.json。",
+        "scene-data-stream-service": "普通地图超出原分配时引用扩展读取器的审定代码。"
+      }
+    },
+    "selection-layout": {
+      "summary": "共享选择器布局：选择器与布局索引、行列坐标及索引域；光标读取由字段对象解析，消费端只持字段引用。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "code-module": "movement pointers 与公共光标对象号引用所属代码字段。",
+        "text-render-runtime": "正文内确认光标与公共等待标记读取文本运行时字段。",
+        "battle-engine": "战车概览保留上级光标，保存索引由 10:A834 读取例程提供。",
+        "metasprite": "highlights.metasprite_source 引用 metasprite:03 的 counted 记录指针。",
+        "field-scene-lifecycle-service": "code_parameters 引用主菜单窗口调色板的四个只读代码字段。",
+        "ui-party-overview": "队伍标题构造参数引用所属代码字段。",
+        "ui-adventure-data-mode": "code_parameters 引用击破等级表的所属只读起点字段。"
+      }
+    },
+    "application-program": {
+      "summary": "应用程序：独占共享商店程序的 235 字节；段以稳定句柄引用，借用字节与附加读取保留单一提供方。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "application-command": "段 36 的跳转参数借用 application-command:24 的入口前缀；原生入口 A9F2 从所属字段对象取得。",
+        "code-module": "应用 VM 读取、选段、分派与原生入口 A797。",
+        "text-record": "程序字面值只持文本句柄；选项数由文本字段对象核对。",
+        "selection-layout": "现有选择生产者的索引容量由选择布局字段对象核对。",
+        "ui-facility": "原生入口 A915、EEBC、EEC5。"
+      }
+    },
+    "application-script-reader": {
+      "summary": "应用读取器与原入口门桩的审定定值代码。",
+      "owns_spaces": [
+        "prg"
+      ],
+      "references": {
+        "prg-bank-mapping-service": "每次调用保存并恢复两个 PRG 窗口。",
+        "runtime-workspace": "调用期间借用并恢复 06/07/0C/0D 与 CPU 栈。",
+        "application-command": "从当前命令读取原指针与完整目录记录。",
+        "application-program": "迁移程序的段目录与逻辑字节由该字段对象独占。"
+      }
+    },
+    "interface-state-document": {
+      "summary": "状态机文档：独立领域语义副本与显式应用的字段引用，无物理位置。",
+      "owns_spaces": [],
+      "references": {
+        "application-program": "应用程序结构使用所属字段对象的语义模型。",
+        "application-command": "来源命令与新程序分配只经所属字段对象。",
+        "text-record": "正文只持文本字段对象引用。",
+        "story-interaction-script": "剧情来源只显示交互等待与调用投影。",
+        "selection-layout": "界面选择控件仍引用选择布局字段对象。",
+        "ui-facility": "原生界面来源与组件字段引用由所属字段对象提供。"
+      }
+    }
+  },
+  "note_distinct_kinds": "distinct_kinds 自报「这个名字下实际装着几类东西」。多于一类就是重名，必须拆——同名意味着同物。",
+  "note_known_name_collisions": "已知但还没拆的重名，棘轮基线：只许减少。拆掉一个就从这里删一个；新出现的重名不许加进来，必须当场拆。",
+  "known_name_collisions": [],
+  "note_known_address_overlaps": "已知但还没迁移的地址重叠，棘轮基线：只许减少。这几处是「聚合 owner → 真实体」迁移的目标——字节还挂在聚合名下，图上真正的实体是另一个节点。新出现的重叠不许加进来：那说明迁移时「只加不撤」，把字节登记给了实体却没撤销旧聚合 owner。",
+  "known_address_overlaps": [],
+  "note_references": "references 可以是 [\"目标\"]，也可以是 {\"目标\": \"挂在哪个字段\"}。**只填带引用的字段**，坐标、标志位这些不参与引用的不填。",
+  "note_handle_normalization": "句柄前缀不等于模块。内部结构、别名、发布聚合这三类前缀在这里归一到真正的模块；每条必须写 why。不写归一就只能留错边或登记假模块。",
+  "handle_normalization": {
+    "character": {
+      "to": "character-initial-record",
+      "why": "character:XX 是人物实体句柄；三份 ROM 初始记录由 character-initial-record 字段对象持有。"
+    },
+    "scene": {
+      "to": "scene",
+      "why": "scene:XX 是场景实体句柄；场景头、bank 选择与独有地图由 scene-header-map 字段对象持有"
+    },
+    "actor-set": {
+      "to": "shared-chr-bank",
+      "why": "九个 actor-set 都是由固定 CHR $04/$05 加场景 header 选择的 N/N+1 组成的四-bank 派生渲染上下文，自身零字节；scene-header-map 保留 selector owner，像素只归 shared-chr-bank"
+    },
+    "application-config-instance": {
+      "to": "facility-config",
+      "why": "138 个实例句柄的 716-byte 物理并集全部落在设施配置记录 owner；是记录实例，不是模块"
+    },
+    "asset:battle-test-point": {
+      "to": "battle-test-point",
+      "why": "发布侧给 battle-test-point 的三个现场字段挂了 asset: 前缀（asset:battle-test-point.scene-id/.x/.y），字节是 battle-test-point 的；asset 本身是正当模块，不能整段归一，所以按更长的键归。根治是把发布关联源改成专有句柄"
+    },
+    "asset:battle-test-point.formations": {
+      "to": "encounter-formation",
+      "why": "456-byte formations 表已按三个消费者共享的判据从 battle-test-point 拆出"
+    },
+    "asset:character-initial-record": {
+      "to": "character-initial-record",
+      "why": "growth 与 initial-template 是 character-initial-record 的发布聚合组件"
+    },
+    "asset:fixed-text-slot": {
+      "to": "fixed-text-slot",
+      "why": "定长文字槽的发布组件由 fixed-text-slot 独占"
+    },
+    "asset:monster-profile": {
+      "to": "monster-profile",
+      "why": "asset:monster-profile.* 十三个 component 与 monster-profile 的 drop、flags、属性与数值码 owner 范围逐项同址；asset: 是发布聚合前缀"
+    },
+    "asset:vehicle-preset": {
+      "to": "vehicle-preset",
+      "why": "loadouts、mask、capacity、defense、weight 与 placement 均是 vehicle-preset 内部组件"
+    },
+    "asset:wanted-record": {
+      "to": "wanted-record",
+      "why": "asset:wanted-record.default-pair 与 asset:wanted-record.targets 分别逐字节落在 wanted-record 的 component:default-pair 和 component:targets owner 范围；asset: 只是发布聚合前缀，不是对具名 CHR 资产模块 asset 的引用"
+    },
+    "asset:facility-config": {
+      "to": "facility-config",
+      "why": "records 是设施配置的发布聚合，不是具名画面 asset"
+    },
+    "asset:graphics.ending.bank-92.reference_range": {
+      "to": "ui-wanted",
+      "why": "CHR bank $92 是 wanted poster 的独占像素区；asset 句柄只是引用视图"
+    },
+    "asset:graphics.ending.banks-90-91.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "ending 对 $90/$91 的声明是共享 CHR bank 引用，不复制像素"
+    },
+    "asset:graphics.font.main.bank-0A.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "主字体对 CHR bank $0A 的发布引用由 shared-chr-bank 提供"
+    },
+    "asset:graphics.font.partial.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "partial font 是既有 shared-chr-bank 像素区的引用视图"
+    },
+    "asset:graphics.font.small.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "small font 是既有 shared-chr-bank 像素区的引用视图"
+    },
+    "asset:graphics.menu.main.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "main menu 只引用 shared-chr-bank 中的 pattern bytes"
+    },
+    "asset:graphics.menu.tank.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "tank menu 的两个 reference_range 都只引用 shared-chr-bank"
+    },
+    "asset:graphics.race.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "赛跑界面的 reference-only 视图覆盖 CHR $032000-$032AFF；物理像素已由 shared-chr-bank 的 banks $C8-$CA 提供，不是 asset 的第二份存储"
+    },
+    "asset:graphics.status.reference_range": {
+      "to": "shared-chr-bank",
+      "why": "状态界面的 reference-only 视图覆盖 CHR $009C00-$009FFF；物理像素已由 shared-chr-bank 的 bank $27 提供，不是 asset 的第二份存储"
+    },
+    "asset:graphics.ui.field_item_world_map.background_patterns": {
+      "to": "shared-chr-bank",
+      "why": "世界地图道具页的 background patterns 由 shared-chr-bank 提供"
+    },
+    "asset:graphics.ui.field_item_world_map.sprite_patterns": {
+      "to": "shared-chr-bank",
+      "why": "世界地图道具页的 sprite patterns 由 shared-chr-bank 提供"
+    },
+    "asset:graphics.ui.vending_machine_screen.background_patterns": {
+      "to": "shared-chr-bank",
+      "why": "售货机画面的 background patterns 由 shared-chr-bank 提供"
+    },
+    "asset:story-autonomous-script": {
+      "to": "story-autonomous-script",
+      "why": "pointer-table 与 stream-pool 是 autonomous story VM 的发布聚合，不是具名 CHR asset"
+    },
+    "asset:story-interaction-script": {
+      "to": "story-interaction-script",
+      "why": "pointer-table 与 stream-pool 是 interaction story VM 的发布聚合，不是具名 CHR asset"
+    },
+    "asset:world-event": {
+      "to": "world-event",
+      "why": "trigger-tables 是 world-events 的发布聚合，不是具名 CHR asset"
+    },
+    "attack-script:auxiliary": {
+      "to": "attack-visual-aux-script",
+      "why": "26 个 auxiliary 脚本有独立寻址与共享引用，应归一到独立辅助脚本节点（句柄按冒号分段，键写成点号时这条归一从不匹配）"
+    },
+    "attack-script:primary": {
+      "to": "attack-visual",
+      "why": "primary 脚本与 79 个攻击视觉一一对应，是视觉实体的字节本体，不是第二个节点（句柄按冒号分段，键写成点号时这条归一从不匹配）"
+    },
+    "audio-control": {
+      "to": "audio-driver-section",
+      "why": "F0-FF 十六个控制句柄都是 command-dispatch 内部的 22-byte control-handler 视图；处理代码由 audio-driver-section 提供"
+    },
+    "audio-driver-section:command-directory": {
+      "to": "audio-command",
+      "why": "整 bank 发布聚合中的 256-byte 命令目录实际由 audio-command 拥有"
+    },
+    "audio-driver-section:command-headers": {
+      "to": "audio-command",
+      "why": "整 bank 发布聚合中的 774-byte 命令头区实际由 audio-command 拥有"
+    },
+    "audio-driver-section:local-sequences": {
+      "to": "audio-sequence",
+      "why": "驱动 bank 内的本地音序是共享音序图数据，不是驱动代码"
+    },
+    "audio-driver-section:opcode-handler-tables": {
+      "to": "audio-opcode",
+      "why": "168-byte opcode handler 指针表由 audio-opcode 拥有"
+    },
+    "audio-driver-section:voice-and-envelope-data": {
+      "to": "audio-sequence",
+      "why": "1,049-byte voice/envelope 正文属于共享音序图；audio-voice 只持指针"
+    },
+    "audio-seq-i": {
+      "to": "audio-sequence",
+      "why": "sequence instruction 句柄的字节主体全部由共享 sequence graph 持有"
+    },
+    "audio-seq-s": {
+      "to": "audio-sequence",
+      "why": "sequence start 是共享 sequence graph 内部入口句柄；命令表只保存指针"
+    },
+    "audio-seq-x": {
+      "to": "audio-sequence",
+      "why": "sequence cross-reference 是共享 sequence graph 的内部边，不是独立模块"
+    },
+    "audio-sequence-region": {
+      "to": "audio-sequence",
+      "why": "四个 region 句柄是 sequence-graph 跨 bank 物理区的发布聚合视图"
+    },
+    "audio-track": {
+      "to": "audio-sequence",
+      "why": "track 是共享 sequence graph 中按 audio-command 聚合的视图，不独占字节"
+    },
+    "audio-voice-i": {
+      "to": "audio-sequence",
+      "why": "1,049 个 envelope instruction 字节全部落在 sequence graph 的 voice-envelope-byte owner"
+    },
+    "aux": {
+      "to": "attack-visual-aux-script",
+      "why": "weapon-effects 发布包给辅助脚本使用的内部句柄前缀"
+    },
+    "battle-item-dispatch": {
+      "to": "item-entry",
+      "why": "发布聚合把 item-entry 的 selector 表与 code-module 入口合成一个服务；物理表主体归 item-entry"
+    },
+    "battle-item-use": {
+      "to": "item-entry",
+      "why": "逐 item 使用视图由 item-entry 的 dispatch/result 字段与外部代码引用合成，不是独立 owner"
+    },
+    "battle-sprite-palette": {
+      "to": "sprite-palette",
+      "why": "32 条共享表同时服务战斗、wanted poster、售货机、点唱机、青蛙赛跑、主菜单与战车状态页，不能保留 battle 专属别名"
+    },
+    "battle-test-point": {
+      "to": "battle-test-point",
+      "why": "13 段共 549 B 全是 battle-test-point 已管理的字节，没有可独占的实例字节；是别名"
+    },
+    "boot-presentation.boot-logo.chr-bank": {
+      "to": "boot-presentation",
+      "why": "Logo 屏 4 个 CHR bank 选择字节只由开机演出持有；所选图块另由 shared-chr-bank / core-latin 提供"
+    },
+    "boot-presentation.boot-logo.nametable": {
+      "to": "boot-presentation",
+      "why": "CHR 0x03F000 的 1 KiB 整屏结构只有开机 Logo 一个消费者，并由 boot-presentation 的原始文档定长编辑"
+    },
+    "boot-presentation.boot-logo.palette": {
+      "to": "boot-presentation",
+      "why": "Logo 屏独占的 32 字节调色板，没有第二个资源句柄或消费者"
+    },
+    "boot-presentation.boot-logo.parameter": {
+      "to": "boot-presentation",
+      "why": "Logo 屏 6 个独占标量参数，只参与本模块的演出流程"
+    },
+    "boot-presentation.boot-logo.timeline": {
+      "to": "boot-presentation",
+      "why": "7 段共 56 字节全落在 BootPresentationSequence，唯一消费者是开机演出"
+    },
+    "boot-presentation.chr-ram-font": {
+      "to": "core-latin",
+      "why": "PRG 0x047800+2048 的 resource_owner 是 core-latin/font-template；boot-presentation 只是 read-only-pattern-source 消费者"
+    },
+    "boot-presentation.code-driven": {
+      "to": "boot-presentation",
+      "why": "3 个句柄共 10 字节都在 BootPresentationSequence 及其两个专用 fade routine 内，没有第二消费者"
+    },
+    "boot-presentation.ppu": {
+      "to": "code-module",
+      "why": "两段代码位于固定 bank $3F 的 RESET 共享顺序流，设置全局 MMC3 mirroring 与 PPUCTRL；boot 只是依赖其结果"
+    },
+    "boot-presentation.program:address": {
+      "to": "boot-presentation",
+      "why": "反汇编权威函数 0x029848 BootPresentationSequence 的 source_module 是 rom.boot-presentation，并由主 mode 0 分发表进入；这段演出入口归 boot-presentation"
+    },
+    "boot-presentation.program:nametable_blitter": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x029B1B GameplayPpuTransfer_14_1B1B 的 source_module 是 rom.core.gameplay；调用者同时有 BootPresentationSequence 与 RenderWorldMapItemScreen，是共享 code-module 服务"
+    },
+    "boot-presentation.program:nametable_loader": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x07E4E0 FixedCore3FPpuTransfer_3F_04E0 的 source_module 是 rom.core.fixed-bank-3f；调用者同时有 BootPresentationSequence 与 RenderWorldMapItemScreen，是共享 code-module 服务"
+    },
+    "boot-presentation.program:palette_uploader": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x07D303 FixedCore3EPpuTransfer_3E_1303 的 source_module 是 rom.core.fixed-bank-3e，唯一直接调用者 FixedCore3EPpuTransfer_3E_124B 也在该 provider；不是 boot 自有代码"
+    },
+    "boot-presentation.routine:fade_writer": {
+      "to": "boot-presentation",
+      "why": "反汇编权威函数 0x029A98 TitleFadePaletteStepsSingleTarget 的 source_module 是 rom.boot-presentation，唯一调用者是 BootPresentationSequence；归 boot-presentation"
+    },
+    "boot-presentation.routine:fade_writer_dual": {
+      "to": "boot-presentation",
+      "why": "反汇编权威函数 0x029ACF TitleFadePaletteStepsDualTarget 的 source_module 是 rom.boot-presentation，两个调用点都在 BootPresentationSequence；归 boot-presentation"
+    },
+    "boot-presentation.routine:frame_wait": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x07D01D WaitForNextFrame 的 source_module 是 rom.core.fixed-bank-3e，5 个调用点来自多个 fixed-core wrapper / coordinator；是共享 code-module 服务"
+    },
+    "boot-presentation.routine:segment_wait": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x029A69 WaitUpTo90FramesForConfirmOrCancel 的 source_module 是 rom.core.gameplay；当前 6 个调用点虽都在 BootPresentationSequence，代码 provider 仍是 code-module"
+    },
+    "boot-presentation.routine:skip_to_final": {
+      "to": "code-module",
+      "why": "反汇编权威函数 0x029A7B RestoreSharedUiPaletteBuffers 的 source_module 是 rom.core.gameplay；当前 4 个调用点虽都在 BootPresentationSequence，代码 provider 仍是 code-module"
+    },
+    "boot-presentation.title.chr-bank": {
+      "to": "boot-presentation",
+      "why": "标题屏 6 个 CHR bank 选择字节只由开机演出持有；所选图块本体由 shared-chr-bank 提供"
+    },
+    "boot-presentation.title.fade": {
+      "to": "boot-presentation",
+      "why": "标题屏独占的两组渐变表共 32 字节，只被本模块的 fade routine 读取"
+    },
+    "boot-presentation.title.nametable": {
+      "to": "boot-presentation",
+      "why": "CHR 0x03F400 的 1 KiB 整屏结构只有标题演出一个消费者，并由 boot-presentation 的原始文档定长编辑"
+    },
+    "boot-presentation.title.palette": {
+      "to": "boot-presentation",
+      "why": "标题屏独占的 16 字节调色板，没有第二个资源句柄或消费者"
+    },
+    "boot-presentation.title.parameter": {
+      "to": "boot-presentation",
+      "why": "标题屏 7 个独占标量参数，只参与本模块的等待、滚动与渐变流程"
+    },
+    "boot-presentation.title.sprites": {
+      "to": "boot-presentation",
+      "why": "76 字节精灵展开表只有标题演出一个消费者，行列与 tile 元组由本模块解释"
+    },
+    "boot-presentation.title.timeline": {
+      "to": "boot-presentation",
+      "why": "13 个句柄共 48 字节只落在两个开机标题函数内，没有第二消费者"
+    },
+    "chr-bank": {
+      "to": "shared-chr-bank",
+      "why": "chr-bank:XX 是 shared-chr-bank 各 1-KiB pixel-bank 的实例句柄；专题模型明确消费者引用 shared-chr-bank 的图块句柄，不为每个 bank 再建模块"
+    },
+    "chr-bank:92": {
+      "to": "ui-wanted",
+      "why": "CHR bank $92 由 wanted poster 独占，具体句柄覆盖通用 chr-bank 规则"
+    },
+    "chr-bank:D4": {
+      "to": "metatile-page",
+      "why": "CHR bank $D4 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:D5": {
+      "to": "metatile-page",
+      "why": "CHR bank $D5 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:D6": {
+      "to": "metatile-page",
+      "why": "CHR bank $D6 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:D7": {
+      "to": "metatile-page",
+      "why": "CHR bank $D7 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:D8": {
+      "to": "metatile-page",
+      "why": "CHR bank $D8 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:D9": {
+      "to": "metatile-page",
+      "why": "CHR bank $D9 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DA": {
+      "to": "metatile-page",
+      "why": "CHR bank $DA 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DB": {
+      "to": "metatile-page",
+      "why": "CHR bank $DB 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DC": {
+      "to": "metatile-page",
+      "why": "CHR bank $DC 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DD": {
+      "to": "metatile-page",
+      "why": "CHR bank $DD 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DE": {
+      "to": "metatile-page",
+      "why": "CHR bank $DE 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:DF": {
+      "to": "metatile-page",
+      "why": "CHR bank $DF 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E0": {
+      "to": "metatile-page",
+      "why": "CHR bank $E0 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E1": {
+      "to": "metatile-page",
+      "why": "CHR bank $E1 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E2": {
+      "to": "metatile-page",
+      "why": "CHR bank $E2 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E3": {
+      "to": "metatile-page",
+      "why": "CHR bank $E3 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E4": {
+      "to": "metatile-page",
+      "why": "CHR bank $E4 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E5": {
+      "to": "metatile-page",
+      "why": "CHR bank $E5 是 metatile-page 的单消费者专用页面；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E8": {
+      "to": "scene",
+      "why": "CHR bank $E8 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:E9": {
+      "to": "scene",
+      "why": "CHR bank $E9 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:EA": {
+      "to": "scene",
+      "why": "CHR bank $EA 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:EB": {
+      "to": "scene",
+      "why": "CHR bank $EB 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:EC": {
+      "to": "scene",
+      "why": "CHR bank $EC 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:ED": {
+      "to": "scene",
+      "why": "CHR bank $ED 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:EE": {
+      "to": "scene",
+      "why": "CHR bank $EE 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:EF": {
+      "to": "scene",
+      "why": "CHR bank $EF 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F0": {
+      "to": "scene",
+      "why": "CHR bank $F0 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F1": {
+      "to": "scene",
+      "why": "CHR bank $F1 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F2": {
+      "to": "scene",
+      "why": "CHR bank $F2 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F3": {
+      "to": "scene",
+      "why": "CHR bank $F3 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F4": {
+      "to": "scene",
+      "why": "CHR bank $F4 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F5": {
+      "to": "scene",
+      "why": "CHR bank $F5 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F6": {
+      "to": "scene",
+      "why": "CHR bank $F6 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F7": {
+      "to": "scene",
+      "why": "CHR bank $F7 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F8": {
+      "to": "scene",
+      "why": "CHR bank $F8 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:F9": {
+      "to": "scene",
+      "why": "CHR bank $F9 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:FA": {
+      "to": "scene",
+      "why": "CHR bank $FA 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "chr-bank:FB": {
+      "to": "scene",
+      "why": "CHR bank $FB 是 scene-header-map 的单消费者专用存储；具体句柄覆盖通用 chr-bank 归一规则"
+    },
+    "code-module:apply-raster-chr-bank-set": {
+      "to": "chr-bank-mapping-service",
+      "why": "固定 bank $3E 的 ApplyRasterChrBankSet 把 raster CHR shadow 应用到 mapper，和六个 SetChrBank 例程同属 CHR bank 映射服务"
+    },
+    "code-module:battle-amount-scaling-service": {
+      "to": "battle-amount-scaling-service",
+      "why": "bank $17 的 12 项倍率、u16×u8 缩放器、运行字段选择体和指针表形成连续 provider，归 battle-amount-scaling-service"
+    },
+    "code-module:battle-enemy-group-state-service": {
+      "to": "battle-enemy-group-state-service",
+      "why": "bank $17 的敌人类型/视觉组登记体与固定 bank $3F 的敌群数量重建体共同维护共享敌群状态，归 battle-enemy-group-state-service"
+    },
+    "code-module:battle-random-amount-service": {
+      "to": "battle-random-amount-service",
+      "why": "bank $17 的随机量生成体、最低值扩展 helper 与 20 项 profile 被结果、回合和伤害公式共同调用，归 battle-random-amount-service"
+    },
+    "code-module:battle-status-scheduler": {
+      "to": "battle-status-scheduler",
+      "why": "bank $10 的状态快照/扫描/维护调度代码与紧随其后的三张结果脚本表构成同一异常状态 provider，归 battle-status-scheduler"
+    },
+    "code-module:battle-target-context-service": {
+      "to": "battle-target-context-service",
+      "why": "bank $17 连续的目标视觉上下文装载与完成体共同生产共享战斗目标上下文，直接提供 battle-target-context-service"
+    },
+    "code-module:battle-target-hp-update-service": {
+      "to": "battle-target-hp-update-service",
+      "why": "bank $17 的 BattleRunStateUpdate_17_1328 从回合队列和结果 opcode 的两个入口更新当前敌方 HP/状态，直接提供 battle-target-hp-update-service"
+    },
+    "code-module:controller-input-service": {
+      "to": "controller-input-service",
+      "why": "固定 bank $3E 的输入例程采样控制器并用紧随其后的私有表归一方向，直接提供 controller-input-service；发布句柄不是独立模块"
+    },
+    "code-module:eight-slot-inventory-service": {
+      "to": "eight-slot-inventory-service",
+      "why": "bank $19 的删除压缩体与固定 bank $3F 的八槽计数体被人物和战车容器共同调用，直接提供 eight-slot-inventory-service"
+    },
+    "code-module:enemy-action-targeting-service": {
+      "to": "enemy-action-targeting-service",
+      "why": "bank $17 的 BuildEnemyActionTargetList 整个函数包络（含内部入口）构造全体或单体存活队员目标表，直接提供 enemy-action-targeting-service"
+    },
+    "code-module:field-exploration-runtime": {
+      "to": "field-exploration-runtime",
+      "why": "main mode 01 字段帧、世界坐标切换与命令 UI 初始化共同构成字段探索运行时"
+    },
+    "code-module:field-interaction-dispatch-service": {
+      "to": "field-interaction-dispatch-service",
+      "why": "bank $1A 的三个连续入口把字段文本、角色 selector 与设施服务统一分流，直接提供 field-interaction-dispatch-service"
+    },
+    "code-module:field-map-query-service": {
+      "to": "field-map-query-service",
+      "why": "固定 bank $3E 的连续查询库统一返回本地/世界地图 cell、attribute 与朝向邻格结果"
+    },
+    "code-module:field-movement-execution-service": {
+      "to": "field-movement-execution-service",
+      "why": "bank $14 的方向化逐子步移动状态机与固定 bank step profile 包装共同提供 field-movement-execution-service"
+    },
+    "code-module:field-movement-resolution-service": {
+      "to": "field-movement-resolution-service",
+      "why": "bank $14、$1C 与固定 bank 的方向 profile、半步比较及地形碰撞共同提供移动解析服务"
+    },
+    "code-module:field-rendering-service": {
+      "to": "field-rendering-service",
+      "why": "bank $14、$1A 与固定 bank $3F 的视口条带、双 shadow nametable、attribute、临时覆盖物及运行时地图刷新共同提供字段渲染服务"
+    },
+    "code-module:field-reward-resolution-service": {
+      "to": "field-reward-resolution-service",
+      "why": "bank $1A 的奖励结果主体与固定 bank guard 共同解析道具、金额及反馈上下文"
+    },
+    "code-module:field-status-damage-service": {
+      "to": "field-status-damage-service",
+      "why": "bank $14 的连续三函数体生产并消费字段人物 HP 与绑定战车 SP 持续伤害"
+    },
+    "code-module:field-step-resolution-service": {
+      "to": "field-step-resolution-service",
+      "why": "bank $1A 的步后遭遇/状态主体与固定 bank guard 共同提供字段步后结算"
+    },
+    "code-module:field-terrain-behavior-service": {
+      "to": "field-terrain-behavior-service",
+      "why": "bank $14 的三套白名单、handler 表和场景带分派加固定 bank 包装共同提供 metatile 行为服务"
+    },
+    "code-module:field-vehicle-acquisition-and-tow-service": {
+      "to": "field-vehicle-acquisition-and-tow-service",
+      "why": "四个 bank 的 mode06、遭遇取得、拖车提示与固定包装共同提供战车取得/拖车生命周期"
+    },
+    "code-module:global-random-service": {
+      "to": "global-random-service",
+      "why": "固定 bank $3E 的全局随机状态推进体与固定 bank $3F 的有界索引例程跨字段、战斗和成长调用，共同提供 global-random-service"
+    },
+    "code-module:indirect-control-transfer-service": {
+      "to": "indirect-control-transfer-service",
+      "why": "固定 bank $3F 的 JumpIndirectVia0C 以 $0C:A 构造目标并执行共享间接尾跳，直接提供 indirect-control-transfer-service"
+    },
+    "code-module:integer-arithmetic-service": {
+      "to": "integer-arithmetic-service",
+      "why": "固定 bank $3E 的四入口连续库实现 8×8、8÷8、16÷8 与 8×16 无符号运算"
+    },
+    "code-module:inventory-ui-working-set": {
+      "to": "inventory-ui-working-set",
+      "why": "固定 bank $3F 的八槽 item ID 展开、列表打开与 UI provider 初始化三段连续代码共同提供 inventory-ui-working-set"
+    },
+    "code-module:item-acquisition-service": {
+      "to": "item-acquisition-service",
+      "why": "bank $19 的容量判定、私有音效表与容器写入体加固定 bank $3F 的结果解析包装，被字段奖励和战斗掉落共同调用"
+    },
+    "code-module:linear-memory-copy-service": {
+      "to": "linear-memory-copy-service",
+      "why": "固定 bank $3F 的 CopyMemoryBlockLength0C0D 被场景装载与存档 marshal/克隆共同调用，直接提供共享 linear-memory-copy-service；原 save-slot owner 已撤销"
+    },
+    "code-module:load-pending-glyph-byte-and-resume-ui-interpreter": {
+      "to": "text-render-runtime",
+      "why": "rom.text.renderer 的 0x015B46 例程读取待处理字形并恢复 UI 文本解释器，是 text-render-runtime 动态字形闭环的一部分"
+    },
+    "code-module:nametable-attribute-coordinate-service": {
+      "to": "nametable-attribute-coordinate-service",
+      "why": "固定 bank $3E 的 3E:1CE0 统一把 metatile X/Y 换算成双 shadow index 与 $23C0/$27C0 地址，字段和战斗共同消费"
+    },
+    "code-module:nearby-object-investigation-service": {
+      "to": "nearby-object-investigation-service",
+      "why": "代码目录把三个调查图块分派函数归给 rom.scene.actor-investigation；同名 owner 的三段不透明表正是该服务的分发表与专用调查点 handler 表，不是通用 code-module"
+    },
+    "code-module:new-game-bootstrap": {
+      "to": "new-game-bootstrap",
+      "why": "mode-1 handoff、固定 bank wrapper 与 bank $14 的初始化根过程/私有 copy-fill 尾共同只提供新游戏序列化活动段初始化"
+    },
+    "code-module:oam-object-rendering-service": {
+      "to": "oam-object-rendering-service",
+      "why": "bank $13、$1A 与固定 bank 的 metasprite、actor、battle-action、direct-frame writers 和槽合成器共同提供 OAM 编码"
+    },
+    "code-module:party-entity-selection-provider": {
+      "to": "party-entity-selection-provider",
+      "why": "固定 bank $3F 的成对光标入口与通用入口共同读取四队伍实体描述符到 $D0，直接提供 party-entity-selection-provider"
+    },
+    "code-module:party-vehicle-selection-provider": {
+      "to": "party-vehicle-selection-provider",
+      "why": "bank $19 的连续两个入口过滤四队伍实体描述符并渲染有效战车名称行，直接提供 party-vehicle-selection-provider"
+    },
+    "code-module:prg-bank-mapping-service": {
+      "to": "prg-bank-mapping-service",
+      "why": "固定 bank $3E 的 SetPrgBank8000 与 SetPrgBankA000 原子更新 MMC3 两个可切换 PRG window，直接提供 prg-bank-mapping-service"
+    },
+    "code-module:prg-bank-window-restore-service": {
+      "to": "prg-bank-window-restore-service",
+      "why": "固定 bank $3F 的共享函数尾从栈恢复 $8000/$A000 两个 PRG window，调用方只持入口引用"
+    },
+    "code-module:random-encounter-service": {
+      "to": "encounter-trigger-runtime",
+      "why": "该 owner 的区服解析、遇敌计量、随机抽取、事件标志与布局表共同构成 encounter-trigger-runtime 的随机遇敌路径；发布前缀不是独立模块"
+    },
+    "code-module:raster-interrupt-runtime-service": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "固定 bank $3E 的 IRQ 分派、13 项显示 profile、16 项 handler 表与 handler 主体共同提供全局扫描线服务"
+    },
+    "code-module:role-equipment-derived": {
+      "to": "role-equipment-derived",
+      "why": "bank $19 的装备扫描函数重算人物攻防、护具索引与三项特殊战斗效果位，直接提供 role-equipment-derived，不归调用它的装备 UI"
+    },
+    "code-module:save-slot-service": {
+      "to": "save-slot-runtime-service",
+      "why": "该 owner 的载入、写入、校验和、校验、克隆及 bank guard 整段共同实现存档槽运行时服务；code-module:save-slot-service 是发布实例句柄"
+    },
+    "code-module:scene-action-vm": {
+      "to": "story-action-handler",
+      "why": "rom.scene.actor-behavior 的动作分派核心、116 项 handler 指针表与 handler 代码块共同实现 story-action-handler；scene-action-vm 是发布实例句柄"
+    },
+    "code-module:set-chr-banks-0-through-5": {
+      "to": "chr-bank-mapping-service",
+      "why": "固定 bank $3E 的六个 SetChrBank 例程直接提供 CHR bank $0-$5 映射能力，归 chr-bank-mapping-service"
+    },
+    "code-module:ui-adventure-data-mode": {
+      "to": "ui-adventure-data-mode",
+      "why": "bank $19 的主命令 $27、模式设置、战斗资料、通缉履历与金钟编辑构成 352-byte 无缺口状态机，归 ui-adventure-data-mode"
+    },
+    "code-module:ui-equipment-control": {
+      "to": "ui-equipment-control",
+      "why": "bank $19 主命令 $24 的七段专属代码组织人物/战车装备页面、动作、兼容性、转交和丢弃，共享策略与容器代码均只持引用"
+    },
+    "code-module:ui-party-overview": {
+      "to": "ui-party-overview",
+      "why": "bank $19 的主命令 $22 入口与三个连续函数遍历队伍人物和战车并组织姓名、状态、HP/SP、载重和装备总览，直接提供 ui-party-overview"
+    },
+    "code-module:ui-party-paired-selector": {
+      "to": "ui-party-paired-selector",
+      "why": "bank $19 的成对人物战车可用性与光标体加固定 bank $3F 刷新入口构成 203-byte 共享选择状态机，战车名称列表已拆为引用"
+    },
+    "code-module:ui-party-status": {
+      "to": "ui-party-status",
+      "why": "bank $19 的状态行函数读取三个人物持久状态并经共享缩写 provider 渲染队伍行，直接提供 ui-party-status"
+    },
+    "code-module:ui-role-status": {
+      "to": "ui-role-status",
+      "why": "bank $19 的 33-byte 页面初始化/有效人物循环、141-byte 人物详细状态/装备页函数及其 6-byte 私表形成独占连续块，直接提供 ui-role-status"
+    },
+    "code-module:ui-tool-inventory-control": {
+      "to": "ui-tool-inventory-control",
+      "why": "bank $19 主命令 $23 的五段专属代码编排人物/战车工具列表、转交与丢弃，共享选择器、策略和八槽容器均只持引用"
+    },
+    "code-module:ui-vehicle-armor-tile-removal": {
+      "to": "ui-vehicle-armor-tile-removal",
+      "why": "bank $19 的车辆选择、十进制调整、确认和 SP 写回构成 342-byte 无缺口单一状态机，归 ui-vehicle-armor-tile-removal"
+    },
+    "code-module:ui-vehicle-shells": {
+      "to": "ui-vehicle-shells",
+      "why": "bank $19 的主命令 $25 与 selector $2E 共用 234-byte 无缺口炮弹库存 UI，负责弹仓容量、六槽数量与状态编排"
+    },
+    "code-module:ui-vehicle-status": {
+      "to": "ui-vehicle-status",
+      "why": "bank $10、bank $19 与固定 bank $3F 的装备状态重量、详细页、私有部件矩阵和 bank guard 共同提供战车详细状态 UI"
+    },
+    "code-module:upload-monster-palette-records": {
+      "to": "battle-enemy-palette-refresh-service",
+      "why": "反汇编函数 0x02FDB3 UploadMonsterPaletteRecords 与目标节点说明中的同名刷新例程完全对应，44-byte 代码整段归战斗敌人调色板刷新服务"
+    },
+    "code-module:vehicle-field-driveability": {
+      "to": "vehicle-field-driveability",
+      "why": "bank $10 的三个连续例程依次统计不可驾驶绑定、检查可驾驶资格与引擎容量，作为同一字段驾驶 provider 归 vehicle-field-driveability"
+    },
+    "code-module:vehicle-sp-damage-service": {
+      "to": "vehicle-sp-damage-service",
+      "why": "bank $17 的 BattleRunStateUpdate_17_0FE7 按准备量执行封底 u16 SP 扣减，供战斗受击和字段状态伤害共同调用"
+    },
+    "code-module:world-map-landmine-runtime-service": {
+      "to": "world-map-landmine-runtime-service",
+      "why": "bank $1A 的 138-byte 连续体独占地雷方向、坐标表、扫描与步后触发逻辑"
+    },
+    "code-module:world-map-random-investigation-reward": {
+      "to": "world-map-random-investigation-reward",
+      "why": "bank $1A 的普通调查默认体门控随机状态并选择六类共享奖励结果"
+    },
+    "enemy-attack-selector": {
+      "to": "enemy-action",
+      "why": "enemy-attack-selector:<id> 与 enemy-action:<id> 同索引，只是该实体 visual_and_counter_initializer 字段的历史发布视图；没有第二个独立实体"
+    },
+    "font-core-glyph": {
+      "to": "char",
+      "why": "39 个 16 字节句柄都是单字符编码与字形，和 char 同类；其中 38 个已有多个文本记录消费者"
+    },
+    "font-core-template": {
+      "to": "core-latin",
+      "why": "PRG 0x047800+2048 的整块模板由 core-latin 以 role=font-template 持有，是该字库的内部聚合"
+    },
+    "font-glyph": {
+      "to": "char",
+      "why": "byte-map resource-byte-ranges 中 font-glyph:24:00 至 font-glyph:2E:95 的 1,672 个句柄逐项对应 metalmaxcn.charset.json 的 18-byte 正文字形；它们是 char 的实例，不是独立模块"
+    },
+    "font-static-glyph": {
+      "to": "shared-chr-bank",
+      "why": "20 个 16-byte 静态字形是 CHR bank 0A/0B 的机会性字符视图；字符语义存在，但物理像素仍只由 shared-chr-bank 拥有"
+    },
+    "monster": {
+      "to": "monster-profile",
+      "why": "monster 是 monster-profile 的实体实例；同一怪物行的 selector_or_pattern 联合字段也由 monster-profile 持有，再按 strategy 引用 enemy-action 或 enemy-action-pattern"
+    },
+    "record": {
+      "to": "text-record",
+      "why": "record:<region>:<id> 是 text-record 的文本记录实体句柄；记录字节只由 text-record 独占，引用方不另存文本"
+    },
+    "scene-actor": {
+      "to": "scene-actor",
+      "why": "scene-actor 内部的 6 字节引用元组，629 个句柄唯一引用方就是它；不是独立实体"
+    },
+    "scene-actor-list": {
+      "to": "scene-actor",
+      "why": "186 个 list 句柄只是 scene-actor 记录池按场景聚合的内部视图"
+    },
+    "scene-encounter-zone": {
+      "to": "scene-encounter-zone",
+      "why": "scene.config 的 1,764 B 发布聚合；真正的实体是其中 94 个 encounter-zone"
+    },
+    "shell": {
+      "to": "shell-record",
+      "why": "game/data/shells.json 的 records[0..13] 中 name_source、sources.parameter、sources.visual 与 resource-byte-ranges/data.json 的 shell:00..0D 范围逐项同址；设施售货槽还把 namespace=shell 与 resource_id=shell-record 并列，因此这是 shell-record 的实例句柄而非独立模块"
+    },
+    "sprite-context": {
+      "to": "shared-chr-bank",
+      "why": "11 个 sprite-context 都是由 4 个 chr-bank 句柄组成、physical_address_kind=composite 的派生渲染上下文，自身零字节；归一到实际提供图块的 shared-chr-bank"
+    },
+    "story-actor-list": {
+      "to": "scene-actor",
+      "why": "32 个 actor-list 句柄的 pointer/encoded-list 主体由 scene-actor 持有；cutscene 自身只存 scene ID 与相机原点"
+    },
+    "story:autonomous": {
+      "to": "story-autonomous-script",
+      "why": "story:autonomous:* 是 story-autonomous-script 的实例句柄前缀"
+    },
+    "story:inline": {
+      "to": "story-action-handler",
+      "why": "文本 F5 后的 0C/11/12/13/14/32/57/58 直接走同一份 116 项剧情动作分发表；它们是 story-action-handler 的 opcode 实例，不是第二套 inline VM"
+    },
+    "story:interaction": {
+      "to": "story-interaction-script",
+      "why": "story:interaction:* 是 story-interaction-script 的实例句柄前缀"
+    },
+    "ui-composition": {
+      "to": "text-record",
+      "why": "ui-composition:record:03:013+014+015 只把一个 ui-layout 与两个 ui-script 记录视图打包，自身零字节；三个物理记录均由 text-record 独占"
+    },
+    "ui-layout": {
+      "to": "text-record",
+      "why": "47 个 layout 视图的 1,703-byte 物理并集全部落在 text-record"
+    },
+    "ui-menu-layer:constructor:field-item-world-map:00": {
+      "to": "asset",
+      "why": "该 rom_nametable layer 的 1,024-byte 范围与 field-item-world-map nametable asset 完全同址"
+    },
+    "ui-menu-layer:constructor:field-item-world-map:01": {
+      "to": "palette",
+      "why": "该 8-byte layer 反复复制到 palette staging，是 palette:field-item-world-map 的历史构造器句柄"
+    },
+    "ui-menu-layer:constructor:field-item-world-map:02": {
+      "to": "metasprite-record",
+      "why": "该 92-byte layer 逐四字节复制为 23 个 OAM entries，是 field-item-world-map OAM template 的历史构造器句柄"
+    },
+    "ui-menu-layer:constructor:frog-race-screen:00": {
+      "to": "asset",
+      "why": "该 rom_nametable layer 的 1,024-byte 范围与 frog-race-screen nametable asset 完全同址"
+    },
+    "ui-menu-layer:constructor:jukebox-screen:00": {
+      "to": "asset",
+      "why": "该 rom_nametable layer 的 1,024-byte 范围与 jukebox-screen nametable asset 完全同址"
+    },
+    "ui-menu-layer:constructor:vehicle-name:02": {
+      "to": "ui-name-entry",
+      "why": "该 200-byte 范围是命名界面的十行选择网格（10 行 × 4 组 × 5 格），已由 ui-name-entry.selection_grid 独占"
+    },
+    "ui-menu-layer:constructor:vending-machine-screen:00": {
+      "to": "asset",
+      "why": "该 rom_nametable layer 的 1,024-byte 范围与 vending-machine-screen nametable asset 完全同址"
+    },
+    "ui-pattern-profile": {
+      "to": "shared-chr-bank",
+      "why": "28 个 UI pattern profile 只组合既有 CHR banks，物理图块归 shared-chr-bank"
+    },
+    "ui-script": {
+      "to": "text-record",
+      "why": "2,557 个 UI script 视图的 50,700-byte 物理并集全部落在 text-record"
+    },
+    "vehicle": {
+      "to": "vehicle-preset",
+      "why": "18 个 vehicle 实例句柄的 108-byte 物理并集全部落在 vehicle-preset"
+    },
+    "vehicle-portrait": {
+      "to": "ui-vehicle-status",
+      "why": "八个 portrait 句柄是状态页用 text-record raw-tile 记录、vehicle-visual-selector 与 shared-chr-bank 组合出的零字节派生呈现；vehicle-preset.chassis_id 只是 selector 值"
+    },
+    "visual": {
+      "to": "attack-visual",
+      "why": "weapon-effects 发布包中 visual:00-4E 是 79 个 attack-visual 实例；shared-chr-bank 等点号模块名不使用这个冒号句柄前缀"
+    },
+    "metasprite-record.battle-sprite-palettes": {
+      "to": "sprite-palette",
+      "why": "旧聚合只截取共享 32-record 表的前四条；记录字节改由 sprite-palette 独占"
+    },
+    "wanted-poster:code:ApplyWantedPosterLowerChr": {
+      "to": "chr-bank-mapping-service",
+      "why": "3E:147A-1498 实际逐项应用 $22-$27 primary CHR shadow，调用点并非通缉令私有"
+    },
+    "wanted-poster:code:ConfigureWantedPosterRasterMode": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "3E:1197-11F9 解释 13 项共享 display profile；正文、战斗、字段、标题和结局均生产或消费"
+    },
+    "wanted-poster:code:DispatchWantedPosterRasterIrq": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "IRQ vector $FFFE-$FFFF 直接指向 3E:1176，且分派依据全局 display profile，不是通缉令私有入口"
+    },
+    "wanted-poster:code:EnterWantedPosterRasterSplit": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "3E:146B-147A 是 selector00 的通用 split 收束 handler；profiles00/01/03 及后续链均可选择"
+    },
+    "wanted-poster:code:InitializeWantedPosterChrBankPairs": {
+      "to": "chr-bank-mapping-service",
+      "why": "3F:0C24-0C43 按 X 的偶数 offset 初始化共享 primary/raster CHR preset，七个调用上下文横跨多个业务域"
+    },
+    "wanted-poster:code:RestoreWantedPosterUpperChr": {
+      "to": "chr-bank-mapping-service",
+      "why": "3E:1498-14B6 实际逐项应用 $28-$2D raster CHR shadow，战斗攻击视觉与共享 IRQ handler 均调用"
+    },
+    "wanted-poster:code:SelectWantedPosterRasterHandler": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "3E:1220-122F 按任意 selector 0-15 安装共享 IRQ handler vector $32/$33"
+    },
+    "wanted-poster:code:SetWantedPosterBackgroundChrRegisters": {
+      "to": "chr-bank-mapping-service",
+      "why": "3E:13C3-13F9 是六个通用 MMC3 CHR register setter；通缉令只是多个消费者之一"
+    },
+    "wanted-poster:raster:initial-chr-bank-table": {
+      "to": "chr-bank-mapping-service",
+      "why": "历史注释只描述 X=$04 的通缉目标消费；3F:0C43-0C55 的 18-byte 表实际由七个初始化调用上下文共享，并同时生成 primary/raster 两套 CHR bank shadow"
+    },
+    "wanted-poster:raster:raster-handler-pointers": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "3E:144B-146B 的 16 项指针表覆盖 14 个共享 handler 目标，远多于通缉令 profile03 使用的 selector00"
+    },
+    "wanted-poster:raster:raster-mode-tables": {
+      "to": "raster-interrupt-runtime-service",
+      "why": "3E:11F9-1220 是三张各 13 项的 profile selector/latch/initial-CHR 表，profile03 才是通缉令所用的一项"
+    },
+    "asset:shell-record.vending-price-codes": {
+      "to": "shell-record",
+      "why": "该精确句柄由game-data组件发布，14字节逐字节对应shell-record的table:vending-price-codes（PRG0302EC..0302F9）；asset:是发布组件前缀，不是具名画面asset模块引用"
+    },
+    "human-item": {
+      "to": "item-entry",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "tank-item": {
+      "to": "item-entry",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "actor-motion": {
+      "to": "actor-visual",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "actor-type": {
+      "to": "actor-visual",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "character-initial-template": {
+      "to": "character-initial-record",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "encounter-zone": {
+      "to": "scene-encounter-zone",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "scene-header-map": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "boundary": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "investigation": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "investigation-special": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "transition": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "treasure": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    },
+    "scene.config": {
+      "to": "scene",
+      "why": "发布的物理句柄保留原身份；字节由对应运行期字段对象持有。"
+    }
+  },
+  "note_known_dangling_reference_targets": "owner 已经迁到拆分后的实体（human-item / tank-item、boundary / transition / treasure 等），引用侧还在发拆分前的句柄 item:NN 与 scene-object:<场景>:<类别>:<序号>，于是这些边指着已经不存在的模块名。类别在句柄第 3 段，handle_normalization 按前缀匹配表达不了，只能在生产端让它发新句柄。棘轮基线，只许减少。",
+  "known_dangling_reference_targets": []
+}

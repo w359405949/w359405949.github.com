@@ -1,0 +1,112 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.transition",
+  "resource_id": "transition:47:0E",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 14,
+    "id_hex": "0x0E",
+    "x": 11,
+    "y": 6,
+    "coordinate_source": {
+      "space": "prg",
+      "offset": 126608,
+      "length": 2,
+      "end_exclusive": 126610
+    },
+    "coordinate_offsets": {
+      "x": 126608,
+      "y": 126609
+    },
+    "destination_scene_id": 219,
+    "destination_scene_id_hex": "0xDB",
+    "destination_x": 34,
+    "destination_y": 6,
+    "camera_origin_x": 26,
+    "camera_origin_y": -1,
+    "encoded_x": 34,
+    "encoded_y": 6,
+    "source": {
+      "space": "prg",
+      "offset": 126652,
+      "length": 3,
+      "end_exclusive": 126655
+    },
+    "field_offsets": {
+      "destination_scene_id": 126652,
+      "destination_x": 126653,
+      "destination_y": 126654
+    },
+    "raw": [
+      219,
+      34,
+      6
+    ],
+    "raw_hex": "DB 22 06",
+    "appearance_condition": {
+      "label": "沉默角色剧情战胜利后出现入口",
+      "flags": [
+        34
+      ],
+      "flag_labels": {
+        "34": "沉默角色剧情战胜利"
+      },
+      "triggers": [
+        {
+          "flag": 34,
+          "label": "沉默角色剧情战 $BD/$BE",
+          "href": "?view=interaction-bd-be-67",
+          "reference": "story-interaction-script:67"
+        }
+      ],
+      "states": [
+        {
+          "id": "before",
+          "label": "战斗前 · 入口未出现",
+          "flags": [],
+          "enterable": false,
+          "cells": []
+        },
+        {
+          "id": "after",
+          "label": "胜利后 · 可进",
+          "flags": [
+            34
+          ],
+          "enterable": true,
+          "cells": [
+            {
+              "x": 10,
+              "y": 5,
+              "metatile_id": 22
+            },
+            {
+              "x": 11,
+              "y": 5,
+              "metatile_id": 23
+            },
+            {
+              "x": 10,
+              "y": 6,
+              "metatile_id": 24
+            },
+            {
+              "x": 11,
+              "y": 6,
+              "metatile_id": 25
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 122438,
+          "length": 14
+        }
+      ]
+    },
+    "resource_id": "transition:47:0E",
+    "scene_id": 71,
+    "scene_id_hex": "0x47"
+  }
+}

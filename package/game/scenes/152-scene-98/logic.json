@@ -1,0 +1,772 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 152,
+  "scene_id_hex": "0x98",
+  "width": 19,
+  "height": 16,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 152,
+      "entry_id_hex": "0x98",
+      "count": 1,
+      "record_source": {
+        "space": "prg",
+        "offset": 150830,
+        "length": 7,
+        "end_exclusive": 150837
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:98:00",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [
+      {
+        "id": 1,
+        "id_hex": "0x01",
+        "field_offsets": {
+          "scene_id": 236609,
+          "x": 236700,
+          "y": 236791,
+          "content_id": 236882
+        },
+        "scene_id": 152,
+        "scene_id_hex": "0x98",
+        "x": 8,
+        "x_hex": "0x08",
+        "y": 3,
+        "y_hex": "0x03",
+        "content_id": 183,
+        "content_id_hex": "0xB7",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 183,
+        "save_flag_bit": 1,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 1,
+          "flag_id_hex": "0x01",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1121,
+          "runtime_byte_hex": "0x0461",
+          "byte_index": 0,
+          "bit_index": 1,
+          "bit_mask": 2,
+          "bit_mask_hex": "0x02",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "98:01:02",
+        "scene_id": 152,
+        "scene_id_hex": "0x98",
+        "x": 1,
+        "x_hex": "0x01",
+        "y": 2,
+        "y_hex": "0x02",
+        "metatile_id": 71,
+        "metatile_id_hex": "0x47",
+        "raw_attribute": 254,
+        "raw_attribute_hex": "0xFE",
+        "palette_id": 2,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "investigation-battle-trigger",
+        "label": "衣柜战斗（异形）",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "场景 $98 左上衣柜；上下文处理器把遭遇编队 $19 写入 $B1，该编队为怪物 $0E“异形”×1。",
+        "text_records": [
+          "record:05:116",
+          "record:05:036"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "global-event-flag",
+          "label": "全局完成位 · 胜利后提交",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 28,
+          "flag_id_hex": "0x1C",
+          "runtime_bitset_base": 1089,
+          "runtime_bitset_base_hex": "0x0441",
+          "runtime_byte": 1092,
+          "runtime_byte_hex": "0x0444",
+          "byte_index": 3,
+          "bit_index": 4,
+          "bit_mask": 16,
+          "bit_mask_hex": "0x10",
+          "test_helper_cpu": 65183,
+          "test_helper_cpu_hex": "0xFE9F",
+          "set_helper_cpu": 65157,
+          "set_helper_cpu_hex": "0xFE85",
+          "clear_helper_cpu": 65170,
+          "clear_helper_cpu_hex": "0xFE92",
+          "commit": "deferred-until-battle-victory",
+          "effects": [
+            "battle-spawn-once",
+            "interaction-result-after-completion"
+          ],
+          "pending_flag_runtime": 1154,
+          "pending_flag_runtime_hex": "0x0482",
+          "pending_story_state_runtime": 1153,
+          "pending_story_state_runtime_hex": "0x0481"
+        },
+        "registry_relation": "scene-context-wardrobe-battle",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232007,
+          "length": 1,
+          "end_exclusive": 232008
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 16328,
+            "length": 230,
+            "end_exclusive": 16558
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed-handler-formation-text-chain",
+        "editable": false,
+        "encounter_id": 25,
+        "encounter_id_hex": "0x19",
+        "monster_ids": [
+          14
+        ],
+        "monster_ids_hex": [
+          "0x0E"
+        ],
+        "resource_references": [
+          "battle-test-point",
+          "encounter-formation:19",
+          "monster:0E"
+        ],
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "98:0A:0B",
+        "scene_id": 152,
+        "scene_id_hex": "0x98",
+        "x": 10,
+        "x_hex": "0x0A",
+        "y": 11,
+        "y_hex": "0x0B",
+        "metatile_id": 65,
+        "metatile_id_hex": "0x41",
+        "raw_attribute": 235,
+        "raw_attribute_hex": "0xEB",
+        "palette_id": 3,
+        "behavior_code": 104,
+        "behavior_code_hex": "0x68",
+        "dispatch_index": 12,
+        "dispatch_index_hex": "0x0C",
+        "handler_cpu": 47907,
+        "handler_cpu_hex": "0xBB23",
+        "handler_prg": 219939,
+        "handler_prg_hex": "0x035B23",
+        "kind": "locked-door",
+        "label": "上锁的门",
+        "semantic_status": "confirmed-purpose",
+        "description": "固定输出“门上好象挂着锁。”。",
+        "text_records": [
+          "record:05:072"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232001,
+          "length": 1,
+          "end_exclusive": 232002
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219772,
+          "length": 2,
+          "end_exclusive": 219774
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 16328,
+            "length": 230,
+            "end_exclusive": 16558
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "98:0A:0C",
+        "scene_id": 152,
+        "scene_id_hex": "0x98",
+        "x": 10,
+        "x_hex": "0x0A",
+        "y": 12,
+        "y_hex": "0x0C",
+        "metatile_id": 66,
+        "metatile_id_hex": "0x42",
+        "raw_attribute": 235,
+        "raw_attribute_hex": "0xEB",
+        "palette_id": 3,
+        "behavior_code": 104,
+        "behavior_code_hex": "0x68",
+        "dispatch_index": 12,
+        "dispatch_index_hex": "0x0C",
+        "handler_cpu": 47907,
+        "handler_cpu_hex": "0xBB23",
+        "handler_prg": 219939,
+        "handler_prg_hex": "0x035B23",
+        "kind": "locked-door",
+        "label": "上锁的门",
+        "semantic_status": "confirmed-purpose",
+        "description": "固定输出“门上好象挂着锁。”。",
+        "text_records": [
+          "record:05:072"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232002,
+          "length": 1,
+          "end_exclusive": 232003
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219772,
+          "length": 2,
+          "end_exclusive": 219774
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 16328,
+            "length": 230,
+            "end_exclusive": 16558
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 37592,
+      "pointer_cpu_hex": "0x92D8",
+      "pointer_prg": 127704,
+      "pointer_prg_hex": "0x01F2D8",
+      "boundary_mode": "dynamic-return",
+      "boundary_exits": [],
+      "dynamic_boundary_return": {
+        "id": 0,
+        "id_hex": "0x00",
+        "direction_code": null,
+        "direction": "all-boundaries",
+        "target_kind": "saved-return-position",
+        "editable": false,
+        "source": {
+          "space": "prg",
+          "offset": 127704,
+          "length": 1,
+          "end_exclusive": 127705
+        }
+      },
+      "point_transition_count": 1,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 17,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 127706,
+            "length": 2,
+            "end_exclusive": 127708
+          },
+          "coordinate_offsets": {
+            "x": 127706,
+            "y": 127707
+          },
+          "destination_scene_id": 151,
+          "destination_scene_id_hex": "0x97",
+          "destination_x": 17,
+          "destination_y": 13,
+          "camera_origin_x": 9,
+          "camera_origin_y": 6,
+          "encoded_x": 17,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 127708,
+            "length": 3,
+            "end_exclusive": 127711
+          },
+          "field_offsets": {
+            "destination_scene_id": 127708,
+            "destination_x": 127709,
+            "destination_y": 127710
+          },
+          "raw": [
+            151,
+            17,
+            13
+          ],
+          "raw_hex": "97 11 0D"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 127704,
+        "length": 7,
+        "end_exclusive": 127711
+      },
+      "raw": [
+        255,
+        1,
+        17,
+        13,
+        151,
+        17,
+        13
+      ],
+      "raw_hex": "FF 01 11 0D 97 11 0D",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 0,
+      "zone_id_hex": "0x00",
+      "zone": {
+        "zone_id": 0,
+        "zone_id_hex": "0x00",
+        "config": 0,
+        "config_hex": "0x00",
+        "class_id": 0,
+        "ambush_threshold_index": 0,
+        "ambush_threshold": 32,
+        "meter_initial_index": 0,
+        "meter_initial_value": 48,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 233941,
+          "length": 1,
+          "end_exclusive": 233942
+        },
+        "rolls_encounters": false,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 234389,
+          "length": 14,
+          "end_exclusive": 234403
+        },
+        "entries_editable": false,
+        "entries_readonly_reason": "zone $00 从不抽取，且其候选行与场景 zone 表尾部（场景 $80-$EF）共用同一批物理字节",
+        "active_entry_count": 2,
+        "selection_weight_total": 4,
+        "referenced_by": [
+          "world-block:7,10",
+          "world-block:8,10",
+          "world-block:9,10",
+          "world-block:5,11",
+          "scene:80",
+          "scene:81",
+          "scene:82",
+          "scene:83",
+          "scene:84",
+          "scene:85",
+          "scene:86",
+          "scene:87",
+          "scene:88",
+          "scene:90",
+          "scene:91",
+          "scene:92",
+          "scene:93",
+          "scene:94",
+          "scene:98",
+          "scene:99",
+          "scene:9B",
+          "scene:9C",
+          "scene:9D",
+          "scene:A0",
+          "scene:A1",
+          "scene:A2",
+          "scene:A3",
+          "scene:A4",
+          "scene:A5",
+          "scene:A6",
+          "scene:A7",
+          "scene:AB",
+          "scene:AC",
+          "scene:AD",
+          "scene:AE",
+          "scene:AF",
+          "scene:B4",
+          "scene:B5",
+          "scene:B6",
+          "scene:B7",
+          "scene:B8",
+          "scene:B9",
+          "scene:BA",
+          "scene:BB",
+          "scene:C5",
+          "scene:C6",
+          "scene:C7",
+          "scene:C8",
+          "scene:C9",
+          "scene:CD",
+          "scene:D6",
+          "scene:D9",
+          "scene:DA",
+          "scene:DB",
+          "scene:DC",
+          "scene:DD",
+          "scene:DE",
+          "scene:DF",
+          "scene:E0",
+          "scene:E1",
+          "scene:E2",
+          "scene:E3",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EA",
+          "scene:EB",
+          "scene:EC",
+          "scene:ED",
+          "scene:EE",
+          "scene:EF"
+        ],
+        "reference_count": 72
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234315,
+        "length": 1,
+        "end_exclusive": 234316
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 1,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 1,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 3,
+    "point_transitions": 1,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      0
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

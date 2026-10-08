@@ -1,0 +1,112 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.transition",
+  "resource_id": "transition:01:09",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 9,
+    "id_hex": "0x09",
+    "x": 16,
+    "y": 13,
+    "coordinate_source": {
+      "space": "prg",
+      "offset": 125732,
+      "length": 2,
+      "end_exclusive": 125734
+    },
+    "coordinate_offsets": {
+      "x": 125732,
+      "y": 125733
+    },
+    "destination_scene_id": 219,
+    "destination_scene_id_hex": "0xDB",
+    "destination_x": 3,
+    "destination_y": 5,
+    "camera_origin_x": -5,
+    "camera_origin_y": -2,
+    "encoded_x": 3,
+    "encoded_y": 5,
+    "source": {
+      "space": "prg",
+      "offset": 125761,
+      "length": 3,
+      "end_exclusive": 125764
+    },
+    "field_offsets": {
+      "destination_scene_id": 125761,
+      "destination_x": 125762,
+      "destination_y": 125763
+    },
+    "raw": [
+      219,
+      3,
+      5
+    ],
+    "raw_hex": "DB 03 05",
+    "appearance_condition": {
+      "label": "交互脚本 $35 的战斗胜利后出现入口",
+      "flags": [
+        76
+      ],
+      "flag_labels": {
+        "76": "交互脚本 $35 战斗胜利"
+      },
+      "triggers": [
+        {
+          "flag": 76,
+          "label": "战斗交互 $35",
+          "href": "?view=actors&actorPart=story&storyKind=interaction&record=53",
+          "reference": "story-interaction-script:35"
+        }
+      ],
+      "states": [
+        {
+          "id": "before",
+          "label": "战斗前 · 入口未出现",
+          "flags": [],
+          "enterable": false,
+          "cells": []
+        },
+        {
+          "id": "after",
+          "label": "胜利后 · 可进",
+          "flags": [
+            76
+          ],
+          "enterable": true,
+          "cells": [
+            {
+              "x": 15,
+              "y": 12,
+              "metatile_id": 22
+            },
+            {
+              "x": 16,
+              "y": 12,
+              "metatile_id": 23
+            },
+            {
+              "x": 15,
+              "y": 13,
+              "metatile_id": 24
+            },
+            {
+              "x": 16,
+              "y": 13,
+              "metatile_id": 25
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 122255,
+          "length": 14
+        }
+      ]
+    },
+    "resource_id": "transition:01:09",
+    "scene_id": 1,
+    "scene_id_hex": "0x01"
+  }
+}

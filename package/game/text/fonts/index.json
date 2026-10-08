@@ -1,0 +1,96 @@
+{
+  "source_rom": "metalmaxcn.nes",
+  "source_sha256": "a02e6d3e619a47930149298a6bc4f90a30af1939e7905a2a1c7115bc6eb92bf2",
+  "schema": "metalmaxcn.text-fonts",
+  "fonts": [
+    {
+      "id": "core-latin",
+      "label": "核心字库（数字 / 大写拉丁 / 标点）",
+      "storage": "prg-upload-chr-ram",
+      "address": {
+        "space": "prg",
+        "offset": 292864,
+        "length": 2048,
+        "end_exclusive": 294912,
+        "confidence": "confirmed"
+      },
+      "glyph_count": 128,
+      "glyph_bytes": 16,
+      "glyph_format": "nes-2bpp-8x8",
+      "identity": "glyph_index",
+      "glyphs": {
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "A",
+        "11": "B",
+        "12": "C",
+        "13": "D",
+        "14": "E",
+        "15": "F",
+        "16": "G",
+        "17": "H",
+        "18": "I",
+        "19": "J",
+        "20": "K",
+        "21": "L",
+        "22": "M",
+        "23": "N",
+        "24": "O",
+        "25": "P",
+        "26": "Q",
+        "27": "R",
+        "28": "S",
+        "29": "T",
+        "30": "U",
+        "31": "V",
+        "32": "W",
+        "33": "X",
+        "34": "Y",
+        "35": "Z",
+        "98": "-",
+        "100": "。",
+        "101": "，"
+      },
+      "witnessed": [
+        0,
+        10,
+        13,
+        14,
+        23,
+        25,
+        27,
+        28,
+        29
+      ],
+      "identified": 39,
+      "unidentified": 89,
+      "editable": {
+        "status": "editable-fixed-size",
+        "what": "字形位图",
+        "constraints": [
+          "整块 2 KiB 定长上传，字形数固定，不能增删字形",
+          "改一个字形会影响所有引用它的画面"
+        ]
+      },
+      "note": "开机由 PRG 整块上传进 CHR-RAM。装进哪个 PPU 窗口由使用现场决定，因此 tile 编号不是字符身份，字形序号才是。"
+    },
+    {
+      "id": "narrative-12x12",
+      "label": "正文字库（12×12）",
+      "owner_resource": "text.character-map",
+      "glyph_count": 1672,
+      "glyph_bytes": 18,
+      "glyph_format": "12x12-bitmap",
+      "identity": "lead-selector",
+      "note": "双字节 lead($24-$2E)+selector 编码，运行时经 glyph-rasterizer 光栅化后写 CHR-RAM；字形表归 text.character-map，本表不复制。"
+    }
+  ]
+}

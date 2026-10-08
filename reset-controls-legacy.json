@@ -1,0 +1,50 @@
+[
+  {
+    "file": "ui/page-navigation.js",
+    "kind": "non-rom",
+    "reason": "清空页面过滤，不写 ROM 资产",
+    "symbol": "data-page-filter-reset"
+  },
+  {
+    "file": "views/battle-effects/attack-visual-segment-editor.js",
+    "kind": "shared",
+    "reason": "按钮只调用 attack-visual 字段 reset，字段对象负责 Working 删除与 Origin 回读",
+    "symbol": "data-attack-visual-segment-reset"
+  },
+  {
+    "file": "views/battle-scene-composer.js",
+    "kind": "non-rom",
+    "reason": "仅重建 battleScenePreview 编排，不写 ROM 资产",
+    "symbol": "data-battle-scene-reset"
+  },
+  {
+    "file": "views/boot-presentation.js",
+    "kind": "non-rom",
+    "reason": "退出播放模式，未重置资产",
+    "symbol": "id:boot-playback-exit"
+  },
+  {
+    "file": "views/build-log.js",
+    "kind": "non-rom",
+    "reason": "导出项目，不重置资产",
+    "symbol": "id:browser-project-export"
+  },
+  {
+    "file": "views/facilities.js",
+    "kind": "non-rom",
+    "reason": "装载观测存档组合用于预览，不回 ROM 默认值",
+    "symbol": "data-teleport-restore-save7"
+  },
+  {
+    "file": "ui/field-object-editor.js",
+    "symbol": "reset.textContent",
+    "kind": "shared",
+    "reason": "控件委托已有字段对象重置入口。"
+  },
+  {
+    "file": "views/save-page.js",
+    "symbol": "data-save-page-reset-activation",
+    "kind": "shared",
+    "reason": "控件委托已有字段对象重置入口。"
+  }
+]

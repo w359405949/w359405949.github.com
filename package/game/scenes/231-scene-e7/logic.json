@@ -1,0 +1,1001 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 231,
+  "scene_id_hex": "0xE7",
+  "width": 48,
+  "height": 15,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 231,
+      "entry_id_hex": "0xE7",
+      "count": 5,
+      "record_source": {
+        "space": "prg",
+        "offset": 151469,
+        "length": 31,
+        "end_exclusive": 151500
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:E7:00",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "uid": "scene-actor:E7:01",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "uid": "scene-actor:E7:02",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "uid": "scene-actor:E7:03",
+          "inside_scene_canvas": false
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "uid": "scene-actor:E7:04",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [
+      {
+        "id": 67,
+        "id_hex": "0x43",
+        "scene_id": 231,
+        "packed_handler_instance": 17,
+        "x": 1,
+        "y": 6,
+        "scene_id_hex": "0xE7",
+        "x_hex": "0x01",
+        "y_hex": "0x06",
+        "handler_selector": 1,
+        "instance_id": 1,
+        "field_offsets": {
+          "scene_id": 237060,
+          "packed_handler_instance": 237183,
+          "x": 237306,
+          "y": 237429
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237183,
+          "length": 1,
+          "end_exclusive": 237184
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x01",
+        "instance_id_hex": "0x01",
+        "packed_handler_instance_hex": "0x11",
+        "command_id": 28,
+        "command_id_hex": "0x1C",
+        "facility_kind": "ammunition-vending-machine",
+        "facility_label": "炮弹自动售货机",
+        "semantic_status": "confirmed-purpose",
+        "investigation_evidence": "配置族 $0C；17 个调查点；售货机运行路径已确认。",
+        "configuration_family_id": 12,
+        "instance_min": 0,
+        "instance_max": 9,
+        "instance_count": 10,
+        "instance_semantics": "confirmed-facility-configuration-index",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 68,
+        "id_hex": "0x44",
+        "scene_id": 231,
+        "packed_handler_instance": 2,
+        "x": 3,
+        "y": 6,
+        "scene_id_hex": "0xE7",
+        "x_hex": "0x03",
+        "y_hex": "0x06",
+        "handler_selector": 2,
+        "instance_id": 0,
+        "field_offsets": {
+          "scene_id": 237061,
+          "packed_handler_instance": 237184,
+          "x": 237307,
+          "y": 237430
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237184,
+          "length": 1,
+          "end_exclusive": 237185
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x02",
+        "instance_id_hex": "0x00",
+        "packed_handler_instance_hex": "0x02",
+        "command_id": 29,
+        "command_id_hex": "0x1D",
+        "facility_kind": "investigation-configured-facility",
+        "facility_label": "调查·推定：双配置设施",
+        "semantic_status": "purpose-inferred",
+        "investigation_evidence": "配置族 $0D 恰有 2 条长度为 $0D 的记录；12 个调查点只使用实例 $00/$01，且常与两类售货机出现在相同场景。",
+        "configuration_family_id": 13,
+        "instance_min": 0,
+        "instance_max": 1,
+        "instance_count": 2,
+        "instance_semantics": "confirmed-investigation-configuration-index",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 69,
+        "id_hex": "0x45",
+        "scene_id": 231,
+        "packed_handler_instance": 64,
+        "x": 44,
+        "y": 3,
+        "scene_id_hex": "0xE7",
+        "x_hex": "0x2C",
+        "y_hex": "0x03",
+        "handler_selector": 0,
+        "instance_id": 4,
+        "field_offsets": {
+          "scene_id": 237062,
+          "packed_handler_instance": 237185,
+          "x": 237308,
+          "y": 237431
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237185,
+          "length": 1,
+          "end_exclusive": 237186
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x00",
+        "instance_id_hex": "0x04",
+        "packed_handler_instance_hex": "0x40",
+        "command_id": 27,
+        "command_id_hex": "0x1B",
+        "facility_kind": "item-vending-machine",
+        "facility_label": "普通道具自动售货机",
+        "semantic_status": "confirmed-purpose",
+        "investigation_evidence": "配置族 $0B；23 个调查点；售货机运行路径已确认。",
+        "configuration_family_id": 11,
+        "instance_min": 0,
+        "instance_max": 8,
+        "instance_count": 9,
+        "instance_semantics": "confirmed-facility-configuration-index",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "E7:28:03",
+        "scene_id": 231,
+        "scene_id_hex": "0xE7",
+        "x": 40,
+        "x_hex": "0x28",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 2,
+        "metatile_id_hex": "0x02",
+        "raw_attribute": 254,
+        "raw_attribute_hex": "0xFE",
+        "palette_id": 2,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 233794,
+          "length": 1,
+          "end_exclusive": 233795
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 44500,
+            "length": 265,
+            "end_exclusive": 44765
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233792,
+            231232
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "E7:2C:03",
+        "scene_id": 231,
+        "scene_id_hex": "0xE7",
+        "x": 44,
+        "x_hex": "0x2C",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 31,
+        "metatile_id_hex": "0x1F",
+        "raw_attribute": 236,
+        "raw_attribute_hex": "0xEC",
+        "palette_id": 0,
+        "behavior_code": 108,
+        "behavior_code_hex": "0x6C",
+        "dispatch_index": 14,
+        "dispatch_index_hex": "0x0E",
+        "handler_cpu": 47912,
+        "handler_cpu_hex": "0xBB28",
+        "handler_prg": 219944,
+        "handler_prg_hex": "0x035B28",
+        "kind": "machine-status",
+        "label": "机器 / 故障机器",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时逆序匹配设施调查点，命中后由设施处理；未命中输出“故障”，其他朝向输出“有台机器！”。",
+        "text_records": [
+          "record:05:009",
+          "record:05:185"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          69
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x45"
+        ],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 233823,
+          "length": 1,
+          "end_exclusive": 233824
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219774,
+          "length": 2,
+          "end_exclusive": 219776
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 44500,
+            "length": 265,
+            "end_exclusive": 44765
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233792,
+            231232
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "E7:01:06",
+        "scene_id": 231,
+        "scene_id_hex": "0xE7",
+        "x": 1,
+        "x_hex": "0x01",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 31,
+        "metatile_id_hex": "0x1F",
+        "raw_attribute": 236,
+        "raw_attribute_hex": "0xEC",
+        "palette_id": 0,
+        "behavior_code": 108,
+        "behavior_code_hex": "0x6C",
+        "dispatch_index": 14,
+        "dispatch_index_hex": "0x0E",
+        "handler_cpu": 47912,
+        "handler_cpu_hex": "0xBB28",
+        "handler_prg": 219944,
+        "handler_prg_hex": "0x035B28",
+        "kind": "machine-status",
+        "label": "机器 / 故障机器",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时逆序匹配设施调查点，命中后由设施处理；未命中输出“故障”，其他朝向输出“有台机器！”。",
+        "text_records": [
+          "record:05:009",
+          "record:05:185"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          67
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x43"
+        ],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 233823,
+          "length": 1,
+          "end_exclusive": 233824
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219774,
+          "length": 2,
+          "end_exclusive": 219776
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 44500,
+            "length": 265,
+            "end_exclusive": 44765
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233792,
+            231232
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 3,
+        "id_hex": "0x0003",
+        "coordinate_key": "E7:03:06",
+        "scene_id": 231,
+        "scene_id_hex": "0xE7",
+        "x": 3,
+        "x_hex": "0x03",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 31,
+        "metatile_id_hex": "0x1F",
+        "raw_attribute": 236,
+        "raw_attribute_hex": "0xEC",
+        "palette_id": 0,
+        "behavior_code": 108,
+        "behavior_code_hex": "0x6C",
+        "dispatch_index": 14,
+        "dispatch_index_hex": "0x0E",
+        "handler_cpu": 47912,
+        "handler_cpu_hex": "0xBB28",
+        "handler_prg": 219944,
+        "handler_prg_hex": "0x035B28",
+        "kind": "machine-status",
+        "label": "机器 / 故障机器",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时逆序匹配设施调查点，命中后由设施处理；未命中输出“故障”，其他朝向输出“有台机器！”。",
+        "text_records": [
+          "record:05:009",
+          "record:05:185"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          68
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x44"
+        ],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 233823,
+          "length": 1,
+          "end_exclusive": 233824
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219774,
+          "length": 2,
+          "end_exclusive": 219776
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 44500,
+            "length": 265,
+            "end_exclusive": 44765
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233792,
+            231232
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 39141,
+      "pointer_cpu_hex": "0x98E5",
+      "pointer_prg": 129253,
+      "pointer_prg_hex": "0x01F8E5",
+      "boundary_mode": "shared-target",
+      "boundary_exits": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "direction_code": null,
+          "direction": "all-boundaries",
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 128,
+          "destination_y": 56,
+          "camera_origin_x": 120,
+          "camera_origin_y": 49,
+          "encoded_x": 128,
+          "encoded_y": 56,
+          "source": {
+            "space": "prg",
+            "offset": 129254,
+            "length": 3,
+            "end_exclusive": 129257
+          },
+          "field_offsets": {
+            "destination_scene_id": 129254,
+            "destination_x": 129255,
+            "destination_y": 129256
+          },
+          "raw": [
+            0,
+            128,
+            56
+          ],
+          "raw_hex": "00 80 38"
+        }
+      ],
+      "dynamic_boundary_return": null,
+      "point_transition_count": 2,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 43,
+          "y": 12,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 129258,
+            "length": 2,
+            "end_exclusive": 129260
+          },
+          "coordinate_offsets": {
+            "x": 129258,
+            "y": 129259
+          },
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 108,
+          "destination_y": 71,
+          "camera_origin_x": 100,
+          "camera_origin_y": 64,
+          "encoded_x": 108,
+          "encoded_y": 71,
+          "source": {
+            "space": "prg",
+            "offset": 129262,
+            "length": 3,
+            "end_exclusive": 129265
+          },
+          "field_offsets": {
+            "destination_scene_id": 129262,
+            "destination_x": 129263,
+            "destination_y": 129264
+          },
+          "raw": [
+            0,
+            108,
+            71
+          ],
+          "raw_hex": "00 6C 47"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 44,
+          "y": 12,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 129260,
+            "length": 2,
+            "end_exclusive": 129262
+          },
+          "coordinate_offsets": {
+            "x": 129260,
+            "y": 129261
+          },
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 108,
+          "destination_y": 71,
+          "camera_origin_x": 100,
+          "camera_origin_y": 64,
+          "encoded_x": 108,
+          "encoded_y": 71,
+          "source": {
+            "space": "prg",
+            "offset": 129265,
+            "length": 3,
+            "end_exclusive": 129268
+          },
+          "field_offsets": {
+            "destination_scene_id": 129265,
+            "destination_x": 129266,
+            "destination_y": 129267
+          },
+          "raw": [
+            0,
+            108,
+            71
+          ],
+          "raw_hex": "00 6C 47"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 129253,
+        "length": 15,
+        "end_exclusive": 129268
+      },
+      "raw": [
+        254,
+        0,
+        128,
+        56,
+        2,
+        43,
+        12,
+        44,
+        12,
+        0,
+        108,
+        71,
+        0,
+        108,
+        71
+      ],
+      "raw_hex": "FE 00 80 38 02 2B 0C 2C 0C 00 6C 47 00 6C 47",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 0,
+      "zone_id_hex": "0x00",
+      "zone": {
+        "zone_id": 0,
+        "zone_id_hex": "0x00",
+        "config": 0,
+        "config_hex": "0x00",
+        "class_id": 0,
+        "ambush_threshold_index": 0,
+        "ambush_threshold": 32,
+        "meter_initial_index": 0,
+        "meter_initial_value": 48,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 233941,
+          "length": 1,
+          "end_exclusive": 233942
+        },
+        "rolls_encounters": false,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 234389,
+          "length": 14,
+          "end_exclusive": 234403
+        },
+        "entries_editable": false,
+        "entries_readonly_reason": "zone $00 从不抽取，且其候选行与场景 zone 表尾部（场景 $80-$EF）共用同一批物理字节",
+        "active_entry_count": 2,
+        "selection_weight_total": 4,
+        "referenced_by": [
+          "world-block:7,10",
+          "world-block:8,10",
+          "world-block:9,10",
+          "world-block:5,11",
+          "scene:80",
+          "scene:81",
+          "scene:82",
+          "scene:83",
+          "scene:84",
+          "scene:85",
+          "scene:86",
+          "scene:87",
+          "scene:88",
+          "scene:90",
+          "scene:91",
+          "scene:92",
+          "scene:93",
+          "scene:94",
+          "scene:98",
+          "scene:99",
+          "scene:9B",
+          "scene:9C",
+          "scene:9D",
+          "scene:A0",
+          "scene:A1",
+          "scene:A2",
+          "scene:A3",
+          "scene:A4",
+          "scene:A5",
+          "scene:A6",
+          "scene:A7",
+          "scene:AB",
+          "scene:AC",
+          "scene:AD",
+          "scene:AE",
+          "scene:AF",
+          "scene:B4",
+          "scene:B5",
+          "scene:B6",
+          "scene:B7",
+          "scene:B8",
+          "scene:B9",
+          "scene:BA",
+          "scene:BB",
+          "scene:C5",
+          "scene:C6",
+          "scene:C7",
+          "scene:C8",
+          "scene:C9",
+          "scene:CD",
+          "scene:D6",
+          "scene:D9",
+          "scene:DA",
+          "scene:DB",
+          "scene:DC",
+          "scene:DD",
+          "scene:DE",
+          "scene:DF",
+          "scene:E0",
+          "scene:E1",
+          "scene:E2",
+          "scene:E3",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EA",
+          "scene:EB",
+          "scene:EC",
+          "scene:ED",
+          "scene:EE",
+          "scene:EF"
+        ],
+        "reference_count": 72
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234394,
+        "length": 1,
+        "end_exclusive": 234395
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 5,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 3,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 4,
+    "point_transitions": 2,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      0
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

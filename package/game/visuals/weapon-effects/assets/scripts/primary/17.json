@@ -1,0 +1,442 @@
+{
+  "schema": "metalmaxcn.weapon-effect-script-asset",
+  "id": 23,
+  "id_hex": "0x17",
+  "path": "assets/scripts/primary/17.bin",
+  "prg_offset": 144368,
+  "prg_offset_hex": "0x0233F0",
+  "length": 23,
+  "terminator": 159,
+  "bytes_hex": "04 B2 0B 5A 13 09 D3 0D 49 FC 0E 39 01 0D 0F 09 1A 08 00 33 0B 09 9F",
+  "decode_status": "decoded",
+  "decode_error": null,
+  "command_count": 10,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 144368,
+      "prg_offset_hex": "0x0233F0",
+      "opcode": 4,
+      "opcode_hex": "0x04",
+      "name": "set_frame_mode_and_wait",
+      "length": 2,
+      "bytes_hex": "04 B2",
+      "operands": [
+        {
+          "name": "mode",
+          "value": 178,
+          "value_hex": "0xB2"
+        }
+      ],
+      "handler_cpu": 47604,
+      "handler_cpu_hex": "0xB9F4",
+      "handler_prg": 195060,
+      "handler_prg_hex": "0x02F9F4",
+      "handler_far": "17:19F4",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 144370,
+      "prg_offset_hex": "0x0233F2",
+      "opcode": 11,
+      "opcode_hex": "0x0B",
+      "name": "set_battle_sprite_palette",
+      "length": 2,
+      "bytes_hex": "0B 5A",
+      "operands": [
+        {
+          "name": "palette_offset",
+          "value": 90,
+          "value_hex": "0x5A"
+        }
+      ],
+      "handler_cpu": 48303,
+      "handler_cpu_hex": "0xBCAF",
+      "handler_prg": 195759,
+      "handler_prg_hex": "0x02FCAF",
+      "handler_far": "17:1CAF",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 4,
+      "prg_offset": 144372,
+      "prg_offset_hex": "0x0233F4",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 09 D3",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 9,
+          "value_hex": "0x09"
+        },
+        {
+          "name": "action",
+          "value": 211,
+          "value_hex": "0xD3"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 9,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 7,
+      "prg_offset": 144375,
+      "prg_offset_hex": "0x0233F7",
+      "opcode": 13,
+      "opcode_hex": "0x0D",
+      "name": "move_object_x",
+      "length": 3,
+      "bytes_hex": "0D 49 FC",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 73,
+          "value_hex": "0x49"
+        },
+        {
+          "name": "delta_x",
+          "value": 252,
+          "value_hex": "0xFC",
+          "signed_value": -4
+        }
+      ],
+      "handler_cpu": 47736,
+      "handler_cpu_hex": "0xBA78",
+      "handler_prg": 195192,
+      "handler_prg_hex": "0x02FA78",
+      "handler_far": "17:1A78",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 9,
+        "delay": 4
+      }
+    },
+    {
+      "offset": 10,
+      "prg_offset": 144378,
+      "prg_offset_hex": "0x0233FA",
+      "opcode": 14,
+      "opcode_hex": "0x0E",
+      "name": "increment_object_action",
+      "length": 2,
+      "bytes_hex": "0E 39",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 57,
+          "value_hex": "0x39"
+        }
+      ],
+      "handler_cpu": 47690,
+      "handler_cpu_hex": "0xBA4A",
+      "handler_prg": 195146,
+      "handler_prg_hex": "0x02FA4A",
+      "handler_far": "17:1A4A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 9,
+        "delay": 3
+      }
+    },
+    {
+      "offset": 12,
+      "prg_offset": 144380,
+      "prg_offset_hex": "0x0233FC",
+      "opcode": 1,
+      "opcode_hex": "0x01",
+      "name": "call_aux_script",
+      "length": 2,
+      "bytes_hex": "01 0D",
+      "operands": [
+        {
+          "name": "script_id",
+          "value": 13,
+          "value_hex": "0x0D"
+        }
+      ],
+      "handler_cpu": 47612,
+      "handler_cpu_hex": "0xB9FC",
+      "handler_prg": 195068,
+      "handler_prg_hex": "0x02F9FC",
+      "handler_far": "17:19FC",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 14,
+      "prg_offset": 144382,
+      "prg_offset_hex": "0x0233FE",
+      "opcode": 15,
+      "opcode_hex": "0x0F",
+      "name": "decrement_object_action",
+      "length": 2,
+      "bytes_hex": "0F 09",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 9,
+          "value_hex": "0x09"
+        }
+      ],
+      "handler_cpu": 47697,
+      "handler_cpu_hex": "0xBA51",
+      "handler_prg": 195153,
+      "handler_prg_hex": "0x02FA51",
+      "handler_far": "17:1A51",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 9,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 16,
+      "prg_offset": 144384,
+      "prg_offset_hex": "0x023400",
+      "opcode": 26,
+      "opcode_hex": "0x1A",
+      "name": "animate_toggled_path",
+      "length": 2,
+      "bytes_hex": "1A 08",
+      "operands": [
+        {
+          "name": "path_parameter",
+          "value": 8,
+          "value_hex": "0x08"
+        }
+      ],
+      "handler_cpu": 48239,
+      "handler_cpu_hex": "0xBC6F",
+      "handler_prg": 195695,
+      "handler_prg_hex": "0x02FC6F",
+      "handler_far": "17:1C6F",
+      "alternate_handler_cpu": 48244,
+      "alternate_handler_cpu_hex": "0xBC74",
+      "alternate_handler_prg": 195700,
+      "alternate_handler_prg_hex": "0x02FC74",
+      "alternate_handler_far": "17:1C74",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "target path; toggle object 0 action bit 0 each frame",
+      "alternate_effect": "actor path; toggle object 0 action bit 0",
+      "marker": false
+    },
+    {
+      "offset": 18,
+      "prg_offset": 144386,
+      "prg_offset_hex": "0x023402",
+      "opcode": 0,
+      "opcode_hex": "0x00",
+      "name": "call_visual_script",
+      "length": 2,
+      "bytes_hex": "00 33",
+      "operands": [
+        {
+          "name": "visual_code",
+          "value": 51,
+          "value_hex": "0x33"
+        }
+      ],
+      "handler_cpu": 47641,
+      "handler_cpu_hex": "0xBA19",
+      "handler_prg": 195097,
+      "handler_prg_hex": "0x02FA19",
+      "handler_far": "17:1A19",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 20,
+      "prg_offset": 144388,
+      "prg_offset_hex": "0x023404",
+      "opcode": 11,
+      "opcode_hex": "0x0B",
+      "name": "set_battle_sprite_palette",
+      "length": 2,
+      "bytes_hex": "0B 09",
+      "operands": [
+        {
+          "name": "palette_offset",
+          "value": 9,
+          "value_hex": "0x09"
+        }
+      ],
+      "handler_cpu": 48303,
+      "handler_cpu_hex": "0xBCAF",
+      "handler_prg": 195759,
+      "handler_prg_hex": "0x02FCAF",
+      "handler_far": "17:1CAF",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 22,
+      "prg_offset": 144390,
+      "prg_offset_hex": "0x023406",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "animate_toggled_path": 1,
+      "call_aux_script": 1,
+      "call_visual_script": 1,
+      "decrement_object_action": 1,
+      "increment_object_action": 1,
+      "move_object_x": 1,
+      "set_battle_sprite_palette": 2,
+      "set_frame_mode_and_wait": 1,
+      "spawn_object_at_actor": 1
+    },
+    "visual_script_ids": [
+      51
+    ],
+    "auxiliary_script_ids": [
+      13
+    ],
+    "sound_ids": [],
+    "palette_offsets": [
+      9,
+      90
+    ],
+    "object_actions": [
+      211
+    ],
+    "trail_object_counts": [],
+    "path_parameters": [
+      8
+    ],
+    "path_durations": [],
+    "object_slots": [
+      9
+    ],
+    "visual_script_ids_hex": [
+      "0x33"
+    ],
+    "auxiliary_script_ids_hex": [
+      "0x0D"
+    ],
+    "sound_ids_hex": [],
+    "palette_offsets_hex": [
+      "0x09",
+      "0x5A"
+    ],
+    "object_actions_hex": [
+      "0xD3"
+    ],
+    "uses_repeat_block": false,
+    "uses_position_history_trail": false
+  },
+  "sha256": "cc13e4690be169b858feb7d54a5c2da0084204df0d0b38012a5464b693949a87",
+  "address": {
+    "space": "prg",
+    "offset": 144368,
+    "length": 23,
+    "end_exclusive": 144391
+  },
+  "direct_selector_slot": true,
+  "referenced_by_visual_script": false,
+  "component": {
+    "path": "assets/scripts/primary/17.bin",
+    "prg_offset": 144368,
+    "prg_offset_hex": "0x0233F0",
+    "length": 23,
+    "sha256": "cc13e4690be169b858feb7d54a5c2da0084204df0d0b38012a5464b693949a87",
+    "address": {
+      "space": "prg",
+      "offset": 144368,
+      "length": 23,
+      "end_exclusive": 144391
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

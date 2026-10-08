@@ -1,0 +1,661 @@
+{
+  "schema": "metalmaxcn.module-asset.encounter-event-flag-map",
+  "resource_id": "encounter-event-flag-map",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via battle owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.encounter-event-flag-map",
+    "module_id": "encounter-event-flag-map",
+    "record_count": 16,
+    "owned_byte_count": 16,
+    "range": {
+      "first_selector": 0,
+      "last_selector": 15,
+      "count": 16
+    },
+    "address": {
+      "space": "prg",
+      "offset": 236592,
+      "length": 16,
+      "end_exclusive": 236608
+    },
+    "physical_components": [
+      {
+        "fragment_id": "encounter-event-flag-map.event-flag-map",
+        "address": {
+          "space": "prg",
+          "offset": 236592,
+          "length": 1,
+          "end_exclusive": 236593
+        },
+        "shared_consumers": [
+          "selector-0-view",
+          "fixed-coordinate-row-43-formation"
+        ],
+        "independent_event_flag_edit": false
+      },
+      {
+        "fragment_id": "encounter-event-flag-map.event-flags-01-0f",
+        "address": {
+          "space": "prg",
+          "offset": 236593,
+          "length": 15,
+          "end_exclusive": 236608
+        },
+        "first_selector": 1,
+        "last_selector": 15
+      }
+    ],
+    "encounter_selector_to_global_event_flag": [
+      {
+        "selector": 0,
+        "selector_hex": "0x0",
+        "global_event_flag_id": 0,
+        "global_event_flag_id_hex": "0x00"
+      },
+      {
+        "selector": 1,
+        "selector_hex": "0x1",
+        "global_event_flag_id": 80,
+        "global_event_flag_id_hex": "0x50"
+      },
+      {
+        "selector": 2,
+        "selector_hex": "0x2",
+        "global_event_flag_id": 81,
+        "global_event_flag_id_hex": "0x51"
+      },
+      {
+        "selector": 3,
+        "selector_hex": "0x3",
+        "global_event_flag_id": 82,
+        "global_event_flag_id_hex": "0x52"
+      },
+      {
+        "selector": 4,
+        "selector_hex": "0x4",
+        "global_event_flag_id": 83,
+        "global_event_flag_id_hex": "0x53"
+      },
+      {
+        "selector": 5,
+        "selector_hex": "0x5",
+        "global_event_flag_id": 84,
+        "global_event_flag_id_hex": "0x54"
+      },
+      {
+        "selector": 6,
+        "selector_hex": "0x6",
+        "global_event_flag_id": 85,
+        "global_event_flag_id_hex": "0x55"
+      },
+      {
+        "selector": 7,
+        "selector_hex": "0x7",
+        "global_event_flag_id": 86,
+        "global_event_flag_id_hex": "0x56"
+      },
+      {
+        "selector": 8,
+        "selector_hex": "0x8",
+        "global_event_flag_id": 87,
+        "global_event_flag_id_hex": "0x57"
+      },
+      {
+        "selector": 9,
+        "selector_hex": "0x9",
+        "global_event_flag_id": 88,
+        "global_event_flag_id_hex": "0x58"
+      },
+      {
+        "selector": 10,
+        "selector_hex": "0xA",
+        "global_event_flag_id": 89,
+        "global_event_flag_id_hex": "0x59"
+      },
+      {
+        "selector": 11,
+        "selector_hex": "0xB",
+        "global_event_flag_id": 90,
+        "global_event_flag_id_hex": "0x5A"
+      },
+      {
+        "selector": 12,
+        "selector_hex": "0xC",
+        "global_event_flag_id": 86,
+        "global_event_flag_id_hex": "0x56"
+      },
+      {
+        "selector": 13,
+        "selector_hex": "0xD",
+        "global_event_flag_id": 80,
+        "global_event_flag_id_hex": "0x50"
+      },
+      {
+        "selector": 14,
+        "selector_hex": "0xE",
+        "global_event_flag_id": 80,
+        "global_event_flag_id_hex": "0x50"
+      },
+      {
+        "selector": 15,
+        "selector_hex": "0xF",
+        "global_event_flag_id": 80,
+        "global_event_flag_id_hex": "0x50"
+      }
+    ],
+    "fixed_coordinate_row43_formation": {
+      "shared_selector": 0,
+      "shared_byte_value": 0,
+      "formation_reference": "encounter-formation:00"
+    },
+    "battle_state_review": {
+      "evidence": "project/evidence/reverse-engineering/wanted-defeat-flags/observations.json",
+      "wanted_targets": [
+        {
+          "target_id": 1,
+          "wanted_id": 1,
+          "defeat_flag": 80,
+          "claim_flag": 96
+        },
+        {
+          "target_id": 2,
+          "wanted_id": 2,
+          "defeat_flag": 81,
+          "claim_flag": 97
+        },
+        {
+          "target_id": 3,
+          "wanted_id": 3,
+          "defeat_flag": 82,
+          "claim_flag": 98
+        },
+        {
+          "target_id": 4,
+          "wanted_id": 4,
+          "defeat_flag": 83,
+          "claim_flag": 99
+        },
+        {
+          "target_id": 5,
+          "wanted_id": 5,
+          "defeat_flag": 84,
+          "claim_flag": 100
+        },
+        {
+          "target_id": 6,
+          "wanted_id": 6,
+          "defeat_flag": 85,
+          "claim_flag": 101
+        },
+        {
+          "target_id": 7,
+          "wanted_id": 7,
+          "defeat_flag": 86,
+          "claim_flag": 102
+        },
+        {
+          "target_id": 8,
+          "wanted_id": 8,
+          "defeat_flag": 87,
+          "claim_flag": 103
+        },
+        {
+          "target_id": 9,
+          "wanted_id": 9,
+          "defeat_flag": 88,
+          "claim_flag": 104
+        },
+        {
+          "target_id": 10,
+          "wanted_id": 10,
+          "defeat_flag": 89,
+          "claim_flag": 105
+        },
+        {
+          "target_id": 11,
+          "wanted_id": 11,
+          "defeat_flag": 90,
+          "claim_flag": 106
+        }
+      ],
+      "formation_targets": [
+        {
+          "formation_id": 1,
+          "wanted_id": 1
+        },
+        {
+          "formation_id": 2,
+          "wanted_id": 2
+        },
+        {
+          "formation_id": 3,
+          "wanted_id": 3
+        },
+        {
+          "formation_id": 4,
+          "wanted_id": 4
+        },
+        {
+          "formation_id": 5,
+          "wanted_id": 5
+        },
+        {
+          "formation_id": 6,
+          "wanted_id": 6
+        },
+        {
+          "formation_id": 7,
+          "wanted_id": 7
+        },
+        {
+          "formation_id": 8,
+          "wanted_id": 8
+        },
+        {
+          "formation_id": 9,
+          "wanted_id": 9
+        },
+        {
+          "formation_id": 10,
+          "wanted_id": 10
+        },
+        {
+          "formation_id": 11,
+          "wanted_id": 11
+        },
+        {
+          "formation_id": 12,
+          "wanted_id": 7
+        }
+      ],
+      "script_battles": [
+        {
+          "kind": "autonomous",
+          "script_id": 56,
+          "cursor": 8,
+          "formation_id": 17,
+          "victory_flag": null,
+          "suppression_flag": null,
+          "one_time": false,
+          "source_prg": 153153,
+          "bytes_hex": "37 11 00 05",
+          "condition": "等待事件位 01、03；胜利后剧情状态 05；无独立击破禁用位"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 77,
+          "cursor": 40,
+          "formation_id": 3,
+          "victory_flag": 82,
+          "suppression_flag": 82,
+          "one_time": true,
+          "source_prg": 153690,
+          "bytes_hex": "37 03 52 FF",
+          "entrance_object_key": "entry-story:ordinary-control-lock-list-7d",
+          "entrance_coordinates": "1, 2 / 20, 12"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 87,
+          "cursor": 7,
+          "formation_id": 13,
+          "victory_flag": 121,
+          "suppression_flag": 121,
+          "one_time": true,
+          "source_prg": 153948,
+          "bytes_hex": "37 0D 79 FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 88,
+          "cursor": 7,
+          "formation_id": 13,
+          "victory_flag": 122,
+          "suppression_flag": 122,
+          "one_time": true,
+          "source_prg": 153961,
+          "bytes_hex": "37 0D 7A FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 89,
+          "cursor": 11,
+          "formation_id": 13,
+          "victory_flag": 123,
+          "suppression_flag": 123,
+          "one_time": true,
+          "source_prg": 153978,
+          "bytes_hex": "37 0D 7B FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 90,
+          "cursor": 11,
+          "formation_id": 13,
+          "victory_flag": 124,
+          "suppression_flag": 124,
+          "one_time": true,
+          "source_prg": 153995,
+          "bytes_hex": "37 0D 7C FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 91,
+          "cursor": 11,
+          "formation_id": 13,
+          "victory_flag": 125,
+          "suppression_flag": 125,
+          "one_time": true,
+          "source_prg": 154012,
+          "bytes_hex": "37 0D 7D FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 92,
+          "cursor": 13,
+          "formation_id": 13,
+          "victory_flag": 126,
+          "suppression_flag": 126,
+          "one_time": true,
+          "source_prg": 154031,
+          "bytes_hex": "37 0D 7E FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 93,
+          "cursor": 64,
+          "formation_id": 11,
+          "victory_flag": 90,
+          "suppression_flag": 90,
+          "one_time": true,
+          "source_prg": 154101,
+          "bytes_hex": "37 0B 5A FF",
+          "entrance_object_key": "entry-story:ordinary-control-lock-list-88",
+          "entrance_coordinates": "31–40, 12–16"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 102,
+          "cursor": 21,
+          "formation_id": 19,
+          "victory_flag": 128,
+          "suppression_flag": 128,
+          "one_time": true,
+          "source_prg": 154388,
+          "bytes_hex": "37 13 80 FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 107,
+          "cursor": 21,
+          "formation_id": 12,
+          "victory_flag": 86,
+          "suppression_flag": 86,
+          "one_time": true,
+          "source_prg": 154676,
+          "bytes_hex": "37 0C 56 FF"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 122,
+          "cursor": 4,
+          "formation_id": 21,
+          "victory_flag": 143,
+          "suppression_flag": null,
+          "one_time": false,
+          "source_prg": 154960,
+          "bytes_hex": "37 15 8F FF",
+          "condition": "入口先清零 8F，再等待 8F；8F 是流程激活与胜利完成位"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 157,
+          "cursor": 13,
+          "formation_id": 15,
+          "victory_flag": 240,
+          "suppression_flag": null,
+          "one_time": false,
+          "source_prg": 155408,
+          "bytes_hex": "37 0F F0 00",
+          "condition": "胜利位在战后等待指令读取；入口未用该位跳过战斗，流程结束转往场景 E3"
+        },
+        {
+          "kind": "autonomous",
+          "script_id": 157,
+          "cursor": 27,
+          "formation_id": 14,
+          "victory_flag": 95,
+          "suppression_flag": null,
+          "one_time": false,
+          "source_prg": 155422,
+          "bytes_hex": "37 0E 5F 00",
+          "condition": "胜利位在战后等待指令读取；入口未用该位跳过战斗，流程结束转往场景 E3"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 34,
+          "cursor": 4,
+          "formation_id": 16,
+          "victory_flag": 32,
+          "suppression_flag": 32,
+          "one_time": true,
+          "source_prg": 161311,
+          "bytes_hex": "37 10 20 04"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 87,
+          "cursor": 22,
+          "formation_id": 18,
+          "victory_flag": 120,
+          "suppression_flag": 120,
+          "one_time": true,
+          "source_prg": 161878,
+          "bytes_hex": "37 12 78 FF"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 98,
+          "cursor": 2,
+          "formation_id": 21,
+          "victory_flag": 178,
+          "suppression_flag": 178,
+          "one_time": true,
+          "source_prg": 161981,
+          "bytes_hex": "37 15 B2 FF"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 99,
+          "cursor": 2,
+          "formation_id": 21,
+          "victory_flag": 179,
+          "suppression_flag": 179,
+          "one_time": true,
+          "source_prg": 161988,
+          "bytes_hex": "37 15 B3 FF"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 102,
+          "cursor": 2,
+          "formation_id": 4,
+          "victory_flag": 83,
+          "suppression_flag": 83,
+          "one_time": true,
+          "source_prg": 162009,
+          "bytes_hex": "37 04 53 FF"
+        },
+        {
+          "kind": "interaction",
+          "script_id": 103,
+          "cursor": 2,
+          "formation_id": 20,
+          "victory_flag": 34,
+          "suppression_flag": 34,
+          "one_time": true,
+          "source_prg": 162016,
+          "bytes_hex": "37 14 22 FF"
+        }
+      ],
+      "investigation_battles": [
+        {
+          "scene_id": 152,
+          "object_key": "investigation-tile:0",
+          "formation_id": 25,
+          "victory_flag": 28,
+          "suppression_flag": 28,
+          "one_time": true,
+          "source_prg": 220168,
+          "x": 1,
+          "y": 2
+        }
+      ],
+      "coordinate_exceptions": [
+        {
+          "event_id": 42,
+          "shadowed_by_event_id": 43
+        }
+      ],
+      "code_evidence": [
+        {
+          "prg_offset": 219683,
+          "bytes_hex": "C0 0A 90 13 C9 10 B0 0F 84 00 A8 B9 30 9C A4 00 20 9F FE F0 02 38 24 18 60 C9 10 B0 08 A8 B9 30 9C 8D 82 04 98 60"
+        },
+        {
+          "prg_offset": 219574,
+          "bytes_hex": "A2 2B A5 61 DD 29 9B D0 2C BC 55 9B CC 58 03 D0 24 BC 81 9B CC 5C 03 D0 1C BD AD 9B 20 9F FE D0 17 BD AD 9B 8D 82 04 BD D9 9B 8D 81 04 BD 05 9C 20 7E B9 A2 00 CA 10 CC 60"
+        },
+        {
+          "prg_offset": 217110,
+          "bytes_hex": "A5 B3 8D 81 04 A5 B2 8D 82 04 20 04 BA 20 D7 B7 A9 04 60"
+        },
+        {
+          "prg_offset": 220168,
+          "bytes_hex": "A9 1C 20 9F FE D0 14 A9 74 20 48 BD A9 1C 8D 82 04 A9 19 85 B1 20 04 BA 4C D7 B7 A9 24 4C 48 BD"
+        },
+        {
+          "prg_offset": 192228,
+          "bytes_hex": "AE 82 04 F0 E3 E0 50 90 12 E0 5D B0 0E AD D0 70 0D D1 70 F0 D3 AD 7E 64 9D 2F 66 8A 4C 85 FE"
+        },
+        {
+          "prg_offset": 218297,
+          "bytes_hex": "A5 58 85 1B A9 FF A6 AB 9D 95 03 A9 00 A6 AD 9D 00 01 9D 50 01 60 A5 B1 20 9F FE D0 E3 A9 02 60"
+        },
+        {
+          "prg_offset": 216304,
+          "bytes_hex": "A5 B1 20 9F FE F0 02 A9 02 60"
+        },
+        {
+          "prg_offset": 523909,
+          "bytes_hex": "20 DF FE BD 41 04 19 EF E6 9D 41 04 60 20 DF FE BD 41 04 39 B3 FE 9D 41 04 60 86 06 84 07 20 DF FE BD 41 04 39 EF E6 08 A4 07 A6 06 28 60"
+        },
+        {
+          "prg_offset": 152258,
+          "bytes_hex": "62 22 06 8A 05 18 1F 08 0D 04 00 1C 11 12 13 29 10 1C 3C 16 15 0B 16 11 0B 0F 1F 06 8A FF 1D 38 70 07 FD 04 1C 11 20 1D 19 0E 00"
+        },
+        {
+          "prg_offset": 152883,
+          "bytes_hex": "62 20 35 19 1E 19 1C 0E 29 01 16 19 18 0D 18 F2 0B 13 19 17 19 18"
+        },
+        {
+          "prg_offset": 153145,
+          "bytes_hex": "27 01 0F 27 03 15 46 03 37 11 00 05 00"
+        },
+        {
+          "prg_offset": 153650,
+          "bytes_hex": "62 52 29 12 27 00 43 1A 20 07 02 07 FC 08 25 18 03 36 16 07 0D 43 16 0B 06 1A 27 01 29 00 41 02 3F 96 14 0D 25 18 03 37 37 03 52 FF 43 00"
+        },
+        {
+          "prg_offset": 153696,
+          "bytes_hex": "62 52 29 02 08 07 04 00 04 00 08 0A 0D 00 43 16 0B 0C 04 01 00"
+        },
+        {
+          "prg_offset": 153941,
+          "bytes_hex": "62 B5 29 01 62 79 34 37 0D 79 FF 18"
+        },
+        {
+          "prg_offset": 153954,
+          "bytes_hex": "62 B5 29 01 62 7A 34 37 0D 7A FF 18"
+        },
+        {
+          "prg_offset": 153967,
+          "bytes_hex": "29 01 62 7B 35 25 2A 14 1B 00 34 37 0D 7B FF 18"
+        },
+        {
+          "prg_offset": 153984,
+          "bytes_hex": "29 01 62 7C 35 27 2C 03 08 00 34 37 0D 7C FF 18"
+        },
+        {
+          "prg_offset": 154001,
+          "bytes_hex": "29 01 62 7D 35 13 19 04 09 00 34 37 0D 7D FF 18"
+        },
+        {
+          "prg_offset": 154018,
+          "bytes_hex": "62 B5 29 01 62 7E 35 04 0E 04 0B 00 34 37 0D 7E FF 18"
+        },
+        {
+          "prg_offset": 154037,
+          "bytes_hex": "62 B5 06 5A 19 43 20 23 0F 1C 35 71 25 1F 03 38 04 B5 1A 20 23 0F 07 FC 0F 43 55 35 1F 29 0C 11 00 43 25 1F 5B 06 05 68 77 68 78 0F 04 00 27 02 0D 68 7B 0F 04 03 27 04 0D 27 05 25 1F 68 15 13 37 0B 5A FF 00"
+        },
+        {
+          "prg_offset": 154367,
+          "bytes_hex": "06 80 06 04 81 55 27 07 41 03 20 09 07 13 68 06 34 04 00 68 1C 37 13 80 FF 43 00"
+        },
+        {
+          "prg_offset": 154655,
+          "bytes_hex": "62 56 29 01 06 82 16 20 08 0B 06 83 1A 27 01 12 15 25 1A 03 28 37 0C 56 FF 00 27 04 16 0C 0A 16 09 0A 04 05 00"
+        },
+        {
+          "prg_offset": 154956,
+          "bytes_hex": "05 8F 27 8F 37 15 8F FF 00"
+        },
+        {
+          "prg_offset": 155127,
+          "bytes_hex": "62 53 00"
+        },
+        {
+          "prg_offset": 155235,
+          "bytes_hex": "62 B2 00"
+        },
+        {
+          "prg_offset": 155238,
+          "bytes_hex": "62 B3 00"
+        },
+        {
+          "prg_offset": 155395,
+          "bytes_hex": "35 0A 0C 08 09 00 43 25 22 03 3D 03 0F 37 0F F0 00 27 F0 71 25 22 26 12 18 03 0F 37 0E 5F 00 27 5F 71 25 22 04 6F 05 9C 26 12 19 4A 03 3B 00 59 66 15 07 F9 05 08 0B 08 06 52 01 51 13 52 05 50 03 1D 6C 52 01 50 01 53 02 1D 6D 70 69 78 72 5E"
+        },
+        {
+          "prg_offset": 161307,
+          "bytes_hex": "01 97 09 06 37 10 20 04 00"
+        },
+        {
+          "prg_offset": 161856,
+          "bytes_hex": "06 78 08 48 18 04 00 00 22 05 48 12 00 48 13 09 03 00 48 15 09 06 37 12 78 FF 00"
+        },
+        {
+          "prg_offset": 161979,
+          "bytes_hex": "48 B3 37 15 B2 FF 00"
+        },
+        {
+          "prg_offset": 161986,
+          "bytes_hex": "48 B3 37 15 B3 FF 00"
+        },
+        {
+          "prg_offset": 162007,
+          "bytes_hex": "02 93 37 04 53 FF 00"
+        },
+        {
+          "prg_offset": 162014,
+          "bytes_hex": "02 B9 37 14 22 FF 00"
+        },
+        {
+          "prg_offset": 215752,
+          "bytes_hex": "A5 B1 20 9F FE D0 03 A5 B2 2C A9 03 60"
+        }
+      ]
+    }
+  }
+}

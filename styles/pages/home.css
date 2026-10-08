@@ -1,0 +1,19 @@
+body[data-page="home"] {
+.home-stats { grid-template-columns: repeat(5,minmax(0,1fr)); margin-bottom: 20px; }
+
+.home-stats b { font-size: 19px; }
+
+.home-rom-table table,
+.home-layout-table table,
+.home-coverage-table table { min-width: 900px; }
+
+.home-rom-table td:first-child,
+.home-layout-table td:first-child,
+.home-coverage-table td:first-child { width: 170px; color: var(--text); }
+
+.home-rom-hash { word-break: break-all; }
+
+[data-home-field-space][data-home-view] { cursor: pointer; }
+
+[data-home-field-space][data-home-view]:hover { background: var(--surface-hover, #29313a); }
+}

@@ -1,0 +1,316 @@
+{
+  "schema": "metalmaxcn.ui-composition-index",
+  "source_catalog": "project/config/metalmaxcn.ui_compositions.json",
+  "summary": {
+    "compositions": 1,
+    "layers": 3,
+    "record_entries": 1,
+    "unresolved_references": 0
+  },
+  "record_entries": [
+    {
+      "record": "record:03:007",
+      "dispatcher": {
+        "table_cpu": "0xEF6A",
+        "slot": 75,
+        "slot_hex": "0x4B",
+        "target_cpu": "0xB302"
+      },
+      "call_chain": [
+        {
+          "cpu": "0xB302",
+          "operation": "LDA #$07"
+        },
+        {
+          "cpu": "0xB313",
+          "operation": "JSR $F572"
+        },
+        {
+          "cpu": "0xF572",
+          "operation": "JSR $EB1C"
+        }
+      ],
+      "selection": {
+        "record_register": "$CC",
+        "record": "0x07",
+        "region_register": "$CD",
+        "region": "0x03"
+      },
+      "evidence": [
+        "project/assets/runtime/metalmaxcn/analysis/disassembly/banks/19.asm",
+        "project/assets/runtime/metalmaxcn/analysis/disassembly/banks/3F.asm"
+      ],
+      "source": {
+        "prg_offset": 69149,
+        "prg_offset_hex": "0x010E1D",
+        "file_offset": 69165,
+        "file_offset_hex": "0x010E2D",
+        "end_exclusive": 69296,
+        "end_exclusive_hex": "0x010EB0",
+        "address": {
+          "space": "prg",
+          "offset": 69149,
+          "length": 131,
+          "end_exclusive": 69280
+        }
+      }
+    }
+  ],
+  "compositions": [
+    {
+      "id": "record:03:013+014+015",
+      "layers": [
+        {
+          "kind": "layout",
+          "record": "record:03:013",
+          "source": {
+            "prg_offset": 69586,
+            "prg_offset_hex": "0x010FD2",
+            "file_offset": 69602,
+            "file_offset_hex": "0x010FE2",
+            "end_exclusive": 69650,
+            "end_exclusive_hex": "0x011012",
+            "address": {
+              "space": "prg",
+              "offset": 69586,
+              "length": 48,
+              "end_exclusive": 69634
+            }
+          }
+        },
+        {
+          "kind": "script",
+          "record": "record:03:014",
+          "provider_scripts": {
+            "7": "text_slots.slots.character-init:name-presets:1"
+          },
+          "provider_values": {
+            "6": "characters.rom_initial.gold.value",
+            "16": "characters.rom_initial.roles.0.repair_skill",
+            "17": "characters.rom_initial.roles.0.battle_skill",
+            "18": "characters.rom_initial.roles.0.vitality",
+            "19": "characters.rom_initial.roles.0.speed",
+            "20": "characters.rom_initial.roles.0.intelligence",
+            "21": "characters.rom_initial.roles.0.strength",
+            "22": "characters.rom_initial.roles.0.experience",
+            "29": "characters.rom_initial.roles.0.current_hp",
+            "31": "characters.rom_initial.roles.0.max_hp",
+            "32": "characters.rom_initial.roles.0.attack",
+            "34": "characters.rom_initial.roles.0.defense",
+            "61": "characters.rom_initial.roles.0.driving_skill"
+          },
+          "provider_evidence": {
+            "staging_routine_cpu": "0xB69B",
+            "role_stats_routine_cpu": "0xB72E",
+            "source": "project/assets/runtime/metalmaxcn/analysis/disassembly/banks/19.asm"
+          },
+          "records": [
+            {
+              "id": "record:03:014",
+              "raw_hex": "ED 86 FC 07 ED 0B FF FF ED 07 FF FF ED 35 F7 1E 0D 93 FF F8 11 00 ED 2C 11 F8 1D 01 19 ED 04 F8 1F 01 99 ED 07 F7 1F 0D 93 FF F8 10 00 ED 3A F7 20 0D 93 FF F8 3D 00 ED 3A 98 FF 9A FF FF FF FF F8 20 01 93 ED 38 9B FF 97 FF ED 03 F8 22 01 93 ED 38 27 94 28 0D ED 04 93 FF F8 15 00 ED 37 F7 1B 0D ED 04 93 FF F8 14 00 ED 37 F7 1C 0D ED 04 93 FF F8 13 00 ED 37 F7 1D 0D ED 04 93 FF F8 12 00 ED 37 0E 21 19 FF F8 16 02 93 ED 3B 10 18 15 0D F8 06 02 93 9F",
+              "source": {
+                "prg_offset_hex": "0x011002",
+                "file_offset_hex": "0x011012",
+                "end_exclusive_hex": "0x0110A8"
+              }
+            },
+            {
+              "id": "record:0D:027",
+              "raw_hex": "2B 64 27 BA 9F",
+              "source": {
+                "prg_offset_hex": "0x012184",
+                "file_offset_hex": "0x012194",
+                "end_exclusive_hex": "0x012199"
+              }
+            },
+            {
+              "id": "record:0D:028",
+              "raw_hex": "2B B5 28 0D 9F",
+              "source": {
+                "prg_offset_hex": "0x012189",
+                "file_offset_hex": "0x012199",
+                "end_exclusive_hex": "0x01219E"
+              }
+            },
+            {
+              "id": "record:0D:029",
+              "raw_hex": "27 9D 27 BA 9F",
+              "source": {
+                "prg_offset_hex": "0x01218E",
+                "file_offset_hex": "0x01219E",
+                "end_exclusive_hex": "0x0121A3"
+              }
+            },
+            {
+              "id": "record:0D:030",
+              "raw_hex": "24 A9 25 4A 15 9F",
+              "source": {
+                "prg_offset_hex": "0x012193",
+                "file_offset_hex": "0x0121A3",
+                "end_exclusive_hex": "0x0121A9"
+              }
+            },
+            {
+              "id": "record:0D:031",
+              "raw_hex": "24 65 24 66 15 9F",
+              "source": {
+                "prg_offset_hex": "0x012199",
+                "file_offset_hex": "0x0121A9",
+                "end_exclusive_hex": "0x0121AF"
+              }
+            },
+            {
+              "id": "record:0D:032",
+              "raw_hex": "2D 72 29 37 15 9F",
+              "source": {
+                "prg_offset_hex": "0x01219F",
+                "file_offset_hex": "0x0121AF",
+                "end_exclusive_hex": "0x0121B5"
+              }
+            }
+          ],
+          "providers": [
+            {
+              "id": 6,
+              "cpu_address": 25693,
+              "cpu_address_hex": "0x645D"
+            },
+            {
+              "id": 7,
+              "cpu_address": 1309,
+              "cpu_address_hex": "0x051D"
+            },
+            {
+              "id": 16,
+              "cpu_address": 1318,
+              "cpu_address_hex": "0x0526"
+            },
+            {
+              "id": 17,
+              "cpu_address": 1319,
+              "cpu_address_hex": "0x0527"
+            },
+            {
+              "id": 18,
+              "cpu_address": 1320,
+              "cpu_address_hex": "0x0528"
+            },
+            {
+              "id": 19,
+              "cpu_address": 1321,
+              "cpu_address_hex": "0x0529"
+            },
+            {
+              "id": 20,
+              "cpu_address": 1322,
+              "cpu_address_hex": "0x052A"
+            },
+            {
+              "id": 21,
+              "cpu_address": 1323,
+              "cpu_address_hex": "0x052B"
+            },
+            {
+              "id": 22,
+              "cpu_address": 1324,
+              "cpu_address_hex": "0x052C"
+            },
+            {
+              "id": 29,
+              "cpu_address": 1332,
+              "cpu_address_hex": "0x0534"
+            },
+            {
+              "id": 31,
+              "cpu_address": 1334,
+              "cpu_address_hex": "0x0536"
+            },
+            {
+              "id": 32,
+              "cpu_address": 1336,
+              "cpu_address_hex": "0x0538"
+            },
+            {
+              "id": 34,
+              "cpu_address": 1338,
+              "cpu_address_hex": "0x053A"
+            },
+            {
+              "id": 61,
+              "cpu_address": 1317,
+              "cpu_address_hex": "0x0525"
+            }
+          ]
+        },
+        {
+          "kind": "script",
+          "record": "record:03:015",
+          "provider_record_sequence": {
+            "providers": [
+              15,
+              16,
+              18,
+              20,
+              22,
+              24
+            ],
+            "source": "characters.rom_initial.roles.0.equipment",
+            "record_id_field": "item_id",
+            "catalog": "items.records",
+            "catalog_id_field": "id",
+            "raw_hex_field": "name_source.raw_hex"
+          },
+          "provider_evidence": {
+            "staging_routine_cpu": "0xB6F2",
+            "render_call_cpu": "0xB71A",
+            "source": "project/assets/runtime/metalmaxcn/analysis/disassembly/banks/19.asm"
+          },
+          "records": [
+            {
+              "id": "record:03:015",
+              "raw_hex": "ED C0 ED C4 FA 0F ED 40 FA 10 ED 40 FA 12 ED 40 FA 14 ED 40 FA 16 ED 40 FA 18 ED 40 FF FF ED 40 FF FF 9F",
+              "source": {
+                "prg_offset_hex": "0x011098",
+                "file_offset_hex": "0x0110A8",
+                "end_exclusive_hex": "0x0110CB"
+              }
+            }
+          ],
+          "providers": [
+            {
+              "id": 15,
+              "cpu_address": 1316,
+              "cpu_address_hex": "0x0524"
+            },
+            {
+              "id": 16,
+              "cpu_address": 1318,
+              "cpu_address_hex": "0x0526"
+            },
+            {
+              "id": 18,
+              "cpu_address": 1320,
+              "cpu_address_hex": "0x0528"
+            },
+            {
+              "id": 20,
+              "cpu_address": 1322,
+              "cpu_address_hex": "0x052A"
+            },
+            {
+              "id": 22,
+              "cpu_address": 1324,
+              "cpu_address_hex": "0x052C"
+            },
+            {
+              "id": 24,
+              "cpu_address": 1326,
+              "cpu_address_hex": "0x052E"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "path": "compositions/index.json"
+}

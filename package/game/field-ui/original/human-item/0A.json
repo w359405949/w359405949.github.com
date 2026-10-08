@@ -1,0 +1,109 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:0A",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 10,
+    "id_hex": "0x0A",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 10,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-body",
+      "name": "人类装备·身体",
+      "owner": "human",
+      "first_id": 9,
+      "first_id_hex": "0x09",
+      "last_id": 16,
+      "last_id_hex": "0x10"
+    },
+    "price": {
+      "raw_code": 25,
+      "raw_code_hex": "0x19",
+      "available": true,
+      "value": 110,
+      "source": {
+        "space": "prg",
+        "offset": 140379,
+        "length": 1,
+        "end_exclusive": 140380,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": {
+      "raw_code": 3,
+      "raw_code_hex": "0x03",
+      "available": true,
+      "value": 12,
+      "source": {
+        "space": "prg",
+        "offset": 140182,
+        "length": 1,
+        "end_exclusive": 140183,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": {
+      "raw_flags": 224,
+      "raw_flags_hex": "0xE0",
+      "role_mask": 224,
+      "roles": [
+        {
+          "slug": "hunter",
+          "name": "主角（猎人）",
+          "mask": 128,
+          "mask_hex": "0x80"
+        },
+        {
+          "slug": "mechanic",
+          "name": "机械师",
+          "mask": 64,
+          "mask_hex": "0x40"
+        },
+        {
+          "slug": "soldier",
+          "name": "女战士",
+          "mask": 32,
+          "mask_hex": "0x20"
+        }
+      ],
+      "battle_effect_code": 0,
+      "target_scope": null,
+      "unresolved_bits": 0,
+      "source": {
+        "space": "prg",
+        "offset": 139902,
+        "length": 1,
+        "end_exclusive": 139903,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack_visual": null,
+    "use_effect": null,
+    "battle_use_effect": null,
+    "semantic_status": "static-equipment-record",
+    "equipment_icon": {
+      "item_id": 10,
+      "category_id": "human-body",
+      "tile_reference": {
+        "resource_id": "shared-chr-bank",
+        "bank_id": 39,
+        "tile_id": 48
+      },
+      "sprite_palette": [
+        15,
+        55,
+        15,
+        24
+      ],
+      "evidence": "project/evidence/reverse-engineering/equipment-slot-icons/observations.json"
+    }
+  }
+}

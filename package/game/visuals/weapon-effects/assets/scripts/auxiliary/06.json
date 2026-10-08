@@ -1,0 +1,332 @@
+{
+  "schema": "metalmaxcn.weapon-effect-aux-script-asset",
+  "id": 6,
+  "id_hex": "0x06",
+  "path": "assets/scripts/auxiliary/06.bin",
+  "prg_offset": 145487,
+  "prg_offset_hex": "0x02384F",
+  "length": 19,
+  "terminator": 159,
+  "bytes_hex": "14 02 09 00 EC F8 10 07 14 F8 09 00 14 08 10 07 02 27 9F",
+  "command_count": 7,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 145487,
+      "prg_offset_hex": "0x02384F",
+      "opcode": 20,
+      "opcode_hex": "0x14",
+      "name": "move_actor_x_or_skip",
+      "length": 2,
+      "bytes_hex": "14 02",
+      "operands": [
+        {
+          "name": "delta_x",
+          "value": 2,
+          "value_hex": "0x02",
+          "signed_value": 2
+        }
+      ],
+      "handler_cpu": 47987,
+      "handler_cpu_hex": "0xBB73",
+      "handler_prg": 195443,
+      "handler_prg_hex": "0x02FB73",
+      "handler_far": "17:1B73",
+      "alternate_handler_cpu": 64186,
+      "alternate_handler_cpu_hex": "0xFABA",
+      "alternate_handler_prg": 522938,
+      "alternate_handler_prg_hex": "0x07FABA",
+      "alternate_handler_far": "3F:1ABA",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "move current actor X",
+      "alternate_effect": "consume operand without moving",
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 145489,
+      "prg_offset_hex": "0x023851",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 00 EC F8",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        },
+        {
+          "name": "delta_x",
+          "value": 236,
+          "value_hex": "0xEC",
+          "signed_value": -20
+        },
+        {
+          "name": "delta_y",
+          "value": 248,
+          "value_hex": "0xF8",
+          "signed_value": -8
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 6,
+      "prg_offset": 145493,
+      "prg_offset_hex": "0x023855",
+      "opcode": 16,
+      "opcode_hex": "0x10",
+      "name": "increment_actor_state",
+      "length": 2,
+      "bytes_hex": "10 07",
+      "operands": [
+        {
+          "name": "delay",
+          "value": 7,
+          "value_hex": "0x07"
+        }
+      ],
+      "handler_cpu": 47704,
+      "handler_cpu_hex": "0xBA58",
+      "handler_prg": 195160,
+      "handler_prg_hex": "0x02FA58",
+      "handler_far": "17:1A58",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 8,
+      "prg_offset": 145495,
+      "prg_offset_hex": "0x023857",
+      "opcode": 20,
+      "opcode_hex": "0x14",
+      "name": "move_actor_x_or_skip",
+      "length": 2,
+      "bytes_hex": "14 F8",
+      "operands": [
+        {
+          "name": "delta_x",
+          "value": 248,
+          "value_hex": "0xF8",
+          "signed_value": -8
+        }
+      ],
+      "handler_cpu": 47987,
+      "handler_cpu_hex": "0xBB73",
+      "handler_prg": 195443,
+      "handler_prg_hex": "0x02FB73",
+      "handler_far": "17:1B73",
+      "alternate_handler_cpu": 64186,
+      "alternate_handler_cpu_hex": "0xFABA",
+      "alternate_handler_prg": 522938,
+      "alternate_handler_prg_hex": "0x07FABA",
+      "alternate_handler_far": "3F:1ABA",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "move current actor X",
+      "alternate_effect": "consume operand without moving",
+      "marker": false
+    },
+    {
+      "offset": 10,
+      "prg_offset": 145497,
+      "prg_offset_hex": "0x023859",
+      "opcode": 9,
+      "opcode_hex": "0x09",
+      "name": "move_object_xy",
+      "length": 4,
+      "bytes_hex": "09 00 14 08",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        },
+        {
+          "name": "delta_x",
+          "value": 20,
+          "value_hex": "0x14",
+          "signed_value": 20
+        },
+        {
+          "name": "delta_y",
+          "value": 8,
+          "value_hex": "0x08",
+          "signed_value": 8
+        }
+      ],
+      "handler_cpu": 47722,
+      "handler_cpu_hex": "0xBA6A",
+      "handler_prg": 195178,
+      "handler_prg_hex": "0x02FA6A",
+      "handler_far": "17:1A6A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 14,
+      "prg_offset": 145501,
+      "prg_offset_hex": "0x02385D",
+      "opcode": 16,
+      "opcode_hex": "0x10",
+      "name": "increment_actor_state",
+      "length": 2,
+      "bytes_hex": "10 07",
+      "operands": [
+        {
+          "name": "delay",
+          "value": 7,
+          "value_hex": "0x07"
+        }
+      ],
+      "handler_cpu": 47704,
+      "handler_cpu_hex": "0xBA58",
+      "handler_prg": 195160,
+      "handler_prg_hex": "0x02FA58",
+      "handler_far": "17:1A58",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 16,
+      "prg_offset": 145503,
+      "prg_offset_hex": "0x02385F",
+      "opcode": 2,
+      "opcode_hex": "0x02",
+      "name": "play_sound",
+      "length": 2,
+      "bytes_hex": "02 27",
+      "operands": [
+        {
+          "name": "sound_id",
+          "value": 39,
+          "value_hex": "0x27"
+        }
+      ],
+      "handler_cpu": 48297,
+      "handler_cpu_hex": "0xBCA9",
+      "handler_prg": 195753,
+      "handler_prg_hex": "0x02FCA9",
+      "handler_far": "17:1CA9",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 18,
+      "prg_offset": 145505,
+      "prg_offset_hex": "0x023861",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "increment_actor_state": 2,
+      "move_actor_x_or_skip": 2,
+      "move_object_xy": 2,
+      "play_sound": 1
+    },
+    "visual_script_ids": [],
+    "auxiliary_script_ids": [],
+    "sound_ids": [
+      39
+    ],
+    "palette_offsets": [],
+    "object_actions": [],
+    "trail_object_counts": [],
+    "path_parameters": [],
+    "path_durations": [],
+    "object_slots": [
+      0
+    ],
+    "visual_script_ids_hex": [],
+    "auxiliary_script_ids_hex": [],
+    "sound_ids_hex": [
+      "0x27"
+    ],
+    "palette_offsets_hex": [],
+    "object_actions_hex": [],
+    "uses_repeat_block": false,
+    "uses_position_history_trail": false
+  },
+  "directly_referenced": true,
+  "sha256": "ead0033073af506b126739848b0cacb8a72ef0957b5a5e4c98f074f34dae8b82",
+  "address": {
+    "space": "prg",
+    "offset": 145487,
+    "length": 19,
+    "end_exclusive": 145506
+  },
+  "component": {
+    "path": "assets/scripts/auxiliary/06.bin",
+    "prg_offset": 145487,
+    "prg_offset_hex": "0x02384F",
+    "length": 19,
+    "sha256": "ead0033073af506b126739848b0cacb8a72ef0957b5a5e4c98f074f34dae8b82",
+    "address": {
+      "space": "prg",
+      "offset": 145487,
+      "length": 19,
+      "end_exclusive": 145506
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

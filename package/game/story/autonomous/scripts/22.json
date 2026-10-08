@@ -1,0 +1,171 @@
+{
+  "schema": "metalmaxcn.story-sequence",
+  "kind": "autonomous",
+  "id": 34,
+  "id_hex": "0x22",
+  "pointer_cpu": 38120,
+  "pointer_cpu_hex": "0x94E8",
+  "pointer_prg": 152808,
+  "pointer_prg_hex": "0x0254E8",
+  "status": "decoded",
+  "reachable_command_count": 2,
+  "reachable_cursors": [
+    0,
+    5
+  ],
+  "reachable_cursors_hex": [
+    "0x00",
+    "0x05"
+  ],
+  "categories": [
+    "actor-motion",
+    "flow"
+  ],
+  "commands": [
+    {
+      "cursor": 0,
+      "cursor_hex": "0x00",
+      "prg_offset": 152808,
+      "prg_offset_hex": "0x0254E8",
+      "cpu_address": 38120,
+      "cpu_address_hex": "0x94E8",
+      "opcode": 11,
+      "opcode_hex": "0x0B",
+      "name": "move-actor-inside-rectangle",
+      "category": "actor-motion",
+      "handler_cpu": 43871,
+      "handler_cpu_hex": "0xAB5F",
+      "raw_window": [
+        11,
+        8,
+        10,
+        5,
+        6,
+        24
+      ],
+      "raw_window_hex": "0B 08 0A 05 06 18",
+      "operands": [
+        8,
+        10,
+        5,
+        6,
+        24
+      ],
+      "operands_hex": [
+        "0x08",
+        "0x0A",
+        "0x05",
+        "0x06",
+        "0x18"
+      ],
+      "normal_advance": 5,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [],
+      "waits_or_repeats": false,
+      "edges": [
+        {
+          "kind": "normal",
+          "advance": 5,
+          "advance_hex": "0x05",
+          "operand_index": null,
+          "target_cursor": 5,
+          "target_cursor_hex": "0x05",
+          "target_status": "command"
+        }
+      ],
+      "status": "decoded"
+    },
+    {
+      "cursor": 5,
+      "cursor_hex": "0x05",
+      "prg_offset": 152813,
+      "prg_offset_hex": "0x0254ED",
+      "cpu_address": 38125,
+      "cpu_address_hex": "0x94ED",
+      "opcode": 24,
+      "opcode_hex": "0x18",
+      "name": "relative-cursor-advance",
+      "category": "flow",
+      "handler_cpu": 44010,
+      "handler_cpu_hex": "0xABEA",
+      "raw_window": [
+        24,
+        251,
+        11,
+        6,
+        9,
+        2
+      ],
+      "raw_window_hex": "18 FB 0B 06 09 02",
+      "operands": [
+        251,
+        11,
+        6,
+        9,
+        2
+      ],
+      "operands_hex": [
+        "0xFB",
+        "0x0B",
+        "0x06",
+        "0x09",
+        "0x02"
+      ],
+      "normal_advance": null,
+      "terminal_side_effect": false,
+      "dynamic_advance_operands": [
+        1
+      ],
+      "waits_or_repeats": false,
+      "edges": [
+        {
+          "kind": "conditional",
+          "advance": 251,
+          "advance_hex": "0xFB",
+          "operand_index": 1,
+          "target_cursor": 0,
+          "target_cursor_hex": "0x00",
+          "target_status": "command"
+        }
+      ],
+      "status": "decoded"
+    }
+  ],
+  "issues": [],
+  "pointer_entry_prg": 151979,
+  "pointer_entry_prg_hex": "0x0251AB",
+  "label": "自动动作 22",
+  "validation_tags": [],
+  "alias_ids": [
+    34
+  ],
+  "alias_ids_hex": [
+    "0x22"
+  ],
+  "encoded_range": {
+    "start_cpu": 38120,
+    "start_cpu_hex": "0x94E8",
+    "end_cpu_exclusive": 38127,
+    "end_cpu_exclusive_hex": "0x94EF",
+    "start_prg": 152808,
+    "start_prg_hex": "0x0254E8",
+    "end_prg_exclusive": 152815,
+    "end_prg_exclusive_hex": "0x0254EF",
+    "length": 7
+  },
+  "encoded_bytes": [
+    11,
+    8,
+    10,
+    5,
+    6,
+    24,
+    251
+  ],
+  "encoded_bytes_hex": "0B 08 0A 05 06 18 FB",
+  "references": [],
+  "reference_count": 0,
+  "actor_sprite_recipes": [],
+  "primary_actor_sprite_recipe": null,
+  "path": "autonomous/scripts/22.json"
+}

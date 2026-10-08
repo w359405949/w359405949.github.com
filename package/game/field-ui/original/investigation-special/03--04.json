@@ -1,0 +1,65 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.investigation-special",
+  "resource_id": "investigation-special:03:04",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 4,
+    "id_hex": "0x04",
+    "field_offsets": {
+      "scene_id": 220329,
+      "x": 220335,
+      "y": 220341
+    },
+    "scene_id": 3,
+    "scene_id_hex": "0x03",
+    "x": 7,
+    "x_hex": "0x07",
+    "y": 2,
+    "y_hex": "0x02",
+    "kind": "underwear-wardrobe",
+    "label": "开场住宅衣柜",
+    "description": "按状态选择女内衣 / 男内衣调查结果。",
+    "text_records": [],
+    "item_ids": [
+      193,
+      194
+    ],
+    "interaction_state": {
+      "class": "reads-external-state",
+      "label": "读取外部状态 · 自身不占完成位",
+      "owns_state": false,
+      "state_source": "$0037 bit 0",
+      "effects": [
+        "selected-item-variant"
+      ]
+    },
+    "semantic_status": "confirmed-purpose",
+    "handler_pointer_stored": 48424,
+    "handler_pointer_stored_hex": "0xBD28",
+    "handler_cpu": 48425,
+    "handler_cpu_hex": "0xBD29",
+    "handler_prg": 220457,
+    "handler_prg_hex": "0x035D29",
+    "handler_pointer_source": {
+      "space": "prg",
+      "offset": 220351,
+      "length": 2,
+      "end_exclusive": 220353
+    },
+    "scan_priority": 2,
+    "activation": "Investigate checks the current cell first, then the cell in front; scene $00/$81/$E0-$EF treasure rows may match first, followed by this six-point table and metatile behavior",
+    "confidence": "confirmed",
+    "editable": false,
+    "runtime_validation": {
+      "save_states": [
+        "metalmaxcn_1.mss",
+        "metalmaxcn_2.mss"
+      ],
+      "scene_id": 3,
+      "result": "开场住宅衣柜",
+      "evidence": "用户复现 + ROM 坐标表、处理器与中文文本映射闭环"
+    },
+    "inside_scene_canvas": true,
+    "resource_id": "investigation-special:03:04"
+  }
+}

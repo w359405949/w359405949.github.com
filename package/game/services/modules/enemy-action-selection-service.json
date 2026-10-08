@@ -1,0 +1,172 @@
+{
+  "schema": "metalmaxcn.module-asset.enemy-action-selection-service",
+  "resource_id": "enemy-action-selection-service",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via battle-subsystem owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.enemy-action-selection-service",
+    "module_id": "enemy-action-selection-service",
+    "record_count": 20,
+    "strategy/profile/cycle/status conditions": {
+      "strategies": [
+        {
+          "id": 0,
+          "handler_group": "enemy-action-selection-service:handler-group:00"
+        },
+        {
+          "id": 1,
+          "handler_group": "enemy-action-selection-service:handler-group:01"
+        },
+        {
+          "id": 2,
+          "handler_group": "enemy-action-selection-service:handler-group:01"
+        },
+        {
+          "id": 3,
+          "handler_group": "enemy-action-selection-service:handler-group:02"
+        },
+        {
+          "id": 4,
+          "handler_group": "enemy-action-selection-service:handler-group:03"
+        },
+        {
+          "id": 5,
+          "handler_group": "enemy-action-selection-service:handler-group:04"
+        },
+        {
+          "id": 6,
+          "handler_group": "enemy-action-selection-service:handler-group:05"
+        },
+        {
+          "id": 7,
+          "handler_group": "enemy-action-selection-service:handler-group:06"
+        },
+        {
+          "id": 8,
+          "handler_group": "enemy-action-selection-service:handler-group:07"
+        },
+        {
+          "id": 9,
+          "handler_group": "enemy-action-selection-service:handler-group:08"
+        },
+        {
+          "id": 10,
+          "handler_group": "enemy-action-selection-service:handler-group:09"
+        },
+        {
+          "id": 11,
+          "handler_group": "enemy-action-selection-service:handler-group:10"
+        },
+        {
+          "id": 12,
+          "handler_group": "enemy-action-selection-service:handler-group:11"
+        }
+      ],
+      "probability_profiles": [
+        {
+          "id": 0,
+          "thresholds": [
+            0,
+            0,
+            0,
+            126,
+            210
+          ],
+          "has_terminal_threshold": false
+        },
+        {
+          "id": 1,
+          "thresholds": [
+            96,
+            168,
+            216,
+            240,
+            252
+          ],
+          "has_terminal_threshold": false
+        },
+        {
+          "id": 2,
+          "thresholds": [
+            192,
+            216,
+            232,
+            244,
+            252
+          ],
+          "has_terminal_threshold": false
+        },
+        {
+          "id": 3,
+          "thresholds": [
+            0,
+            128,
+            192,
+            224,
+            244
+          ],
+          "has_terminal_threshold": false
+        },
+        {
+          "id": 4,
+          "thresholds": [
+            176,
+            255
+          ],
+          "has_terminal_threshold": true
+        },
+        {
+          "id": 5,
+          "thresholds": [
+            126,
+            210,
+            255
+          ],
+          "has_terminal_threshold": true
+        },
+        {
+          "id": 6,
+          "thresholds": [
+            192,
+            255
+          ],
+          "has_terminal_threshold": true
+        }
+      ]
+    },
+    "status_override_actions": [
+      {
+        "id": 0,
+        "action_id": 104
+      },
+      {
+        "id": 1,
+        "action_id": 94
+      },
+      {
+        "id": 2,
+        "action_id": 40
+      },
+      {
+        "id": 3,
+        "action_id": 72
+      },
+      {
+        "id": 4,
+        "action_id": 60
+      },
+      {
+        "id": 5,
+        "action_id": 61
+      }
+    ],
+    "enemy_ai_cycle_counter": {
+      "initial_state": "before-first-cycle-step",
+      "cycle_length": 6,
+      "strategy_ids": [
+        4,
+        5
+      ]
+    }
+  }
+}

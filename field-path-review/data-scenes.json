@@ -1,0 +1,760 @@
+{
+  "sites": [
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const encoding = state.project?.text_record_encoding;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterTextEncoding"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "page_lifecycle",
+      "expression": "function characterResetControl(itemId, label = \"Reset\") {",
+      "verdict": "exclude",
+      "reason": "名称命中保存或重置词形，但此函数只组装标识、呈现、快照或验证",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterResetControl"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "role.slot_flags, characterSlotShape(state.project), \"equipment_slot\",",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "applyCharacterRoleDraft"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const item = state.project.game_item-entry.records.find(item => Number(item.id) === Number(itemId));",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterEquipmentCategory"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const sets = state.project?.visuals?.actors?.sets || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterActorSetPair"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "battleChoices: battleActorMetaspriteChoices(state.project),",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterVisualContext"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const component = (state.project?.visuals?.writeback?.components || [])",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "characterVisualComponentAddress"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const slots = kind === \"equipment\" ? characterSlotShape(state.project) : null;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "loadoutPanel"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "if (!characterProjectSessionMatches(repository, revision) || !state.project) {",
+      "verdict": "exclude",
+      "reason": "只核对项目会话身份，防止异步结果写入另一个项目",
+      "target": "page resource field object and shared editor component",
+      "symbol": "atPath"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "page_lifecycle",
+      "expression": "async function characterItemResetPreparation(itemId) {",
+      "verdict": "exclude",
+      "reason": "仅等待同项字段写入并核验项目会话；重置提交由共用字段动作执行",
+      "target": "character-initial-record / ui/table",
+      "symbol": "characterItemResetPreparation"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "page_lifecycle",
+      "expression": "async function characterItemResetFields(itemId) {",
+      "verdict": "exclude",
+      "reason": "仅选择已发布的可写字段实例；重置提交由共用字段动作执行",
+      "target": "character-initial-record / ui/table",
+      "symbol": "characterItemResetFields"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "page_lifecycle",
+      "expression": "function syncCharacterItemReset(itemId, saved, {repository, revision}) {",
+      "verdict": "exclude",
+      "reason": "仅把字段动作返回的资源正文同步到显示草稿；不提交重置或项目投影",
+      "target": "character-initial-record / ui/table",
+      "symbol": "syncCharacterItemReset"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "page_lifecycle",
+      "expression": "async function bindCharacterOriginalFieldResets(form) {",
+      "verdict": "exclude",
+      "reason": "仅将已发布字段实例与共用重置控件绑定；控件原子提交重置",
+      "target": "character-initial-record / ui/table",
+      "symbol": "bindCharacterOriginalFieldResets"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "...state.project,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindCharacterBattleScene"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "...state.project.game_data,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindCharacterBattleScene"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "project: state.project, roleId,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindCharacterEditor"
+    },
+    {
+      "file": "views/data/items.js",
+      "kind": "custom_editor_control",
+      "expression": "<select id=\"${categoryId}\">",
+      "verdict": "exclude",
+      "reason": "该控件只选择页面类别或工作台模式，不编辑字段值",
+      "target": "page resource field object and shared editor component",
+      "symbol": "categoryCount"
+    },
+    {
+      "file": "views/data/items.js",
+      "kind": "custom_editor_control",
+      "expression": "<select id=\"equipment-category\">",
+      "verdict": "exclude",
+      "reason": "该控件只选择页面类别或工作台模式，不编辑字段值",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderItemData"
+    },
+    {
+      "file": "views/data/items.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.visuals?.weapon_effect_catalog?.asset_catalog_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "effectAssets"
+    },
+    {
+      "file": "views/data/monster-attack-anchor.js",
+      "kind": "direct_project_data",
+      "expression": "const catalog = battleScenePreviewCatalog(state.project);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "load"
+    },
+    {
+      "file": "views/data/monster-attack-anchor.js",
+      "kind": "direct_project_data",
+      "expression": "const base = battleScenePreviewDefaults(state.project);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "load"
+    },
+    {
+      "file": "views/data/monster-attack-anchor.js",
+      "kind": "direct_project_data",
+      "expression": "}, state.project);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "load"
+    },
+    {
+      "file": "views/data/monster-attack-anchor.js",
+      "kind": "direct_project_data",
+      "expression": "attack: {...current.preview.attack, source: `visual:${value}`}}, state.project);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "load"
+    },
+    {
+      "file": "views/data/monster-attack-anchor.js",
+      "kind": "direct_project_data",
+      "expression": "}, state.project);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "load"
+    },
+    {
+      "file": "views/data/monster-attack-effects.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.visuals?.weapon_effect_catalog?.asset_catalog_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "effectAssets"
+    },
+    {
+      "file": "views/data/pages.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project.game_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderCharacterPage"
+    },
+    {
+      "file": "views/data/pages.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project.game_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderVehiclePage"
+    },
+    {
+      "file": "views/data/pages.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project.game_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderMonsterPage"
+    },
+    {
+      "file": "views/data/pages.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project.game_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderFieldItemPage"
+    },
+    {
+      "file": "views/data/pages.js",
+      "kind": "direct_project_data",
+      "expression": "const data = state.project.game_data || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderBattleItemPage"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "custom_editor_control",
+      "expression": "<label><span>五列预览状态</span><select class=\"inline-data-select\" data-vehicle-status-state",
+      "verdict": "exclude",
+      "reason": "此控件在该处禁用或仅控制预览、过滤、导航，不提交字段值",
+      "target": "page resource field object and shared editor component",
+      "symbol": "vehicleStatusAppearanceCell"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "...state.project,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleBattleScene"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const presetIds = state.project?.game_data?.vehicles",
+      "verdict": "exclude",
+      "reason": "只核验视图声明中的预设身份；字段值和重置项另由 vehicle-preset 字段取得",
+      "target": "vehicle-preset / ui/field-object-editor",
+      "symbol": "vehicleOriginalResetContext"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const shape = vehicleSlotShape(state.project, presetId);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleEditor"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const items = state.project?.game_data?.items?.records || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleVisualControls"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const slots = vehicleSlotShape(state.project, record.preset_id).equipped_mask.slots;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "vehicleStatusPortraitMask"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const items = state.project.game_item-entry.records;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "vehicleStatusPortraitMask"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const selected = vehicleAssignedSlot(state.project, record, column, item);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "vehicleStatusPortraitMask"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const shape = vehicleSlotShape(state.project, vehicle.preset_id);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderVehicleWeaponHoles"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const shape = vehicleSlotShape(state.project, id);",
+      "verdict": "exclude",
+      "reason": "只读取已发布装备槽形状以构造字段对象候选；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleFieldObjects"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "? vehicleAssignedSlot(state.project, draft, column, currentItem()) || '' : '',",
+      "verdict": "exclude",
+      "reason": "只按已发布槽形状与当前草稿决定选择器回显；字段值由 equipped_mask 字段对象读取",
+      "target": "vehicle-preset / ui/field-object-editor",
+      "symbol": "currentItem"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "if (!vehicleSlotShape(state.project, id).mount_mask.slots.some(hole => (0x80 >> hole.weapon_hole) === bit)) {",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleWeaponHoles"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "vehicleAssignedSlot(state.project, draft, other, item) === selected)) {",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "setVehicleEquippedSlot"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const shape = vehicleSlotShape(state.project, root.dataset.vehicleLoadout);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "refreshVehicleSlotStates"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const item = (state.project.game_item-entry?.records || []).find(entry =>",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "refreshVehicleSlotStates"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const selected = vehicleAssignedSlot(state.project, draft, column, item);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "refreshVehicleSlotStates"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "vehicleSaveItemLabel(state.project.game_data, chassis.item_id),",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderVehicleLoadout"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "effectiveLaunchAnchorAssets(state.project.visuals.weapon_effect_catalog.asset_catalog_data),",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleBattleScene"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "visuals: {...state.project.visuals, weapon_effect_catalog: {",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleBattleScene"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "...state.project.visuals.weapon_effect_catalog, asset_catalog_data: weaponAssets,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleBattleScene"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "...state.project.game_data,",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleBattleScene"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const assigned = vehicleAssignedSlot(state.project, firingDraft, firingColumn, firingItem);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "paint"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const scenes = state.project?.scenes?.editable_scenes || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderVehiclePlacement"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const items = state.project.game_item-entry?.records || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindVehicleEditor"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const scenes = (state.project?.scenes?.editable_scenes || [])",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "currentItem"
+    },
+    {
+      "file": "views/scenes/encounter.js",
+      "kind": "direct_project_data",
+      "expression": "return state.project?.game_data?.monsters?.records || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "monsterRecords"
+    },
+    {
+      "file": "views/scenes/encounter.js",
+      "kind": "custom_editor_control",
+      "expression": "<label class=\"check\"><input type=\"checkbox\" data-encounter-paint ${",
+      "verdict": "exclude",
+      "reason": "此控件在该处禁用或仅控制预览、过滤、导航，不提交字段值",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderEncounterZoneSidebar"
+    },
+    {
+      "file": "views/scenes/interact.js",
+      "kind": "direct_project_data",
+      "expression": "const entry = (state.project.scenes?.editable_scenes || []).find(",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "paintSceneTargetPreview"
+    },
+    {
+      "file": "views/scenes/interact.js",
+      "kind": "direct_project_data",
+      "expression": "const entry = (state.project.scenes?.editable_scenes || []).find(",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "bindSceneLogicPanel"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const configuration = state.project?.game_data?.battle_test;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationBattleFormation"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "(state.project?.game_data?.monsters?.records || []).map(monster => [",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationBattleFormation"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const itemRecord = state.project.game_data?.items?.records?.find(entry => Number(entry.id) === contentId);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "sceneObjectLabel"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const target = (state.project.scenes?.editable_scenes || []).find(",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "sceneObjectLabel"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "return [...(state.project.story?.interaction?.entries || [])]",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "actorInteractionScripts"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "return [...(state.project.story?.autonomous?.entries || [])]",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "actorAutonomousScripts"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "return (state.project.ui?.construction?.script_catalog?.regions || [])",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "actorDirectTextRegions"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "for (const command of state.project?.facilities?.applications?.commands || []) {",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "actorServiceCatalog"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "for (const npc of state.project.story?.npc_catalog?.records || []) {",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "actorServiceCatalog"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const extracted = state.project.scenes?.logic?.investigation_handler_commands || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationCommandCatalog"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const authority = state.project.facilities?.investigation?.commands || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationCommandCatalog"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const command = (state.project.facilities?.investigation?.commands || [])",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationConfigurations"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "const facility = (state.project.facilities?.facilities || []).find(item => item.id === known.facilityId);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationConfigurations"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": "? state.project.game_data?.items?.records || []",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationProductName"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": ": state.project.game_data?.shells?.records || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "investigationProductName"
+    },
+    {
+      "file": "views/scenes/logic.js",
+      "kind": "direct_project_data",
+      "expression": ": state.project.game_data?.items?.records?.find(item => Number(item.id) === Number(variant.prize_item_id))?.name || `道具 ${hex(variant.prize_item_id, 2)}`;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderInvestigationConfigurationSummary"
+    },
+    {
+      "file": "views/scenes/overview.js",
+      "kind": "direct_project_data",
+      "expression": "const scenes = state.project.scenes || {};",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderSceneOverview"
+    },
+    {
+      "file": "views/scenes/overview.js",
+      "kind": "direct_project_data",
+      "expression": "const catalog = state.project.scenes?.catalog || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderSceneResources"
+    },
+    {
+      "file": "views/scenes/overview.js",
+      "kind": "direct_project_data",
+      "expression": "const realScenes = state.project.scenes?.real_scene_count ?? catalog.filter(item => item.editable).length;",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderSceneResources"
+    },
+    {
+      "file": "views/scenes/overview.js",
+      "kind": "direct_project_data",
+      "expression": "const editable = (state.project.scenes?.editable_scenes || []).find(scene => Number(scene.id) === Number(item.id));",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderSceneResources"
+    },
+    {
+      "file": "views/scenes/workbench.js",
+      "kind": "custom_editor_control",
+      "expression": "${[[\"actors\",\"场景角色\",summary.actors + (summary.dynamic_actor_records || 0)],[\"treasures\",\"宝箱与调查物\",summary.treasures],[\"investigations\",\"调查交互\",sceneInvestigationLayerCount(summary)],",
+      "verdict": "exclude",
+      "reason": "该控件只选择页面类别或工作台模式，不编辑字段值",
+      "target": "page resource field object and shared editor component",
+      "symbol": "modeButton"
+    },
+    {
+      "file": "views/scenes/workbench.js",
+      "kind": "direct_project_data",
+      "expression": "const entries = state.project.scenes?.editable_scenes || [];",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以组织页面、预览或引用选项；此行没有编辑写入",
+      "target": "page resource field object and shared editor component",
+      "symbol": "renderScenes"
+    },
+    {
+      "file": "views/data/characters.js",
+      "kind": "direct_project_data",
+      "expression": "const items = state.project.game_item-entry?.records || [];",
+      "verdict": "exclude",
+      "reason": "只读取道具项目投影以组织候选；此行没有编辑写入",
+      "target": "item-entry / ui/field-object-editor",
+      "symbol": "bindCharacterFieldObjects"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "const selectedSlot = vehicleAssignedSlot(state.project, draft, slot, previousItem);",
+      "verdict": "exclude",
+      "reason": "只读取项目投影以解析已发布装备槽；此行没有编辑写入",
+      "target": "vehicle-preset / ui/field-object-editor",
+      "symbol": "bindVehicleFieldObjects"
+    },
+    {
+      "file": "views/data/vehicles.js",
+      "kind": "direct_project_data",
+      "expression": "if (!vehicleSlotShape(state.project, id).mount_mask.slots.some(",
+      "verdict": "exclude",
+      "reason": "只读取已发布开孔位以校验字段对象控件；此行没有编辑写入",
+      "target": "vehicle-preset / ui/field-object-editor",
+      "symbol": "currentItem"
+    }
+  ]
+}

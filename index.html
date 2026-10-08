@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MM // Metal Max Editor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23111%27/%3E%3Ctext x=%278%27 y=%2712%27 font-size=%2711%27 font-family=%27monospace%27 fill=%27%23e8e8e8%27 text-anchor=%27middle%27%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" async src="./core/startup-prefetch-entry.js"></script>
+  <link rel="modulepreload" href="./core/package-io.js">
+  <link rel="modulepreload" href="./core/package-schema-paths.js">
+  <link rel="modulepreload" href="./core/view-data-dependencies.js">
+  <link rel="modulepreload" href="./core/project-store-values.js">
+  <link rel="modulepreload" href="./core/story-view-config.js">
+  <link rel="modulepreload" href="./core/physical-field-object-sources.js">
+  <link rel="modulepreload" href="./core/project-bootstrap.js">
+  <link rel="modulepreload" href="./core/project-db.js">
+  <link rel="modulepreload" href="./core/field-owners.js">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-view="home" aria-label="返回项目概览">
+      <b>Metal Max 编辑器</b><small>metalmaxcn.nes</small>
+    </button>
+    <div class="global-build">
+      <button class="button primary" id="global-build-run" type="button">构建并运行</button>
+      <button class="button" id="global-build-expanded" type="button">构建自检 ROM</button>
+      <button class="button" id="global-build-open" type="button">打开模拟器</button>
+    </div>
+    <div class="search-container">
+      <label class="search">
+        <span>⌕</span>
+        <input id="search" type="search" placeholder="搜索…" autocomplete="off">
+        <kbd>Ctrl K</kbd>
+      </label>
+      <section id="search-results" class="search-results" aria-label="句柄搜索结果" hidden></section>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-controls="navigation" aria-expanded="true" aria-label="收起导航栏" title="收起导航栏">‹</button>
+      <nav id="navigation" aria-label="编辑页面"></nav>
+      <div class="sidebar-foot">
+        <span>METAL MAX 项目</span>
+        <small>编辑 · 构建 · 运行</small>
+      </div>
+    </aside>
+
+    <main>
+      <section class="page-head">
+        <h1 id="view-title">项目概览</h1>
+        <p class="eyebrow" id="view-kicker" hidden>PROJECT OVERVIEW</p>
+        <div class="head-actions">
+          <button class="button ghost" id="copy-hash" title="复制 SHA-256" aria-label="复制 SHA-256">⧉</button>
+          <a class="button primary" href="./package/manifest.json" target="_blank" title="资产清单" aria-label="资产清单">↗</a>
+        </div>
+        </section>
+
+
+      <section class="page-body" id="content" aria-live="polite">
+        <div class="loading"><span></span>正在装载资产包…</div>
+        </section>
+    </main>
+
+  </div>
+
+  <footer class="statusbar" id="statusbar" tabindex="0" aria-label="全局状态，点击查看日志">
+    <span id="status-tasks" role="status"></span>
+    <span id="status-message" role="status" hidden></span>
+    <button type="button" id="status-dismiss" aria-label="关闭状态消息" title="关闭状态消息" hidden>×</button>
+    <span id="status-rows">—</span>
+    <span id="status-selection"></span>
+    <span id="status-dirty" class="status-dirty"></span>
+    <span id="status-address" class="mono"></span>
+  </footer>
+
+  <template id="empty-template">
+    <div class="empty">
+      <b>暂无匹配资产</b>
+    </div>
+  </template>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+{
+  "schema": "metalmaxcn.visual-semantic-assets",
+  "codec": "semantic-owner-reference/v1",
+  "resources": [
+    {
+      "resource_id": "asset",
+      "path": "game/visuals/semantic-assets/original/asset.json",
+      "record_count": 4,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "char",
+      "path": "game/visuals/semantic-assets/original/char.json",
+      "record_count": 1711,
+      "writeback": {
+        "mode": "linked-fragment",
+        "compiler_id": "narrative-glyphs/v1",
+        "fields": [
+          "records[kind=narrative-12x12].narrative_glyph_bitmap"
+        ]
+      }
+    },
+    {
+      "resource_id": "core-latin",
+      "path": "game/visuals/semantic-assets/original/core-latin.json",
+      "record_count": 1,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "direct-frame",
+      "path": "game/visuals/semantic-assets/original/direct-frame.json",
+      "record_count": 69,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "metasprite",
+      "path": "game/visuals/semantic-assets/original/metasprite.json",
+      "record_count": 54,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "metatile-page",
+      "path": "game/visuals/semantic-assets/original/metatile-page.json",
+      "record_count": 55,
+      "writeback": {
+        "mode": "linked-fragment",
+        "compiler_id": "metatile-tables/v1",
+        "fields": [
+          "records[].metatile_definition_page",
+          "records[].metatile_attribute_page"
+        ],
+        "attribute_write_mask": 3
+      }
+    },
+    {
+      "resource_id": "metatile-set",
+      "path": "game/visuals/semantic-assets/original/metatile-set.json",
+      "record_count": 45,
+      "writeback": {
+        "mode": "linked-fragment",
+        "compiler_id": "metatile-tables/v1",
+        "fields": [
+          "records[handle=metatile-set:00].metatile_definitions",
+          "records[handle=metatile-set:00].metatile_attributes"
+        ],
+        "attribute_write_mask": 3
+      }
+    },
+    {
+      "resource_id": "monster-figure",
+      "path": "game/visuals/semantic-assets/original/monster-figure.json",
+      "record_count": 131,
+      "writeback": {
+        "mode": "repository-projection",
+        "compiler_id": "visual-core/v1",
+        "binding_resource_id": "monster-visual-layout",
+        "fragment_ids": [
+          "monster-visual-layout.enemy-to-graphic",
+          "monster-visual-layout.enemy-palette-codes"
+        ],
+        "fields": [
+          "records[].graphic_selector",
+          "records[].palette_selector"
+        ]
+      }
+    },
+    {
+      "resource_id": "monster-graphic",
+      "path": "game/visuals/semantic-assets/original/monster-graphic.json",
+      "record_count": 79,
+      "writeback": {
+        "mode": "repository-projection",
+        "compiler_id": "visual-core/v1",
+        "binding_resource_id": "monster-visual-layout",
+        "fragment_ids": [
+          "monster-visual-layout.graphic-bank-codes",
+          "monster-visual-layout.special-bank-roots",
+          "monster-visual-layout.dimensions",
+          "monster-visual-layout.sequential-tile-offsets",
+          "monster-visual-layout.layout-pointers",
+          "monster-visual-layout.layout-region",
+          "monster-visual-layout.dual-palette-layouts"
+        ],
+        "fields": [
+          "records",
+          "special_bank_roots",
+          "layout_streams",
+          "dual_palette_layout_region"
+        ]
+      }
+    },
+    {
+      "resource_id": "monster-palette",
+      "path": "game/visuals/semantic-assets/original/monster-palette.json",
+      "record_count": 74,
+      "writeback": {
+        "mode": "repository-projection",
+        "compiler_id": "visual-core/v1",
+        "binding_resource_id": "monster-visual-layout",
+        "fragment_ids": [
+          "monster-visual-layout.palette-colors"
+        ],
+        "fields": [
+          "records[].colors"
+        ]
+      }
+    },
+    {
+      "resource_id": "monster-palette-pair",
+      "path": "game/visuals/semantic-assets/original/monster-palette-pair.json",
+      "record_count": 27,
+      "writeback": {
+        "mode": "repository-projection",
+        "compiler_id": "visual-core/v1",
+        "binding_resource_id": "monster-visual-layout",
+        "fragment_ids": [
+          "monster-visual-layout.palette-pairs"
+        ],
+        "fields": [
+          "records[].first_palette_id",
+          "records[].second_palette_id"
+        ]
+      }
+    },
+    {
+      "resource_id": "packed-attribute-quadrant-mask-set",
+      "path": "game/visuals/semantic-assets/original/packed-attribute-quadrant-mask-set.json",
+      "record_count": 1,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "palette",
+      "path": "game/visuals/semantic-assets/original/palette.json",
+      "record_count": 54,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "sprite-palette",
+      "path": "game/visuals/semantic-assets/original/sprite-palette.json",
+      "record_count": 32,
+      "writeback": {
+        "mode": "reference-only",
+        "status": "read-only-derived-reference"
+      }
+    },
+    {
+      "resource_id": "weapon-attack-parameter",
+      "path": "game/visuals/semantic-assets/original/project-visuals-weapon-assets.json",
+      "record_count": 1,
+      "writeback": {
+        "mode": "linked-fragment",
+        "compiler_id": "attack-launch-anchors/v1",
+        "fields": [
+          "attack_cmd13_launch_y_offsets[*].value",
+          "attack_cmd13_layout_x_anchors[*].value"
+        ]
+      }
+    }
+  ]
+}

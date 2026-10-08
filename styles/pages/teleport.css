@@ -1,0 +1,92 @@
+body[data-page="teleport"] {
+.teleport-save-editor { margin-bottom: 12px; }
+
+.teleport-save-editor > header { align-items: end; }
+
+.teleport-save-editor > header > span {
+  color: var(--text-dim);
+  font: var(--fs-xs) var(--mono);
+}
+
+.teleport-save-toolbar { margin: 0 0 8px; }
+
+.teleport-save-slot {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  color: var(--text-dim);
+}
+
+.teleport-save-slot small { color: var(--text-faint); }
+
+.teleport-save-slot b { color: var(--cyan); font: 600 var(--fs-md) var(--mono); }
+
+.teleport-save-editor .table-wrap td { vertical-align: middle; }
+
+.teleport-save-editor th:last-child,
+.teleport-save-editor td:last-child { width: 72px; }
+
+.teleport-save-field-id,
+.teleport-save-observation { grid-column: 1 / -1; overflow-wrap: anywhere; }
+
+.teleport-save-field-id { color: var(--text-faint); }
+
+.teleport-save-observation { color: var(--text-dim); }
+
+.teleport-preview-controls { display: grid; gap: 14px; }
+
+.teleport-destination-switches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 7px;
+}
+
+.teleport-destination-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--line-soft);
+  background: var(--surface-0);
+  cursor: pointer;
+}
+
+.teleport-destination-toggle:hover { border-color: var(--line); }
+
+.teleport-destination-toggle.active {
+  border-color: var(--acid);
+  background: #16201c;
+}
+
+.teleport-destination-toggle input { accent-color: var(--acid); }
+
+.teleport-destination-toggle span { display: grid; gap: 2px; min-width: 0; }
+
+.teleport-destination-toggle small {
+  overflow: hidden;
+  color: var(--dim);
+  font: var(--fs-xs) var(--mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.teleport-destination-toggle b { color: var(--muted); }
+
+.teleport-destination-toggle.active b { color: var(--acid); }
+
+.teleport-preview-summary { display: flex; flex-wrap: wrap; align-items: end; gap: 14px 24px; }
+
+.teleport-preview-summary > span { display: grid; gap: 4px; min-width: 150px; }
+
+.teleport-preview-summary small { color: var(--dim); }
+
+.teleport-dialogue-toolbar select { min-width: 320px; }
+
+#hidden-teleport .module-reference-picker-current-copy,
+#hidden-teleport .module-reference-picker-option-copy { display: grid; }
+
+@media (max-width: 1100px) {
+  .teleport-destination-switches { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+}
+}

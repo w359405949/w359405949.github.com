@@ -1,0 +1,167 @@
+{
+  "id": "jukebox-screen",
+  "label": "自动点唱机整屏画面",
+  "kind": "rom-fullscreen-ui",
+  "width": 256,
+  "height": 240,
+  "visual_signature": "206e96570f68ce0eb6774563522d71e0163120d105499667ded5c8b3352d6de8",
+  "sources": {
+    "nametable": {
+      "length": 1024,
+      "address": {
+        "space": "chr",
+        "offset": 236544,
+        "length": 1024,
+        "end_exclusive": 237568
+      },
+      "path": "static/special/jukebox-screen/nametable-e7.bin",
+      "sha256": "86babaea4d2a70042d3d2ff129cb4aec4e514eea8f64d38b3a3154cbd71183c4",
+      "bank": 231,
+      "bank_hex": "0xE7"
+    },
+    "background_patterns": [
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 206848,
+          "length": 1024,
+          "end_exclusive": 207872
+        },
+        "sha256": "5e35ec38209d1e87928c0410c4238155fd6c3f6fe8b83ec6a94e81e73047837a",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 202
+        },
+        "bank": 202,
+        "bank_hex": "0xCA",
+        "first_row": 0,
+        "last_row": 29,
+        "first_tile": 128,
+        "last_tile": 191,
+        "tile_range": "0x80-0xBF"
+      },
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 121856,
+          "length": 1024,
+          "end_exclusive": 122880
+        },
+        "sha256": "f36e87aa06334cd53abb363b0ed2d186b50fa19b55ada8e3f2ccf729b783f2bb",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 119
+        },
+        "bank": 119,
+        "bank_hex": "0x77",
+        "first_row": 0,
+        "last_row": 29,
+        "first_tile": 192,
+        "last_tile": 255,
+        "tile_range": "0xC0-0xFF"
+      }
+    ]
+  },
+  "palette": {
+    "expanded_hex": "0F 30 21 11 0F 37 29 19 0F 37 27 17 0F 30 10 00 0F 30 23 13 0F 36 0F 21 0F 37 0F 18 0F 36 0F 12",
+    "confidence": "runtime-observed",
+    "note": "构造代码逐色写入，ROM 中没有连续的调色板表；此处为隔离 trace 的观察值，只用于预览着色，不计入静态覆盖率"
+  },
+  "fillable_regions": {
+    "blank_tile": 255,
+    "blank_tile_hex": "0xFF",
+    "count": 9,
+    "cells": 162,
+    "note": "$FF 是这套图块的窗口内空白；12x12 中文字形、核心字体数字和脚本 VM 写入的消息都只落在这些段内。段本身比实际写入范围宽，不等于逐字段的槽位边界。",
+    "regions": [
+      {
+        "id": "slot:19:07",
+        "row": 19,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 615
+      },
+      {
+        "id": "slot:20:07",
+        "row": 20,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 647
+      },
+      {
+        "id": "slot:21:07",
+        "row": 21,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 679
+      },
+      {
+        "id": "slot:22:07",
+        "row": 22,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 711
+      },
+      {
+        "id": "slot:23:07",
+        "row": 23,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 743
+      },
+      {
+        "id": "slot:24:07",
+        "row": 24,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 775
+      },
+      {
+        "id": "slot:25:07",
+        "row": 25,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 807
+      },
+      {
+        "id": "slot:26:07",
+        "row": 26,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 839
+      },
+      {
+        "id": "slot:27:07",
+        "row": 27,
+        "first_column": 7,
+        "last_column": 24,
+        "width": 18,
+        "logical_position": 871
+      }
+    ]
+  },
+  "runtime_contract": {
+    "nametable_source": "CHR bank $E7 -> RAM $6000-$63FF -> PPU nametable",
+    "background_pattern_table": "PPU $0800-$0FFF 供 tile $80-$FF；第 0-29 行用 $CA/$77",
+    "core_font": "PRG $047800-$048000 上传到 CHR-RAM 的 tile $00-$7F",
+    "investigation_commands": [
+      "0x1A"
+    ]
+  },
+  "writeback": {
+    "mode": "preview-only",
+    "constraint": "all physical sources are fixed-size and read-only"
+  }
+}

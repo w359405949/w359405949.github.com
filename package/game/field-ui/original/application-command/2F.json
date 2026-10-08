@@ -1,0 +1,3366 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.application-command",
+  "resource_id": "application-command:2F",
+  "edit_policy": "mutable",
+  "document": {
+    "command_id": 47,
+    "command_id_hex": "0x2F",
+    "label": "麻痹按摩治疗",
+    "kind": "paralysis-massage-service",
+    "semantic_status": "confirmed-purpose",
+    "hypothesis": "脚本明确选择队员并治疗麻痹状态。",
+    "evidence": "record:06:013/$089-$095；13 个 NPC；helper $EEB3 -> bank $10:$A1D4 构造队伍选择。",
+    "application_script_pointer_entry": {
+      "space": "prg",
+      "offset": 201583,
+      "length": 2,
+      "end_exclusive": 201585,
+      "cpu_address": 45935,
+      "confidence": "confirmed"
+    },
+    "application_script": {
+      "space": "prg",
+      "offset": 201923,
+      "length": 54,
+      "end_exclusive": 201977,
+      "cpu_address": 46275,
+      "confidence": "type-confirmed",
+      "format": "application-command-script-envelope",
+      "boundary": "next-distinct-application-script-pointer",
+      "boundary_note": "物理包络可含内嵌表或处理体；读取不以此边界停止。",
+      "source_reference": {
+        "source_id": "application-command:2F",
+        "resource_id": "application-command:2F",
+        "access": "read-reference"
+      }
+    },
+    "dialogue_flow": {
+      "schema": "metalmaxcn.application-dialogue-flow",
+      "id": "application-dialogue-flow:2F",
+      "command_id": 47,
+      "command_id_hex": "0x2F",
+      "entry_segment_id": "application-dialogue-flow:2F:segment:00",
+      "initial_text_region": 6,
+      "source": "application-command-script-read-references",
+      "source_application_script": {
+        "space": "prg",
+        "offset": 201923,
+        "length": 54,
+        "end_exclusive": 201977,
+        "cpu_address": 46275,
+        "confidence": "type-confirmed"
+      },
+      "runtime_read_range": {
+        "offset": 201924,
+        "length": 54,
+        "end_exclusive": 201978,
+        "references": [
+          {
+            "source_id": "application-command:2F",
+            "resource_id": "application-command:2F",
+            "source_relative_offset": 1,
+            "offset": 201924,
+            "length": 53,
+            "access": "read-reference"
+          },
+          {
+            "source_id": "application-command:17",
+            "resource_id": "application-command:17",
+            "source_relative_offset": 0,
+            "offset": 201977,
+            "length": 1,
+            "access": "read-reference"
+          }
+        ],
+        "confirmation_status": "candidate",
+        "runtime_execution_confirmed": false,
+        "scope": "conditional-decoding-of-segments-starting-in-physical-envelope",
+        "read_window_end_exclusive": 204800,
+        "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+      },
+      "entry_bias": 1,
+      "entry_prefix_hex": "FF",
+      "runtime_record_slots": null,
+      "ui_context": {
+        "frame_layout_record": "record:03:007",
+        "frame_shift": 576,
+        "prefix_record": "record:0C:000",
+        "prefix_cursor": 652,
+        "text_cursor": 654,
+        "logical_output_base": 652,
+        "runtime_line_column": 14,
+        "text_state_setup": {
+          "resource_id": "code-module:application-dialogue-flow-vm",
+          "offset": 519016,
+          "length": 11,
+          "confirmation_status": "confirmed",
+          "scope": "text-state-setup-only"
+        },
+        "ram_output_base": "$628C",
+        "reset_policy": "per-record"
+      },
+      "segments": [
+        {
+          "id": "application-dialogue-flow:2F:segment:00",
+          "index": 0,
+          "script_relative_offset": 1,
+          "prg_offset": 201924,
+          "length": 6,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:00:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 0,
+              "segment_id": "application-dialogue-flow:2F:segment:00",
+              "segment_index": 0,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 13,
+              "record_id_hex": "0x0D",
+              "record": "record:06:013",
+              "source": "application-vm-literal",
+              "script_relative_offset": 2,
+              "prg_offset": 201925,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 2,
+                  "offset": 201925,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            },
+            {
+              "id": "application-dialogue-flow:2F:segment:00:action:01",
+              "kind": "text-record",
+              "physical_dialogue_order": 1,
+              "segment_id": "application-dialogue-flow:2F:segment:00",
+              "segment_index": 0,
+              "action_index": 1,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 95,
+              "record_id_hex": "0x5F",
+              "record": "record:06:095",
+              "source": "application-vm-literal",
+              "script_relative_offset": 3,
+              "prg_offset": 201926,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 3,
+                  "offset": 201926,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 149,
+              "operands": [],
+              "prg_offset": 201924,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 1,
+                  "offset": 201924,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 213,
+              "operands": [
+                2,
+                255
+              ],
+              "prg_offset": 201927,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 4,
+                  "offset": 201927,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 213,
+            "opcode_hex": "0xD5",
+            "operands": [
+              2,
+              255
+            ],
+            "operands_hex": [
+              "0x02",
+              "0xFF"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 4,
+            "prg_offset": 201927,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:02"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [
+              255
+            ],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 5,
+                "offset": 201928,
+                "length": 2,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 0,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201924,
+            "end_exclusive": 201930,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 1,
+              "offset": 201924,
+              "length": 6,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 1,
+              "offset": 201924,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 0,
+            "pointer_before_first_read": 46275,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:01",
+          "index": 1,
+          "script_relative_offset": 7,
+          "prg_offset": 201930,
+          "length": 2,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:01:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 2,
+              "segment_id": "application-dialogue-flow:2F:segment:01",
+              "segment_index": 1,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 94,
+              "record_id_hex": "0x5E",
+              "record": "record:06:094",
+              "source": "application-vm-literal",
+              "script_relative_offset": 7,
+              "prg_offset": 201930,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 7,
+                  "offset": 201930,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 255,
+              "operands": [],
+              "prg_offset": 201931,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 8,
+                  "offset": 201931,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 255,
+            "opcode_hex": "0xFF",
+            "operands": [],
+            "operands_hex": [],
+            "expected_operand_count": 0,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 8,
+            "prg_offset": 201931,
+            "successor_segment_ids": [],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [],
+            "successor_semantics": "none-confirmed",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": []
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 4,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201930,
+            "end_exclusive": 201932,
+            "length": 2,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 7,
+              "offset": 201930,
+              "length": 2,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 7,
+              "offset": 201930,
+              "length": 2,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 1,
+            "pointer_before_first_read": 46281,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:02",
+          "index": 2,
+          "script_relative_offset": 9,
+          "prg_offset": 201932,
+          "length": 6,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [],
+          "operations": [
+            {
+              "opcode": 189,
+              "operands": [],
+              "prg_offset": 201932,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 9,
+                  "offset": 201932,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 207,
+              "operands": [
+                10
+              ],
+              "prg_offset": 201933,
+              "length": 2,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 10,
+                  "offset": 201933,
+                  "length": 2,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 220,
+              "operands": [
+                4,
+                3
+              ],
+              "prg_offset": 201935,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 12,
+                  "offset": 201935,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 220,
+            "opcode_hex": "0xDC",
+            "operands": [
+              4,
+              3
+            ],
+            "operands_hex": [
+              "0x04",
+              "0x03"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 12,
+            "prg_offset": 201935,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:04",
+              "application-dialogue-flow:2F:segment:03"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 13,
+                "offset": 201936,
+                "length": 2,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 1,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201932,
+            "end_exclusive": 201938,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 9,
+              "offset": 201932,
+              "length": 6,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 9,
+              "offset": 201932,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 2,
+            "pointer_before_first_read": 46283,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:03",
+          "index": 3,
+          "script_relative_offset": 15,
+          "prg_offset": 201938,
+          "length": 3,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:03:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 3,
+              "segment_id": "application-dialogue-flow:2F:segment:03",
+              "segment_index": 3,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 87,
+              "record_id_hex": "0x57",
+              "record": "record:06:087",
+              "source": "application-vm-literal",
+              "script_relative_offset": 15,
+              "prg_offset": 201938,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 15,
+                  "offset": 201938,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            },
+            {
+              "id": "application-dialogue-flow:2F:segment:03:action:01",
+              "kind": "text-record",
+              "physical_dialogue_order": 4,
+              "segment_id": "application-dialogue-flow:2F:segment:03",
+              "segment_index": 3,
+              "action_index": 1,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 94,
+              "record_id_hex": "0x5E",
+              "record": "record:06:094",
+              "source": "application-vm-literal",
+              "script_relative_offset": 16,
+              "prg_offset": 201939,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 16,
+                  "offset": 201939,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 255,
+              "operands": [],
+              "prg_offset": 201940,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 17,
+                  "offset": 201940,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 255,
+            "opcode_hex": "0xFF",
+            "operands": [],
+            "operands_hex": [],
+            "expected_operand_count": 0,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 17,
+            "prg_offset": 201940,
+            "successor_segment_ids": [],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [],
+            "successor_semantics": "none-confirmed",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": []
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 2,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201938,
+            "end_exclusive": 201941,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 15,
+              "offset": 201938,
+              "length": 3,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 15,
+              "offset": 201938,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 3,
+            "pointer_before_first_read": 46289,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:04",
+          "index": 4,
+          "script_relative_offset": 18,
+          "prg_offset": 201941,
+          "length": 3,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [],
+          "operations": [
+            {
+              "opcode": 219,
+              "operands": [
+                5,
+                6
+              ],
+              "prg_offset": 201941,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 18,
+                  "offset": 201941,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 219,
+            "opcode_hex": "0xDB",
+            "operands": [
+              5,
+              6
+            ],
+            "operands_hex": [
+              "0x05",
+              "0x06"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 18,
+            "prg_offset": 201941,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:05",
+              "application-dialogue-flow:2F:segment:06"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 19,
+                "offset": 201942,
+                "length": 2,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 2,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201941,
+            "end_exclusive": 201944,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 18,
+              "offset": 201941,
+              "length": 3,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 18,
+              "offset": 201941,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 4,
+            "pointer_before_first_read": 46292,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:05",
+          "index": 5,
+          "script_relative_offset": 21,
+          "prg_offset": 201944,
+          "length": 4,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [],
+          "operations": [
+            {
+              "opcode": 188,
+              "operands": [],
+              "prg_offset": 201944,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 21,
+                  "offset": 201944,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 193,
+              "operands": [],
+              "prg_offset": 201945,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 22,
+                  "offset": 201945,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 209,
+              "operands": [
+                9
+              ],
+              "prg_offset": 201946,
+              "length": 2,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 23,
+                  "offset": 201946,
+                  "length": 2,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 209,
+            "opcode_hex": "0xD1",
+            "operands": [
+              9
+            ],
+            "operands_hex": [
+              "0x09"
+            ],
+            "expected_operand_count": 1,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 23,
+            "prg_offset": 201946,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:09"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 24,
+                "offset": 201947,
+                "length": 1,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 3,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201944,
+            "end_exclusive": 201948,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 21,
+              "offset": 201944,
+              "length": 4,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 21,
+              "offset": 201944,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 5,
+            "pointer_before_first_read": 46295,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:06",
+          "index": 6,
+          "script_relative_offset": 25,
+          "prg_offset": 201948,
+          "length": 9,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:06:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 5,
+              "segment_id": "application-dialogue-flow:2F:segment:06",
+              "segment_index": 6,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 89,
+              "record_id_hex": "0x59",
+              "record": "record:06:089",
+              "source": "application-vm-literal",
+              "script_relative_offset": 25,
+              "prg_offset": 201948,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 25,
+                  "offset": 201948,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 210,
+              "operands": [
+                179,
+                238
+              ],
+              "prg_offset": 201949,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 26,
+                  "offset": 201949,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "script_consumption": {
+                "helper": "bank-3F-entry-EEB3",
+                "source_ids": [
+                  "mapped-closure:0201D4:94",
+                  "mapped-closure:020243:25",
+                  "mapped-closure:07D414:27",
+                  "mapped-closure:07EEB3:9",
+                  "mapped-closure:07F51A:5",
+                  "mapped-closure:07FAFC:5"
+                ],
+                "reads": [],
+                "continuation": "return",
+                "pointer_effect": {
+                  "kind": "unchanged"
+                },
+                "execution_condition": "D2 invokes the declared callback with bank18 mapped at A000, Y=0 and mapper shadows 20/21 matching the active banks; direct transfers and constant bank switches reach the complete listed closure and restore bank18 before returning.",
+                "confirmation_status": "confirmed",
+                "confirmed_scope": "complete-bank-switched-pointer-effects",
+                "sources": [
+                  {
+                    "id": "mapped-closure:0201D4:94",
+                    "resource_id": "ui-facility",
+                    "space": "prg",
+                    "offset": 131540,
+                    "length": 94,
+                    "bytes_hex": "A202A02EBD7864F00EBD7B641009C9FFF001C8989D2C03CA10E83053A203A9009D3005CA10FAA203A5E5F00ACABD7864F028A5E5D015BC6467301FB91767A4E2C075B011397482F011D00AA4E2BDF6E6397482F005A9159D3005CA10D060"
+                  },
+                  {
+                    "id": "mapped-closure:020243:25",
+                    "resource_id": "ui-facility",
+                    "space": "prg",
+                    "offset": 131651,
+                    "length": 25,
+                    "bytes_hex": "A9E98500A203A91F9D3C0338A500E9109D4C038500CA10EE60"
+                  },
+                  {
+                    "id": "mapped-closure:07D414:27",
+                    "resource_id": "code-module:prg-bank-mapping-service",
+                    "space": "prg",
+                    "offset": 513044,
+                    "length": 27,
+                    "bytes_hex": "E421F0168621A53448A9FF8534A987788D00808E01805868853460"
+                  },
+                  {
+                    "id": "mapped-closure:07EEB3:9",
+                    "resource_id": "ui-facility",
+                    "space": "prg",
+                    "offset": 519859,
+                    "length": 9,
+                    "bytes_hex": "20FCFA20D4A14C1AF5"
+                  },
+                  {
+                    "id": "mapped-closure:07F51A:5",
+                    "resource_id": "code-module:prg-bank-mapping-service",
+                    "space": "prg",
+                    "offset": 521498,
+                    "length": 5,
+                    "bytes_hex": "A2184C14D4"
+                  },
+                  {
+                    "id": "mapped-closure:07FAFC:5",
+                    "resource_id": "code-module:prg-bank-mapping-service",
+                    "space": "prg",
+                    "offset": 523004,
+                    "length": 5,
+                    "bytes_hex": "A2104C14D4"
+                  }
+                ],
+                "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              }
+            },
+            {
+              "opcode": 195,
+              "operands": [],
+              "prg_offset": 201952,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 29,
+                  "offset": 201952,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 247,
+              "operands": [
+                1,
+                7,
+                1
+              ],
+              "prg_offset": 201953,
+              "length": 4,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 30,
+                  "offset": 201953,
+                  "length": 4,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 247,
+            "opcode_hex": "0xF7",
+            "operands": [
+              1,
+              7,
+              1
+            ],
+            "operands_hex": [
+              "0x01",
+              "0x07",
+              "0x01"
+            ],
+            "expected_operand_count": 3,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 30,
+            "prg_offset": 201953,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:07",
+              "application-dialogue-flow:2F:segment:01"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              1,
+              2
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 31,
+                "offset": 201954,
+                "length": 3,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 3,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201948,
+            "end_exclusive": 201957,
+            "length": 9,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 25,
+              "offset": 201948,
+              "length": 9,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 25,
+              "offset": 201948,
+              "length": 9,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 6,
+            "pointer_before_first_read": 46299,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:07",
+          "index": 7,
+          "script_relative_offset": 34,
+          "prg_offset": 201957,
+          "length": 4,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [],
+          "operations": [
+            {
+              "opcode": 194,
+              "operands": [],
+              "prg_offset": 201957,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 34,
+                  "offset": 201957,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 222,
+              "operands": [
+                11,
+                8
+              ],
+              "prg_offset": 201958,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 35,
+                  "offset": 201958,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 222,
+            "opcode_hex": "0xDE",
+            "operands": [
+              11,
+              8
+            ],
+            "operands_hex": [
+              "0x0B",
+              "0x08"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 35,
+            "prg_offset": 201958,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:11",
+              "application-dialogue-flow:2F:segment:08"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 36,
+                "offset": 201959,
+                "length": 2,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 4,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201957,
+            "end_exclusive": 201961,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 34,
+              "offset": 201957,
+              "length": 4,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 34,
+              "offset": 201957,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 7,
+            "pointer_before_first_read": 46308,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:08",
+          "index": 8,
+          "script_relative_offset": 38,
+          "prg_offset": 201961,
+          "length": 4,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:08:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 6,
+              "segment_id": "application-dialogue-flow:2F:segment:08",
+              "segment_index": 8,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 90,
+              "record_id_hex": "0x5A",
+              "record": "record:06:090",
+              "source": "application-vm-literal",
+              "script_relative_offset": 38,
+              "prg_offset": 201961,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 38,
+                  "offset": 201961,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 213,
+              "operands": [
+                1,
+                4
+              ],
+              "prg_offset": 201962,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 39,
+                  "offset": 201962,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 213,
+            "opcode_hex": "0xD5",
+            "operands": [
+              1,
+              4
+            ],
+            "operands_hex": [
+              "0x01",
+              "0x04"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 39,
+            "prg_offset": 201962,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:01",
+              "application-dialogue-flow:2F:segment:04"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 40,
+                "offset": 201963,
+                "length": 2,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 5,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201961,
+            "end_exclusive": 201965,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 38,
+              "offset": 201961,
+              "length": 4,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 38,
+              "offset": 201961,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 8,
+            "pointer_before_first_read": 46312,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:09",
+          "index": 9,
+          "script_relative_offset": 42,
+          "prg_offset": 201965,
+          "length": 3,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:09:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 7,
+              "segment_id": "application-dialogue-flow:2F:segment:09",
+              "segment_index": 9,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 88,
+              "record_id_hex": "0x58",
+              "record": "record:06:088",
+              "source": "application-vm-literal",
+              "script_relative_offset": 42,
+              "prg_offset": 201965,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 42,
+                  "offset": 201965,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            },
+            {
+              "id": "application-dialogue-flow:2F:segment:09:action:01",
+              "kind": "text-record",
+              "physical_dialogue_order": 8,
+              "segment_id": "application-dialogue-flow:2F:segment:09",
+              "segment_index": 9,
+              "action_index": 1,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 94,
+              "record_id_hex": "0x5E",
+              "record": "record:06:094",
+              "source": "application-vm-literal",
+              "script_relative_offset": 43,
+              "prg_offset": 201966,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 43,
+                  "offset": 201966,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 255,
+              "operands": [],
+              "prg_offset": 201967,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 44,
+                  "offset": 201967,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 255,
+            "opcode_hex": "0xFF",
+            "operands": [],
+            "operands_hex": [],
+            "expected_operand_count": 0,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 44,
+            "prg_offset": 201967,
+            "successor_segment_ids": [],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [],
+            "successor_semantics": "none-confirmed",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": []
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 4,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201965,
+            "end_exclusive": 201968,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 42,
+              "offset": 201965,
+              "length": 3,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 42,
+              "offset": 201965,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 9,
+            "pointer_before_first_read": 46316,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:10",
+          "index": 10,
+          "script_relative_offset": 45,
+          "prg_offset": 201968,
+          "length": 6,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [
+            {
+              "id": "application-dialogue-flow:2F:segment:10:action:00",
+              "kind": "text-record",
+              "physical_dialogue_order": 9,
+              "segment_id": "application-dialogue-flow:2F:segment:10",
+              "segment_index": 10,
+              "action_index": 0,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 93,
+              "record_id_hex": "0x5D",
+              "record": "record:06:093",
+              "source": "application-vm-literal",
+              "script_relative_offset": 45,
+              "prg_offset": 201968,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 45,
+                  "offset": 201968,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            },
+            {
+              "id": "application-dialogue-flow:2F:segment:10:action:01",
+              "kind": "text-record",
+              "physical_dialogue_order": 10,
+              "segment_id": "application-dialogue-flow:2F:segment:10",
+              "segment_index": 10,
+              "action_index": 1,
+              "region_id": 6,
+              "region_id_hex": "0x06",
+              "record_id": 94,
+              "record_id_hex": "0x5E",
+              "record": "record:06:094",
+              "source": "application-vm-literal",
+              "script_relative_offset": 49,
+              "prg_offset": 201972,
+              "region_selection": {
+                "kind": "application-entry-region",
+                "value": 6,
+                "resource_id": "code-module:application-dialogue-flow-vm",
+                "offset": 196622,
+                "length": 5,
+                "confirmation_status": "confirmed"
+              },
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 49,
+                  "offset": 201972,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "reachability": "graph-reachable"
+            }
+          ],
+          "operations": [
+            {
+              "opcode": 210,
+              "operands": [
+                235,
+                161
+              ],
+              "prg_offset": 201969,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 46,
+                  "offset": 201969,
+                  "length": 3,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate",
+              "script_consumption": {
+                "helper": "bank-18-entry-A1EB",
+                "source_ids": [
+                  "closure:0301EB:9"
+                ],
+                "reads": [],
+                "continuation": "return",
+                "pointer_effect": {
+                  "kind": "unchanged"
+                },
+                "execution_condition": "The declared callback entry reaches only the listed instruction closure; all transfers resolve without mapper changes or indirect jumps, and no instruction accesses BA/BB. FA99 additionally requires its declared tile-buffer rectangle.",
+                "confirmation_status": "confirmed",
+                "confirmed_scope": "complete-transitive-pointer-effects",
+                "sources": [
+                  {
+                    "id": "closure:0301EB:9",
+                    "resource_id": "application-command",
+                    "space": "prg",
+                    "offset": 197099,
+                    "length": 9,
+                    "bytes_hex": "A6D11E7B645E7B6460"
+                  }
+                ],
+                "evidence": "project/evidence/reverse-engineering/facility-callback-script-reads/observations.json"
+              }
+            },
+            {
+              "opcode": 255,
+              "operands": [],
+              "prg_offset": 201973,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 50,
+                  "offset": 201973,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 255,
+            "opcode_hex": "0xFF",
+            "operands": [],
+            "operands_hex": [],
+            "expected_operand_count": 0,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 50,
+            "prg_offset": 201973,
+            "successor_segment_ids": [],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [],
+            "successor_semantics": "none-confirmed",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": []
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 6,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201968,
+            "end_exclusive": 201974,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 45,
+              "offset": 201968,
+              "length": 6,
+              "access": "read-reference"
+            }
+          ],
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 45,
+              "offset": 201968,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 10,
+            "pointer_before_first_read": 46319,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:11",
+          "index": 11,
+          "script_relative_offset": 51,
+          "prg_offset": 201974,
+          "length": 4,
+          "text_region_at_entry": 6,
+          "text_region_at_exit": 6,
+          "actions": [],
+          "operations": [
+            {
+              "opcode": 188,
+              "operands": [],
+              "prg_offset": 201974,
+              "length": 1,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 51,
+                  "offset": 201974,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            },
+            {
+              "opcode": 216,
+              "operands": [
+                9,
+                10
+              ],
+              "prg_offset": 201975,
+              "length": 3,
+              "truncated": false,
+              "read_references": [
+                {
+                  "source_id": "application-command:2F",
+                  "resource_id": "application-command:2F",
+                  "source_relative_offset": 52,
+                  "offset": 201975,
+                  "length": 2,
+                  "access": "read-reference"
+                },
+                {
+                  "source_id": "application-command:17",
+                  "resource_id": "application-command:17",
+                  "source_relative_offset": 0,
+                  "offset": 201977,
+                  "length": 1,
+                  "access": "read-reference"
+                }
+              ],
+              "confirmation_status": "candidate"
+            }
+          ],
+          "terminator": {
+            "opcode": 216,
+            "opcode_hex": "0xD8",
+            "operands": [
+              9,
+              10
+            ],
+            "operands_hex": [
+              "0x09",
+              "0x0A"
+            ],
+            "expected_operand_count": 2,
+            "truncated": false,
+            "is_segment_terminator": true,
+            "reason": "application-vm-segment-terminator",
+            "script_relative_offset": 52,
+            "prg_offset": 201975,
+            "successor_segment_ids": [
+              "application-dialogue-flow:2F:segment:09",
+              "application-dialogue-flow:2F:segment:10"
+            ],
+            "unresolved_successor_values": [],
+            "terminal_successor_values": [],
+            "successor_operand_indices": [
+              0,
+              1
+            ],
+            "successor_semantics": "candidate-opcode-segment-links",
+            "operand_width_status": "confirmed",
+            "operand_width_evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "confirmation_status": "candidate",
+            "operand_read_references": [
+              {
+                "source_id": "application-command:2F",
+                "resource_id": "application-command:2F",
+                "source_relative_offset": 53,
+                "offset": 201976,
+                "length": 1,
+                "access": "read-reference"
+              },
+              {
+                "source_id": "application-command:17",
+                "resource_id": "application-command:17",
+                "source_relative_offset": 0,
+                "offset": 201977,
+                "length": 1,
+                "access": "read-reference"
+              }
+            ]
+          },
+          "entry_graph_reachable": true,
+          "entry_graph_distance": 5,
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable",
+          "runtime_execution_confirmed": false,
+          "segment_selection_scan": {
+            "offset": 201974,
+            "end_exclusive": 201978,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 51,
+              "offset": 201974,
+              "length": 3,
+              "access": "read-reference"
+            },
+            {
+              "source_id": "application-command:17",
+              "resource_id": "application-command:17",
+              "source_relative_offset": 0,
+              "offset": 201977,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "envelope_boundary": {
+            "offset": 201977,
+            "conclusion": "continued-through-next-entry",
+            "confirmation_status": "candidate",
+            "reading_rule_status": "confirmed",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json",
+            "extension_length": 1
+          },
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 51,
+              "offset": 201974,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:17",
+              "resource_id": "application-command:17",
+              "source_relative_offset": 0,
+              "offset": 201977,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "execution_role": "unconfirmed",
+          "role_evidence": "project/evidence/reverse-engineering/facility-segment-roles/observations.json",
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 11,
+            "pointer_before_first_read": 46325,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "callback_reads": []
+        }
+      ],
+      "steps": [
+        {
+          "id": "application-dialogue-flow:2F:segment:00:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 0,
+          "segment_id": "application-dialogue-flow:2F:segment:00",
+          "segment_index": 0,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 13,
+          "record_id_hex": "0x0D",
+          "record": "record:06:013",
+          "source": "application-vm-literal",
+          "script_relative_offset": 2,
+          "prg_offset": 201925,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 2,
+              "offset": 201925,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:00:action:01",
+          "kind": "text-record",
+          "physical_dialogue_order": 1,
+          "segment_id": "application-dialogue-flow:2F:segment:00",
+          "segment_index": 0,
+          "action_index": 1,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 95,
+          "record_id_hex": "0x5F",
+          "record": "record:06:095",
+          "source": "application-vm-literal",
+          "script_relative_offset": 3,
+          "prg_offset": 201926,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 3,
+              "offset": 201926,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:01:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 2,
+          "segment_id": "application-dialogue-flow:2F:segment:01",
+          "segment_index": 1,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 94,
+          "record_id_hex": "0x5E",
+          "record": "record:06:094",
+          "source": "application-vm-literal",
+          "script_relative_offset": 7,
+          "prg_offset": 201930,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 7,
+              "offset": 201930,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:03:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 3,
+          "segment_id": "application-dialogue-flow:2F:segment:03",
+          "segment_index": 3,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 87,
+          "record_id_hex": "0x57",
+          "record": "record:06:087",
+          "source": "application-vm-literal",
+          "script_relative_offset": 15,
+          "prg_offset": 201938,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 15,
+              "offset": 201938,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:03:action:01",
+          "kind": "text-record",
+          "physical_dialogue_order": 4,
+          "segment_id": "application-dialogue-flow:2F:segment:03",
+          "segment_index": 3,
+          "action_index": 1,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 94,
+          "record_id_hex": "0x5E",
+          "record": "record:06:094",
+          "source": "application-vm-literal",
+          "script_relative_offset": 16,
+          "prg_offset": 201939,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 16,
+              "offset": 201939,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:06:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 5,
+          "segment_id": "application-dialogue-flow:2F:segment:06",
+          "segment_index": 6,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 89,
+          "record_id_hex": "0x59",
+          "record": "record:06:089",
+          "source": "application-vm-literal",
+          "script_relative_offset": 25,
+          "prg_offset": 201948,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 25,
+              "offset": 201948,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:08:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 6,
+          "segment_id": "application-dialogue-flow:2F:segment:08",
+          "segment_index": 8,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 90,
+          "record_id_hex": "0x5A",
+          "record": "record:06:090",
+          "source": "application-vm-literal",
+          "script_relative_offset": 38,
+          "prg_offset": 201961,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 38,
+              "offset": 201961,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:09:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 7,
+          "segment_id": "application-dialogue-flow:2F:segment:09",
+          "segment_index": 9,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 88,
+          "record_id_hex": "0x58",
+          "record": "record:06:088",
+          "source": "application-vm-literal",
+          "script_relative_offset": 42,
+          "prg_offset": 201965,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 42,
+              "offset": 201965,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:09:action:01",
+          "kind": "text-record",
+          "physical_dialogue_order": 8,
+          "segment_id": "application-dialogue-flow:2F:segment:09",
+          "segment_index": 9,
+          "action_index": 1,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 94,
+          "record_id_hex": "0x5E",
+          "record": "record:06:094",
+          "source": "application-vm-literal",
+          "script_relative_offset": 43,
+          "prg_offset": 201966,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 43,
+              "offset": 201966,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:10:action:00",
+          "kind": "text-record",
+          "physical_dialogue_order": 9,
+          "segment_id": "application-dialogue-flow:2F:segment:10",
+          "segment_index": 10,
+          "action_index": 0,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 93,
+          "record_id_hex": "0x5D",
+          "record": "record:06:093",
+          "source": "application-vm-literal",
+          "script_relative_offset": 45,
+          "prg_offset": 201968,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 45,
+              "offset": 201968,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:10:action:01",
+          "kind": "text-record",
+          "physical_dialogue_order": 10,
+          "segment_id": "application-dialogue-flow:2F:segment:10",
+          "segment_index": 10,
+          "action_index": 1,
+          "region_id": 6,
+          "region_id_hex": "0x06",
+          "record_id": 94,
+          "record_id_hex": "0x5E",
+          "record": "record:06:094",
+          "source": "application-vm-literal",
+          "script_relative_offset": 49,
+          "prg_offset": 201972,
+          "region_selection": {
+            "kind": "application-entry-region",
+            "value": 6,
+            "resource_id": "code-module:application-dialogue-flow-vm",
+            "offset": 196622,
+            "length": 5,
+            "confirmation_status": "confirmed"
+          },
+          "read_references": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 49,
+              "offset": 201972,
+              "length": 1,
+              "access": "read-reference"
+            }
+          ],
+          "confirmation_status": "candidate",
+          "reachability": "graph-reachable"
+        }
+      ],
+      "step_order_semantics": "physical-source-order-not-runtime-timeline",
+      "graph": {
+        "edge_semantics": "candidate-opcode-specific-segment-links",
+        "timeline_inferred": false,
+        "edges": [
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:00",
+            "target_segment_id": "application-dialogue-flow:2F:segment:02",
+            "kind": "opcode-successor",
+            "opcode": 213,
+            "opcode_hex": "0xD5",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:02",
+            "target_segment_id": "application-dialogue-flow:2F:segment:04",
+            "kind": "opcode-successor",
+            "opcode": 220,
+            "opcode_hex": "0xDC",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:02",
+            "target_segment_id": "application-dialogue-flow:2F:segment:03",
+            "kind": "opcode-successor",
+            "opcode": 220,
+            "opcode_hex": "0xDC",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:04",
+            "target_segment_id": "application-dialogue-flow:2F:segment:05",
+            "kind": "opcode-successor",
+            "opcode": 219,
+            "opcode_hex": "0xDB",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:04",
+            "target_segment_id": "application-dialogue-flow:2F:segment:06",
+            "kind": "opcode-successor",
+            "opcode": 219,
+            "opcode_hex": "0xDB",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:05",
+            "target_segment_id": "application-dialogue-flow:2F:segment:09",
+            "kind": "opcode-successor",
+            "opcode": 209,
+            "opcode_hex": "0xD1",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:06",
+            "target_segment_id": "application-dialogue-flow:2F:segment:07",
+            "kind": "opcode-successor",
+            "opcode": 247,
+            "opcode_hex": "0xF7",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:06",
+            "target_segment_id": "application-dialogue-flow:2F:segment:01",
+            "kind": "opcode-successor",
+            "opcode": 247,
+            "opcode_hex": "0xF7",
+            "operand_index": 2,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:07",
+            "target_segment_id": "application-dialogue-flow:2F:segment:11",
+            "kind": "opcode-successor",
+            "opcode": 222,
+            "opcode_hex": "0xDE",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:07",
+            "target_segment_id": "application-dialogue-flow:2F:segment:08",
+            "kind": "opcode-successor",
+            "opcode": 222,
+            "opcode_hex": "0xDE",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:08",
+            "target_segment_id": "application-dialogue-flow:2F:segment:01",
+            "kind": "opcode-successor",
+            "opcode": 213,
+            "opcode_hex": "0xD5",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:08",
+            "target_segment_id": "application-dialogue-flow:2F:segment:04",
+            "kind": "opcode-successor",
+            "opcode": 213,
+            "opcode_hex": "0xD5",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:11",
+            "target_segment_id": "application-dialogue-flow:2F:segment:09",
+            "kind": "opcode-successor",
+            "opcode": 216,
+            "opcode_hex": "0xD8",
+            "operand_index": 0,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          },
+          {
+            "source_segment_id": "application-dialogue-flow:2F:segment:11",
+            "target_segment_id": "application-dialogue-flow:2F:segment:10",
+            "kind": "opcode-successor",
+            "opcode": 216,
+            "opcode_hex": "0xD8",
+            "operand_index": 1,
+            "confirmation_status": "candidate",
+            "reachability": "graph-reachable",
+            "runtime_execution_confirmed": false
+          }
+        ],
+        "entry_reachable_segment_ids": [
+          "application-dialogue-flow:2F:segment:00",
+          "application-dialogue-flow:2F:segment:01",
+          "application-dialogue-flow:2F:segment:02",
+          "application-dialogue-flow:2F:segment:03",
+          "application-dialogue-flow:2F:segment:04",
+          "application-dialogue-flow:2F:segment:05",
+          "application-dialogue-flow:2F:segment:06",
+          "application-dialogue-flow:2F:segment:07",
+          "application-dialogue-flow:2F:segment:08",
+          "application-dialogue-flow:2F:segment:09",
+          "application-dialogue-flow:2F:segment:10",
+          "application-dialogue-flow:2F:segment:11"
+        ],
+        "unreached_segment_ids": []
+      },
+      "summary": {
+        "segments": 12,
+        "dialogue_steps": 11,
+        "static_text_steps": 11,
+        "runtime_text_steps": 0,
+        "resolved_runtime_text_steps": 0,
+        "unique_resolved_slot_records": 0,
+        "indexed_segment_tables": 0,
+        "indexed_segment_alternatives": 0,
+        "unique_static_records": 8,
+        "confirmed_graph_edges": 0,
+        "candidate_graph_edges": 14,
+        "entry_graph_reachable_segments": 12,
+        "entry_graph_unreached_segments": 0,
+        "truncated_segments": 0,
+        "reviewed_segments": 12,
+        "non_script_segments": 0,
+        "callback_reads": 0
+      },
+      "non_script_segments": [],
+      "alternate_text_reads": [],
+      "segment_role_reviews": [
+        {
+          "id": "application-dialogue-flow:2F:segment:00",
+          "index": 0,
+          "prg_offset": 201924,
+          "length": 6,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 1,
+              "offset": 201924,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201924,
+            "end_exclusive": 201930,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 0,
+            "pointer_before_first_read": 46275,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:01",
+          "index": 1,
+          "prg_offset": 201930,
+          "length": 2,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 7,
+              "offset": 201930,
+              "length": 2,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201930,
+            "end_exclusive": 201932,
+            "length": 2,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 1,
+            "pointer_before_first_read": 46281,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:02",
+          "index": 2,
+          "prg_offset": 201932,
+          "length": 6,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 9,
+              "offset": 201932,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201932,
+            "end_exclusive": 201938,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 2,
+            "pointer_before_first_read": 46283,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:03",
+          "index": 3,
+          "prg_offset": 201938,
+          "length": 3,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 15,
+              "offset": 201938,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201938,
+            "end_exclusive": 201941,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 3,
+            "pointer_before_first_read": 46289,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:04",
+          "index": 4,
+          "prg_offset": 201941,
+          "length": 3,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 18,
+              "offset": 201941,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201941,
+            "end_exclusive": 201944,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 4,
+            "pointer_before_first_read": 46292,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:05",
+          "index": 5,
+          "prg_offset": 201944,
+          "length": 4,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 21,
+              "offset": 201944,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201944,
+            "end_exclusive": 201948,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 5,
+            "pointer_before_first_read": 46295,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:06",
+          "index": 6,
+          "prg_offset": 201948,
+          "length": 9,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 25,
+              "offset": 201948,
+              "length": 9,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201948,
+            "end_exclusive": 201957,
+            "length": 9,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 6,
+            "pointer_before_first_read": 46299,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:07",
+          "index": 7,
+          "prg_offset": 201957,
+          "length": 4,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 34,
+              "offset": 201957,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201957,
+            "end_exclusive": 201961,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 7,
+            "pointer_before_first_read": 46308,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:08",
+          "index": 8,
+          "prg_offset": 201961,
+          "length": 4,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 38,
+              "offset": 201961,
+              "length": 4,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201961,
+            "end_exclusive": 201965,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 8,
+            "pointer_before_first_read": 46312,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:09",
+          "index": 9,
+          "prg_offset": 201965,
+          "length": 3,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 42,
+              "offset": 201965,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201965,
+            "end_exclusive": 201968,
+            "length": 3,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 9,
+            "pointer_before_first_read": 46316,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:10",
+          "index": 10,
+          "prg_offset": 201968,
+          "length": 6,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 45,
+              "offset": 201968,
+              "length": 6,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201968,
+            "end_exclusive": 201974,
+            "length": 6,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 10,
+            "pointer_before_first_read": 46319,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        },
+        {
+          "id": "application-dialogue-flow:2F:segment:11",
+          "index": 11,
+          "prg_offset": 201974,
+          "length": 4,
+          "execution_role": "unconfirmed",
+          "confirmation_status": "candidate",
+          "execution_roles": [
+            {
+              "source_id": "application-command:2F",
+              "resource_id": "application-command:2F",
+              "source_relative_offset": 51,
+              "offset": 201974,
+              "length": 3,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            },
+            {
+              "source_id": "application-command:17",
+              "resource_id": "application-command:17",
+              "source_relative_offset": 0,
+              "offset": 201977,
+              "length": 1,
+              "access": "read-reference",
+              "kind": "unconfirmed",
+              "confirmation_status": "candidate"
+            }
+          ],
+          "segment_selection_scan": {
+            "offset": 201974,
+            "end_exclusive": 201978,
+            "length": 4,
+            "confirmation_status": "confirmed",
+            "scope": "segment-selection-scan-only",
+            "evidence": "project/evidence/reverse-engineering/application-dialogue-pointer-and-dispatch-contracts/observations.json"
+          },
+          "application_read_condition": {
+            "selector_entry_cpu": 41068,
+            "interpreter_entry_cpu": 41242,
+            "command_selector": 31,
+            "segment_selector": 11,
+            "pointer_before_first_read": 46325,
+            "mapper_bank": 24,
+            "confirmation_status": "confirmed",
+            "scope": "controlled-segment-selection-only",
+            "natural_entry_status": "unconfirmed",
+            "interpretation_matches_selection_scan": true
+          },
+          "disposition": "application-catalogue",
+          "callback_reads": [],
+          "callback_continuation": null
+        }
+      ]
+    },
+    "shared_script_command_ids": [
+      47
+    ],
+    "shared_script_command_ids_hex": [
+      "0x2F"
+    ]
+  }
+}

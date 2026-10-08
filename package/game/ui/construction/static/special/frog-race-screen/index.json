@@ -1,0 +1,267 @@
+{
+  "id": "frog-race-screen",
+  "label": "青蛙赛跑整屏画面",
+  "kind": "rom-fullscreen-ui",
+  "width": 256,
+  "height": 240,
+  "visual_signature": "5a324aeef86fd287ad4f63094a749503242c25784b9f5d4ac359a64de7c2595b",
+  "sources": {
+    "nametable": {
+      "length": 1024,
+      "address": {
+        "space": "chr",
+        "offset": 235520,
+        "length": 1024,
+        "end_exclusive": 236544
+      },
+      "path": "static/special/frog-race-screen/nametable-e6.bin",
+      "sha256": "8b625d439a05303ee723970191dd0e1b321191d4c6b2567e488bcd2fed0cce10",
+      "bank": 230,
+      "bank_hex": "0xE6"
+    },
+    "background_patterns": [
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 204800,
+          "length": 1024,
+          "end_exclusive": 205824
+        },
+        "sha256": "1b5e9d5ba91f26086dd983ca1907e996e4d6e8d7c3a9498ae1e83d0dbb6449f2",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 200
+        },
+        "bank": 200,
+        "bank_hex": "0xC8",
+        "first_row": 0,
+        "last_row": 17,
+        "first_tile": 128,
+        "last_tile": 191,
+        "tile_range": "0x80-0xBF"
+      },
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 205824,
+          "length": 1024,
+          "end_exclusive": 206848
+        },
+        "sha256": "dd8f49d2015fc160beb1ebe4434860c860739852bcf15d034bcc00c4ce8c8693",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 201
+        },
+        "bank": 201,
+        "bank_hex": "0xC9",
+        "first_row": 0,
+        "last_row": 17,
+        "first_tile": 192,
+        "last_tile": 255,
+        "tile_range": "0xC0-0xFF"
+      },
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 10240,
+          "length": 1024,
+          "end_exclusive": 11264
+        },
+        "sha256": "57d4090a583f46117661b962cff04502e4ef2b40987dbd7f0f8d746324589b3c",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 10
+        },
+        "bank": 10,
+        "bank_hex": "0x0A",
+        "first_row": 18,
+        "last_row": 29,
+        "first_tile": 128,
+        "last_tile": 191,
+        "tile_range": "0x80-0xBF"
+      },
+      {
+        "length": 1024,
+        "address": {
+          "space": "chr",
+          "offset": 205824,
+          "length": 1024,
+          "end_exclusive": 206848
+        },
+        "sha256": "dd8f49d2015fc160beb1ebe4434860c860739852bcf15d034bcc00c4ce8c8693",
+        "web_source": {
+          "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+          "resource_id": "shared-chr-bank",
+          "bank": 201
+        },
+        "bank": 201,
+        "bank_hex": "0xC9",
+        "first_row": 18,
+        "last_row": 29,
+        "first_tile": 192,
+        "last_tile": 255,
+        "tile_range": "0xC0-0xFF"
+      }
+    ]
+  },
+  "palette": {
+    "expanded_hex": "0F 30 32 21 0F 30 25 15 0F 30 2A 17 0F 30 10 00 0F 37 0F 18 0F 30 2A 0F 0F 30 28 0F 0F 30 25 0F",
+    "confidence": "runtime-observed",
+    "note": "构造代码逐色写入，ROM 中没有连续的调色板表；此处为隔离 trace 的观察值，只用于预览着色，不计入静态覆盖率"
+  },
+  "fillable_regions": {
+    "blank_tile": 255,
+    "blank_tile_hex": "0xFF",
+    "count": 16,
+    "cells": 276,
+    "note": "$FF 是这套图块的窗口内空白；12x12 中文字形、核心字体数字和脚本 VM 写入的消息都只落在这些段内。段本身比实际写入范围宽，不等于逐字段的槽位边界。",
+    "regions": [
+      {
+        "id": "slot:00:00",
+        "row": 0,
+        "first_column": 0,
+        "last_column": 31,
+        "width": 32,
+        "logical_position": 0
+      },
+      {
+        "id": "slot:01:00",
+        "row": 1,
+        "first_column": 0,
+        "last_column": 31,
+        "width": 32,
+        "logical_position": 32
+      },
+      {
+        "id": "slot:19:01",
+        "row": 19,
+        "first_column": 1,
+        "last_column": 10,
+        "width": 10,
+        "logical_position": 609
+      },
+      {
+        "id": "slot:19:12",
+        "row": 19,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 620
+      },
+      {
+        "id": "slot:20:01",
+        "row": 20,
+        "first_column": 1,
+        "last_column": 10,
+        "width": 10,
+        "logical_position": 641
+      },
+      {
+        "id": "slot:20:12",
+        "row": 20,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 652
+      },
+      {
+        "id": "slot:21:01",
+        "row": 21,
+        "first_column": 1,
+        "last_column": 10,
+        "width": 10,
+        "logical_position": 673
+      },
+      {
+        "id": "slot:21:12",
+        "row": 21,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 684
+      },
+      {
+        "id": "slot:22:01",
+        "row": 22,
+        "first_column": 1,
+        "last_column": 10,
+        "width": 10,
+        "logical_position": 705
+      },
+      {
+        "id": "slot:22:12",
+        "row": 22,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 716
+      },
+      {
+        "id": "slot:23:01",
+        "row": 23,
+        "first_column": 1,
+        "last_column": 10,
+        "width": 10,
+        "logical_position": 737
+      },
+      {
+        "id": "slot:23:12",
+        "row": 23,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 748
+      },
+      {
+        "id": "slot:24:12",
+        "row": 24,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 780
+      },
+      {
+        "id": "slot:25:12",
+        "row": 25,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 812
+      },
+      {
+        "id": "slot:26:12",
+        "row": 26,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 844
+      },
+      {
+        "id": "slot:27:12",
+        "row": 27,
+        "first_column": 12,
+        "last_column": 29,
+        "width": 18,
+        "logical_position": 876
+      }
+    ]
+  },
+  "runtime_contract": {
+    "nametable_source": "CHR bank $E6 -> RAM $6000-$63FF -> PPU nametable",
+    "background_pattern_table": "PPU $0800-$0FFF 供 tile $80-$FF；第 0-17 行用 $C8/$C9，第 18-29 行用 $0A/$C9",
+    "core_font": "PRG $047800-$048000 上传到 CHR-RAM 的 tile $00-$7F",
+    "investigation_commands": [
+      "0x32"
+    ]
+  },
+  "writeback": {
+    "mode": "preview-only",
+    "constraint": "all physical sources are fixed-size and read-only"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.tank-item",
+  "resource_id": "tank-item:DD",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 221,
+    "id_hex": "0xDD",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 221,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "tank-item",
+      "name": "战车道具",
+      "owner": "tank",
+      "first_id": 203,
+      "first_id_hex": "0xCB",
+      "last_id": 221,
+      "last_id_hex": "0xDD"
+    },
+    "price": {
+      "raw_code": 255,
+      "raw_code_hex": "0xFF",
+      "available": false,
+      "value": null,
+      "source": {
+        "space": "prg",
+        "offset": 140590,
+        "length": 1,
+        "end_exclusive": 140591,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-rejected",
+      "registered": false,
+      "dispatch_index": null,
+      "dispatch_index_hex": null,
+      "target_required": false,
+      "handler": null,
+      "effect_family": {
+        "id": "upper-bound-rejection",
+        "label": "工具 ID 上限检查拒绝",
+        "detail": "$A3CE-$A3D4 在调度表之前拒绝 ID $DC-$DD"
+      },
+      "consumption": "never",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "rejection-message",
+          "label": "工具 ID 上限拒绝提示",
+          "condition": "always",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 169,
+            "record_id_hex": "0xA9",
+            "node_id": "record:02:169"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 205779,
+              "length": 1,
+              "end_exclusive": 205780,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205756,
+          "length": 25,
+          "end_exclusive": 205781,
+          "cpu_address": 41916,
+          "confidence": "confirmed",
+          "width": 25
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_DD.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-unregistered",
+      "registered": false,
+      "dispatch_index": null,
+      "dispatch_index_hex": null,
+      "result_selector": 145,
+      "result_selector_hex": "0x91",
+      "inventory_domain": "vehicle",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "默认结果脚本依次显示使用提示与无效果提示",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 21,
+            "record_id_hex": "0x15",
+            "node_id": "record:0A:021"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146420,
+              "length": 1,
+              "end_exclusive": 146421,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        },
+        {
+          "role": "no-effect-message",
+          "label": "未登记工具的无效果结果",
+          "condition": "未登记工具进入默认结果脚本",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 58,
+            "record_id_hex": "0x3A",
+            "node_id": "record:0A:058"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [],
+          "algorithm": "the default battle-result branch selects this message downstream; $A72C renders it and $EB31 fixes region $0A"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190669,
+          "length": 1,
+          "end_exclusive": 190670,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss"
+      }
+    },
+    "semantic_status": "field-use-rejected"
+  }
+}

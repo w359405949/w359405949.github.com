@@ -1,0 +1,120 @@
+body[data-page="battleactors"] {
+.battle-actor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.battle-actor-head h2,
+.battle-actor-head p,
+.battle-actor-editor h3 { margin: 0; }
+.battle-actor-head > div:first-child { display: grid; gap: 5px; }
+.battle-actor-video-controls,
+.battle-actor-apply-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.battle-actor-roster-head {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.battle-actor-roster-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.battle-actor-roster-row:hover { background: var(--surface-2); }
+.battle-actor-roster-row.is-selected {
+  box-shadow: inset 4px 0 var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--panel));
+}
+.battle-actor-roster-row canvas {
+  display: block;
+  background: #000;
+  image-rendering: pixelated;
+}
+.battle-actor-roster-row span { display: grid; gap: 4px; min-width: 0; }
+.battle-actor-roster-row small { color: var(--muted); }
+
+.battle-actor-stage-copy {
+  align-content: center;
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  padding: 14px 18px;
+}
+
+.battle-actor-action-editor,
+.battle-actor-source { border-bottom: 1px solid var(--line); }
+.battle-actor-action-editor > header,
+.battle-actor-source > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.battle-actor-action-list { display: grid; }
+.battle-actor-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 18px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.battle-actor-action-row:last-child { border-bottom: 0; }
+.battle-actor-action-row:hover { background: var(--surface-2); }
+.battle-actor-action-row.is-selected {
+  box-shadow: inset 4px 0 var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--panel));
+}
+.battle-actor-action-row > span:first-child { display: grid; gap: 3px; }
+.battle-actor-action-row small { color: var(--muted); }
+
+.battle-actor-source dl { margin: 0; }
+.battle-actor-source dl > div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+.battle-actor-source dl > div:last-child { border-bottom: 0; }
+.battle-actor-source dt,
+.battle-actor-source dd { margin: 0; padding: 9px 18px; }
+.battle-actor-source dt { color: var(--muted); border-right: 1px solid var(--line); }
+.battle-actor-source dd { font-family: var(--mono); }
+
+@media (max-width: 980px) {
+  .battle-actor-head { align-items: stretch; flex-direction: column; }
+}
+}

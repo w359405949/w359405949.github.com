@@ -1,0 +1,57 @@
+{
+  "schema": "metalmaxcn.module-asset.battle-party-vertical-layout",
+  "resource_id": "battle-party-vertical-layout",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via battle owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.battle-party-vertical-layout",
+    "module_id": "battle-party-vertical-layout",
+    "owned_byte_count": 6,
+    "parameters": [
+      {
+        "role": "队伍槽位 0 的 Y 原点",
+        "value": 56
+      },
+      {
+        "role": "队伍槽位 1 的 Y 原点",
+        "value": 88
+      },
+      {
+        "role": "队伍槽位 2 的 Y 原点；在场人数 0 的 Y 基线",
+        "value": 120
+      },
+      {
+        "role": "在场人数 1 的 Y 基线",
+        "value": 32
+      },
+      {
+        "role": "在场人数 2 的 Y 基线",
+        "value": 16
+      },
+      {
+        "role": "在场人数 3 的 Y 基线",
+        "value": 0
+      }
+    ],
+    "writeback_components": [
+      {
+        "fragment_id": "battle-party-vertical-layout.shared-party-y-origins",
+        "source": {
+          "space": "prg",
+          "offset": 188593,
+          "length": 6,
+          "end_exclusive": 188599
+        },
+        "fields": [
+          "parameters[*].value"
+        ]
+      }
+    ],
+    "source": {
+      "space": "prg",
+      "offset": 188593,
+      "length": 6,
+      "end_exclusive": 188599
+    }
+  }
+}

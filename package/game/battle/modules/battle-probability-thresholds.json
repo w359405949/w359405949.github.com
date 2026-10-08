@@ -1,0 +1,65 @@
+{
+  "schema": "metalmaxcn.module-asset.battle-probability-thresholds",
+  "resource_id": "battle-probability-thresholds",
+  "edit_policy": "mutable",
+  "projection_source": "source ROM via battle owner extractor",
+  "document": {
+    "schema": "metalmaxcn.module-asset.battle-probability-thresholds",
+    "module_id": "battle-probability-thresholds",
+    "owned_byte_count": 8,
+    "parameters": [
+      {
+        "role": "怪物状态抗性档 0 的阈值",
+        "value": 16
+      },
+      {
+        "role": "怪物状态抗性档 1 的阈值",
+        "value": 8
+      },
+      {
+        "role": "怪物状态抗性档 2 的阈值",
+        "value": 4
+      },
+      {
+        "role": "怪物状态抗性档 3 的阈值；闪避档 0 的阈值",
+        "value": 0
+      },
+      {
+        "role": "闪避档 1 的阈值",
+        "value": 8
+      },
+      {
+        "role": "闪避档 2 的阈值",
+        "value": 64
+      },
+      {
+        "role": "闪避档 3 的阈值",
+        "value": 128
+      },
+      {
+        "role": "闪避档 4 的阈值",
+        "value": 200
+      }
+    ],
+    "writeback_components": [
+      {
+        "fragment_id": "battle-probability-thresholds.status-and-evasion-threshold-union",
+        "source": {
+          "space": "prg",
+          "offset": 193554,
+          "length": 8,
+          "end_exclusive": 193562
+        },
+        "fields": [
+          "parameters[*].value"
+        ]
+      }
+    ],
+    "source": {
+      "space": "prg",
+      "offset": 193554,
+      "length": 8,
+      "end_exclusive": 193562
+    }
+  }
+}

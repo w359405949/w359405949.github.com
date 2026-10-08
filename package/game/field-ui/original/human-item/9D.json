@@ -1,0 +1,205 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:9D",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 157,
+    "id_hex": "0x9D",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 157,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-item",
+      "name": "人类道具",
+      "owner": "human",
+      "first_id": 153,
+      "first_id_hex": "0x99",
+      "last_id": 202,
+      "last_id_hex": "0xCA"
+    },
+    "price": {
+      "raw_code": 76,
+      "raw_code_hex": "0x4C",
+      "available": true,
+      "value": 300,
+      "source": {
+        "space": "prg",
+        "offset": 140526,
+        "length": 1,
+        "end_exclusive": 140527,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-default-refusal",
+      "registered": false,
+      "dispatch_index": null,
+      "dispatch_index_hex": null,
+      "target_required": false,
+      "handler": {
+        "cpu_address": 42500,
+        "cpu_address_hex": "0xA604",
+        "prg_offset": 206340,
+        "prg_offset_hex": "0x032604",
+        "source": {
+          "space": "prg",
+          "offset": 206340,
+          "length": 1,
+          "end_exclusive": 206341,
+          "cpu_address": 42500,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "default-refusal",
+        "label": "默认不可使用",
+        "detail": "未登记 ID 统一显示不可使用反应"
+      },
+      "consumption": "never",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "refusal-message",
+          "label": "未登记工具的统一拒绝提示",
+          "condition": "always",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 119,
+            "record_id_hex": "0x77",
+            "node_id": "record:02:119"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206341,
+              "length": 1,
+              "end_exclusive": 206342,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205906,
+          "length": 2,
+          "end_exclusive": 205908,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_9D.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-decoded",
+      "registered": true,
+      "dispatch_index": 14,
+      "dispatch_index_hex": "0x0E",
+      "result_selector": 144,
+      "result_selector_hex": "0x90",
+      "inventory_domain": "human",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "已确认固定结果脚本依次显示使用提示与效果提示",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 77,
+            "record_id_hex": "0x4D",
+            "node_id": "record:0A:077"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146416,
+              "length": 1,
+              "end_exclusive": 146417,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        },
+        {
+          "role": "result-message",
+          "label": "道具效果提示",
+          "condition": "已确认的固定结果脚本在使用提示之后执行终端消息",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 63,
+            "record_id_hex": "0x3F",
+            "node_id": "record:0A:063"
+          },
+          "confidence": "confirmed",
+          "evidence": "battle-result-script owner: whole fixed-result script; UI sequence carries runtime evidence",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146418,
+              "length": 1,
+              "end_exclusive": 146419,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "algorithm": "result owner confirms the whole script and resolves its final message operand"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190615,
+          "length": 1,
+          "end_exclusive": 190616,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 190649,
+          "length": 1,
+          "end_exclusive": 190650,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss",
+        "human_hp_guard": "$6466=$FF, $6467=$00",
+        "vehicle_slot_confirmation": "save-state 2 + $65CF=$CB displays 传真 in the battle tool menu"
+      }
+    },
+    "semantic_status": "field-use-default-refusal"
+  }
+}

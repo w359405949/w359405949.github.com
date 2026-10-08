@@ -1,0 +1,67 @@
+{
+  "schema": "metalmaxcn.semantic-owner.packed-attribute-quadrant-mask-set",
+  "resource_id": "packed-attribute-quadrant-mask-set",
+  "codec": "semantic-owner-reference/v1",
+  "document": {
+    "schema": "metalmaxcn.semantic-owner.packed-attribute-quadrant-mask-set.document",
+    "record_count": 1,
+    "keep_and_clear": {
+      "quadrant_value_mask_field": "1B57_1B5B",
+      "quadrant_clear_mask_field": "1B5B_1B5F",
+      "quadrant_order": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ]
+    },
+    "semantic_edit_domain": {
+      "status": "confirmed-fixed",
+      "invariant": "Replace only quadrant q with requested palette p for every old attribute byte, q=0..3 and p=0..3.",
+      "index_domains": {
+        "1B57_1B5B": "palette-value-0-through-3",
+        "1B5B_1B5F": "quadrant-0-through-3"
+      },
+      "allowed_complete_arrays": {
+        "1B57_1B5B": [
+          [
+            0,
+            85,
+            170,
+            255
+          ]
+        ],
+        "1B5B_1B5F": [
+          [
+            252,
+            243,
+            207,
+            63
+          ]
+        ]
+      },
+      "consumer_expression": "(old & clear[q]) | ((clear[q] ^ 255) & broadcast[p])",
+      "expected_expression": "(old & (255 ^ (3 << (2*q)))) | (p << (2*q))",
+      "reason": "These are structural constants for unchanged quadrant and palette identity, not free palette content. Changing the interpretation requires a separate consumer contract.",
+      "evidence": [
+        "project/evidence/reverse-engineering/attribute-mask-fixed-domain/observations.json"
+      ]
+    },
+    "1B57_1B5B": [
+      0,
+      85,
+      170,
+      255
+    ],
+    "1B5B_1B5F": [
+      252,
+      243,
+      207,
+      63
+    ],
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

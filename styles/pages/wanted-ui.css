@@ -1,0 +1,26 @@
+body[data-page="wanted-ui"] {
+.wanted-defeated-toggle {
+  display: block;
+  min-width: 150px;
+}
+.wanted-defeated-toggle small { display: block; margin-bottom: 4px; }
+.wanted-defeated-toggle input {
+  appearance: none; width: 36px; height: 20px; margin: 0; padding: 2px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2);
+  cursor: pointer;
+}
+.wanted-defeated-toggle input::before {
+  content: ""; display: block; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--muted); transition: transform 120ms ease, background 120ms ease;
+}
+.wanted-defeated-toggle input:checked { border-color: var(--acid); background: #16251f; }
+.wanted-defeated-toggle input:checked::before { transform: translateX(16px); background: var(--acid); }
+.wanted-defeated-toggle input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.wanted-defeated-toggle b { color: var(--muted); font-size: 11px; }
+.wanted-defeated-toggle.active b { color: var(--acid); }
+
+[data-wanted-boss-picker] { width: 230px; }
+[data-wanted-boss-picker] .module-reference-native { display: none; }
+[data-wanted-boss-picker] .monster-module-preview > small { display: none; }
+[data-wanted-bounty-id] { width: 100px; }
+}

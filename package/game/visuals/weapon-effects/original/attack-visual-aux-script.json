@@ -1,0 +1,6378 @@
+{
+  "schema": "metalmaxcn.weapon-effect.asset.attack-visual-aux-script",
+  "resource_id": "attack-visual-aux-script",
+  "codec": "weapon-effects/v1",
+  "document": {
+    "schema": "metalmaxcn.weapon-effect.asset.attack-visual-aux-script.document",
+    "record_count": 26,
+    "records": [
+      {
+        "handle": "attack-visual-aux-script:00",
+        "id": 0,
+        "id_hex": "0x00",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 12,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 21,
+            "opcode_hex": "0x15",
+            "name": "skip_or_move_actor_x",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "consume operand without moving",
+            "alternate_effect": "move current actor X"
+          },
+          {
+            "offset": 2,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 4,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "delta_x",
+                "value": 8,
+                "value_hex": "0x08",
+                "signed_value": 8
+              },
+              {
+                "name": "delta_y",
+                "value": 248,
+                "value_hex": "0xF8",
+                "signed_value": -8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": 21,
+            "opcode_hex": "0x15",
+            "name": "skip_or_move_actor_x",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 255,
+                "value_hex": "0xFF",
+                "signed_value": -1
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "consume operand without moving",
+            "alternate_effect": "move current actor X"
+          }
+        ],
+        "direct_references": [],
+        "incoming_references": [
+          {
+            "source": "attack-visual:06",
+            "field": "commands[18].script_id",
+            "command_offset": 18,
+            "target": "attack-visual-aux-script:00",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:07",
+            "field": "commands[9].script_id",
+            "command_offset": 9,
+            "target": "attack-visual-aux-script:00",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:07",
+          "attack-visual:06"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:01",
+        "id": 1,
+        "id_hex": "0x01",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 3,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "delta_x",
+                "value": 8,
+                "value_hex": "0x08",
+                "signed_value": 8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            }
+          }
+        ],
+        "direct_references": [],
+        "incoming_references": [],
+        "incoming_reference_count": 0,
+        "incoming_consumer_handles": [],
+        "incoming_consumer_count": 0,
+        "shared_entity": false
+      },
+      {
+        "handle": "attack-visual-aux-script:02",
+        "id": 2,
+        "id_hex": "0x02",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 4,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 25,
+            "opcode_hex": "0x19",
+            "name": "animate_path_delayed_with_trail",
+            "length": 4,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 5,
+                "value_hex": "0x05"
+              },
+              {
+                "name": "duration",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "trail_object_count",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with explicit duration and position-history trail",
+            "alternate_effect": "actor-to-object mirrored path with duration and trail"
+          }
+        ],
+        "direct_references": [],
+        "incoming_references": [
+          {
+            "source": "attack-visual:04",
+            "field": "commands[57].script_id",
+            "command_offset": 57,
+            "target": "attack-visual-aux-script:02",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:04",
+            "field": "commands[67].script_id",
+            "command_offset": 67,
+            "target": "attack-visual-aux-script:02",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:1B",
+            "field": "commands[47].script_id",
+            "command_offset": 47,
+            "target": "attack-visual-aux-script:02",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:1B",
+            "field": "commands[51].script_id",
+            "command_offset": 51,
+            "target": "attack-visual-aux-script:02",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:1B",
+            "field": "commands[55].script_id",
+            "command_offset": 55,
+            "target": "attack-visual-aux-script:02",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 5,
+        "incoming_consumer_handles": [
+          "attack-visual:04",
+          "attack-visual:1B"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:03",
+        "id": 3,
+        "id_hex": "0x03",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 11,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 80,
+                "value_hex": "0x50"
+              },
+              {
+                "name": "action",
+                "value": 29,
+                "value_hex": "0x1D"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 5
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 27,
+                "value_hex": "0x1B"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          },
+          {
+            "offset": 7,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 80,
+                "value_hex": "0x50"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 5
+            }
+          },
+          {
+            "offset": 9,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 254,
+                "value_hex": "0xFE",
+                "signed_value": -2
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:03",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:1D",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:03",
+            "field": "commands[0]",
+            "command_offset": 0,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:03",
+            "field": "commands[3].sound_id",
+            "command_offset": 3,
+            "target": "audio-command:1B",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:11",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:03",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:12",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:03",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:2D",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:03",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:05",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:03",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 4,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:05",
+          "attack-visual:11",
+          "attack-visual:12",
+          "attack-visual:2D"
+        ],
+        "incoming_consumer_count": 4,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:04",
+        "id": 4,
+        "id_hex": "0x04",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 34,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              },
+              {
+                "name": "action",
+                "value": 41,
+                "value_hex": "0x29"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 12,
+                "value_hex": "0x0C"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 3,
+                "value_hex": "0x03",
+                "signed_value": 3
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 21,
+                "value_hex": "0x15"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 12,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 15,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 18,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 37,
+                "value_hex": "0x25"
+              },
+              {
+                "name": "action",
+                "value": 44,
+                "value_hex": "0x2C"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 5,
+              "delay": 2
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 21,
+            "opcode": 25,
+            "opcode_hex": "0x19",
+            "name": "animate_path_delayed_with_trail",
+            "length": 4,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "duration",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "trail_object_count",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with explicit duration and position-history trail",
+            "alternate_effect": "actor-to-object mirrored path with duration and trail"
+          },
+          {
+            "offset": 25,
+            "opcode": 25,
+            "opcode_hex": "0x19",
+            "name": "animate_path_delayed_with_trail",
+            "length": 4,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "duration",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "trail_object_count",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with explicit duration and position-history trail",
+            "alternate_effect": "actor-to-object mirrored path with duration and trail"
+          },
+          {
+            "offset": 29,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 5,
+                "value_hex": "0x05"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 5,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": 23,
+            "opcode_hex": "0x17",
+            "name": "animate_linear_path_with_trail",
+            "length": 3,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              },
+              {
+                "name": "trail_object_count",
+                "value": 4,
+                "value_hex": "0x04"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with position-history trail",
+            "alternate_effect": "actor-to-object mirrored path with trail"
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:29",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[0]",
+            "command_offset": 0,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:0C",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:15",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[18].action",
+            "command_offset": 18,
+            "target": "battle-action:2C",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[18]",
+            "command_offset": 18,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:03",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:04",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:08",
+            "field": "commands[9].script_id",
+            "command_offset": 9,
+            "target": "attack-visual-aux-script:04",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:0E",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:04",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual:03",
+          "attack-visual:08",
+          "attack-visual:0E"
+        ],
+        "incoming_consumer_count": 3,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:05",
+        "id": 5,
+        "id_hex": "0x05",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 14,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 4,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 7,
+            "opcode": 24,
+            "opcode_hex": "0x18",
+            "name": "animate_linear_path_delayed",
+            "length": 3,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "duration",
+                "value": 4,
+                "value_hex": "0x04"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with explicit duration",
+            "alternate_effect": "actor-to-object mirrored path with duration"
+          },
+          {
+            "offset": 10,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": 22,
+            "opcode_hex": "0x16",
+            "name": "animate_linear_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 8,
+                "value_hex": "0x08"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path",
+            "alternate_effect": "actor-to-object mirrored path"
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:05",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:03",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:05",
+            "field": "commands[4].action",
+            "command_offset": 4,
+            "target": "battle-action:20",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:05",
+            "field": "commands[4]",
+            "command_offset": 4,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:01",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:05",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:05",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:05",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:27",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:05",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual:01",
+          "attack-visual:05",
+          "attack-visual:27"
+        ],
+        "incoming_consumer_count": 3,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:06",
+        "id": 6,
+        "id_hex": "0x06",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 18,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          },
+          {
+            "offset": 2,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 236,
+                "value_hex": "0xEC",
+                "signed_value": -20
+              },
+              {
+                "name": "delta_y",
+                "value": 248,
+                "value_hex": "0xF8",
+                "signed_value": -8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": 16,
+            "opcode_hex": "0x10",
+            "name": "increment_actor_state",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delay",
+                "value": 7,
+                "value_hex": "0x07"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 8,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 248,
+                "value_hex": "0xF8",
+                "signed_value": -8
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          },
+          {
+            "offset": 10,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 20,
+                "value_hex": "0x14",
+                "signed_value": 20
+              },
+              {
+                "name": "delta_y",
+                "value": 8,
+                "value_hex": "0x08",
+                "signed_value": 8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": 16,
+            "opcode_hex": "0x10",
+            "name": "increment_actor_state",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delay",
+                "value": 7,
+                "value_hex": "0x07"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 16,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 39,
+                "value_hex": "0x27"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:06",
+            "field": "commands[16].sound_id",
+            "command_offset": 16,
+            "target": "audio-command:27",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:39",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:08",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:09",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 4,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:08",
+          "attack-visual-aux-script:09",
+          "attack-visual-aux-script:17",
+          "attack-visual:39"
+        ],
+        "incoming_consumer_count": 4,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:07",
+        "id": 7,
+        "id_hex": "0x07",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 12,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 56,
+                "value_hex": "0x38"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "action",
+                "value": 102,
+                "value_hex": "0x66"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 30,
+                "value_hex": "0x1E"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 7,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 9,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 11,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:07",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 56,
+            "selector_hex": "0x38"
+          },
+          {
+            "source": "attack-visual-aux-script:07",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:66",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:07",
+            "field": "commands[5].sound_id",
+            "command_offset": 5,
+            "target": "audio-command:1E",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:07",
+            "field": "commands[9].script_id",
+            "command_offset": 9,
+            "target": "attack-visual-aux-script:00",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:18",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:07",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:32",
+            "field": "commands[17].script_id",
+            "command_offset": 17,
+            "target": "attack-visual-aux-script:07",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:44",
+            "field": "commands[7].script_id",
+            "command_offset": 7,
+            "target": "attack-visual-aux-script:07",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual:18",
+          "attack-visual:32",
+          "attack-visual:44"
+        ],
+        "incoming_consumer_count": 3,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:08",
+        "id": 8,
+        "id_hex": "0x08",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 7,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 22,
+            "opcode_hex": "0x16",
+            "name": "animate_linear_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path",
+            "alternate_effect": "actor-to-object mirrored path"
+          },
+          {
+            "offset": 4,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 11,
+                "value_hex": "0x0B"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:08",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:08",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:42",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:08",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:44",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:08",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:16",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:08",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:16",
+          "attack-visual:42",
+          "attack-visual:44"
+        ],
+        "incoming_consumer_count": 3,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:09",
+        "id": 9,
+        "id_hex": "0x09",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 13,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 3,
+            "opcode_hex": "0x03",
+            "name": "set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "frames",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 4,
+            "opcode": 26,
+            "opcode_hex": "0x1A",
+            "name": "animate_toggled_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target path; toggle object 0 action bit 0 each frame",
+            "alternate_effect": "actor path; toggle object 0 action bit 0"
+          },
+          {
+            "offset": 6,
+            "opcode": 0,
+            "opcode_hex": "0x00",
+            "name": "call_visual_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "visual_code",
+                "value": 55,
+                "value_hex": "0x37"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 8,
+            "opcode": 27,
+            "opcode_hex": "0x1B",
+            "name": "animate_toggled_path_mirrored",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor path; toggle object 0 action bit 0 each frame",
+            "alternate_effect": "target path; toggle object 0 action bit 0"
+          },
+          {
+            "offset": 10,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 11,
+                "value_hex": "0x0B"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 12,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:09",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:09",
+            "field": "commands[6].visual_code",
+            "command_offset": 6,
+            "target": "attack-visual:37",
+            "relation": "calls-visual-script"
+          },
+          {
+            "source": "attack-visual-aux-script:09",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:3A",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:09",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:3B",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:09",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:3A",
+          "attack-visual:3B"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0A",
+        "id": 10,
+        "id_hex": "0x0A",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 4,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 59,
+                "value_hex": "0x3B"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 14,
+                "value_hex": "0x0E"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:0A",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 59,
+            "selector_hex": "0x3B"
+          },
+          {
+            "source": "attack-visual-aux-script:0A",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:0E",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:07",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:0A",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:3C",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:0A",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:3D",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:0A",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:3E",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:0A",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 4,
+        "incoming_consumer_handles": [
+          "attack-visual:07",
+          "attack-visual:3C",
+          "attack-visual:3D",
+          "attack-visual:3E"
+        ],
+        "incoming_consumer_count": 4,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0B",
+        "id": 11,
+        "id_hex": "0x0B",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 7,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 6,
+                "value_hex": "0x06",
+                "signed_value": 6
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          },
+          {
+            "offset": 2,
+            "opcode": 17,
+            "opcode_hex": "0x11",
+            "name": "decrement_actor_state",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 4,
+            "opcode": 17,
+            "opcode_hex": "0x11",
+            "name": "decrement_actor_state",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 6,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [],
+        "incoming_references": [
+          {
+            "source": "attack-visual:36",
+            "field": "commands[27].script_id",
+            "command_offset": 27,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:39",
+            "field": "commands[13].script_id",
+            "command_offset": 13,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:08",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:09",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[7].script_id",
+            "command_offset": 7,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 5,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:08",
+          "attack-visual-aux-script:09",
+          "attack-visual-aux-script:17",
+          "attack-visual:36",
+          "attack-visual:39"
+        ],
+        "incoming_consumer_count": 5,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0C",
+        "id": 12,
+        "id_hex": "0x0C",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 8,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 31,
+                "value_hex": "0x1F"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          },
+          {
+            "offset": 4,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 80,
+                "value_hex": "0x50"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 5
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": 20,
+            "opcode_hex": "0x14",
+            "name": "move_actor_x_or_skip",
+            "length": 2,
+            "operands": [
+              {
+                "name": "delta_x",
+                "value": 254,
+                "value_hex": "0xFE",
+                "signed_value": -2
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "move current actor X",
+            "alternate_effect": "consume operand without moving"
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:0C",
+            "field": "commands[0].sound_id",
+            "command_offset": 0,
+            "target": "audio-command:1F",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:0F",
+            "field": "commands[8].script_id",
+            "command_offset": 8,
+            "target": "attack-visual-aux-script:0C",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:0C",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:04",
+          "attack-visual:0F"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0D",
+        "id": 13,
+        "id_hex": "0x0D",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 80,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 8,
+                "value_hex": "0x08"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 7,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 11,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 14,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 6,
+                "value_hex": "0x06",
+                "signed_value": 6
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 18,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 21,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 250,
+                "value_hex": "0xFA",
+                "signed_value": -6
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 8,
+                "value_hex": "0x08"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 27,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 30,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 33,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "delta_x",
+                "value": 1,
+                "value_hex": "0x01",
+                "signed_value": 1
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 36,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 37,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 40,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 13,
+                "value_hex": "0x0D",
+                "signed_value": 13
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 44,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 47,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 243,
+                "value_hex": "0xF3",
+                "signed_value": -13
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 51,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 8,
+                "value_hex": "0x08"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 53,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 56,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 59,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 62,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 65,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 68,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 69,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 71,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 73,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 75,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 77,
+            "opcode": 8,
+            "opcode_hex": "0x08",
+            "name": "set_object_action",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 174,
+                "value_hex": "0xAE"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[0].sound_id",
+            "command_offset": 0,
+            "target": "audio-command:20",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[2]",
+            "command_offset": 2,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[11].action",
+            "command_offset": 11,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[11]",
+            "command_offset": 11,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[18].action",
+            "command_offset": 18,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[18]",
+            "command_offset": 18,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[37].action",
+            "command_offset": 37,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[37]",
+            "command_offset": 37,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[44].action",
+            "command_offset": 44,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[44]",
+            "command_offset": 44,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0D",
+            "field": "commands[77].action",
+            "command_offset": 77,
+            "target": "battle-action:AE",
+            "relation": "uses-battle-action"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:17",
+            "field": "commands[12].script_id",
+            "command_offset": 12,
+            "target": "attack-visual-aux-script:0D",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:2F",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:0D",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:17",
+          "attack-visual:2F"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0E",
+        "id": 14,
+        "id_hex": "0x0E",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 13,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 16,
+                "value_hex": "0x10"
+              },
+              {
+                "name": "action",
+                "value": 119,
+                "value_hex": "0x77"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 1
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 33,
+                "value_hex": "0x21"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 9,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 80,
+                "value_hex": "0x50"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 5
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 128,
+                "value_hex": "0x80"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 8
+            }
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:0E",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:77",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0E",
+            "field": "commands[0]",
+            "command_offset": 0,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:0E",
+            "field": "commands[3].sound_id",
+            "command_offset": 3,
+            "target": "audio-command:21",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual-aux-script:0A",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:0E",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:0F",
+            "field": "commands[4].script_id",
+            "command_offset": 4,
+            "target": "attack-visual-aux-script:0E",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:0A",
+          "attack-visual-aux-script:0F"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:0F",
+        "id": 15,
+        "id_hex": "0x0F",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 22,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 57,
+                "value_hex": "0x39"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 9,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 2,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 57,
+                "value_hex": "0x39"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 9,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 4,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 14,
+                "value_hex": "0x0E"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 6,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 57,
+                "value_hex": "0x39"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 9,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 32,
+                "value_hex": "0x20",
+                "signed_value": 32
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": 8,
+            "opcode_hex": "0x08",
+            "name": "set_object_action",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "action",
+                "value": 213,
+                "value_hex": "0xD5"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 57,
+                "value_hex": "0x39"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 9,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 16,
+            "opcode": 22,
+            "opcode_hex": "0x16",
+            "name": "animate_linear_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 20,
+                "value_hex": "0x14"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path",
+            "alternate_effect": "actor-to-object mirrored path"
+          },
+          {
+            "offset": 18,
+            "opcode": 0,
+            "opcode_hex": "0x00",
+            "name": "call_visual_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "visual_code",
+                "value": 37,
+                "value_hex": "0x25"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 20,
+            "opcode": 11,
+            "opcode_hex": "0x0B",
+            "name": "set_battle_sprite_palette",
+            "length": 2,
+            "operands": [
+              {
+                "name": "palette_offset",
+                "value": 9,
+                "value_hex": "0x09"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:0F",
+            "field": "commands[4].script_id",
+            "command_offset": 4,
+            "target": "attack-visual-aux-script:0E",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:0F",
+            "field": "commands[11].action",
+            "command_offset": 11,
+            "target": "battle-action:D5",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:0F",
+            "field": "commands[18].visual_code",
+            "command_offset": 18,
+            "target": "attack-visual:25",
+            "relation": "calls-visual-script"
+          },
+          {
+            "source": "attack-visual-aux-script:0F",
+            "field": "commands[20].palette_offset",
+            "command_offset": 20,
+            "target": "sprite-palette:03",
+            "relation": "uses-sprite-palette"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:20",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:0F",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:21",
+            "field": "commands[11].script_id",
+            "command_offset": 11,
+            "target": "attack-visual-aux-script:0F",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:20",
+          "attack-visual:21"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:10",
+        "id": 16,
+        "id_hex": "0x10",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 17,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "action",
+                "value": 142,
+                "value_hex": "0x8E"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 5,
+                "value_hex": "0x05"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 7,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 49,
+                "value_hex": "0x31"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 9,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 12,
+            "opcode": 26,
+            "opcode_hex": "0x1A",
+            "name": "animate_toggled_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target path; toggle object 0 action bit 0 each frame",
+            "alternate_effect": "actor path; toggle object 0 action bit 0"
+          },
+          {
+            "offset": 14,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          },
+          {
+            "offset": 15,
+            "opcode": 11,
+            "opcode_hex": "0x0B",
+            "name": "set_battle_sprite_palette",
+            "length": 2,
+            "operands": [
+              {
+                "name": "palette_offset",
+                "value": 9,
+                "value_hex": "0x09"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:10",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 88,
+            "selector_hex": "0x58"
+          },
+          {
+            "source": "attack-visual-aux-script:10",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:8E",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:10",
+            "field": "commands[2]",
+            "command_offset": 2,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:10",
+            "field": "commands[7].sound_id",
+            "command_offset": 7,
+            "target": "audio-command:31",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:10",
+            "field": "commands[15].palette_offset",
+            "command_offset": 15,
+            "target": "sprite-palette:03",
+            "relation": "uses-sprite-palette"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:0C",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:10",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:24",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:10",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:0C",
+          "attack-visual:24"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:11",
+        "id": 17,
+        "id_hex": "0x11",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 40,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              },
+              {
+                "name": "action",
+                "value": 215,
+                "value_hex": "0xD7"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 9,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 38,
+                "value_hex": "0x26"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 11,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "action",
+                "value": 215,
+                "value_hex": "0xD7"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 14,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "delta_x",
+                "value": 10,
+                "value_hex": "0x0A",
+                "signed_value": 10
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 215,
+                "value_hex": "0xD7"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 20,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "delta_x",
+                "value": 246,
+                "value_hex": "0xF6",
+                "signed_value": -10
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 23,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 215,
+                "value_hex": "0xD7"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 26,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 65,
+                "value_hex": "0x41"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 236,
+                "value_hex": "0xEC",
+                "signed_value": -20
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 30,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 32,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 34,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 36,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 65,
+                "value_hex": "0x41"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 38,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 39,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 88,
+            "selector_hex": "0x58"
+          },
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:D7",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[9].sound_id",
+            "command_offset": 9,
+            "target": "audio-command:26",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[11].action",
+            "command_offset": 11,
+            "target": "battle-action:D7",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[17].action",
+            "command_offset": 17,
+            "target": "battle-action:D7",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:11",
+            "field": "commands[23].action",
+            "command_offset": 23,
+            "target": "battle-action:D7",
+            "relation": "uses-battle-action"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:4B",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:11",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:4E",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:11",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:4B",
+          "attack-visual:4E"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:12",
+        "id": 18,
+        "id_hex": "0x12",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 8,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 34,
+                "value_hex": "0x22"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 4,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 7,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:12",
+            "field": "commands[0].sound_id",
+            "command_offset": 0,
+            "target": "audio-command:22",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:25",
+            "field": "commands[6].script_id",
+            "command_offset": 6,
+            "target": "attack-visual-aux-script:12",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:25",
+            "field": "commands[15].script_id",
+            "command_offset": 15,
+            "target": "attack-visual-aux-script:12",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:25",
+            "field": "commands[24].script_id",
+            "command_offset": 24,
+            "target": "attack-visual-aux-script:12",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual:25"
+        ],
+        "incoming_consumer_count": 1,
+        "shared_entity": false
+      },
+      {
+        "handle": "attack-visual-aux-script:13",
+        "id": 19,
+        "id_hex": "0x13",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 10,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          },
+          {
+            "offset": 1,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 58,
+                "value_hex": "0x3A"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 3,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 28,
+                "value_hex": "0x1C"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 48,
+                "value_hex": "0x30"
+              },
+              {
+                "name": "action",
+                "value": 33,
+                "value_hex": "0x21"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 3
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 8,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 64,
+                "value_hex": "0x40"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 4
+            }
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:13",
+            "field": "commands[1].mode",
+            "command_offset": 1,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 58,
+            "selector_hex": "0x3A"
+          },
+          {
+            "source": "attack-visual-aux-script:13",
+            "field": "commands[3].sound_id",
+            "command_offset": 3,
+            "target": "audio-command:1C",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:13",
+            "field": "commands[5].action",
+            "command_offset": 5,
+            "target": "battle-action:21",
+            "relation": "uses-battle-action"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:00",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:13",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:33",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:13",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:00",
+          "attack-visual:33"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:14",
+        "id": 20,
+        "id_hex": "0x14",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 56,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 36,
+                "value_hex": "0x24"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 15,
+                "value_hex": "0x0F",
+                "signed_value": 15
+              },
+              {
+                "name": "delta_y",
+                "value": 243,
+                "value_hex": "0xF3",
+                "signed_value": -13
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 36,
+                "value_hex": "0x24"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 10,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 50,
+                "value_hex": "0x32"
+              },
+              {
+                "name": "delta_x",
+                "value": 244,
+                "value_hex": "0xF4",
+                "signed_value": -12
+              },
+              {
+                "name": "delta_y",
+                "value": 238,
+                "value_hex": "0xEE",
+                "signed_value": -18
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": 8,
+            "opcode_hex": "0x08",
+            "name": "set_object_action",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 36,
+                "value_hex": "0x24"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 2,
+                "value_hex": "0x02",
+                "signed_value": 2
+              },
+              {
+                "name": "delta_y",
+                "value": 225,
+                "value_hex": "0xE1",
+                "signed_value": -31
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 21,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 66,
+                "value_hex": "0x42"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 23,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 50,
+                "value_hex": "0x32"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 3
+            }
+          },
+          {
+            "offset": 27,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 29,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 18,
+                "value_hex": "0x12"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 33,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 35,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 18,
+                "value_hex": "0x12"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 37,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 39,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 17,
+                "value_hex": "0x11"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 41,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 43,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 36,
+                "value_hex": "0x24"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 46,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 18,
+                "value_hex": "0x12"
+              },
+              {
+                "name": "delta_x",
+                "value": 16,
+                "value_hex": "0x10",
+                "signed_value": 16
+              },
+              {
+                "name": "delta_y",
+                "value": 234,
+                "value_hex": "0xEA",
+                "signed_value": -22
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 50,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 52,
+            "opcode": 8,
+            "opcode_hex": "0x08",
+            "name": "set_object_action",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 18,
+                "value_hex": "0x12"
+              },
+              {
+                "name": "action",
+                "value": 39,
+                "value_hex": "0x27"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 1
+            }
+          },
+          {
+            "offset": 55,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:14",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:24",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:14",
+            "field": "commands[7].action",
+            "command_offset": 7,
+            "target": "battle-action:24",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:14",
+            "field": "commands[14].action",
+            "command_offset": 14,
+            "target": "battle-action:24",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:14",
+            "field": "commands[43].action",
+            "command_offset": 43,
+            "target": "battle-action:24",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:14",
+            "field": "commands[52].action",
+            "command_offset": 52,
+            "target": "battle-action:27",
+            "relation": "uses-battle-action"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:00",
+            "field": "commands[6].script_id",
+            "command_offset": 6,
+            "target": "attack-visual-aux-script:14",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:33",
+            "field": "commands[8].script_id",
+            "command_offset": 8,
+            "target": "attack-visual-aux-script:14",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:00",
+          "attack-visual:33"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:15",
+        "id": 21,
+        "id_hex": "0x15",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 12,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 150,
+                "value_hex": "0x96"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 151,
+                "value_hex": "0x97"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 6,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "action",
+                "value": 152,
+                "value_hex": "0x98"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 9,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "action",
+                "value": 153,
+                "value_hex": "0x99"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:96",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[0]",
+            "command_offset": 0,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[3].action",
+            "command_offset": 3,
+            "target": "battle-action:97",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[3]",
+            "command_offset": 3,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[6].action",
+            "command_offset": 6,
+            "target": "battle-action:98",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[6]",
+            "command_offset": 6,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[9].action",
+            "command_offset": 9,
+            "target": "battle-action:99",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:15",
+            "field": "commands[9]",
+            "command_offset": 9,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:10",
+            "field": "commands[24].script_id",
+            "command_offset": 24,
+            "target": "attack-visual-aux-script:15",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:04",
+            "field": "commands[10].script_id",
+            "command_offset": 10,
+            "target": "attack-visual-aux-script:15",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual-aux-script:04",
+          "attack-visual:10"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:16",
+        "id": 22,
+        "id_hex": "0x16",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 7,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 58,
+                "value_hex": "0x3A"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 40,
+                "value_hex": "0x28"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 8,
+                "value_hex": "0x08"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:16",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 58,
+            "selector_hex": "0x3A"
+          },
+          {
+            "source": "attack-visual-aux-script:16",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:28",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:16",
+            "field": "commands[2]",
+            "command_offset": 2,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:16",
+            "field": "commands[5].script_id",
+            "command_offset": 5,
+            "target": "attack-visual-aux-script:08",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:43",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:16",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:48",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:16",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:43",
+          "attack-visual:48"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:17",
+        "id": 23,
+        "id_hex": "0x17",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 9,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 88,
+                "value_hex": "0x58"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 3,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 5,
+            "opcode": 26,
+            "opcode_hex": "0x1A",
+            "name": "animate_toggled_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target path; toggle object 0 action bit 0 each frame",
+            "alternate_effect": "actor path; toggle object 0 action bit 0"
+          },
+          {
+            "offset": 7,
+            "opcode": 1,
+            "opcode_hex": "0x01",
+            "name": "call_aux_script",
+            "length": 2,
+            "operands": [
+              {
+                "name": "script_id",
+                "value": 11,
+                "value_hex": "0x0B"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[0].action",
+            "command_offset": 0,
+            "target": "battle-action:58",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[0]",
+            "command_offset": 0,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[3].script_id",
+            "command_offset": 3,
+            "target": "attack-visual-aux-script:06",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual-aux-script:17",
+            "field": "commands[7].script_id",
+            "command_offset": 7,
+            "target": "attack-visual-aux-script:0B",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:45",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:17",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:49",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:17",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:45",
+          "attack-visual:49"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:18",
+        "id": 24,
+        "id_hex": "0x18",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 83,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 89,
+                "value_hex": "0x59"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 66,
+                "value_hex": "0x42"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 4,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 206,
+                "value_hex": "0xCE"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 7,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "delta_x",
+                "value": 246,
+                "value_hex": "0xF6",
+                "signed_value": -10
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "action",
+                "value": 207,
+                "value_hex": "0xCF"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 13,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              },
+              {
+                "name": "delta_x",
+                "value": 10,
+                "value_hex": "0x0A",
+                "signed_value": 10
+              },
+              {
+                "name": "delta_y",
+                "value": 248,
+                "value_hex": "0xF8",
+                "signed_value": -8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              },
+              {
+                "name": "action",
+                "value": 209,
+                "value_hex": "0xD1"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 20,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 66,
+                "value_hex": "0x42"
+              },
+              {
+                "name": "delta_x",
+                "value": 0,
+                "value_hex": "0x00",
+                "signed_value": 0
+              },
+              {
+                "name": "delta_y",
+                "value": 236,
+                "value_hex": "0xEC",
+                "signed_value": -20
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 24,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 28,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 30,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "action",
+                "value": 209,
+                "value_hex": "0xD1"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 33,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              },
+              {
+                "name": "delta_x",
+                "value": 251,
+                "value_hex": "0xFB",
+                "signed_value": -5
+              },
+              {
+                "name": "delta_y",
+                "value": 224,
+                "value_hex": "0xE0",
+                "signed_value": -32
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 37,
+            "opcode": 18,
+            "opcode_hex": "0x12",
+            "name": "spawn_object_at_target",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "action",
+                "value": 210,
+                "value_hex": "0xD2"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-anchor initializer",
+            "alternate_effect": "mirrored target-anchor initializer"
+          },
+          {
+            "offset": 40,
+            "opcode": 9,
+            "opcode_hex": "0x09",
+            "name": "move_object_xy",
+            "length": 4,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 68,
+                "value_hex": "0x44"
+              },
+              {
+                "name": "delta_x",
+                "value": 238,
+                "value_hex": "0xEE",
+                "signed_value": -18
+              },
+              {
+                "name": "delta_y",
+                "value": 240,
+                "value_hex": "0xF0",
+                "signed_value": -16
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 44,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 46,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 48,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 50,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 52,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 68,
+                "value_hex": "0x44"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 54,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 56,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 58,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 2,
+                "value_hex": "0x02"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 2,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 60,
+            "opcode": 15,
+            "opcode_hex": "0x0F",
+            "name": "decrement_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 62,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 68,
+                "value_hex": "0x44"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 64,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 66,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 68,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 3,
+                "value_hex": "0x03"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 70,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 68,
+                "value_hex": "0x44"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 4,
+              "delay": 4
+            }
+          },
+          {
+            "offset": 72,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 74,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 1,
+                "value_hex": "0x01"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 76,
+            "opcode": 7,
+            "opcode_hex": "0x07",
+            "name": "clear_object_set_delay",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 35,
+                "value_hex": "0x23"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 3,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 78,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 33,
+                "value_hex": "0x21"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 1,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 80,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          },
+          {
+            "offset": 81,
+            "opcode": 11,
+            "opcode_hex": "0x0B",
+            "name": "set_battle_sprite_palette",
+            "length": 2,
+            "operands": [
+              {
+                "name": "palette_offset",
+                "value": 9,
+                "value_hex": "0x09"
+              }
+            ],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 89,
+            "selector_hex": "0x59"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[2].sound_id",
+            "command_offset": 2,
+            "target": "audio-command:42",
+            "relation": "plays-audio-command"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[4].action",
+            "command_offset": 4,
+            "target": "battle-action:CE",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[10].action",
+            "command_offset": 10,
+            "target": "battle-action:CF",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[17].action",
+            "command_offset": 17,
+            "target": "battle-action:D1",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[30].action",
+            "command_offset": 30,
+            "target": "battle-action:D1",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[37].action",
+            "command_offset": 37,
+            "target": "battle-action:D2",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:18",
+            "field": "commands[81].palette_offset",
+            "command_offset": 81,
+            "target": "sprite-palette:03",
+            "relation": "uses-sprite-palette"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:1C",
+            "field": "commands[0].script_id",
+            "command_offset": 0,
+            "target": "attack-visual-aux-script:18",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:4C",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:18",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:4D",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:18",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 3,
+        "incoming_consumer_handles": [
+          "attack-visual:1C",
+          "attack-visual:4C",
+          "attack-visual:4D"
+        ],
+        "incoming_consumer_count": 3,
+        "shared_entity": true
+      },
+      {
+        "handle": "attack-visual-aux-script:19",
+        "id": 25,
+        "id_hex": "0x19",
+        "owner": "attack-visual-aux-script",
+        "delimiter": {
+          "value": 159,
+          "value_hex": "0x9F",
+          "offset": 28,
+          "included_in_record": true
+        },
+        "decode_status": "decoded",
+        "commands": [
+          {
+            "offset": 0,
+            "opcode": 4,
+            "opcode_hex": "0x04",
+            "name": "set_frame_mode_and_wait",
+            "length": 2,
+            "operands": [
+              {
+                "name": "mode",
+                "value": 89,
+                "value_hex": "0x59"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 2,
+            "opcode": 19,
+            "opcode_hex": "0x13",
+            "name": "spawn_object_at_actor",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              },
+              {
+                "name": "action",
+                "value": 79,
+                "value_hex": "0x4F"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            },
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "actor-anchor initializer",
+            "alternate_effect": "mirrored actor-anchor initializer"
+          },
+          {
+            "offset": 5,
+            "opcode": 2,
+            "opcode_hex": "0x02",
+            "name": "play_sound",
+            "length": 2,
+            "operands": [
+              {
+                "name": "sound_id",
+                "value": 66,
+                "value_hex": "0x42"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 7,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "delta_x",
+                "value": 20,
+                "value_hex": "0x14",
+                "signed_value": 20
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": 13,
+            "opcode_hex": "0x0D",
+            "name": "move_object_x",
+            "length": 3,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              },
+              {
+                "name": "delta_x",
+                "value": 8,
+                "value_hex": "0x08",
+                "signed_value": 8
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 15,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 32,
+                "value_hex": "0x20"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 2
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": 12,
+            "opcode_hex": "0x0C",
+            "name": "repeat_command_block",
+            "length": 2,
+            "operands": [
+              {
+                "name": "repeat_count",
+                "value": 4,
+                "value_hex": "0x04"
+              }
+            ],
+            "marker": false
+          },
+          {
+            "offset": 19,
+            "opcode": 24,
+            "opcode_hex": "0x18",
+            "name": "animate_linear_path_delayed",
+            "length": 3,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 4,
+                "value_hex": "0x04"
+              },
+              {
+                "name": "duration",
+                "value": 4,
+                "value_hex": "0x04"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path with explicit duration",
+            "alternate_effect": "actor-to-object mirrored path with duration"
+          },
+          {
+            "offset": 22,
+            "opcode": 14,
+            "opcode_hex": "0x0E",
+            "name": "increment_object_action",
+            "length": 2,
+            "operands": [
+              {
+                "name": "packed_object_delay",
+                "value": 0,
+                "value_hex": "0x00"
+              }
+            ],
+            "marker": false,
+            "packed_object_delay": {
+              "object_slot": 0,
+              "delay": 0
+            }
+          },
+          {
+            "offset": 24,
+            "opcode": 160,
+            "opcode_hex": "0xA0",
+            "name": "end_repeat_block",
+            "length": 1,
+            "operands": [],
+            "marker": true
+          },
+          {
+            "offset": 25,
+            "opcode": 22,
+            "opcode_hex": "0x16",
+            "name": "animate_linear_path",
+            "length": 2,
+            "operands": [
+              {
+                "name": "path_parameter",
+                "value": 6,
+                "value_hex": "0x06"
+              }
+            ],
+            "marker": false,
+            "alternate_condition": "$70E6 bit 0 set",
+            "normal_effect": "target-to-object path",
+            "alternate_effect": "actor-to-object mirrored path"
+          },
+          {
+            "offset": 27,
+            "opcode": 6,
+            "opcode_hex": "0x06",
+            "name": "clear_effect_objects",
+            "length": 1,
+            "operands": [],
+            "marker": false
+          }
+        ],
+        "direct_references": [
+          {
+            "source": "attack-visual-aux-script:19",
+            "field": "commands[0].mode",
+            "command_offset": 0,
+            "target": "shared-chr-bank",
+            "relation": "uses-chr-context",
+            "selector": 89,
+            "selector_hex": "0x59"
+          },
+          {
+            "source": "attack-visual-aux-script:19",
+            "field": "commands[2].action",
+            "command_offset": 2,
+            "target": "battle-action:4F",
+            "relation": "uses-battle-action"
+          },
+          {
+            "source": "attack-visual-aux-script:19",
+            "field": "commands[2]",
+            "command_offset": 2,
+            "target": "weapon-attack-parameter",
+            "relation": "uses-launch-anchor-profile"
+          },
+          {
+            "source": "attack-visual-aux-script:19",
+            "field": "commands[5].sound_id",
+            "command_offset": 5,
+            "target": "audio-command:42",
+            "relation": "plays-audio-command"
+          }
+        ],
+        "incoming_references": [
+          {
+            "source": "attack-visual:09",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:19",
+            "relation": "calls-auxiliary-script"
+          },
+          {
+            "source": "attack-visual:1E",
+            "field": "commands[2].script_id",
+            "command_offset": 2,
+            "target": "attack-visual-aux-script:19",
+            "relation": "calls-auxiliary-script"
+          }
+        ],
+        "incoming_reference_count": 2,
+        "incoming_consumer_handles": [
+          "attack-visual:09",
+          "attack-visual:1E"
+        ],
+        "incoming_consumer_count": 2,
+        "shared_entity": true
+      }
+    ],
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

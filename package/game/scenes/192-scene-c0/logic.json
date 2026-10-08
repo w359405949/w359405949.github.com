@@ -1,0 +1,2431 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 192,
+  "scene_id_hex": "0xC0",
+  "width": 41,
+  "height": 28,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 192,
+      "entry_id_hex": "0xC0",
+      "count": 1,
+      "record_source": {
+        "space": "prg",
+        "offset": 151087,
+        "length": 7,
+        "end_exclusive": 151094
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:C0:00",
+          "inside_scene_canvas": false
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [
+      {
+        "id": 95,
+        "id_hex": "0x5F",
+        "scene_id": 192,
+        "packed_handler_instance": 40,
+        "x": 13,
+        "y": 2,
+        "scene_id_hex": "0xC0",
+        "x_hex": "0x0D",
+        "y_hex": "0x02",
+        "handler_selector": 8,
+        "instance_id": 2,
+        "field_offsets": {
+          "scene_id": 237088,
+          "packed_handler_instance": 237211,
+          "x": 237334,
+          "y": 237457
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237211,
+          "length": 1,
+          "end_exclusive": 237212
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x08",
+        "instance_id_hex": "0x02",
+        "packed_handler_instance_hex": "0x28",
+        "command_id": 54,
+        "command_id_hex": "0x36",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "C0:0D:02",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 13,
+        "x_hex": "0x0D",
+        "y": 2,
+        "y_hex": "0x02",
+        "metatile_id": 75,
+        "metatile_id_hex": "0x4B",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          95
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x5F"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            95
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234059,
+          "length": 1,
+          "end_exclusive": 234060
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "C0:06:03",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 6,
+        "x_hex": "0x06",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "C0:07:03",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 7,
+        "x_hex": "0x07",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 3,
+        "id_hex": "0x0003",
+        "coordinate_key": "C0:09:03",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 9,
+        "x_hex": "0x09",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 4,
+        "id_hex": "0x0004",
+        "coordinate_key": "C0:0A:03",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 10,
+        "x_hex": "0x0A",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 5,
+        "id_hex": "0x0005",
+        "coordinate_key": "C0:16:03",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 22,
+        "x_hex": "0x16",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 68,
+        "metatile_id_hex": "0x44",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234052,
+          "length": 1,
+          "end_exclusive": 234053
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 6,
+        "id_hex": "0x0006",
+        "coordinate_key": "C0:16:04",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 22,
+        "x_hex": "0x16",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 76,
+        "metatile_id_hex": "0x4C",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234060,
+          "length": 1,
+          "end_exclusive": 234061
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 7,
+        "id_hex": "0x0007",
+        "coordinate_key": "C0:06:06",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 6,
+        "x_hex": "0x06",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 8,
+        "id_hex": "0x0008",
+        "coordinate_key": "C0:07:06",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 7,
+        "x_hex": "0x07",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 9,
+        "id_hex": "0x0009",
+        "coordinate_key": "C0:09:06",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 9,
+        "x_hex": "0x09",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 10,
+        "id_hex": "0x000A",
+        "coordinate_key": "C0:0A:06",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 10,
+        "x_hex": "0x0A",
+        "y": 6,
+        "y_hex": "0x06",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 11,
+        "id_hex": "0x000B",
+        "coordinate_key": "C0:06:09",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 6,
+        "x_hex": "0x06",
+        "y": 9,
+        "y_hex": "0x09",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 12,
+        "id_hex": "0x000C",
+        "coordinate_key": "C0:07:09",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 7,
+        "x_hex": "0x07",
+        "y": 9,
+        "y_hex": "0x09",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 13,
+        "id_hex": "0x000D",
+        "coordinate_key": "C0:09:09",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 9,
+        "x_hex": "0x09",
+        "y": 9,
+        "y_hex": "0x09",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 14,
+        "id_hex": "0x000E",
+        "coordinate_key": "C0:0A:09",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 10,
+        "x_hex": "0x0A",
+        "y": 9,
+        "y_hex": "0x09",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 15,
+        "id_hex": "0x000F",
+        "coordinate_key": "C0:04:18",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 4,
+        "x_hex": "0x04",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 16,
+        "id_hex": "0x0010",
+        "coordinate_key": "C0:05:18",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 5,
+        "x_hex": "0x05",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 17,
+        "id_hex": "0x0011",
+        "coordinate_key": "C0:06:18",
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "x": 6,
+        "x_hex": "0x06",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 74,
+        "metatile_id_hex": "0x4A",
+        "raw_attribute": 255,
+        "raw_attribute_hex": "0xFF",
+        "palette_id": 3,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234058,
+          "length": 1,
+          "end_exclusive": 234059
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 28992,
+            "length": 730,
+            "end_exclusive": 29722
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234048
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 38372,
+      "pointer_cpu_hex": "0x95E4",
+      "pointer_prg": 128484,
+      "pointer_prg_hex": "0x01F5E4",
+      "boundary_mode": "dynamic-return",
+      "boundary_exits": [],
+      "dynamic_boundary_return": {
+        "id": 0,
+        "id_hex": "0x00",
+        "direction_code": null,
+        "direction": "all-boundaries",
+        "target_kind": "saved-return-position",
+        "editable": false,
+        "source": {
+          "space": "prg",
+          "offset": 128484,
+          "length": 1,
+          "end_exclusive": 128485
+        }
+      },
+      "point_transition_count": 9,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 33,
+          "y": 8,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128486,
+            "length": 2,
+            "end_exclusive": 128488
+          },
+          "coordinate_offsets": {
+            "x": 128486,
+            "y": 128487
+          },
+          "destination_scene_id": 191,
+          "destination_scene_id_hex": "0xBF",
+          "destination_x": 37,
+          "destination_y": 6,
+          "camera_origin_x": 29,
+          "camera_origin_y": -1,
+          "encoded_x": 37,
+          "encoded_y": 6,
+          "source": {
+            "space": "prg",
+            "offset": 128504,
+            "length": 3,
+            "end_exclusive": 128507
+          },
+          "field_offsets": {
+            "destination_scene_id": 128504,
+            "destination_x": 128505,
+            "destination_y": 128506
+          },
+          "raw": [
+            191,
+            37,
+            6
+          ],
+          "raw_hex": "BF 25 06"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 3,
+          "y": 16,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128488,
+            "length": 2,
+            "end_exclusive": 128490
+          },
+          "coordinate_offsets": {
+            "x": 128488,
+            "y": 128489
+          },
+          "destination_scene_id": 191,
+          "destination_scene_id_hex": "0xBF",
+          "destination_x": 6,
+          "destination_y": 12,
+          "camera_origin_x": -2,
+          "camera_origin_y": 5,
+          "encoded_x": 6,
+          "encoded_y": 12,
+          "source": {
+            "space": "prg",
+            "offset": 128507,
+            "length": 3,
+            "end_exclusive": 128510
+          },
+          "field_offsets": {
+            "destination_scene_id": 128507,
+            "destination_x": 128508,
+            "destination_y": 128509
+          },
+          "raw": [
+            191,
+            6,
+            12
+          ],
+          "raw_hex": "BF 06 0C"
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "x": 3,
+          "y": 4,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128490,
+            "length": 2,
+            "end_exclusive": 128492
+          },
+          "coordinate_offsets": {
+            "x": 128490,
+            "y": 128491
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 3,
+          "destination_y": 4,
+          "camera_origin_x": -5,
+          "camera_origin_y": -3,
+          "encoded_x": 3,
+          "encoded_y": 4,
+          "source": {
+            "space": "prg",
+            "offset": 128510,
+            "length": 3,
+            "end_exclusive": 128513
+          },
+          "field_offsets": {
+            "destination_scene_id": 128510,
+            "destination_x": 128511,
+            "destination_y": 128512
+          },
+          "raw": [
+            193,
+            3,
+            4
+          ],
+          "raw_hex": "C1 03 04"
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "x": 3,
+          "y": 19,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128492,
+            "length": 2,
+            "end_exclusive": 128494
+          },
+          "coordinate_offsets": {
+            "x": 128492,
+            "y": 128493
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 3,
+          "destination_y": 17,
+          "camera_origin_x": -5,
+          "camera_origin_y": 10,
+          "encoded_x": 3,
+          "encoded_y": 17,
+          "source": {
+            "space": "prg",
+            "offset": 128513,
+            "length": 3,
+            "end_exclusive": 128516
+          },
+          "field_offsets": {
+            "destination_scene_id": 128513,
+            "destination_x": 128514,
+            "destination_y": 128515
+          },
+          "raw": [
+            193,
+            3,
+            17
+          ],
+          "raw_hex": "C1 03 11"
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "x": 18,
+          "y": 24,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128494,
+            "length": 2,
+            "end_exclusive": 128496
+          },
+          "coordinate_offsets": {
+            "x": 128494,
+            "y": 128495
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 19,
+          "destination_y": 23,
+          "camera_origin_x": 11,
+          "camera_origin_y": 16,
+          "encoded_x": 19,
+          "encoded_y": 23,
+          "source": {
+            "space": "prg",
+            "offset": 128516,
+            "length": 3,
+            "end_exclusive": 128519
+          },
+          "field_offsets": {
+            "destination_scene_id": 128516,
+            "destination_x": 128517,
+            "destination_y": 128518
+          },
+          "raw": [
+            193,
+            19,
+            23
+          ],
+          "raw_hex": "C1 13 17"
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "x": 38,
+          "y": 3,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128496,
+            "length": 2,
+            "end_exclusive": 128498
+          },
+          "coordinate_offsets": {
+            "x": 128496,
+            "y": 128497
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 38,
+          "destination_y": 3,
+          "camera_origin_x": 30,
+          "camera_origin_y": -4,
+          "encoded_x": 38,
+          "encoded_y": 3,
+          "source": {
+            "space": "prg",
+            "offset": 128519,
+            "length": 3,
+            "end_exclusive": 128522
+          },
+          "field_offsets": {
+            "destination_scene_id": 128519,
+            "destination_x": 128520,
+            "destination_y": 128521
+          },
+          "raw": [
+            193,
+            38,
+            3
+          ],
+          "raw_hex": "C1 26 03"
+        },
+        {
+          "id": 6,
+          "id_hex": "0x06",
+          "x": 20,
+          "y": 18,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128498,
+            "length": 2,
+            "end_exclusive": 128500
+          },
+          "coordinate_offsets": {
+            "x": 128498,
+            "y": 128499
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 20,
+          "destination_y": 17,
+          "camera_origin_x": 12,
+          "camera_origin_y": 10,
+          "encoded_x": 20,
+          "encoded_y": 17,
+          "source": {
+            "space": "prg",
+            "offset": 128522,
+            "length": 3,
+            "end_exclusive": 128525
+          },
+          "field_offsets": {
+            "destination_scene_id": 128522,
+            "destination_x": 128523,
+            "destination_y": 128524
+          },
+          "raw": [
+            193,
+            20,
+            17
+          ],
+          "raw_hex": "C1 14 11"
+        },
+        {
+          "id": 7,
+          "id_hex": "0x07",
+          "x": 24,
+          "y": 18,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128500,
+            "length": 2,
+            "end_exclusive": 128502
+          },
+          "coordinate_offsets": {
+            "x": 128500,
+            "y": 128501
+          },
+          "destination_scene_id": 194,
+          "destination_scene_id_hex": "0xC2",
+          "destination_x": 24,
+          "destination_y": 14,
+          "camera_origin_x": 16,
+          "camera_origin_y": 7,
+          "encoded_x": 24,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 128525,
+            "length": 3,
+            "end_exclusive": 128528
+          },
+          "field_offsets": {
+            "destination_scene_id": 128525,
+            "destination_x": 128526,
+            "destination_y": 128527
+          },
+          "raw": [
+            194,
+            24,
+            14
+          ],
+          "raw_hex": "C2 18 0E"
+        },
+        {
+          "id": 8,
+          "id_hex": "0x08",
+          "x": 28,
+          "y": 18,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128502,
+            "length": 2,
+            "end_exclusive": 128504
+          },
+          "coordinate_offsets": {
+            "x": 128502,
+            "y": 128503
+          },
+          "destination_scene_id": 193,
+          "destination_scene_id_hex": "0xC1",
+          "destination_x": 28,
+          "destination_y": 17,
+          "camera_origin_x": 20,
+          "camera_origin_y": 10,
+          "encoded_x": 28,
+          "encoded_y": 17,
+          "source": {
+            "space": "prg",
+            "offset": 128528,
+            "length": 3,
+            "end_exclusive": 128531
+          },
+          "field_offsets": {
+            "destination_scene_id": 128528,
+            "destination_x": 128529,
+            "destination_y": 128530
+          },
+          "raw": [
+            193,
+            28,
+            17
+          ],
+          "raw_hex": "C1 1C 11"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 128484,
+        "length": 47,
+        "end_exclusive": 128531
+      },
+      "raw": [
+        255,
+        9,
+        33,
+        8,
+        3,
+        16,
+        3,
+        4,
+        3,
+        19,
+        18,
+        24,
+        38,
+        3,
+        20,
+        18,
+        24,
+        18,
+        28,
+        18,
+        191,
+        37,
+        6,
+        191,
+        6,
+        12,
+        193,
+        3,
+        4,
+        193,
+        3,
+        17,
+        193,
+        19,
+        23,
+        193,
+        38,
+        3,
+        193,
+        20,
+        17,
+        194,
+        24,
+        14,
+        193,
+        28,
+        17
+      ],
+      "raw_hex": "FF 09 21 08 03 10 03 04 03 13 12 18 26 03 14 12 18 12 1C 12 BF 25 06 BF 06 0C C1 03 04 C1 03 11 C1 13 17 C1 26 03 C1 14 11 C2 18 0E C1 1C 11",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [
+      {
+        "id": 13,
+        "id_hex": "0x0D",
+        "field_offsets": {
+          "scene_id": 236342,
+          "trigger_x": 236386,
+          "trigger_y": 236430,
+          "event_flag": 236474,
+          "story_state": 236518,
+          "encounter_formation_id": 236562
+        },
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "trigger_x": 23,
+        "trigger_x_hex": "0x17",
+        "trigger_y": 2,
+        "trigger_y_hex": "0x02",
+        "event_flag": 151,
+        "event_flag_hex": "0x97",
+        "story_state": 0,
+        "story_state_hex": "0x00",
+        "encounter_formation_id": 53,
+        "encounter_formation_id_hex": "0x35",
+        "classification": "coordinate-encounter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 14,
+        "id_hex": "0x0E",
+        "field_offsets": {
+          "scene_id": 236343,
+          "trigger_x": 236387,
+          "trigger_y": 236431,
+          "event_flag": 236475,
+          "story_state": 236519,
+          "encounter_formation_id": 236563
+        },
+        "scene_id": 192,
+        "scene_id_hex": "0xC0",
+        "trigger_x": 23,
+        "trigger_x_hex": "0x17",
+        "trigger_y": 5,
+        "trigger_y_hex": "0x05",
+        "event_flag": 151,
+        "event_flag_hex": "0x97",
+        "story_state": 0,
+        "story_state_hex": "0x00",
+        "encounter_formation_id": 53,
+        "encounter_formation_id_hex": "0x35",
+        "classification": "coordinate-encounter",
+        "inside_scene_canvas": true
+      }
+    ],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 85,
+      "zone_id_hex": "0x55",
+      "zone": {
+        "zone_id": 85,
+        "zone_id_hex": "0x55",
+        "config": 121,
+        "config_hex": "0x79",
+        "class_id": 1,
+        "ambush_threshold_index": 2,
+        "ambush_threshold": 8,
+        "meter_initial_index": 3,
+        "meter_initial_value": 0,
+        "config_reserved_bits": 1,
+        "config_source": {
+          "space": "prg",
+          "offset": 234026,
+          "length": 1,
+          "end_exclusive": 234027
+        },
+        "rolls_encounters": true,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 54,
+            "monster_id_hex": "0x36",
+            "empty": false,
+            "resource_reference": "monster:36",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 120,
+            "monster_id_hex": "0x78",
+            "empty": false,
+            "resource_reference": "monster:78",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 54,
+            "monster_id_hex": "0x36",
+            "empty": false,
+            "resource_reference": "monster:36",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 120,
+            "monster_id_hex": "0x78",
+            "empty": false,
+            "resource_reference": "monster:78",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 54,
+            "monster_id_hex": "0x36",
+            "empty": false,
+            "resource_reference": "monster:36",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 112,
+            "monster_id_hex": "0x70",
+            "empty": false,
+            "resource_reference": "monster:70",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 54,
+            "monster_id_hex": "0x36",
+            "empty": false,
+            "resource_reference": "monster:36",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 120,
+            "monster_id_hex": "0x78",
+            "empty": false,
+            "resource_reference": "monster:78",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 9,
+            "monster_id_hex": "0x09",
+            "empty": false,
+            "resource_reference": "encounter-formation:09",
+            "multi_group_slot": false,
+            "event_flag_gated": true,
+            "event_flag": 88,
+            "event_flag_hex": "0x58",
+            "event_flag_role": "suppress-when-set-and-commit-on-start"
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 235579,
+          "length": 14,
+          "end_exclusive": 235593
+        },
+        "entries_editable": true,
+        "entries_readonly_reason": null,
+        "active_entry_count": 9,
+        "selection_weight_total": 20,
+        "referenced_by": [
+          "scene:C0",
+          "scene:C1",
+          "scene:C2"
+        ],
+        "reference_count": 3
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234355,
+        "length": 1,
+        "end_exclusive": 234356
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 1,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 1,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 18,
+    "point_transitions": 9,
+    "boundary_exits": 1,
+    "event_triggers": 2,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      85
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

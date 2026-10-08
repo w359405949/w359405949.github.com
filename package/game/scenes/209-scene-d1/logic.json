@@ -1,0 +1,2835 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 209,
+  "scene_id_hex": "0xD1",
+  "width": 52,
+  "height": 28,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 209,
+      "entry_id_hex": "0xD1",
+      "count": 0,
+      "record_source": null,
+      "records": [],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [
+      {
+        "id": 62,
+        "id_hex": "0x3E",
+        "field_offsets": {
+          "scene_id": 236670,
+          "x": 236761,
+          "y": 236852,
+          "content_id": 236943
+        },
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 11,
+        "x_hex": "0x0B",
+        "y": 8,
+        "y_hex": "0x08",
+        "content_id": 63,
+        "content_id_hex": "0x3F",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 63,
+        "save_flag_bit": 62,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 62,
+          "flag_id_hex": "0x3E",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1128,
+          "runtime_byte_hex": "0x0468",
+          "byte_index": 7,
+          "bit_index": 6,
+          "bit_mask": 64,
+          "bit_mask_hex": "0x40",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 63,
+        "id_hex": "0x3F",
+        "field_offsets": {
+          "scene_id": 236671,
+          "x": 236762,
+          "y": 236853,
+          "content_id": 236944
+        },
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 13,
+        "x_hex": "0x0D",
+        "y": 5,
+        "y_hex": "0x05",
+        "content_id": 201,
+        "content_id_hex": "0xC9",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 201,
+        "save_flag_bit": 63,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 63,
+          "flag_id_hex": "0x3F",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1128,
+          "runtime_byte_hex": "0x0468",
+          "byte_index": 7,
+          "bit_index": 7,
+          "bit_mask": 128,
+          "bit_mask_hex": "0x80",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 64,
+        "id_hex": "0x40",
+        "field_offsets": {
+          "scene_id": 236672,
+          "x": 236763,
+          "y": 236854,
+          "content_id": 236945
+        },
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 38,
+        "x_hex": "0x26",
+        "y": 5,
+        "y_hex": "0x05",
+        "content_id": 62,
+        "content_id_hex": "0x3E",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 62,
+        "save_flag_bit": 64,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 64,
+          "flag_id_hex": "0x40",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1129,
+          "runtime_byte_hex": "0x0469",
+          "byte_index": 8,
+          "bit_index": 0,
+          "bit_mask": 1,
+          "bit_mask_hex": "0x01",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 65,
+        "id_hex": "0x41",
+        "field_offsets": {
+          "scene_id": 236673,
+          "x": 236764,
+          "y": 236855,
+          "content_id": 236946
+        },
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 40,
+        "x_hex": "0x28",
+        "y": 7,
+        "y_hex": "0x07",
+        "content_id": 15,
+        "content_id_hex": "0x0F",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 15,
+        "save_flag_bit": 65,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 65,
+          "flag_id_hex": "0x41",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1129,
+          "runtime_byte_hex": "0x0469",
+          "byte_index": 8,
+          "bit_index": 1,
+          "bit_mask": 2,
+          "bit_mask_hex": "0x02",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_points": [
+      {
+        "id": 107,
+        "id_hex": "0x6B",
+        "scene_id": 209,
+        "packed_handler_instance": 90,
+        "x": 21,
+        "y": 4,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x15",
+        "y_hex": "0x04",
+        "handler_selector": 10,
+        "instance_id": 5,
+        "field_offsets": {
+          "scene_id": 237100,
+          "packed_handler_instance": 237223,
+          "x": 237346,
+          "y": 237469
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237223,
+          "length": 1,
+          "end_exclusive": 237224
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x05",
+        "packed_handler_instance_hex": "0x5A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 108,
+        "id_hex": "0x6C",
+        "scene_id": 209,
+        "packed_handler_instance": 90,
+        "x": 25,
+        "y": 4,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x19",
+        "y_hex": "0x04",
+        "handler_selector": 10,
+        "instance_id": 5,
+        "field_offsets": {
+          "scene_id": 237101,
+          "packed_handler_instance": 237224,
+          "x": 237347,
+          "y": 237470
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237224,
+          "length": 1,
+          "end_exclusive": 237225
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x05",
+        "packed_handler_instance_hex": "0x5A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 109,
+        "id_hex": "0x6D",
+        "scene_id": 209,
+        "packed_handler_instance": 90,
+        "x": 29,
+        "y": 4,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x1D",
+        "y_hex": "0x04",
+        "handler_selector": 10,
+        "instance_id": 5,
+        "field_offsets": {
+          "scene_id": 237102,
+          "packed_handler_instance": 237225,
+          "x": 237348,
+          "y": 237471
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237225,
+          "length": 1,
+          "end_exclusive": 237226
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x05",
+        "packed_handler_instance_hex": "0x5A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 110,
+        "id_hex": "0x6E",
+        "scene_id": 209,
+        "packed_handler_instance": 74,
+        "x": 21,
+        "y": 13,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x15",
+        "y_hex": "0x0D",
+        "handler_selector": 10,
+        "instance_id": 4,
+        "field_offsets": {
+          "scene_id": 237103,
+          "packed_handler_instance": 237226,
+          "x": 237349,
+          "y": 237472
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237226,
+          "length": 1,
+          "end_exclusive": 237227
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x04",
+        "packed_handler_instance_hex": "0x4A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 111,
+        "id_hex": "0x6F",
+        "scene_id": 209,
+        "packed_handler_instance": 106,
+        "x": 25,
+        "y": 13,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x19",
+        "y_hex": "0x0D",
+        "handler_selector": 10,
+        "instance_id": 6,
+        "field_offsets": {
+          "scene_id": 237104,
+          "packed_handler_instance": 237227,
+          "x": 237350,
+          "y": 237473
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237227,
+          "length": 1,
+          "end_exclusive": 237228
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x06",
+        "packed_handler_instance_hex": "0x6A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 112,
+        "id_hex": "0x70",
+        "scene_id": 209,
+        "packed_handler_instance": 74,
+        "x": 29,
+        "y": 13,
+        "scene_id_hex": "0xD1",
+        "x_hex": "0x1D",
+        "y_hex": "0x0D",
+        "handler_selector": 10,
+        "instance_id": 4,
+        "field_offsets": {
+          "scene_id": 237105,
+          "packed_handler_instance": 237228,
+          "x": 237351,
+          "y": 237474
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237228,
+          "length": 1,
+          "end_exclusive": 237229
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x0A",
+        "instance_id_hex": "0x04",
+        "packed_handler_instance_hex": "0x4A",
+        "command_id": 56,
+        "command_id_hex": "0x38",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "D1:11:04",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 17,
+        "x_hex": "0x11",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "D1:15:04",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 21,
+        "x_hex": "0x15",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          107
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x6B"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            107
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "D1:19:04",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 25,
+        "x_hex": "0x19",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          108
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x6C"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            108
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 3,
+        "id_hex": "0x0003",
+        "coordinate_key": "D1:1D:04",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 29,
+        "x_hex": "0x1D",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          109
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x6D"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            109
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 4,
+        "id_hex": "0x0004",
+        "coordinate_key": "D1:21:04",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 33,
+        "x_hex": "0x21",
+        "y": 4,
+        "y_hex": "0x04",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 5,
+        "id_hex": "0x0005",
+        "coordinate_key": "D1:11:0D",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 17,
+        "x_hex": "0x11",
+        "y": 13,
+        "y_hex": "0x0D",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 6,
+        "id_hex": "0x0006",
+        "coordinate_key": "D1:15:0D",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 21,
+        "x_hex": "0x15",
+        "y": 13,
+        "y_hex": "0x0D",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          110
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x6E"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            110
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 7,
+        "id_hex": "0x0007",
+        "coordinate_key": "D1:19:0D",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 25,
+        "x_hex": "0x19",
+        "y": 13,
+        "y_hex": "0x0D",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          111
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x6F"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            111
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 8,
+        "id_hex": "0x0008",
+        "coordinate_key": "D1:1D:0D",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 29,
+        "x_hex": "0x1D",
+        "y": 13,
+        "y_hex": "0x0D",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          112
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x70"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            112
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 9,
+        "id_hex": "0x0009",
+        "coordinate_key": "D1:21:0D",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 33,
+        "x_hex": "0x21",
+        "y": 13,
+        "y_hex": "0x0D",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 10,
+        "id_hex": "0x000A",
+        "coordinate_key": "D1:03:11",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 3,
+        "x_hex": "0x03",
+        "y": 17,
+        "y_hex": "0x11",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 11,
+        "id_hex": "0x000B",
+        "coordinate_key": "D1:17:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 23,
+        "x_hex": "0x17",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 12,
+        "id_hex": "0x000C",
+        "coordinate_key": "D1:18:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 24,
+        "x_hex": "0x18",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 13,
+        "id_hex": "0x000D",
+        "coordinate_key": "D1:19:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 25,
+        "x_hex": "0x19",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 14,
+        "id_hex": "0x000E",
+        "coordinate_key": "D1:21:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 33,
+        "x_hex": "0x21",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 15,
+        "id_hex": "0x000F",
+        "coordinate_key": "D1:22:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 34,
+        "x_hex": "0x22",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 16,
+        "id_hex": "0x0010",
+        "coordinate_key": "D1:23:15",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 35,
+        "x_hex": "0x23",
+        "y": 21,
+        "y_hex": "0x15",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 17,
+        "id_hex": "0x0011",
+        "coordinate_key": "D1:15:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 21,
+        "x_hex": "0x15",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 18,
+        "id_hex": "0x0012",
+        "coordinate_key": "D1:17:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 23,
+        "x_hex": "0x17",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 19,
+        "id_hex": "0x0013",
+        "coordinate_key": "D1:18:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 24,
+        "x_hex": "0x18",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 20,
+        "id_hex": "0x0014",
+        "coordinate_key": "D1:19:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 25,
+        "x_hex": "0x19",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 21,
+        "id_hex": "0x0015",
+        "coordinate_key": "D1:21:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 33,
+        "x_hex": "0x21",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 22,
+        "id_hex": "0x0016",
+        "coordinate_key": "D1:22:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 34,
+        "x_hex": "0x22",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 23,
+        "id_hex": "0x0017",
+        "coordinate_key": "D1:23:18",
+        "scene_id": 209,
+        "scene_id_hex": "0xD1",
+        "x": 35,
+        "x_hex": "0x23",
+        "y": 24,
+        "y_hex": "0x18",
+        "metatile_id": 70,
+        "metatile_id_hex": "0x46",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 234310,
+          "length": 1,
+          "end_exclusive": 234311
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 36876,
+            "length": 705,
+            "end_exclusive": 37581
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            233472,
+            234304
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 38709,
+      "pointer_cpu_hex": "0x9735",
+      "pointer_prg": 128821,
+      "pointer_prg_hex": "0x01F735",
+      "boundary_mode": "dynamic-return",
+      "boundary_exits": [],
+      "dynamic_boundary_return": {
+        "id": 0,
+        "id_hex": "0x00",
+        "direction_code": null,
+        "direction": "all-boundaries",
+        "target_kind": "saved-return-position",
+        "editable": false,
+        "source": {
+          "space": "prg",
+          "offset": 128821,
+          "length": 1,
+          "end_exclusive": 128822
+        }
+      },
+      "point_transition_count": 2,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 45,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128823,
+            "length": 2,
+            "end_exclusive": 128825
+          },
+          "coordinate_offsets": {
+            "x": 128823,
+            "y": 128824
+          },
+          "destination_scene_id": 210,
+          "destination_scene_id_hex": "0xD2",
+          "destination_x": 43,
+          "destination_y": 13,
+          "camera_origin_x": 35,
+          "camera_origin_y": 6,
+          "encoded_x": 43,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 128827,
+            "length": 3,
+            "end_exclusive": 128830
+          },
+          "field_offsets": {
+            "destination_scene_id": 128827,
+            "destination_x": 128828,
+            "destination_y": 128829
+          },
+          "raw": [
+            210,
+            43,
+            13
+          ],
+          "raw_hex": "D2 2B 0D"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 43,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128825,
+            "length": 2,
+            "end_exclusive": 128827
+          },
+          "coordinate_offsets": {
+            "x": 128825,
+            "y": 128826
+          },
+          "destination_scene_id": 208,
+          "destination_scene_id_hex": "0xD0",
+          "destination_x": 45,
+          "destination_y": 13,
+          "camera_origin_x": 37,
+          "camera_origin_y": 6,
+          "encoded_x": 45,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 128830,
+            "length": 3,
+            "end_exclusive": 128833
+          },
+          "field_offsets": {
+            "destination_scene_id": 128830,
+            "destination_x": 128831,
+            "destination_y": 128832
+          },
+          "raw": [
+            208,
+            45,
+            13
+          ],
+          "raw_hex": "D0 2D 0D"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 128821,
+        "length": 12,
+        "end_exclusive": 128833
+      },
+      "raw": [
+        255,
+        2,
+        45,
+        13,
+        43,
+        13,
+        210,
+        43,
+        13,
+        208,
+        45,
+        13
+      ],
+      "raw_hex": "FF 02 2D 0D 2B 0D D2 2B 0D D0 2D 0D",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 90,
+      "zone_id_hex": "0x5A",
+      "zone": {
+        "zone_id": 90,
+        "zone_id_hex": "0x5A",
+        "config": 61,
+        "config_hex": "0x3D",
+        "class_id": 1,
+        "ambush_threshold_index": 3,
+        "ambush_threshold": 4,
+        "meter_initial_index": 3,
+        "meter_initial_value": 0,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 234031,
+          "length": 1,
+          "end_exclusive": 234032
+        },
+        "rolls_encounters": true,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 21,
+            "monster_id_hex": "0x15",
+            "empty": false,
+            "resource_reference": "monster:15",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 21,
+            "monster_id_hex": "0x15",
+            "empty": false,
+            "resource_reference": "monster:15",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 123,
+            "monster_id_hex": "0x7B",
+            "empty": false,
+            "resource_reference": "monster:7B",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 21,
+            "monster_id_hex": "0x15",
+            "empty": false,
+            "resource_reference": "monster:15",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 118,
+            "monster_id_hex": "0x76",
+            "empty": false,
+            "resource_reference": "monster:76",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 124,
+            "monster_id_hex": "0x7C",
+            "empty": false,
+            "resource_reference": "monster:7C",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 56,
+            "monster_id_hex": "0x38",
+            "empty": false,
+            "resource_reference": "monster:38",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 123,
+            "monster_id_hex": "0x7B",
+            "empty": false,
+            "resource_reference": "monster:7B",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 117,
+            "monster_id_hex": "0x75",
+            "empty": false,
+            "resource_reference": "monster:75",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 235649,
+          "length": 14,
+          "end_exclusive": 235663
+        },
+        "entries_editable": true,
+        "entries_readonly_reason": null,
+        "active_entry_count": 9,
+        "selection_weight_total": 22,
+        "referenced_by": [
+          "scene:CE",
+          "scene:CF",
+          "scene:D0",
+          "scene:D1"
+        ],
+        "reference_count": 4
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234372,
+        "length": 1,
+        "end_exclusive": 234373
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 0,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 4,
+    "investigation_points": 6,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 24,
+    "point_transitions": 2,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      90
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:B0",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 176,
+    "id_hex": "0xB0",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 176,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-item",
+      "name": "人类道具",
+      "owner": "human",
+      "first_id": 153,
+      "first_id_hex": "0x99",
+      "last_id": 202,
+      "last_id_hex": "0xCA"
+    },
+    "price": {
+      "raw_code": 128,
+      "raw_code_hex": "0x80",
+      "available": true,
+      "value": 2000,
+      "source": {
+        "space": "prg",
+        "offset": 140545,
+        "length": 1,
+        "end_exclusive": 140546,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-decoded",
+      "registered": true,
+      "dispatch_index": 24,
+      "dispatch_index_hex": "0x18",
+      "target_required": false,
+      "handler": {
+        "cpu_address": 42805,
+        "cpu_address_hex": "0xA735",
+        "prg_offset": 206645,
+        "prg_offset_hex": "0x032735",
+        "source": {
+          "space": "prg",
+          "offset": 206645,
+          "length": 1,
+          "end_exclusive": 206646,
+          "cpu_address": 42805,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "vehicle-context",
+        "label": "战车场景工具",
+        "detail": "按当前战车/场景状态执行修理箱或花板逻辑"
+      },
+      "consumption": "context-dependent",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "failure-message",
+          "label": "战车状态不允许提示",
+          "condition": "战车状态值小于 $32",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 91,
+            "record_id_hex": "0x5B",
+            "node_id": "record:02:091"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206661,
+              "length": 1,
+              "end_exclusive": 206662,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "usage-message",
+          "label": "修理工具用途提示",
+          "condition": "当前目标不是可修理对象",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 130,
+            "record_id_hex": "0x82",
+            "node_id": "record:02:130"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206670,
+              "length": 1,
+              "end_exclusive": 206671,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205816,
+          "length": 1,
+          "end_exclusive": 205817,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 205878,
+          "length": 2,
+          "end_exclusive": 205880,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_B0.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-unregistered",
+      "registered": false,
+      "dispatch_index": null,
+      "dispatch_index_hex": null,
+      "result_selector": 145,
+      "result_selector_hex": "0x91",
+      "inventory_domain": "human",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "默认结果脚本依次显示使用提示与无效果提示",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 21,
+            "record_id_hex": "0x15",
+            "node_id": "record:0A:021"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146420,
+              "length": 1,
+              "end_exclusive": 146421,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        },
+        {
+          "role": "no-effect-message",
+          "label": "未登记工具的无效果结果",
+          "condition": "未登记工具进入默认结果脚本",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 58,
+            "record_id_hex": "0x3A",
+            "node_id": "record:0A:058"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [],
+          "algorithm": "the default battle-result branch selects this message downstream; $A72C renders it and $EB31 fixes region $0A"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190669,
+          "length": 1,
+          "end_exclusive": 190670,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss"
+      }
+    },
+    "semantic_status": "field-use-decoded"
+  }
+}

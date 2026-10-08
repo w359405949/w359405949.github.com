@@ -1,0 +1,941 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 56,
+  "scene_id_hex": "0x38",
+  "width": 16,
+  "height": 26,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 56,
+      "entry_id_hex": "0x38",
+      "count": 6,
+      "record_source": {
+        "space": "prg",
+        "offset": 149348,
+        "length": 37,
+        "end_exclusive": 149385
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:38:00",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "uid": "scene-actor:38:01",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "uid": "scene-actor:38:02",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "uid": "scene-actor:38:03",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "uid": "scene-actor:38:04",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "uid": "scene-actor:38:05",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [],
+    "transitions": {
+      "pointer_cpu": 36303,
+      "pointer_cpu_hex": "0x8DCF",
+      "pointer_prg": 126415,
+      "pointer_prg_hex": "0x01EDCF",
+      "boundary_mode": "shared-target",
+      "boundary_exits": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "direction_code": null,
+          "direction": "all-boundaries",
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 140,
+          "destination_y": 17,
+          "camera_origin_x": 132,
+          "camera_origin_y": 10,
+          "encoded_x": 140,
+          "encoded_y": 17,
+          "source": {
+            "space": "prg",
+            "offset": 126416,
+            "length": 3,
+            "end_exclusive": 126419
+          },
+          "field_offsets": {
+            "destination_scene_id": 126416,
+            "destination_x": 126417,
+            "destination_y": 126418
+          },
+          "raw": [
+            0,
+            140,
+            17
+          ],
+          "raw_hex": "00 8C 11"
+        }
+      ],
+      "dynamic_boundary_return": null,
+      "point_transition_count": 11,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 12,
+          "y": 4,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126420,
+            "length": 2,
+            "end_exclusive": 126422
+          },
+          "coordinate_offsets": {
+            "x": 126420,
+            "y": 126421
+          },
+          "destination_scene_id": 63,
+          "destination_scene_id_hex": "0x3F",
+          "destination_x": 8,
+          "destination_y": 12,
+          "camera_origin_x": 0,
+          "camera_origin_y": 5,
+          "encoded_x": 8,
+          "encoded_y": 12,
+          "source": {
+            "space": "prg",
+            "offset": 126442,
+            "length": 3,
+            "end_exclusive": 126445
+          },
+          "field_offsets": {
+            "destination_scene_id": 126442,
+            "destination_x": 126443,
+            "destination_y": 126444
+          },
+          "raw": [
+            63,
+            8,
+            12
+          ],
+          "raw_hex": "3F 08 0C"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 10,
+          "y": 9,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126422,
+            "length": 2,
+            "end_exclusive": 126424
+          },
+          "coordinate_offsets": {
+            "x": 126422,
+            "y": 126423
+          },
+          "destination_scene_id": 62,
+          "destination_scene_id_hex": "0x3E",
+          "destination_x": 12,
+          "destination_y": 14,
+          "camera_origin_x": 4,
+          "camera_origin_y": 7,
+          "encoded_x": 12,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 126445,
+            "length": 3,
+            "end_exclusive": 126448
+          },
+          "field_offsets": {
+            "destination_scene_id": 126445,
+            "destination_x": 126446,
+            "destination_y": 126447
+          },
+          "raw": [
+            62,
+            12,
+            14
+          ],
+          "raw_hex": "3E 0C 0E"
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "x": 5,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126424,
+            "length": 2,
+            "end_exclusive": 126426
+          },
+          "coordinate_offsets": {
+            "x": 126424,
+            "y": 126425
+          },
+          "destination_scene_id": 61,
+          "destination_scene_id_hex": "0x3D",
+          "destination_x": 9,
+          "destination_y": 14,
+          "camera_origin_x": 1,
+          "camera_origin_y": 7,
+          "encoded_x": 9,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 126448,
+            "length": 3,
+            "end_exclusive": 126451
+          },
+          "field_offsets": {
+            "destination_scene_id": 126448,
+            "destination_x": 126449,
+            "destination_y": 126450
+          },
+          "raw": [
+            61,
+            9,
+            14
+          ],
+          "raw_hex": "3D 09 0E"
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "x": 12,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126426,
+            "length": 2,
+            "end_exclusive": 126428
+          },
+          "coordinate_offsets": {
+            "x": 126426,
+            "y": 126427
+          },
+          "destination_scene_id": 60,
+          "destination_scene_id_hex": "0x3C",
+          "destination_x": 2,
+          "destination_y": 9,
+          "camera_origin_x": -6,
+          "camera_origin_y": 2,
+          "encoded_x": 2,
+          "encoded_y": 9,
+          "source": {
+            "space": "prg",
+            "offset": 126451,
+            "length": 3,
+            "end_exclusive": 126454
+          },
+          "field_offsets": {
+            "destination_scene_id": 126451,
+            "destination_x": 126452,
+            "destination_y": 126453
+          },
+          "raw": [
+            60,
+            2,
+            9
+          ],
+          "raw_hex": "3C 02 09"
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "x": 5,
+          "y": 18,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126428,
+            "length": 2,
+            "end_exclusive": 126430
+          },
+          "coordinate_offsets": {
+            "x": 126428,
+            "y": 126429
+          },
+          "destination_scene_id": 58,
+          "destination_scene_id_hex": "0x3A",
+          "destination_x": 7,
+          "destination_y": 14,
+          "camera_origin_x": -1,
+          "camera_origin_y": 7,
+          "encoded_x": 7,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 126454,
+            "length": 3,
+            "end_exclusive": 126457
+          },
+          "field_offsets": {
+            "destination_scene_id": 126454,
+            "destination_x": 126455,
+            "destination_y": 126456
+          },
+          "raw": [
+            58,
+            7,
+            14
+          ],
+          "raw_hex": "3A 07 0E"
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "x": 11,
+          "y": 18,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126430,
+            "length": 2,
+            "end_exclusive": 126432
+          },
+          "coordinate_offsets": {
+            "x": 126430,
+            "y": 126431
+          },
+          "destination_scene_id": 59,
+          "destination_scene_id_hex": "0x3B",
+          "destination_x": 7,
+          "destination_y": 14,
+          "camera_origin_x": -1,
+          "camera_origin_y": 7,
+          "encoded_x": 7,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 126457,
+            "length": 3,
+            "end_exclusive": 126460
+          },
+          "field_offsets": {
+            "destination_scene_id": 126457,
+            "destination_x": 126458,
+            "destination_y": 126459
+          },
+          "raw": [
+            59,
+            7,
+            14
+          ],
+          "raw_hex": "3B 07 0E"
+        },
+        {
+          "id": 6,
+          "id_hex": "0x06",
+          "x": 5,
+          "y": 22,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126432,
+            "length": 2,
+            "end_exclusive": 126434
+          },
+          "coordinate_offsets": {
+            "x": 126432,
+            "y": 126433
+          },
+          "destination_scene_id": 57,
+          "destination_scene_id_hex": "0x39",
+          "destination_x": 7,
+          "destination_y": 11,
+          "camera_origin_x": -1,
+          "camera_origin_y": 4,
+          "encoded_x": 7,
+          "encoded_y": 11,
+          "source": {
+            "space": "prg",
+            "offset": 126460,
+            "length": 3,
+            "end_exclusive": 126463
+          },
+          "field_offsets": {
+            "destination_scene_id": 126460,
+            "destination_x": 126461,
+            "destination_y": 126462
+          },
+          "raw": [
+            57,
+            7,
+            11
+          ],
+          "raw_hex": "39 07 0B"
+        },
+        {
+          "id": 7,
+          "id_hex": "0x07",
+          "x": 11,
+          "y": 22,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126434,
+            "length": 2,
+            "end_exclusive": 126436
+          },
+          "coordinate_offsets": {
+            "x": 126434,
+            "y": 126435
+          },
+          "destination_scene_id": 235,
+          "destination_scene_id_hex": "0xEB",
+          "destination_x": 6,
+          "destination_y": 14,
+          "camera_origin_x": -2,
+          "camera_origin_y": 7,
+          "encoded_x": 6,
+          "encoded_y": 14,
+          "source": {
+            "space": "prg",
+            "offset": 126463,
+            "length": 3,
+            "end_exclusive": 126466
+          },
+          "field_offsets": {
+            "destination_scene_id": 126463,
+            "destination_x": 126464,
+            "destination_y": 126465
+          },
+          "raw": [
+            235,
+            6,
+            14
+          ],
+          "raw_hex": "EB 06 0E"
+        },
+        {
+          "id": 8,
+          "id_hex": "0x08",
+          "x": 5,
+          "y": 6,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126436,
+            "length": 2,
+            "end_exclusive": 126438
+          },
+          "coordinate_offsets": {
+            "x": 126436,
+            "y": 126437
+          },
+          "destination_scene_id": 226,
+          "destination_scene_id_hex": "0xE2",
+          "destination_x": 7,
+          "destination_y": 9,
+          "camera_origin_x": -1,
+          "camera_origin_y": 2,
+          "encoded_x": 7,
+          "encoded_y": 9,
+          "source": {
+            "space": "prg",
+            "offset": 126466,
+            "length": 3,
+            "end_exclusive": 126469
+          },
+          "field_offsets": {
+            "destination_scene_id": 126466,
+            "destination_x": 126467,
+            "destination_y": 126468
+          },
+          "raw": [
+            226,
+            7,
+            9
+          ],
+          "raw_hex": "E2 07 09"
+        },
+        {
+          "id": 9,
+          "id_hex": "0x09",
+          "x": 7,
+          "y": 5,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126438,
+            "length": 2,
+            "end_exclusive": 126440
+          },
+          "coordinate_offsets": {
+            "x": 126438,
+            "y": 126439
+          },
+          "destination_scene_id": 226,
+          "destination_scene_id_hex": "0xE2",
+          "destination_x": 26,
+          "destination_y": 9,
+          "camera_origin_x": 18,
+          "camera_origin_y": 2,
+          "encoded_x": 26,
+          "encoded_y": 9,
+          "source": {
+            "space": "prg",
+            "offset": 126469,
+            "length": 3,
+            "end_exclusive": 126472
+          },
+          "field_offsets": {
+            "destination_scene_id": 126469,
+            "destination_x": 126470,
+            "destination_y": 126471
+          },
+          "raw": [
+            226,
+            26,
+            9
+          ],
+          "raw_hex": "E2 1A 09"
+        },
+        {
+          "id": 10,
+          "id_hex": "0x0A",
+          "x": 9,
+          "y": 5,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126440,
+            "length": 2,
+            "end_exclusive": 126442
+          },
+          "coordinate_offsets": {
+            "x": 126440,
+            "y": 126441
+          },
+          "destination_scene_id": 226,
+          "destination_scene_id_hex": "0xE2",
+          "destination_x": 44,
+          "destination_y": 9,
+          "camera_origin_x": 36,
+          "camera_origin_y": 2,
+          "encoded_x": 44,
+          "encoded_y": 9,
+          "source": {
+            "space": "prg",
+            "offset": 126472,
+            "length": 3,
+            "end_exclusive": 126475
+          },
+          "field_offsets": {
+            "destination_scene_id": 126472,
+            "destination_x": 126473,
+            "destination_y": 126474
+          },
+          "raw": [
+            226,
+            44,
+            9
+          ],
+          "raw_hex": "E2 2C 09"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 126415,
+        "length": 60,
+        "end_exclusive": 126475
+      },
+      "raw": [
+        254,
+        0,
+        140,
+        17,
+        11,
+        12,
+        4,
+        10,
+        9,
+        5,
+        13,
+        12,
+        13,
+        5,
+        18,
+        11,
+        18,
+        5,
+        22,
+        11,
+        22,
+        5,
+        6,
+        7,
+        5,
+        9,
+        5,
+        63,
+        8,
+        12,
+        62,
+        12,
+        14,
+        61,
+        9,
+        14,
+        60,
+        2,
+        9,
+        58,
+        7,
+        14,
+        59,
+        7,
+        14,
+        57,
+        7,
+        11,
+        235,
+        6,
+        14,
+        226,
+        7,
+        9,
+        226,
+        26,
+        9,
+        226,
+        44,
+        9
+      ],
+      "raw_hex": "FE 00 8C 11 0B 0C 04 0A 09 05 0D 0C 0D 05 12 0B 12 05 16 0B 16 05 06 07 05 09 05 3F 08 0C 3E 0C 0E 3D 09 0E 3C 02 09 3A 07 0E 3B 07 0E 39 07 0B EB 06 0E E2 07 09 E2 1A 09 E2 2C 09",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "implicit-zone-zero",
+      "editable": false,
+      "zone_id": 0,
+      "zone_id_hex": "0x00",
+      "zone": {
+        "zone_id": 0,
+        "zone_id_hex": "0x00",
+        "config": 0,
+        "config_hex": "0x00",
+        "class_id": 0,
+        "ambush_threshold_index": 0,
+        "ambush_threshold": 32,
+        "meter_initial_index": 0,
+        "meter_initial_value": 48,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 233941,
+          "length": 1,
+          "end_exclusive": 233942
+        },
+        "rolls_encounters": false,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 234389,
+          "length": 14,
+          "end_exclusive": 234403
+        },
+        "entries_editable": false,
+        "entries_readonly_reason": "zone $00 从不抽取，且其候选行与场景 zone 表尾部（场景 $80-$EF）共用同一批物理字节",
+        "active_entry_count": 2,
+        "selection_weight_total": 4,
+        "referenced_by": [
+          "world-block:7,10",
+          "world-block:8,10",
+          "world-block:9,10",
+          "world-block:5,11",
+          "scene:80",
+          "scene:81",
+          "scene:82",
+          "scene:83",
+          "scene:84",
+          "scene:85",
+          "scene:86",
+          "scene:87",
+          "scene:88",
+          "scene:90",
+          "scene:91",
+          "scene:92",
+          "scene:93",
+          "scene:94",
+          "scene:98",
+          "scene:99",
+          "scene:9B",
+          "scene:9C",
+          "scene:9D",
+          "scene:A0",
+          "scene:A1",
+          "scene:A2",
+          "scene:A3",
+          "scene:A4",
+          "scene:A5",
+          "scene:A6",
+          "scene:A7",
+          "scene:AB",
+          "scene:AC",
+          "scene:AD",
+          "scene:AE",
+          "scene:AF",
+          "scene:B4",
+          "scene:B5",
+          "scene:B6",
+          "scene:B7",
+          "scene:B8",
+          "scene:B9",
+          "scene:BA",
+          "scene:BB",
+          "scene:C5",
+          "scene:C6",
+          "scene:C7",
+          "scene:C8",
+          "scene:C9",
+          "scene:CD",
+          "scene:D6",
+          "scene:D9",
+          "scene:DA",
+          "scene:DB",
+          "scene:DC",
+          "scene:DD",
+          "scene:DE",
+          "scene:DF",
+          "scene:E0",
+          "scene:E1",
+          "scene:E2",
+          "scene:E3",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EA",
+          "scene:EB",
+          "scene:EC",
+          "scene:ED",
+          "scene:EE",
+          "scene:EF"
+        ],
+        "reference_count": 72
+      },
+      "reason": "$902B 只对场景 ID >= $80 查 zone 表，其余场景一律 zone $00（不随机遇敌）",
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 6,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 0,
+    "point_transitions": 11,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      0
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

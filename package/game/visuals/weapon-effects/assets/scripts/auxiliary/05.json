@@ -1,0 +1,301 @@
+{
+  "schema": "metalmaxcn.weapon-effect-aux-script-asset",
+  "id": 5,
+  "id_hex": "0x05",
+  "path": "assets/scripts/auxiliary/05.bin",
+  "prg_offset": 145472,
+  "prg_offset_hex": "0x023840",
+  "length": 15,
+  "terminator": 159,
+  "bytes_hex": "01 03 0E 00 13 01 20 18 04 04 07 01 16 08 9F",
+  "command_count": 6,
+  "commands": [
+    {
+      "offset": 0,
+      "prg_offset": 145472,
+      "prg_offset_hex": "0x023840",
+      "opcode": 1,
+      "opcode_hex": "0x01",
+      "name": "call_aux_script",
+      "length": 2,
+      "bytes_hex": "01 03",
+      "operands": [
+        {
+          "name": "script_id",
+          "value": 3,
+          "value_hex": "0x03"
+        }
+      ],
+      "handler_cpu": 47612,
+      "handler_cpu_hex": "0xB9FC",
+      "handler_prg": 195068,
+      "handler_prg_hex": "0x02F9FC",
+      "handler_far": "17:19FC",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false
+    },
+    {
+      "offset": 2,
+      "prg_offset": 145474,
+      "prg_offset_hex": "0x023842",
+      "opcode": 14,
+      "opcode_hex": "0x0E",
+      "name": "increment_object_action",
+      "length": 2,
+      "bytes_hex": "0E 00",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 0,
+          "value_hex": "0x00"
+        }
+      ],
+      "handler_cpu": 47690,
+      "handler_cpu_hex": "0xBA4A",
+      "handler_prg": 195146,
+      "handler_prg_hex": "0x02FA4A",
+      "handler_far": "17:1A4A",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 0,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 4,
+      "prg_offset": 145476,
+      "prg_offset_hex": "0x023844",
+      "opcode": 19,
+      "opcode_hex": "0x13",
+      "name": "spawn_object_at_actor",
+      "length": 3,
+      "bytes_hex": "13 01 20",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        },
+        {
+          "name": "action",
+          "value": 32,
+          "value_hex": "0x20"
+        }
+      ],
+      "handler_cpu": 47927,
+      "handler_cpu_hex": "0xBB37",
+      "handler_prg": 195383,
+      "handler_prg_hex": "0x02FB37",
+      "handler_far": "17:1B37",
+      "alternate_handler_cpu": 47774,
+      "alternate_handler_cpu_hex": "0xBA9E",
+      "alternate_handler_prg": 195230,
+      "alternate_handler_prg_hex": "0x02FA9E",
+      "alternate_handler_far": "17:1A9E",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "actor-anchor initializer",
+      "alternate_effect": "mirrored actor-anchor initializer",
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 7,
+      "prg_offset": 145479,
+      "prg_offset_hex": "0x023847",
+      "opcode": 24,
+      "opcode_hex": "0x18",
+      "name": "animate_linear_path_delayed",
+      "length": 3,
+      "bytes_hex": "18 04 04",
+      "operands": [
+        {
+          "name": "path_parameter",
+          "value": 4,
+          "value_hex": "0x04"
+        },
+        {
+          "name": "duration",
+          "value": 4,
+          "value_hex": "0x04"
+        }
+      ],
+      "handler_cpu": 48173,
+      "handler_cpu_hex": "0xBC2D",
+      "handler_prg": 195629,
+      "handler_prg_hex": "0x02FC2D",
+      "handler_far": "17:1C2D",
+      "alternate_handler_cpu": 48178,
+      "alternate_handler_cpu_hex": "0xBC32",
+      "alternate_handler_prg": 195634,
+      "alternate_handler_prg_hex": "0x02FC32",
+      "alternate_handler_far": "17:1C32",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "target-to-object path with explicit duration",
+      "alternate_effect": "actor-to-object mirrored path with duration",
+      "marker": false
+    },
+    {
+      "offset": 10,
+      "prg_offset": 145482,
+      "prg_offset_hex": "0x02384A",
+      "opcode": 7,
+      "opcode_hex": "0x07",
+      "name": "clear_object_set_delay",
+      "length": 2,
+      "bytes_hex": "07 01",
+      "operands": [
+        {
+          "name": "packed_object_delay",
+          "value": 1,
+          "value_hex": "0x01"
+        }
+      ],
+      "handler_cpu": 47665,
+      "handler_cpu_hex": "0xBA31",
+      "handler_prg": 195121,
+      "handler_prg_hex": "0x02FA31",
+      "handler_far": "17:1A31",
+      "alternate_handler_cpu": null,
+      "alternate_handler_cpu_hex": null,
+      "alternate_handler_prg": null,
+      "alternate_handler_prg_hex": null,
+      "alternate_handler_far": null,
+      "alternate_condition": null,
+      "normal_effect": null,
+      "alternate_effect": null,
+      "marker": false,
+      "packed_object_delay": {
+        "object_slot": 1,
+        "delay": 0
+      }
+    },
+    {
+      "offset": 12,
+      "prg_offset": 145484,
+      "prg_offset_hex": "0x02384C",
+      "opcode": 22,
+      "opcode_hex": "0x16",
+      "name": "animate_linear_path",
+      "length": 2,
+      "bytes_hex": "16 08",
+      "operands": [
+        {
+          "name": "path_parameter",
+          "value": 8,
+          "value_hex": "0x08"
+        }
+      ],
+      "handler_cpu": 48163,
+      "handler_cpu_hex": "0xBC23",
+      "handler_prg": 195619,
+      "handler_prg_hex": "0x02FC23",
+      "handler_far": "17:1C23",
+      "alternate_handler_cpu": 48168,
+      "alternate_handler_cpu_hex": "0xBC28",
+      "alternate_handler_prg": 195624,
+      "alternate_handler_prg_hex": "0x02FC28",
+      "alternate_handler_far": "17:1C28",
+      "alternate_condition": "$70E6 bit 0 set",
+      "normal_effect": "target-to-object path",
+      "alternate_effect": "actor-to-object mirrored path",
+      "marker": false
+    },
+    {
+      "offset": 14,
+      "prg_offset": 145486,
+      "prg_offset_hex": "0x02384E",
+      "opcode": 159,
+      "opcode_hex": "0x9F",
+      "name": "end_record",
+      "length": 1,
+      "bytes_hex": "9F",
+      "operands": [],
+      "marker": true
+    }
+  ],
+  "dependencies": {
+    "command_histogram": {
+      "animate_linear_path": 1,
+      "animate_linear_path_delayed": 1,
+      "call_aux_script": 1,
+      "clear_object_set_delay": 1,
+      "increment_object_action": 1,
+      "spawn_object_at_actor": 1
+    },
+    "visual_script_ids": [],
+    "auxiliary_script_ids": [
+      3
+    ],
+    "sound_ids": [],
+    "palette_offsets": [],
+    "object_actions": [
+      32
+    ],
+    "trail_object_counts": [],
+    "path_parameters": [
+      4,
+      8
+    ],
+    "path_durations": [
+      4
+    ],
+    "object_slots": [
+      0,
+      1
+    ],
+    "visual_script_ids_hex": [],
+    "auxiliary_script_ids_hex": [
+      "0x03"
+    ],
+    "sound_ids_hex": [],
+    "palette_offsets_hex": [],
+    "object_actions_hex": [
+      "0x20"
+    ],
+    "uses_repeat_block": false,
+    "uses_position_history_trail": false
+  },
+  "directly_referenced": true,
+  "sha256": "2e97cc4d99a064726c43f757eb7325d46f19069e6086c8ab2a9395cc0515a9e7",
+  "address": {
+    "space": "prg",
+    "offset": 145472,
+    "length": 15,
+    "end_exclusive": 145487
+  },
+  "component": {
+    "path": "assets/scripts/auxiliary/05.bin",
+    "prg_offset": 145472,
+    "prg_offset_hex": "0x023840",
+    "length": 15,
+    "sha256": "2e97cc4d99a064726c43f757eb7325d46f19069e6086c8ab2a9395cc0515a9e7",
+    "address": {
+      "space": "prg",
+      "offset": 145472,
+      "length": 15,
+      "end_exclusive": 145487
+    },
+    "writeback": {
+      "mode": "reference-only",
+      "status": "read-only-derived-reference"
+    }
+  }
+}

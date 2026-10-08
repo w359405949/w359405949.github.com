@@ -1,0 +1,63 @@
+body[data-page="battle-test"] {
+  #content { display: flex; flex-direction: column; padding: 0; }
+  .battle-visual-panel { flex: 0 0 100%; min-height: 0; }
+  #battle-test-editor,
+  [data-battle-test-composer-controls],
+  .in-page-tabs { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .in-page-tab-list { flex: none; }
+  .in-page-tab { padding-inline: 10px; }
+  .in-page-tab-content { flex: 1; min-height: 0; overflow: auto; scrollbar-gutter: stable; }
+  [data-in-page-tabs-show="entry"],
+  [data-in-page-tabs-show="formation"] { padding: 8px; }
+  .section-line { flex-wrap: wrap; gap: 6px; }
+  .section-line > span { overflow-wrap: anywhere; }
+  .character-number-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  label:has(select[data-battle-test-field="encounter_id"]),
+  .battle-test-text-field { grid-column: 1 / -1; }
+  .battle-test-text-field { min-width: 0; padding: 7px; background: var(--surface-2); }
+  .battle-test-text-field .module-reference-field { min-width: 0; }
+  .battle-test-preview h3, .battle-test-preview p { margin: 0; }
+  .battle-test-preview p:empty,
+  .battle-scene-control-status:not(:has(span:not(:empty))) { display: none; }
+  .battle-test-preview p { font: var(--fs-xs)/1.5 var(--sans); overflow-wrap: anywhere; }
+  .battle-sequence-replay-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+  .simulation-progress { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+  .simulation-progress input { grid-column: 1 / -1; width: 100%; }
+  .battle-scene-preview-actions { justify-content: start; gap: 6px; }
+  .battle-scene-control-status { flex-wrap: wrap; gap: 4px; padding: 0; }
+  .battle-scene-control-status > span { white-space: normal; }
+  .battle-scene-flat-section { overflow: visible; }
+  .battle-scene-flat-section > header { position: static; flex-wrap: wrap; gap: 4px; }
+  .battle-scene-roster-row.is-header { display: none; }
+  .battle-scene-roster-row { min-width: 0; gap: 6px; padding: 8px; }
+  .battle-scene-party-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .battle-scene-party-row > .battle-scene-inline-field { grid-column: 1 / -1; }
+  .battle-scene-party-row .battle-scene-coordinate input { flex: 1; width: 0; }
+  .battle-scene-party-row .battle-scene-target-choice { grid-column: 1 / -1; }
+  .battle-scene-enemy-row { grid-template-columns: 30px minmax(0, 1fr); }
+  .battle-scene-enemy-row > :not(.battle-scene-slot-id):not(.battle-scene-slot-state) { grid-column: 1 / -1; }
+  .battle-scene-enemy-position,
+  .battle-scene-slot-state b { white-space: normal; }
+  .battle-scene-auto-groups { grid-template-columns: minmax(0, 1fr); }
+  .battle-scene-auto-group { grid-template-columns: 24px minmax(0, 1fr) 48px 38px; }
+  .battle-scene-operation-buttons .battle-scene-inline-field { flex-basis: 100%; }
+  .battle-scene-party-attacks { grid-template-columns: minmax(0, 1fr); }
+  .battle-test-party-actions > h4 {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+    font: 600 var(--fs-sm) var(--sans);
+  }
+  .battle-scene-party-attack-channel {
+    padding: 8px;
+    border-left: 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  @media (max-width: 1050px) {
+    .in-page-tab { padding-inline: 6px; }
+  }
+}

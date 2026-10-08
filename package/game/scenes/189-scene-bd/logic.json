@@ -1,0 +1,569 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 189,
+  "scene_id_hex": "0xBD",
+  "width": 48,
+  "height": 32,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 189,
+      "entry_id_hex": "0xBD",
+      "count": 2,
+      "record_source": {
+        "space": "prg",
+        "offset": 151074,
+        "length": 13,
+        "end_exclusive": 151087
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:BD:00",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "uid": "scene-actor:BD:01",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [
+      {
+        "id": 93,
+        "id_hex": "0x5D",
+        "scene_id": 189,
+        "packed_handler_instance": 184,
+        "x": 7,
+        "y": 11,
+        "scene_id_hex": "0xBD",
+        "x_hex": "0x07",
+        "y_hex": "0x0B",
+        "handler_selector": 8,
+        "instance_id": 11,
+        "field_offsets": {
+          "scene_id": 237086,
+          "packed_handler_instance": 237209,
+          "x": 237332,
+          "y": 237455
+        },
+        "source": {
+          "space": "prg",
+          "offset": 237209,
+          "length": 1,
+          "end_exclusive": 237210
+        },
+        "handler_selector_source": {
+          "space": "prg",
+          "offset": 220034,
+          "length": 11,
+          "end_exclusive": 220045
+        },
+        "activation": "Investigate checks the current cell, then the cell in front of the player",
+        "handler_selector_hex": "0x08",
+        "instance_id_hex": "0x0B",
+        "packed_handler_instance_hex": "0xB8",
+        "command_id": 54,
+        "command_id_hex": "0x36",
+        "facility_kind": "investigation-control-terminal",
+        "facility_label": "计算机控制器",
+        "semantic_status": "confirmed-state-control",
+        "investigation_evidence": "project/evidence/controller-switch-flags/rom.json",
+        "configuration_family_id": null,
+        "instance_min": 0,
+        "instance_max": 15,
+        "instance_count": null,
+        "instance_semantics": "raw-high-nibble-parameter",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "BD:07:0B",
+        "scene_id": 189,
+        "scene_id_hex": "0xBD",
+        "x": 7,
+        "x_hex": "0x07",
+        "y": 11,
+        "y_hex": "0x0B",
+        "metatile_id": 22,
+        "metatile_id_hex": "0x16",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [
+          93
+        ],
+        "linked_facility_point_ids_hex": [
+          "0x5D"
+        ],
+        "interaction_state": {
+          "class": "delegates-to-facility-handler",
+          "label": "状态由设施处理器管理",
+          "owns_state": false,
+          "delegated_facility_ids": [
+            93
+          ],
+          "effects": [
+            "facility-specific"
+          ]
+        },
+        "registry_relation": "facility-record-at-same-cell",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232662,
+          "length": 1,
+          "end_exclusive": 232663
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 27029,
+            "length": 602,
+            "end_exclusive": 27631
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            232640,
+            231232
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 38342,
+      "pointer_cpu_hex": "0x95C6",
+      "pointer_prg": 128454,
+      "pointer_prg_hex": "0x01F5C6",
+      "boundary_mode": "shared-target",
+      "boundary_exits": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "direction_code": null,
+          "direction": "all-boundaries",
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 151,
+          "destination_y": 95,
+          "camera_origin_x": 143,
+          "camera_origin_y": 88,
+          "encoded_x": 151,
+          "encoded_y": 95,
+          "source": {
+            "space": "prg",
+            "offset": 128455,
+            "length": 3,
+            "end_exclusive": 128458
+          },
+          "field_offsets": {
+            "destination_scene_id": 128455,
+            "destination_x": 128456,
+            "destination_y": 128457
+          },
+          "raw": [
+            0,
+            151,
+            95
+          ],
+          "raw_hex": "00 97 5F"
+        }
+      ],
+      "dynamic_boundary_return": null,
+      "point_transition_count": 2,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 1,
+          "y": 2,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128459,
+            "length": 2,
+            "end_exclusive": 128461
+          },
+          "coordinate_offsets": {
+            "x": 128459,
+            "y": 128460
+          },
+          "destination_scene_id": 71,
+          "destination_scene_id_hex": "0x47",
+          "destination_x": 3,
+          "destination_y": 3,
+          "camera_origin_x": -5,
+          "camera_origin_y": -4,
+          "encoded_x": 3,
+          "encoded_y": 3,
+          "source": {
+            "space": "prg",
+            "offset": 128463,
+            "length": 3,
+            "end_exclusive": 128466
+          },
+          "field_offsets": {
+            "destination_scene_id": 128463,
+            "destination_x": 128464,
+            "destination_y": 128465
+          },
+          "raw": [
+            71,
+            3,
+            3
+          ],
+          "raw_hex": "47 03 03"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 46,
+          "y": 21,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128461,
+            "length": 2,
+            "end_exclusive": 128463
+          },
+          "coordinate_offsets": {
+            "x": 128461,
+            "y": 128462
+          },
+          "destination_scene_id": 71,
+          "destination_scene_id_hex": "0x47",
+          "destination_x": 35,
+          "destination_y": 18,
+          "camera_origin_x": 27,
+          "camera_origin_y": 11,
+          "encoded_x": 35,
+          "encoded_y": 18,
+          "source": {
+            "space": "prg",
+            "offset": 128466,
+            "length": 3,
+            "end_exclusive": 128469
+          },
+          "field_offsets": {
+            "destination_scene_id": 128466,
+            "destination_x": 128467,
+            "destination_y": 128468
+          },
+          "raw": [
+            71,
+            35,
+            18
+          ],
+          "raw_hex": "47 23 12"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 128454,
+        "length": 15,
+        "end_exclusive": 128469
+      },
+      "raw": [
+        254,
+        0,
+        151,
+        95,
+        2,
+        1,
+        2,
+        46,
+        21,
+        71,
+        3,
+        3,
+        71,
+        35,
+        18
+      ],
+      "raw_hex": "FE 00 97 5F 02 01 02 2E 15 47 03 03 47 23 12",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 80,
+      "zone_id_hex": "0x50",
+      "zone": {
+        "zone_id": 80,
+        "zone_id_hex": "0x50",
+        "config": 23,
+        "config_hex": "0x17",
+        "class_id": 3,
+        "ambush_threshold_index": 1,
+        "ambush_threshold": 16,
+        "meter_initial_index": 1,
+        "meter_initial_value": 40,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 234021,
+          "length": 1,
+          "end_exclusive": 234022
+        },
+        "rolls_encounters": true,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 110,
+            "monster_id_hex": "0x6E",
+            "empty": false,
+            "resource_reference": "monster:6E",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 110,
+            "monster_id_hex": "0x6E",
+            "empty": false,
+            "resource_reference": "monster:6E",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 110,
+            "monster_id_hex": "0x6E",
+            "empty": false,
+            "resource_reference": "monster:6E",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 110,
+            "monster_id_hex": "0x6E",
+            "empty": false,
+            "resource_reference": "monster:6E",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 110,
+            "monster_id_hex": "0x6E",
+            "empty": false,
+            "resource_reference": "monster:6E",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 235509,
+          "length": 14,
+          "end_exclusive": 235523
+        },
+        "entries_editable": true,
+        "entries_readonly_reason": null,
+        "active_entry_count": 5,
+        "selection_weight_total": 11,
+        "referenced_by": [
+          "scene:BD"
+        ],
+        "reference_count": 1
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234352,
+        "length": 1,
+        "end_exclusive": 234353
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 2,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 1,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 1,
+    "point_transitions": 2,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      80
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

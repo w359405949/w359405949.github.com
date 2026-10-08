@@ -1,0 +1,238 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.human-item",
+  "resource_id": "human-item:AD",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 173,
+    "id_hex": "0xAD",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 173,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "human-item",
+      "name": "人类道具",
+      "owner": "human",
+      "first_id": 153,
+      "first_id_hex": "0x99",
+      "last_id": 202,
+      "last_id_hex": "0xCA"
+    },
+    "price": {
+      "raw_code": 120,
+      "raw_code_hex": "0x78",
+      "available": true,
+      "value": 1000,
+      "source": {
+        "space": "prg",
+        "offset": 140542,
+        "length": 1,
+        "end_exclusive": 140543,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-decoded",
+      "registered": true,
+      "dispatch_index": 5,
+      "dispatch_index_hex": "0x05",
+      "target_required": true,
+      "handler": {
+        "cpu_address": 42402,
+        "cpu_address_hex": "0xA5A2",
+        "prg_offset": 206242,
+        "prg_offset_hex": "0x0325A2",
+        "source": {
+          "space": "prg",
+          "offset": 206242,
+          "length": 1,
+          "end_exclusive": 206243,
+          "cpu_address": 42402,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "clear-poison",
+        "label": "中和酸",
+        "detail": "清除人物酸蚀状态位 $08"
+      },
+      "consumption": "never",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "invalid-target-message",
+          "label": "目标选择失败提示",
+          "condition": "目标状态不允许使用",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 22,
+            "record_id_hex": "0x16",
+            "node_id": "record:02:022"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 205961,
+              "length": 1,
+              "end_exclusive": 205962,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "success-message",
+          "label": "中和酸成功提示",
+          "condition": "目标带酸蚀状态",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 137,
+            "record_id_hex": "0x89",
+            "node_id": "record:02:137"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206243,
+              "length": 1,
+              "end_exclusive": 206244,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "algorithm": "$8A - 1 after clearing status"
+        },
+        {
+          "role": "failure-message",
+          "label": "目标无酸蚀提示",
+          "condition": "目标无酸蚀状态",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 138,
+            "record_id_hex": "0x8A",
+            "node_id": "record:02:138"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206243,
+              "length": 1,
+              "end_exclusive": 206244,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205797,
+          "length": 1,
+          "end_exclusive": 205798,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 205840,
+          "length": 2,
+          "end_exclusive": 205842,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_AD.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-decoded",
+      "registered": true,
+      "dispatch_index": 22,
+      "dispatch_index_hex": "0x16",
+      "result_selector": 166,
+      "result_selector_hex": "0xA6",
+      "inventory_domain": "human",
+      "text_output_status": "runtime-confirmed",
+      "text_output_detail": "已确认主要使用提示；后续伤害、闪避与状态结果由战斗状态动态选择",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 21,
+            "record_id_hex": "0x15",
+            "node_id": "record:0A:021"
+          },
+          "confidence": "runtime-confirmed",
+          "evidence": "metalmaxcn_3.mss battle item runtime trace",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146519,
+              "length": 1,
+              "end_exclusive": 146520,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result selector chooses a battle action record; $A729 reads its next text operand, $A72C renders it, and $EB31 fixes region $0A"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190623,
+          "length": 1,
+          "end_exclusive": 190624,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 190657,
+          "length": 1,
+          "end_exclusive": 190658,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss",
+        "human_hp_guard": "$6466=$FF, $6467=$00",
+        "vehicle_slot_confirmation": "save-state 2 + $65CF=$CB displays 传真 in the battle tool menu"
+      }
+    },
+    "semantic_status": "field-use-decoded"
+  }
+}

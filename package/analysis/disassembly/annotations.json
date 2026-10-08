@@ -1,0 +1,7131 @@
+{
+  "schema": "metalmaxcn.verbose-annotations",
+  "taxonomy": {
+    "battle": {
+      "label": "战斗",
+      "submodes": {
+        "turn-based-battle": "回合制战斗状态流程"
+      }
+    },
+    "non-battle": {
+      "label": "非战斗",
+      "submodes": {
+        "walking": "普通行走/地图交互",
+        "shop": "购买与商店服务",
+        "scripted-lock": "剧情或不可操控流程",
+        "self-preparation": "自我整备"
+      }
+    },
+    "non-battle-ui": {
+      "label": "非战斗 UI / 设施",
+      "submodes": {}
+    },
+    "audio": {
+      "label": "音频",
+      "submodes": {}
+    },
+    "shared-core": {
+      "label": "共享基础设施",
+      "submodes": {}
+    },
+    "unclassified": {
+      "label": "尚未分类",
+      "submodes": {}
+    }
+  },
+  "summary": {
+    "functions": 982,
+    "configured_function_entry_suppressions": 62,
+    "effective_function_entry_suppressions": 1,
+    "declared_names": 457,
+    "generated_names": 525,
+    "functions_with_mapper_ambiguous_calls": 257,
+    "mapper_ambiguous_call_sites": 485,
+    "owned_instruction_starts": 16596,
+    "unowned_instruction_starts": 4657,
+    "mapper_observation_sites": 42,
+    "call_edges": 1754,
+    "function_domains": {
+      "battle": 206,
+      "non-battle": 155,
+      "non-battle-ui": 89,
+      "audio": 28,
+      "shared-core": 504,
+      "unclassified": 0
+    },
+    "asset_domains": {
+      "battle": 60,
+      "non-battle": 149,
+      "non-battle-ui": 13,
+      "audio": 27,
+      "shared-core": 102,
+      "unclassified": 0
+    },
+    "function_submodes": {
+      "turn-based-battle": 277,
+      "walking": 210,
+      "shop": 41,
+      "scripted-lock": 3,
+      "self-preparation": 3
+    },
+    "asset_submodes": {
+      "turn-based-battle": 65,
+      "walking": 106,
+      "shop": 14,
+      "scripted-lock": 6,
+      "self-preparation": 0
+    }
+  },
+  "functions_path": "functions.json",
+  "assets": [
+    {
+      "name": "WorldMapSelectorPairTable",
+      "prg_offset": 0,
+      "prg_offset_hex": "0x000000",
+      "length": 1024,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "世界地图解码器实际消费的 selector pair 表；不是 6502 代码",
+      "source_module": "rom.scene.world-map",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapSelectorBitplane",
+      "prg_offset": 1024,
+      "prg_offset_hex": "0x000400",
+      "length": 512,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "与 WorldMapSelectorPairTable 配套的位平面，边界由完整世界地图解码与回包验证",
+      "source_module": "rom.scene.world-map",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneCompressedMapStreamPool",
+      "prg_offset": 1536,
+      "prg_offset_hex": "0x000600",
+      "length": 45251,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock",
+        "walking"
+      ],
+      "comment": "此前遗漏登记的最大真实内容区：45,251 个唯一物理字节均已被场景解码器读取并可还原地图",
+      "source_module": "rom.scene.map",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneDataBank05Tail",
+      "prg_offset": 46787,
+      "prg_offset_hex": "0x00B6C3",
+      "length": 991,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "类型可确认是非代码结构数据，具体历史用途仍为候选",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneBank05MiddleFfPadding",
+      "prg_offset": 47778,
+      "prg_offset_hex": "0x00BAA2",
+      "length": 862,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "确认填充而非未发现的 NPC/AI 逻辑",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScenePointerTableLowRange",
+      "prg_offset": 48640,
+      "prg_offset_hex": "0x00BE00",
+      "length": 128,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock",
+        "walking"
+      ],
+      "comment": "场景低段指针表",
+      "source_module": null,
+      "module": null,
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LocalizedTextRegion14",
+      "prg_offset": 48768,
+      "prg_offset_hex": "0x00BE80",
+      "length": 346,
+      "kind": "text-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "补齐唯一缺失功能域的自动清单资产，使该区明确归属文本模块",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "text-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneBank05FinalFfPadding",
+      "prg_offset": 49114,
+      "prg_offset_hex": "0x00BFDA",
+      "length": 38,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "bank 尾填充",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapPatternDictionaryBanks06And07",
+      "prg_offset": 49152,
+      "prg_offset_hex": "0x00C000",
+      "length": 16384,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "完整两个 bank 均被世界地图解码器按 pattern×16 索引；局部字节可同时被场景头等结构复用",
+      "source_module": "rom.scene.world-map",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LocalizedTextBanks08And09",
+      "prg_offset": 65536,
+      "prg_offset_hex": "0x010000",
+      "length": 16384,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "完整定性两个文本 bank；不把记录间空洞继续显示为完全未知",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ItemNames",
+      "prg_offset": 72208,
+      "prg_offset_hex": "0x011A10",
+      "length": 1252,
+      "kind": "text-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "222 条 $9F 结尾的装备与道具名称记录",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "text-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:LocalizedTextBanks08And09"
+    },
+    {
+      "name": "ShellNameRecords",
+      "prg_offset": 73936,
+      "prg_offset_hex": "0x0120D0",
+      "length": 90,
+      "kind": "text-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "文本区 $0D 的前 14 条炮弹名称记录 $00-$0D：臭弹、榴弹、散弹、流弹、炸弹、汽油弹、冰弹、烟幕弹、毒气弹、水泥弹、催眠弹、铁弹、钢弹、普通弹",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "text-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TextAndGlyphRasterizerBank0A",
+      "prg_offset": 81920,
+      "prg_offset_hex": "0x014000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "混合 bank 的主功能已确认，保留代码/内联数据边界的不确定性",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "RasterizeChineseGlyphRoutine",
+      "prg_offset": 88720,
+      "prg_offset_hex": "0x015A90",
+      "length": 1082,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "中文字形栅格化已证实范围",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:TextAndGlyphRasterizerBank0A"
+    },
+    {
+      "name": "UploadDynamicGlyphPatternRoutine",
+      "prg_offset": 89883,
+      "prg_offset_hex": "0x015F1B",
+      "length": 184,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "动态字形 CHR 上传已证实范围",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:TextAndGlyphRasterizerBank0A"
+    },
+    {
+      "name": "LocalizedTextBanks0BAnd0C",
+      "prg_offset": 90112,
+      "prg_offset_hex": "0x016000",
+      "length": 16384,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "将文本记录间未细分字节定性为文本资源 bank，而非未知逻辑",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioSequenceBank0D",
+      "prg_offset": 106496,
+      "prg_offset_hex": "0x01A000",
+      "length": 8096,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "声音命令 $01-$0C 选择 PRG bank $0D 后，由 header 内 $8000-$9FFF 指针解释的 BGM 音序；$9FA0-$9FFF 是 $FF 尾填充",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioSequenceBanks0DAnd0E",
+      "prg_offset": 106496,
+      "prg_offset_hex": "0x01A000",
+      "length": 16384,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "主体是数据而非 NPC/战斗 AI 代码",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioSequenceBank0E",
+      "prg_offset": 114688,
+      "prg_offset_hex": "0x01C000",
+      "length": 6864,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "声音命令 $0D-$1A 选择 PRG bank $0E 后解释的 BGM 音序；精确结束于 PRG $01DAD0，之后依次是场景调色板、剧情配置、对齐和高段场景指针",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScenePaletteRecordPool",
+      "prg_offset": 121552,
+      "prg_offset_hex": "0x01DAD0",
+      "length": 495,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "纠正旧音频 envelope 过宽后恢复出的场景调色板池",
+      "source_module": "rom.scene.core",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneStoryCountTripleConfigurationPool",
+      "prg_offset": 122047,
+      "prg_offset_hex": "0x01DCBF",
+      "length": 451,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "边界和记录结构已确认，字段业务名仍待细化",
+      "source_module": "rom.scene.core",
+      "module": "story",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScenePointerHighAlignmentPadding",
+      "prg_offset": 122498,
+      "prg_offset_hex": "0x01DE82",
+      "length": 30,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "修正旧高段场景指针表起点后独立出来的填充",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScenePointerTableHighRange",
+      "prg_offset": 122528,
+      "prg_offset_hex": "0x01DEA0",
+      "length": 352,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock",
+        "walking"
+      ],
+      "comment": "场景 $40-$EF 的 176 项高段 header 小端指针表；loader 使用 base+scene_id×2，首项 $40 实际位于 PRG $01DEA0，修正旧标注误写的 $01DE20",
+      "source_module": "rom.scene.core",
+      "module": "audio",
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioSequenceBank0FDirectSpan",
+      "prg_offset": 122880,
+      "prg_offset_hex": "0x01E000",
+      "length": 2374,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "声音命令 $1B-$6F 选择 PRG bank $0F 后，由已解码 header 直接入口及其首个结束符确认的音效音序跨度；更后的间接子流仍待追踪",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MultiPurposeContentBank0F",
+      "prg_offset": 122880,
+      "prg_offset_hex": "0x01E000",
+      "length": 8192,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "把多用途数据 bank 与程序逻辑明确区分",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioBank0FAlignmentPadding",
+      "prg_offset": 125254,
+      "prg_offset_hex": "0x01E946",
+      "length": 58,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "音频与场景数据之间的明确分隔",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneExitDoorAndCoordinateTransferLogicPool",
+      "prg_offset": 125312,
+      "prg_offset_hex": "0x01E980",
+      "length": 4106,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "补齐城镇、洞穴及普通场景入口/出口此前遗漏的大范围登记",
+      "source_module": "rom.scene.core",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapLocationEntranceTable",
+      "prg_offset": 125312,
+      "prg_offset_hex": "0x01E980",
+      "length": 397,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "世界地图 $4F 条城镇、洞穴及其他地点入口：$FF 无边界标记、$4F 计数、79 组世界坐标、79 组三字节目标场景/落点；由 LoadWorldMap 写入 $54/$55 并由 $B14E 逐项匹配，可固定容量原位回写",
+      "source_module": "rom.scene.core",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TextRegion11UnindexedTail",
+      "prg_offset": 131015,
+      "prg_offset_hex": "0x01FFC7",
+      "length": 57,
+      "kind": "text-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "定性为未索引文本尾槽，不作为未知代码",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "text-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BattleControllerAndEnemyAiBank10Front",
+      "prg_offset": 131072,
+      "prg_offset_hex": "0x020000",
+      "length": 5428,
+      "kind": "mixed-code-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "这里只做功能包络；精确 AI 表和函数范围由更小标注覆盖",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyAiProbabilityProfiles",
+      "prg_offset": 132025,
+      "prg_offset_hex": "0x0203B9",
+      "length": 28,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "由 SelectEnemyActionByStrategy 的索引读取链确认",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyAiProbabilityProfilePointers",
+      "prg_offset": 132053,
+      "prg_offset_hex": "0x0203D5",
+      "length": 14,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "策略选择器按 profile 编号索引",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyAiStrategyHandlerPointers",
+      "prg_offset": 132067,
+      "prg_offset_hex": "0x0203E3",
+      "length": 26,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "覆盖 $A3E3-$A3FC，紧接 SelectEnemyActionByStrategy",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyAiSelectionAndTurnQueueRuntime",
+      "prg_offset": 132093,
+      "prg_offset_hex": "0x0203FD",
+      "length": 440,
+      "kind": "mixed-code-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "NPC 游走之外的核心战斗 AI 代码已定位；这一块共 440 字节",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BattleEnemySlotLoaderRuntime",
+      "prg_offset": 134842,
+      "prg_offset_hex": "0x020EBA",
+      "length": 408,
+      "kind": "mixed-code-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "修正原先把 $AF08 误当整函数入口的问题",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FieldUiEquipmentBank10Tail",
+      "prg_offset": 136500,
+      "prg_offset_hex": "0x021534",
+      "length": 2764,
+      "kind": "mixed-code-data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "同一物理 bank 的后段不误归入战斗 AI",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EngineCapacityTable",
+      "prg_offset": 137204,
+      "prg_offset_hex": "0x0217F4",
+      "length": 24,
+      "kind": "data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "24 个引擎载重值",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:FieldUiEquipmentBank10Tail"
+    },
+    {
+      "name": "EquipmentMonsterFacilityDataBank11",
+      "prg_offset": 139264,
+      "prg_offset_hex": "0x022000",
+      "length": 8192,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "确认是多模块配置/脚本 bank，不是 NPC 游走或战斗执行代码",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ItemNumericCodebook",
+      "prg_offset": 139498,
+      "prg_offset_hex": "0x0220EA",
+      "length": 376,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "装备、道具与价格共用压缩数值码表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "ItemEquipmentFlags",
+      "prg_offset": 139892,
+      "prg_offset_hex": "0x022274",
+      "length": 117,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "人类装备与战车装备 flags 原表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "WeaponBehaviorFlags",
+      "prg_offset": 139927,
+      "prg_offset_hex": "0x022297",
+      "length": 30,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "人类武器 $23-$40 装备/核心效果 flags",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WeaponVisualCodes",
+      "prg_offset": 140010,
+      "prg_offset_hex": "0x0222EA",
+      "length": 82,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "连续 82 字节：人类武器 $23-$40 与战车主炮/S-E/副炮 $41-$74 到统一攻击视觉脚本编号；SelectWeaponVisualCode 以原始物品 ID 索引 $82C7",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TankEquipmentWeights",
+      "prg_offset": 140092,
+      "prg_offset_hex": "0x02233C",
+      "length": 80,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车装备重量原表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "EquipmentValueCodes",
+      "prg_offset": 140172,
+      "prg_offset_hex": "0x02238C",
+      "length": 197,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "人类/战车装备攻防压缩数值码",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "ItemPriceCodes",
+      "prg_offset": 140369,
+      "prg_offset_hex": "0x022451",
+      "length": 222,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "全部 222 项装备与道具价格码",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "EnemyActionMessageRecordIds",
+      "prg_offset": 140698,
+      "prg_offset_hex": "0x02259A",
+      "length": 112,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "补上敌人行动、战斗文本与视觉效果之间此前缺失的第一层关联",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyActionPropertyCodes",
+      "prg_offset": 140810,
+      "prg_offset_hex": "0x02260A",
+      "length": 112,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "边界和高位语义已确认，未把低 7 位猜成具体效果",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyActionVisualAndRepeatSelectors",
+      "prg_offset": 140922,
+      "prg_offset_hex": "0x02267A",
+      "length": 112,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "同一字节的低 6 位和高 2 位分别由两个已确认运行时入口消费；PRG $02667A 是无关的 bank $13 地图角色图块数据",
+      "source_module": "rom.battle.attack-effects",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterActionSelectorOrPatternIds",
+      "prg_offset": 141034,
+      "prg_offset_hex": "0x0226EA",
+      "length": 131,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "建立怪物属性表到敌人行动模式的稳定关联",
+      "source_module": "rom.battle.ai",
+      "module": "monsters",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnemyActionPatternRecords",
+      "prg_offset": 141165,
+      "prg_offset_hex": "0x02276D",
+      "length": 594,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "完整恢复敌人 AI 配置的模式记录边界",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterEnemyPaletteCodes",
+      "prg_offset": 141759,
+      "prg_offset_hex": "0x0229BF",
+      "length": 131,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "131 个敌人 ID 的调色板选择码；$00-$49 直接选择单条三色记录，$80-$9A 选择 MonsterPalettePairs 的双色组合",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterPalettePairs",
+      "prg_offset": 141890,
+      "prg_offset_hex": "0x022A42",
+      "length": 54,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "调色板码 $80-$9A 的 27 组二元表；每组给出两个 MonsterPaletteColours 记录 ID",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterPaletteColours",
+      "prg_offset": 141944,
+      "prg_offset_hex": "0x022A78",
+      "length": 222,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "74 条怪物调色板记录，每条三个 NES 色号；运行时统一在前面补透明/背景色 $0F",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterDualPaletteAttributeLayouts",
+      "prg_offset": 142261,
+      "prg_offset_hex": "0x022BB5",
+      "length": 108,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物基础图形 $00-$11 的 18 条 $FF 分隔属性流；每个 2-bit 单元选择双色组合中的第 0/1 套调色板",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterEnemyToGraphic",
+      "prg_offset": 142369,
+      "prg_offset_hex": "0x022C21",
+      "length": 131,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "131 个敌人 ID 到 79 个怪物图形 ID",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterGraphicBanks",
+      "prg_offset": 142500,
+      "prg_offset_hex": "0x022CA4",
+      "length": 79,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物图形 CHR bank 选择",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterSpecialBankRoots",
+      "prg_offset": 142579,
+      "prg_offset_hex": "0x022CF3",
+      "length": 7,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "巨型/特殊怪物多 bank 根表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterDimensions",
+      "prg_offset": 142586,
+      "prg_offset_hex": "0x022CFA",
+      "length": 79,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "79 个怪物图形宽高",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterTileOffsets",
+      "prg_offset": 142665,
+      "prg_offset_hex": "0x022D49",
+      "length": 72,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "顺序型怪物图形 tile offset",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterLayoutPointers",
+      "prg_offset": 143012,
+      "prg_offset_hex": "0x022EA4",
+      "length": 158,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "79 个怪物 layout stream 指针",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WeaponAttackScripts",
+      "prg_offset": 144031,
+      "prg_offset_hex": "0x02329F",
+      "length": 1372,
+      "kind": "script-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "$9F 分隔的 79 个视觉脚本槽 $00-$4E；$46 未引用且保留为 opaque 原始记录",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WeaponAttackAuxiliaryScripts",
+      "prg_offset": 145402,
+      "prg_offset_hex": "0x0237FA",
+      "length": 559,
+      "kind": "script-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "共享 $97FA 哨兵及其后的 26 条辅助攻击动画记录 $00-$19；记录数据从 $97FB 开始",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FacilityConfigurationFamilyPointerTable",
+      "prg_offset": 146581,
+      "prg_offset_hex": "0x023C95",
+      "length": 32,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "16 项应用配置族指针表；通用 loader 以 $CD-$10 选族，再用实例索引 $CC 按长度前缀跳过记录；族 $00-$03 已确认是四类商店，$0A/$0B/$0C 是点唱机、道具售货机、炮弹售货机",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ApplicationConfigurationRecordPool",
+      "prg_offset": 146613,
+      "prg_offset_hex": "0x023CB5",
+      "length": 843,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "service",
+        "shop",
+        "walking"
+      ],
+      "comment": "UI 功能目录和对话应用入口的配置权威范围；已完整枚举 16 族和所有可证明的长度前缀记录",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "service",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VehicleEquipmentShopConfiguration",
+      "prg_offset": 146613,
+      "prg_offset_hex": "0x023CB5",
+      "length": 88,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x00：战车装备商店商品配置。12 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VehicleItemShopConfiguration",
+      "prg_offset": 146701,
+      "prg_offset_hex": "0x023D0D",
+      "length": 63,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x01：战车道具商店商品配置。13 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "HumanEquipmentShopConfiguration",
+      "prg_offset": 146764,
+      "prg_offset_hex": "0x023D4C",
+      "length": 92,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x02：人类装备商店商品配置。14 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "HumanItemShopConfiguration",
+      "prg_offset": 146856,
+      "prg_offset_hex": "0x023DA8",
+      "length": 102,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x03：人类道具商店商品配置。16 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VehicleRentalConfiguration",
+      "prg_offset": 146958,
+      "prg_offset_hex": "0x023E0E",
+      "length": 32,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x04：战车出租店配置；值是载具 preset ID（$08-$11 非玩家车位）。9 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InnServiceConfiguration",
+      "prg_offset": 146990,
+      "prg_offset_hex": "0x023E2E",
+      "length": 9,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x06：旅馆住宿配置；值是文本区 $0D 的房型名（松/竹/梅）。3 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SpecialShellShopConfiguration",
+      "prg_offset": 146999,
+      "prg_offset_hex": "0x023E37",
+      "length": 48,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x05：特殊炮弹商店商品配置；值是炮弹表 ID。10 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BarServiceConfiguration",
+      "prg_offset": 147047,
+      "prg_offset_hex": "0x023E67",
+      "length": 57,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x07：酒吧饮品配置；值是文本区 $0D $56-$65 的 16 种饮品；command $17/$18 共用同段。14 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InteriorDecorationShopConfiguration",
+      "prg_offset": 147104,
+      "prg_offset_hex": "0x023EA0",
+      "length": 11,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x09：室内装饰商店商品配置；值是文本区 $0D $28-$2F。3 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "JukeboxSelectionTable00",
+      "prg_offset": 147115,
+      "prg_offset_hex": "0x023EAB",
+      "length": 3,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动点唱机配置族 $0A 的配置 $00：[$02 payload 长度][声音命令 $14,$16]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "JukeboxSelectionTable01",
+      "prg_offset": 147118,
+      "prg_offset_hex": "0x023EAE",
+      "length": 5,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动点唱机配置族 $0A 的配置 $01：[$04 payload 长度][声音命令 $15,$16,$12,$19]；存档 8 当前配置",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "JukeboxSelectionTable02",
+      "prg_offset": 147123,
+      "prg_offset_hex": "0x023EB3",
+      "length": 5,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动点唱机配置族 $0A 的配置 $02：[$04 payload 长度][声音命令 $13,$17,$14,$18]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration00",
+      "prg_offset": 147128,
+      "prg_offset_hex": "0x023EB8",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $00：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration01",
+      "prg_offset": 147142,
+      "prg_offset_hex": "0x023EC6",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $01，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration02",
+      "prg_offset": 147156,
+      "prg_offset_hex": "0x023ED4",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $02，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration03",
+      "prg_offset": 147170,
+      "prg_offset_hex": "0x023EE2",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $03，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration04",
+      "prg_offset": 147184,
+      "prg_offset_hex": "0x023EF0",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $04，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration05",
+      "prg_offset": 147198,
+      "prg_offset_hex": "0x023EFE",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $05，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration06",
+      "prg_offset": 147212,
+      "prg_offset_hex": "0x023F0C",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $06，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration07",
+      "prg_offset": 147226,
+      "prg_offset_hex": "0x023F1A",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $07，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration08",
+      "prg_offset": 147240,
+      "prg_offset_hex": "0x023F28",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $08，普通道具型：[$0D payload 长度][6 个道具 ID][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration09",
+      "prg_offset": 147254,
+      "prg_offset_hex": "0x023F36",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $09，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0A",
+      "prg_offset": 147268,
+      "prg_offset_hex": "0x023F44",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0A，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]；存档 9 指针位于前缀后的 payload",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0B",
+      "prg_offset": 147282,
+      "prg_offset_hex": "0x023F52",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0B，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0C",
+      "prg_offset": 147296,
+      "prg_offset_hex": "0x023F60",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0C，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0D",
+      "prg_offset": 147310,
+      "prg_offset_hex": "0x023F6E",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0D，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0E",
+      "prg_offset": 147324,
+      "prg_offset_hex": "0x023F7C",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0E，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration0F",
+      "prg_offset": 147338,
+      "prg_offset_hex": "0x023F8A",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $0F，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration10",
+      "prg_offset": 147352,
+      "prg_offset_hex": "0x023F98",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $10，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration11",
+      "prg_offset": 147366,
+      "prg_offset_hex": "0x023FA6",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $11，炮弹型：[$0D payload 长度][6 个炮弹类型][6 个数量/标志][1 个奖品道具 ID]",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingMachineConfiguration12",
+      "prg_offset": 147380,
+      "prg_offset_hex": "0x023FB4",
+      "length": 13,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机配置 $12，炮弹型：[$0C payload 长度][6 个炮弹类型][6 个数量/标志]；该实例没有抽奖奖品字段",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand1DConfigurationFamily",
+      "prg_offset": 147393,
+      "prg_offset_hex": "0x023FC1",
+      "length": 28,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $1D 的配置族 $0D；结构已确认是两条 $0D 字节 payload 的长度前缀记录，实例 $00/$01 与 12 个调查点吻合；字段含义和具体设施用途仍为候选",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "HerbalMedicineVendorConfiguration",
+      "prg_offset": 147421,
+      "prg_offset_hex": "0x023FDD",
+      "length": 3,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x0E：草药商人商品配置（推定）；值按道具表解为参丸/党参。1 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DynamicListApplicationConfiguration",
+      "prg_offset": 147424,
+      "prg_offset_hex": "0x023FE0",
+      "length": 29,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "shop",
+        "walking"
+      ],
+      "comment": "配置族 0x0F：command $1F 动态列表配置；负载语义待确认。5 条「长度前缀 + 负载」记录，实例步进 = payload_length + 1，族间无空隙，条目数量不可增删。",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneActorDefinitionsAndScriptsBank12",
+      "prg_offset": 147456,
+      "prg_offset_hex": "0x024000",
+      "length": 8192,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "此前网页未显示满 bank 是生成物未刷新/范围优先级问题，物理边界其实已经完整",
+      "source_module": "rom.scene-actor",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorBattleVisualAndGrowthBank13",
+      "prg_offset": 155648,
+      "prg_offset_hex": "0x026000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "跨非战斗视觉、战斗视觉和角色成长的共享混合 bank",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "GenericMetaspritePointers",
+      "prg_offset": 155720,
+      "prg_offset_hex": "0x026048",
+      "length": 110,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "55 项特殊/UI metasprite 指针",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "GenericMetaspriteStreams",
+      "prg_offset": 155830,
+      "prg_offset_hex": "0x0260B6",
+      "length": 678,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "特殊/UI metasprite 字节流",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorTileDeltas",
+      "prg_offset": 156658,
+      "prg_offset_hex": "0x0263F2",
+      "length": 16,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图角色 quadrant tile 增量",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorQuadrantMaps",
+      "prg_offset": 156674,
+      "prg_offset_hex": "0x026402",
+      "length": 32,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图角色 quadrant 重排/翻转表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorFrameDescriptors",
+      "prg_offset": 156795,
+      "prg_offset_hex": "0x02647B",
+      "length": 215,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "215 个地图角色 frame descriptor",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorTileA",
+      "prg_offset": 157010,
+      "prg_offset_hex": "0x026552",
+      "length": 215,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图角色 frame 基础 tile A",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActorTileB",
+      "prg_offset": 157225,
+      "prg_offset_hex": "0x026629",
+      "length": 215,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图角色 frame 基础 tile B",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "CoreGameplayAndSceneTransitionBank14",
+      "prg_offset": 163840,
+      "prg_offset_hex": "0x028000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "对尚未逐函数命名的字节给出共享核心主功能定性",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SaveSystemBank14CodeAndSlotTable",
+      "prg_offset": 171343,
+      "prg_offset_hex": "0x029D4F",
+      "length": 472,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "存档格式的 bank $14 权威程序包络；逐段字段和值语义由 save-system 字节地图 producer 登记",
+      "source_module": "rom.save.slot-service",
+      "module": "saves",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "CharacterInitialTemplate",
+      "prg_offset": 164007,
+      "prg_offset_hex": "0x0280A7",
+      "length": 183,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "三名角色初始属性、装备、物品与经验模板",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:CoreGameplayAndSceneTransitionBank14"
+    },
+    {
+      "name": "RenderWorldMapItemScreen",
+      "prg_offset": 164836,
+      "prg_offset_hex": "0x0283E4",
+      "length": 167,
+      "kind": "routine",
+      "domain": "non-battle-ui",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图道具 `$AE` 的专用全屏 UI；不复用 field-world-map 运行底图",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "walking",
+        "routine",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "PositionWorldMapItemPlayerMarker",
+      "prg_offset": 164939,
+      "prg_offset_hex": "0x02844B",
+      "length": 17,
+      "kind": "routine-subentry",
+      "domain": "non-battle-ui",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "把 0..255 世界坐标映射到地图 UI 中的 128×128 marker 区域",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "walking",
+        "routine-subentry",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AnimateWorldMapItemMarkerAndWaitInput",
+      "prg_offset": 164962,
+      "prg_offset_hex": "0x028462",
+      "length": 41,
+      "kind": "routine-subentry",
+      "domain": "non-battle-ui",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图道具玩家标记闪烁与按键退出循环",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "walking",
+        "routine-subentry",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapItemPaletteSeed",
+      "prg_offset": 165003,
+      "prg_offset_hex": "0x02848B",
+      "length": 8,
+      "kind": "data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "专用地图画面的背景/sprite palette 权威 PRG 来源",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapItemOamTemplate",
+      "prg_offset": 165011,
+      "prg_offset_hex": "0x028493",
+      "length": 92,
+      "kind": "data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "专用地图画面全部可见 sprite 的权威 PRG 来源",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WorldMapPatternDictionaryBanks15And16",
+      "prg_offset": 172032,
+      "prg_offset_hex": "0x02A000",
+      "length": 16384,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "补齐世界地图字典的后两个完整 bank；四个字典 bank 合计 32 KiB",
+      "source_module": "rom.scene.world-map",
+      "module": "scenes",
+      "tags": [
+        "non-battle",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BattleRuntimeAndEffectsBank17",
+      "prg_offset": 188416,
+      "prg_offset_hex": "0x02E000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "不能整 bank 标为纯代码，因此使用混合功能区类型",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SpecialShellPackedParameters",
+      "prg_offset": 190459,
+      "prg_offset_hex": "0x02E7FB",
+      "length": 13,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "特殊炮弹 $00-$0C 的 13 个 packed 参数；低 nibble 送入伤害缩放计算，高 nibble 加 $95 写入战斗结果选择码。普通弹 $0D 不索引此表",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SpecialShellVisualSelectors",
+      "prg_offset": 190472,
+      "prg_offset_hex": "0x02E808",
+      "length": 13,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "特殊炮弹 $00-$0C 的 13 个 packed 视觉选择值；低 6 位写入 $70E7 并进入武器/敌方共用的攻击视觉脚本命名空间，其余位保留调用变体信息",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BattleUsableItemIds",
+      "prg_offset": 190601,
+      "prg_offset_hex": "0x02E889",
+      "length": 34,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "人类与战车共用的 34 项战斗可用道具 ID 表；调度器从索引 $21 向前查找。工具栏来源由 $A8CE 的 $65CF（战车）或 $A8D6 的 $64AE（角色）决定",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "BattleItemResultSelectors",
+      "prg_offset": 190635,
+      "prg_offset_hex": "0x02E8AB",
+      "length": 35,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "与 BattleUsableItemIds 平行的 34 个战斗结果/消息选择码，末尾第 35 项 $91 是未命中的默认选择码；具体执行汇入 $A8FF",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AttackScriptCommandHandlers",
+      "prg_offset": 194956,
+      "prg_offset_hex": "0x02F98C",
+      "length": 76,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "opcode $00-$1B handler 指针和 $12-$1B 的 10 个 $70E6 bit0 镜像入口",
+      "source_module": "rom.battle.ai",
+      "module": "battle",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FacilityApplicationRuntimeBank18",
+      "prg_offset": 196608,
+      "prg_offset_hex": "0x030000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "根据新增文本与对话交互信息将 UI/商店类入口统一归入设施应用模块",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SubtractGold24BitCode",
+      "prg_offset": 196944,
+      "prg_offset_hex": "0x030150",
+      "length": 40,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "即时存档 9/10 运行确认的三字节金钱减法及回写代码",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ShowFrogRaceWagerPromptCode",
+      "prg_offset": 197001,
+      "prg_offset_hex": "0x030189",
+      "length": 5,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "青蛙赌博机的 record:02:050 文本选择入口；$32 是 UI 记录号",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InitialiseFrogRaceCode",
+      "prg_offset": 197771,
+      "prg_offset_hex": "0x03048B",
+      "length": 36,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "即时存档 10 接受下注后执行的三参赛者状态初始化循环",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AcceptFrogRaceWagerCode",
+      "prg_offset": 200157,
+      "prg_offset_hex": "0x030DDD",
+      "length": 21,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "青蛙赌博机接受下注、播放 $5B 并跳转建立选择状态的完整基本块",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "JukeboxConfirmSelectionCode",
+      "prg_offset": 200379,
+      "prg_offset_hex": "0x030EBB",
+      "length": 13,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动点唱机确认、读取曲目命令并跳转提交音频的完整基本块",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VendingConfirmSelectionCode",
+      "prg_offset": 200518,
+      "prg_offset_hex": "0x030F46",
+      "length": 63,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "自动售货机所选格保存、类型/数量读取和购买分支代码",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ApplicationCommandOpcodePointerTable",
+      "prg_offset": 201299,
+      "prg_offset_hex": "0x031253",
+      "length": 222,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "应用 VM opcode $8F-$FD 的 111 项小端 6502 handler 指针；$00-$8E 作为文字/字形值，$FE-$FF 由解释器直接处理",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ApplicationCommandScriptPointerTable",
+      "prg_offset": 201521,
+      "prg_offset_hex": "0x031331",
+      "length": 82,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "应用命令 $10-$38 的 41 项小端脚本指针表；目标均位于 bank $18 CPU $A000-$BFFF，由应用 VM 解释而非直接执行，其中调查命令 $36/$38 共用 $BD0F",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AdvanceFrogRacerCode",
+      "prg_offset": 201633,
+      "prg_offset_hex": "0x0313A1",
+      "length": 10,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine"
+      ],
+      "comment": "青蛙赛跑阶段运行确认的单参与者推进基本块",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ApplicationCommandScriptEnvelopePool",
+      "prg_offset": 201684,
+      "prg_offset_hex": "0x0313D4",
+      "length": 3116,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "service",
+        "shop",
+        "walking"
+      ],
+      "comment": "四类商店、服务 NPC、调查设施与其他应用命令的统一 bank $18 源区；网页 UI/对话/调查目录均反向引用此范围",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "service",
+        "shop",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand33ApplicationScript",
+      "prg_offset": 201684,
+      "prg_offset_hex": "0x0313D4",
+      "length": 44,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $33 的 bank $18 脚本；入口保留但当前 123 个物理调查点没有引用，具体用途待定",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationFrogRaceApplicationScript",
+      "prg_offset": 201728,
+      "prg_offset_hex": "0x031400",
+      "length": 57,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $32 的 bank $18 应用 VM 脚本；青蛙赌博机用途已由下注文字、价格表和运行流程确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand2DApplicationScript",
+      "prg_offset": 203421,
+      "prg_offset_hex": "0x031A9D",
+      "length": 24,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $2D 的 bank $18 脚本；13 个物理调查点均使用参数 $00，具体用途待定",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationJukeboxApplicationScript",
+      "prg_offset": 204028,
+      "prg_offset_hex": "0x031CFC",
+      "length": 19,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $1A 的 bank $18 应用 VM 脚本；点唱机用途已由配置、文字引用和运行画面确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommands36And38ApplicationScript",
+      "prg_offset": 204047,
+      "prg_offset_hex": "0x031D0F",
+      "length": 197,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $36/$38 共用的 bank $18 脚本区间；翻译后同场景文字涉及计算机启动电梯、排水泵和模拟武器，连续实验场景中的点位也落在控制台上，故推定为设施控制终端应用；具体 opcode 模式待确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand37ApplicationScript",
+      "prg_offset": 204244,
+      "prg_offset_hex": "0x031DD4",
+      "length": 55,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $37 的 bank $18 脚本区间；4 个点落在场景 $CD 中央机械区的四组控制台并使用参数 $06-$09，推定为四组实验终端，具体控制对象待确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand35ApplicationScript",
+      "prg_offset": 204316,
+      "prg_offset_hex": "0x031E1C",
+      "length": 16,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $35 的 bank $18 脚本；4 个物理调查点均使用参数 $00，具体用途待定",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationItemVendingApplicationScript",
+      "prg_offset": 204332,
+      "prg_offset_hex": "0x031E2C",
+      "length": 84,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $1B 的 bank $18 应用 VM 脚本；普通道具自动售货机用途已确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationAmmoVendingApplicationScript",
+      "prg_offset": 204416,
+      "prg_offset_hex": "0x031E80",
+      "length": 112,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $1C 的 bank $18 应用 VM 脚本；炮弹自动售货机用途已确认",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationCommand1DApplicationScript",
+      "prg_offset": 204528,
+      "prg_offset_hex": "0x031EF0",
+      "length": 82,
+      "kind": "script-data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查→应用 $1D 的 bank $18 脚本；使用双记录配置族 $0D，具体设施用途仍为推定",
+      "source_module": "rom.ui.facilities",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "script-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiTextAndFieldItemRuntimeBank19",
+      "prg_offset": 204800,
+      "prg_offset_hex": "0x032000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "把战斗/非战斗文本输出与道具入口放回明确的 UI/文本运行时上下文",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VehicleStatusSpriteChrBankSelectors",
+      "prg_offset": 210416,
+      "prg_offset_hex": "0x0335F0",
+      "length": 8,
+      "kind": "data",
+      "domain": "non-battle-ui",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "战车状态界面按底盘选择 sprite CHR 上下文的权威表；只选择图形资源，不拥有 OAM 绘制规则或 CHR 像素",
+      "source_module": "rom.ui.vehicle-portraits",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "VehicleStatusBackgroundChrBankSelectors",
+      "prg_offset": 210424,
+      "prg_offset_hex": "0x0335F8",
+      "length": 8,
+      "kind": "data",
+      "domain": "non-battle-ui",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "战车状态界面按底盘选择立绘背景 CHR 资源的权威表；record 布局、token VM 与 CHR 像素仍归各自 UI/CHR 基础资产",
+      "source_module": "rom.ui.vehicle-portraits",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "PrepareSelectedFieldItemUse",
+      "prg_offset": 205756,
+      "prg_offset_hex": "0x0323BC",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "工具菜单的选中道具使用入口：取得物品 ID 到 $E2；$DC-$DD 在 $A3CE-$A3D4 被上限检查拒绝，其余进入 38 项道具调度表",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FieldUsableItemIdTable",
+      "prg_offset": 205792,
+      "prg_offset_hex": "0x0323E0",
+      "length": 38,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "38 个可登记野外使用道具 ID；调度器从表尾向前搜索，表中的位置同时决定处理函数及前 9 项是否需要选择队员",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FieldItemHandlerPointerTable",
+      "prg_offset": 205830,
+      "prg_offset_hex": "0x032406",
+      "length": 78,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "与 FieldUsableItemIdTable 平行的 38 个 16 位处理入口，末尾第 39 个指针 $A604 是未登记 ID 的统一不可使用入口",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DispatchFieldItemUse",
+      "prg_offset": 205908,
+      "prg_offset_hex": "0x032454",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "按 $E2 的道具 ID 反向检索 FieldUsableItemIdTable，并通过平行指针表调用效果函数；未命中时使用第 39 个默认指针",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SelectFieldItemTarget",
+      "prg_offset": 205965,
+      "prg_offset_hex": "0x03248D",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "调度索引 $00-$08 的复活、回复、解毒、醒酒与战车药箱共用队员目标选择流程",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ThrowStoneFieldItem",
+      "prg_offset": 206013,
+      "prg_offset_hex": "0x0324BD",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "石子 `$A7` 的野外处理入口；执行场景动作、移除石子，再进入共用反应文字",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ShowScriptedFieldItemReaction",
+      "prg_offset": 206016,
+      "prg_offset_hex": "0x0324C0",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock"
+      ],
+      "comment": "毛巾、内衣、象牙、日记、笔记、密码本、卡通兔等剧情/趣味物品的共用固定文字反应入口",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FieldScriptedReactionRecordTable",
+      "prg_offset": 206024,
+      "prg_offset_hex": "0x0324C8",
+      "length": 14,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "非战斗工具调度索引 $09-$16 对应的地区 $02 反应文本记录号；$A4C2 以 $A4BF+调度索引读取，部分专用 handler 不使用其占位项",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseAncientCoinFieldItem",
+      "prg_offset": 206038,
+      "prg_offset_hex": "0x0324D6",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "古币 `$B2` 的随机反应入口；读取随机状态后选择显示内容，不消耗物品",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActivateCamouflageFieldItem",
+      "prg_offset": 206058,
+      "prg_offset_hex": "0x0324EA",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "迷彩条 `$CC`：把剩余效果步数 `$05AE` 设为 100，再显示对应反应",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseBugleFieldItem",
+      "prg_offset": 206087,
+      "prg_offset_hex": "0x032507",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "军号 `$9C` 的场景反应入口；存档 1 实机文字为“使用了军号”",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseWrenchFieldItem",
+      "prg_offset": 206095,
+      "prg_offset_hex": "0x03250F",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "扳手 `$B7` 的场景交互入口；转交当前场景/对象的工具处理例程",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseKeyFieldItem",
+      "prg_offset": 206101,
+      "prg_offset_hex": "0x032515",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "钥匙 `$B6` 的场景交互入口；转交当前场景/对象的开锁处理例程",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MedicineHealingBaseLowTable",
+      "prg_offset": 206129,
+      "prg_offset_hex": "0x032531",
+      "length": 4,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "参丸/党参/人参/灵丹 HP 回复基础值低字节：$55/$28/$E0/$17；与高字节表组合后为 85/296/992/4119",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MedicineHealingBaseHighTable",
+      "prg_offset": 206133,
+      "prg_offset_hex": "0x032535",
+      "length": 4,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "四档 HP 回复基础值高字节：$00/$01/$03/$10；实际回复量还加 ($37 & $0F) 的 0-15 随机量",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ConsumeSelectedFieldItem",
+      "prg_offset": 206212,
+      "prg_offset_hex": "0x032584",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "成功使用后从当前角色 8 格工具栏移除选中道具并将后续槽位前移；失败分支不会调用它",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ClearPoisonFieldItem",
+      "prg_offset": 206242,
+      "prg_offset_hex": "0x0325A2",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "喷雾剂 `$AD` 与解药 `$C3` 共用：清除目标状态位 `$08`；解药成功时消耗，喷雾剂保留",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ClearDrunkFieldItem",
+      "prg_offset": 206249,
+      "prg_offset_hex": "0x0325A9",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "醉药 `$B5`：目标状态位 `$80` 存在时清除并消耗；无该状态则走失败反应",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InspectWalletFieldItem",
+      "prg_offset": 206294,
+      "prg_offset_hex": "0x0325D6",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "钱包 `$A8`：检查钱包相关运行状态并显示对应文字，不消耗",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "RevivePartyMemberFieldItem",
+      "prg_offset": 206311,
+      "prg_offset_hex": "0x0325E7",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "再生丸 `$B1`：仅当目标死亡标志 `$647B+Y` 为 `$FF` 时复活、恢复 HP 并消耗",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "GenericFieldItemRefusal",
+      "prg_offset": 206340,
+      "prg_offset_hex": "0x032604",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "ID 未登记在 38 项表时的统一不可使用反应；本地化消息编号为 $77",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "HealFieldItem",
+      "prg_offset": 206345,
+      "prg_offset_hex": "0x032609",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "参丸/党参/人参/灵丹处理入口；按 ID 选择 16 位基础回复量、加 0-15 随机量、封顶到最大 HP，成功后消耗",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseVehicleMedicineBoxFieldItem",
+      "prg_offset": 206354,
+      "prg_offset_hex": "0x032612",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "战车药箱 `$D1` 在队员目标选择后的治疗入口；是否生效/消耗取决于目标状态",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "OpenWorldMapFieldItem",
+      "prg_offset": 206365,
+      "prg_offset_hex": "0x03261D",
+      "length": 8,
+      "kind": "routine",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "地图 `$AE` 的场景门控入口；允许时以模式参数 `$0A` 进入独立地图道具 UI，否则显示不能使用",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "routine",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseFireHydrantFieldItem",
+      "prg_offset": 206373,
+      "prg_offset_hex": "0x032625",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "消火栓 `$A0`：先检查当前场景条件，再进入共用探索功能；存档 1 所在场景条件不成立",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActivateConfiguredFieldMode",
+      "prg_offset": 206388,
+      "prg_offset_hex": "0x032634",
+      "length": 17,
+      "kind": "routine",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "探雷器/探测仪/地图/游戏机的共用模式入口；显示反馈后从 FieldWorldModeTable 取得模式号写入 `$2F`",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "routine",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FieldWorldModeTable",
+      "prg_offset": 206406,
+      "prg_offset_hex": "0x032646",
+      "length": 4,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "探雷器/探测仪/地图/游戏机的探索模式配置：$09/$09/$0A/$0B",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseFaxTeleportFieldItem",
+      "prg_offset": 206416,
+      "prg_offset_hex": "0x032650",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "传真 `$CB`：打开已登记目的地选择并进入传送流程；当前场景不允许时显示拒绝文字",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseVehicleContextFieldItem",
+      "prg_offset": 206645,
+      "prg_offset_hex": "0x032735",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "修理箱 `$B0` 与花板 `$CA` 的共用战车/场景条件入口；按当前上下文决定效果和是否消耗",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "RestoreVehicleSpItem",
+      "prg_offset": 206697,
+      "prg_offset_hex": "0x032769",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "PAG40/PAG80/PAGL/PAGLL 的战车目标选择与 SP 回复入口；按同索引参数表回复并在成功后消耗",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UseWaxVehicleItem",
+      "prg_offset": 206701,
+      "prg_offset_hex": "0x03276D",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "石蜡 `$D2` 的战车状态处理入口；成功执行后移除石蜡",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "PagSpRestoreLowTable",
+      "prg_offset": 206724,
+      "prg_offset_hex": "0x032784",
+      "length": 4,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "PAG40/PAG80/PAGL/PAGLL 的 SP 回复量低字节：$28/$50/$C8/$90",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "PagSpRestoreHighTable",
+      "prg_offset": 206728,
+      "prg_offset_hex": "0x032788",
+      "length": 4,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "PAG40/PAG80/PAGL/PAGLL 的 SP 回复量高字节：$00/$00/$00/$01；合并后为 40/80/200/400",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TextRegionPointerMinusOneTable",
+      "prg_offset": 211626,
+      "prg_offset_hex": "0x033AAA",
+      "length": 44,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "22 个文本/UI 区的基址减一指针；$BAEC 按 $CD 选择，首字节由统一预递增读取器取得",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TextRegionPrgBankTable",
+      "prg_offset": 211670,
+      "prg_offset_hex": "0x033AD6",
+      "length": 22,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "22 个文本/UI 区对应的 8 KiB PRG bank；$BAEC 在解析记录前建立映射",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SelectTextRecordByRegion",
+      "prg_offset": 211692,
+      "prg_offset_hex": "0x033AEC",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$CC=记录号、$CD=区号；按 $9F/$E3/$EB 边界定位，并跳过控制码参数、F4 子流和 F6 原始 tile 流",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiRecordSelectorSkipDispatch",
+      "prg_offset": 211775,
+      "prg_offset_hex": "0x033B3F",
+      "length": 40,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$EB-$FE 在记录定位阶段使用的 20 项跳过处理器表；它定义记录号语法而非画面语义",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiControlDispatchTable",
+      "prg_offset": 211839,
+      "prg_offset_hex": "0x033B7F",
+      "length": 58,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E2-$FE 文本/UI 控制码处理器指针表",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DispatchTextTokenRoutine",
+      "prg_offset": 211900,
+      "prg_offset_hex": "0x033BBC",
+      "length": 180,
+      "kind": "code",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "文本 token 与控制码解释器已证实范围",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:UiTextAndFieldItemRuntimeBank19"
+    },
+    {
+      "name": "UiCmdF2_IncludeRegion09",
+      "prg_offset": 212034,
+      "prg_offset_hex": "0x033C42",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F2 record：解释固定文本区 $09 的指定记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF6_ToggleRawTileMode",
+      "prg_offset": 212039,
+      "prg_offset_hex": "0x033C47",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F6：翻转 $E6，进入或离开普通文本与原始 tilemap 双模式解释",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdED_AdvanceOutput",
+      "prg_offset": 212046,
+      "prg_offset_hex": "0x033C4E",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$ED columns：清理动态字形状态并前移逻辑 nametable 输出指针",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdEF_FillRun",
+      "prg_offset": 212052,
+      "prg_offset_hex": "0x033C54",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$EF length,tile：用同一个 tile 填充 length 个输出格；不是复制内联字节块",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF4_RepeatSubstream",
+      "prg_offset": 212080,
+      "prg_offset_hex": "0x033C70",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F4 count：保存当前位置并重复解释内联子流，以 $FE 结束每次子流",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiVmLookupDataProvider",
+      "prg_offset": 212122,
+      "prg_offset_hex": "0x033C9A",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "读取脚本 provider ID，并从紧随其后的 70 项指针表返回动态数据地址",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiVmDataProviderTable",
+      "prg_offset": 212138,
+      "prg_offset_hex": "0x033CAA",
+      "length": 140,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "provider $00-$45 的 70 项小端 CPU/RAM 指针；供 $F8-$FD 数值、记录和运行时脚本命令使用",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdEE_SetStyle05AF",
+      "prg_offset": 212278,
+      "prg_offset_hex": "0x033D36",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$EE value：把一个字节写入 UI 状态 $05AF",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF5_RunBankGuardedHook",
+      "prg_offset": 212285,
+      "prg_offset_hex": "0x033D3D",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F5 hook：写 $B0，并在 PRG bank 上下文保护下调用 UI/场景钩子",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdFA_IncludeProviderRecordPreserveOutput",
+      "prg_offset": 212291,
+      "prg_offset_hex": "0x033D43",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$FA provider：间接取得 [record,region]，解释后恢复原输出指针",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdFB_IncludeProviderRecord",
+      "prg_offset": 212307,
+      "prg_offset_hex": "0x033D53",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$FB provider：间接取得 [record,region] 并在当前输出位置继续",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE6_PrepareCurrentActorName",
+      "prg_offset": 212328,
+      "prg_offset_hex": "0x033D68",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E6：按 $0370 当前角色索引把名字准备到 $051D 运行时字符串缓冲",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF0_SetPageStyleAndBreak",
+      "prg_offset": 212334,
+      "prg_offset_hex": "0x033D6E",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F0 value：写 $05A8 后进入带确认等待的分页路径",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdFE_PageBreakOrRepeatEnd",
+      "prg_offset": 212340,
+      "prg_offset_hex": "0x033D74",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$FE：在 $F4 子流内是重复结束符，否则执行确认等待和分页",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE7_AdvanceOriginAndLineBreak",
+      "prg_offset": 212369,
+      "prg_offset_hex": "0x033D91",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E7：把 UI 原点 $C4:$C5 前移 $40，再走换行路径",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE5_LineBreakScroll",
+      "prg_offset": 212372,
+      "prg_offset_hex": "0x033D94",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E5：移动到下一文本行，超过可见行数时滚动对话区域",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScrollDialogueRowsRoutine",
+      "prg_offset": 212429,
+      "prg_offset_hex": "0x033DCD",
+      "length": 74,
+      "kind": "code",
+      "domain": "non-battle-ui",
+      "submodes": [],
+      "comment": "对话逻辑 nametable 滚动已证实范围",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "non-battle-ui",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:UiTextAndFieldItemRuntimeBank19"
+    },
+    {
+      "name": "UiCmdEC_IncludeRegion14",
+      "prg_offset": 212510,
+      "prg_offset_hex": "0x033E1E",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$EC record：解释固定文本区 $14 的指定记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdEA_IncludeRegion13",
+      "prg_offset": 212514,
+      "prg_offset_hex": "0x033E22",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$EA record：解释固定文本区 $13 的指定记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF3_IncludeRegion11",
+      "prg_offset": 212518,
+      "prg_offset_hex": "0x033E26",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F3 record：解释固定文本区 $11 的指定记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF7_IncludeExplicitRecord",
+      "prg_offset": 212530,
+      "prg_offset_hex": "0x033E32",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F7 record,region：按显式二字节参数解释另一条记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdFD_RunProviderScript",
+      "prg_offset": 212556,
+      "prg_offset_hex": "0x033E4C",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$FD provider：把提供器指向的内存当脚本解释，并保留新的输出位置",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE8_InsertRuntimeString051D",
+      "prg_offset": 212584,
+      "prg_offset_hex": "0x033E68",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E8：解释并输出 $051D 起始的运行时字符串",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdFC_RunProviderScriptPreserveOutput",
+      "prg_offset": 212595,
+      "prg_offset_hex": "0x033E73",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$FC provider：把提供器指向的内存当脚本解释，随后恢复输出指针",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE9_IncludeRuntimeRecordPair",
+      "prg_offset": 212611,
+      "prg_offset_hex": "0x033E83",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E9：从零页 $E2 取得 [record,region] 对并解释对应记录",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE3Eb_OpenChoiceSelector",
+      "prg_offset": 212622,
+      "prg_offset_hex": "0x033E8E",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E3/$EB：建立选择光标并进入方向键/确认等待；两者同时也是 $BAEC 可寻址分支边界",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF8_FormatProviderNumberCompact",
+      "prg_offset": 212875,
+      "prg_offset_hex": "0x033F8B",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F8 provider,format：按 3/5/8 格定宽字段右对齐数值，并保留字段起点",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF9_FormatProviderNumberSpaced",
+      "prg_offset": 212898,
+      "prg_offset_hex": "0x033FA2",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F9 provider,format：省略前导零输出数值，并把输出位置推进到数字末尾",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE2_FormatRuntimeValueDf",
+      "prg_offset": 212907,
+      "prg_offset_hex": "0x033FAB",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E2：把零页 $DF-$E1 的三字节运行时数值格式化到当前逻辑 nametable 输出位置",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneActorAndInvestigationRuntimeBank1A",
+      "prg_offset": 212992,
+      "prg_offset_hex": "0x034000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "NPC 游走只占其中几百字节；整 bank 还包含调查与剧情战斗入口",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneActorRuntimeAndDispatchRegion",
+      "prg_offset": 213895,
+      "prg_offset_hex": "0x034387",
+      "length": 1764,
+      "kind": "mixed-code-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "补齐过去只有入口符号而没有函数体长度造成的覆盖空洞",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneActorActionHandlerImplementationRegion",
+      "prg_offset": 215659,
+      "prg_offset_hex": "0x034A6B",
+      "length": 2893,
+      "kind": "mixed-code-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "随机游走只是此区中的两个小 handler，不能解释整块 ROM 缺口",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneAction37StartScriptedEncounterCode",
+      "prg_offset": 217110,
+      "prg_offset_hex": "0x035016",
+      "length": 19,
+      "kind": "code",
+      "domain": "battle",
+      "submodes": [
+        "story-scripted",
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "6 条交互脚本、7 个场景角色入口使用该 handler，当前引用编队 $04/$10/$12/$14/$15",
+      "source_module": "rom.story.runtime",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "story-scripted",
+        "turn-based-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SceneActorMovementCollisionAndWaypointRegion",
+      "prg_offset": 218552,
+      "prg_offset_hex": "0x0355B8",
+      "length": 289,
+      "kind": "mixed-code-data",
+      "domain": "non-battle",
+      "submodes": [
+        "story-scripted",
+        "walking"
+      ],
+      "comment": "确认不存在通用 A*/BFS；行为由随机单步、贪心追踪和固定巡逻构成",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "story-scripted",
+        "walking",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScriptedEncounterFormationLoaderCode",
+      "prg_offset": 219518,
+      "prg_offset_hex": "0x03597E",
+      "length": 56,
+      "kind": "code",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "$B1×8 索引 57 条编队，四次读取怪物 ID/数量对并展开到最多 9 个运行时槽；RAM 只作为运行语义证据，不计入 PRG 覆盖",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ScriptedEncounterBootstrapCode",
+      "prg_offset": 219652,
+      "prg_offset_hex": "0x035A04",
+      "length": 31,
+      "kind": "code",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "调查/剧情触发战斗时安装 bank $1C、装载 $B1 编队并切入公共战斗流程的启动代码",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationTileBehaviorDispatchTable",
+      "prg_offset": 219760,
+      "prg_offset_hex": "0x035A70",
+      "length": 26,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "13 项小端返回地址减一表；metatile 属性经 max(0, ((attribute >> 1) & $3E) - $28) 得到偶数 byte 索引，RTS 式分派实际进入存值+1；行为 $54/$64/$68/$6C/$70/$74/$78/$7C 已确认，palette 位 0-1 与 bit7 不参与",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationTileDefaultResponseCode",
+      "prg_offset": 219828,
+      "prg_offset_hex": "0x035AB4",
+      "length": 32,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "调查图块普通反馈处理器代码；覆盖默认分派，末尾相邻阈值/文本表不包含在本代码范围",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationTileDistinctHandlersCode",
+      "prg_offset": 219873,
+      "prg_offset_hex": "0x035AE1",
+      "length": 113,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "连续的 $54/$64/$68/$6C/$70 专用调查处理代码，末端不含 $BB52 的 123 点设施扫描器；文字 ID、坐标参数和设施分派均由处理器逐项确认",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationHandlerCommandTable",
+      "prg_offset": 220034,
+      "prg_offset_hex": "0x035B82",
+      "length": 11,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查激活点 packed 低 nibble 的 11 项命令映射：$1B/$1C/$1D/$32/$33/$1A/$2D/$35/$36/$37/$38；其中 $1A/$1B/$1C 分别为点唱机、道具售货机、炮弹售货机",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationTileContextSceneryCode",
+      "prg_offset": 220045,
+      "prg_offset_hex": "0x035B8D",
+      "length": 49,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "行为 $7C 的场景/地图上下文分派代码；末端不含紧随其后的场景与处理器内联表；场景 $98 会进入衣柜战斗处理器",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationContextSceneIds",
+      "prg_offset": 220094,
+      "prg_offset_hex": "0x035BBE",
+      "length": 6,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "行为 $7C 的六项场景上下文键：$0C/$98/$7D/$9B/$9D/$CD；场景 $98 对应衣柜战斗分支",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationContextHandlerPointers",
+      "prg_offset": 220100,
+      "prg_offset_hex": "0x035BC4",
+      "length": 12,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "六项小端返回地址减一指针；场景 $98 项存 $BC07，实际进入 $BC08 Scene98WardrobeBattleHandler",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "turn-based-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationContextMetatileIds",
+      "prg_offset": 220111,
+      "prg_offset_hex": "0x035BCF",
+      "length": 7,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "行为 $7C 上下文处理器使用的 metatile 比较键；地址含义固定，值随地图内容选择对应招牌/景物分支",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationContextTextIds",
+      "prg_offset": 220118,
+      "prg_offset_hex": "0x035BD6",
+      "length": 7,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "行为 $7C 上下文景物的 region $05 文字记录 ID；单字节无端序，容量固定",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationContextHandlersCode",
+      "prg_offset": 220125,
+      "prg_offset_hex": "0x035BDD",
+      "length": 142,
+      "kind": "code",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "行为 $7C 的上下文处理器连续代码，包括场景 $98 衣柜的全局完成位检查、$0482 待提交 flag、文字与遭遇 $19 启动链；测试配置只改已登记的立即数与完成位检查分支，其他未知字节保持原值",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ResolveInvestigationSpecialPointCode",
+      "prg_offset": 220280,
+      "prg_offset_hex": "0x035C78",
+      "length": 45,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "带场景门控的调查物预扫描与六条专用坐标解析代码；普通场景调查物由运行时 metatile $01 / 行为 $64 解析，末端不含紧随其后的四张并列表",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationSpecialPointSceneIds",
+      "prg_offset": 220325,
+      "prg_offset_hex": "0x035CA5",
+      "length": 6,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "六条专用调查记录的场景 ID 列；$BC78 从 ID $05 逆序扫描，字段和值语义分别为场景匹配键与当前场景编号，固定容量；第 $04 行由 战斗测试配置（rom.battle.test） 在测试启用时写为目标场景，禁用时恢复 $03",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationSpecialPointXCoordinates",
+      "prg_offset": 220331,
+      "prg_offset_hex": "0x035CAB",
+      "length": 6,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "六条专用调查记录的 X 坐标列；与当前格或面前格 X 比较，坐标单位为 16×16 地图格，固定容量；第 $04 行可作为战斗测试点 X，禁用时恢复 $07",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationSpecialPointYCoordinates",
+      "prg_offset": 220337,
+      "prg_offset_hex": "0x035CB1",
+      "length": 6,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "六条专用调查记录的 Y 坐标列；与当前格或面前格 Y 比较，ID $04/$05 即开场住宅衣柜 (7,2) 与母亲照片 (8,2)；第 $04 行可作为战斗测试点 Y，禁用时恢复 $02",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationSpecialPointHandlerPointers",
+      "prg_offset": 220343,
+      "prg_offset_hex": "0x035CB7",
+      "length": 12,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "六项小端处理器指针，每项存实际入口减一供 PHA/PHA/RTS 分派；第 $04 行默认 $BD28（实际 $BD29），战斗测试启用时写 $BC07（实际 $BC08），禁用时精确恢复；不可按普通直接指针解释或改动容量",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationSpecialPointHandlersCode",
+      "prg_offset": 220355,
+      "prg_offset_hex": "0x035CC3",
+      "length": 117,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "前五个专用调查动作的连续代码：隐藏入口、塔玛之墓、隐藏再生丸、乌鲁米井和开场住宅衣柜；范围止于内衣物品 ID 内联表之前",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationWardrobeItemIds",
+      "prg_offset": 220472,
+      "prg_offset_hex": "0x035D38",
+      "length": 2,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "开场住宅衣柜按状态位选择的两项物品 ID：$C1 女内衣、$C2 男内衣；由 $BD29 以 $37&1 索引，容量固定",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationMotherPhotoHandlerCode",
+      "prg_offset": 220474,
+      "prg_offset_hex": "0x035D3A",
+      "length": 14,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "开场住宅母亲照片专用调查处理器；按状态选择 record:05:073 或 record:05:211 并保留成功 carry",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SelectFrogRaceWagerPriceCode",
+      "prg_offset": 220512,
+      "prg_offset_hex": "0x035D60",
+      "length": 40,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查命令 $32 的实例到下注金额映射及设施分派代码",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "FrogRaceWagerPriceTable",
+      "prg_offset": 220552,
+      "prg_offset_hex": "0x035D88",
+      "length": 5,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "青蛙赌博机实例 $00-$04 的下注金额表：50/100/150/200/250G；调查命令 $32 以 $CC 直接索引",
+      "source_module": "rom.scene.actor-behavior",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "PrepareSceneTreasureMetatileOverlayCode",
+      "prg_offset": 220572,
+      "prg_offset_hex": "0x035D9C",
+      "length": 66,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "普通场景加载期的调查物运行时覆盖：逐条检查 91 个取得 flag，把目标 SRAM 地图格写成未取得 metatile $01 或已取得 $02；ROM 地图流与未知字节保持原值",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ResolveInvestigationTreasureRecordCode",
+      "prg_offset": 220672,
+      "prg_offset_hex": "0x035E00",
+      "length": 104,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "调查物场景门控、物品/金钱取得前置流程与 91 条坐标逆序匹配代码；$BE00 用于特殊场景的 metatile 前扫描，$BE3E 由普通场景行为 $64 调用",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LocalizedTextBank1B",
+      "prg_offset": 221184,
+      "prg_offset_hex": "0x036000",
+      "length": 8192,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "完整定性为文本资源 bank",
+      "source_module": "rom.text-record",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterEncounterInvestigationBank1C",
+      "prg_offset": 229376,
+      "prg_offset_hex": "0x038000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "多模块混合 bank，精确子表覆盖 broad role",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MonsterParallelTables",
+      "prg_offset": 231518,
+      "prg_offset_hex": "0x03885E",
+      "length": 1473,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "131 个怪物的 flags、HP、攻防、速度、经验和金钱并行表",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "EncounterFormationTable",
+      "prg_offset": 235873,
+      "prg_offset_hex": "0x039961",
+      "length": 456,
+      "kind": "data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "57 条×8 字节固定编队；每条为四组 (monster_id,count)，小端不适用，活动槽必须连续且数量合计 1..9；编队 $19 当前为怪物 $0E“异形”×1，原位回写并全局生效",
+      "source_module": "rom.battle.test",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationPointSceneIds",
+      "prg_offset": 236994,
+      "prg_offset_hex": "0x039DC2",
+      "length": 123,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查激活记录 $01-$7B 的场景 ID 列；索引 $00 是相邻列边界，不参与运行扫描",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationPointPackedHandlers",
+      "prg_offset": 237117,
+      "prg_offset_hex": "0x039E3D",
+      "length": 123,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查激活记录 $01-$7B 的 packed 配置列；高 nibble 为设施配置实例，低 nibble 索引 InvestigationHandlerCommandTable",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationPointXCoordinates",
+      "prg_offset": 237240,
+      "prg_offset_hex": "0x039EB8",
+      "length": 123,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查激活记录 $01-$7B 的场景 X 坐标；调查命令同时检查当前格与按角色朝向得到的面前一格",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationPointYCoordinates",
+      "prg_offset": 237363,
+      "prg_offset_hex": "0x039F33",
+      "length": 123,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "调查激活记录 $01-$7B 的场景 Y 坐标；存档 5 在场景 $16 的 (11,10) 命中记录 $0C",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InvestigationWantedPosterHandlersCode",
+      "prg_offset": 237486,
+      "prg_offset_hex": "0x039FAE",
+      "length": 39,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "行为 $74/$78 的通缉目标高/低 nibble 提取与通缉令画面启动代码；两入口共享 $9FBD 后续",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WantedPosterSceneIdTable",
+      "prg_offset": 237541,
+      "prg_offset_hex": "0x039FE5",
+      "length": 12,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "12 项场景 ID；LookupWantedPosterTargetByScene 以 CMP $9FE4,X（X=$0C..$01）倒序比对，故实际数据自 $9FE5 起。命中索引同时用于取目标表同位字节。",
+      "source_module": "rom.ui.wanted-posters",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "WantedPosterTargetPairTable",
+      "prg_offset": 237554,
+      "prg_offset_hex": "0x039FF2",
+      "length": 12,
+      "kind": "data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "12 项打包目标号，与场景表同索引；LDA $9FF1,X 故数据自 $9FF2 起。每字节装两个 4 位固定编队 ID：行为 $74 取高位、$78 取低位，结果经 $B1 交给 LoadScriptedEncounterFormation 决定赏金首。",
+      "source_module": "rom.ui.wanted-posters",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioDriverAndLocalSequencesBank1D",
+      "prg_offset": 237568,
+      "prg_offset_hex": "0x03A000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "修复 domain taxonomy 后，本 bank 的恢复函数和 MLB 标签统一显示为音频模块",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioDriverEntryJumps",
+      "prg_offset": 237568,
+      "prg_offset_hex": "0x03A000",
+      "length": 9,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "Bank $1D 的初始化、声音命令与逐帧更新三个公共跳板",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioDriverConstants",
+      "prg_offset": 237577,
+      "prg_offset_hex": "0x03A009",
+      "length": 47,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音序 bank 分组阈值、16 项音色/包络入口及声道常量",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioDriverInitialise",
+      "prg_offset": 237624,
+      "prg_offset_hex": "0x03A038",
+      "length": 82,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "APU 寄存器与音频驱动 RAM 初始化代码",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioPeriodTable",
+      "prg_offset": 237706,
+      "prg_offset_hex": "0x03A08A",
+      "length": 192,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "96 项 16 位小端 APU timer 周期值，供音高到 pulse/triangle 频率转换",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioCommandDispatchCode",
+      "prg_offset": 237898,
+      "prg_offset_hex": "0x03A14A",
+      "length": 270,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "处理 $00-$7F 声音目录命令和 $F0-$FF 淡出控制，并执行音乐/音效抢占判断",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioChannelBitmasks",
+      "prg_offset": 238168,
+      "prg_offset_hex": "0x03A258",
+      "length": 8,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音频状态位的 $80,$40,$20,$10,$08,$04,$02,$01 mask 表",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioFrameUpdateCodeA",
+      "prg_offset": 238176,
+      "prg_offset_hex": "0x03A260",
+      "length": 230,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音频淡出与逐帧声道更新前半",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioFadeCurve",
+      "prg_offset": 238406,
+      "prg_offset_hex": "0x03A346",
+      "length": 16,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "由 $06FD 索引的 16 步淡出增量表",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioFrameUpdateCodeB",
+      "prg_offset": 238422,
+      "prg_offset_hex": "0x03A356",
+      "length": 1817,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音序读取、包络计算与 $4000-$400F APU 寄存器更新代码段",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioSequenceBankMap",
+      "prg_offset": 240239,
+      "prg_offset_hex": "0x03AA6F",
+      "length": 4,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "按命令阈值选择序列 bank：$0D,$0E,$0F,$FF；$FF 表示保持 Bank $1D 本地数据",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioOpcodeDispatchEntry",
+      "prg_offset": 240243,
+      "prg_offset_hex": "0x03AA73",
+      "length": 17,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "把音序 opcode 转换为 handler 指针并间接跳转",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioOpcodeHandlerTables",
+      "prg_offset": 240260,
+      "prg_offset_hex": "0x03AA84",
+      "length": 168,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音序 opcode handler 指针表及 AE87/AE91 缺省 handler 映射",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioOpcodeHandlers",
+      "prg_offset": 240428,
+      "prg_offset_hex": "0x03AB2C",
+      "length": 936,
+      "kind": "code",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音序 opcode handlers，末段 $AE9B-$AED3 负责按 CFC0 参数启动 DPCM",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioPreDirectoryPadding",
+      "prg_offset": 241364,
+      "prg_offset_hex": "0x03AED4",
+      "length": 10,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "声音命令目录前的 $FF 对齐填充",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioCommandPointerDirectory",
+      "prg_offset": 241374,
+      "prg_offset_hex": "0x03AEDE",
+      "length": 256,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "命令 $00-$7F 的 128 项 16 位小端 header 指针；$00 为复位特例，$7C-$7F 的 $FFFF 同时充当兼容性 bitset",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioReservedHighCommandSentinels",
+      "prg_offset": 241630,
+      "prg_offset_hex": "0x03AFDE",
+      "length": 8,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "$80-$83 的四项 $FFFF 哨兵；$84-$EF 没有完整目录，不能当成隐藏曲目表",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioCommandHeaders",
+      "prg_offset": 241638,
+      "prg_offset_hex": "0x03AFE6",
+      "length": 774,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "$01-$7B 命令 header：声道 mask/调度路径、兼容性 bitset 指针和各激活声道的音序入口",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioVoiceEnvelopeData",
+      "prg_offset": 242412,
+      "prg_offset_hex": "0x03B2EC",
+      "length": 1049,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "A010 的 16 项指针所引用的音色、包络及公共音频参数数据",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioLocalSequences",
+      "prg_offset": 243461,
+      "prg_offset_hex": "0x03B705",
+      "length": 2067,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "Bank $1D 本地音序，包含命令 $70-$7B 以及特殊命令引用的 $Bxxx 子流",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "AudioDriverTailPadding",
+      "prg_offset": 245528,
+      "prg_offset_hex": "0x03BF18",
+      "length": 232,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "音频 Bank $1D 尾部未使用的 $FF 填充",
+      "source_module": "rom.audio.driver",
+      "module": "audio",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LegacyFixedBankCopies1EAnd1F",
+      "prg_offset": 245760,
+      "prg_offset_hex": "0x03C000",
+      "length": 16384,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "明确标成历史副本而非无人认领代码；当前 trace 未观察到对 $1E/$1F 的运行时选择",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LocalizedChineseFontPages",
+      "prg_offset": 262144,
+      "prg_offset_hex": "0x040000",
+      "length": 30624,
+      "kind": "font-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$24-$2E 双字节编码使用的 12×12 本地化字形页及页内保留区；有效字形截至 $2E $95，共 1672 项。实际字库结束于 $04779F；$0477A0-$0477DF 是运行中的 UI 字模上传代码，$047800 起是独立 8×8 基础字模模板",
+      "source_module": null,
+      "module": null,
+      "tags": [
+        "shared-core",
+        "font-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "CoreUiPatternTemplateUploadCode",
+      "prg_offset": 292768,
+      "prg_offset_hex": "0x0477A0",
+      "length": 64,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "纠正旧字体 envelope 覆盖到实际运行代码的问题",
+      "source_module": "rom.ui.construction",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "CoreUiPatternUploadAlignmentPadding",
+      "prg_offset": 292832,
+      "prg_offset_hex": "0x0477E0",
+      "length": 32,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "不属于 12×12 汉字字形，也不是 6502 指令",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "CoreUiDigitLatinPatternTemplate",
+      "prg_offset": 292864,
+      "prg_offset_hex": "0x047800",
+      "length": 2048,
+      "kind": "font-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "128 个连续 8×8 NES 2bpp tile；tile $00-$09 为数字 0-9，$0A-$23 为大写 A-Z。运行时上传到 CHR-RAM $0000-$07FF，不属于物理 CHR-ROM 覆盖。",
+      "source_module": "rom.ui.static-layout",
+      "module": null,
+      "tags": [
+        "shared-core",
+        "font-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "LocalizedSpecialGlyphExtensionPool",
+      "prg_offset": 294912,
+      "prg_offset_hex": "0x048000",
+      "length": 5300,
+      "kind": "font-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "字形查表只会选择 bank $20-$23，lead $2F-$34 先被分支为控制语义；CDL 与 77 份读取摘要均无 bank $24 读取，因此定性为孤立/废弃字形素材",
+      "source_module": "audit.text.glyph-structure",
+      "module": "text",
+      "tags": [
+        "shared-core",
+        "font-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "OrphanGlyphTrailingLegacyPageBytes",
+      "prg_offset": 300212,
+      "prg_offset_hex": "0x0494B4",
+      "length": 76,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "修正 bank $24 字形区此前多算的 76 字节",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ExpansionRepeatedLegacyPageFill",
+      "prg_offset": 300288,
+      "prg_offset_hex": "0x049500",
+      "length": 207616,
+      "kind": "mirror-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "占 PRG 约 39.6% 的扩容镜像/填充区，之前网页只列为候选；逐页哈希和 MMC3 固定 bank 语义现已确认其性质",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mirror-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActiveFixedRuntimeBank3E",
+      "prg_offset": 507904,
+      "prg_offset_hex": "0x07C000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "活动 fixed bank 的剩余字节定性为共享运行时/内联数据，不再显示为完全未知",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DpcmSampleStorage",
+      "prg_offset": 507904,
+      "prg_offset_hex": "0x07C000",
+      "length": 3904,
+      "kind": "asset-data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "固定 Bank $3E CPU $C000-$CF3F 的 DPCM 采样存储；14 组参数会以不同起点、长度和速率复用其中数据",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "audio",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DpcmParameterTable",
+      "prg_offset": 511936,
+      "prg_offset_hex": "0x07CFC0",
+      "length": 42,
+      "kind": "data",
+      "domain": "audio",
+      "submodes": [],
+      "comment": "14 组 DPCM [rate/flags, $4012 start, $4013 length] 三字节记录，由 Bank $1D 的 $AEB5-$AEC9 写入 APU",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "audio",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "EnterWorldMapItemMode",
+      "prg_offset": 514666,
+      "prg_offset_hex": "0x07DA6A",
+      "length": 8,
+      "kind": "routine",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "mode $0A 的固定 mapper 包装器；闭合野外地图道具到专用 UI 构造函数的物理 bank",
+      "source_module": "rom.ui.text-field-items",
+      "module": "ui",
+      "tags": [
+        "non-battle",
+        "walking",
+        "routine",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ActiveFixedRuntimeBank3F",
+      "prg_offset": 516096,
+      "prg_offset_hex": "0x07E000",
+      "length": 8192,
+      "kind": "mixed-code-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "活动 fixed bank 剩余字节按共享核心定性，具体函数可继续逐步命名",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "mixed-code-data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SaveSystemFixedBankWrappersAndCopyHelper",
+      "prg_offset": 517421,
+      "prg_offset_hex": "0x07E52D",
+      "length": 104,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "存档 bank $14 程序的固定 bank 调用门；$E55D memcpy 由五段 marshal 与整槽克隆共享",
+      "source_module": "rom.save.slot-service",
+      "module": "saves",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SaveRamResetInitialization",
+      "prg_offset": 524151,
+      "prg_offset_hex": "0x07FF77",
+      "length": 49,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "RESET 顺序流内部范围，不声明为独立函数；逐段语义由 save-system producer 登记",
+      "source_module": "rom.save.slot-service",
+      "module": "saves",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "MainGameModeHandlerPointerTable",
+      "prg_offset": 517298,
+      "prg_offset_hex": "0x07E4B2",
+      "length": 30,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "主 mode 分发表；完整边界到紧随其后的 CPU $E4D0 代码入口",
+      "source_module": "rom.ui.text-field-items",
+      "module": "core",
+      "tags": [
+        "shared-core",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InteractionFlagSetMasks",
+      "prg_offset": 517871,
+      "prg_offset_hex": "0x07E6EF",
+      "length": 8,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "bit 0-7 的置位掩码 $01/$02/$04/$08/$10/$20/$40/$80；由全局事件位和调查物取得位 helper 共用",
+      "source_module": "rom.scene.investigation-state",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SelectRegion02TextRecord",
+      "prg_offset": 518927,
+      "prg_offset_hex": "0x07EB0F",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "A=记录号；写入 $CC，并把 $CD 固定为 $02。非战斗工具的固定反应最终经此选择地区 $02 文本",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "SelectRegion0ATextRecord",
+      "prg_offset": 518961,
+      "prg_offset_hex": "0x07EB31",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "A=记录号；写入 $CC，并把 $CD 固定为 $0A。战斗工具提示由 $A729/$A72C 调用本入口；结果选择值本身不是文本号",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiMainCommandHandlerPointerTable",
+      "prg_offset": 520042,
+      "prg_offset_hex": "0x07EF6A",
+      "length": 230,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [
+        "service",
+        "shop",
+        "walking"
+      ],
+      "comment": "统一 UI/菜单命令分发表；当前目录完整保留 115 项，其中固定窗口项可直接解析，动态 $A000 bank 项按运行上下文区分，不能冒充单一物理函数入口",
+      "source_module": "rom.ui.menu-dispatch",
+      "module": "ui",
+      "tags": [
+        "shared-core",
+        "service",
+        "shop",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ShowFieldItemTextRecord",
+      "prg_offset": 520911,
+      "prg_offset_hex": "0x07F2CF",
+      "length": 1,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "A=地区 $02 文本记录号的非战斗工具提示入口；调用 SelectRegion02TextRecord 后初始化文字输出状态",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "ResetUiTextVmState",
+      "prg_offset": 521601,
+      "prg_offset_hex": "0x07F581",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "把 $059E 设为 $FF，并清零 $E6 以从普通文本模式开始",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "RunSelectedUiTextRecord",
+      "prg_offset": 521610,
+      "prg_offset_hex": "0x07F58A",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "保存 bank 上下文，调用 $BAEC 选择 region:record，重置 VM 后解释并恢复映射",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InterpretCurrentUiTextStream",
+      "prg_offset": 521643,
+      "prg_offset_hex": "0x07F5AB",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "循环读取 $B8:$B9 脚本流并调用 $BBBC；处理嵌套/选择状态直到 $059E 归零",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdE4_WaitForConfirmMarker",
+      "prg_offset": 522437,
+      "prg_offset_hex": "0x07F8C5",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$E4：显示等待标记并等待确认输入",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "UiCmdF1_WaitFrames",
+      "prg_offset": 522949,
+      "prg_offset_hex": "0x07FAC5",
+      "length": 1,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "$F1 frames：设置 16 位帧计数器低字节并逐帧等待到零",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "GlobalEventFlagHelpersCode",
+      "prg_offset": 523909,
+      "prg_offset_hex": "0x07FE85",
+      "length": 46,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [
+        "story-scripted",
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "$FE85/$FE92/$FE9F 分别置位、清零、检查 $0441-$0460 全局事件位图；A 是 0..255 flag ID，byte=ID>>3、bit=ID&7",
+      "source_module": "rom.scene.investigation-state",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "story-scripted",
+        "turn-based-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "InteractionFlagClearMasks",
+      "prg_offset": 523955,
+      "prg_offset_hex": "0x07FEB3",
+      "length": 8,
+      "kind": "data",
+      "domain": "shared-core",
+      "submodes": [
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "bit 0-7 的清零掩码 $FE/$FD/$FB/$F7/$EF/$DF/$BF/$7F；事件位和调查物取得位清零 helper 共用",
+      "source_module": "rom.scene.investigation-state",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking",
+        "data",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "TreasureCollectedFlagHelpersCode",
+      "prg_offset": 523963,
+      "prg_offset_hex": "0x07FEBB",
+      "length": 36,
+      "kind": "code",
+      "domain": "non-battle",
+      "submodes": [
+        "facility-machine",
+        "walking"
+      ],
+      "comment": "$FEBB/$FEC8/$FED5 分别置位、清零、检查 $0461-$0480 调查物取得位图；91 条调查物记录 ID 直接作为 flag ID",
+      "source_module": "rom.scene.investigation-state",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "facility-machine",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "DecodeInteractionFlagIndexCode",
+      "prg_offset": 523999,
+      "prg_offset_hex": "0x07FEDF",
+      "length": 10,
+      "kind": "code",
+      "domain": "shared-core",
+      "submodes": [
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking"
+      ],
+      "comment": "把 A 的 flag ID 拆成 Y=低 3 位和 X=高 5 位，供两套 32-byte 全局状态位图 helper 共用",
+      "source_module": "rom.scene.investigation-state",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "facility-machine",
+        "story-scripted",
+        "turn-based-battle",
+        "walking",
+        "code",
+        "asset-range"
+      ],
+      "domain_source": "declared"
+    },
+    {
+      "name": "Asset_data_battle_test_completed_text",
+      "prg_offset": 220196,
+      "prg_offset_hex": "0x035C24",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗已完成文本记录；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_encounter_id",
+      "prg_offset": 220186,
+      "prg_offset_hex": "0x035C1A",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗编队 ID；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_handler_pointer",
+      "prg_offset": 220351,
+      "prg_offset_hex": "0x035CBF",
+      "length": 2,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "调查战斗测试点返回地址减一指针；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_intro_text",
+      "prg_offset": 220176,
+      "prg_offset_hex": "0x035C10",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗开始文本记录；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_repeat_check",
+      "prg_offset": 220173,
+      "prg_offset_hex": "0x035C0D",
+      "length": 2,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗完成标志分支；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_scene_id",
+      "prg_offset": 220329,
+      "prg_offset_hex": "0x035CA9",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "调查战斗测试点场景 ID；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_state_flag_check",
+      "prg_offset": 220169,
+      "prg_offset_hex": "0x035C09",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗完成标志检查参数；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_state_flag_set",
+      "prg_offset": 220181,
+      "prg_offset_hex": "0x035C15",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "衣柜战斗胜利后待提交的全局标志参数；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.battle.test",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_x",
+      "prg_offset": 220335,
+      "prg_offset_hex": "0x035CAF",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "调查战斗测试点 X 坐标；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_battle_test_y",
+      "prg_offset": 220341,
+      "prg_offset_hex": "0x035CB5",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "调查战斗测试点 Y 坐标；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "rom.scene.actor-investigation",
+      "module": "npcs",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_characters_growth_a",
+      "prg_offset": 163228,
+      "prg_offset_hex": "0x027D9C",
+      "length": 87,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "角色成长曲线 A；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_data_characters_growth_b",
+      "prg_offset": 163315,
+      "prg_offset_hex": "0x027DF3",
+      "length": 92,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "角色成长曲线 B；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_data_characters_growth_c",
+      "prg_offset": 163407,
+      "prg_offset_hex": "0x027E4F",
+      "length": 53,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "角色成长曲线 C；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_data_characters_growth_d",
+      "prg_offset": 163460,
+      "prg_offset_hex": "0x027E84",
+      "length": 61,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "角色成长曲线 D；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_data_characters_mechanic_name_candidates",
+      "prg_offset": 171095,
+      "prg_offset_hex": "0x029C57",
+      "length": 44,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "机械师后备姓名候选；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:CoreGameplayAndSceneTransitionBank14"
+    },
+    {
+      "name": "Asset_data_characters_name_presets",
+      "prg_offset": 171015,
+      "prg_offset_hex": "0x029C07",
+      "length": 80,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "新游戏姓名联动预设（触发名 + 三名角色）；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:CoreGameplayAndSceneTransitionBank14"
+    },
+    {
+      "name": "Asset_data_characters_soldier_name_candidates",
+      "prg_offset": 171139,
+      "prg_offset_hex": "0x029C83",
+      "length": 44,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "女战士后备姓名候选；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:CoreGameplayAndSceneTransitionBank14"
+    },
+    {
+      "name": "Asset_data_monsters_attack",
+      "prg_offset": 232074,
+      "prg_offset_hex": "0x038A8A",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物攻击基值；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_attack_code",
+      "prg_offset": 232467,
+      "prg_offset_hex": "0x038C13",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物攻击修饰码；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_defense",
+      "prg_offset": 232205,
+      "prg_offset_hex": "0x038B0D",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物防御基值；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_defense_code",
+      "prg_offset": 232598,
+      "prg_offset_hex": "0x038C96",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物防御修饰码；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_drop_items",
+      "prg_offset": 140591,
+      "prg_offset_hex": "0x02252F",
+      "length": 107,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物掉落道具 ID；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_experience_code",
+      "prg_offset": 232729,
+      "prg_offset_hex": "0x038D19",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物经验基值；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_flags",
+      "prg_offset": 231518,
+      "prg_offset_hex": "0x03885E",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物总标志；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_gold_code",
+      "prg_offset": 232860,
+      "prg_offset_hex": "0x038D9C",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物金钱基值；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_hp",
+      "prg_offset": 231943,
+      "prg_offset_hex": "0x038A07",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物 HP 基值；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_packed_a",
+      "prg_offset": 231649,
+      "prg_offset_hex": "0x0388E1",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物压缩属性 A；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_packed_b",
+      "prg_offset": 231780,
+      "prg_offset_hex": "0x038964",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物压缩属性 B；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_special_lookup",
+      "prg_offset": 231911,
+      "prg_offset_hex": "0x0389E7",
+      "length": 32,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物特殊映射；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_monsters_speed",
+      "prg_offset": 232336,
+      "prg_offset_hex": "0x038B90",
+      "length": 131,
+      "kind": "asset-data",
+      "domain": "battle",
+      "submodes": [
+        "turn-based-battle"
+      ],
+      "comment": "怪物速度；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "battle",
+        "turn-based-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_vehicles_ammo_capacities",
+      "prg_offset": 139390,
+      "prg_offset_hex": "0x02207E",
+      "length": 18,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化弹仓容量；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_vehicles_chassis_weight",
+      "prg_offset": 139444,
+      "prg_offset_hex": "0x0220B4",
+      "length": 36,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化底盘自重；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_vehicles_defense",
+      "prg_offset": 139408,
+      "prg_offset_hex": "0x022090",
+      "length": 36,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化底盘防御；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_vehicles_equipped_masks",
+      "prg_offset": 139372,
+      "prg_offset_hex": "0x02206C",
+      "length": 18,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化装配状态掩码；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_vehicles_initial_placement",
+      "prg_offset": 233036,
+      "prg_offset_hex": "0x038E4C",
+      "length": 27,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "战车初始停放位置（场景 ID / X / Y）；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_data_vehicles_loadouts",
+      "prg_offset": 139264,
+      "prg_offset_hex": "0x022000",
+      "length": 108,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化装备与底盘模板；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_vehicles_mount_masks",
+      "prg_offset": 139480,
+      "prg_offset_hex": "0x0220D8",
+      "length": 18,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "战车初始化装配许可掩码；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:EquipmentMonsterFacilityDataBank11"
+    },
+    {
+      "name": "Asset_data_wanted_default_pair",
+      "prg_offset": 237553,
+      "prg_offset_hex": "0x039FF1",
+      "length": 1,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "通缉令场景未命中时的默认目标对；manifest kind=compiled.game-data；confidence=loader-and-runtime-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_facility_configuration_records",
+      "prg_offset": 146613,
+      "prg_offset_hex": "0x023CB5",
+      "length": 840,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [],
+      "comment": "设施配置族记录区（全部 16 族的长度前缀记录）；manifest kind=table.facility-configuration；confidence=loader-and-runtime-verified",
+      "source_module": "rom.ui.facilities",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ApplicationConfigurationRecordPool"
+    },
+    {
+      "name": "Asset_map_interior_pointer_table_candidate",
+      "prg_offset": 139570,
+      "prg_offset_hex": "0x022132",
+      "length": 250,
+      "kind": "provisional-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "室内/城镇地图指针表候选；manifest kind=table.pointer16le-candidate；confidence=low",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "provisional-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_map_interior_stream_bank17_tail_candidate",
+      "prg_offset": 142178,
+      "prg_offset_hex": "0x022B62",
+      "length": 5278,
+      "kind": "provisional-data",
+      "domain": "non-battle",
+      "submodes": [
+        "walking"
+      ],
+      "comment": "PRG bank 17 尾部地图流候选区；manifest kind=opaque.map-stream-candidate；confidence=low",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "non-battle",
+        "walking",
+        "provisional-data",
+        "asset-range"
+      ],
+      "domain_source": "name-comment-heuristic"
+    },
+    {
+      "name": "Asset_story_autonomous_pointer_table",
+      "prg_offset": 151911,
+      "prg_offset_hex": "0x025167",
+      "length": 338,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock"
+      ],
+      "comment": "自动动作脚本指针表；manifest kind=compiled.story；confidence=decoder-and-roundtrip-verified",
+      "source_module": "rom.scene-actor",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:SceneActorDefinitionsAndScriptsBank12"
+    },
+    {
+      "name": "Asset_story_autonomous_stream_pool",
+      "prg_offset": 152249,
+      "prg_offset_hex": "0x0252B9",
+      "length": 3399,
+      "kind": "asset-data",
+      "domain": "non-battle",
+      "submodes": [
+        "scripted-lock"
+      ],
+      "comment": "自动动作脚本紧凑流池；manifest kind=compiled.story；confidence=decoder-and-roundtrip-verified",
+      "source_module": "rom.scene-actor",
+      "module": "npcs",
+      "tags": [
+        "non-battle",
+        "scripted-lock",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:SceneActorDefinitionsAndScriptsBank12"
+    },
+    {
+      "name": "Asset_story_interaction_pointer_table",
+      "prg_offset": 160633,
+      "prg_offset_hex": "0x027379",
+      "length": 216,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "交互剧情脚本指针表；manifest kind=compiled.story；confidence=decoder-and-roundtrip-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_story_interaction_stream_pool",
+      "prg_offset": 160849,
+      "prg_offset_hex": "0x027451",
+      "length": 1202,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "交互剧情脚本紧凑流池；manifest kind=compiled.story；confidence=decoder-and-roundtrip-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:ActorBattleVisualAndGrowthBank13"
+    },
+    {
+      "name": "Asset_story_world_events_trigger_tables",
+      "prg_offset": 236329,
+      "prg_offset_hex": "0x039B29",
+      "length": 264,
+      "kind": "asset-data",
+      "domain": "shared-core",
+      "submodes": [],
+      "comment": "世界事件触发并列表；manifest kind=compiled.story；confidence=decoder-and-roundtrip-verified",
+      "source_module": "audit.disasm.prg-structure",
+      "module": "shared",
+      "tags": [
+        "shared-core",
+        "asset-data",
+        "asset-range"
+      ],
+      "domain_source": "enclosing-range:MonsterEncounterInvestigationBank1C"
+    }
+  ],
+  "usage": {
+    "authority": "project/config/metalmaxcn.symbols.json supplies confirmed names; this file merges those names with generated/static/runtime evidence",
+    "stable_address": "physical 8 KiB bank:offset",
+    "mesen_labels": "metalmaxcn.mlb intentionally contains shorter comments"
+  }
+}

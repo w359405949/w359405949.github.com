@@ -1,0 +1,91 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.nearby-object-investigation-service",
+  "resource_id": "nearby-object-investigation-service",
+  "edit_policy": "mutable",
+  "document": {
+    "records": [
+      {
+        "handle": "nearby-object-investigation-service:02",
+        "audio_command": 88,
+        "replacement_metatile": 88,
+        "sources": {
+          "audio": {
+            "space": "prg",
+            "offset": 219874,
+            "length": 1
+          },
+          "metatile": {
+            "space": "prg",
+            "offset": 219887,
+            "length": 1
+          }
+        }
+      }
+    ],
+    "reward_calls": [
+      {
+        "kind": "hidden-item",
+        "handler_prg": 220392,
+        "context_reference": "encounter-trigger-runtime:context:0",
+        "item_references": [
+          "item:B1"
+        ],
+        "acquisition_condition": {
+          "flag_reference": "global-event-flag:4D",
+          "unavailable_feedback": {
+            "facing_direction": 0,
+            "target_reference": "investigation-tile:76:02",
+            "record": "record:05:185",
+            "source": {
+              "space": "prg",
+              "offset": 219949,
+              "length": 1
+            }
+          },
+          "clear_on_successful_use": "item:B1",
+          "evidence": "project/evidence/reverse-engineering/regen-pill-acquisition/observations.json"
+        },
+        "sources": {
+          "item": {
+            "space": "prg",
+            "offset": 220401,
+            "length": 1
+          },
+          "context": {
+            "space": "prg",
+            "offset": 220403,
+            "length": 1
+          },
+          "flag": {
+            "space": "prg",
+            "offset": 220393,
+            "length": 1
+          }
+        },
+        "evidence": "project/evidence/reverse-engineering/investigation-feedback-sources/observations.json"
+      },
+      {
+        "kind": "underwear-wardrobe",
+        "handler_prg": 220457,
+        "context_reference": "encounter-trigger-runtime:context:2",
+        "item_references": [
+          "item:C1",
+          "item:C2"
+        ],
+        "sources": {
+          "item": {
+            "space": "prg",
+            "offset": 220472,
+            "length": 2
+          },
+          "context": {
+            "space": "prg",
+            "offset": 220466,
+            "length": 1
+          }
+        },
+        "evidence": "project/evidence/reverse-engineering/investigation-feedback-sources/observations.json"
+      }
+    ]
+  }
+}

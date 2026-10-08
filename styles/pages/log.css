@@ -1,0 +1,17 @@
+body[data-page="log"] {
+.log-filters { flex-wrap: wrap; gap: 14px; }
+.log-filters label { display: flex; align-items: center; gap: 8px; }
+.log-entries { border-top: 1px solid var(--border); }
+.log-entry { border-bottom: 1px solid var(--border); }
+.log-entry summary { display: flex; align-items: baseline; gap: 12px; padding: 10px 8px; cursor: pointer; }
+.log-entry summary::before { content: "▸"; }
+.log-entry[open] summary::before { content: "▾"; }
+.log-entry time, .log-level { color: var(--text-dim); font-size: var(--fs-xs); white-space: nowrap; }
+.log-message { flex: 1; overflow-wrap: anywhere; }
+.log-entry[data-level="error"] .log-level, .log-entry[data-level="error"] .log-message { color: var(--danger); }
+.log-entry[data-level="warning"] .log-level { color: var(--dirty); }
+.log-detail { padding: 0 24px 12px; }
+.log-detail pre { white-space: pre-wrap; overflow-wrap: anywhere; user-select: text; font: var(--fs-xs) var(--mono); }
+.log-detail h3 { font-size: var(--fs-sm); }
+#log-more[hidden] { display: none; }
+}

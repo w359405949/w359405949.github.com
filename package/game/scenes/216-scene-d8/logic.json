@@ -1,0 +1,1163 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 216,
+  "scene_id_hex": "0xD8",
+  "width": 37,
+  "height": 38,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 216,
+      "entry_id_hex": "0xD8",
+      "count": 1,
+      "record_source": {
+        "space": "prg",
+        "offset": 150816,
+        "length": 7,
+        "end_exclusive": 150823
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:D8:00",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [
+      {
+        "id": 74,
+        "id_hex": "0x4A",
+        "field_offsets": {
+          "scene_id": 236682,
+          "x": 236773,
+          "y": 236864,
+          "content_id": 236955
+        },
+        "scene_id": 216,
+        "scene_id_hex": "0xD8",
+        "x": 30,
+        "x_hex": "0x1E",
+        "y": 4,
+        "y_hex": "0x04",
+        "content_id": 18,
+        "content_id_hex": "0x12",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "item",
+        "item_id": 18,
+        "save_flag_bit": 74,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 74,
+          "flag_id_hex": "0x4A",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1130,
+          "runtime_byte_hex": "0x046A",
+          "byte_index": 9,
+          "bit_index": 2,
+          "bit_mask": 4,
+          "bit_mask_hex": "0x04",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 75,
+        "id_hex": "0x4B",
+        "field_offsets": {
+          "scene_id": 236683,
+          "x": 236774,
+          "y": 236865,
+          "content_id": 236956
+        },
+        "scene_id": 216,
+        "scene_id_hex": "0xD8",
+        "x": 26,
+        "x_hex": "0x1A",
+        "y": 4,
+        "y_hex": "0x04",
+        "content_id": 250,
+        "content_id_hex": "0xFA",
+        "compiled_fields": [
+          "scene_id",
+          "x",
+          "y",
+          "content_id"
+        ],
+        "content_kind": "money-reward-code",
+        "money_table_index": 10,
+        "money_base_value": 498,
+        "save_flag_bit": 75,
+        "interaction_state": {
+          "class": "treasure-collected-flag",
+          "label": "调查物取得位",
+          "owns_state": true,
+          "scope": "global-save-state",
+          "flag_id": 75,
+          "flag_id_hex": "0x4B",
+          "runtime_bitset_base": 1121,
+          "runtime_bitset_base_hex": "0x0461",
+          "runtime_byte": 1130,
+          "runtime_byte_hex": "0x046A",
+          "byte_index": 9,
+          "bit_index": 3,
+          "bit_mask": 8,
+          "bit_mask_hex": "0x08",
+          "test_helper_cpu": 65237,
+          "test_helper_cpu_hex": "0xFED5",
+          "set_helper_cpu": 65211,
+          "set_helper_cpu_hex": "0xFEBB",
+          "clear_helper_cpu": 65224,
+          "clear_helper_cpu_hex": "0xFEC8",
+          "commit": "immediate-after-successful-acquisition",
+          "effects": [
+            "spawn-or-materialize-uncollected-metatile",
+            "interaction-availability",
+            "collected-metatile-selection"
+          ]
+        },
+        "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+        "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+        "resolution_source": {
+          "space": "prg",
+          "offset": 220572,
+          "length": 66,
+          "end_exclusive": 220638
+        },
+        "runtime_metatile_overlay": {
+          "uncollected_metatile_id": 1,
+          "uncollected_behavior_code": 100,
+          "collected_metatile_id": 2,
+          "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+        },
+        "confidence": "confirmed",
+        "inside_scene_canvas": true
+      }
+    ],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "D8:1B:0A",
+        "scene_id": 216,
+        "scene_id_hex": "0xD8",
+        "x": 27,
+        "x_hex": "0x1B",
+        "y": 10,
+        "y_hex": "0x0A",
+        "metatile_id": 65,
+        "metatile_id_hex": "0x41",
+        "raw_attribute": 235,
+        "raw_attribute_hex": "0xEB",
+        "palette_id": 3,
+        "behavior_code": 104,
+        "behavior_code_hex": "0x68",
+        "dispatch_index": 12,
+        "dispatch_index_hex": "0x0C",
+        "handler_cpu": 47907,
+        "handler_cpu_hex": "0xBB23",
+        "handler_prg": 219939,
+        "handler_prg_hex": "0x035B23",
+        "kind": "locked-door",
+        "label": "上锁的门",
+        "semantic_status": "confirmed-purpose",
+        "description": "固定输出“门上好象挂着锁。”。",
+        "text_records": [
+          "record:05:072"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232001,
+          "length": 1,
+          "end_exclusive": 232002
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219772,
+          "length": 2,
+          "end_exclusive": 219774
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 39952,
+            "length": 799,
+            "end_exclusive": 40751
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "D8:1B:0B",
+        "scene_id": 216,
+        "scene_id_hex": "0xD8",
+        "x": 27,
+        "x_hex": "0x1B",
+        "y": 11,
+        "y_hex": "0x0B",
+        "metatile_id": 66,
+        "metatile_id_hex": "0x42",
+        "raw_attribute": 235,
+        "raw_attribute_hex": "0xEB",
+        "palette_id": 3,
+        "behavior_code": 104,
+        "behavior_code_hex": "0x68",
+        "dispatch_index": 12,
+        "dispatch_index_hex": "0x0C",
+        "handler_cpu": 47907,
+        "handler_cpu_hex": "0xBB23",
+        "handler_prg": 219939,
+        "handler_prg_hex": "0x035B23",
+        "kind": "locked-door",
+        "label": "上锁的门",
+        "semantic_status": "confirmed-purpose",
+        "description": "固定输出“门上好象挂着锁。”。",
+        "text_records": [
+          "record:05:072"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232002,
+          "length": 1,
+          "end_exclusive": 232003
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219772,
+          "length": 2,
+          "end_exclusive": 219774
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 39952,
+            "length": 799,
+            "end_exclusive": 40751
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "D8:03:1B",
+        "scene_id": 216,
+        "scene_id_hex": "0xD8",
+        "x": 3,
+        "x_hex": "0x03",
+        "y": 27,
+        "y_hex": "0x1B",
+        "metatile_id": 71,
+        "metatile_id_hex": "0x47",
+        "raw_attribute": 254,
+        "raw_attribute_hex": "0xFE",
+        "palette_id": 2,
+        "behavior_code": 124,
+        "behavior_code_hex": "0x7C",
+        "dispatch_index": 22,
+        "dispatch_index_hex": "0x16",
+        "handler_cpu": 48013,
+        "handler_cpu_hex": "0xBB8D",
+        "handler_prg": 220045,
+        "handler_prg_hex": "0x035B8D",
+        "kind": "context-scenery",
+        "label": "场景专用调查物",
+        "semantic_status": "confirmed-dispatch-mixed-purpose",
+        "description": "按场景或地图数据分流到招牌、衣橱、农田、裂缝等专用文字/动作。",
+        "text_records": [
+          "record:05:036",
+          "record:05:066",
+          "record:05:067",
+          "record:05:077",
+          "record:05:078",
+          "record:05:082",
+          "record:05:116",
+          "record:05:129",
+          "record:05:205",
+          "record:05:206",
+          "record:05:207",
+          "record:05:208",
+          "record:05:209",
+          "record:05:210"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "context-handler-defined",
+          "label": "状态由场景专用处理器决定",
+          "owns_state": false,
+          "effects": [
+            "scene-specific"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 232007,
+          "length": 1,
+          "end_exclusive": 232008
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219782,
+          "length": 2,
+          "end_exclusive": 219784
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "prg",
+            "offset": 39952,
+            "length": 799,
+            "end_exclusive": 40751
+          },
+          "map_address_space": "banked-prg",
+          "map_region": "prg",
+          "attribute_offsets": [
+            231360,
+            232000
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 38858,
+      "pointer_cpu_hex": "0x97CA",
+      "pointer_prg": 128970,
+      "pointer_prg_hex": "0x01F7CA",
+      "boundary_mode": "dynamic-return",
+      "boundary_exits": [],
+      "dynamic_boundary_return": {
+        "id": 0,
+        "id_hex": "0x00",
+        "direction_code": null,
+        "direction": "all-boundaries",
+        "target_kind": "saved-return-position",
+        "editable": false,
+        "source": {
+          "space": "prg",
+          "offset": 128970,
+          "length": 1,
+          "end_exclusive": 128971
+        }
+      },
+      "point_transition_count": 10,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 1,
+          "y": 12,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128972,
+            "length": 2,
+            "end_exclusive": 128974
+          },
+          "coordinate_offsets": {
+            "x": 128972,
+            "y": 128973
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 23,
+          "destination_y": 12,
+          "camera_origin_x": 15,
+          "camera_origin_y": 5,
+          "encoded_x": 23,
+          "encoded_y": 12,
+          "source": {
+            "space": "prg",
+            "offset": 128992,
+            "length": 3,
+            "end_exclusive": 128995
+          },
+          "field_offsets": {
+            "destination_scene_id": 128992,
+            "destination_x": 128993,
+            "destination_y": 128994
+          },
+          "raw": [
+            216,
+            23,
+            12
+          ],
+          "raw_hex": "D8 17 0C"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 35,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128974,
+            "length": 2,
+            "end_exclusive": 128976
+          },
+          "coordinate_offsets": {
+            "x": 128974,
+            "y": 128975
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 13,
+          "destination_y": 35,
+          "camera_origin_x": 5,
+          "camera_origin_y": 28,
+          "encoded_x": 13,
+          "encoded_y": 35,
+          "source": {
+            "space": "prg",
+            "offset": 128995,
+            "length": 3,
+            "end_exclusive": 128998
+          },
+          "field_offsets": {
+            "destination_scene_id": 128995,
+            "destination_x": 128996,
+            "destination_y": 128997
+          },
+          "raw": [
+            216,
+            13,
+            35
+          ],
+          "raw_hex": "D8 0D 23"
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "x": 1,
+          "y": 34,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128976,
+            "length": 2,
+            "end_exclusive": 128978
+          },
+          "coordinate_offsets": {
+            "x": 128976,
+            "y": 128977
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 23,
+          "destination_y": 34,
+          "camera_origin_x": 15,
+          "camera_origin_y": 27,
+          "encoded_x": 23,
+          "encoded_y": 34,
+          "source": {
+            "space": "prg",
+            "offset": 128998,
+            "length": 3,
+            "end_exclusive": 129001
+          },
+          "field_offsets": {
+            "destination_scene_id": 128998,
+            "destination_x": 128999,
+            "destination_y": 129000
+          },
+          "raw": [
+            216,
+            23,
+            34
+          ],
+          "raw_hex": "D8 17 22"
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "x": 35,
+          "y": 35,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128978,
+            "length": 2,
+            "end_exclusive": 128980
+          },
+          "coordinate_offsets": {
+            "x": 128978,
+            "y": 128979
+          },
+          "destination_scene_id": 150,
+          "destination_scene_id_hex": "0x96",
+          "destination_x": 13,
+          "destination_y": 13,
+          "camera_origin_x": 5,
+          "camera_origin_y": 6,
+          "encoded_x": 13,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 129001,
+            "length": 3,
+            "end_exclusive": 129004
+          },
+          "field_offsets": {
+            "destination_scene_id": 129001,
+            "destination_x": 129002,
+            "destination_y": 129003
+          },
+          "raw": [
+            150,
+            13,
+            13
+          ],
+          "raw_hex": "96 0D 0D"
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "x": 12,
+          "y": 25,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128980,
+            "length": 2,
+            "end_exclusive": 128982
+          },
+          "coordinate_offsets": {
+            "x": 128980,
+            "y": 128981
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 34,
+          "destination_y": 25,
+          "camera_origin_x": 26,
+          "camera_origin_y": 18,
+          "encoded_x": 34,
+          "encoded_y": 25,
+          "source": {
+            "space": "prg",
+            "offset": 129004,
+            "length": 3,
+            "end_exclusive": 129007
+          },
+          "field_offsets": {
+            "destination_scene_id": 129004,
+            "destination_x": 129005,
+            "destination_y": 129006
+          },
+          "raw": [
+            216,
+            34,
+            25
+          ],
+          "raw_hex": "D8 22 19"
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "x": 13,
+          "y": 13,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128982,
+            "length": 2,
+            "end_exclusive": 128984
+          },
+          "coordinate_offsets": {
+            "x": 128982,
+            "y": 128983
+          },
+          "destination_scene_id": 149,
+          "destination_scene_id_hex": "0x95",
+          "destination_x": 13,
+          "destination_y": 13,
+          "camera_origin_x": 5,
+          "camera_origin_y": 6,
+          "encoded_x": 13,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 129007,
+            "length": 3,
+            "end_exclusive": 129010
+          },
+          "field_offsets": {
+            "destination_scene_id": 129007,
+            "destination_x": 129008,
+            "destination_y": 129009
+          },
+          "raw": [
+            149,
+            13,
+            13
+          ],
+          "raw_hex": "95 0D 0D"
+        },
+        {
+          "id": 6,
+          "id_hex": "0x06",
+          "x": 23,
+          "y": 12,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128984,
+            "length": 2,
+            "end_exclusive": 128986
+          },
+          "coordinate_offsets": {
+            "x": 128984,
+            "y": 128985
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 1,
+          "destination_y": 12,
+          "camera_origin_x": -7,
+          "camera_origin_y": 5,
+          "encoded_x": 1,
+          "encoded_y": 12,
+          "source": {
+            "space": "prg",
+            "offset": 129010,
+            "length": 3,
+            "end_exclusive": 129013
+          },
+          "field_offsets": {
+            "destination_scene_id": 129010,
+            "destination_x": 129011,
+            "destination_y": 129012
+          },
+          "raw": [
+            216,
+            1,
+            12
+          ],
+          "raw_hex": "D8 01 0C"
+        },
+        {
+          "id": 7,
+          "id_hex": "0x07",
+          "x": 13,
+          "y": 35,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128986,
+            "length": 2,
+            "end_exclusive": 128988
+          },
+          "coordinate_offsets": {
+            "x": 128986,
+            "y": 128987
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 35,
+          "destination_y": 13,
+          "camera_origin_x": 27,
+          "camera_origin_y": 6,
+          "encoded_x": 35,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 129013,
+            "length": 3,
+            "end_exclusive": 129016
+          },
+          "field_offsets": {
+            "destination_scene_id": 129013,
+            "destination_x": 129014,
+            "destination_y": 129015
+          },
+          "raw": [
+            216,
+            35,
+            13
+          ],
+          "raw_hex": "D8 23 0D"
+        },
+        {
+          "id": 8,
+          "id_hex": "0x08",
+          "x": 23,
+          "y": 34,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128988,
+            "length": 2,
+            "end_exclusive": 128990
+          },
+          "coordinate_offsets": {
+            "x": 128988,
+            "y": 128989
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 1,
+          "destination_y": 34,
+          "camera_origin_x": -7,
+          "camera_origin_y": 27,
+          "encoded_x": 1,
+          "encoded_y": 34,
+          "source": {
+            "space": "prg",
+            "offset": 129016,
+            "length": 3,
+            "end_exclusive": 129019
+          },
+          "field_offsets": {
+            "destination_scene_id": 129016,
+            "destination_x": 129017,
+            "destination_y": 129018
+          },
+          "raw": [
+            216,
+            1,
+            34
+          ],
+          "raw_hex": "D8 01 22"
+        },
+        {
+          "id": 9,
+          "id_hex": "0x09",
+          "x": 34,
+          "y": 25,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 128990,
+            "length": 2,
+            "end_exclusive": 128992
+          },
+          "coordinate_offsets": {
+            "x": 128990,
+            "y": 128991
+          },
+          "destination_scene_id": 216,
+          "destination_scene_id_hex": "0xD8",
+          "destination_x": 12,
+          "destination_y": 25,
+          "camera_origin_x": 4,
+          "camera_origin_y": 18,
+          "encoded_x": 12,
+          "encoded_y": 25,
+          "source": {
+            "space": "prg",
+            "offset": 129019,
+            "length": 3,
+            "end_exclusive": 129022
+          },
+          "field_offsets": {
+            "destination_scene_id": 129019,
+            "destination_x": 129020,
+            "destination_y": 129021
+          },
+          "raw": [
+            216,
+            12,
+            25
+          ],
+          "raw_hex": "D8 0C 19"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 128970,
+        "length": 52,
+        "end_exclusive": 129022
+      },
+      "raw": [
+        255,
+        10,
+        1,
+        12,
+        35,
+        13,
+        1,
+        34,
+        35,
+        35,
+        12,
+        25,
+        13,
+        13,
+        23,
+        12,
+        13,
+        35,
+        23,
+        34,
+        34,
+        25,
+        216,
+        23,
+        12,
+        216,
+        13,
+        35,
+        216,
+        23,
+        34,
+        150,
+        13,
+        13,
+        216,
+        34,
+        25,
+        149,
+        13,
+        13,
+        216,
+        1,
+        12,
+        216,
+        35,
+        13,
+        216,
+        1,
+        34,
+        216,
+        12,
+        25
+      ],
+      "raw_hex": "FF 0A 01 0C 23 0D 01 22 23 23 0C 19 0D 0D 17 0C 0D 23 17 22 22 19 D8 17 0C D8 0D 23 D8 17 22 96 0D 0D D8 22 19 95 0D 0D D8 01 0C D8 23 0D D8 01 22 D8 0C 19",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "scene-zone-table",
+      "editable": true,
+      "zone_id": 72,
+      "zone_id_hex": "0x48",
+      "zone": {
+        "zone_id": 72,
+        "zone_id_hex": "0x48",
+        "config": 31,
+        "config_hex": "0x1F",
+        "class_id": 3,
+        "ambush_threshold_index": 3,
+        "ambush_threshold": 4,
+        "meter_initial_index": 1,
+        "meter_initial_value": 40,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 234013,
+          "length": 1,
+          "end_exclusive": 234014
+        },
+        "rolls_encounters": true,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 56,
+            "monster_id_hex": "0x38",
+            "empty": false,
+            "resource_reference": "monster:38",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 34,
+            "monster_id_hex": "0x22",
+            "empty": false,
+            "resource_reference": "monster:22",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 25,
+            "monster_id_hex": "0x19",
+            "empty": false,
+            "resource_reference": "monster:19",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 56,
+            "monster_id_hex": "0x38",
+            "empty": false,
+            "resource_reference": "monster:38",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 46,
+            "monster_id_hex": "0x2E",
+            "empty": false,
+            "resource_reference": "monster:2E",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 34,
+            "monster_id_hex": "0x22",
+            "empty": false,
+            "resource_reference": "monster:22",
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 235397,
+          "length": 14,
+          "end_exclusive": 235411
+        },
+        "entries_editable": true,
+        "entries_readonly_reason": null,
+        "active_entry_count": 6,
+        "selection_weight_total": 14,
+        "referenced_by": [
+          "scene:D8"
+        ],
+        "reference_count": 1
+      },
+      "address": {
+        "space": "prg",
+        "offset": 234379,
+        "length": 1,
+        "end_exclusive": 234380
+      },
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 1,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 2,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 3,
+    "point_transitions": 10,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      72
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

@@ -1,0 +1,1202 @@
+{
+  "schema": "metalmaxcn.scene-logic",
+  "scene_id": 30,
+  "scene_id_hex": "0x1E",
+  "width": 16,
+  "height": 20,
+  "coordinate_unit": "16x16-map-cell",
+  "transition_coordinate_semantics": {
+    "destination_x_y": "actual landing cell stored in ROM",
+    "camera_origin_x_y": "runtime camera origin after subtracting anchor (8,7)"
+  },
+  "layers": {
+    "actors": {
+      "entry_id": 30,
+      "entry_id_hex": "0x1E",
+      "count": 6,
+      "record_source": {
+        "space": "prg",
+        "offset": 148695,
+        "length": 37,
+        "end_exclusive": 148732
+      },
+      "records": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "uid": "scene-actor:1E:00",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "uid": "scene-actor:1E:01",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "uid": "scene-actor:1E:02",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 3,
+          "id_hex": "0x03",
+          "uid": "scene-actor:1E:03",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 4,
+          "id_hex": "0x04",
+          "uid": "scene-actor:1E:04",
+          "inside_scene_canvas": true
+        },
+        {
+          "id": 5,
+          "id_hex": "0x05",
+          "uid": "scene-actor:1E:05",
+          "inside_scene_canvas": true
+        }
+      ],
+      "authority": "game/scenes/actors.json",
+      "dynamic_variants": []
+    },
+    "treasures": [],
+    "investigation_points": [],
+    "investigation_special_points": [],
+    "metatile_investigation_points": [
+      {
+        "id": 0,
+        "id_hex": "0x0000",
+        "coordinate_key": "1E:0C:01",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 12,
+        "x_hex": "0x0C",
+        "y": 1,
+        "y_hex": "0x01",
+        "metatile_id": 51,
+        "metatile_id_hex": "0x33",
+        "raw_attribute": 247,
+        "raw_attribute_hex": "0xF7",
+        "palette_id": 3,
+        "behavior_code": 116,
+        "behavior_code_hex": "0x74",
+        "dispatch_index": 18,
+        "dispatch_index_hex": "0x12",
+        "handler_cpu": 40878,
+        "handler_cpu_hex": "0x9FAE",
+        "handler_prg": 237486,
+        "handler_prg_hex": "0x039FAE",
+        "kind": "wanted-poster-high-nibble",
+        "label": "通缉令（高位目标号）",
+        "semantic_status": "confirmed-purpose",
+        "description": "按场景表取得目标号高 4 位，输出“查看通缉令！”并进入通缉令画面。",
+        "text_records": [
+          "record:05:010"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231411,
+          "length": 1,
+          "end_exclusive": 231412
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219778,
+          "length": 2,
+          "end_exclusive": 219780
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 1,
+        "id_hex": "0x0001",
+        "coordinate_key": "1E:0D:01",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 13,
+        "x_hex": "0x0D",
+        "y": 1,
+        "y_hex": "0x01",
+        "metatile_id": 52,
+        "metatile_id_hex": "0x34",
+        "raw_attribute": 251,
+        "raw_attribute_hex": "0xFB",
+        "palette_id": 3,
+        "behavior_code": 120,
+        "behavior_code_hex": "0x78",
+        "dispatch_index": 20,
+        "dispatch_index_hex": "0x14",
+        "handler_cpu": 40888,
+        "handler_cpu_hex": "0x9FB8",
+        "handler_prg": 237496,
+        "handler_prg_hex": "0x039FB8",
+        "kind": "wanted-poster-low-nibble",
+        "label": "通缉令（低位目标号）",
+        "semantic_status": "confirmed-purpose",
+        "description": "按场景表取得目标号低 4 位，输出“查看通缉令！”并进入通缉令画面。",
+        "text_records": [
+          "record:05:010"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "metatile-only",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231412,
+          "length": 1,
+          "end_exclusive": 231413
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219780,
+          "length": 2,
+          "end_exclusive": 219782
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 2,
+        "id_hex": "0x0002",
+        "coordinate_key": "1E:02:02",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 2,
+        "x_hex": "0x02",
+        "y": 2,
+        "y_hex": "0x02",
+        "metatile_id": 1,
+        "metatile_id_hex": "0x01",
+        "raw_attribute": 230,
+        "raw_attribute_hex": "0xE6",
+        "palette_id": 2,
+        "behavior_code": 100,
+        "behavior_code_hex": "0x64",
+        "dispatch_index": 10,
+        "dispatch_index_hex": "0x0A",
+        "handler_cpu": 47859,
+        "handler_cpu_hex": "0xBAF3",
+        "handler_prg": 219891,
+        "handler_prg_hex": "0x035AF3",
+        "kind": "treasure-probe",
+        "label": "调查物 / 宝箱取得图块",
+        "semantic_status": "confirmed-purpose",
+        "description": "调用 91 条调查物坐标表；普通场景加载时会把未取得记录所在格改成带此行为的 metatile $01，取得后改为无此行为的 $02。",
+        "text_records": [
+          "record:05:002",
+          "record:05:008"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "delegates-to-treasure-state",
+          "label": "调查物取得位控制",
+          "owns_state": false,
+          "delegated_flag_ids": [],
+          "scope": "global-save-state",
+          "effects": [
+            "visibility",
+            "interaction-availability",
+            "metatile-state"
+          ]
+        },
+        "registry_relation": "treasure-capable-metatile-without-static-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231361,
+          "length": 1,
+          "end_exclusive": 231362
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219770,
+          "length": 2,
+          "end_exclusive": 219772
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 3,
+        "id_hex": "0x0003",
+        "coordinate_key": "1E:03:02",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 3,
+        "x_hex": "0x03",
+        "y": 2,
+        "y_hex": "0x02",
+        "metatile_id": 1,
+        "metatile_id_hex": "0x01",
+        "raw_attribute": 230,
+        "raw_attribute_hex": "0xE6",
+        "palette_id": 2,
+        "behavior_code": 100,
+        "behavior_code_hex": "0x64",
+        "dispatch_index": 10,
+        "dispatch_index_hex": "0x0A",
+        "handler_cpu": 47859,
+        "handler_cpu_hex": "0xBAF3",
+        "handler_prg": 219891,
+        "handler_prg_hex": "0x035AF3",
+        "kind": "treasure-probe",
+        "label": "调查物 / 宝箱取得图块",
+        "semantic_status": "confirmed-purpose",
+        "description": "调用 91 条调查物坐标表；普通场景加载时会把未取得记录所在格改成带此行为的 metatile $01，取得后改为无此行为的 $02。",
+        "text_records": [
+          "record:05:002",
+          "record:05:008"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "delegates-to-treasure-state",
+          "label": "调查物取得位控制",
+          "owns_state": false,
+          "delegated_flag_ids": [],
+          "scope": "global-save-state",
+          "effects": [
+            "visibility",
+            "interaction-availability",
+            "metatile-state"
+          ]
+        },
+        "registry_relation": "treasure-capable-metatile-without-static-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231361,
+          "length": 1,
+          "end_exclusive": 231362
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219770,
+          "length": 2,
+          "end_exclusive": 219772
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 4,
+        "id_hex": "0x0004",
+        "coordinate_key": "1E:09:02",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 9,
+        "x_hex": "0x09",
+        "y": 2,
+        "y_hex": "0x02",
+        "metatile_id": 73,
+        "metatile_id_hex": "0x49",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231817,
+          "length": 1,
+          "end_exclusive": 231818
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 5,
+        "id_hex": "0x0005",
+        "coordinate_key": "1E:02:03",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 2,
+        "x_hex": "0x02",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 1,
+        "metatile_id_hex": "0x01",
+        "raw_attribute": 230,
+        "raw_attribute_hex": "0xE6",
+        "palette_id": 2,
+        "behavior_code": 100,
+        "behavior_code_hex": "0x64",
+        "dispatch_index": 10,
+        "dispatch_index_hex": "0x0A",
+        "handler_cpu": 47859,
+        "handler_cpu_hex": "0xBAF3",
+        "handler_prg": 219891,
+        "handler_prg_hex": "0x035AF3",
+        "kind": "treasure-probe",
+        "label": "调查物 / 宝箱取得图块",
+        "semantic_status": "confirmed-purpose",
+        "description": "调用 91 条调查物坐标表；普通场景加载时会把未取得记录所在格改成带此行为的 metatile $01，取得后改为无此行为的 $02。",
+        "text_records": [
+          "record:05:002",
+          "record:05:008"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "delegates-to-treasure-state",
+          "label": "调查物取得位控制",
+          "owns_state": false,
+          "delegated_flag_ids": [],
+          "scope": "global-save-state",
+          "effects": [
+            "visibility",
+            "interaction-availability",
+            "metatile-state"
+          ]
+        },
+        "registry_relation": "treasure-capable-metatile-without-static-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231361,
+          "length": 1,
+          "end_exclusive": 231362
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219770,
+          "length": 2,
+          "end_exclusive": 219772
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 6,
+        "id_hex": "0x0006",
+        "coordinate_key": "1E:03:03",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 3,
+        "x_hex": "0x03",
+        "y": 3,
+        "y_hex": "0x03",
+        "metatile_id": 1,
+        "metatile_id_hex": "0x01",
+        "raw_attribute": 230,
+        "raw_attribute_hex": "0xE6",
+        "palette_id": 2,
+        "behavior_code": 100,
+        "behavior_code_hex": "0x64",
+        "dispatch_index": 10,
+        "dispatch_index_hex": "0x0A",
+        "handler_cpu": 47859,
+        "handler_cpu_hex": "0xBAF3",
+        "handler_prg": 219891,
+        "handler_prg_hex": "0x035AF3",
+        "kind": "treasure-probe",
+        "label": "调查物 / 宝箱取得图块",
+        "semantic_status": "confirmed-purpose",
+        "description": "调用 91 条调查物坐标表；普通场景加载时会把未取得记录所在格改成带此行为的 metatile $01，取得后改为无此行为的 $02。",
+        "text_records": [
+          "record:05:002",
+          "record:05:008"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "delegates-to-treasure-state",
+          "label": "调查物取得位控制",
+          "owns_state": false,
+          "delegated_flag_ids": [],
+          "scope": "global-save-state",
+          "effects": [
+            "visibility",
+            "interaction-availability",
+            "metatile-state"
+          ]
+        },
+        "registry_relation": "treasure-capable-metatile-without-static-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231361,
+          "length": 1,
+          "end_exclusive": 231362
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219770,
+          "length": 2,
+          "end_exclusive": 219772
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      },
+      {
+        "id": 7,
+        "id_hex": "0x0007",
+        "coordinate_key": "1E:0C:09",
+        "scene_id": 30,
+        "scene_id_hex": "0x1E",
+        "x": 12,
+        "x_hex": "0x0C",
+        "y": 9,
+        "y_hex": "0x09",
+        "metatile_id": 73,
+        "metatile_id_hex": "0x49",
+        "raw_attribute": 243,
+        "raw_attribute_hex": "0xF3",
+        "palette_id": 3,
+        "behavior_code": 112,
+        "behavior_code_hex": "0x70",
+        "dispatch_index": 16,
+        "dispatch_index_hex": "0x10",
+        "handler_cpu": 47935,
+        "handler_cpu_hex": "0xBB3F",
+        "handler_prg": 219967,
+        "handler_prg_hex": "0x035B3F",
+        "kind": "computer-or-facility",
+        "label": "计算机 / 调查设施",
+        "semantic_status": "confirmed-purpose",
+        "description": "朝上时扫描 123 条设施坐标表；未命中或从其他朝向调查时输出“有计算机！”。",
+        "text_records": [
+          "record:05:190"
+        ],
+        "linked_treasure_ids": [],
+        "linked_treasure_ids_hex": [],
+        "linked_facility_point_ids": [],
+        "linked_facility_point_ids_hex": [],
+        "interaction_state": {
+          "class": "repeatable-no-owned-state",
+          "label": "可重复 · 不占用完成位",
+          "owns_state": false,
+          "effects": [
+            "immediate-response"
+          ]
+        },
+        "registry_relation": "computer-metatile-without-facility-row",
+        "attribute_source": {
+          "space": "chr",
+          "offset": 231817,
+          "length": 1,
+          "end_exclusive": 231818
+        },
+        "dispatch_source": {
+          "space": "prg",
+          "offset": 219776,
+          "length": 2,
+          "end_exclusive": 219778
+        },
+        "map_provenance": {
+          "kind": "packed7-scene-map",
+          "map_source": {
+            "space": "chr",
+            "offset": 246099,
+            "length": 243,
+            "end_exclusive": 246342
+          },
+          "map_address_space": "ppu-chr",
+          "map_region": "chr",
+          "attribute_offsets": [
+            231360,
+            231808
+          ],
+          "attribute_region": "chr"
+        },
+        "activation": "current cell first, then the cell in front; the six special points precede metatile dispatch; treasure rows resolve before dispatch only in scene $00/$81/$E0-$EF, otherwise through runtime behavior $64",
+        "confidence": "confirmed",
+        "editable": false,
+        "inside_scene_canvas": true
+      }
+    ],
+    "transitions": {
+      "pointer_cpu": 36008,
+      "pointer_cpu_hex": "0x8CA8",
+      "pointer_prg": 126120,
+      "pointer_prg_hex": "0x01ECA8",
+      "boundary_mode": "shared-target",
+      "boundary_exits": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "direction_code": null,
+          "direction": "all-boundaries",
+          "destination_scene_id": 0,
+          "destination_scene_id_hex": "0x00",
+          "destination_x": 206,
+          "destination_y": 162,
+          "camera_origin_x": 198,
+          "camera_origin_y": 155,
+          "encoded_x": 206,
+          "encoded_y": 162,
+          "source": {
+            "space": "prg",
+            "offset": 126121,
+            "length": 3,
+            "end_exclusive": 126124
+          },
+          "field_offsets": {
+            "destination_scene_id": 126121,
+            "destination_x": 126122,
+            "destination_y": 126123
+          },
+          "raw": [
+            0,
+            206,
+            162
+          ],
+          "raw_hex": "00 CE A2"
+        }
+      ],
+      "dynamic_boundary_return": null,
+      "point_transition_count": 3,
+      "point_transitions": [
+        {
+          "id": 0,
+          "id_hex": "0x00",
+          "x": 7,
+          "y": 11,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126125,
+            "length": 2,
+            "end_exclusive": 126127
+          },
+          "coordinate_offsets": {
+            "x": 126125,
+            "y": 126126
+          },
+          "destination_scene_id": 31,
+          "destination_scene_id_hex": "0x1F",
+          "destination_x": 6,
+          "destination_y": 11,
+          "camera_origin_x": -2,
+          "camera_origin_y": 4,
+          "encoded_x": 6,
+          "encoded_y": 11,
+          "source": {
+            "space": "prg",
+            "offset": 126131,
+            "length": 3,
+            "end_exclusive": 126134
+          },
+          "field_offsets": {
+            "destination_scene_id": 126131,
+            "destination_x": 126132,
+            "destination_y": 126133
+          },
+          "raw": [
+            31,
+            6,
+            11
+          ],
+          "raw_hex": "1F 06 0B"
+        },
+        {
+          "id": 1,
+          "id_hex": "0x01",
+          "x": 11,
+          "y": 17,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126127,
+            "length": 2,
+            "end_exclusive": 126129
+          },
+          "coordinate_offsets": {
+            "x": 126127,
+            "y": 126128
+          },
+          "destination_scene_id": 32,
+          "destination_scene_id_hex": "0x20",
+          "destination_x": 7,
+          "destination_y": 13,
+          "camera_origin_x": -1,
+          "camera_origin_y": 6,
+          "encoded_x": 7,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 126134,
+            "length": 3,
+            "end_exclusive": 126137
+          },
+          "field_offsets": {
+            "destination_scene_id": 126134,
+            "destination_x": 126135,
+            "destination_y": 126136
+          },
+          "raw": [
+            32,
+            7,
+            13
+          ],
+          "raw_hex": "20 07 0D"
+        },
+        {
+          "id": 2,
+          "id_hex": "0x02",
+          "x": 12,
+          "y": 17,
+          "coordinate_source": {
+            "space": "prg",
+            "offset": 126129,
+            "length": 2,
+            "end_exclusive": 126131
+          },
+          "coordinate_offsets": {
+            "x": 126129,
+            "y": 126130
+          },
+          "destination_scene_id": 32,
+          "destination_scene_id_hex": "0x20",
+          "destination_x": 8,
+          "destination_y": 13,
+          "camera_origin_x": 0,
+          "camera_origin_y": 6,
+          "encoded_x": 8,
+          "encoded_y": 13,
+          "source": {
+            "space": "prg",
+            "offset": 126137,
+            "length": 3,
+            "end_exclusive": 126140
+          },
+          "field_offsets": {
+            "destination_scene_id": 126137,
+            "destination_x": 126138,
+            "destination_y": 126139
+          },
+          "raw": [
+            32,
+            8,
+            13
+          ],
+          "raw_hex": "20 08 0D"
+        }
+      ],
+      "source": {
+        "space": "prg",
+        "offset": 126120,
+        "length": 20,
+        "end_exclusive": 126140
+      },
+      "raw": [
+        254,
+        0,
+        206,
+        162,
+        3,
+        7,
+        11,
+        11,
+        17,
+        12,
+        17,
+        31,
+        6,
+        11,
+        32,
+        7,
+        13,
+        32,
+        8,
+        13
+      ],
+      "raw_hex": "FE 00 CE A2 03 07 0B 0B 11 0C 11 1F 06 0B 20 07 0D 20 08 0D",
+      "entrypoints": {
+        "boundary_exit_cpu": "0xD946",
+        "point_transition_cpu": "0xB14E",
+        "save_return_position_cpu": "0xD9C7"
+      }
+    },
+    "event_triggers": [],
+    "encounter_zone": {
+      "resolution": "implicit-zone-zero",
+      "editable": false,
+      "zone_id": 0,
+      "zone_id_hex": "0x00",
+      "zone": {
+        "zone_id": 0,
+        "zone_id_hex": "0x00",
+        "config": 0,
+        "config_hex": "0x00",
+        "class_id": 0,
+        "ambush_threshold_index": 0,
+        "ambush_threshold": 32,
+        "meter_initial_index": 0,
+        "meter_initial_value": 48,
+        "config_reserved_bits": 0,
+        "config_source": {
+          "space": "prg",
+          "offset": 233941,
+          "length": 1,
+          "end_exclusive": 233942
+        },
+        "rolls_encounters": false,
+        "entries": [
+          {
+            "slot": 0,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 1,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 2,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 3,
+            "monster_id": 77,
+            "monster_id_hex": "0x4D",
+            "empty": false,
+            "resource_reference": "monster:4D",
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 4,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 5,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 6,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 7,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 8,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 9,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 10,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 11,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": true,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 12,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          },
+          {
+            "slot": 13,
+            "monster_id": 0,
+            "monster_id_hex": "0x00",
+            "empty": true,
+            "resource_reference": null,
+            "multi_group_slot": false,
+            "event_flag_gated": false,
+            "event_flag": null,
+            "event_flag_hex": null,
+            "event_flag_role": null
+          }
+        ],
+        "entries_source": {
+          "space": "prg",
+          "offset": 234389,
+          "length": 14,
+          "end_exclusive": 234403
+        },
+        "entries_editable": false,
+        "entries_readonly_reason": "zone $00 从不抽取，且其候选行与场景 zone 表尾部（场景 $80-$EF）共用同一批物理字节",
+        "active_entry_count": 2,
+        "selection_weight_total": 4,
+        "referenced_by": [
+          "world-block:7,10",
+          "world-block:8,10",
+          "world-block:9,10",
+          "world-block:5,11",
+          "scene:80",
+          "scene:81",
+          "scene:82",
+          "scene:83",
+          "scene:84",
+          "scene:85",
+          "scene:86",
+          "scene:87",
+          "scene:88",
+          "scene:90",
+          "scene:91",
+          "scene:92",
+          "scene:93",
+          "scene:94",
+          "scene:98",
+          "scene:99",
+          "scene:9B",
+          "scene:9C",
+          "scene:9D",
+          "scene:A0",
+          "scene:A1",
+          "scene:A2",
+          "scene:A3",
+          "scene:A4",
+          "scene:A5",
+          "scene:A6",
+          "scene:A7",
+          "scene:AB",
+          "scene:AC",
+          "scene:AD",
+          "scene:AE",
+          "scene:AF",
+          "scene:B4",
+          "scene:B5",
+          "scene:B6",
+          "scene:B7",
+          "scene:B8",
+          "scene:B9",
+          "scene:BA",
+          "scene:BB",
+          "scene:C5",
+          "scene:C6",
+          "scene:C7",
+          "scene:C8",
+          "scene:C9",
+          "scene:CD",
+          "scene:D6",
+          "scene:D9",
+          "scene:DA",
+          "scene:DB",
+          "scene:DC",
+          "scene:DD",
+          "scene:DE",
+          "scene:DF",
+          "scene:E0",
+          "scene:E1",
+          "scene:E2",
+          "scene:E3",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EA",
+          "scene:EB",
+          "scene:EC",
+          "scene:ED",
+          "scene:EE",
+          "scene:EF"
+        ],
+        "reference_count": 72
+      },
+      "reason": "$902B 只对场景 ID >= $80 查 zone 表，其余场景一律 zone $00（不随机遇敌）",
+      "document": "encounter-zones.json"
+    }
+  },
+  "summary": {
+    "actors": 6,
+    "dynamic_actor_variants": 0,
+    "dynamic_actor_records": 0,
+    "treasures": 0,
+    "investigation_points": 0,
+    "investigation_special_points": 0,
+    "metatile_investigation_points": 8,
+    "point_transitions": 3,
+    "boundary_exits": 1,
+    "event_triggers": 0,
+    "encounter_zones": 1,
+    "encounter_zone_ids": [
+      0
+    ]
+  },
+  "writeback": {
+    "fixed_record_counts": true,
+    "editable": "existing actor fields, treasure rows, investigation points, transition targets and event-trigger rows; insertion/removal is not supported"
+  }
+}

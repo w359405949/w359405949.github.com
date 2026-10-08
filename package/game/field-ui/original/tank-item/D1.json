@@ -1,0 +1,237 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.tank-item",
+  "resource_id": "tank-item:D1",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 209,
+    "id_hex": "0xD1",
+    "name_authority": "rom-region-00-record",
+    "name_text_region": "00",
+    "name_text_record_id": 209,
+    "name_source_asset": "text.script.region.00",
+    "category": {
+      "id": "tank-item",
+      "name": "战车道具",
+      "owner": "tank",
+      "first_id": 203,
+      "first_id_hex": "0xCB",
+      "last_id": 221,
+      "last_id_hex": "0xDD"
+    },
+    "price": {
+      "raw_code": 39,
+      "raw_code_hex": "0x27",
+      "available": true,
+      "value": 200,
+      "source": {
+        "space": "prg",
+        "offset": 140578,
+        "length": 1,
+        "end_exclusive": 140579,
+        "confidence": "confirmed",
+        "width": 1
+      }
+    },
+    "attack": null,
+    "defense": null,
+    "tank_weight": null,
+    "engine_capacity": null,
+    "equipment": null,
+    "attack_visual": null,
+    "use_effect": {
+      "status": "field-use-decoded",
+      "registered": true,
+      "dispatch_index": 8,
+      "dispatch_index_hex": "0x08",
+      "target_required": true,
+      "handler": {
+        "cpu_address": 42514,
+        "cpu_address_hex": "0xA612",
+        "prg_offset": 206354,
+        "prg_offset_hex": "0x032612",
+        "source": {
+          "space": "prg",
+          "offset": 206354,
+          "length": 1,
+          "end_exclusive": 206355,
+          "cpu_address": 42514,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      },
+      "effect_family": {
+        "id": "vehicle-medicine-box",
+        "label": "战车药箱",
+        "detail": "选择队员并执行药箱治疗逻辑"
+      },
+      "consumption": "context-dependent",
+      "parameters": [],
+      "text_outputs": [
+        {
+          "role": "invalid-target-message",
+          "label": "目标选择失败提示",
+          "condition": "目标状态不允许使用",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 22,
+            "record_id_hex": "0x16",
+            "node_id": "record:02:022"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 205961,
+              "length": 1,
+              "end_exclusive": 205962,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "success-message",
+          "label": "药箱治疗成功提示",
+          "condition": "目标可治疗",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 165,
+            "record_id_hex": "0xA5",
+            "node_id": "record:02:165"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206357,
+              "length": 1,
+              "end_exclusive": 206358,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        },
+        {
+          "role": "invalid-target-message",
+          "label": "死亡目标不可治疗提示",
+          "condition": "目标死亡标志为 $FF",
+          "text_record": {
+            "region_id": 2,
+            "region_id_hex": "0x02",
+            "record_id": 118,
+            "record_id_hex": "0x76",
+            "node_id": "record:02:118"
+          },
+          "confidence": "confirmed",
+          "evidence": "bank-$19 static disassembly + metalmaxcn_1.mss",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 206151,
+              "length": 1,
+              "end_exclusive": 206152,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 205800,
+          "length": 1,
+          "end_exclusive": 205801,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 205846,
+          "length": 2,
+          "end_exclusive": 205848,
+          "confidence": "confirmed",
+          "width": 2
+        }
+      ],
+      "runtime_validation": {
+        "save_state": "metalmaxcn_1.mss",
+        "tested": true,
+        "capture_id": "item-use-save1",
+        "capture_frame": "item_D1.png"
+      }
+    },
+    "battle_use_effect": {
+      "status": "battle-use-decoded",
+      "registered": true,
+      "dispatch_index": 26,
+      "dispatch_index_hex": "0x1A",
+      "result_selector": 175,
+      "result_selector_hex": "0xAF",
+      "inventory_domain": "vehicle",
+      "text_output_status": "primary-message-confirmed",
+      "text_output_detail": "已确认主要使用提示；此条引用不枚举后续状态与结果提示。",
+      "text_outputs": [
+        {
+          "role": "use-message",
+          "label": "战斗使用提示",
+          "condition": "战斗动作执行到工具提示阶段",
+          "text_record": {
+            "region_id": 10,
+            "region_id_hex": "0x0A",
+            "record_id": 21,
+            "record_id_hex": "0x15",
+            "node_id": "record:0A:021"
+          },
+          "confidence": "confirmed",
+          "evidence": "battle-result-script owner: confirmed vehicle initial use message",
+          "sources": [
+            {
+              "space": "prg",
+              "offset": 146554,
+              "length": 1,
+              "end_exclusive": 146555,
+              "confidence": "confirmed",
+              "width": 1,
+              "source_role": "text-record-id"
+            }
+          ],
+          "includes_item_name": true,
+          "algorithm": "result owner resolves the initial message, including the proven shared-result redirect"
+        }
+      ],
+      "sources": [
+        {
+          "space": "prg",
+          "offset": 190627,
+          "length": 1,
+          "end_exclusive": 190628,
+          "confidence": "confirmed",
+          "width": 1
+        },
+        {
+          "space": "prg",
+          "offset": 190661,
+          "length": 1,
+          "end_exclusive": 190662,
+          "confidence": "confirmed",
+          "width": 1
+        }
+      ],
+      "runtime_validation": {
+        "human_save_state": "metalmaxcn_3.mss",
+        "vehicle_save_state": "metalmaxcn_2.mss",
+        "human_hp_guard": "$6466=$FF, $6467=$00",
+        "vehicle_slot_confirmation": "save-state 2 + $65CF=$CB displays 传真 in the battle tool menu"
+      }
+    },
+    "semantic_status": "field-use-decoded"
+  }
+}

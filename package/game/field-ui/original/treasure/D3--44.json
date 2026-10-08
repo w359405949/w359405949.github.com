@@ -1,0 +1,77 @@
+{
+  "schema": "metalmaxcn.field-ui-module.asset.treasure",
+  "resource_id": "treasure:D3:44",
+  "edit_policy": "mutable",
+  "document": {
+    "id": 68,
+    "id_hex": "0x44",
+    "field_offsets": {
+      "scene_id": 236676,
+      "x": 236767,
+      "y": 236858,
+      "content_id": 236949
+    },
+    "scene_id": 211,
+    "scene_id_hex": "0xD3",
+    "x": 38,
+    "x_hex": "0x26",
+    "y": 25,
+    "y_hex": "0x19",
+    "content_id": 144,
+    "content_id_hex": "0x90",
+    "compiled_fields": [
+      "scene_id",
+      "x",
+      "y",
+      "content_id"
+    ],
+    "content_kind": "item",
+    "item_id": 144,
+    "save_flag_bit": 68,
+    "interaction_state": {
+      "class": "treasure-collected-flag",
+      "label": "调查物取得位",
+      "owns_state": true,
+      "scope": "global-save-state",
+      "flag_id": 68,
+      "flag_id_hex": "0x44",
+      "runtime_bitset_base": 1121,
+      "runtime_bitset_base_hex": "0x0461",
+      "runtime_byte": 1129,
+      "runtime_byte_hex": "0x0469",
+      "byte_index": 8,
+      "bit_index": 4,
+      "bit_mask": 16,
+      "bit_mask_hex": "0x10",
+      "test_helper_cpu": 65237,
+      "test_helper_cpu_hex": "0xFED5",
+      "set_helper_cpu": 65211,
+      "set_helper_cpu_hex": "0xFEBB",
+      "clear_helper_cpu": 65224,
+      "clear_helper_cpu_hex": "0xFEC8",
+      "commit": "immediate-after-successful-acquisition",
+      "effects": [
+        "spawn-or-materialize-uncollected-metatile",
+        "interaction-availability",
+        "collected-metatile-selection"
+      ]
+    },
+    "investigation_resolution": "runtime-metatile-overlay-then-behavior-0x64",
+    "investigation_resolution_detail": "$BD9C writes metatile $01 for an uncollected row and $02 after collection; behavior $64 then calls $BE3E to match the same coordinate row",
+    "resolution_source": {
+      "space": "prg",
+      "offset": 220572,
+      "length": 66,
+      "end_exclusive": 220638
+    },
+    "runtime_metatile_overlay": {
+      "uncollected_metatile_id": 1,
+      "uncollected_behavior_code": 100,
+      "collected_metatile_id": 2,
+      "writeback": "runtime SRAM map only; ROM map stream is unchanged"
+    },
+    "confidence": "confirmed",
+    "inside_scene_canvas": true,
+    "resource_id": "treasure:D3:44"
+  }
+}
