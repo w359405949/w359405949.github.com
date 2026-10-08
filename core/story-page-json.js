@@ -11,7 +11,6 @@ import {SPARSE_ARRAY_FORMAT, changeArrayFieldWorking} from './field-codec.js';
 // source 与 slot 只作溯源，不参与运行投影；运行入口由角色绑定与文档内 key 分配。
 // 时间轴、key、分支与预览只由文档内指令及外部字段生成；物理位置、分析目录与编辑器呈现状态不入格式。
 const STORY_PAGE_JSON_SCHEMA = 'metalmaxcn.story-page';
-export const STORY_PAGE_DOCUMENT_VERSION = 2;
 export const isStoryPageDocument = record => Boolean(record?.overrides?.document);
 
 class StoryPageJsonError extends TypeError {
@@ -272,7 +271,7 @@ export function serializeStoryPageJson(value) {
 }
 
 export function storyPageJsonDefinition(document, slots = new Map()) {
-  return {view: 'story-page', editable: true, editorOnly: true, workingDataVersion: STORY_PAGE_DOCUMENT_VERSION,
+  return {view: 'story-page', editable: true, editorOnly: true,
     title: document.title, navigationLabel: document.title, eyebrow: 'STORY',
     sequenceIds: document.sequences.map(ref => ref.handle.slice('story-sequence:'.length)),
     preludeSequenceId: document.prelude?.handle.slice('story-sequence:'.length),

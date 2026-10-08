@@ -128,7 +128,8 @@ export function machineStateControls(model, {namespace = `interface-page:${model
           ? controlled.status === 'confirmed' ? `<span>${controlled.actors.map(actor =>
             `${esc(actor.handle)}：${actor.actorType === 255 ? '已移除' : actor.actorType === 0 ? '不绘制' : '显示'} (${actor.x}, ${actor.y})`).join('；')}${controlled.tiles.length ? `；门格变化 ${controlled.tiles.length} 格` : ''}</span>`
             : `<span>${esc(controlled.status === 'deferred' ? '受控对象待场景装载或自主动作续接' : controlled.reason || '受控对象效果未确认')}；未提交对象效果</span>` : ''}</span>` : '',
-    domainMarkup: snapshot?.execution.status === 'returned' && snapshot.view.deviceScene?.sceneId === snapshot.context.scene?.sceneId
+    domainMarkup: snapshot?.execution.status === 'returned' && ([0x1A, 0x35, 0x32].includes(cid) && snapshot.domainResults.windowRestore?.scene
+        || snapshot.view.deviceScene?.sceneId === snapshot.context.scene?.sceneId)
       ? screenWorkbenchCanvasStage({namespace, sizing: 'fill', zoomMarkup: '',
         canvasMarkup: '<canvas width="256" height="240" data-machine-state-scene aria-label="返回调查场景预览"></canvas>'})
       : snapshot?.execution.status === 'battle' ? `<div data-machine-state-battle style="display:flex;flex:1;min-height:0">${battleSimulationMarkup({workbench: {

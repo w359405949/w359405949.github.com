@@ -91,7 +91,8 @@ export function machineServiceExecution({command, graph, text, goods = [], desti
             const level = get(state, `role.${role}.level`), experience = get(state, `role.${role}.experience`);
             return [{role, index, level, experience, required: characterGrowthRequiredExperience(growth, level, experience)}];
           });
-          if (state.domainResults.experience.some(row => row.required === null)) block(state, '队员等级与经验不在已确认的成长区间');
+          if (state.domainResults.experience.some(row => row.required === null || row.required === 0 && row.level < 99))
+            block(state, '队员等级与经验须先完成升级；随机成长字段尚未接入');
           return;
         }
         if (cid === 0x2D && callback === 0xADD7) return;
@@ -168,7 +169,7 @@ export function machineServiceExecution({command, graph, text, goods = [], desti
     }});
   const restore = state => {
     if (state.execution.status === 'returned') {
-      if (cid === 0x25 || graph.poster)
+      if ([0x1A, 0x35, 0x25].includes(cid) || graph.poster)
         state.domainResults.windowRestore = {scene: state.context.scene || null, confirmed: true};
       if (cid === 0x2D && state.domainResults.teleport?.phase === 'selected') {
         state.domainResults.windowRestore = {caller: 'field-menu', confirmed: true};

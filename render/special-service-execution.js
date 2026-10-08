@@ -68,9 +68,10 @@ export function specialServiceExecution({command, graph, text, navigation, ...da
         if (cid === 0x2B && lens(state, operation, segment) !== false) return;
         if (op === 0x94) {e.actorKind = 1; return;}
         if (op === 0x95) {e.actorKind = 0; return;}
-        if ([0xC8, 0xB6, 0xC9, 0xCA].includes(op)) {e.choice = 0; return;}
+        if ([0xC8, 0xC9, 0xCA].includes(op)) {e.choice = 0; return;}
+        if (op === 0xB6) {e.selectionCursorVisible = true; return;}
         if (op === 0xA7) return;
-        if (op === 0xC3) {e.objectList = segment.index; return;}
+        if (op === 0xC3) {e.objectList = segment.index; e.choice = 0; state.selections.choice = 0; return;}
         if (op === 0xC2 || op === 0xBB) {
           if (e.actorKind) e.branch = state.context.vehicle < 8 ? 0 : 1;
           return;
@@ -87,7 +88,11 @@ export function specialServiceExecution({command, graph, text, navigation, ...da
           if (e.windowSelector === 0x9E) e.repairChoice = 0;
           return;
         }
-        if (op === 0xD4) return;
+        if (op === 0xD4) {
+          e.windowRecord = operation.operands[0]; e.windowSelector = operation.operands[1];
+          e.choice = 0; state.selections.choice = 0;
+          return;
+        }
         if (op === 0xCE) {
           e.quantity = {kind: 'money', maximum: 9999999, value: 0, accepted: null};
           state.context.service_amount = 0; return;

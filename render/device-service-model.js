@@ -58,6 +58,19 @@ function vendingServiceNativeOperation(operation, cid, branch = null) {
     scope: '六格售货机配置的局部调用、字段与后继；完整窗口承接归 G12'};
 }
 
+function frogServiceNativeOperation(operation, cid, branch = null) {
+  const source = simpleServiceNativeOperation(operation, cid, branch);
+  const callback = operation.opcode === 0xD2 ? operation.operands[0] | operation.operands[1] << 8 : null;
+  const labels = new Map([[0xAE56, '初始化首轮计数与下注窗口'], [0xB388, '推进轮数并请求下注声音'],
+    [0xA48B, '初始化参赛青蛙与赔率'], [0xB3AA, '等待比赛完成并比较所选青蛙'], [0xB383, '请求获胜声音']]);
+  const confirmed = callback === null
+    ? source.confirmed || [0xA7, 0xBD, 0xB1, 0xCC, 0xD0, 0xD3, 0xAE].includes(operation.opcode)
+    : labels.has(callback);
+  return {...source, label: labels.get(callback) || source.label, confirmed,
+    evidence: 'project/evidence/reverse-engineering/small-service-groups/observations.json',
+    scope: '当前下注参数、扣款、显式随机现场的比赛完成、奖金与再次下注；缺少本帧随机输入仍阻断执行'};
+}
+
 export function deviceServiceGraph(command, text, previews, catalog, invocation = {}) {
   const cid = command.command_id;
   const states = catalog.interfaces.filter(row => owners[cid].includes(row.id)).flatMap(row => row.states);
@@ -96,6 +109,7 @@ export function deviceServiceGraph(command, text, previews, catalog, invocation 
     graph = simpleServiceGraph(command, text, previews, catalog.application_branch_sources, {
       evidence: DEVICE_SERVICE_EVIDENCE,
       ...([0x1B, 0x1C, 0x1D].includes(cid) ? {nativeOperation: vendingServiceNativeOperation} : {}),
+      ...(cid === 0x32 ? {nativeOperation: frogServiceNativeOperation} : {}),
       callbackTargets: cid === 0x32 ? {6: [7, 8]} : {},
       previewFor: (segment, event) => cid === 0x1F ? elevatorServicePreview('application-dialogue-flow:1F:segment:00')
         : cid >= 0x1B && cid <= 0x1D ? vendingServiceResponsePreview(previews,

@@ -15,7 +15,8 @@ function commandRuns(compiled) {
     if (!run) return;
     active.delete(actorKey);
     const boundedEnd = Math.max(run.start + 1, Number(end) || 0);
-    runs.push({...run, frames: boundedEnd - run.start});
+    run.frames = boundedEnd - run.start;
+    runs.push(run);
   };
   frames.forEach((snapshot, frame) => {
     const present = new Set();
@@ -35,12 +36,15 @@ function commandRuns(compiled) {
         previousTerminal.delete(actorKey);
         continue;
       }
-      const identity = `${scriptKind}:${programId}:${cursor}:${opcode}`;
+      const previous = active.get(actorKey) || previousTerminal.get(actorKey);
+      const identity = previous?.scriptKind === scriptKind && previous.programId === programId
+        && previous.cursor === cursor && previous.opcode === opcode ? previous.identity
+        : `${scriptKind}:${programId}:${cursor}:${opcode}`;
       if (active.get(actorKey)?.identity !== identity) {
         close(actorKey, frame);
       }
       const terminal = Boolean(actor.ended || actor.blocked);
-      if (terminal && previousTerminal.get(actorKey) === identity) {
+      if (terminal && previousTerminal.get(actorKey)?.identity === identity) {
         close(actorKey, frame);
         continue;
       }
@@ -70,25 +74,35 @@ function commandRuns(compiled) {
       }
       // 终止或阻塞命令只占终止帧，残留 currentCommand 不延长轨道。
       if (terminal) {
+        const run = active.get(actorKey);
         close(actorKey, frame + 1);
-        previousTerminal.set(actorKey, identity);
+        previousTerminal.set(actorKey, run);
       }
     }
-    for (const actorKey of [...active.keys()]) {
+    for (const actorKey of active.keys()) {
       if (!present.has(actorKey)) close(actorKey, frame);
     }
-    for (const actorKey of [...previousTerminal.keys()]) {
+    for (const actorKey of previousTerminal.keys()) {
       if (!present.has(actorKey)) previousTerminal.delete(actorKey);
     }
   });
   const end = Math.max(frames.length, Number(compiled.duration) || 0);
-  for (const actorKey of [...active.keys()]) close(actorKey, end);
+  for (const actorKey of active.keys()) close(actorKey, end);
   return runs;
 }
 
 
 export function storyExecutionTrace(compiled) {
   if (traces.has(compiled)) return traces.get(compiled);
+  const actorFrames = new WeakMap();
+  const actorsAt = snapshot => {
+    let actors = actorFrames.get(snapshot);
+    if (!actors) {
+      actors = storySnapshotActors(snapshot);
+      actorFrames.set(snapshot, actors);
+    }
+    return actors;
+  };
   const playerSegments = storyPlayerSegments(compiled);
   const boundaries = new Map((compiled.shots || []).map(shot => [Number(shot.frame), shot]));
   for (const segment of playerSegments) {
@@ -114,19 +128,32 @@ export function storyExecutionTrace(compiled) {
   const initializationRuns = commandRuns({frames: compiled.frames?.[0]?.initializationFrames || []})
     .filter(run => !regularRuns.some(item => item.actorKey === run.actorKey && item.identity === run.identity))
     .map(run => ({...run, start: 0, frames: 1}));
-  const commands = [...initializationRuns, ...regularRuns].flatMap(run => shots
-    .filter(shot => run.start < shot.end && run.start + run.frames > shot.start)
-    .map(shot => ({...run, shotId: shot.id,
-      start: Math.max(run.start, shot.start),
-      end: Math.min(run.start + run.frames, shot.end)})))
-    .sort((a, b) => a.start - b.start || a.actorSlot - b.actorSlot)
-    .map((run, index) => {
-      const key = `${run.actorKey}/${run.scriptKind}/${run.programId}/${run.instructionId}`;
-      const occurrence = occurrences.get(key) || 0;
-      occurrences.set(key, occurrence + 1);
-      return {...run, frames: run.end - run.start,
-        id: run.instructionId ? `command:${key}/${occurrence}` : `command:${run.start}:${index}`};
-    });
+  const orderedShots = shots.every((shot, index) => index === 0
+    || shots[index - 1].start <= shot.start && shots[index - 1].end <= shot.end);
+  const commands = [];
+  for (const run of [...initializationRuns, ...regularRuns]) {
+    const end = run.start + run.frames;
+    let first = 0, limit = shots.length;
+    while (orderedShots && first < limit) {
+      const middle = (first + limit) >>> 1;
+      if (shots[middle].end <= run.start) first = middle + 1;
+      else limit = middle;
+    }
+    for (let index = first; index < shots.length && (!orderedShots || shots[index].start < end); index += 1) {
+      const shot = shots[index];
+      if (!(run.start < shot.end && end > shot.start)) continue;
+      commands.push({...run, shotId: shot.id, start: Math.max(run.start, shot.start),
+        end: Math.min(end, shot.end)});
+    }
+  }
+  commands.sort((a, b) => a.start - b.start || a.actorSlot - b.actorSlot);
+  commands.forEach((run, index) => {
+    const key = `${run.actorKey}/${run.scriptKind}/${run.programId}/${run.instructionId}`;
+    const occurrence = occurrences.get(key) || 0;
+    occurrences.set(key, occurrence + 1);
+    run.frames = run.end - run.start;
+    run.id = run.instructionId ? `command:${key}/${occurrence}` : `command:${run.start}:${index}`;
+  });
   const dialogues = shots.flatMap(shot => storyCompiledDialogueRuns(compiled,
     {start: shot.start, end: Math.min(shot.end, compiled.frames?.length || 0)}, true))
     .map((run, index) => {
@@ -175,13 +202,13 @@ export function storyExecutionTrace(compiled) {
       for (const source of snapshot.actors || []) {
         const target = source.currentCommand?.targetActor;
         if (!target) continue;
-        const actor = [...(snapshot.partyActors || []), ...(snapshot.temporaryEntities || [])]
-          .find(actor => target.partySlot != null ? actor.partySlot === target.partySlot
-            : actor.fieldEntityIndex === target.fieldEntityIndex);
+        const matches = actor => target.partySlot != null ? actor.partySlot === target.partySlot
+          : actor.fieldEntityIndex === target.fieldEntityIndex;
+        const actor = snapshot.partyActors?.find(matches) || snapshot.temporaryEntities?.find(matches);
         if (actor) commanded.add(storyActorObjectId(shot.id, actor));
       }
-      for (const actor of storySnapshotActors(snapshot).filter(actor => !actor.hidden)) {
-        appeared.add(storyActorObjectId(shot.id, actor));
+      for (const actor of actorsAt(snapshot)) {
+        if (!actor.hidden) appeared.add(storyActorObjectId(shot.id, actor));
       }
       for (const actor of [...(snapshot.actors || []), ...(snapshot.partyActors || []),
           ...(snapshot.temporaryEntities || [])]) {
@@ -200,7 +227,7 @@ export function storyExecutionTrace(compiled) {
     }
     return [...objects.values()].filter(actor => appeared.has(actor.id) || commanded.has(actor.id));
   });
-  const stateDrivers = storyDriverTrace(compiled, {shots, commands}, storySnapshotActors);
+  const stateDrivers = storyDriverTrace(compiled, {shots, commands}, actorsAt);
   const actorObjects = new Map(actors.map(actor => [actor.id, actor]));
   for (const object of stateDrivers.objects) if (!actorObjects.has(object.id)) actorObjects.set(object.id, object);
   const trace = {shots, commands, dialogues, cameras, audio, playerSegments,

@@ -153,7 +153,10 @@ export async function resolveShopMenuPreview(preview, {readCodeField} = {}) {
     || `${source.resource_id}:runtime-record-slot:${source.welcome_slot}`;
   let welcome;
   let region;
-  if (source.welcome_script) {
+  if (source.welcome_record) {
+    const [, regionCode, recordCode] = source.welcome_record.split(':');
+    region = Number.parseInt(regionCode, 16); welcome = Number(recordCode);
+  } else if (source.welcome_script) {
     const reference = source.welcome_script;
     const bytes = (await db.getField(reference.resource_id, reference.entity_handle, 'bytecode')).value;
     if (bytes[0] !== 0x02 || !Number.isInteger(bytes[1]))

@@ -27,9 +27,9 @@ export async function startGenericShopExecution(model, selected, dependencies) {
   if (model.graph.service) return startSimpleServiceExecution(model, selected, dependencies);
   const selectorNames = {1: 'shop-menu-selector', 6: 'shop-goods-selector', 14: 'shop-actor-selector',
     22: 'shop-actor-selector', 25: 'sale-inventory-category-selector', 29: 'sale-inventory-item-selector'};
-  const [rawFields, items, overlays, count, interfaces, selectionLayout, selectionMovement, codeValues] = await Promise.all([
+  const [rawFields, items, overlays, effects, count, interfaces, selectionLayout, selectionMovement, codeValues] = await Promise.all([
     dependencies.readFields(), dependencies.readDocument('item-entry'),
-    dependencies.readDocument('shared-indexed-byte-overlays'),
+    dependencies.readDocument('shared-indexed-byte-overlays'), dependencies.readDocument('role-equipment-derived'),
     dependencies.readField('facility-config', model.record.id, 'payload_length'),
     dependencies.readInterfaces(), dependencies.readDocument('selection-layout'), dependencies.readDocument('code-module'),
     fieldSubmenuCodeValues(Object.values(selectorNames), source => dependencies.readField(source.resource_id, source.entity_handle, source.field)),
@@ -41,7 +41,7 @@ export async function startGenericShopExecution(model, selected, dependencies) {
   const prefix = `save.slot.${dependencies.context.slot}.`;
   if (selected.path === 'funds') fields[prefix + 'gold'] = 0;
   const adapter = genericShopExecution({command: model.command, graph: model.graph,
-    text: dependencies.text, goods, items: items.records, ammunition: [0, ...overlays.level_value_codebook],
+    text: dependencies.text, goods, items: items.records, overlays, effects, ammunition: [...overlays.level_value_codebook, overlays.zero_prefixed_ascending_bit_masks[0]],
     navigation: {catalog: interfaces.application_window_sources, selectionLayout, selectionMovement,
       selectors: Object.fromEntries(Object.entries(selectorNames).map(([control, name]) => [control, fieldSubmenuCodeValue(codeValues, name)]))}});
   const initial = adapter.initial({fields, context: dependencies.context});

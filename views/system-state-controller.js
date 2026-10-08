@@ -88,7 +88,8 @@ export function systemStateControls(model) {
   const call = execution?.domainResults.call;
   const domainMarkup = status && !waiting ? `<div class="interface-state-domain"><p>${esc(status)}</p>
     <p>${esc(call ? { 'new-game': '主角命名返回新游戏构筑', 'name-return': '命名返回调用者',
-      'load-game': '加载所选记录进入游戏', reset: '返回开机演出', credits: '交接职员表线性播放', rest: '休息交接尚未确认' }[call.kind]
+      'load-game': '加载所选记录进入游戏', reset: '返回开机演出', credits: '交接职员表线性播放',
+      'power-off-prompt': '结束游戏，等待重启或关机' }[call.kind]
       : selected.graph.nodes.find(row => row.id === selected.node)?.label || '')}</p></div>` : '';
   return {toolbar: `<label>路径 <select data-system-state-path data-system-state-page="${esc(model.id)}"><option value="">自由查看</option>
       <option value="input"${execution ? ' selected' : ''}>输入推进</option></select></label>

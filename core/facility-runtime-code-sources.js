@@ -4,6 +4,9 @@ const parameter = (resourceId, index, name, offset) => Object.freeze({name,
   physical: Object.freeze({space: 'prg', offset, length: 1, end_exclusive: offset + 1})});
 
 export const FACILITY_RUNTIME_CODE_PARAMETERS = Object.freeze([
+  ...['scene', 'camera-x', 'camera-y'].flatMap((name, column) => Array.from({length: 35}, (_, index) =>
+    parameter('story-action-handler', `code-parameter:inn-rest-${name}-${index}`,
+      `inn-rest-${name}-${index}`, [0x21403, 0x21426, 0x21449][column] + index))),
   parameter('application-command', '00', 'inn-price-37', 0x302FB),
   parameter('application-command', '01', 'inn-price-38', 0x302FC),
   parameter('application-command', '02', 'inn-price-39', 0x302FD),

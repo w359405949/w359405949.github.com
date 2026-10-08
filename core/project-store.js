@@ -12,7 +12,7 @@ import {isStoryPageWorking, isStoryScriptResource, storyPageWorkingKey,
     validateStoryPageWorking, usableStoryPageWorking, projectStoryPageWorking, updateStoryPageWorking} from "./story-page-working.js";
 
 import {migrateLegacyOpaqueEditPolicies} from "./edit-policy.js";
-import {validateStoryPageJson, STORY_PAGE_DOCUMENT_VERSION} from './story-page-json.js';
+import {isStoryPageDocument, validateStoryPageJson} from './story-page-json.js';
 import {allocateStoryPageEntries, assertStoryPageEntryRom} from './story-page-entries.js';
 import {allocateExtendedApplicationProgram} from './application-program.js';
 import {EXTENDED_APPLICATION_COMMANDS, applicationCommandId} from './application-program-format.js';
@@ -1491,7 +1491,8 @@ export class IndexedDbProjectStore {
             const record = {project_id: this.projectId, resource_id: storyPageWorkingKey(page),
                 schema: 'metalmaxcn.working-asset', asset_schema: 'metalmaxcn.story-page-working',
                 codec: null, version: (previous?.version ?? -1) + 1,
-                overrides: {...previous?.overrides, data_version: STORY_PAGE_DOCUMENT_VERSION, edits: [], document}};
+                overrides: {edits: [], document,
+                    ...(previous?.overrides.rom_entries ? {rom_entries: previous.overrides.rom_entries} : {})}};
             validateStoryPageWorking(record);
             await transact(this.database, [PROJECT_OBJECT_STORES.working], 'readwrite', transaction =>
                 requestResult(transaction.objectStore(PROJECT_OBJECT_STORES.working).put(record)));
@@ -1501,6 +1502,7 @@ export class IndexedDbProjectStore {
 
     async assertStoryPageWorking(page = null) {
         for (const record of await this.listStoryPageWorking()) {
+            if (!isStoryPageDocument(record) && !usableStoryPageWorking([record]).length) continue;
             if (page === null || record.resource_id === storyPageWorkingKey(page)) validateStoryPageWorking(record);
         }
     }
@@ -1562,7 +1564,8 @@ export class IndexedDbProjectStore {
             const record = records.find(row => row.resource_id === storyPageWorkingKey(page));
             if (!record?.overrides.document) throw new TypeError('剧情页不存在');
             const entries = allocateStoryPageEntries(page, record.overrides.document, records, serializeProgram);
-            const next = {...record, version: record.version + 1, overrides: {...record.overrides, rom_entries: entries}};
+            const next = {...record, version: record.version + 1,
+                overrides: {edits: [], document: record.overrides.document, rom_entries: entries}};
             await transact(this.database, [PROJECT_OBJECT_STORES.working], 'readwrite', transaction =>
                 requestResult(transaction.objectStore(PROJECT_OBJECT_STORES.working).put(next)));
             return next;

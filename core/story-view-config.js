@@ -14,7 +14,6 @@ function storyPageName(label) {
 function storyPage(definition) {
   return Object.freeze({
     editable: true,
-    workingDataVersion: 1,
     ...definition,
     navigationLabel: storyPageName(definition.navigationLabel),
     title: storyPageName(definition.title),

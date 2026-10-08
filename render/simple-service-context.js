@@ -7,8 +7,9 @@ import {genericShopPreview} from './generic-shop-frames.js';
 
 export async function startSimpleServiceExecution(model, selected, dependencies) {
   const cid = model.command.command_id;
-  const [rawFields, items, interfaces, selectionLayout, selectionMovement] = await Promise.all([
-    dependencies.readFields(), dependencies.readDocument('item-entry'), dependencies.readInterfaces(),
+  const [rawFields, items, overlays, effects, interfaces, selectionLayout, selectionMovement] = await Promise.all([
+    dependencies.readFields(), dependencies.readDocument('item-entry'), dependencies.readDocument('shared-indexed-byte-overlays'),
+    dependencies.readDocument('role-equipment-derived'), dependencies.readInterfaces(),
     dependencies.readDocument('selection-layout'), dependencies.readDocument('code-module'),
   ]);
   const read = source => dependencies.readField(source.resource_id, source.entity_handle, source.field);
@@ -24,6 +25,25 @@ export async function startSimpleServiceExecution(model, selected, dependencies)
     : [0x17, 0x18, 0x19].includes(cid) ? await fieldSubmenuCodeValues(priceNames, read) : null;
   const codes = cid === 0x16 ? priceValues : priceValues
     ? Object.fromEntries(priceNames.map(name => [name, fieldSubmenuCodeValue(priceValues, name)])) : {};
+  let rest = null;
+  if (cid === 0x16 && dependencies.context.service?.entryHandle?.startsWith('scene-actor:')) {
+    const handle = dependencies.context.service.entryHandle;
+    const parameter = (await dependencies.readField('scene-actor', handle, 'interaction_or_record_id')).value;
+    if (Number.isInteger(parameter) && parameter >= 0 && parameter < 15) {
+      const packed = (await dependencies.readField('ui-facility',
+        'ui-facility:npc-selector-16-packed-parameters', `value${parameter}`)).value;
+      if ((packed & 3) === selected.instance) {
+        const base = packed >> 2;
+        const names = goods.flatMap((_, index) => ['scene', 'camera-x', 'camera-y']
+          .map(column => `inn-rest-${column}-${base + index}`));
+        if (base + goods.length <= 35) {
+          const values = await facilityRuntimeCodeValues(names, read);
+          rest = goods.map((_, index) => ({sceneId: values[`inn-rest-scene-${base + index}`],
+            cameraX: values[`inn-rest-camera-x-${base + index}`], cameraY: values[`inn-rest-camera-y-${base + index}`]}));
+        }
+      }
+    }
+  }
   const trade = cid === 0x2C ? {
     prices: await Promise.all(Array.from({length: 8}, (_, index) =>
       dependencies.readField('application-command', 'application-command:2C:00', `value${index}`).then(field => field.value))),
@@ -31,7 +51,7 @@ export async function startSimpleServiceExecution(model, selected, dependencies)
       dependencies.readField('application-command', 'application-command:2C:01', `value${index}`).then(field => field.value))),
   } : null;
   const adapter = simpleServiceExecution({command: model.command, graph: model.graph, text: dependencies.text,
-    goods, items, codes, trade, navigation: {catalog: interfaces.application_window_sources, selectionLayout, selectionMovement,
+    goods, items, overlays, effects, codes, trade, rest, navigation: {catalog: interfaces.application_window_sources, selectionLayout, selectionMovement,
       selectors: Object.fromEntries(Object.entries(names).map(([key, name]) => [key, fieldSubmenuCodeValue(navigationValues, name)]))}});
   const fields = Object.fromEntries(rawFields.all(`save.slot.${dependencies.context.slot}.`)
     .map(field => [field.fieldId, structuredClone(field.value)]));

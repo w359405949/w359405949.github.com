@@ -1,7 +1,7 @@
-// @editor-module 剧情页 Working 版本、脚本归属与结构片段。
+// @editor-module 剧情页 Working、脚本归属与结构片段。
 import {canonicalJsonEqual} from "./project-store-values.js";
 import {storyPageDefinitionForView} from "./story-view-config.js";
-import {isStoryPageDocument, validateStoryPageJson, STORY_PAGE_DOCUMENT_VERSION} from './story-page-json.js';
+import {isStoryPageDocument, validateStoryPageJson} from './story-page-json.js';
 
 const PREFIX = "story-page-working:";
 export class StoryPageDataError extends TypeError {
@@ -14,8 +14,6 @@ export const isStoryScriptResource = id => ["story-autonomous-script", "story-in
 export function validateStoryPageWorking(record) {
   const page = record.resource_id.slice(PREFIX.length);
   if (isStoryPageDocument(record)) {
-    if (record.overrides.data_version !== STORY_PAGE_DOCUMENT_VERSION)
-      throw new StoryPageDataError(`剧情页 ${page} 数据版本不符`, page);
     try {validateStoryPageJson(record.overrides.document);}
     catch (error) {throw new StoryPageDataError(error.message, page);}
     if (!Array.isArray(record.overrides.edits) || record.overrides.edits.length)
@@ -29,8 +27,6 @@ export function validateStoryPageWorking(record) {
   }
   const definition = storyPageDefinitionForView(page);
   if (!definition) throw new StoryPageDataError(`剧情页 ${page} 不存在`, page);
-  if (record.overrides?.data_version !== definition.workingDataVersion)
-    throw new StoryPageDataError(`剧情页 ${page} 数据版本不符：${record.overrides?.data_version}，需要 ${definition.workingDataVersion}；未加载，不执行迁移`, page);
   if (!Array.isArray(record.overrides.edits)
       || !record.overrides.edits.length) throw new StoryPageDataError(`剧情页 ${page} 编辑数据无效`, page);
   const seen = new Set();
@@ -79,8 +75,8 @@ export function projectStoryPageWorking(asset, pages, legacy = []) {
   for (const record of usableStoryPageWorking(pages)) {
     const page = validateStoryPageWorking(record);
     for (const edit of record.overrides.edits.filter(edit => edit.resource_id === resourceId)) {
+      if (!asset.scripts.some(script => script.id === edit.script_id)) continue;
       if (owners[edit.script_id]) throw new TypeError("剧情脚本存在重复归属");
-      if (!asset.scripts.some(script => script.id === edit.script_id)) throw new TypeError("剧情页引用了不存在的脚本");
       owners[edit.script_id] = page;
       if (Object.hasOwn(edit, "bytecode")) {
         const entityHandle = `${resourceId}:script:${edit.script_id.toString(16).toUpperCase().padStart(2, "0")}`;
@@ -120,10 +116,11 @@ export function updateStoryPageWorking(asset, pages, writes, page, projectId) {
       if (!owner) {
         owner = {project_id: projectId, resource_id: storyPageWorkingKey(page),
           schema: "metalmaxcn.working-asset", asset_schema: "metalmaxcn.story-page-working", codec: null,
-          version: 0, overrides: {data_version: storyPageDefinitionForView(page).workingDataVersion, edits: []}};
+          version: 0, overrides: {edits: []}};
         result.push(owner);
       }
     }
+    owner.overrides = {edits: owner.overrides.edits};
     let edit = owner.overrides.edits.find(edit => edit.resource_id === asset.resource_id && edit.script_id === update.scriptId);
     if (!edit) {edit = {resource_id: asset.resource_id, script_id: update.scriptId}; owner.overrides.edits.push(edit);}
     if (update.remove) delete edit[update.kind]; else edit[update.kind] = structuredClone(update.value);

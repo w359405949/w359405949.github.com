@@ -1,9 +1,10 @@
 // @editor-module 财产保管在两侧当前库存之间绑定所选物理槽。
 import {SERVICE_ROLES, SERVICE_PARTS} from '../core/service-preview-state.js';
-import {removeCarriedItem} from './carried-inventory.js';
+import {inventoryStatusBranch, inventorySaleBranch, inventoryRemoval, commitInventoryRemoval} from './carried-inventory.js';
+import {carriedInventoryCount} from './carried-inventory.js';
 
 export function storageServiceDomain(fields, {block, branch, changeSegment}) {
-  const {get, put, vehicles, roles, vehiclePath} = fields;
+  const {get, put, vehicles, roles, vehiclePath, items, overlays, effects} = fields;
   const stored = state => Array.from({length: 64}, (_, index) => ({index,
     id: get(state, `property_storage.item.${index}`), condition: get(state, `property_storage.paired_condition.${index}`)}));
   const object = state => state.execution.receiverKind === 0 ? vehiclePath(state) : `role.${SERVICE_ROLES[state.context.role]}`;
@@ -12,7 +13,11 @@ export function storageServiceDomain(fields, {block, branch, changeSegment}) {
     if (e.receiverKind) return [...get(state, `${path}.${e.category ? 'inventory' : 'equipment'}`)];
     return Array.from({length: 8}, (_, index) => get(state, `${path}.${e.category ? `item.${index}` : `equipment.${SERVICE_PARTS[index]}`}`));
   };
-  const entries = state => inventory(state).flatMap((id, index) => id ? [{id, index}] : []);
+  const entries = state => {
+    const values = inventory(state), e = state.execution;
+    return !e.receiverKind && !e.category ? values.flatMap((id, index) => id ? [{id, index}] : [])
+      : values.slice(0, carriedInventoryCount(values)).map((id, index) => ({id, index}));
+  };
   const actors = state => state.execution.receiverKind ? roles(state) : vehicles(state);
   const sort = state => {
     const rows = stored(state).sort((a, b) => b.id - a.id);
@@ -68,10 +73,14 @@ export function storageServiceDomain(fields, {block, branch, changeSegment}) {
     if (op === 0xE0) return branch(state, segment, e.receiverKind);
     if (op === 0xBB) {e.branch = e.receiverKind === 0 && state.context.vehicle >= 8 ? 1 : 0; return;}
     if (op === 0xBF) {e.category = 0; e.sale = 0; return;}
-    if (op === 0xD9) return branch(state, segment, inventory(state).some(Boolean) ? 1 : 0);
+    if (op === 0xD9) return branch(state, segment, entries(state).length ? 1 : 0);
     if (op === 0xBA) {e.branch = inventory(state).at(-1) ? 1 : 0; return;}
     if (op === 0xEB) return branch(state, segment, e.item <= 0xDC ? 0 : 1);
-    if (op === 0xEA) return block(state, '装备移除、安装位与属性重算的传递效果未确认');
+    if (op === 0xEA) {
+      const mask = e.category ? 0 : get(state, `${object(state)}.${e.receiverKind ? 'slot_flags' : 'equipped_mask_raw'}`);
+      const result = inventorySaleBranch(e.item, mask & (0x80 >> e.saleSlot));
+      return branch(state, segment, result);
+    }
     if (op === 0xD2) {
       const callback = operation.operands[0] | operation.operands[1] << 8;
       if (callback === 0xA1AA) {e.receiverKind = e.choice; return;}
@@ -83,8 +92,7 @@ export function storageServiceDomain(fields, {block, branch, changeSegment}) {
       }
       if (callback === 0xA0DF) {
         const index = state.context[e.receiverKind ? 'role' : 'vehicle'];
-        if (index >= SERVICE_ROLES.length) return block(state, '人物状态检查的战车索引跨字段读取未确认');
-        const choice = Number(get(state, `role.${SERVICE_ROLES[index]}.status`) === 255);
+        const choice = inventoryStatusBranch(index, suffix => get(state, suffix));
         const continuation = segment.callback_continuation;
         const read = continuation?.reads?.find(row => row.relative_offset === choice);
         if (continuation?.confirmation_status !== 'confirmed' || read?.confirmation_status !== 'confirmed'
@@ -93,12 +101,15 @@ export function storageServiceDomain(fields, {block, branch, changeSegment}) {
         return changeSegment(state, read.value);
       }
       if (callback === 0xABCE) {
-        if (!e.receiverKind || !e.category) return block(state, '装备移除与属性重算未闭合；保管栏与携带栏均不提交');
         const destination = stored(state).findIndex(row => !row.id);
         if (destination < 0) return block(state, '保管栏首零扫描越界未确认');
-        const next = removeCarriedItem(inventory(state), e.saleSlot);
+        const plan = inventoryRemoval({vehicle: !e.receiverKind, object: object(state), category: e.category,
+          index: e.saleSlot, read: suffix => get(state, suffix), items: items.records, overlays, effects});
+        const condition = !e.receiverKind && !e.category
+          ? get(state, `${object(state)}.equipment_state.${SERVICE_PARTS[e.saleSlot]}`) : null;
         put(state, `property_storage.item.${destination}`, e.item);
-        put(state, `${object(state)}.inventory`, next);
+        if (e.item >= 0x41 && e.item < 0x99) put(state, `property_storage.paired_condition.${destination}`, condition);
+        commitInventoryRemoval(state, plan, put, object(state));
         e.transactions.push({type: 'deposit', source: e.saleSlot, destination, object: object(state), item: e.item});
         return;
       }

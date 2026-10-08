@@ -20,7 +20,7 @@ export function listQuantityServiceExecution({command, graph, text, navigation, 
         : state.control === 7 ? 'goods' : null;
       return {
         options, acceptEmptyMenu: domain.quantityMenu,
-        exports: {saleIndex: domain.saleIndex, inventoryKind: domain.inventoryKind},
+        exports: {saleIndex: domain.saleIndex, inventoryKind: domain.inventoryKind, resumeCallback: domain.resumeCallback},
         initial: {weapon: 0, weaponChoice: 0, receiverKind: 0, supplyKind: 0, stored: 0, storagePage: 0, quote: 0},
         fallthrough: (state, segment) => segment.terminator?.reason === 'application-vm-indexed-segment-table-end'
           ? state.execution.choice : 0,
@@ -70,6 +70,13 @@ export function listQuantityServiceExecution({command, graph, text, navigation, 
       };
     }});
   return {...execution, advance(state, input) {
+    if (state.execution.callbackWait) {
+      if (!['a', 'b'].includes(input.type)) return state;
+      state.execution.trace.push({node: state.node, input: input.type, callback: 0xA601,
+        evidence: 'project/evidence/reverse-engineering/inventory-transactions/observations.json#party-supply'});
+      execution.resumeCallback(state); state.execution.status = 'running'; state.pause = null;
+      return execution.resume(state);
+    }
     if (input.type === 'amount' && state.execution.status === 'waiting' && state.pause.quantity)
       return setInterfaceQuantity(state, input.value);
     return execution.advance(state, input);

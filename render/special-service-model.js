@@ -5,6 +5,7 @@ import {simpleServiceNativeOperation} from './simple-service-native.js';
 export const SPECIAL_SERVICE_COMMANDS = Object.freeze([0x14, 0x21, 0x22, 0x23, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x30]);
 export const SPECIAL_SERVICE_EVIDENCE = 'project/evidence/reverse-engineering/special-service-input/observations.json';
 const SPECIAL_SERVICE_CALL_EVIDENCE = 'project/evidence/reverse-engineering/special-service-calls/observations.json';
+const windowEvidence = 'project/evidence/reverse-engineering/service-window-boundaries/observations.json';
 const menus = {
   20: {1: 'vehicle-rental-service-terms', 5: 'vehicle-rental-service-rental-menu',
     8: 'vehicle-rental-service-vehicle-list', 10: 'vehicle-rental-service-actor-select', 19: 'vehicle-rental-service-return-select'},
@@ -51,6 +52,14 @@ export function specialServiceGraph(command, text, previews, branches) {
     menuNodes: menus[command.command_id], callbackTargets: callbacks[command.command_id],
     evidence: SPECIAL_SERVICE_EVIDENCE,
     nativeOperation: (operation, cid, branch) => {
+      if (operation.opcode === 0xD4) return {
+        label: '构造服务菜单、绑定窗口选择子并重置选择',
+        reads: ['脚本菜单记录与窗口选择子'], writes: ['菜单窗口', '当前窗口选择子与选择位置'],
+        confirmed: true, evidence: `${windowEvidence}#D4`};
+      if (operation.opcode === 0xB6) return {
+        label: '启用当前选择光标并保留选择位置',
+        reads: [], writes: ['光标对象显示标志'],
+        confirmed: true, evidence: `${windowEvidence}#B6`};
       if (cid === 0x23 && operation.opcode === 0xC6) return {
         label: '将所选菜单项目保留为改造项目', reads: ['当前菜单选择 D2'], writes: ['改造项目 D3'],
         confirmed: true, evidence: `${SPECIAL_SERVICE_CALL_EVIDENCE}#selection`};

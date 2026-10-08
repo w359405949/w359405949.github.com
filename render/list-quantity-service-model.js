@@ -1,4 +1,5 @@
 // @editor-module 多层列表服务引用原应用的暂停点、构造与确认边界。
+import {INVENTORY_TRANSACTION_EVIDENCE} from './carried-inventory.js';
 import {simpleServiceGraph} from './simple-service-model.js';
 
 export const LIST_QUANTITY_COMMANDS = Object.freeze([0x15, 0x20, 0x26]);
@@ -18,7 +19,8 @@ const menus = {
     11: 'storage-service-actor-select', 16: 'storage-service-item-list', 19: 'storage-service-deposit-location',
     36: 'storage-service-withdraw-actor-select', 49: 'storage-service-withdraw-list'},
 };
-const labels = new Map([[0x94, '设置对象类别'], [0x96, '准备数量窗口'], [0x97, '恢复武器列表位置'],
+const labels = new Map([[0xC4, '显示当前炮弹商品列表'], [0xEA, '检查当前物品安装标记与底盘禁售'],
+  [0xEB, '检查物品编号是否超出 DC'], [0x94, '设置对象类别'], [0x96, '准备数量窗口'], [0x97, '恢复武器列表位置'],
   [0xA6, '提交所选弹种与数量'], [0xA7, '清除本次数量窗口'], [0xA8, '读取所选武器与当前弹数'],
   [0xA9, '计算弹药缺额与当前报价'], [0xAA, '补充所选武器弹数'], [0xAB, '检查特殊弹仓容量'],
   [0xAC, '检查弹种槽'], [0xAD, '接受非零数量并计价'], [0xB6, '重置当前列表选择'],
@@ -32,12 +34,12 @@ function listQuantityNativeOperation(operation, cid) {
   const op = operation.opcode;
   const callback = op === 0xD2 ? operation.operands[0] | operation.operands[1] << 8 : null;
   const unknown = callback !== null && ![0xA1AA, 0xAC12, 0xABEC, 0xF4C6, 0xB098, 0xB074,
-    0xB027, 0xA28C, 0xA4F6, 0xA58E, 0xA6E3, 0xAC33, 0xA9D9, 0xA13E].includes(callback)
-    || cid === 0x26 && op === 0xEA || cid === 0x15 && op === 0xAE
+    0xB027, 0xA28C, 0xA4F6, 0xA58E, 0xA6E3, 0xAC33, 0xA9D9, 0xA13E, 0xF49B, 0xB03E, 0xA0DF, 0xABCE, 0xA601].includes(callback)
+
     || !labels.has(op) && callback === null && ![0x93, 0x9C, 0xAE, 0xBA, 0xBC, 0xBF, 0xC3, 0xC9, 0xD1, 0xD5, 0xD9, 0xE0, 0xFE, 0xFF].includes(op);
   return {label: callback !== null ? `领域调用 ${callback.toString(16).toUpperCase()}`
     : labels.get(op) || `原生 ${op.toString(16).toUpperCase()}`, confirmed: !unknown,
-    reads: ['当前预览字段与所选物理槽'], writes: ['本次快照；未确认效果在执行处阻断'], evidence: LIST_QUANTITY_EVIDENCE};
+    reads: ['当前预览字段与所选物理槽'], writes: ['本次快照；未确认效果在执行处阻断'], evidence: [0xC4, 0xEA, 0xEB, 0xAE].includes(op) || [0xF49B, 0xB03E, 0xA0DF, 0xABCE, 0xA601].includes(callback) ? INVENTORY_TRANSACTION_EVIDENCE : LIST_QUANTITY_EVIDENCE};
 }
 
 export function listQuantityServiceGraph(command, text, previews, branches) {

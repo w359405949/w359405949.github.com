@@ -1,4 +1,4 @@
-// @editor-module 按运行包清单的内容摘要缓存 JSON 与构建二进制。
+// @editor-module 校验发布正文并缓存运行包 JSON 与构建二进制。
 import {siteUrl} from "./site-url.js";
 import {sha256Hex} from "./rom-linker.js";
 
@@ -53,15 +53,17 @@ async function transact(mode, operation) {
 const fileUrl = path => `${packageRoot}${String(path).split("/").map(encodeURIComponent).join("/")}`;
 const cacheKey = path => new URL(fileUrl(path), globalThis.location?.href || "http://localhost/").href;
 
-async function networkBytes(path, priority) {
-  const response = await fetch(fileUrl(path), {priority, cache: "no-cache"});
+async function networkFile(path, priority, etag = null) {
+  const response = await fetch(fileUrl(path), {priority, cache: "no-cache",
+    ...(etag ? {headers: {"If-None-Match": etag}} : {})});
+  if (etag && response.status === 304) return {bytes: null, etag};
   if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
-  return response.arrayBuffer();
+  return {bytes: await response.arrayBuffer(), etag: response.headers.get("ETag")};
 }
 
 export function readPackageManifest(priority = "high") {
   if (!manifestPromise) {
-    manifestPromise = networkBytes("manifest.json", priority).then(bytes =>
+    manifestPromise = networkFile("manifest.json", priority).then(({bytes}) =>
       JSON.parse(new globalThis.TextDecoder("utf-8", {fatal: true}).decode(bytes)));
     manifestPromise.catch(() => {manifestPromise = null; digestPromise = null;});
   }
@@ -96,28 +98,36 @@ async function loadBytes(path, priority) {
   const generation = clearGeneration;
   const digests = await (digestPromise ||= readPackageManifest(priority).then(manifestDigests));
   const digest = digests.get(path);
-  if (!digest) return networkBytes(path, priority);
+  if (!digest) return (await networkFile(path, priority)).bytes;
   const url = cacheKey(path);
   let cached;
+  let cachedBytes;
   try {cached = await transact("readonly", store => store.get(url));} catch (_) {}
   if (cached) {
     if (cached.sha256 === digest && cached.bytes instanceof Blob
         && cached.byte_length === cached.bytes.size) {
       try {
         const bytes = await cached.bytes.arrayBuffer();
-        if (await sha256Hex(new Uint8Array(bytes)) === digest) return bytes;
+        if (await sha256Hex(new Uint8Array(bytes)) === digest) cachedBytes = bytes;
       } catch (_) {}
     }
-    try {await transact("readwrite", store => store.delete(url)); announceChange();} catch (_) {}
+    if (!cachedBytes) {
+      try {await transact("readwrite", store => store.delete(url)); announceChange();} catch (_) {}
+    }
   }
-  const bytes = await networkBytes(path, priority);
+  if (cachedBytes && !String(path).toLowerCase().endsWith(".json")) return cachedBytes;
+  const {bytes, etag} = await networkFile(path, priority, cachedBytes && cached.etag);
+  if (bytes === null) return cachedBytes;
   if (await sha256Hex(new Uint8Array(bytes)) !== digest) {
+    if (cachedBytes) {
+      try {await transact("readwrite", store => store.delete(url)); announceChange();} catch (_) {}
+    }
     throw new Error(`${path}: 运行包文件 SHA-256 与清单不符`);
   }
   if (generation === clearGeneration) {
     try {
       const stored = await transact("readwrite", store => store.put({
-        url, sha256: digest, bytes: new Blob([bytes]), byte_length: bytes.byteLength,
+        url, sha256: digest, bytes: new Blob([bytes]), byte_length: bytes.byteLength, etag,
       }));
       if (stored !== null) announceChange();
     } catch (_) {}

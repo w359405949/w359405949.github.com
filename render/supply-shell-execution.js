@@ -1,12 +1,15 @@
 // @editor-module 补给与炮弹交易按当前数量、容量和单价推进领域效果。
+import {creditedGold} from './carried-inventory.js';
 import {SERVICE_PARTS} from '../core/service-preview-state.js';
 import {prepareInterfaceQuantity, acceptInterfaceQuantity} from './interface-quantity-input.js';
 
 export function supplyShellDomain(cid, fields, {goods, shells}, {block, branch}) {
   const {get, put, vehiclePath, formula, item, capacity, weapons, vehicles} = fields;
   const counts = state => Array.from({length: 6}, (_, index) => get(state, `${vehiclePath(state)}.shell_count.${index}`));
-  const storedShells = state => counts(state).flatMap((count, index) => count
-    ? [{index, count, id: get(state, `${vehiclePath(state)}.shell_type.${index}`)}] : []);
+  const storedShells = state => counts(state).flatMap((count, index) => {
+    const id = get(state, `${vehiclePath(state)}.shell_type.${index}`);
+    return id < 128 ? [{index, count, id}] : [];
+  });
   const maximum = state => Math.max(0, get(state, `${vehiclePath(state)}.ammo_capacity`) - counts(state).reduce((sum, n) => sum + n, 0));
   const quote = state => {
     const price = shells.records.find(row => row.id === state.execution.item)?.price;
@@ -52,9 +55,16 @@ export function supplyShellDomain(cid, fields, {goods, shells}, {block, branch})
     state.execution.transactions.push({type: 'ammunition', vehicle: state.context.vehicle,
       part, quantity: state.context.service_amount, quote: state.execution.quote});
   };
+  const resumeCallback = state => {
+    const e = state.execution;
+    for (const [suffix, value] of e.supplyUpdates) put(state, suffix, value);
+    e.transactions.push({type: e.supplyKind ? 'party-armor' : 'party-ammunition', quote: e.quote});
+    delete e.supplyUpdates; delete e.callbackWait;
+  };
   const operate = (state, operation, segment) => {
     const e = state.execution, op = operation.opcode;
-    if ([0x94, 0xA7, 0x97, 0xC9, 0xC4].includes(op)) return;
+    if ([0x94, 0xA7, 0x97, 0xC9].includes(op)) return;
+    if (op === 0xC4) {if (!goods.length) block(state, '零商品计数的原生列表回绕未确认'); return;}
     if (op === 0xD4) {e.menuSelector = operation.operands[1]; e.choice = 0; return;}
     if (op === 0xB6) {e.choice = 0; return;}
     if (op === 0xBD) {e.quote = 0; return;}
@@ -112,7 +122,7 @@ export function supplyShellDomain(cid, fields, {goods, shells}, {block, branch})
       e.transactions.push({type: 'shell', vehicle: state.context.vehicle, item: e.item,
         index: e.shellSlot, quantity: state.context.service_amount, quote: e.quote}); return;
     }
-    if (op === 0xAE) return block(state, '炮弹出售移位与数量减除的入口进位传递未确认；不提交金钱');
+    if (op === 0xAE) {put(state, 'gold', creditedGold(get(state, 'gold'), e.quote)); return;}
     if (op === 0xD2) {
       const callback = operation.operands[0] | operation.operands[1] << 8;
       if (callback === 0xB098) return prepare(state, 'special');
@@ -122,12 +132,25 @@ export function supplyShellDomain(cid, fields, {goods, shells}, {block, branch})
         const unit = quote(state); e.unit = unit - (unit & 255) + ((unit & 255) >>> 1);
         return prepare(state, 'sale');
       }
-      if (callback === 0xF49B) return;
+      if (callback === 0xF49B) {e.sale = 0; return;}
       if (callback === 0xA28C) {
         state.context.service_amount = formula(state, 'current-vehicle-armor-deficit');
         e.quote = state.context.service_amount ? formula(state, 'current-armor-input-cost') : 0; return;
       }
-      if (callback === 0xB03E) return block(state, '炮弹出售减除的入口进位与零数量移位未确认');
+      if (callback === 0xB03E) {
+        const quantity = state.context.service_amount, values = counts(state), types = Array.from({length: 6},
+          (_, index) => get(state, `${vehiclePath(state)}.shell_type.${index}`));
+        values[e.shellSlot] = (values[e.shellSlot] - quantity) & 255;
+        if (!values[e.shellSlot]) {
+          values.splice(e.shellSlot, 1); values.push(0);
+          types.splice(e.shellSlot, 1); types.push(255);
+        }
+        values.forEach((count, index) => put(state, `${vehiclePath(state)}.shell_count.${index}`, count));
+        types.forEach((id, index) => put(state, `${vehiclePath(state)}.shell_type.${index}`, id));
+
+        e.transactions.push({type: 'sell-shell', vehicle: state.context.vehicle, item: e.item,
+          index: e.shellSlot, quantity, quote: e.quote}); return;
+      }
       if (callback === 0xA4F6) {
         acceptInterfaceQuantity(state);
         e.quote = state.context.service_amount ? formula(state, 'current-armor-input-cost') : 0; return;
@@ -145,10 +168,27 @@ export function supplyShellDomain(cid, fields, {goods, shells}, {block, branch})
           })));
         return;
       }
-      if (callback === 0xA601) return block(state, '整批补给的空设备状态与呈现调用未闭合；不提交资金');
+      if (callback === 0xA601) {
+        const updates = [];
+        for (const vehicle of [...vehicles(state)].reverse()) {
+          const path = `vehicle.${vehicle}`;
+          if (e.supplyKind) {
+            const current = {...state, context: {...state.context, vehicle}};
+            updates.push([`${path}.sp`, (get(state, `${path}.sp`) + formula(current, 'current-vehicle-armor-deficit')) & 65535]);
+          } else for (const part of SERVICE_PARTS) {
+            const id = get(state, `${path}.equipment.${part}`);
+            if (id < 0x65) updates.push([`${path}.equipment_state.${part}`,
+              ((get(state, `${path}.equipment_state.${part}`) & 0xC0) + capacity(id)) & 255]);
+          }
+        }
+        e.supplyUpdates = updates;
+        if (e.supplyKind) return resumeCallback(state);
+        e.callbackWait = {record: 'record:06:123'};
+        e.status = 'waiting'; state.pause = {kind: 'wait', quantity: false}; return;
+      }
     }
     block(state, `此调用的原生 ${op.toString(16).toUpperCase()} 效果未确认`);
   };
-  return {menus, select, operate, quantityMenu: state => state.pause.selector === 2,
+  return {menus, select, operate, resumeCallback, quantityMenu: state => state.pause.selector === 2,
     saleIndex: () => 0, inventoryKind: () => 0, weaponRows: weapons, shellRows: storedShells};
 }

@@ -4,10 +4,12 @@ import {SERVICE_ROLES, SERVICE_PARTS} from '../core/service-preview-state.js';
 import {currentVehicleEquipmentLoad} from '../core/vehicle-equipment-load.js';
 import {executeFacilityWindowRoutine} from '../core/facility-window-semantics.js';
 
+import {creditedGold, inventoryStatusBranch, inventorySaleBranch, inventoryRemoval, commitInventoryRemoval} from './carried-inventory.js';
+
 const evidence = 'project/evidence/reverse-engineering/generic-shop-input/observations.json';
 const hex = value => value.toString(16).toUpperCase().padStart(2, '0');
 
-export function genericShopExecution({command, graph, text, goods, items, ammunition, navigation}) {
+export function genericShopExecution({command, graph, text, goods, items, ammunition, overlays, effects, navigation}) {
   const kind = command.command_id - 0x10, vehicle = kind < 2;
   return interfaceApplicationExecution({command, graph, text, evidence, domain: ({block, branch}) => {
   const item = id => items.find(row => row.id === id);
@@ -68,8 +70,7 @@ export function genericShopExecution({command, graph, text, goods, items, ammuni
     if (op === 0xBA) {e.branch = equipment(state, kind & 1).at(-1) ? 1 : 0; return;}
     if (op === 0xDE) {
       const index = vehicle ? state.context.vehicle : state.context.role;
-      if (index > 2) return block(state, '死亡检查索引超出已确认的三个人物状态字段');
-      return branch(state, segment, get(state, `role.${SERVICE_ROLES[index]}.dead`) ? 1 : 0);
+      return branch(state, segment, inventoryStatusBranch(index, suffix => get(state, suffix)));
     }
     if (op === 0xC8) {
       e.choice = 0;
@@ -102,17 +103,15 @@ export function genericShopExecution({command, graph, text, goods, items, ammuni
       return;
     }
     if (op === 0xEA) {
-      if (e.item >= 0x91 && e.item <= 0x98) return branch(state, segment, 1);
-      if (vehicle && e.category === 0) {
-        if (e.item >= 0x75 && e.item <= 0x90) return block(state, '核心部件禁售的完整传递条件未确认');
-        if (get(state, `${object(state)}.equipped_mask_raw`) & (0x80 >> e.saleSlot)) return branch(state, segment, 1);
-      } else if (!vehicle && e.category === 0
-        && get(state, `${object(state)}.slot_flags`) & (0x80 >> e.saleSlot)) return branch(state, segment, 1);
-      return branch(state, segment, 0);
+      if (!vehicle && e.item >= 0x75 && e.item < 0x99)
+        return block(state, '人物栏跨域设备编号的安装标记未确认');
+      const mask = vehicle && !e.category ? get(state, `${object(state)}.equipped_mask_raw`) : 0;
+      const result = inventorySaleBranch(e.item, mask & (0x80 >> e.saleSlot));
+      return branch(state, segment, result);
     }
     if (op === 0x9C) {
       if (vehicle && kind === 0) {
-        const code = currentItem(state)?.equipment?.battle_effect_code;
+        const code = currentItem(state)?.equipment?.raw_flags;
         if (!Number.isInteger(code) || !Number.isInteger(ammunition[code & 7]))
           return block(state, '设备初始状态未确认，不能提交交易');
       }
@@ -124,10 +123,23 @@ export function genericShopExecution({command, graph, text, goods, items, ammuni
       if (index < 0) return block(state, '物品提交缺少接收空位');
       values[index] = e.item; setEquipment(state, kind & 1, values);
       if (vehicle && kind === 0) put(state, `${object(state)}.equipment_state.${SERVICE_PARTS[index]}`,
-        ammunition[currentItem(state).equipment.battle_effect_code & 7]);
+        ammunition[currentItem(state).equipment.raw_flags & 7]);
       e.transactions.push({type: 'buy', item: e.item, quote: e.quote, object: object(state), index}); return;
     }
-    if (op === 0xAE || op === 0xB4) return block(state, '出售提交的完整移位、装备重算与事件效果未确认');
+    if (op === 0xAE) {
+      try {
+        e.removal = inventoryRemoval({vehicle, object: object(state), category: e.category, index: e.saleSlot,
+          read: suffix => get(state, suffix), items, overlays, effects});
+        put(state, 'gold', creditedGold(get(state, 'gold'), e.quote));
+      } catch (error) {block(state, error.message);}
+      return;
+    }
+    if (op === 0xB4) {
+      if (!e.removal) return block(state, '出售删除缺少已核对的库存事务');
+      commitInventoryRemoval(state, e.removal, put, object(state)); delete e.removal;
+      e.branch = Number(Boolean(saleEntries(state).length)); e.sale = 0;
+      e.transactions.push({type: 'sell', item: e.item, quote: e.quote, object: object(state), index: e.saleSlot}); return;
+    }
     if (op === 0xD4) {e.choice = 0; return;}
     if (op === 0xD2) {
       const callback = operation.operands[0] | operation.operands[1] << 8;

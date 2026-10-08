@@ -1,7 +1,10 @@
 // @editor-module 商店声明只引用已核对的处理器与明确保留的缺口。
+import {INVENTORY_TRANSACTION_EVIDENCE} from './carried-inventory.js';
+
 const evidence = 'project/evidence/reverse-engineering/generic-shop-stable-frames/context.asm';
 const inputEvidence = 'project/evidence/reverse-engineering/generic-shop-input/observations.json';
 const menuEvidence = 'project/evidence/reverse-engineering/menu-shop-declarations/observations.json';
+const saleEvidence = 'project/evidence/reverse-engineering/menu-shop-sale-continuations/observations.json';
 const menuRow = (id, label, reads, writes) => ({label, reads, writes, confirmed: true,
   evidence: `${menuEvidence}#${id}`});
 const row = (label, reads, writes, offset, confirmed = true) => ({label, reads, writes,
@@ -37,15 +40,19 @@ export function shopNativeOperation(operation, segment, branch) {
     ['$0559', '$D0', '($CA),Y（接收栏）'], ['$D5：空位为 0，非空为 1'], '07EDAB');
   if (op === 0xB5) return row(branch == null ? '读取价格码并过滤 ≥ $E0 的价格哨兵' : first ? '价格码 ≥ $E0；拒绝收购' : '价格码 < $E0；进入部件检查',
     ['($C8),$D1+$D2', '价格码表 $8451,X'], ['$D5：哨兵为 0，可售价格为 1'], '0309C8');
-  if (op === 0xEA) return row(first ? '可售分支' : '部件禁售分支',
-    ['$E2（物品）', '$0326,X（部件标记）'], ['$75–$90 调用 $F3F4；$91–$98 设置索引 2；字段对应未确认'], '030BAB', false);
+  if (op === 0xEA) return {label: branch == null ? '检查列表安装标记与底盘索引'
+    : first ? '列表安装标记为零；物品可售' : '列表安装标记非零；设备禁售',
+    reads: ['$E2（物品）', '战车设备紧缩列表安装标记；人物与道具列表标记为零；底盘使用索引 2'],
+    writes: ['后继索引；清除显示标记'], confirmed: true, evidence: `${saleEvidence}#sale-condition`};
   if (op === 0xE4) return {label: first ? '当前对象可接收商品' : '当前对象装备资格拒绝',
     reads: ['商店类别', '当前商品装备位掩码', '人物位或战车安装位掩码'], writes: ['分支索引'],
     confirmed: true, evidence: `${inputEvidence}#qualification`};
   if (op === 0x9D) return {label: '写入接收栏首个空位', reads: ['当前商品', '接收栏', '设备初始状态表'],
     writes: ['预览携带栏；战车设备初始状态'], confirmed: true, evidence: `${inputEvidence}#purchase-commit`};
-  if (op === 0xAE || op === 0xB4) return {label: '出售提交 · 完整效果未确认', reads: ['当前出售对象与物品'],
-    writes: ['完整移位、装备重算与事件效果未确认'], confirmed: false, evidence: `${inputEvidence}#unknown-effects`};
+  if (op === 0xAE || op === 0xB4) return {label: op === 0xAE ? '24 位累加收购资金并封顶' : '删除所选物品并同步装备派生字段',
+    reads: ['当前出售对象、报价、所选物理槽、安装标记与配对状态'],
+    writes: [op === 0xAE ? '当前金钱' : '携带栏、设备状态、装备位与人物攻防及特殊效果'],
+    confirmed: true, evidence: `${INVENTORY_TRANSACTION_EVIDENCE}#sale-commit`};
   if (op === 0xBB) return row('初始化接收对象并检查出租车编号',
     ['$D2', '$D6', '$EBAC 返回值'], ['$D1 = $D2 >> 1；战车编号 ≥ 8 时增加 $D5'], '0301C6');
   if (op === 0xE0) return row(first ? '战车对象分支' : '人物对象分支',

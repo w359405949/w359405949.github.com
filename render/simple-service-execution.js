@@ -6,8 +6,10 @@ import {SERVICE_ROLES} from '../core/service-preview-state.js';
 import {resolveFacilityParameterBindings} from '../core/facility-runtime-parameters.js';
 import {SIMPLE_SERVICE_EVIDENCE} from './simple-service-model.js';
 import {completeVehicleWash} from './vehicle-wash-service-execution.js';
+import {creditedGold, inventoryRemoval, commitInventoryRemoval, carriedInventoryCount} from './carried-inventory.js';
+import {playerTileFromSaveCamera} from '../core/save-position.js';
 
-export function simpleServiceExecution({command, graph, text, goods, items, codes, trade, navigation}) {
+export function simpleServiceExecution({command, graph, text, goods, items, overlays, effects, codes, trade, rest, navigation}) {
   const cid = command.command_id;
   const execution = interfaceApplicationExecution({command, graph, text, evidence: SIMPLE_SERVICE_EVIDENCE,
     domain: ({block, branch}) => {
@@ -22,7 +24,7 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
       const vehicles = state => [...get(state, 'entity_scene_object_slots').slice(0, 4)].filter(id => id < 128);
       const role = state => `role.${SERVICE_ROLES[state.context.role]}`;
       const inventory = state => [...get(state, `${role(state)}.${state.execution.category ? 'inventory' : 'equipment'}`)];
-      const saleEntries = state => inventory(state).map((id, index) => ({id, index})).filter(row => row.id);
+      const saleEntries = state => inventory(state).slice(0, carriedInventoryCount(inventory(state))).map((id, index) => ({id, index}));
       const decode = raw => items.equipment_editor.numeric_codes.find(row => row.raw_code === raw && row.available)?.value;
       const selectedItem = state => items.records.find(row => row.id === state.execution.item);
       const selectRole = (state, index) => {
@@ -48,7 +50,7 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
       };
       const operate = (state, operation, segment) => {
         const e = state.execution, op = operation.opcode;
-        if ([0x93, 0x95, 0x99, 0x9B, 0x9E, 0xBD, 0xC4, 0xC9, 0xCA, 0x90, 0xCE].includes(op)) return;
+        if ([0x93, 0x95, 0x99, 0x9B, 0x9E, 0xBD, 0xC4, 0xC9, 0xCA, 0x90, 0xCE, 0xB3].includes(op)) return;
         if (op === 0xC8) {e.choice = 0; e.sale = 0; if ([0x1E, 0x24].includes(cid)) selectRole(state, 0); return;}
         if (op === 0xC1) {state.context.role = 0; return;}
         if (op === 0xC2 || op === 0xBB) {selectRole(state, state.selections.object ?? 0); return;}
@@ -98,7 +100,7 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
         }
         if (op === 0xBA) {e.branch = get(state, `${role(state)}.inventory`).at(-1) ? 1 : 0; return;}
         if (op === 0xBF) {e.category = 0; e.sale = 0; return;}
-        if (op === 0xD9) return branch(state, segment, inventory(state).some(Boolean) ? 1 : 0);
+        if (op === 0xD9) return branch(state, segment, saleEntries(state).length ? 1 : 0);
         if (op === 0xB5) {
           const entry = saleEntries(state)[e.sale]; e.item = entry?.id; e.saleSlot = entry?.index;
           const price = selectedItem(state)?.price;
@@ -106,9 +108,26 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
           e.branch = price.raw_code >= 0xE0 ? 0 : 1;
           if (e.branch) e.quote = Math.floor(price.value / 2); return;
         }
-        if (op === 0xAE || op === 0xB4) return block(state, '收购提交的携带栏移位与装备重算传递效果未确认');
+        if (op === 0xAE) {
+          try {
+            e.removal = inventoryRemoval({vehicle: false, object: role(state), category: e.category,
+              index: e.saleSlot, read: suffix => get(state, suffix), items: items.records, overlays, effects});
+            put(state, 'gold', creditedGold(get(state, 'gold'), e.quote));
+          } catch (error) {block(state, error.message);}
+          return;
+        }
+        if (op === 0xB4) {
+          if (!e.removal) return block(state, '收购删除缺少已核对的库存事务');
+          commitInventoryRemoval(state, e.removal, put, role(state)); delete e.removal;
+          e.branch = Number(Boolean(saleEntries(state).length)); e.sale = 0;
+          e.transactions.push({type: 'sell', item: e.item, quote: e.quote, object: role(state), index: e.saleSlot}); return;
+        }
         if (op === 0x9C || op === 0xBC) {
-          if (cid === 0x16) return block(state, '住宿休息的恢复与场景返回效果未确认；不提交扣款');
+          if (cid === 0x16) {
+            payment(state);
+            e.transactions.at(-1).type = 'inn-payment';
+            return;
+          }
           if (cid === 0x1E) {
             if (!get(state, `${role(state)}.inventory`).includes(0)) return block(state, '草药交付缺少空位');
             put(state, 'gold', e.moneyAfter); return;
@@ -128,6 +147,10 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
           const callback = operation.operands[0] | operation.operands[1] << 8;
           if ([0xA7B4, 0xEEB3].includes(callback)) return;
           if (callback === 0xA358) return;
+          if (cid === 0x16 && callback === 0xA353) {
+            state.domainResults.call = {kind: 'inn-rest', mode: 5, confirmed: true};
+            return;
+          }
           if (callback === 0xB15B) {e.instance = 255; return;}
           if (callback === 0xA810) {e.quote = Math.floor(e.quote / 2); return;}
           if (callback === 0xA1EB) {
@@ -226,7 +249,29 @@ export function simpleServiceExecution({command, graph, text, goods, items, code
         else state.randomInputs = [input.value];
         return state;
       }
-      return execution.advance(state, input);
+      const next = execution.advance(state, input);
+      if (cid === 0x16 && next.execution.status === 'returned' && next.domainResults.call?.kind === 'inn-rest') {
+        const destination = rest?.[next.execution.goods];
+        if (!destination) {
+          next.execution.status = 'unknown';
+          next.execution.reason = '已扣款并设置休息模式；缺少自然旅馆调用者的房间落点';
+          next.domainResults.call.confirmed = false;
+          return next;
+        }
+        const prefix = `save.slot.${next.context.slot}.`;
+        const restored = [];
+        for (const role of [...SERVICE_ROLES].reverse()) {
+          if (!next.fields[`${prefix}role.${role}.present`] || next.fields[`${prefix}role.${role}.status`] === 255) continue;
+          next.fields[`${prefix}role.${role}.current_hp`] = next.fields[`${prefix}role.${role}.max_hp`];
+          restored.push(role);
+        }
+        next.domainResults.rest = {confirmed: true, restored, mode: 5, returnedMode: 1};
+        next.context.scene = {sceneId: destination.sceneId,
+          ...playerTileFromSaveCamera(destination.cameraX, destination.cameraY)};
+        next.domainResults.scene = {kind: 'scene', ...next.context.scene, confirmed: true};
+        next.domainResults.windowRestore = {scene: next.context.scene, confirmed: true};
+      }
+      return next;
     },
   };
 }

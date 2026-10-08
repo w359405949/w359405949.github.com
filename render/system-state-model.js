@@ -33,7 +33,7 @@ export function systemStateGraph(page, previews, variant = 'player-name') {
       ['save-slot', 'saved', 'A', '空记录'], ['save-slot', null, 'B', ''],
       ['save-overwrite', 'saved', '是 · A', ''], ['save-overwrite', null, '否 / B', ''],
       ['saved', 'save-continue', 'A / B', '正文续接'], ['save-continue', null, '是 · A', ''],
-      ['save-continue', 'save-bed', '否 / B', ''], ['save-bed', null, 'A / B', '休息交接未确认']];
+      ['save-continue', 'save-bed', '否 / B', ''], ['save-bed', null, 'A / B', '结束游戏并等待重启或关机']];
   } else if (page === 'name-entry') {
     const stem = variant === 'vehicle-name' ? 'vehicle-name' : 'player-name';
     nodes = [node('name-grid', '字符表', `constructor:${stem}`), node('name-typed', '已输入姓名', `constructor:${stem}-typed`),
@@ -61,7 +61,9 @@ export function systemStateGraph(page, previews, variant = 'player-name') {
   nodes = nodes.map(row => ({...row, publishedPreview: previews.find(preview => preview.id === row.previewId) || null}));
   const transitions = routes.map(([from, to, input, condition], index) => ({id: `system:${page}:${index}`,
     from, to: nodes.some(row => row.id === to) ? to : null, input, condition, evidence: EVIDENCE,
-    executable: from !== 'save-bed', unknown: from === 'save-bed'}));
+    executable: true, unknown: false,
+    ...(from === 'save-bed' ? {evidence: 'project/evidence/reverse-engineering/small-service-groups/observations.json',
+      scope: 'A000 交接结束游戏提示；保存记录不执行旅馆 HP 恢复；重启后的开机流程归调用者'} : {})}));
   return {nodes, transitions, edges: transitions.map(row => ({...row, routes: [row]})),
     entry: page === 'startup-load' ? 'files' : nodes[0]?.id};
 }
@@ -165,7 +167,8 @@ export function systemStateExecution({page, graph, protocol, byteMap, variant = 
         if (type === 'a' && !state.selections.choice) state.execution.status = 'returned';
         else state.node = 'save-bed';
       } else if (state.node === 'save-bed' && ['a', 'b'].includes(type)) {
-        state.execution.status = 'unknown'; state.domainResults.call = {kind: 'rest', confirmed: false};
+        state.execution.status = 'terminal';
+        state.domainResults.call = {kind: 'power-off-prompt', confirmed: true};
       }
       return state;
     },

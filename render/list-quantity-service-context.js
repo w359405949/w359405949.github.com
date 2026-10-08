@@ -10,9 +10,9 @@ export async function startListQuantityServiceExecution(model, selected, depende
   const names = {actors: 'shop-actor-selector', goods: 'shop-goods-selector', weapon: 'supply-weapon-selector',
     category: 'sale-inventory-category-selector', inventory: 'sale-inventory-item-selector',
     storage: 'storage-withdraw-selector', shell: 'shell-sale-selector'};
-  const [raw, items, shells, overlays, interfaces, selectionLayout, selectionMovement, selectors, codes] = await Promise.all([
+  const [raw, items, shells, overlays, effects, interfaces, selectionLayout, selectionMovement, selectors, codes] = await Promise.all([
     dependencies.readFields(), dependencies.readDocument('item-entry'), dependencies.readDocument('shell-record'),
-    dependencies.readDocument('shared-indexed-byte-overlays'), dependencies.readInterfaces(),
+    dependencies.readDocument('shared-indexed-byte-overlays'), dependencies.readDocument('role-equipment-derived'), dependencies.readInterfaces(),
     dependencies.readDocument('selection-layout'), dependencies.readDocument('code-module'),
     fieldSubmenuCodeValues(Object.values(names), read), facilityRuntimeCodeValues(['equipment-quantity-unit-price',
       'armor-price-rounding-bias', 'armor-price-divisor', 'armor-equipment-item-limit'], read),
@@ -22,7 +22,7 @@ export async function startListQuantityServiceExecution(model, selected, depende
     (await dependencies.readField('facility-config', model.record.id, `slot:${index}`)).value));
   const rows = raw.all(`save.slot.${dependencies.context.slot}.`);
   const adapter = listQuantityServiceExecution({command: model.command, graph: model.graph, text: dependencies.text,
-    items, shells, overlays, codes, goods, fieldStatuses: Object.fromEntries(rows.map(row => [row.fieldId, row.status])),
+    items, shells, overlays, effects, codes, goods, fieldStatuses: Object.fromEntries(rows.map(row => [row.fieldId, row.status])),
     navigation: {catalog: interfaces.application_window_sources, selectionLayout, selectionMovement,
       selectors: Object.fromEntries(Object.entries(names).map(([key, name]) => [key, fieldSubmenuCodeValue(selectors, name)]))}});
   const initial = adapter.initial({fields: Object.fromEntries(rows.map(row => [row.fieldId, structuredClone(row.value)])),
@@ -58,6 +58,14 @@ export async function listQuantityServiceFramePlan(model, selected, dependencies
     if (preview.shop_menu?.sale_item_bar)
       preview.shop_menu.sale_item_bar = selected.executionAdapter.inventoryKind(execution) ? 'inventory' : 'equipment';
   } else preview = await dependencies.resolveConditions(preview);
+  if (execution?.execution.callbackWait) {
+    preview.shop_menu = {...preview.shop_menu, welcome_record: execution.execution.callbackWait.record};
+    preview.runtime_context.confirmed_waits = 0;
+    delete preview.selection_cursor;
+    for (const layer of preview.layers.filter(layer => layer.shop_welcome)) {
+      layer.record = execution.execution.callbackWait.record; layer.inline_confirm = false;
+    }
+  }
   preview = await dependencies.resolveMenu(preview);
   return {source, preview, lower: null, contents: Object.fromEntries(node.regions.map(region => [region.id, preview]))};
 }

@@ -22,11 +22,13 @@ export function machineServiceGraph(command, text, previews, catalog, invocation
     nativeOperation: (operation, cid, branch) => {
       const source = simpleServiceNativeOperation(operation, cid, branch);
       const callback = operation.opcode === 0xD2 && (operation.operands[0] | operation.operands[1] << 8);
-      const confirmed = [0x2D, 0x25].includes(cid) && (callbacks.has(callback)
+      const confirmed = [0x1A, 0x35, 0x2D, 0x25].includes(cid) && (callbacks.has(callback)
         || source.confirmed || [0xB0, 0xAE, 0xCC, 0xCD, 0xD3, 0xD4, 0xF2].includes(operation.opcode));
       return {...source, label: callbacks.get(callback) || source.label,
         writes: confirmed ? ['本次临时状态与已确认字段效果'] : source.writes,
-        confirmed, evidence: MACHINE_SERVICE_EVIDENCE};
+        confirmed, evidence: [0x1A, 0x35].includes(cid)
+          ? 'project/evidence/reverse-engineering/small-service-groups/observations.json' : MACHINE_SERVICE_EVIDENCE,
+        ...([0x1A, 0x35].includes(cid) ? {scope: '当前配置列表、声音请求与原生 F7 返回；经验限于未触发升级的已发布等级区间；声音持续时间由音频字段对象负责'} : {})};
     },
   });
   const owner = {26: 'jukebox', 37: 'wanted-information', 45: 'teleport-terminal',

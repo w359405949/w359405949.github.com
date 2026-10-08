@@ -2,7 +2,7 @@
 import {SERVICE_ROLES, SERVICE_PARTS} from '../core/service-preview-state.js';
 import {resolveFacilityParameterBindings} from '../core/facility-runtime-parameters.js';
 
-export function listQuantityFields({items, overlays, codes, fieldStatuses = {}}) {
+export function listQuantityFields({items, overlays, effects, codes, fieldStatuses = {}}) {
   const key = (state, suffix) => `save.slot.${state.context.slot}.${suffix}`;
   const get = (state, suffix) => {
     const id = key(state, suffix);
@@ -35,5 +35,5 @@ export function listQuantityFields({items, overlays, codes, fieldStatuses = {}})
     const id = get(state, `${vehiclePath(state)}.equipment.${part}`);
     return id && id < 0x75 ? [{id, index}] : [];
   });
-  return {get, put, vehicles, roles, vehiclePath, formula, item, capacity, weapons};
+  return {get, put, vehicles, roles, vehiclePath, formula, item, capacity, weapons, items, overlays, effects};
 }

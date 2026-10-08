@@ -137,7 +137,9 @@ export function deviceAnimationExecution({command, graph, text, goods, prices, c
         }
         if (op === 0xD2) {
           const target = operation.operands[0] | operation.operands[1] << 8;
-          if (target === 0xAE56 || target === 0xB388 || target === 0xB383) return;
+          if (target === 0xAE56) {if (frog) e.round = 0; return;}
+          if (target === 0xB388) {if (frog) e.round = (e.round + 1) & 255; return;}
+          if (target === 0xB383) return;
           if (target === 0xA6DE && armor) {
             const suffix = `vehicle.${state.context.vehicle}.sp`;
             const value = (get(state, suffix) + e.quantity) & 65535;
@@ -217,7 +219,12 @@ export function deviceAnimationExecution({command, graph, text, goods, prices, c
       return state;
     },
     advance(state, input) {
-      if (state.execution.status !== 'animating') return execution.advance(state, input);
+      if (state.execution.status !== 'animating') {
+        const next = execution.advance(state, input);
+        if (frog && next.execution.status === 'returned')
+          next.domainResults.windowRestore = {scene: next.context.scene || null, confirmed: true};
+        return next;
+      }
       if (input.type !== 'frame') return state;
       state.view.deviceFrame = advanceFacilityDeviceFrame(state.view.deviceFrame, input, codes);
       if (state.view.deviceFrame.status !== 'running') {continuation(state); return execution.resume(state);}
