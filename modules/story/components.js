@@ -5,7 +5,7 @@ import {recordUid} from "../../core/resource-index.js";
 import {interactionEditorHref, interactionEditorLink} from '../../ui/interaction-editor-links.js';
 import {prepareStoryReferenceDetails, paintStoryReferenceDetails} from './reference-details.js';
 import {registerModuleComponent} from "../../ui/module-components.js";
-import {updateReferencePickerItem} from '../../ui/reference-picker.js';
+import {updateReferencePickerItems} from '../../ui/reference-picker.js';
 import {
   hydrateReferenceFieldPickers,
   referenceFieldPickerMarkup,
@@ -89,7 +89,8 @@ function autonomousReferenceItem(entry) {
 
 async function prepareAutonomousComponent(props) {
   try {
-    const documentValue = await db.getResourceDocument(AUTONOMOUS_MODULE_ID, null);
+    const documentValue = db.peekResourceDocument(AUTONOMOUS_MODULE_ID, null)
+      || await db.getResourceDocument(AUTONOMOUS_MODULE_ID, null);
     let entries = documentValue?.scripts;
     if (!Array.isArray(entries)) {
       throw new TypeError(`${AUTONOMOUS_MODULE_ID} 缺少 scripts 候选表`);
@@ -135,7 +136,7 @@ async function hydrateAutonomousReferences(root) {
   if (root.classList.contains('reference-detail-field')) {
     const prepared = await prepareAutonomousComponent({});
     if (prepared.error) throw new TypeError(prepared.error);
-    for (const entry of prepared.entries) updateReferencePickerItem(root, autonomousReferenceItem(entry));
+    updateReferencePickerItems(root, prepared.entries.map(autonomousReferenceItem), prepared.entries);
   }
   hydrateReferenceFieldPickers(root);
 }

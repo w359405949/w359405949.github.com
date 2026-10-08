@@ -15,7 +15,13 @@ export async function paintStoryReferenceDetails(host) {
 }
 
 export async function prepareStoryReferenceDetails(document, kind, entries, currentPrograms = null, textDisplays = null) {
-  const story = await db.getDocument('project.story');
+  return db.reusePreviewProjection('story-reference-details', [document, kind, entries, currentPrograms, textDisplays],
+    () => buildStoryReferenceDetails(document, kind, entries, currentPrograms, textDisplays),
+    {sources: [{kind: 'field', id: 'text-record'}]});
+}
+
+async function buildStoryReferenceDetails(document, kind, entries, currentPrograms, textDisplays) {
+  const story = db.peekDocument('project.story', null) || await db.getDocument('project.story');
   const published = (story.browser_vm?.programs || []).filter(program => program.kind === kind);
   const missing = (story[kind]?.entries || []).filter(entry => entry.path
     && !published.some(program => Number(program.id) === Number(entry.id)));

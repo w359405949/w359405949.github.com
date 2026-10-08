@@ -13,6 +13,12 @@ export function createFieldObject(definition, fields, database, owner) {
   const object = {
     key, id: definition.id, resourceId: selected[0].resourceId,
     definition: Object.freeze(definition), fields: Object.freeze(selected), database,
+    selectFields(fields) {
+      if (!Array.isArray(fields) || fields.some(field => !selected.includes(field)))
+        throw new TypeError('字段选区包含其他字段对象的字段');
+      return createFieldObject({...definition, fields: fields.map(field =>
+        [field.entityHandle, field.fieldName])}, fields, database, owner);
+    },
     get origin() {return selected.map(field => ({entityHandle: field.entityHandle, fieldName: field.fieldName, value: field.defaultValue}));},
     get working() {return selected.filter(field => field.hasOverride).map(field => ({entityHandle: field.entityHandle, fieldName: field.fieldName, value: field.workingValue}));},
     get buildFields() {

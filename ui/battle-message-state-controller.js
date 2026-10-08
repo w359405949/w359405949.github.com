@@ -121,6 +121,22 @@ function messageParameters(selected, snapshot, phase, index) {
     target, enemy_instances: enemyCall?.instances, enemy_groups: enemyCall?.groups,
     item: snapshot.context.item, save_slot: snapshot.context.slot, state: phase.state.split(':')[0],
     text_record_ref: phase.text_record_ref};
+  if (Number.isInteger(partyTarget) && index === 1 && Number.isInteger(enemyCall?.messageQuantity)) {
+    const pending = [phase.text_record_ref.node_id], visited = new Set(), quantities = [];
+    while (pending.length) {
+      const node = pending.pop();
+      if (visited.has(node)) continue;
+      visited.add(node);
+      const record = catalog.records[node];
+      quantities.push(...(record?.insertions || []).filter(row =>
+        row.source === 'ui-text-provider-zero-page-overlays.battle-quantity').map(row => ({
+        text_record_ref: {resource_id: 'text-record', node_id: node}, command_index: row.command_index})));
+      pending.push(...(record?.fixed_includes || []).map(row => row.text_record_ref.node_id));
+    }
+    if (quantities.length === 1) battle.quantity = {...quantities[0],
+      origin: catalog.current_value_contract.quantity_origin, identity,
+      phase: catalog.current_value_contract.quantity_phase, value: enemyCall.messageQuantity};
+  }
   const values = createBattleContextValues({catalog, readBattle: () => battle,
     readSaveFields: () => snapshotFields(selected, snapshot), readItem: id => selected.items.find(row => row.id === id),
     readMonster: id => selected.monsters?.find(row => row.id === id)});
@@ -133,6 +149,9 @@ function messageParameters(selected, snapshot, phase, index) {
   const invocation = values.forMessage({...battle, parameters: enemy ? {
     ...(Number.isInteger(partyTarget) ? {
       'ui-text-provider-workspace.current-string': parameter('save-name', 'target', target),
+    } : {}),
+    ...(battle.quantity ? {
+      'ui-text-provider-zero-page-overlays.battle-quantity': parameter('quantity-result', 'quantity', target),
     } : {}),
     'ui-text-provider-zero-page-overlays.current-record': enemyParameter,
     'ui-text-provider-workspace.target-instance-suffix': enemyParameter,
@@ -172,17 +191,19 @@ function messagePreview(preview) {
 }
 
 async function sources(selected, context) {
-  const [saveFields, items, actions, resultScripts, overlays, code, calls, test, healing, equipmentEffects] = await Promise.all([
+  const [saveFields, items, actions, resultScripts, overlays, code, calls, test, healing, equipmentEffects, damageThresholds] = await Promise.all([
     ensureSaveCurrentFieldObjects(state), db.getDocument('item'), db.getDocument('enemy-action'),
     db.getResourceDocument('battle-result-script'), db.getResourceDocument('shared-indexed-byte-overlays'),
     fieldSubmenuCodeValues(['dialogue-wait-input-mask']), battleMessageCalls(), db.getResourceDocument('battle-test-point'),
     db.getResourceDocument('party-healing-service'),
     db.getResourceDocument('role-equipment-derived'),
+    db.getResourceDocument('battle-probability-thresholds'),
   ]);
   Object.assign(selected, {saveFields, items: items.records, actions: actions.records, resultScripts: resultScripts.records,
     waitValues: overlays.level_value_codebook,
     directionMasks: overlays.descending_bit_masks.slice(4),
     inputMask: fieldSubmenuCodeValue(code, 'dialogue-wait-input-mask'), calls, formationId: test.encounter_id, healing,
+    damageThreshold: damageThresholds?.parameters?.[4]?.value,
     sonicResistanceItem: Number.parseInt(equipmentEffects?.records?.find(row =>
       row.effect_reference === 'role-equipment-derived:effect:sonic-and-mental-wave-resistance')?.item_reference?.split(':')[1], 16)});
   selected.fields = Object.fromEntries(saveFields.all(`save.slot.${context.slot}.`)
@@ -211,7 +232,7 @@ async function execute(selected) {
       {saveSlot: context.slot, fields: selected.fields});
     selected.monsters = input.monsters;
     context.enemyCall = battleEnemyMessageInitialState(input, {seed: context.randomSeed,
-      sonicResistanceItem: selected.sonicResistanceItem});
+      sonicResistanceItem: selected.sonicResistanceItem, damageThreshold: selected.damageThreshold});
     operations = battleEnemyMessageCallOperations({path,
       record: selected.resultScripts.find(row => row.handle === path.resultScript),
       action: selected.actions.find(row => row.handle === path.enemyActionReference),

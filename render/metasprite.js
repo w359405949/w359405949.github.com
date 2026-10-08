@@ -28,6 +28,7 @@ import {decodeGenericObjects, decodeDirectFrames} from "../core/metasprite-layou
 export {decodeGenericObjects, decodeDirectFrames};
 
 const recipeCaches = new WeakMap();
+const canvasPaints = new WeakMap();
 const sourceCaches = new WeakMap();
 
 // 战斗上下文的调色板：ROM 只存三色，backdrop 由渲染器补 $0F。
@@ -87,7 +88,7 @@ function buildRecipe(document_) {
 }
 
 async function metaspriteRecipe() {
-  const document_ = await db.getDocument("metasprite-record", null);
+  const document_ = db.peekDocument('metasprite-record', null) || await db.getDocument("metasprite-record", null);
   if (!document_) throw new TypeError("metasprite-record 配方正文不可用");
   let recipe = recipeCaches.get(document_);
   if (!recipe) {
@@ -192,7 +193,7 @@ export function genericSheetImage({tiles, palettes}, objects, scale = 3) {
 /** 取一个 metasprite 上下文的绘制输入。`banks` 就是该上下文的四页图案表。 */
 export async function metaspriteContextSources(banks, palettes = null) {
   const recipe = await metaspriteRecipe();
-  const chrDocument = await db.getDocument("shared-chr-bank", null);
+  const chrDocument = db.peekDocument('shared-chr-bank', null) || await db.getDocument("shared-chr-bank", null);
   let byKey = sourceCaches.get(chrDocument);
   if (!byKey || byKey.recipe !== recipe) {
     byKey = {recipe, tiles: new Map()};
@@ -200,11 +201,13 @@ export async function metaspriteContextSources(banks, palettes = null) {
   }
   const key = banks.join(",");
   if (!byKey.tiles.has(key)) {
-    byKey.tiles.set(key, decodeChrTiles(await composeChrPatternTable(banks)));
+    const request = composeChrPatternTable(banks).then(decodeChrTiles);
+    byKey.tiles.set(key, request);
+    request.catch(() => {if (byKey.tiles.get(key) === request) byKey.tiles.delete(key);});
   }
   return {
     recipe,
-    tiles: byKey.tiles.get(key),
+    tiles: await byKey.tiles.get(key),
     palettes: palettes ? Uint8Array.from(palettes) : recipe.battlePalettes,
   };
 }
@@ -226,18 +229,29 @@ export async function metaspriteProjectedSources(patternTable, palettes) {
  * `data-metasprite-id` 只在单个对象时需要。
  */
 export async function paintMetaspriteCanvases(root = document) {
-  const canvases = [...root.querySelectorAll("canvas[data-metasprite]")];
+  const canvases = [...root.querySelectorAll("canvas[data-metasprite]")]
+    .filter(canvas => canvas.dataset.metaspritePainted !== '1' && canvas.isConnected);
   if (!canvases.length) return;
-  for (const canvas of canvases) {
-    if (canvas.dataset.metaspritePainted === "1" || !canvas.isConnected) continue;
+  const contexts = new Map();
+  await Promise.all(canvases.map(canvas => paintMetaspriteCanvas(canvas, contexts)));
+}
+
+async function paintMetaspriteCanvas(canvas, contexts) {
+  if (canvas.dataset.metaspritePainted === '1' || !canvas.isConnected) return;
+  const pending = canvasPaints.get(canvas);
+  if (pending) return pending;
+  const painting = (async () => {
     try {
       const banks = String(canvas.dataset.metaspriteBanks || "")
         .split(",").filter(Boolean).map(Number);
       if (!banks.length) throw new TypeError("缺少 metasprite 图案表 bank 顺序");
       const palettes = String(canvas.dataset.metaspritePalettes || "")
         .split(",").filter(Boolean).map(Number);
-      const sources = await metaspriteContextSources(
-        banks, palettes.length ? palettes : null);
+      const key = JSON.stringify([banks, palettes]);
+      if (!contexts.has(key)) contexts.set(key, metaspriteContextSources(
+        banks, palettes.length ? palettes : null));
+      const sources = await contexts.get(key);
+      if (!canvas.isConnected) return;
       const kind = canvas.dataset.metaspriteKind || "generic-sheet";
       let raster;
       if (kind === "generic-sheet") {
@@ -260,7 +274,10 @@ export async function paintMetaspriteCanvases(root = document) {
     } catch (error) {
       canvas.dataset.metaspriteError = String(error?.message || error);
     }
-  }
+  })();
+  canvasPaints.set(canvas, painting);
+  try {await painting;}
+  finally {if (canvasPaints.get(canvas) === painting) canvasPaints.delete(canvas);}
 }
 
 // 剧情舞台的 metasprite 精灵表：一格 64 px 的透明画布，横向复制 6 列、纵向 4 行，

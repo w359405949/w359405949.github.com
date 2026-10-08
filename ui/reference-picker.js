@@ -296,18 +296,40 @@ export function setReferencePickerEmpty(picker, empty) {
 
 /** 共享字段变化后更新候选呈现，保留选值与交互绑定。 */
 export function updateReferencePickerItem(picker, item) {
-  const normalized = normalizedItem(item, -1);
-  const option = picker.querySelector(`[data-reference-picker-option="${CSS.escape(normalized.value)}"]`);
-  if (!option) return;
+  updateReferencePickerItems(picker, [item]);
+}
+
+const itemBatchIdentities = new WeakMap();
+let nextItemBatchIdentity = 0;
+
+export function updateReferencePickerItems(picker, items, source = null) {
+  let identity = null;
+  if (source) {
+    if (!itemBatchIdentities.has(source)) itemBatchIdentities.set(source, String(++nextItemBatchIdentity));
+    identity = itemBatchIdentities.get(source);
+    if (picker.dataset.referencePickerItemBatch === identity) return;
+  }
+  const options = new Map([...picker.querySelectorAll('[data-reference-picker-option]')]
+    .map(option => [option.dataset.referencePickerOption, option]));
+  const selected = items.map(item => normalizedItem(item, -1))
+    .filter(item => options.has(item.value));
+  if (!selected.length) return;
   const template = document.createElement("template");
-  template.innerHTML = optionMarkup(normalized, option.getAttribute("aria-selected") === "true");
-  option.replaceChildren(...template.content.firstElementChild.childNodes);
-  option.dataset.referencePickerSearch = normalized.filter;
-  option.dataset.referencePickerCurrentLabel = normalized.currentLabel;
-  option.dataset.referencePickerControlValue = normalized.controlValue;
-  option.classList.toggle("has-preview", Boolean(normalized.preview));
-  option.classList.toggle("has-details", Boolean(normalized.details));
-  if (picker.dataset.moduleReferenceValue === normalized.value) copyOptionToCurrent(picker, option);
+  template.innerHTML = selected.map(item => optionMarkup(item,
+    options.get(item.value).getAttribute('aria-selected') === 'true')).join('');
+  const rendered = [...template.content.children];
+  selected.forEach((normalized, index) => {
+    const option = options.get(normalized.value);
+    option.replaceChildren(...rendered[index].childNodes);
+    option.dataset.referencePickerSearch = normalized.filter;
+    option.dataset.referencePickerCurrentLabel = normalized.currentLabel;
+    option.dataset.referencePickerControlValue = normalized.controlValue;
+    option.classList.toggle("has-preview", Boolean(normalized.preview));
+    option.classList.toggle("has-details", Boolean(normalized.details));
+    if (picker.dataset.moduleReferenceValue === normalized.value) copyOptionToCurrent(picker, option);
+  });
+  if (identity) picker.dataset.referencePickerItemBatch = identity;
+  else delete picker.dataset.referencePickerItemBatch;
 }
 
 function referenceChangeEvent(picker, value, previousValue) {

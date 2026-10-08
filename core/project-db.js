@@ -1213,6 +1213,26 @@ export function createProjectDb({
     return `${session.snapshot.revisionId}:${session.snapshot.version}`;
   }
 
+  function peekFieldSession(resourceId) {
+    const fields = fieldResources.get(resourceId)?.session;
+    if (!fields?.alive()) return null;
+    previewRead('field', resourceId);
+    for (const dependency of fieldOwner(resourceId).dependencies || []) previewRead('repository', dependency);
+    return fields;
+  }
+
+  function peekField(resourceId, entityHandle, fieldName) {
+    const fields = peekFieldSession(resourceId);
+    if (!fields) return null;
+    const key = JSON.stringify([entityHandle, fieldName]);
+    return fields.get(key) || fields.aliases.get(key) || null;
+  }
+
+  function peekFieldObject(resourceId, id) {
+    const fields = peekFieldSession(resourceId);
+    return fields?.objectInstances?.get(id) || null;
+  }
+
   async function getFieldObjects(resourceId, {offset = 0, limit = undefined} = {}) {
     const owner = fieldOwner(resourceId);
     if (!owner.objects) throw new TypeError(`模块未声明字段对象：${resourceId}`);
@@ -2091,6 +2111,7 @@ export function createProjectDb({
   function peekDocument(schema, fallback) {
     if (typeof schema !== "string" || !schema ||
         !specOfTable(schema, {complain: false})) return fallback;
+    previewRead('table', schema);
     return cache.get(schema)?.document ?? fallback;
   }
 
@@ -2114,6 +2135,7 @@ export function createProjectDb({
 
   /** 已准备的字段对象正文由 DB 当前缓存投影。 */
   function peekResourceDocument(resourceId, fallback = null) {
+    previewRead('repository', resourceId);
     return directCache.get(`repository:${resourceId}`)?.document ?? fallback;
   }
 
@@ -2437,7 +2459,7 @@ export function createProjectDb({
     validateFieldValues: assertReferenceCandidates,
     prepareStoryPageDocument, listStoryPageDocuments, createStoryPageDocument, importStoryPageDocument, exportStoryPageDocument,
     storyPageInteractionEntries, allocateStoryPageInteraction, extendedApplicationCommands, allocateApplicationProgram, deleteStoryPageDocument, getStoryPageEditor,
-    readResource, getResourceDraft, getFieldSelectionSource, fieldRevision, getFieldObject, getFieldObjects, getFieldObjectCount, getField, getFields: resourceId => getField(resourceId), readBuildFields, writeField, writeFields, refreshFields, discardFieldWorking, listWorkingAssets, storyScriptOwner, resetStoryPageWorking, assertStoryPageWorking,
+    readResource, getResourceDraft, getFieldSelectionSource, fieldRevision, peekField, peekFieldObject, getFieldObject, getFieldObjects, getFieldObjectCount, getField, getFields: resourceId => getField(resourceId), readBuildFields, writeField, writeFields, refreshFields, discardFieldWorking, listWorkingAssets, storyScriptOwner, resetStoryPageWorking, assertStoryPageWorking,
     get, getAll, getDocument, peekDocument, isLoaded, metadata,
     getPackageDocument, getResourceDocument, peekResourceDocument, packageMetadata, resourceMetadata,
     warm, peek, invalidate, invalidatePackage, invalidateResource, reset,

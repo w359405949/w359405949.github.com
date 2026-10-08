@@ -3172,14 +3172,15 @@ async function uiResolveFacilityWindowLayers(draft, profilePatterns) {
 export async function paintUiEditorPreviewCanvas(
   canvas,
   screenId,
-  {resolvePreview} = {},
+  {resolvePreview, isCurrent = () => true} = {},
 ) {
-  if (!canvas) return false;
+  if (!canvas || !isCurrent()) return false;
   const project = state.project;
   const repository = state.projectRepository;
   const {
     model, patterns, corePatterns, glyphs, profilePatterns,
   } = await uiJsRenderSources();
+  if (!isCurrent()) return false;
   if (state.project !== project || state.projectRepository !== repository) {
     throw stalePreviewRequest("UI 预览资产在读取期间已更新");
   }
@@ -3194,6 +3195,7 @@ export async function paintUiEditorPreviewCanvas(
   let records = await uiMenuRecordSources(model);
   records = await uiRecordsForDraft(model, records, draft);
   records = effectiveTextRecordSources(records, state.project?.text_record_edits);
+  if (!isCurrent()) return false;
   if (state.project !== project || state.projectRepository !== repository) {
     throw stalePreviewRequest("UI 预览数据在读取期间已更新");
   }

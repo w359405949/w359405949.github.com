@@ -10,7 +10,7 @@ let layoutFrame = null;
 export function flushCanvasViewportLayouts() {
   if (layoutFrame !== null) cancelAnimationFrame(layoutFrame);
   layoutFrame = null;
-  const jobs = [...pendingLayouts.values()];
+  const jobs = [...pendingLayouts].filter(([viewport]) => viewport.isConnected).map(([, job]) => job);
   pendingLayouts.clear();
   const measurements = jobs.map(job => job.measure());
   const applied = jobs.map((job, index) => job.apply(measurements[index]));
@@ -44,7 +44,7 @@ export function canvasViewportPoint(surface, point, {width, height} = {}) {
 
 export function bindCanvasViewport({viewport, surface, controls, key, size = () => surface,
   sizeElement = surface, zoom = "fit", fitAlignment = {x: .5, y: .5},
-  onChange = () => {}, onLayout = () => {}, canPan = () => true} = {}) {
+  onChange = () => {}, onLayout = () => {}, canPan = () => true, retainWhenDetached = false} = {}) {
   if (!viewport || !surface || !controls) return null;
   if (controllers.has(viewport)) return controllers.get(viewport);
   const storageKey = `canvas-viewport:${key}`;
@@ -98,7 +98,9 @@ export function bindCanvasViewport({viewport, surface, controls, key, size = () 
     pendingLayouts.delete(viewport);
     if (applyLayout(geometry())) onLayout();
   };
-  const schedule = () => scheduleLayout(viewport, {measure: geometry, apply: applyLayout, after: onLayout});
+  const schedule = () => {
+    if (viewport.isConnected) scheduleLayout(viewport, {measure: geometry, apply: applyLayout, after: onLayout});
+  };
   const setZoom = (next, point = null) => {
     if (next === "fit" && !point) {
       panX = 0; panY = 0; mode = "fit";
@@ -180,7 +182,7 @@ export function bindCanvasViewport({viewport, surface, controls, key, size = () 
     event.preventDefault();
   });
   const observer = new ResizeObserver(() => {
-    if (!viewport.isConnected) { controller.destroy(); return; }
+    if (!viewport.isConnected) { if (!retainWhenDetached) controller.destroy(); return; }
     schedule();
   });
   const dimensions = new MutationObserver(schedule);

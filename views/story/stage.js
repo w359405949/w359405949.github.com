@@ -4,6 +4,7 @@ import {showEditorError} from "../../ui/editor-error.js";
 import {storyPlayerRegion} from "./player-control.js";
 
 const controllers = new WeakMap();
+const activeStages = new WeakSet();
 
 export function syncStoryPlayerRegions(screen, snapshot, segments, dimensions) {
   const regions = segments.filter(segment => segment.sceneId === snapshot.sceneId)
@@ -28,11 +29,14 @@ export function storyStageZoomMarkup() {
 }
 
 export function bindStoryStage(stage, view, onSelect) {
+  activeStages.add(stage);
   if (controllers.has(stage)) return;
   const viewport = stage.querySelector("[data-story-stage-viewport]");
   const screen = stage.querySelector('[data-role="story-vm-screen"]');
   if (!viewport || !screen) return;
   const controller = bindScenePreview({viewport, surface: screen,
+    retainWhenDetached: true,
+    isCurrent: () => activeStages.has(stage) && stage.isConnected,
     canvas: screen.querySelector('[data-role="story-vm-background"]'), controls: stage,
     key: `story:${view}`, size: () => ({width: Number(screen.dataset.stageWidth) || 256,
       height: Number(screen.dataset.stageHeight) || 240}), sizeElement: screen,
@@ -51,6 +55,18 @@ export function bindStoryStage(stage, view, onSelect) {
   viewport.addEventListener("pointerleave", () => { tooltip.hidden = true; });
   controllers.set(stage, controller);
 }
+
+export function disposeStoryStage(stage) {
+  activeStages.delete(stage);
+  controllers.get(stage)?.destroy();
+  controllers.delete(stage);
+}
+
+export function suspendStoryStage(stage) {
+  activeStages.delete(stage);
+  controllers.get(stage)?.invalidateMapExtension();
+}
+export function resumeStoryStage(stage) { activeStages.add(stage); }
 
 export function storyStageActorAttributes(objectId, label, selectedId) {
   return {"data-story-stage-object": String(objectId), role: "button", tabindex: "0",

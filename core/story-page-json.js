@@ -288,7 +288,7 @@ function storyPageFieldSnapshot(snapshot, document, resourceId, version, scripts
     : document.fields.filter(row => row.resource === resourceId).map(row => ({
     resource_id: resourceId, entity_handle: row.handle, field_name: row.field, value: row.value,
   }));
-  fieldOwner(resourceId).validate(snapshot.original.value, overrides, snapshot.dependencies);
+  if (overrides.length) fieldOwner(resourceId).validate(snapshot.original.value, overrides, snapshot.dependencies);
   return {...snapshot, overrides, storyPages: [], storyOwners: {}, version,
     meta: {...snapshot.meta, version}};
 }

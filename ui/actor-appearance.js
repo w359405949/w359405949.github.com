@@ -28,6 +28,9 @@ const WORLD_ACTOR_SET = 0x94;
 const NO_APPEARANCE_TYPE = 0x3f;
 const ACTOR_TYPE_MODULE_ID = "actor-type";
 const catalogByPicker = new WeakMap();
+const catalogIdentities = new WeakMap();
+const catalogTemplates = new WeakMap();
+let nextCatalogIdentity = 0;
 
 const byteHex = value => `0x${Number(value).toString(16).toUpperCase().padStart(2, "0")}`;
 
@@ -425,7 +428,25 @@ async function hydrateActorAppearancePickers(
       }
       catalogByPicker.set(picker, resolvedCatalog);
       const live = picker.querySelector("[data-actor-appearance-live]");
-      if (live) live.innerHTML = pickerLiveMarkup(picker, resolvedCatalog);
+      if (!catalogIdentities.has(resolvedCatalog))
+        catalogIdentities.set(resolvedCatalog, String(++nextCatalogIdentity));
+      const identity = JSON.stringify([catalogIdentities.get(resolvedCatalog),
+        picker.dataset.actorAppearancePair, Boolean(pickerControl(picker)?.disabled)]);
+      if (live && (catalog || picker.dataset.actorAppearanceCatalog !== identity || !live.firstElementChild)) {
+        if (catalog) live.innerHTML = pickerLiveMarkup(picker, resolvedCatalog);
+        else {
+          let templates = catalogTemplates.get(resolvedCatalog);
+          if (!templates) catalogTemplates.set(resolvedCatalog, templates = new Map());
+          const key = JSON.stringify([identity, picker.dataset.actorAppearanceValue]);
+          if (!templates.has(key)) {
+            const template = document.createElement('template');
+            template.innerHTML = pickerLiveMarkup(picker, resolvedCatalog);
+            templates.set(key, template);
+          }
+          live.replaceChildren(...templates.get(key).content.cloneNode(true).childNodes);
+        }
+      }
+      picker.dataset.actorAppearanceCatalog = identity;
       picker.dataset.actorAppearanceHydrated = "1";
       bindPicker(picker);
       syncPicker(picker, false);

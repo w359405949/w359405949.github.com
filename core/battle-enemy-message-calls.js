@@ -10,7 +10,27 @@ const BATTLE_ENEMY_DODGE_EVIDENCE = 'project/evidence/reverse-engineering/enemy-
 const BATTLE_ENEMY_PANIC_EVIDENCE = 'project/evidence/reverse-engineering/enemy-panic-wave-call/observations.json';
 const BATTLE_ENEMY_SLEEP_EVIDENCE = 'project/evidence/reverse-engineering/enemy-sleep-wave-call/observations.json';
 const BATTLE_ENEMY_LONG_WAVE_EVIDENCE = 'project/evidence/reverse-engineering/enemy-long-wave-call/observations.json';
+const BATTLE_ENEMY_ZERO_DAMAGE_EVIDENCE = 'project/evidence/reverse-engineering/enemy-zero-damage-calls/observations.json';
+const BATTLE_ENEMY_THERMAL_EVIDENCE = 'project/evidence/reverse-engineering/enemy-thermal-calls/observations.json';
 const calls = {
+  'enemy-action:38': {script: 'battle-result-script:20', bytes: [0xD5, 20, 0xC0, 0xFC, 0, 0x21],
+    states: ['action', 'poison-bomb-no-effect'], texts: [142, 9], effect: 'enemy-party-no-damage',
+    successors: {0: [255]}, evidence: BATTLE_ENEMY_ZERO_DAMAGE_EVIDENCE},
+  'enemy-action:3A': {script: 'battle-result-script:26', bytes: [0xD5, 20, 0xC0, 0xFC, 0, 0x27],
+    states: ['action', 'failure'], texts: [144, 9], effect: 'enemy-party-no-damage',
+    successors: {0: [255]}, evidence: BATTLE_ENEMY_ZERO_DAMAGE_EVIDENCE},
+  'enemy-action:34': {script: 'battle-result-script:05', bytes: [0xFC, 6, 7],
+    states: ['action', 'shock-wave-no-effect'], texts: [136, 9], effect: 'enemy-party-no-damage',
+    successors: {6: [0xFD, 4, 0x4F, 3], 0x4F: [0xD5, 24, 0xE2]}, zeroThreshold: 4,
+    evidence: BATTLE_ENEMY_ZERO_DAMAGE_EVIDENCE},
+  'enemy-action:2E': {script: 'battle-result-script:1C', bytes: [0xD4, 22, 0xFC, 0x1D, 0x1E],
+    states: ['action', 'cold-damage', 'condition'], texts: [130, 8, 40], effect: 'enemy-party-thermal',
+    successors: {0x1D: [0xC9, 1, 0xC0, 0xF9, 6]}, selector: 6, mask: 2,
+    evidence: BATTLE_ENEMY_THERMAL_EVIDENCE},
+  'enemy-action:3B': {script: 'battle-result-script:37', bytes: [0xD4, 22, 0xFC, 0x38, 0x39],
+    states: ['action', 'fire-damage', 'condition'], texts: [145, 8, 39], effect: 'enemy-party-thermal',
+    successors: {0x38: [0xC9, 1, 0xC0, 0xF9, 5]}, selector: 5, mask: 4,
+    evidence: BATTLE_ENEMY_THERMAL_EVIDENCE},
   'enemy-action:2D': {script: 'battle-result-script:14', bytes: [0xFC, 0x16, 0x19],
     states: ['action', 'condition'], texts: [129, 35], effect: 'enemy-party-sleep',
     condition: {selector: 4, successor: 0x16, bytes: [0xFE, 4, 0x18, 0x1A], result: 0x1A, mask: 64, counter: 0},
@@ -72,7 +92,7 @@ export function battleEnemyMessageCallContract(action, script, phases, record) {
 
 // 初始化命名序号按敌群内的装载顺序分配；绑定后保留命名数量快照。
 export function battleEnemyMessageInitialState(input, {seed = 0, allTargets = false, pendingDirections = 0,
-  sonicResistanceItem} = {}) {
+  sonicResistanceItem, damageThreshold} = {}) {
   if (!Array.isArray(input?.enemies) || !Array.isArray(input?.party) || !byte(pendingDirections)
       || input.party.some(role => role.resultConditionStates != null || role.conditionTurns != null)) return null;
   const random = globalRandom(seed), groups = Array.from({length: 4}, () => null);
@@ -88,7 +108,8 @@ export function battleEnemyMessageInitialState(input, {seed = 0, allTargets = fa
     group.population++;
     instances[enemy.slot] = {slot: enemy.slot, group: enemy.groupIndex, monster_id: enemy.monsterId,
       present: true, targetable: true, hp: enemy.hp, maxHp: enemy.maxHp, shield: enemy.shield,
-      status: enemy.status, suffix_source: battleInstanceSuffixSource(group.population)};
+      status: enemy.status, attack: enemy.attack, attackSkill: enemy.attackSkill,
+      suffix_source: battleInstanceSuffixSource(group.population)};
   }
   for (const group of groups.filter(Boolean)) group.population_snapshot = group.population;
   for (const instance of instances.filter(Boolean)) instance.population_snapshot = groups[instance.group].population_snapshot;
@@ -111,6 +132,7 @@ export function battleEnemyMessageInitialState(input, {seed = 0, allTargets = fa
   const randomInputs = targets.length > 1 ? targets.map((_, index) => index ? random.next() : randomHigh) : undefined;
   return actor === undefined ? null : {actor, instances, groups, targets, randomHigh, randomInputs,
     randomLow, accuracy, party,
+    randomAmounts: structuredClone(input.randomAmounts), damageThreshold,
     pendingDirections, exitControl: 0, ended: false, reward: {gold: 0, experience: 0}};
 }
 
@@ -161,6 +183,52 @@ export function battleEnemyMessageCallOperations({path, record, action, callStat
         || !word(role.hp) || role.hp < 1 || fields?.[`${prefix}present`] !== role.present
         || fields?.[`${prefix}status`] !== role.status || fields?.[`${prefix}current_hp`] !== role.hp)
       return [{kind: 'boundary', missing: '敌方消息缺少本次存活队员的姓名、状态和 HP 字段'}];
+    if (['enemy-party-no-damage', 'enemy-party-thermal'].includes(call.effect)) {
+      const matches = Object.entries(call.successors).every(([id, bytes]) => {
+        const successor = resultScripts?.find(row => row.id === Number(id));
+        return successor?.raw_bytes?.length === bytes.length
+          && successor.raw_bytes.every((value, index) => value === bytes[index]);
+      });
+      if (!matches || role.present & 128 || role.riding !== false || role.status !== 0
+          || !byte(callState.randomLow) || !byte(callState.randomHigh) || !byte(callState.damageThreshold)
+          || !byte(role.slotFlags) || !Array.isArray(role.equipment) || role.equipment.length !== 8
+          || !role.equipment.every(byte)
+          || role.equipment.some((id, slot) => id >= 0x18 && id <= 0x1C && (role.slotFlags & (0x80 >> slot))))
+        return [{kind: 'boundary', missing: '本次受击缺少正常徒步目标、随机输入、回避阈值或进入防护装备分支'}];
+      const random = globalRandom((callState.randomHigh << 8) | callState.randomLow);
+      if (call.effect === 'enemy-party-no-damage') {
+        // 等技能的低值域使物理量始终小于 16，D5 的次数及等待随机调度不改变零量。
+        const base = Math.max(0, actor.attack - Math.floor(role.defense / 2));
+        const maximum = Math.max(3, base + Math.floor(base * 50 / 256));
+        if (!byte(actor.attack) || !byte(role.defense) || !byte(actor.attackSkill)
+            || actor.attackSkill !== role.defenseSkill || maximum >= 16
+            || (call.zeroThreshold && (random.next() & 15) < call.zeroThreshold))
+          return [{kind: 'boundary', missing: '本次 D5 物理量不能保证小于 16 或随机输入进入其他后继'}];
+        // D5 次数、物理扰动、C0 回避依次推进；零基数先取后备随机字节。
+        random.next();
+        if (base === 0) random.next();
+        random.next();
+        if (random.next() < callState.damageThreshold)
+          return [{kind: 'boundary', missing: '本次 C0 回避选择另一结果消息'}];
+        return [message(path.phases[0]), {...effect(call.effect), target}, message(path.phases[1]),
+          {kind: 'return', evidence, value: {scope: 'enemy-action', confirmed: true,
+            actor: callState.actor, enemyAction: action.handle, resultScript: call.script, target}}];
+      }
+      const profile = callState.randomAmounts?.find(row => row.profile_index === 11);
+      const resistance = role.damageResistances?.[1];
+      if (!byte(profile?.minimum) || !byte(profile.exclusive_random_span) || resistance !== 0
+          || role.defending === true)
+        return [{kind: 'boundary', missing: '本次冷气／火焰缺少随机量参数或进入抗性、防卫分支'}];
+      const amount = profile.minimum + random.below(profile.exclusive_random_span);
+      if (random.next() < callState.damageThreshold || amount < 1 || amount >= role.hp)
+        return [{kind: 'boundary', missing: '本次受击进入回避、无损伤或死亡消息，已发布阶段不匹配'}];
+      return [message(path.phases[0]), {...effect('enemy-party-thermal-damage'), target,
+        hpField: `${prefix}current_hp`, amount}, message(path.phases[1]),
+        {...effect('enemy-party-thermal-status'), target, statusField: `${prefix}status`,
+          mask: call.mask, selector: call.selector}, message(path.phases[2]),
+        {kind: 'return', evidence, value: {scope: 'enemy-action', confirmed: true,
+          actor: callState.actor, enemyAction: action.handle, resultScript: call.script, target}}];
+    }
     if (call.effect === 'enemy-party-dodge') {
       const successor = resultScripts?.find(row => row.handle === 'battle-result-script:3B');
       if (!byte(callState.randomLow) || !byte(callState.randomHigh)
@@ -206,7 +274,7 @@ export function battleEnemyMessageCallOperations({path, record, action, callStat
 }
 
 export function applyBattleEnemyMessageEffect(fields, operation, context, domainResults = {}) {
-  const source = ['enemy-accuracy-add', 'enemy-party-finalize'].includes(operation.id)
+  const source = ['enemy-accuracy-add', 'enemy-party-finalize', 'enemy-party-thermal-status'].includes(operation.id)
     ? domainResults.enemyCall : operation.callState;
   const battle = structuredClone(source), actor = battle?.instances?.[battle.actor];
   if (!actor?.present || !actor.targetable) return {status: 'unavailable', reason: '本次敌方行动方不存在'};
@@ -217,6 +285,25 @@ export function applyBattleEnemyMessageEffect(fields, operation, context, domain
     role.status = 255;
     fields[operation.statusField] = role.status;
     battle.ended = true;
+  } else if (['enemy-party-no-damage', 'enemy-party-thermal-damage', 'enemy-party-thermal-status'].includes(operation.id)) {
+    const role = battle.party?.find(role => role.slot === operation.target);
+    if (!role || role.riding !== false || role.present & 128 || role.status !== 0)
+      return {status: 'unavailable', reason: '本次受击的徒步目标已改变'};
+    if (operation.id === 'enemy-party-thermal-damage') {
+      if (fields[operation.hpField] !== role.hp || !word(operation.amount)
+          || operation.amount < 1 || operation.amount >= role.hp)
+        return {status: 'unavailable', reason: '本次受击 HP 或公式数量已改变'};
+      role.hp -= operation.amount; fields[operation.hpField] = role.hp;
+      battle.messageQuantity = operation.amount;
+    } else if (operation.id === 'enemy-party-thermal-status') {
+      if (fields[operation.statusField] !== role.status || ![5, 6].includes(operation.selector)
+          || operation.mask !== (128 >>> operation.selector))
+        return {status: 'unavailable', reason: '本次冷气／火焰状态字段已改变'};
+      role.status |= operation.mask;
+      role.conditionTurns = {...role.conditionTurns, [operation.selector]: 3};
+      fields[operation.statusField] = role.status;
+    }
+    battle.messagePartyTargets = [null, operation.target, operation.target];
   } else if (operation.id.startsWith('enemy-party-')) {
     const role = battle.party?.find(role => role.slot === operation.target);
     if (!role || fields[operation.statusField] !== role.status || fields[operation.hpField] !== role.hp

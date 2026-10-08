@@ -70,7 +70,8 @@ export function bindScenePreview({root, canvas = root?.querySelector('canvas'),
     listeners.push(() => node.removeEventListener(name, callback));
   };
   const extension = mapExtension ? {viewport, screen: surface, canvas: mapExtension,
-    dimensions: {viewportWidth: 256, viewportHeight: 240}, snapshot: null, onError: onMapError} : null;
+    dimensions: {viewportWidth: 256, viewportHeight: 240}, snapshot: null, onError: onMapError,
+    isCurrent: options.isCurrent || (() => viewport.isConnected)} : null;
   const onLayout = options.onLayout;
   const controller = bindCanvasViewport({viewport, surface, controls, size: () => canvas,
     sizeElement: canvas, ...options, onLayout: () => {
@@ -134,6 +135,11 @@ export function bindScenePreview({root, canvas = root?.querySelector('canvas'),
       if (!extension) return;
       extension.snapshot = snapshot; extension.dimensions = dimensions;
       paintPreviewMapExtension(extension);
+    },
+    invalidateMapExtension: () => {
+      if (!extension) return;
+      extension.revision = (extension.revision || 0) + 1;
+      extension.key = null;
     },
     destroy: () => {stopPainting(); listeners.forEach(remove => remove()); controller.destroy(); previews.delete(canvas);},
   };
@@ -400,6 +406,7 @@ function positionPreviewMapExtension(view) {
 }
 
 function paintPreviewMapExtension(view) {
+  if (!view.isCurrent()) return;
   const {viewport, screen, canvas, snapshot} = view;
   const sceneId = snapshot?.sceneId;
   if (sceneId == null || snapshot?.hidden) {
@@ -426,14 +433,14 @@ function paintPreviewMapExtension(view) {
   const revision = view.revision = (view.revision || 0) + 1;
   loadSceneRegionById(Number(sceneId), {x: left, y: top, width: right - left, height: bottom - top,
     animationPhase: snapshot.animationPhase, fieldTiles: snapshot.fieldTiles}).then(region => {
-    if (view.revision !== revision || view.key !== key || !viewport.isConnected) return;
+    if (view.revision !== revision || view.key !== key || !view.isCurrent()) return;
     view.region = region;
     canvas.hidden = !region;
     if (!region) return;
     void paintScenePreview(canvas, {surface: region.canvas});
     positionPreviewMapExtension(view);
   }).catch(error => {
-    if (view.revision !== revision) return;
+    if (view.revision !== revision || !view.isCurrent()) return;
     view.key = null;
     view.onError?.(error);
   });

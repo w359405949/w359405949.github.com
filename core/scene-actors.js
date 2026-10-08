@@ -13,7 +13,8 @@ export const SCENE_ACTORS_RESOURCE_ID = "scene-actor";
 export const SCENE_ACTOR_EDITABLE_FIELDS = SCENE_ACTOR_FIELDS;
 
 export async function getSceneActorFields(uid) {
-  return Promise.all(SCENE_ACTOR_EDITABLE_FIELDS.map(name => db.getField(SCENE_ACTORS_RESOURCE_ID, uid, name)));
+  return Promise.all(SCENE_ACTOR_EDITABLE_FIELDS.map(name =>
+    db.peekField(SCENE_ACTORS_RESOURCE_ID, uid, name) || db.getField(SCENE_ACTORS_RESOURCE_ID, uid, name)));
 }
 
 let cache = null;

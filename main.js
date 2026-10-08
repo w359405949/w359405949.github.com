@@ -135,6 +135,7 @@ let bindSceneOverviewFilter;
 let renderScenes;
 let bindMetatiles, renderMetatiles;
 let renderCutsceneAnimation, startStoryTimer, updateStoryPlayback, prepareStoryAudio;
+let leaveStoryPlayback, rememberStoryPlayback, restoreStoryPlayback;
 let bindStoryScriptCommandAddresses, renderStoryScriptRecord;
 import {bindBootPresentation, paintBootBankPickers, paintBootPatternPicker,
   paintBootPresentationCanvas, renderBootPresentation, reportBootPresentationPatterns} from './views/boot-presentation.js';
@@ -183,7 +184,8 @@ function preparePageRuntime(view) {
     paths.includes(PAGE_RUNTIME_PATHS["scenes/overview"]) ? import(PAGE_RUNTIME_PATHS["scenes/overview"]).then(module => {({bindSceneOverviewFilter} = module);}) : null,
     paths.includes(PAGE_RUNTIME_PATHS["scenes/workbench"]) ? import(PAGE_RUNTIME_PATHS["scenes/workbench"]).then(module => {({renderScenes} = module);}) : null,
     paths.includes(PAGE_RUNTIME_PATHS["metatiles"]) ? import(PAGE_RUNTIME_PATHS["metatiles"]).then(module => {({bindMetatiles, renderMetatiles} = module);}) : null,
-    paths.includes(PAGE_RUNTIME_PATHS["story/playback"]) ? import(PAGE_RUNTIME_PATHS["story/playback"]).then(module => {({renderCutsceneAnimation, startStoryTimer, updateStoryPlayback, prepareStoryAudio} = module);}) : null,
+    paths.includes(PAGE_RUNTIME_PATHS["story/playback"]) ? import(PAGE_RUNTIME_PATHS["story/playback"]).then(module => {({renderCutsceneAnimation, startStoryTimer, updateStoryPlayback, prepareStoryAudio,
+      leaveStoryPlayback, rememberStoryPlayback, restoreStoryPlayback} = module);}) : null,
     paths.includes(PAGE_RUNTIME_PATHS["story/catalog"]) ? import(PAGE_RUNTIME_PATHS["story/catalog"]).then(module => {({bindStoryScriptCommandAddresses, renderStoryScriptRecord} = module);}) : null,
     paths.includes(PAGE_RUNTIME_PATHS["text/charset"]) ? import(PAGE_RUNTIME_PATHS["text/charset"]).then(module => {({loadCharsetWorkbench} = module);}) : null,
     paths.includes(PAGE_RUNTIME_PATHS["actors-bind"]) ? import(PAGE_RUNTIME_PATHS["actors-bind"]).then(module => {({bindVisualEditor} = module);}) : null,
@@ -710,6 +712,7 @@ async function renderView() {
   const generation = ++renderGeneration;
   const requestedView = state.view;
   const content = $("#content");
+  leaveStoryPlayback?.(content);
   if (!content.dataset.ownerReferenceLinksBound) {
     content.dataset.ownerReferenceLinksBound = '1';
     content.addEventListener('owner-reference-loaded', event => bindInternalPageLinks(event.target));
@@ -749,18 +752,25 @@ async function renderView() {
     && requestedView === state.view;
   let activateSceneThumbnails = null;
   let destinationPage;
-  const markRendered = () => {
+  const markRendered = (reuseBindings = false) => {
     if (!stillCurrent()) return;
     flushCanvasViewportLayouts();
     content.dataset.renderedView = requestedView;
     content.dataset.renderGeneration = String(generation);
     delete content.dataset.pendingView;
-    bindSceneDestinationUsers(content, destinationPage, db, () => bindInternalPageLinks(content));
-    bindControlledObjectUsers(content, state.project, () => bindInternalPageLinks(content));
+    if (!reuseBindings) {
+      bindSceneDestinationUsers(content, destinationPage, db, () => bindInternalPageLinks(content));
+      bindControlledObjectUsers(content, state.project, () => bindInternalPageLinks(content));
+    }
     content.dataset.destinationUsersReady = "true";
   };
   const dataView = requestedView;
   const saveActivation = dataView === 'save' && state.savePageSection === 'location';
+  if (state.project) {
+    // 页面文档须在并行取数前准备完成，以免切换仓库使在途读取失效。
+    await db.prepareStoryPageDocument(dataView === 'story-page' ? state.storyPageId : storyEditableView(dataView) ? dataView : null);
+    if (!stillCurrent()) return;
+  }
   void prefetchViewInputs(dataView, new URLSearchParams(location.search)).catch(() => {});
   const sceneObjectsPreparation = dataView === "scenes" && !state.sceneSlug && state.sceneListTab === "investigation"
     ? db.getAll("scene-object", []).then(async objects => {await db.warm(objects); return objects;}) : null;
@@ -932,6 +942,20 @@ async function renderView() {
     html = renderBootPresentation(state.view);
   }
   else if (storyEditableView(state.view)) {
+    if (restoreStoryPlayback(content)) {
+      const heading = content.querySelector('.story-sequence-handle');
+      if (heading) {
+        heading.dataset.storyPageHeading = 'true';
+        pageHead.insertBefore(heading, pageHead.querySelector('.head-actions'));
+      }
+      content.prepend(pageHead);
+      await startStoryTimer({reuse: true});
+      if (stillCurrent()) {
+        focusResourceTarget();
+        markRendered(true);
+      }
+      return;
+    }
     html = renderCutsceneAnimation(state.view);
   }
   else if (state.view.startsWith("cutscene-")) html = renderStoryPlaceholder("cutscene");
@@ -1259,6 +1283,10 @@ async function renderView() {
     }
   });
   focusResourceTarget();
+  if (storyEditableView(state.view)) {
+    await rememberStoryPlayback(content);
+    if (!stillCurrent()) return;
+  }
   markRendered();
   if (activateSceneThumbnails && stillCurrent()) setTimeout(() => {
     if (stillCurrent()) void activateSceneThumbnails();

@@ -199,6 +199,17 @@ let openingTextEditorController = null;
 let openingPartyAppearanceSaveGeneration = 0;
 const documentSegments = new WeakMap();
 
+export function storyWorkbenchMountState() {
+  return {context: openingWorkbenchContext, selected: selectedOpeningElementId,
+    textEditor: openingTextEditorController};
+}
+
+export function restoreStoryWorkbenchMount({context, selected, textEditor}) {
+  openingWorkbenchContext = context;
+  selectedOpeningElementId = selected;
+  openingTextEditorController = textEditor;
+}
+
 export function storyEditableWorkbenchView(view = state.view) {
   return storyEditableView(view);
 }
@@ -2761,17 +2772,20 @@ async function hydrateOpeningActorResets(root) {
     host.dataset.bound = "true";
     if (host.hasAttribute('data-story-reference-reset')) {
       const {handle, name} = JSON.parse(host.dataset.storyReferenceReset);
-      const field = await db.getField(SCENE_ACTORS_RESOURCE_ID, handle, name);
-      const object = await db.getFieldObject(SCENE_ACTORS_RESOURCE_ID, 'scene.actor.record-region');
-      if (host.isConnected) mountFieldObjectReset(host, {...object, fields: [field]});
+      const field = db.peekField(SCENE_ACTORS_RESOURCE_ID, handle, name)
+        || await db.getField(SCENE_ACTORS_RESOURCE_ID, handle, name);
+      const object = db.peekFieldObject(SCENE_ACTORS_RESOURCE_ID, 'scene.actor.record-region')
+        || await db.getFieldObject(SCENE_ACTORS_RESOURCE_ID, 'scene.actor.record-region');
+      if (host.isConnected) mountFieldObjectReset(host, object.selectFields([field]));
       continue;
     }
     const fields = await getSceneActorFields(host.dataset.storyActorReset || host.dataset.storyActorMotion);
-    const object = await db.getFieldObject(SCENE_ACTORS_RESOURCE_ID, "scene.actor.record-region");
+    const object = db.peekFieldObject(SCENE_ACTORS_RESOURCE_ID, 'scene.actor.record-region')
+      || await db.getFieldObject(SCENE_ACTORS_RESOURCE_ID, "scene.actor.record-region");
     if (!host.isConnected) continue;
     if (host.hasAttribute("data-story-actor-motion"))
-      await mountFieldObjectBitmask(host, {...object, fields}, "direction_attributes");
-    else mountFieldObjectReset(host, {...object, fields});
+      await mountFieldObjectBitmask(host, object.selectFields(fields), "direction_attributes");
+    else mountFieldObjectReset(host, object.selectFields(fields));
   }
 }
 
@@ -3068,13 +3082,12 @@ export function bindStoryWorkbench({refreshPlayback, refreshTimeline, seekPlayba
       }
     },
   });
-  void paintOpeningTextComponentCanvases(root);
-  void hydrateModuleComponents(root);
-  void hydrateStoryActorVisuals(root);
+  const ready = [paintOpeningTextComponentCanvases(root), hydrateModuleComponents(root),
+    hydrateStoryActorVisuals(root)];
   hydrateStorySceneOperands(root);
   hydrateStoryObjectPosition(root);
-  void hydrateOpeningActorResets(root).catch(error => showEditorError(root, "角色重置", error));
-  void bindOpeningEncounterFormationEditor(root);
+  ready.push(hydrateOpeningActorResets(root).catch(error => showEditorError(root, "角色重置", error)),
+    bindOpeningEncounterFormationEditor(root));
   root.querySelector('[data-story-workbench-root]')?.addEventListener('click', () => {
     if (openingResetting) return;
     selectedOpeningElementId = STORY_ROOT_SELECTION;
@@ -3206,11 +3219,11 @@ export function bindStoryWorkbench({refreshPlayback, refreshTimeline, seekPlayba
       return button.resetCompletion;
     });
   });
-  refreshOpeningResetState(root);
-  void bindFieldObjectProjections(root, db).catch(error => {
+  ready.push(refreshOpeningResetState(root));
+  ready.push(bindFieldObjectProjections(root, db).catch(error => {
     root.dataset.fieldObjectError = String(error?.message || error);
-  });
-  Promise.all([
+  }));
+  ready.push(Promise.all([
     loadOpeningOriginalDocument(),
     loadOpeningSceneActorOriginalDocument(),
   ]).then(([document_]) => {
@@ -3234,7 +3247,8 @@ export function bindStoryWorkbench({refreshPlayback, refreshTimeline, seekPlayba
         note.textContent = `ROM 原值读取失败：${error.message || error}`;
       }
     }
-  });
+  }));
+  return Promise.all(ready);
 }
 
 export function storyVmSequencesForView(view = state.view) {
@@ -3377,7 +3391,9 @@ export function renderStoryWorkbench(
     for (const key of ['compiled', 'context', 'inventoryEntry', 'missing', 'partial', 'cameraLocated',
       'sourceStatus', 'controlLabel', 'completionLabel', 'note', 'chainLabel', 'storyShots', 'logicalIndex',
       'label', 'shotCount', 'shotLabel', 'resourceUid', 'blocked']) {
-      Object.defineProperty(entry, key, {enumerable: true, get: () => (prepared ||= prepare())[key]});
+      Object.defineProperty(entry, key, {enumerable: true,
+        get: () => (prepared ||= prepare())[key],
+        set: value => {(prepared ||= prepare())[key] = value;}});
     }
     return entry;
   }).filter(Boolean);

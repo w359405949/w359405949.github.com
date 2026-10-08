@@ -1877,7 +1877,8 @@ export async function bindFieldObjectProjections(root, database) {
   await Promise.all([...root.querySelectorAll('[data-field-object-projection]')].map(
     async control => {
       const [resourceId, handle, name] = JSON.parse(control.dataset.fieldObjectProjection);
-      const field = await database.getField(resourceId, handle, name);
+      const field = database.peekField?.(resourceId, handle, name)
+        || await database.getField(resourceId, handle, name);
       if (!control.isConnected) return;
       field.bind(control, () => {});
       control.dataset.fieldObjectReady = '1';

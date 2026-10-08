@@ -9,7 +9,7 @@ import {recordUid} from "../../core/resource-index.js";
 import {interactionEditorHref, interactionEditorLink} from '../../ui/interaction-editor-links.js';
 import {prepareStoryReferenceDetails, paintStoryReferenceDetails} from './reference-details.js';
 import {registerModuleComponent} from "../../ui/module-components.js";
-import {updateReferencePickerItem} from '../../ui/reference-picker.js';
+import {updateReferencePickerItems} from '../../ui/reference-picker.js';
 import {
   hydrateReferenceFieldPickers,
   referenceFieldPickerMarkup,
@@ -122,7 +122,8 @@ function validateEntries(documentValue) {
 
 async function prepareInteractionComponent(props) {
   try {
-    const document = await db.getResourceDocument(INTERACTION_MODULE_ID, null);
+    const document = db.peekResourceDocument(INTERACTION_MODULE_ID, null)
+      || await db.getResourceDocument(INTERACTION_MODULE_ID, null);
     const entries = await prepareStoryReferenceDetails(document, 'interaction', validateEntries(document));
     const requested = requestedId(props);
     return {
@@ -164,7 +165,7 @@ async function hydrateInteractionReferences(root) {
   if (root.classList.contains('reference-detail-field')) {
     const prepared = await prepareInteractionComponent({});
     if (prepared.error) throw new TypeError(prepared.error);
-    for (const entry of prepared.entries) updateReferencePickerItem(root, interactionReferenceItem(entry));
+    updateReferencePickerItems(root, prepared.entries.map(interactionReferenceItem), prepared.entries);
   }
   hydrateReferenceFieldPickers(root);
 }

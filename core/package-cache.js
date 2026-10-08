@@ -1,6 +1,7 @@
 // @editor-module 校验发布正文并缓存运行包 JSON 与构建二进制。
 import {siteUrl} from "./site-url.js";
 import {sha256Hex} from "./rom-linker.js";
+import {editorLog} from "./editor-log.js";
 
 const DATABASE_NAME = "metalmaxcn-package-cache";
 const STORE_NAME = "files";
@@ -53,12 +54,78 @@ async function transact(mode, operation) {
 const fileUrl = path => `${packageRoot}${String(path).split("/").map(encodeURIComponent).join("/")}`;
 const cacheKey = path => new URL(fileUrl(path), globalThis.location?.href || "http://localhost/").href;
 
+async function rateLimited(response) {
+  if (response.status === 429) return true;
+  if (response.status !== 403) return false;
+  if (response.headers.has("Retry-After") || response.headers.get("X-RateLimit-Remaining") === "0") return true;
+  return /rate[\s-]*limit|too many requests|abuse detection/i.test(await response.text());
+}
+
+function retryDelay(response, attempt) {
+  let serverDelay = null;
+  const after = response?.headers.get("Retry-After");
+  if (after?.trim()) {
+    const seconds = Number(after);
+    const delay = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(after) - Date.now();
+    if (Number.isFinite(delay)) serverDelay = Math.max(0, delay);
+  }
+  if (response?.headers.get("X-RateLimit-Remaining") === "0") {
+    const reset = response.headers.get("X-RateLimit-Reset");
+    if (reset?.trim()) {
+      const delay = Number(reset) * 1000 - Date.now();
+      if (Number.isFinite(delay)) serverDelay = Math.max(serverDelay || 0, delay, 0);
+    }
+  }
+  const base = response && serverDelay === null ? 60000 : 1000;
+  const backoff = Math.min(300000, base * 2 ** Math.min(attempt - 1, 9));
+  return Math.max(serverDelay || 0, backoff) + Math.floor(Math.random() * backoff * 0.2);
+}
+
+async function waitForRetry(delay) {
+  const deadline = Date.now() + delay;
+  while (Date.now() < deadline) {
+    await new Promise(resolve => setTimeout(resolve, Math.min(deadline - Date.now(), 2147483647)));
+  }
+}
+
 async function networkFile(path, priority, etag = null) {
-  const response = await fetch(fileUrl(path), {priority, cache: "no-cache",
-    ...(etag ? {headers: {"If-None-Match": etag}} : {})});
-  if (etag && response.status === 304) return {bytes: null, etag};
-  if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
-  return {bytes: await response.arrayBuffer(), etag: response.headers.get("ETag")};
+  let attempt = 0;
+  let task;
+  let complete = false;
+  try {
+    for (;;) {
+      let response;
+      let reason;
+      try {
+        response = await fetch(fileUrl(path), {priority, cache: "no-cache",
+          ...(etag ? {headers: {"If-None-Match": etag}} : {})});
+        if (etag && response.status === 304) {
+          complete = true;
+          return {bytes: null, etag};
+        }
+        if (response.ok) {
+          const bytes = await response.arrayBuffer();
+          complete = true;
+          return {bytes, etag: response.headers.get("ETag")};
+        }
+        if (!await rateLimited(response)) throw new Error(`${path}: HTTP ${response.status}`);
+        reason = `HTTP ${response.status}`;
+      } catch (error) {
+        if (!["TypeError", "NetworkError", "AbortError"].includes(error?.name)) throw error;
+        response = null;
+        reason = error.message;
+      }
+      const delay = retryDelay(response, ++attempt);
+      const entry = {source: "数据下载", level: "debug", message: `等待重试（${Math.ceil(delay / 1000)} 秒）`,
+        details: {path, attempt, reason, delay_ms: delay}};
+      if (!task) task = editorLog.startTask(entry);
+      else task.update(entry);
+      await waitForRetry(delay);
+      task.update({message: "重试下载"});
+    }
+  } finally {
+    task?.finish({level: "debug", message: complete ? "下载完成" : "下载结束"});
+  }
 }
 
 export function readPackageManifest(priority = "high") {

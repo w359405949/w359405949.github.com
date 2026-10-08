@@ -32,6 +32,26 @@ const PREVIEW_DIRECTION_IDS = Object.freeze([
 
 const recipeCaches = new WeakMap();
 const atlasCaches = new WeakMap();
+const catalogCaches = new WeakMap();
+const canvasPaints = new WeakMap();
+let atlasInputRequest = null;
+
+function atlasInputs() {
+  const documents = ['shared-chr-bank', 'actor-visual', 'project.visuals']
+    .map(schema => db.peekDocument(schema, null));
+  if (documents.every(Boolean)) return Promise.resolve(documents);
+  if ((documents[0] || documents[1]) && atlasInputRequest
+      && documents.every((value, index) => value === atlasInputRequest.documents[index]))
+    return atlasInputRequest.promise;
+  const request = {documents, promise: Promise.all([
+    db.getDocument('shared-chr-bank', null), db.getDocument('actor-visual', null),
+    db.getDocument('project.visuals', null),
+  ])};
+  atlasInputRequest = request;
+  const clear = () => {if (atlasInputRequest === request) atlasInputRequest = null;};
+  request.promise.then(clear, clear);
+  return request.promise;
+}
 
 function integer(value, label, minimum, maximum) {
   const result = Number(value);
@@ -238,8 +258,12 @@ function buildRecipe(document_) {
 }
 
 async function actorRecipe() {
-  const document_ = await db.getDocument("actor-visual", null);
+  const document_ = db.peekDocument('actor-visual', null) || await db.getDocument("actor-visual", null);
   if (!document_) throw new TypeError("actor-visual 配方正文不可用");
+  return actorRecipeFromDocument(document_);
+}
+
+function actorRecipeFromDocument(document_) {
   let recipe = recipeCaches.get(document_);
   if (!recipe) {
     recipe = buildRecipe(document_);
@@ -405,8 +429,12 @@ export async function actorAppearanceCatalog(
   {entryPoint = ACTOR_ENTRY_TYPE_SELECTOR} = {},
 ) {
   const recipe = await actorRecipe();
-  return [...recipe.actorTypes.keys()].sort((left, right) => left - right)
-    .map(id => actorAppearanceFromRecipe(recipe, id, entryPoint));
+  let catalogs = catalogCaches.get(recipe);
+  if (!catalogs) catalogCaches.set(recipe, catalogs = new Map());
+  if (!catalogs.has(entryPoint)) catalogs.set(entryPoint,
+    [...recipe.actorTypes.keys()].sort((left, right) => left - right)
+      .map(id => actorAppearanceFromRecipe(recipe, id, entryPoint)));
+  return catalogs.get(entryPoint);
 }
 
 /** 已准备好 actor-visual 时供逐帧舞台同步读取；未加载或类型无效则返回 null。 */
@@ -482,7 +510,12 @@ export function actorAtlasImage(
 
 /** 取一个角色集的绘制输入（图案表已解开、配方已归一）。 */
 export async function actorSetSources(pair) {
-  const [recipe, visuals] = await Promise.all([actorRecipe(), db.getDocument('project.visuals')]);
+  const [recipe, visuals] = await Promise.all([actorRecipe(),
+    db.peekDocument('project.visuals', null) || db.getDocument('project.visuals')]);
+  return actorSetSourcesFromRecipe(pair, recipe, visuals);
+}
+
+async function actorSetSourcesFromRecipe(pair, recipe, visuals) {
   const patternTable = await composeChrPatternTable(actorSetBanks(pair, visuals));
   return {recipe, tiles: decodeChrTiles(patternTable), patternTable};
 }
@@ -491,15 +524,14 @@ export async function actorSetSources(pair) {
 
 /** 渲染后统一扫一遍 `[data-actor-atlas]` 并批量画。 */
 export async function paintActorAtlasCanvases(root = document) {
-  const canvases = [...root.querySelectorAll("canvas[data-actor-atlas]")];
+  const canvases = [...root.querySelectorAll("canvas[data-actor-atlas]")]
+    .filter(canvas => canvas.dataset.actorAtlasPainted !== '1' && canvas.isConnected);
   if (!canvases.length) return;
   let chrDocument;
   let actorDocument;
   let visuals;
   try {
-    chrDocument = await db.getDocument("shared-chr-bank", null);
-    actorDocument = await db.getDocument("actor-visual", null);
-    visuals = await db.getDocument('project.visuals', null);
+    [chrDocument, actorDocument, visuals] = await atlasInputs();
   } catch (error) {
     canvases.forEach(canvas => {
       canvas.dataset.actorAtlasError = String(error?.message || error);
@@ -515,17 +547,29 @@ export async function paintActorAtlasCanvases(root = document) {
   }
   let byPair = atlasCaches.get(chrDocument);
   if (!byPair || byPair.actorDocument !== actorDocument || byPair.visuals !== visuals) {
-    byPair = {actorDocument, visuals, sources: new Map()};
+    byPair = {actorDocument, visuals, sources: new Map(), rasters: new Map()};
     atlasCaches.set(chrDocument, byPair);
   }
-  for (const canvas of canvases) {
-    if (canvas.dataset.actorAtlasPainted === "1" || !canvas.isConnected) continue;
+  await Promise.all(canvases.map(canvas => paintActorCanvas(canvas, byPair)));
+}
+
+async function paintActorCanvas(canvas, byPair) {
+  if (canvas.dataset.actorAtlasPainted === '1' || !canvas.isConnected) return;
+  const pending = canvasPaints.get(canvas);
+  if (pending) return pending;
+  const painting = (async () => {
     try {
       const pair = Number(canvas.dataset.actorAtlas);
       if (!byPair.sources.has(pair)) {
-        byPair.sources.set(pair, await actorSetSources(pair));
+        const request = actorSetSourcesFromRecipe(pair,
+          actorRecipeFromDocument(byPair.actorDocument), byPair.visuals);
+        byPair.sources.set(pair, request);
+        request.catch(() => {
+          if (byPair.sources.get(pair) === request) byPair.sources.delete(pair);
+        });
       }
-      const sources = byPair.sources.get(pair);
+      const sources = await byPair.sources.get(pair);
+      if (!canvas.isConnected) return;
       let poses;
       if (canvas.dataset.actorAtlasType !== undefined) {
         const appearance = actorAppearanceFromRecipe(
@@ -547,18 +591,20 @@ export async function paintActorAtlasCanvases(root = document) {
       if (!poses.length) throw new TypeError("角色图集没有要绘制的 pose");
       const palette = canvas.dataset.actorAtlasPalette === undefined
         ? null : Number(canvas.dataset.actorAtlasPalette);
-      blitRaster(canvas, actorAtlasImage(
-        sources,
-        poses,
-        Number(canvas.dataset.actorAtlasScale || 4),
-        palette,
-      ));
+      const scale = Number(canvas.dataset.actorAtlasScale || 4);
+      const key = JSON.stringify([pair, poses, scale, palette]);
+      if (!byPair.rasters.has(key)) byPair.rasters.set(key,
+        actorAtlasImage(sources, poses, scale, palette));
+      blitRaster(canvas, byPair.rasters.get(key));
       canvas.dataset.actorAtlasPainted = "1";
       delete canvas.dataset.actorAtlasError;
     } catch (error) {
       canvas.dataset.actorAtlasError = String(error?.message || error);
     }
-  }
+  })();
+  canvasPaints.set(canvas, painting);
+  try {await painting;}
+  finally {if (canvasPaints.get(canvas) === painting) canvasPaints.delete(canvas);}
 }
 
 // 剧情舞台使用横向物理帧、纵向四组身体调色板的透明精灵表。运动类别和实际列索引由

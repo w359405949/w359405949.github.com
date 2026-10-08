@@ -50,6 +50,8 @@ import {
   storyTimelineObjectLabels,
   storyTimelineCommandEditor,
   hydrateStoryTimelineCommandEditor,
+  storyWorkbenchMountState,
+  restoreStoryWorkbenchMount,
 } from "../../views/story/workbench.js";
 import {textCatalogRecordSource} from "../../views/text/catalog.js";
 import {
@@ -90,7 +92,8 @@ import {
 import {storyTimelineTree} from "./timeline-tree.js";
 import {timelineSelectedBlocks} from "../../ui/timeline-tree.js";
 import {storyExecutionTrace, storyActorObjectId} from "./trace.js";
-import {bindStoryStage, storyStageZoomMarkup, storyStageActorAttributes, syncStoryStageMap, syncStoryPlayerRegions} from "./stage.js";
+import {bindStoryStage, disposeStoryStage, suspendStoryStage, resumeStoryStage,
+  storyStageZoomMarkup, storyStageActorAttributes, syncStoryStageMap, syncStoryPlayerRegions} from "./stage.js";
 import {createAudioTimelinePlayer} from "../../audio/timeline-player.js";
 import {previewSoundEnabled} from "../../audio/preview-preference.js";
 import {bindPreviewSound, previewSoundControl} from "../../ui/preview-sound.js";
@@ -113,6 +116,123 @@ const storyPlaybackMarkup = new WeakMap();
 const storyPlaybackControls = new WeakMap();
 const storyTimelineViewports = new Map();
 const storyAnimationSnapshots = new WeakMap();
+const storyMounts = new Map();
+const boundStoryTimelines = new WeakSet();
+const completedStoryPlaybackStates = new WeakMap();
+let mountedStory = null;
+let storyMountGeneration = 0;
+
+const storyMountKey = () => JSON.stringify([state.view, state.storyPageId, state.storySequenceId]);
+
+function storyMountViewport(view) {
+  let stage = null;
+  try {stage = localStorage.getItem(`canvas-viewport:story:${view}`);} catch { /* 视口存储不可用时保留页内状态。 */ }
+  return JSON.stringify([storyViewport(view), stage]);
+}
+
+function storyPlaybackState(stage) {
+  const id = Number(stage.dataset.storyVmVariant);
+  return {key: JSON.stringify([storyCardFrame(id), state.storyCardPaused.has(id),
+    state.storyPlaying, state.storySpeed, state.storyTimelineRowId,
+    stage.dataset.storySelectedNode, stage.dataset.storySelectedEvent]),
+    saveBytes: state.saveCurrentBytes, saveSlot: state.savePageSlot};
+}
+
+function storyPlaybackStateMatches(stage) {
+  const previous = completedStoryPlaybackStates.get(stage);
+  const current = storyPlaybackState(stage);
+  return previous && Object.keys(current).every(key => previous[key] === current[key]);
+}
+
+function disposeStoryMount(mount) {
+  for (const stage of mount.nodes.flatMap(node => [...(node.querySelectorAll?.('[data-story-vm-variant]') || [])])) {
+    storyAudioPlayers.get(stage)?.player.dispose();
+    disposeStoryStage(stage);
+  }
+}
+
+export function leaveStoryPlayback(content) {
+  storyMountGeneration += 1;
+  storyTimelineObjectListener?.abort();
+  content.querySelectorAll('[data-story-vm-variant]').forEach(suspendStoryStage);
+  if (!mountedStory) {
+    for (const stage of content.querySelectorAll('[data-story-vm-variant]')) {
+      if ([...storyMounts.values()].some(mount => mount.nodes.some(node => node.contains?.(stage)))) continue;
+      storyAudioPlayers.get(stage)?.player.dispose();
+      disposeStoryStage(stage);
+    }
+    return;
+  }
+  for (const stage of content.querySelectorAll('[data-story-vm-variant]')) {
+    const audio = storyAudioPlayers.get(stage);
+    audio?.player.stop();
+    if (audio) audio.playing = false;
+  }
+  if (content.dataset.renderedView === mountedStory.view) {
+    mountedStory.nodes = [...content.childNodes].filter(node => !node.matches?.('.page-head'));
+    mountedStory.workbench = storyWorkbenchMountState();
+    mountedStory.viewport = storyMountViewport(mountedStory.view);
+    mountedStory.models = new Map(storyTimelineModels);
+    mountedStory.heading = content.querySelector('[data-story-page-heading]');
+    mountedStory.onclick = content.onclick;
+    mountedStory.onkeydown = content.onkeydown;
+    const previous = storyMounts.get(mountedStory.key);
+    if (previous && previous !== mountedStory) disposeStoryMount(previous);
+    storyMounts.delete(mountedStory.key);
+    storyMounts.set(mountedStory.key, mountedStory);
+    while (storyMounts.size > 2) {
+      const key = storyMounts.keys().next().value;
+      disposeStoryMount(storyMounts.get(key));
+      storyMounts.delete(key);
+    }
+  }
+  mountedStory = null;
+  content.onclick = null;
+  content.onkeydown = null;
+}
+
+export async function rememberStoryPlayback(content) {
+  const generation = storyMountGeneration;
+  const key = storyMountKey();
+  const view = state.view;
+  const input = [state.project, state.projectRepository];
+  const {sources} = await db.collectPreviewSources(() => null, {includeLoaded: true});
+  const token = await db.reusePreviewProjection(`story-mount:${key}`,
+    input, () => ({}), {sources});
+  if (generation !== storyMountGeneration || view !== state.view) return;
+  mountedStory = {key, view, token, models: new Map(storyTimelineModels), nodes: []};
+}
+
+export function restoreStoryPlayback(content) {
+  const sequence = storyVmSelectedSequenceForView();
+  if (sequence) state.storySequenceId = sequence.id;
+  const key = storyMountKey();
+  const mount = storyMounts.get(key);
+  if (!mount) return false;
+  if (!db.isPreviewProjectionCurrent(`story-mount:${key}`, mount.token)
+      || mount.viewport !== storyMountViewport(state.view)) {
+    disposeStoryMount(mount);
+    storyMounts.delete(key);
+    return false;
+  }
+  const entry = mount.workbench.context?.entry;
+  if (entry && entry.compiled !== buildStoryVmSequence(entry.sequence, entry.variant,
+      storyPartyRuntimeOverrides(entry.sequence.id))) {
+    disposeStoryMount(mount);
+    storyMounts.delete(key);
+    return false;
+  }
+  content.replaceChildren(...mount.nodes);
+  content.querySelectorAll('[data-story-vm-variant]').forEach(resumeStoryStage);
+  if (mount.heading) content.prepend(mount.heading);
+  restoreStoryWorkbenchMount(mount.workbench);
+  storyTimelineModels.clear();
+  for (const [id, model] of mount.models) storyTimelineModels.set(id, model);
+  content.onclick = mount.onclick;
+  content.onkeydown = mount.onkeydown;
+  mountedStory = mount;
+  return true;
+}
 
 function storyAnimationSnapshot(source, phase) {
   if (!source || phase === source.backgroundAnimationPhase) return source;
@@ -883,7 +1003,7 @@ function showStoryDialogueUnavailable(textTarget, targets, message) {
   syncStoryPlaybackText(targets.unavailable, message);
 }
 
-async function updateStoryVmCurrentText(textTarget, dialogue, runtime = {}) {
+async function updateStoryVmCurrentText(textTarget, dialogue, runtime = {}, isCurrent = () => textTarget.isConnected) {
   if (!textTarget) return;
   const targets = storyDialogueTargets(textTarget);
   if (!targets.canvas || !targets.synthetic || !targets.unavailable) return;
@@ -925,17 +1045,19 @@ async function updateStoryVmCurrentText(textTarget, dialogue, runtime = {}) {
           resolvePreview: preview => context.record
             ? resolveEndingCreditsUiPreview(preview, context, state.project)
             : resolveStatusUiPreview(preview, context, state.project, runtime),
+          isCurrent,
         },
       );
+      if (!isCurrent()) return;
       if (!painted) {
         throw new Error(`找不到界面资源 ${dialogue.uiScreenId}`);
       }
-      if (textTarget.dataset.dialogueKey !== dialogueKey) return;
+      if (!isCurrent() || textTarget.dataset.dialogueKey !== dialogueKey) return;
       targets.statusUi.dataset.statusUiKey = dialogueKey;
       syncStoryPlaybackHidden(targets.statusUi, false);
       syncStoryPlaybackHidden(targets.unavailable, true);
     } catch (error) {
-      if (textTarget.dataset.dialogueKey !== dialogueKey) return;
+      if (!isCurrent() || textTarget.dataset.dialogueKey !== dialogueKey) return;
       if (error?.name === "AbortError") {
         delete textTarget.dataset.dialogueKey;
         return;
@@ -999,7 +1121,7 @@ async function updateStoryVmCurrentText(textTarget, dialogue, runtime = {}) {
       uiJsRenderSources(),
       textCatalogRecordSource(recordId),
     ]);
-    if (textTarget.dataset.dialogueKey !== dialogueKey) return;
+    if (!isCurrent() || textTarget.dataset.dialogueKey !== dialogueKey) return;
     if (!Array.isArray(source.bytes)) {
       showStoryDialogueUnavailable(
         textTarget,
@@ -1016,14 +1138,14 @@ async function updateStoryVmCurrentText(textTarget, dialogue, runtime = {}) {
       source.records,
       {fieldWindow, prefixRecord, interactionWindow: Boolean(dialogue.interactionWindow)},
     );
-    if (textTarget.dataset.dialogueKey !== dialogueKey) return;
+    if (!isCurrent() || textTarget.dataset.dialogueKey !== dialogueKey) return;
     syncStoryPlaybackHidden(textTarget, false);
     if (targets.statusUi) syncStoryPlaybackHidden(targets.statusUi, true);
     syncStoryPlaybackHidden(targets.canvas, false);
     syncStoryPlaybackHidden(targets.synthetic, true);
     syncStoryPlaybackHidden(targets.unavailable, true);
   } catch (error) {
-    if (textTarget.dataset.dialogueKey !== dialogueKey) return;
+    if (!isCurrent() || textTarget.dataset.dialogueKey !== dialogueKey) return;
     if (error?.name === "AbortError") {
       delete textTarget.dataset.dialogueKey;
       return;
@@ -1062,14 +1184,18 @@ function animatedBackgroundSurfaces(background, sceneId) {
 
 export function updateStoryPlayback(compilations = null) {
   if (!storyPlayerViewActive()) return;
+  const generation = storyMountGeneration;
+  const view = state.view;
   const allActorLists = storyVmAllActorLists();
   const sequences = storyVmSequencesForView();
   // 同一快照的背景、图块与角色完成绘制后返回。
   return Promise.all([...document.querySelectorAll("[data-story-vm-variant]")].map(async stageElement => {
+    const playbackState = storyPlaybackState(stageElement);
     const updateRevision = (storyPlaybackUpdateRevisions.get(stageElement) || 0) + 1;
     storyPlaybackUpdateRevisions.set(stageElement, updateRevision);
     const updateIsCurrent = () => (
       stageElement.isConnected
+      && generation === storyMountGeneration && view === state.view
       && storyPlaybackUpdateRevisions.get(stageElement) === updateRevision
     );
     const card = storyPlaybackCard(stageElement);
@@ -1427,7 +1553,7 @@ export function updateStoryPlayback(compilations = null) {
     const dialogue = textScreen ? {...snapshot.dialogue, uiScreenId: textScreen,
       uiPreviewContext: interfaceState.context} : snapshot.dialogue;
     await updateStoryVmCurrentText(dialogueTarget, fieldVisible ? dialogue : null,
-      compiled.endingAnimation ? storyInterfaceRuntime(compiled, frameIndex) : snapshot);
+      compiled.endingAnimation ? storyInterfaceRuntime(compiled, frameIndex) : snapshot, updateIsCurrent);
     if (!updateIsCurrent()) return;
     }
     const commands = actors
@@ -1561,6 +1687,7 @@ export function updateStoryPlayback(compilations = null) {
       sceneLink,
       shot?.sceneId,
     );
+    if (updateIsCurrent()) completedStoryPlaybackStates.set(stageElement, playbackState);
   }));
 }
 
@@ -1856,14 +1983,15 @@ function refreshStoryTimelineLayout(root, entry) {
   syncSelectedStoryTimelineRow(current);
 }
 
-export function startStoryTimer() {
-  void bindStoryPageIo(document.querySelector('#content'), render);
-  void bindStoryPageAuthoring(document.querySelector('#content'), render, storyVmSemanticsMap())
-    .catch(error => showEditorError(document.querySelector('#content'), '剧情页', error));
+function bindStoryPlayback(content) {
+  const root = content.querySelector('[data-story-workbench-editable]');
+  const ready = [bindStoryPageIo(content, render),
+    bindStoryPageAuthoring(content, render, storyVmSemanticsMap())
+      .catch(error => {if (root?.isConnected) showEditorError(root, '剧情页', error);})];
   hydrateStorySceneOperands(document);
   document.querySelectorAll("#content [data-scene-position-picker]")
     .forEach(picker => hydrateScenePositionPicker(picker));
-  bindStoryWorkbench({
+  ready.push(bindStoryWorkbench({
     refreshPlayback: updateStoryPlayback,
     refreshTimeline: refreshStoryTimelineLayout,
     seekPlayback: (id, frame, nodeId) => {
@@ -1873,7 +2001,7 @@ export function startStoryTimer() {
       if (stage) stage.dataset.storySelectedNode = nodeId;
       updateStoryPlayback();
     },
-  });
+  }));
   document.querySelectorAll("[data-story-vm-variant]").forEach(stage => {
     bindStoryStage(stage, state.view, objectId => {
       stage.dataset.storySelectedNode = objectId;
@@ -1883,8 +2011,17 @@ export function startStoryTimer() {
       }));
     });
   });
-  const initialPlayback = updateStoryPlayback();
+  return Promise.all(ready);
+}
+
+export function startStoryTimer({reuse = false} = {}) {
+  const binding = reuse ? null : bindStoryPlayback(document.querySelector('#content'));
   bindStoryTimelines();
+  const sound = previewSoundEnabled();
+  document.querySelectorAll('#content [data-preview-sound]').forEach(control => {control.checked = sound;});
+  const painted = reuse && !sound
+    && [...document.querySelectorAll('[data-story-vm-variant]')].every(storyPlaybackStateMatches);
+  const initialPlayback = Promise.all([binding, painted ? null : updateStoryPlayback()]);
   const variantsById = new Map(
     storyVmAllActorLists().map(
       variant => [Number(variant.id), variant],
@@ -2085,6 +2222,11 @@ function selectStoryTimelineRow(root, rowId, block, start = null, insertionPoint
 }
 
 function bindStoryTimeline(root) {
+  if (boundStoryTimelines.has(root)) {
+    restoreStoryTimelineRow(root);
+    return;
+  }
+  boundStoryTimelines.add(root);
   storyTimelineSelectionMarkup.delete(root);
   trackStoryTimelinePointers(root);
   bindTimelinePlayer(root, storyTimelineBinding(root));
@@ -2142,11 +2284,18 @@ function bindStoryTimeline(root) {
       document.querySelector(".story-workbench-inspector")?.scrollTo(0, 0);
     }
   }, true);
+  restoreStoryTimelineRow(root);
+}
+
+function restoreStoryTimelineRow(root) {
   const lane = storyTimelineModels.get(root.dataset.tl)?.lanes.find(item => item.rowId === state.storyTimelineRowId);
   if (lane) {
     revealStoryTimelineRow(root, lane);
     selectStoryTimelineRow(root, lane.rowId, null);
-    storyTimelineBinding(root).onSeek(Number(lane.blocks[0]?.start) || 0);
+    const id = Number(root.dataset.tl.split(':')[1]);
+    state.storyCardFrame.set(id, Number(lane.blocks[0]?.start) || 0);
+    state.storyCardPaused.add(id);
+    state.storyLastTick = performance.now();
     document.querySelector(".story-workbench-inspector")?.scrollTo(0, 0);
   }
 }
