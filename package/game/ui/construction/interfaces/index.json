@@ -5,16 +5,16 @@
     "domains": 3,
     "categories": 16,
     "interfaces": 52,
-    "states": 382,
+    "states": 392,
     "state_roles": {
-      "screen": 354,
+      "screen": 364,
       "action": 19,
       "transition": 6,
       "context": 1
     },
     "state_role_statuses": {
       "screen": {
-        "confirmed": 337,
+        "confirmed": 347,
         "candidate": 0,
         "inferred": 15,
         "unresolved": 2,
@@ -42,11 +42,11 @@
         "unreachable": 0
       }
     },
-    "confirmed_states": 350,
+    "confirmed_states": 360,
     "inferred_states": 26,
     "unresolved_states": 4,
     "unreachable_states": 2,
-    "state_record_associations": 297,
+    "state_record_associations": 307,
     "state_layout_associations": 31,
     "state_runtime_associations": 125,
     "state_reconstruction_associations": 232,
@@ -57225,6 +57225,326 @@
       "variants": [],
       "states": [
         {
+          "id": "battle-messages.grenade-next-damage",
+          "label": "榴弹次目标伤害",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:016",
+                "formatted_text": "损伤了！",
+                "prg_offset_hex": "0x016C7D",
+                "file_offset_hex": "0x016C8D",
+                "end_exclusive_hex": "0x016C9A"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#a1；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.grenade-next-defeat",
+          "label": "榴弹次目标击倒",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:019",
+                "formatted_text": "打倒了！",
+                "prg_offset_hex": "0x016CA6",
+                "file_offset_hex": "0x016CB6",
+                "end_exclusive_hex": "0x016CC0"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#a1；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.throw-a2-next-damage",
+          "label": "手雷次目标伤害",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:016",
+                "formatted_text": "损伤了！",
+                "prg_offset_hex": "0x016C7D",
+                "file_offset_hex": "0x016C8D",
+                "end_exclusive_hex": "0x016C9A"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#a2；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.throw-a2-next-defeat",
+          "label": "手雷次目标击倒",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:019",
+                "formatted_text": "打倒了！",
+                "prg_offset_hex": "0x016CA6",
+                "file_offset_hex": "0x016CB6",
+                "end_exclusive_hex": "0x016CC0"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#a2；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.throw-victory",
+          "label": "投掷后胜利",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:012",
+                "formatted_text": "教训了敌人！",
+                "prg_offset_hex": "0x016C53",
+                "file_offset_hex": "0x016C63",
+                "end_exclusive_hex": "0x016C6F"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#a1-a2；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.spray-acid-neutralized",
+          "label": "喷雾清酸",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:186",
+                "formatted_text": "酸被中和了！",
+                "prg_offset_hex": "0x0175A6",
+                "file_offset_hex": "0x0175B6",
+                "end_exclusive_hex": "0x0175C2"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#spray；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.healing-aa-restored",
+          "label": "党参回复未满",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:078",
+                "formatted_text": "HP恢复了！",
+                "prg_offset_hex": "0x01700E",
+                "file_offset_hex": "0x01701E",
+                "end_exclusive_hex": "0x017028"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#aa；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.healing-ab-restored",
+          "label": "参茸回复未满",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:078",
+                "formatted_text": "HP恢复了！",
+                "prg_offset_hex": "0x01700E",
+                "file_offset_hex": "0x01701E",
+                "end_exclusive_hex": "0x017028"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#ab；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.healing-ac-restored",
+          "label": "灵丹回复未满",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:078",
+                "formatted_text": "HP恢复了！",
+                "prg_offset_hex": "0x01700E",
+                "file_offset_hex": "0x01701E",
+                "end_exclusive_hex": "0x017028"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#ac；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
+          "id": "battle-messages.medicine-box-restored",
+          "label": "药箱回复未满",
+          "status": "confirmed",
+          "ui_role": "screen",
+          "screen_identity": true,
+          "catalog_node_kind": "ui-screen-state",
+          "family": null,
+          "variants": [],
+          "choice_group_ids": [],
+          "incoming_choices": [],
+          "input_binding": null,
+          "evidence": {
+            "records": [
+              {
+                "id": "record:0A:078",
+                "formatted_text": "HP恢复了！",
+                "prg_offset_hex": "0x01700E",
+                "file_offset_hex": "0x01701E",
+                "end_exclusive_hex": "0x017028"
+              }
+            ],
+            "layouts": [],
+            "dispatch_commands": [],
+            "runtime_scenes": [],
+            "reconstruction_previews": [],
+            "code_symbols": [],
+            "notes": [
+              "project/evidence/reverse-engineering/result-window-stages/observations.json#box；仅确认自有结果窗口，数值与目标由本次调用提供。"
+            ]
+          }
+        },
+        {
           "id": "battle-messages.encounter",
           "label": "遭遇提示",
           "status": "confirmed",
@@ -57632,6 +57952,13 @@
                 "prg_offset_hex": "0x017315",
                 "file_offset_hex": "0x017325",
                 "end_exclusive_hex": "0x017334"
+              },
+              {
+                "id": "record:0A:029",
+                "formatted_text": "间不容发",
+                "prg_offset_hex": "0x016D0C",
+                "file_offset_hex": "0x016D1C",
+                "end_exclusive_hex": "0x016D25"
               }
             ],
             "layouts": [],
@@ -57743,7 +58070,8 @@
               "project/evidence/battle-enemy-electromagnetic-sequence/observations.json；自身 35 行动在 664/914 帧选择 138/009，确认消息后经 10→00 结束，1064 帧开始下一行动；护屏 216 保持挂起。",
               "E:/MMEditor/MMEditor.codex8/project/evidence/battle-enemy-detection-wave-sequence/observations.json；自身 33 行动在 664/883/1064 帧选择 135/070/070，目标槽为 0/1，第二结果覆盖第一结果而保留提示，1264 帧开始下一行动。",
               "record:0A:073 的直接落点仅适用于自身行动 42 的 152→073 现场，前文保留与独立 PPU 证据见 project/evidence/battle-item-effect-direct-record073/observations.json；不外推其它调用方或记录 074。",
-              "project/evidence/battle-shock-wave-finalization/observations.json；自身 34 行动在 664/900 帧选择 136/009，自身结果脚本为 05→06→4F，1064 帧开始下一行动。"
+              "project/evidence/battle-shock-wave-finalization/observations.json；自身 34 行动在 664/900 帧选择 136/009，自身结果脚本为 05→06→4F，1064 帧开始下一行动。",
+              "道具攻击的本次目标调用与参数绑定见 project/evidence/reverse-engineering/item-attack-calls/observations.json。"
             ]
           }
         },
@@ -61256,6 +61584,13 @@
                 "end_exclusive_hex": "0x016CA9"
               },
               {
+                "id": "record:0A:018",
+                "formatted_text": "躲开攻击！",
+                "prg_offset_hex": "0x016C99",
+                "file_offset_hex": "0x016CA9",
+                "end_exclusive_hex": "0x016CB6"
+              },
+              {
                 "id": "record:0A:054",
                 "formatted_text": "没有子弹了！",
                 "prg_offset_hex": "0x016E89",
@@ -61324,6 +61659,7 @@
             "reconstruction_previews": [],
             "code_symbols": [],
             "notes": [
+              "道具攻击回避正文 018 的 E6／EA 目标分支见 project/evidence/reverse-engineering/item-attack-calls/observations.json。",
               "record:0A:009 的直接绑定取自麻醉弹自己的 144→009 调用与 battle-anesthetic-bomb-no-effect 场景；原像、PPU 落点和前文保留见 project/evidence/battle-failure-direct-record009/publication.json。该绑定只确认此记录，不外推其它失败记录或调用。",
               "record:0A:058 的独立帧与前序 021 见 project/evidence/mesen/battle-message-no-effect/observations.json。受控条件只把战斗入口检查点的人物首个道具 $64AE 设为 $B0 修理箱，随后由真实手柄选择和结果脚本 91 执行。",
               "battle-no-effect 从自己的 nametable/patterns 推得窗框；battle-item-use 仅用于排除保留的前两行。058 位于屏幕 x=16、y=184、baseline_y=200；本样本只确认 058，不将同一槽位位置外推给另外九条 failure 记录。",
@@ -61823,16 +62159,16 @@
         "source_assets": "extracted-and-addressed",
         "composition": "source-assets-only",
         "editing": "preview-only",
-        "states": 97,
+        "states": 107,
         "state_roles": {
-          "screen": 97,
+          "screen": 107,
           "action": 0,
           "transition": 0,
           "context": 0
         },
         "state_role_statuses": {
           "screen": {
-            "confirmed": 97,
+            "confirmed": 107,
             "candidate": 0,
             "inferred": 0,
             "unresolved": 0,
@@ -61860,11 +62196,11 @@
             "unreachable": 0
           }
         },
-        "confirmed_states": 97,
+        "confirmed_states": 107,
         "inferred_states": 0,
         "unresolved_states": 0,
         "unreachable_states": 0,
-        "states_with_records": 96,
+        "states_with_records": 106,
         "states_with_layouts": 0,
         "states_with_runtime": 96,
         "states_with_reconstruction": 0,

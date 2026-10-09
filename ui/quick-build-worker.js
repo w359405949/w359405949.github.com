@@ -1,8 +1,9 @@
+import { createStaticPackageBootstrapProvider, openActiveProjectStore, openProjectSessionFromPackage, bootstrapActiveProjectFromPackage, buildBrowserRom, createProjectStoreRomBuildProvider } from '../js/scene-actors-Cftr7mCE.js';
+import { state } from '../js/emulator-Bl-sLXnd.js';
+import '../js/baseline-assembly-C0KRII8X.js';
+import '../js/project-store-values-klefznSR.js';
+
 // @editor-module 在浏览器 Worker 中执行快速构建，并发布准备子项与构建事件。
-import {bootstrapActiveProjectFromPackage, createStaticPackageBootstrapProvider, openProjectSessionFromPackage} from "../core/project-bootstrap.js";
-import {openActiveProjectStore} from "../core/project-session.js";
-import {buildBrowserRom, createProjectStoreRomBuildProvider} from "../core/rom-build.js";
-import {state} from "../core/state.js";
 
 self.onmessage = async () => {
   const timings = {};

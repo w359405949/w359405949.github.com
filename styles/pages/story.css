@@ -11,7 +11,7 @@ body[data-page-family="story"] {
   & :is(.story-page-chain-title, .story-page-key).active { background: var(--surface-2); color: var(--accent); }
   & .story-page-program { padding-left: 8px; }
   & .story-page-program > .record-link { overflow-wrap: anywhere; }
-  & #content:has(> .page-head) { gap: 0; }
+  &[data-page-kind="workspace"] #content { gap: 0; }
   & #content > .page-head {
     margin: 0;
     padding: 0 12px;
@@ -26,7 +26,7 @@ body[data-page-family="story"] {
     border: 0;
   }
   & .page-head .record-title { font-size: var(--fs-xs); }
-  & #content > .presentation-timeline:has(.story-editable-playback) {
+  & #content > .presentation-timeline.story-presentation-timeline {
     margin: 0;
     padding: 0 12px 6px;
   }
@@ -446,14 +446,20 @@ body[data-page-family="story"] {
   position: absolute; max-width: none; overflow: visible;
 }
 
-.story-stage-viewport .story-game-screen[data-story-full-screen] { overflow: hidden; }
+.story-stage-viewport canvas {
+  box-sizing: border-box; max-width: none; border: 0; background: transparent;
+}
 
 .story-stage-map {
   position: absolute; max-width: none; z-index: 0;
-  image-rendering: pixelated; pointer-events: none; filter: brightness(.45);
+  image-rendering: pixelated; pointer-events: none; filter: brightness(.45); background: #000;
 }
 
 .story-stage-map[hidden] { display: none; }
+
+.story-game-screen[data-story-interaction] :is(.story-stage-map, [data-role="story-scene-display"]) {
+  will-change: transform;
+}
 
 .story-stage-camera { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
 
@@ -810,12 +816,14 @@ body[data-page-family="story"] {
 }
 
 .story-object-global {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
   border-bottom: 1px solid var(--border);
 }
 
 .story-object-shot-groups {
-  flex: 1;
+  flex: 0 1 auto;
   min-height: 0;
   overflow: auto;
 }
@@ -1356,6 +1364,7 @@ body[data-page-family="story"] {
 .story-game-screen [data-role="story-scene-display"] {
   position: absolute;
   z-index: 1;
+  background: #000;
   inset: 0;
   width: 100%;
   height: 100%;

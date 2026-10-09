@@ -1597,6 +1597,16 @@ button.text-encoding-token:hover { border-color: var(--accent); }
 .module-reference-picker-preview > img {
   display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated;
 }
+.screen-workbench-preview .module-reference-picker-preview canvas {
+  box-sizing: border-box; max-width: 100%; height: 100%; border: 0;
+}
+.module-reference-picker-preview > .monster-module-preview {
+  display: grid; grid-template-rows: minmax(0, 1fr) auto; justify-items: center;
+  width: 100%; height: 100%; min-width: 0; min-height: 0;
+}
+.module-reference-picker-preview .monster-module-preview canvas {
+  width: 100%; height: 100%; max-width: 100%; max-height: 100%; min-height: 0; object-fit: contain;
+}
 .module-reference-data-preview {
   display: grid;
   place-items: center;
@@ -1657,6 +1667,7 @@ button.text-encoding-token:hover { border-color: var(--accent); }
 .module-reference-picker-filter input:focus { border-color: var(--acid); }
 .module-reference-picker-list { min-height: 0; max-height: 370px; overflow: auto; padding: 4px; }
 .module-reference-picker-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-width: 0; min-height: 0; }
+.picker-actions { display: flex; justify-content: flex-end; gap: 8px; padding: 8px; }
 .module-reference-picker-detail { min-width: 0; max-height: 370px; overflow: auto; padding: 10px; border-left: 1px solid var(--line); overflow-wrap: anywhere; }
 .module-reference-picker-detail ol { margin: 0; padding-left: 20px; }
 :is(.reference-detail-field, .reference-preview-panel) .module-reference-picker-option,
@@ -2203,6 +2214,9 @@ animated-resource-picker[disabled] { opacity: .66; }
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
 }
+.animated-resource-dialog[open]:has(> .picker-actions) { grid-template-rows: auto minmax(0, 1fr) auto; }
+.animated-resource-dialog[open]:has(> .module-reference-picker-groups):has(> .picker-actions),
+.animated-resource-dialog[open]:has(> [data-attack-chr-groups]):has(> .picker-actions) { grid-template-rows: auto auto minmax(0, 1fr) auto; }
 .animated-resource-dialog::backdrop { background: rgb(0 0 0 / .58); }
 .animated-resource-toolbar {
   display: grid;
@@ -3154,7 +3168,7 @@ animated-resource-picker[disabled] { opacity: .66; }
 }
 .battle-scene-auto-group {
   display: grid;
-  grid-template-columns: 24px minmax(150px, 1fr) 48px 44px;
+  grid-template-columns: 24px minmax(150px, 1fr) 48px;
   align-items: center;
   gap: 5px;
   min-width: 0;
@@ -3170,6 +3184,9 @@ animated-resource-picker[disabled] { opacity: .66; }
   font: var(--fs-xs) var(--mono);
   white-space: nowrap;
 }
+.battle-scene-auto-group .battle-scene-active-group { grid-column: 2 / -1; white-space: normal; }
+.battle-scene-initial-group { grid-column: 1 / 3; display: flex; align-items: center; gap: 4px; min-width: 0; }
+.battle-scene-initial-group select { flex: 1; min-width: 0; }
 .battle-scene-operation-buttons {
   display: flex;
   align-items: center;
@@ -3913,14 +3930,7 @@ animated-resource-picker[disabled] { opacity: .66; }
 [data-interface-preview-scene] [data-scene-position-thumbnail]:empty { display: none; }
 
 
-/* 通用动画走带（ui/timeline-player.js）。开机演出、剧情、以后的武器特效共用这
-   一套；轨道内容各页自己给，壳只管这几件事。
-
-   轨道按帧定位：块的 left / width 都是「起止帧 ÷ 总帧数」，所有轨道共用同一套
-   映射，竖着看就是同一时刻，播放头因此只需要一个 CSS 变量。
-
-   轨道区和标签列是同一个 grid 的两列，播放头要贯穿所有行，所以它绝对定位在
-   grid 上，横坐标从标签列宽算起——两处都读 --tl-label，不各写一个数。 */
+/* 轨道、标签与播放头共用 --tl-label 的列宽。 */
 .tl {
   display: grid;
   gap: 8px;
@@ -3936,7 +3946,7 @@ animated-resource-picker[disabled] { opacity: .66; }
 
 
 
-.tl.is-live .tl-playhead { box-shadow: 0 0 4px var(--accent); }
+.tl.is-live .tl-playhead::before { box-shadow: 0 0 4px var(--accent); }
 
 
 
@@ -4635,7 +4645,7 @@ attack-visual-timeline .tl-label select { max-width: 130px; }
 
 /* 怪物表里的形象／调色板选择器 */
 /* 形象与调色板是一个选择器的两栏，触发器就是一张合起来的预览。 */
-monster-figure-field { display: block; min-width: 0; }
+monster-figure-field { display: block; min-width: 0; min-height: 76px; }
 monster-figure-field canvas { image-rendering: pixelated; }
 /* **触发器那格默认是 64×32 且 overflow:hidden**——怪物是竖着的，塞进去只会看见
    上半截。这里按怪物的比例给足高度；画布本身可能比方框大（超尺寸的怪物按原大小
@@ -4916,6 +4926,7 @@ monster-figure-field [data-animated-resource-current] canvas {
 .nes-colour-choice > summary { padding: 6px; border: 1px solid var(--border-strong); cursor: pointer; }
 .nes-colour-choice[open] > .nes-colour-choice-panel { width: min(520px, calc(100vw - 32px)); padding: 8px; }
 .nes-colour-choice-panel .nes-colour-cell { min-height: 0; }
+.nes-colour-cell[aria-selected="true"] { outline: 2px solid var(--accent); outline-offset: 1px; }
 .nes-colour-cell[hidden] { display: none; }
 .animated-resource-dialog[data-attack-chr-tile-dialog][open] { grid-template-rows: auto auto minmax(0, 1fr); }
 

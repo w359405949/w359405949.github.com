@@ -1,5 +1,10 @@
 /* 战斗播放器的画面、进度与步骤使用同一套样式。 */
 [data-battle-simulation] {
+[data-battle-test-single-action][hidden] { display: none; }
+[data-simulation-embedded] { min-height: 0; }
+&[data-simulation-embedded] .battle-sequence-replay-detail,
+&[data-simulation-embedded] [data-simulation-generate],
+&[data-simulation-embedded] label:has([data-simulation-seed]) { display: none; }
 .battle-sequence-replay-visual canvas[hidden],
 .battle-sequence-replay-visual [data-battle-sequence-exit][hidden] { display: none; }
 .battle-sequence-replay-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; align-items: center; }

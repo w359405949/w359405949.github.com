@@ -81,12 +81,12 @@ body[data-page="actors"] {
 
 .actor-motion-strip {
   display: block; width: calc(var(--actor-motion-columns) * 32px);
+  box-sizing: content-box;
   height: 32px; overflow: hidden; border: 1px solid var(--border-soft); background: #050708;
 }
 
 .actor-motion-strip canvas {
-  display: block; width: auto; max-width: none; height: auto; image-rendering: pixelated;
-  transform: translateY(var(--actor-appearance-offset, 0%)); transform-origin: left top;
+  display: block; width: 100%; max-width: none; height: 100%; object-fit: contain; image-rendering: pixelated;
 }
 
 @media (max-width: 720px) {

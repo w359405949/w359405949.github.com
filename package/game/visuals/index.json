@@ -15,8 +15,8 @@
     "actor_assigned_animation_groups": 34,
     "actor_unassigned_animation_groups": 0,
     "actor_unique_visuals": 64,
-    "actor_special_asset_definitions": 10,
-    "actor_special_rendered_assets": 17,
+    "actor_special_asset_definitions": 15,
+    "actor_special_rendered_assets": 22,
     "actor_chr_banks": 26,
     "sprite_contexts": 11,
     "generic_metasprites": 55,
@@ -26478,7 +26478,7 @@
               "PRG $03459E actor type base $04",
               "bank $12 scene actor context binding"
             ],
-            "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。",
+            "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "78dd39e905f9f592904973da6a87939ba8166e1ddd3af05f2920a8ce53cd214f"
           },
           {
@@ -33194,7 +33194,7 @@
               "PRG $03459E actor type base $05",
               "bank $12 scene actor context binding"
             ],
-            "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。",
+            "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "20a65a2434be240838a2c61479adadb518e4c5cf64b6d6a24aa8cfa87aca94b9"
           },
           {
@@ -33231,7 +33231,7 @@
               "PRG $03459E actor type base $06",
               "bank $12 scene actor context binding"
             ],
-            "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。",
+            "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "ab8a08b8645412c5a7aeb9c951a1f838dd1cbd6f0e283dc0dc6316cdabe5fa42"
           },
           {
@@ -33270,7 +33270,7 @@
               "PRG $03459E actor type base $07",
               "bank $12 scene actor context binding"
             ],
-            "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。",
+            "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "96f8243694b0ff1726267a6f3a807c8071c4bc497f1ce85c79c3a205a51d7942"
           },
           {
@@ -36158,13 +36158,13 @@
               "PRG $03459E actor type base $04",
               "bank $12 scene actor context binding"
             ],
-            "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。",
+            "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "78dd39e905f9f592904973da6a87939ba8166e1ddd3af05f2920a8ce53cd214f"
           },
           {
             "id": "special-d4",
-            "category": "directionless-sequence",
-            "label": "表尾 2×2 无方向三帧序列",
+            "category": "directional-4x2-tail",
+            "label": "表尾上向两帧与下向首帧",
             "frames": [
               212,
               213,
@@ -36194,8 +36194,9 @@
             "scene_actor_entry_ids_hex": [
               "0xD3"
             ],
-            "playback": "three-frame-special-sequence",
+            "playback": "up-two-steps-down-first-step",
             "evidence": [
+              "PRG $03457A direction/step selector",
               "PRG $03459E actor type $32 base $D4",
               "PRG $02647B/$026552/$026629 table end $D6"
             ],
@@ -38339,6 +38340,182 @@
             ],
             "note": "$40-$45 跨越旧的固定六帧切块边界；左右共用侧面两帧，右向由 OAM 水平翻转得到。",
             "visual_signature": "bad2ca4c852d9eff2a6138ded944ab6c882b58f34296ea9fb3539c4746efda91"
+          },
+          {
+            "id": "dynamic-type-02",
+            "category": "directional-4x2",
+            "label": "动态角色类型 0x02",
+            "frames": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "frames_hex": [
+              "0x0E",
+              "0x0F",
+              "0x10",
+              "0x11",
+              "0x12",
+              "0x13"
+            ],
+            "frame_count": 6,
+            "actor_type_ids": [
+              2
+            ],
+            "actor_type_ids_hex": [
+              "0x02"
+            ],
+            "context_pairs": [
+              148
+            ],
+            "context_pairs_hex": [
+              "0x94"
+            ],
+            "scene_actor_entry_ids": [],
+            "scene_actor_entry_ids_hex": [],
+            "playback": "four-directions-two-steps-mirrored-side",
+            "evidence": [
+              "PRG $03412D-$03413E vehicle preset actor types",
+              "PRG $034101 LDA $A12D,Y",
+              "PRG $028ABA world sprite pair $94"
+            ],
+            "note": "图块集由 ROM 动态调用方确认。",
+            "visual_signature": "c30512934f440fa5d8b84182ea7cb450f39b008cda3e7c9717e141a5eee54a00"
+          },
+          {
+            "id": "dynamic-type-05",
+            "category": "directional-4x2",
+            "label": "动态角色类型 0x05",
+            "frames": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37
+            ],
+            "frames_hex": [
+              "0x20",
+              "0x21",
+              "0x22",
+              "0x23",
+              "0x24",
+              "0x25"
+            ],
+            "frame_count": 6,
+            "actor_type_ids": [
+              5
+            ],
+            "actor_type_ids_hex": [
+              "0x05"
+            ],
+            "context_pairs": [
+              148
+            ],
+            "context_pairs_hex": [
+              "0x94"
+            ],
+            "scene_actor_entry_ids": [],
+            "scene_actor_entry_ids_hex": [],
+            "playback": "four-directions-two-steps-mirrored-side",
+            "evidence": [
+              "PRG $03412D-$03413E vehicle preset actor types",
+              "PRG $034101 LDA $A12D,Y",
+              "PRG $028ABA world sprite pair $94"
+            ],
+            "note": "图块集由 ROM 动态调用方确认。",
+            "visual_signature": "819aa4d6f33b69bdda48fde83189a07462dce639b0a34c5bddcfd01e73c0fbc8"
+          },
+          {
+            "id": "dynamic-type-06",
+            "category": "directional-4x2",
+            "label": "动态角色类型 0x06",
+            "frames": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37
+            ],
+            "frames_hex": [
+              "0x20",
+              "0x21",
+              "0x22",
+              "0x23",
+              "0x24",
+              "0x25"
+            ],
+            "frame_count": 6,
+            "actor_type_ids": [
+              6
+            ],
+            "actor_type_ids_hex": [
+              "0x06"
+            ],
+            "context_pairs": [
+              148
+            ],
+            "context_pairs_hex": [
+              "0x94"
+            ],
+            "scene_actor_entry_ids": [],
+            "scene_actor_entry_ids_hex": [],
+            "playback": "four-directions-two-steps-mirrored-side",
+            "evidence": [
+              "PRG $03412D-$03413E vehicle preset actor types",
+              "PRG $034101 LDA $A12D,Y",
+              "PRG $028ABA world sprite pair $94"
+            ],
+            "note": "图块集由 ROM 动态调用方确认。",
+            "visual_signature": "819aa4d6f33b69bdda48fde83189a07462dce639b0a34c5bddcfd01e73c0fbc8"
+          },
+          {
+            "id": "dynamic-type-08",
+            "category": "directional-4x2",
+            "label": "动态角色类型 0x08",
+            "frames": [
+              38,
+              39,
+              40,
+              41,
+              42,
+              43
+            ],
+            "frames_hex": [
+              "0x26",
+              "0x27",
+              "0x28",
+              "0x29",
+              "0x2A",
+              "0x2B"
+            ],
+            "frame_count": 6,
+            "actor_type_ids": [
+              8
+            ],
+            "actor_type_ids_hex": [
+              "0x08"
+            ],
+            "context_pairs": [
+              148
+            ],
+            "context_pairs_hex": [
+              "0x94"
+            ],
+            "scene_actor_entry_ids": [],
+            "scene_actor_entry_ids_hex": [],
+            "playback": "four-directions-two-steps-mirrored-side",
+            "evidence": [
+              "PRG $03412D-$03413E vehicle preset actor types",
+              "PRG $034101 LDA $A12D,Y",
+              "PRG $028ABA world sprite pair $94"
+            ],
+            "note": "图块集由 ROM 动态调用方确认。",
+            "visual_signature": "cd205150c1264a907fa63d1c5a658430254aa19455f5537b265bba65d6340fa5"
           }
         ]
       },
@@ -40639,6 +40816,51 @@
             ],
             "note": "$40-$45 跨越旧的固定六帧切块边界；左右共用侧面两帧，右向由 OAM 水平翻转得到。",
             "visual_signature": "61b5ecc83be45ade0e512d2778463bd41deba168aba613ac3a7a14427ebe5e3e"
+          },
+          {
+            "id": "dynamic-type-37",
+            "category": "directional-4x2",
+            "label": "动态角色类型 0x37",
+            "frames": [
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "frames_hex": [
+              "0x6E",
+              "0x6F",
+              "0x70",
+              "0x71",
+              "0x72",
+              "0x73"
+            ],
+            "frame_count": 6,
+            "actor_type_ids": [
+              55
+            ],
+            "actor_type_ids_hex": [
+              "0x37"
+            ],
+            "context_pairs": [
+              150
+            ],
+            "context_pairs_hex": [
+              "0x96"
+            ],
+            "scene_actor_entry_ids": [],
+            "scene_actor_entry_ids_hex": [],
+            "playback": "four-directions-two-steps-mirrored-side",
+            "evidence": [
+              "PRG $024FAD scene-actor:E7:00 autonomous $63",
+              "PRG $025AC0 opcode $1C sets type $37",
+              "PRG $034C27 type renderer writes $0395,X",
+              "scene $E7 header sprite pair"
+            ],
+            "note": "图块集由 ROM 动态调用方确认。",
+            "visual_signature": "2629edcd6d2bc06b8cd8e88cf0161bd35db8c9085b93af5323c84158b0392970"
           }
         ]
       },
@@ -48219,7 +48441,7 @@
               "PRG $03459E actor type $3E base $02",
               "bank $12 scene actor entry $A4 fixes direction up"
             ],
-            "note": "$02-$07 的实际图像不是同一对象的方向或步态；类型 $3E 在静态场景绑定中固定从 $02 进入，因此只把 $02 作为该形象，不再把后续五个独立形象拼成伪动画。",
+            "note": "场景 $A4 初始上向取 $02；其他朝向与步态经 PRG $03457A 选择。",
             "visual_signature": "eb2a5bf9d47b4d40dffb61ad0659a69606acfd60d06f75ee88ed825d9f0d9fce"
           },
           {
@@ -55723,7 +55945,7 @@
           "PRG $03459E actor type $3E base $02",
           "bank $12 scene actor entry $A4 fixes direction up"
         ],
-        "note": "$02-$07 的实际图像不是同一对象的方向或步态；类型 $3E 在静态场景绑定中固定从 $02 进入，因此只把 $02 作为该形象，不再把后续五个独立形象拼成伪动画。"
+        "note": "场景 $A4 初始上向取 $02；其他朝向与步态经 PRG $03457A 选择。"
       },
       {
         "id": "direct-03",
@@ -55791,7 +56013,7 @@
           "PRG $03459E actor type base $04",
           "bank $12 scene actor context binding"
         ],
-        "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。"
+        "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。"
       },
       {
         "id": "direct-05",
@@ -55827,7 +56049,7 @@
           "PRG $03459E actor type base $05",
           "bank $12 scene actor context binding"
         ],
-        "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。"
+        "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。"
       },
       {
         "id": "direct-06",
@@ -55863,7 +56085,7 @@
           "PRG $03459E actor type base $06",
           "bank $12 scene actor context binding"
         ],
-        "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。"
+        "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。"
       },
       {
         "id": "direct-07",
@@ -55901,7 +56123,7 @@
           "PRG $03459E actor type base $07",
           "bank $12 scene actor context binding"
         ],
-        "note": "该角色类型固定进入一个独立帧；$02-$07 彼此不是同一动画的相位。"
+        "note": "静态场景记录的初始上向取该帧；角色类型的其他朝向与步态经 PRG $03457A 选择。"
       },
       {
         "id": "walk-40",
@@ -56005,8 +56227,8 @@
       },
       {
         "id": "special-d4",
-        "category": "directionless-sequence",
-        "label": "表尾 2×2 无方向三帧序列",
+        "category": "directional-4x2-tail",
+        "label": "表尾上向两帧与下向首帧",
         "frames": [
           212,
           213,
@@ -56036,8 +56258,9 @@
         "scene_actor_entry_ids_hex": [
           "0xD3"
         ],
-        "playback": "three-frame-special-sequence",
+        "playback": "up-two-steps-down-first-step",
         "evidence": [
+          "PRG $03457A direction/step selector",
           "PRG $03459E actor type $32 base $D4",
           "PRG $02647B/$026552/$026629 table end $D6"
         ],
@@ -56065,11 +56288,227 @@
           "215-entry frame table coverage"
         ],
         "note": "frame $01 保留在可写回原始表中，但当前角色类型表和静态代码都没有确认其运行时入口，因此不与任何 CHR 上下文强行配对。"
+      },
+      {
+        "id": "dynamic-type-02",
+        "category": "directional-4x2",
+        "label": "动态角色类型 0x02",
+        "frames": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "frames_hex": [
+          "0x0E",
+          "0x0F",
+          "0x10",
+          "0x11",
+          "0x12",
+          "0x13"
+        ],
+        "frame_count": 6,
+        "actor_type_ids": [
+          2
+        ],
+        "actor_type_ids_hex": [
+          "0x02"
+        ],
+        "context_pairs": [
+          148
+        ],
+        "context_pairs_hex": [
+          "0x94"
+        ],
+        "scene_actor_entry_ids": [],
+        "scene_actor_entry_ids_hex": [],
+        "playback": "four-directions-two-steps-mirrored-side",
+        "evidence": [
+          "PRG $03412D-$03413E vehicle preset actor types",
+          "PRG $034101 LDA $A12D,Y",
+          "PRG $028ABA world sprite pair $94"
+        ],
+        "note": "图块集由 ROM 动态调用方确认。"
+      },
+      {
+        "id": "dynamic-type-05",
+        "category": "directional-4x2",
+        "label": "动态角色类型 0x05",
+        "frames": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37
+        ],
+        "frames_hex": [
+          "0x20",
+          "0x21",
+          "0x22",
+          "0x23",
+          "0x24",
+          "0x25"
+        ],
+        "frame_count": 6,
+        "actor_type_ids": [
+          5
+        ],
+        "actor_type_ids_hex": [
+          "0x05"
+        ],
+        "context_pairs": [
+          148
+        ],
+        "context_pairs_hex": [
+          "0x94"
+        ],
+        "scene_actor_entry_ids": [],
+        "scene_actor_entry_ids_hex": [],
+        "playback": "four-directions-two-steps-mirrored-side",
+        "evidence": [
+          "PRG $03412D-$03413E vehicle preset actor types",
+          "PRG $034101 LDA $A12D,Y",
+          "PRG $028ABA world sprite pair $94"
+        ],
+        "note": "图块集由 ROM 动态调用方确认。"
+      },
+      {
+        "id": "dynamic-type-06",
+        "category": "directional-4x2",
+        "label": "动态角色类型 0x06",
+        "frames": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37
+        ],
+        "frames_hex": [
+          "0x20",
+          "0x21",
+          "0x22",
+          "0x23",
+          "0x24",
+          "0x25"
+        ],
+        "frame_count": 6,
+        "actor_type_ids": [
+          6
+        ],
+        "actor_type_ids_hex": [
+          "0x06"
+        ],
+        "context_pairs": [
+          148
+        ],
+        "context_pairs_hex": [
+          "0x94"
+        ],
+        "scene_actor_entry_ids": [],
+        "scene_actor_entry_ids_hex": [],
+        "playback": "four-directions-two-steps-mirrored-side",
+        "evidence": [
+          "PRG $03412D-$03413E vehicle preset actor types",
+          "PRG $034101 LDA $A12D,Y",
+          "PRG $028ABA world sprite pair $94"
+        ],
+        "note": "图块集由 ROM 动态调用方确认。"
+      },
+      {
+        "id": "dynamic-type-08",
+        "category": "directional-4x2",
+        "label": "动态角色类型 0x08",
+        "frames": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43
+        ],
+        "frames_hex": [
+          "0x26",
+          "0x27",
+          "0x28",
+          "0x29",
+          "0x2A",
+          "0x2B"
+        ],
+        "frame_count": 6,
+        "actor_type_ids": [
+          8
+        ],
+        "actor_type_ids_hex": [
+          "0x08"
+        ],
+        "context_pairs": [
+          148
+        ],
+        "context_pairs_hex": [
+          "0x94"
+        ],
+        "scene_actor_entry_ids": [],
+        "scene_actor_entry_ids_hex": [],
+        "playback": "four-directions-two-steps-mirrored-side",
+        "evidence": [
+          "PRG $03412D-$03413E vehicle preset actor types",
+          "PRG $034101 LDA $A12D,Y",
+          "PRG $028ABA world sprite pair $94"
+        ],
+        "note": "图块集由 ROM 动态调用方确认。"
+      },
+      {
+        "id": "dynamic-type-37",
+        "category": "directional-4x2",
+        "label": "动态角色类型 0x37",
+        "frames": [
+          110,
+          111,
+          112,
+          113,
+          114,
+          115
+        ],
+        "frames_hex": [
+          "0x6E",
+          "0x6F",
+          "0x70",
+          "0x71",
+          "0x72",
+          "0x73"
+        ],
+        "frame_count": 6,
+        "actor_type_ids": [
+          55
+        ],
+        "actor_type_ids_hex": [
+          "0x37"
+        ],
+        "context_pairs": [
+          150
+        ],
+        "context_pairs_hex": [
+          "0x96"
+        ],
+        "scene_actor_entry_ids": [],
+        "scene_actor_entry_ids_hex": [],
+        "playback": "four-directions-two-steps-mirrored-side",
+        "evidence": [
+          "PRG $024FAD scene-actor:E7:00 autonomous $63",
+          "PRG $025AC0 opcode $1C sets type $37",
+          "PRG $034C27 type renderer writes $0395,X",
+          "scene $E7 header sprite pair"
+        ],
+        "note": "图块集由 ROM 动态调用方确认。"
       }
     ],
     "special_asset_categories": {
-      "directional-4x2": 1,
-      "directionless-sequence": 1,
+      "directional-4x2": 6,
+      "directional-4x2-tail": 1,
       "single-frame-unit": 7,
       "unreferenced-raw-frame": 1
     },

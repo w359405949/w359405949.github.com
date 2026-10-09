@@ -93979,17 +93979,17 @@
   "summary": {
     "scene_windows": 119,
     "scene_window_cells": 10919,
-    "templates": 472,
-    "frame_layers": 1679,
-    "content_slots": 593,
-    "bound_states": 99,
+    "templates": 482,
+    "frame_layers": 1689,
+    "content_slots": 603,
+    "bound_states": 109,
     "unbound_states": 21,
     "states_with_own_preview": 234,
     "bindings_by_basis": {
       "category-layout-evidence": 2,
-      "state-scene-evidence": 97
+      "state-scene-evidence": 107
     },
-    "filled_slots": 97
+    "filled_slots": 107
   },
   "battle_message_runtime_parameters": {
     "schema": "metalmaxcn.battle-message-runtime-parameters",
@@ -97730,6 +97730,36 @@
         ]
       },
       "message_state_roots": {
+        "battle-messages.grenade-next-damage": [
+          "record:0A:016"
+        ],
+        "battle-messages.grenade-next-defeat": [
+          "record:0A:019"
+        ],
+        "battle-messages.throw-a2-next-damage": [
+          "record:0A:016"
+        ],
+        "battle-messages.throw-a2-next-defeat": [
+          "record:0A:019"
+        ],
+        "battle-messages.throw-victory": [
+          "record:0A:012"
+        ],
+        "battle-messages.spray-acid-neutralized": [
+          "record:0A:186"
+        ],
+        "battle-messages.healing-aa-restored": [
+          "record:0A:078"
+        ],
+        "battle-messages.healing-ab-restored": [
+          "record:0A:078"
+        ],
+        "battle-messages.healing-ac-restored": [
+          "record:0A:078"
+        ],
+        "battle-messages.medicine-box-restored": [
+          "record:0A:078"
+        ],
         "battle-messages.encounter": [
           "record:0A:013"
         ],
@@ -97737,6 +97767,7 @@
           "record:0A:020",
           "record:0A:021",
           "record:0A:028",
+          "record:0A:029",
           "record:0A:090",
           "record:0A:111",
           "record:0A:112",
@@ -98057,6 +98088,7 @@
           "record:0A:002",
           "record:0A:009",
           "record:0A:017",
+          "record:0A:018",
           "record:0A:054",
           "record:0A:055",
           "record:0A:058",
@@ -98227,8 +98259,8 @@
           "executable": {
             "format": "ECMAScript-module",
             "export": "settlePartyAttack",
-            "source": "/** Executable ROM semantics, not a browser integration or runtime capture adapter.\n * Entry: Bank17 ACAF, normal outgoing AA98 result path. Inputs are explicit;\n * this module does not obtain them from emulator RAM or item defaults.\n */\nconst comparisonFactors = [0,13,26,39,51,65,78,90,102,115,128];\nconst scaleFactors = [0,128,0,13,26,39,51,65,78,90,102,115,128];\nfunction integer(input, key, max) {\n  const value = input[key];\n  if (!Number.isInteger(value) || value < 0 || value > max)\n    throw new RangeError(`Missing or invalid ${key}`);\n  return value;\n}\n// D654 deliberately drops carry from the 16-bit addition before shifting.\n// For value <=32767 this is floor(value*factor/256); keep the actual algorithm\n// for larger unsigned values instead of silently extending that formula.\nexport function fraction(value, factor) {\n  if (!Number.isInteger(value) || value<0 || value>65535 ||\n      !Number.isInteger(factor) || factor<0 || factor>255) throw new RangeError('fraction input');\n  let selected = 0;\n  for (let bit=0;bit<8;bit++) {\n    if ((factor >>> bit)&1) selected = (selected + value)&65535;\n    selected >>>= 1;\n  }\n  return selected;\n}\nexport function settlePartyAttack(input) {\n  const prepared = integer(input,'prepared',65535);\n  const defense = integer(input,'defense',65535);\n  const comparison70E3 = integer(input,'comparison70E3',255);\n  const comparison70E4 = integer(input,'comparison70E4',255);\n  const fallbackRandomByte = integer(input,'fallbackRandomByte',255);\n  const randomByte = integer(input,'randomByte',255);\n  const kind = integer(input,'kind',255);\n  const targetScale = integer(input,'targetScale',12);\n  const targetStatus = integer(input,'targetStatus',255);\n  const shield = integer(input,'shield',255);\n  const difference = comparison70E3-comparison70E4;\n  const magnitude = Math.min(50,3*Math.abs(difference));\n  const comparisonFactor = comparisonFactors[Math.floor(magnitude/5)] + magnitude%5;\n  const comparisonDelta = fraction(prepared,comparisonFactor);\n  const comparisonAdjusted = (prepared+(difference>=0 ? comparisonDelta : -comparisonDelta))&65535;\n  const halfDefense = defense>>>1;\n  const intermediate = comparisonAdjusted>halfDefense ? comparisonAdjusted-halfDefense : fallbackRandomByte&3;\n  const randomFactor = Math.floor(randomByte*102/256);\n  const randomDelta = fraction(intermediate,randomFactor<51 ? randomFactor : randomFactor-51);\n  const randomized = (intermediate+(randomFactor<51 ? -randomDelta : randomDelta))&65535;\n  let scaled = randomized;\n  if (kind===4 || kind===34) {\n    if (targetScale===3) scaled = (scaled*2)&65535;\n    else if (targetScale!==0) scaled = fraction(scaled,scaleFactors[targetScale]);\n  }\n  const statusAdjusted = targetStatus&128 ? scaled>>>1 : scaled;\n  const final = shield ? Math.floor(statusAdjusted/5) : statusAdjusted;\n  return {prepared,comparisonFactor,comparisonDelta,comparisonAdjusted,halfDefense,intermediate,\n          randomFactor,randomDelta,randomized,scaled,statusAdjusted,final};\n}\n",
-            "sha256": "b0c48083e454bf7f5d63a6da31690e9f77409a8a99ba291b7209353b51a794e8",
+            "source": "// @editor-module ACAF／ADDB 按显式准备字段计算本次敌方伤害。\n/** Executable ROM semantics, not a browser integration or runtime capture adapter.\n * Entry: Bank17 ACAF, normal outgoing AA98 result path. Inputs are explicit;\n * this module does not obtain them from emulator RAM or item defaults.\n */\nconst comparisonFactors = [0,13,26,39,51,65,78,90,102,115,128];\nconst scaleFactors = [0,128,0,13,26,39,51,65,78,90,102,115,128];\nfunction integer(input, key, max) {\n  const value = input[key];\n  if (!Number.isInteger(value) || value < 0 || value > max)\n    throw new RangeError(`Missing or invalid ${key}`);\n  return value;\n}\n// D654 deliberately drops carry from the 16-bit addition before shifting.\n// For value <=32767 this is floor(value*factor/256); keep the actual algorithm\n// for larger unsigned values instead of silently extending that formula.\nexport function fraction(value, factor) {\n  if (!Number.isInteger(value) || value<0 || value>65535 ||\n      !Number.isInteger(factor) || factor<0 || factor>255) throw new RangeError('fraction input');\n  let selected = 0;\n  for (let bit=0;bit<8;bit++) {\n    if ((factor >>> bit)&1) selected = (selected + value)&65535;\n    selected >>>= 1;\n  }\n  return selected;\n}\nexport function settlePartyAttack(input) {\n  const prepared = integer(input,'prepared',65535);\n  const defense = integer(input,'defense',65535);\n  const comparison70E3 = integer(input,'comparison70E3',255);\n  const comparison70E4 = integer(input,'comparison70E4',255);\n  const fallbackRandomByte = integer(input,'fallbackRandomByte',255);\n  const randomByte = integer(input,'randomByte',255);\n  const kind = integer(input,'kind',255);\n  const targetScale = integer(input,'targetScale',12);\n  const targetStatus = integer(input,'targetStatus',255);\n  const shield = integer(input,'shield',255);\n  const difference = comparison70E3-comparison70E4;\n  const magnitude = Math.min(50,3*Math.abs(difference));\n  const comparisonFactor = comparisonFactors[Math.floor(magnitude/5)] + magnitude%5;\n  const comparisonDelta = fraction(prepared,comparisonFactor);\n  const comparisonAdjusted = (prepared+(difference>=0 ? comparisonDelta : -comparisonDelta))&65535;\n  const halfDefense = defense>>>1;\n  const intermediate = comparisonAdjusted>halfDefense ? comparisonAdjusted-halfDefense : fallbackRandomByte&3;\n  const randomFactor = Math.floor(randomByte*102/256);\n  const randomDelta = fraction(intermediate,randomFactor<51 ? randomFactor : randomFactor-51);\n  const randomized = (intermediate+(randomFactor<51 ? -randomDelta : randomDelta))&65535;\n  let scaled = randomized;\n  if (kind===4 || kind===34) {\n    if (targetScale===3) scaled = (scaled*2)&65535;\n    else if (targetScale!==0) scaled = fraction(scaled,scaleFactors[targetScale]);\n  }\n  const statusAdjusted = targetStatus&128 ? scaled>>>1 : scaled;\n  const final = shield ? Math.floor(statusAdjusted/5) : statusAdjusted;\n  return {prepared,comparisonFactor,comparisonDelta,comparisonAdjusted,halfDefense,intermediate,\n          randomFactor,randomDelta,randomized,scaled,statusAdjusted,final};\n}\n",
+            "sha256": "677e49a04b8245483c09da4f33c9566581bea31bdc8a55378f44c7d9628ec9a8",
             "integration": "Reference semantics for the consumer to integrate. Publication does not install a browser evaluator or request dynamic eval."
           },
           "evidence": [
@@ -98998,6 +99030,22 @@
               "includes_item_name": false
             }
           ]
+        },
+        {
+          "id": "acid-neutralized",
+          "label": "清除酸腐蚀",
+          "phases": [
+            {
+              "state": "battle-messages.spray-acid-neutralized",
+              "slot": "slot:message:0",
+              "text_record_ref": {
+                "resource_id": "text-record",
+                "node_id": "record:0A:186"
+              },
+              "retain_previous": true,
+              "includes_item_name": false
+            }
+          ]
         }
       ],
       "outcome_evidence": "project/evidence/mesen/battle-message-spray/observations.json"
@@ -99472,6 +99520,22 @@
               "includes_item_name": false
             }
           ]
+        },
+        {
+          "id": "hp-restored",
+          "label": "回复后 HP 未满",
+          "phases": [
+            {
+              "state": "battle-messages.medicine-box-restored",
+              "slot": "slot:message:0",
+              "text_record_ref": {
+                "resource_id": "text-record",
+                "node_id": "record:0A:078"
+              },
+              "retain_previous": true,
+              "includes_item_name": false
+            }
+          ]
         }
       ],
       "outcome_evidence": "project/evidence/mesen/battle-message-medicine-box/observations.json"
@@ -99596,6 +99660,22 @@
               "template": "ui-template:battle-healing-aa-hp-full"
             }
           ]
+        },
+        {
+          "id": "hp-restored",
+          "label": "回复后 HP 未满",
+          "phases": [
+            {
+              "state": "battle-messages.healing-aa-restored",
+              "slot": "slot:message:0",
+              "text_record_ref": {
+                "resource_id": "text-record",
+                "node_id": "record:0A:078"
+              },
+              "retain_previous": true,
+              "includes_item_name": false
+            }
+          ]
         }
       ],
       "outcome_evidence": "project/evidence/mesen/battle-message-healing-aa/observations.json"
@@ -99642,6 +99722,22 @@
               "includes_item_name": false
             }
           ]
+        },
+        {
+          "id": "hp-restored",
+          "label": "回复后 HP 未满",
+          "phases": [
+            {
+              "state": "battle-messages.healing-ab-restored",
+              "slot": "slot:message:0",
+              "text_record_ref": {
+                "resource_id": "text-record",
+                "node_id": "record:0A:078"
+              },
+              "retain_previous": true,
+              "includes_item_name": false
+            }
+          ]
         }
       ],
       "outcome_evidence": "project/evidence/mesen/battle-message-healing-ab/observations.json"
@@ -99683,6 +99779,22 @@
               "text_record_ref": {
                 "resource_id": "text-record",
                 "node_id": "record:0A:079"
+              },
+              "retain_previous": true,
+              "includes_item_name": false
+            }
+          ]
+        },
+        {
+          "id": "hp-restored",
+          "label": "回复后 HP 未满",
+          "phases": [
+            {
+              "state": "battle-messages.healing-ac-restored",
+              "slot": "slot:message:0",
+              "text_record_ref": {
+                "resource_id": "text-record",
+                "node_id": "record:0A:078"
               },
               "retain_previous": true,
               "includes_item_name": false
@@ -460512,6 +460624,956 @@
       "bound_states": [
         "battle-messages.item-effect"
       ]
+    },
+    {
+      "id": "ui-template:grenade-next-damage",
+      "label": "榴弹次目标伤害",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#a1",
+        "frame_template": "ui-template:battle-grenade-damage",
+        "sampled_state": "battle-messages.grenade-next-damage"
+      },
+      "state_scope": [
+        "battle-messages.grenade-next-damage"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-grenade-damage",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:016",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "second_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:016"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.grenade-next-damage"
+      ]
+    },
+    {
+      "id": "ui-template:grenade-next-defeat",
+      "label": "榴弹次目标击倒",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#a1",
+        "frame_template": "ui-template:battle-grenade-defeat",
+        "sampled_state": "battle-messages.grenade-next-defeat"
+      },
+      "state_scope": [
+        "battle-messages.grenade-next-defeat"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-grenade-defeat",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:019",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "second_line": {
+              "x": 16,
+              "y": 200,
+              "baseline_y": 216
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:019"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.grenade-next-defeat"
+      ]
+    },
+    {
+      "id": "ui-template:throw-a2-next-damage",
+      "label": "手雷次目标伤害",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#a2",
+        "frame_template": "ui-template:battle-throw-a2-damage",
+        "sampled_state": "battle-messages.throw-a2-next-damage"
+      },
+      "state_scope": [
+        "battle-messages.throw-a2-next-damage"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-throw-a2-damage",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:016",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "second_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:016"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.throw-a2-next-damage"
+      ]
+    },
+    {
+      "id": "ui-template:throw-a2-next-defeat",
+      "label": "手雷次目标击倒",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#a2",
+        "frame_template": "ui-template:battle-throw-a2-defeat",
+        "sampled_state": "battle-messages.throw-a2-next-defeat"
+      },
+      "state_scope": [
+        "battle-messages.throw-a2-next-defeat"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-throw-a2-defeat",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:019",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "second_line": {
+              "x": 16,
+              "y": 200,
+              "baseline_y": 216
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:019"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.throw-a2-next-defeat"
+      ]
+    },
+    {
+      "id": "ui-template:throw-victory",
+      "label": "投掷后胜利",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#a1-a2",
+        "frame_template": "ui-template:battle-grenade-damage",
+        "sampled_state": "battle-messages.throw-victory"
+      },
+      "state_scope": [
+        "battle-messages.throw-victory"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-grenade-damage",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:012",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 152,
+              "baseline_y": 168
+            },
+            "second_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:012"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.throw-victory"
+      ]
+    },
+    {
+      "id": "ui-template:spray-acid-neutralized",
+      "label": "喷雾清酸",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#spray",
+        "frame_template": "ui-template:battle-spray-no-effect",
+        "sampled_state": "battle-messages.spray-acid-neutralized"
+      },
+      "state_scope": [
+        "battle-messages.spray-acid-neutralized"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-spray-no-effect",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:186",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "second_line": {
+              "x": 16,
+              "y": 200,
+              "baseline_y": 216
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:186"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.spray-acid-neutralized"
+      ]
+    },
+    {
+      "id": "ui-template:healing-aa-restored",
+      "label": "党参回复未满",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#aa",
+        "frame_template": "ui-template:battle-healing-aa-hp-full",
+        "sampled_state": "battle-messages.healing-aa-restored"
+      },
+      "state_scope": [
+        "battle-messages.healing-aa-restored"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-healing-aa-hp-full",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:078",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "second_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:078"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.healing-aa-restored"
+      ]
+    },
+    {
+      "id": "ui-template:healing-ab-restored",
+      "label": "参茸回复未满",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#ab",
+        "frame_template": "ui-template:battle-healing-ab-hp-full",
+        "sampled_state": "battle-messages.healing-ab-restored"
+      },
+      "state_scope": [
+        "battle-messages.healing-ab-restored"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-healing-ab-hp-full",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:078",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "second_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:078"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.healing-ab-restored"
+      ]
+    },
+    {
+      "id": "ui-template:healing-ac-restored",
+      "label": "灵丹回复未满",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#ac",
+        "frame_template": "ui-template:battle-healing-ac-hp-full",
+        "sampled_state": "battle-messages.healing-ac-restored"
+      },
+      "state_scope": [
+        "battle-messages.healing-ac-restored"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-healing-ac-hp-full",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:078",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 168,
+              "baseline_y": 184
+            },
+            "second_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:078"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.healing-ac-restored"
+      ]
+    },
+    {
+      "id": "ui-template:medicine-box-restored",
+      "label": "药箱回复未满",
+      "source": {
+        "kind": "declared-result-window-stage",
+        "evidence": "project/evidence/reverse-engineering/result-window-stages/observations.json#box",
+        "frame_template": "ui-template:battle-medicine-box-hp-full",
+        "sampled_state": "battle-messages.medicine-box-restored"
+      },
+      "state_scope": [
+        "battle-messages.medicine-box-restored"
+      ],
+      "interfaces": [],
+      "allow_reuse": true,
+      "viewport": {
+        "width": 256,
+        "height": 240,
+        "coordinate_space": "screen-pixels"
+      },
+      "frame_layers": [
+        {
+          "kind": "scene_window_raster",
+          "window": "scene-window:battle-medicine-box-hp-full",
+          "rectangle": {
+            "x": 0,
+            "y": 144,
+            "width": 256,
+            "height": 88
+          }
+        }
+      ],
+      "frame_layout_records": [],
+      "primary_layout_record": null,
+      "content_slots": [
+        {
+          "id": "slot:message:0",
+          "role": "message",
+          "fillable": true,
+          "accepts": "message-region-record",
+          "sampled_record": "record:0A:078",
+          "geometry": {
+            "coordinate_space": "screen-pixels",
+            "rectangle": {
+              "x": 8,
+              "y": 152,
+              "width": 160,
+              "height": 72
+            },
+            "first_line": {
+              "x": 16,
+              "y": 184,
+              "baseline_y": 200
+            },
+            "second_line": {
+              "x": 16,
+              "y": 200,
+              "baseline_y": 216
+            },
+            "line_height": 16,
+            "available_width": 152
+          },
+          "text_policy": {
+            "resource_id": "text-record",
+            "original_path": "game/text/records/original.json",
+            "record_fields": [
+              "capacity",
+              "editable_byte_capacity",
+              "protected_ranges"
+            ]
+          },
+          "fonts": [
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "core-latin"
+            },
+            {
+              "catalog": "game/text/fonts/index.json",
+              "id": "narrative-12x12"
+            }
+          ],
+          "runtime_parameter_catalog": "battle_message_runtime_parameters"
+        }
+      ],
+      "record_scope": {
+        "records": [
+          "record:0A:078"
+        ],
+        "basis": "independently-witnessed-result-entry"
+      },
+      "requires_message_sequence": true,
+      "reusable": true,
+      "bound_states": [
+        "battle-messages.medicine-box-restored"
+      ]
     }
   ],
   "bindings": [
@@ -460537,6 +461599,226 @@
       "confidence": "inferred",
       "reason": "同分类的 teleport-terminal 登记了 record:03:007，该分类走同一个窗口；本状态尚无可填内容，按空模板绘制。",
       "fills": [],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.grenade-next-damage",
+      "interface": "battle-messages",
+      "template": "ui-template:grenade-next-damage",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:016",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:016"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.grenade-next-defeat",
+      "interface": "battle-messages",
+      "template": "ui-template:grenade-next-defeat",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:019",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:019"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.throw-a2-next-damage",
+      "interface": "battle-messages",
+      "template": "ui-template:throw-a2-next-damage",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:016",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:016"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.throw-a2-next-defeat",
+      "interface": "battle-messages",
+      "template": "ui-template:throw-a2-next-defeat",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:019",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:019"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.throw-victory",
+      "interface": "battle-messages",
+      "template": "ui-template:throw-victory",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:012",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:012"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.spray-acid-neutralized",
+      "interface": "battle-messages",
+      "template": "ui-template:spray-acid-neutralized",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:186",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:186"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.healing-aa-restored",
+      "interface": "battle-messages",
+      "template": "ui-template:healing-aa-restored",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:078",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:078"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.healing-ab-restored",
+      "interface": "battle-messages",
+      "template": "ui-template:healing-ab-restored",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:078",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:078"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.healing-ac-restored",
+      "interface": "battle-messages",
+      "template": "ui-template:healing-ac-restored",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:078",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:078"
+          }
+        }
+      ],
+      "empty_slots": [],
+      "deferred_records": [],
+      "extra_layout_records": []
+    },
+    {
+      "state": "battle-messages.medicine-box-restored",
+      "interface": "battle-messages",
+      "template": "ui-template:medicine-box-restored",
+      "basis": "state-scene-evidence",
+      "confidence": "confirmed",
+      "reason": "本状态实机帧独立推得窗骨架与文字位置；容量和命令语义引用文本模块。",
+      "fills": [
+        {
+          "slot": "slot:message:0",
+          "record": "record:0A:078",
+          "role": "message",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:078"
+          }
+        }
+      ],
       "empty_slots": [],
       "deferred_records": [],
       "extra_layout_records": []
@@ -460633,7 +461915,8 @@
         "record:0A:138",
         "record:0A:135",
         "record:0A:152",
-        "record:0A:136"
+        "record:0A:136",
+        "record:0A:029"
       ],
       "extra_layout_records": []
     },
@@ -462709,6 +463992,10 @@
           "reason": "本状态其它记录的入窗原点及前序保留关系未确认；不能用本条采样消息的槽位位置代替。"
         },
         {
+          "record": "record:0A:018",
+          "reason": "本状态其它记录的入窗原点及前序保留关系未确认；不能用本条采样消息的槽位位置代替。"
+        },
+        {
           "record": "record:0A:054",
           "reason": "本状态其它记录的入窗原点及前序保留关系未确认；不能用本条采样消息的槽位位置代替。"
         },
@@ -463188,6 +464475,124 @@
       "records": 0,
       "layouts": 0,
       "reason": "该状态与同族状态都没有已登记的布局、模板或可定位文字，缺的是提取与关联，不是采集帧。"
+    }
+  ],
+  "battle_message_continuations": [
+    {
+      "result_script": "battle-result-script:93",
+      "item_reference": "human-item:A1",
+      "target_iteration": {
+        "order": "current-target-list",
+        "repeat_from_phase": 1,
+        "after_phase": 2,
+        "clear_previous": true,
+        "phases": [
+          {
+            "state": "battle-messages.grenade-next-damage",
+            "slot": "slot:message:0",
+            "text_record_ref": {
+              "resource_id": "text-record",
+              "node_id": "record:0A:016"
+            },
+            "retain_previous": false
+          },
+          {
+            "state": "battle-messages.grenade-next-defeat",
+            "slot": "slot:message:0",
+            "text_record_ref": {
+              "resource_id": "text-record",
+              "node_id": "record:0A:019"
+            },
+            "retain_previous": true
+          }
+        ]
+      },
+      "victory": {
+        "page": "battle-results",
+        "state": "battle-results.victory",
+        "text_record_ref": {
+          "resource_id": "text-record",
+          "node_id": "record:0A:012"
+        },
+        "condition": "目标列表完成、敌方全部离场且本次经验非零",
+        "retain_previous": false,
+        "wait": "confirmation",
+        "phase": {
+          "state": "battle-messages.throw-victory",
+          "slot": "slot:message:0",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:012"
+          },
+          "retain_previous": false
+        }
+      },
+      "return": {
+        "scope": "result-script",
+        "after": "target-list-and-optional-victory-confirmation"
+      },
+      "evidence": "project/evidence/reverse-engineering/message-successors/observations.json",
+      "structure_status": "confirmed",
+      "call_status": "unconfirmed",
+      "gap": "E6 当前攻击准备、目标结算与奖励未绑定；结构证据不提供数值执行。"
+    },
+    {
+      "result_script": "battle-result-script:93",
+      "item_reference": "human-item:A2",
+      "target_iteration": {
+        "order": "current-target-list",
+        "repeat_from_phase": 1,
+        "after_phase": 2,
+        "clear_previous": true,
+        "phases": [
+          {
+            "state": "battle-messages.throw-a2-next-damage",
+            "slot": "slot:message:0",
+            "text_record_ref": {
+              "resource_id": "text-record",
+              "node_id": "record:0A:016"
+            },
+            "retain_previous": false
+          },
+          {
+            "state": "battle-messages.throw-a2-next-defeat",
+            "slot": "slot:message:0",
+            "text_record_ref": {
+              "resource_id": "text-record",
+              "node_id": "record:0A:019"
+            },
+            "retain_previous": true
+          }
+        ]
+      },
+      "victory": {
+        "page": "battle-results",
+        "state": "battle-results.victory",
+        "text_record_ref": {
+          "resource_id": "text-record",
+          "node_id": "record:0A:012"
+        },
+        "condition": "目标列表完成、敌方全部离场且本次经验非零",
+        "retain_previous": false,
+        "wait": "confirmation",
+        "phase": {
+          "state": "battle-messages.throw-victory",
+          "slot": "slot:message:0",
+          "text_record_ref": {
+            "resource_id": "text-record",
+            "node_id": "record:0A:012"
+          },
+          "retain_previous": false
+        }
+      },
+      "return": {
+        "scope": "result-script",
+        "after": "target-list-and-optional-victory-confirmation"
+      },
+      "evidence": "project/evidence/reverse-engineering/message-successors/observations.json",
+      "structure_status": "confirmed",
+      "call_status": "unconfirmed",
+      "gap": "E6 当前攻击准备、目标结算与奖励未绑定；结构证据不提供数值执行。"
     }
   ]
 }
