@@ -6,20 +6,36 @@
   <title>MM // Metal Max Editor</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23111%27/%3E%3Ctext x=%278%27 y=%2712%27 font-size=%2711%27 font-family=%27monospace%27 fill=%27%23e8e8e8%27 text-anchor=%27middle%27%3EM%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="./styles.css">
-  <script type="module" async src="./js/prefetch-Mkq3MhYD.js"></script>
-    <link rel="modulepreload" href="./js/baseline-assembly-C0KRII8X.js">
-  <link rel="modulepreload" href="./js/emulator-Bl-sLXnd.js">
-  <link rel="modulepreload" href="./js/main-BqWgyv9e.js">
-  <link rel="modulepreload" href="./js/monster-figure-C07vG7yu.js">
-  <link rel="modulepreload" href="./js/page-runtime-paths-_6fUGFtn.js">
-  <link rel="modulepreload" href="./js/prefetch-Mkq3MhYD.js">
-  <link rel="modulepreload" href="./js/preview-sound-DHDXA99x.js">
-  <link rel="modulepreload" href="./js/project-store-values-klefznSR.js">
-  <link rel="modulepreload" href="./js/record-BbPQSBBw.js">
-  <link rel="modulepreload" href="./js/scene-actors-Cftr7mCE.js">
-  <link rel="modulepreload" href="./js/timeline-player-C0h-EABn.js">
-  <link rel="modulepreload" href="./js/write-access-marker-Q1IasgBx.js">
-  <link rel="modulepreload" href="./js/writeback-capabilities-CGLIL9l3.js">
+  <script type="module" async src="./js/prefetch-DqOaf0OY.js"></script>
+    <link rel="modulepreload" href="./js/attack-chr-tile-selector-DxIfuyLU.js">
+  <link rel="modulepreload" href="./js/battle-result-script-runtime-B_EClFew.js">
+  <link rel="modulepreload" href="./js/battle-result-state-machine-CED-HbAa.js">
+  <link rel="modulepreload" href="./js/components-CzR4vjXT.js">
+  <link rel="modulepreload" href="./js/element-tree-DsgOBeTK.js">
+  <link rel="modulepreload" href="./js/emulator-DynsZsth.js">
+  <link rel="modulepreload" href="./js/facility-window-semantics-BvUme8Kk.js">
+  <link rel="modulepreload" href="./js/interface-pattern-banks-DmLVA2TH.js">
+  <link rel="modulepreload" href="./js/main-D955329O.js">
+  <link rel="modulepreload" href="./js/metatile-edit-session-CjsiVVHM.js">
+  <link rel="modulepreload" href="./js/overview-CxFLx7O1.js">
+  <link rel="modulepreload" href="./js/package-schema-paths-gCIepLXx.js">
+  <link rel="modulepreload" href="./js/page-modules-C3rwAFeP.js">
+  <link rel="modulepreload" href="./js/page-package-inputs-DcoC8ZQj.js">
+  <link rel="modulepreload" href="./js/page-runtime-paths-C0wxpxf1.js">
+  <link rel="modulepreload" href="./js/pattern-pixel-editor-B8puYQ8A.js">
+  <link rel="modulepreload" href="./js/prefetch-DqOaf0OY.js">
+  <link rel="modulepreload" href="./js/preview-DMSrQMyk.js">
+  <link rel="modulepreload" href="./js/preview-sound-DsPhxRYS.js">
+  <link rel="modulepreload" href="./js/prg-loaders-BmwiQmdC.js">
+  <link rel="modulepreload" href="./js/reference-fields-DRprsJJr.js">
+  <link rel="modulepreload" href="./js/scene-elevators-N46oPTJC.js">
+  <link rel="modulepreload" href="./js/story-event-links-CRjG_25M.js">
+  <link rel="modulepreload" href="./js/teleport-hidden-links-IE1jgp1P.js">
+  <link rel="modulepreload" href="./js/timeline-player-y3hI_sah.js">
+  <link rel="modulepreload" href="./js/ui-editor-nodes-CtPdwTyu.js">
+  <link rel="modulepreload" href="./js/vehicle-field-session-CBRi3Az7.js">
+  <link rel="modulepreload" href="./js/visual-metasprites-DJP54-bV.js">
+  <link rel="modulepreload" href="./js/working-exchange-BEt_dNlf.js">
 </head>
 <body>
   <header class="topbar">
@@ -30,6 +46,8 @@
       <button class="button primary" id="global-build-run" type="button">构建并运行</button>
       <button class="button" id="global-build-expanded" type="button">构建自检 ROM</button>
       <button class="button" id="global-build-open" type="button">打开模拟器</button>
+      <a class="button" href="?view=build"
+        title="查看项目状态、每个写入区的构建事件和最终 ROM 字节差异">▤ 项目与构建</a>
     </div>
     <div class="search-container">
       <label class="search">
@@ -45,6 +63,28 @@
     <aside class="sidebar">
       <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-controls="navigation" aria-expanded="true" aria-label="收起导航栏" title="收起导航栏">‹</button>
       <nav id="navigation" aria-label="编辑页面"></nav>
+      <section class="cache-control" data-cache-control aria-label="缓存控制">
+        <button id="sidebar-cache-toggle" type="button" aria-controls="sidebar-cache-content"
+          aria-expanded="false" aria-label="展开缓存控制" title="缓存控制">▣</button>
+        <div class="cache-control-content" id="sidebar-cache-content">
+          <div class="cache-control-heading"><b>缓存</b><small data-cache-total>正在统计…</small></div>
+          <div class="cache-control-actions">
+            <button type="button" data-cache-fill>填满缓存</button>
+            <button type="button" data-cache-cancel hidden>取消</button>
+            <button type="button" data-cache-clear="all">清理缓存</button>
+          </div>
+          <small data-cache-fill-status role="status" hidden></small>
+          <details class="cache-control-details">
+            <summary>分项清理</summary>
+            <div class="cache-control-items">
+              <div><b>运行包数据</b><small data-cache-status="package">正在统计…</small>
+                <button type="button" data-cache-clear="package" aria-label="清理运行包数据缓存">清理</button></div>
+              <div><b>派生预览</b><small data-cache-status="preview">正在统计…</small>
+                <button type="button" data-cache-clear="preview" aria-label="清理派生预览缓存">清理</button></div>
+            </div>
+          </details>
+        </div>
+      </section>
       <div class="sidebar-foot">
         <span>METAL MAX 项目</span>
         <small>编辑 · 构建 · 运行</small>
@@ -84,6 +124,6 @@
       <b>暂无匹配资产</b>
     </div>
   </template>
-  <script type="module" src="./js/main-BqWgyv9e.js"></script>
+  <script type="module" src="./js/main-D955329O.js"></script>
 </body>
 </html>

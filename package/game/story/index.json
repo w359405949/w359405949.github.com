@@ -45,10 +45,10 @@
     "browser_vm_variants": 10,
     "browser_vm_programs": 202,
     "browser_vm_unimplemented_handlers": 16,
-    "cutscene_execution_chains": 144,
+    "cutscene_execution_chains": 145,
     "confirmed_narrative_cutscenes": 117,
     "control_lock_cutscene_candidates": 26,
-    "audited_scene_cutscene_entries": 147
+    "audited_scene_cutscene_entries": 148
   },
   "entrypoints": {
     "load_scene_actor_records": {
@@ -203901,6 +203901,89 @@
       "observed_direction_writes": 50509,
       "note": "控制锁期间 $6B 取脚本输入 $0488（即 $50-$53 的 input_value），未锁时取手柄 $19"
     },
+    "scene_entry_flag_table": {
+      "source_resource_id": "scene-actor-runtime",
+      "selector_prg": 214712,
+      "scenes": {
+        "prg_offset": 214774,
+        "raw": [
+          10,
+          1,
+          12,
+          17,
+          34,
+          40,
+          47,
+          56,
+          71,
+          100,
+          84,
+          88,
+          230,
+          171,
+          116,
+          144,
+          168,
+          172,
+          64,
+          195,
+          205,
+          37,
+          30
+        ]
+      },
+      "flags": {
+        "prg_offset": 214797,
+        "raw": [
+          63,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          75,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          51,
+          51
+        ]
+      },
+      "conditional": {
+        "prg_offset": 214694,
+        "raw": [
+          165,
+          97,
+          201,
+          10,
+          208,
+          12,
+          169,
+          63,
+          32,
+          159,
+          254,
+          208,
+          5,
+          169,
+          127,
+          32,
+          133,
+          254
+        ]
+      }
+    },
     "party_member_death_rendering": {
       "ordering": "living-members-then-dead-members",
       "death_status_address_base": 25723,
@@ -213611,6 +213694,12 @@
         "alias_variant_ids": [],
         "alias_variant_ids_hex": [],
         "canonical_signature": "controllable-scene-event-variant|F7",
+        "preview_entry": {
+          "scene_entry_bootstrap": {
+            "scene_id": 0,
+            "id": 29
+          }
+        },
         "label": "墓地 · 狗在墓地绕行",
         "inventory_classification": "related-non-cutscene-scene-action",
         "inventory_confidence": "confirmed-not-control-locking",
@@ -216686,11 +216775,7 @@
             "trigger": "autonomous-script:4F:00",
             "camera_source": "scene-loader-$62/$63"
           },
-          "initial_player_map_x": 8,
-          "initial_player_map_y": 7,
           "initial_player_direction": "up",
-          "camera_tile_origin_x": 0,
-          "camera_tile_origin_y": 0,
           "entry_source": {
             "kind": "independent-save-load",
             "script_id": 79,
@@ -222458,10 +222543,6 @@
             2,
             3
           ],
-          "initial_player_map_x": 4,
-          "initial_player_map_y": 8,
-          "camera_tile_origin_x": -4,
-          "camera_tile_origin_y": 1,
           "sequence_completion": "scripted-encounter-entry",
           "initial_player_direction": "right",
           "preview_field_inputs": [
@@ -222472,7 +222553,12 @@
                 4
               ]
             }
-          ]
+          ],
+          "interaction_bootstrap": {
+            "scene_actor_entry_id": 231,
+            "actor_record_id": 2,
+            "player_direction": "right"
+          }
         },
         "related_sequence_ids": [
           "interaction-list-e7-actor-00-script-41",
@@ -222763,6 +222849,45 @@
         "inventory_classification": "control-lock-cutscene-candidate",
         "inventory_confidence": "control-disable-confirmed-plot-purpose-unresolved",
         "player_control_disabled": true
+      },
+      {
+        "kind": "controllable-scene-event-variant",
+        "player_control": "retained",
+        "entry_variant_id": 247,
+        "variant_ids": [
+          247
+        ],
+        "shots": [
+          {
+            "shot_index": 0,
+            "kind": "actor-list-shot",
+            "variant_id": 247,
+            "variant_id_hex": "0xF7",
+            "story_state": null,
+            "story_state_hex": null,
+            "scene_id": 115,
+            "scene_id_hex": "0x73",
+            "scene_name": "墓地 · 院落",
+            "evidence": "rom-scene-event-flag-selector"
+          }
+        ],
+        "shot_count": 1,
+        "completion": "ambient-scene-loop",
+        "id": "scene-variant-f7-from-de",
+        "label": "墓地 · 从地下返回",
+        "preview_entry": {
+          "entry_context": {
+            "status": "rom-entry-context-resolved"
+          },
+          "sequence_completion": "ambient-scene-loop",
+          "scene_entry_bootstrap": {
+            "scene_id": 222,
+            "id": 1
+          }
+        },
+        "inventory_classification": "related-non-cutscene-scene-action",
+        "inventory_confidence": "confirmed-not-control-locking",
+        "player_control_disabled": false
       }
     ],
     "variants": [
@@ -419669,13 +419794,13 @@
     "selection_policy": "include every confirmed narrative chain; if plot purpose is unresolved, include every scene chain with a persistent story state, autonomous $0487 lock, or dedicated blocking mode",
     "generic_interaction_policy": "$0356A1 temporarily forces $0487=$FF while the ordinary interaction runner executes. That transient lock alone does not turn all NPC dialogue into a cutscene; explicit interaction-owned locks remain visible in related_entries.",
     "summary": {
-      "execution_chains": 144,
+      "execution_chains": 145,
       "confirmed_narrative_cutscenes": 117,
       "control_lock_cutscene_candidates": 26,
-      "listed_non_cutscene_scene_actions": 1,
+      "listed_non_cutscene_scene_actions": 2,
       "player_control_disabled_chains": 31,
       "related_non_lock_or_interaction_owned_entries": 3,
-      "total_audited_scene_entries": 147,
+      "total_audited_scene_entries": 148,
       "field_modes_audited": 15,
       "narrative_field_modes": [
         7,
@@ -432064,6 +432189,123 @@
         ],
         "dialogue_clues": [],
         "dialogue_clue_count": 0,
+        "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
+      },
+      {
+        "id": "scene-variant-f7-from-de",
+        "label": "墓地 · 从地下返回",
+        "classification": "related-non-cutscene-scene-action",
+        "confidence": "confirmed-not-control-locking",
+        "inventory_disposition": "listed-but-excluded-from-cutscenes",
+        "player_control": "retained",
+        "player_control_disabled": false,
+        "control_mechanisms": [
+          "normal field loop remains active; no autonomous persistent lock"
+        ],
+        "actor_list_ids": [
+          247
+        ],
+        "actor_list_ids_hex": [
+          "0xF7"
+        ],
+        "scene_ids": [
+          115
+        ],
+        "scene_ids_hex": [
+          "0x73"
+        ],
+        "source_script_ids": [
+          0,
+          2,
+          40
+        ],
+        "source_script_ids_hex": [
+          "0x00",
+          "0x02",
+          "0x28"
+        ],
+        "entry_evidence": null,
+        "completion": "ambient-scene-loop",
+        "scene_contexts": [
+          {
+            "scene_id": 115,
+            "scene_id_hex": "0x73",
+            "name": "墓地 · 院落",
+            "kind": "unclassified",
+            "preview": null,
+            "package": "game/scenes/115-scene-73/scene.json",
+            "evidence": "rom-scene-event-flag-selector"
+          }
+        ],
+        "dialogue_clues": [
+          {
+            "actor_list_id": 115,
+            "actor_list_id_hex": "0x73",
+            "actor_uid": "scene-actor:73:00",
+            "region_id": 5,
+            "region_id_hex": "0x05",
+            "record_id": 180,
+            "record_id_hex": "0xB4",
+            "resource_id": "ui-script:05:180",
+            "text": "这是我死去的儿子住过的房间。我们抛弃了梦想和功名只留下回忆相伴了。"
+          },
+          {
+            "actor_list_id": 247,
+            "actor_list_id_hex": "0xF7",
+            "actor_uid": "scene-actor:F7:00",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 57,
+            "record_id_hex": "0x39",
+            "resource_id": "ui-script:0E:057",
+            "text": "是儿子的墓地…"
+          },
+          {
+            "actor_list_id": 115,
+            "actor_list_id_hex": "0x73",
+            "actor_uid": "scene-actor:73:01",
+            "region_id": 5,
+            "region_id_hex": "0x05",
+            "record_id": 181,
+            "record_id_hex": "0xB5",
+            "resource_id": "ui-script:05:181",
+            "text": "啊真是稀客！在仓库里的草垫上小睡一会儿，恢复一下体力吧？"
+          },
+          {
+            "actor_list_id": 115,
+            "actor_list_id_hex": "0x73",
+            "actor_uid": "scene-actor:73:02",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 58,
+            "record_id_hex": "0x3A",
+            "resource_id": "ui-script:0E:058",
+            "text": "这里的生活不错！在田里流汗，呼吸新鲜空气，还有好吃的东西！每天都使人的身心焕然一新！"
+          },
+          {
+            "actor_list_id": 115,
+            "actor_list_id_hex": "0x73",
+            "actor_uid": "scene-actor:73:02",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 177,
+            "record_id_hex": "0xB1",
+            "resource_id": "ui-script:0E:177",
+            "text": "你是追寻怪物而迷路了？其实以前我也是因为迷路才到这里的！什么，帮我做点事？慢慢干吧！"
+          },
+          {
+            "actor_list_id": 115,
+            "actor_list_id_hex": "0x73",
+            "actor_uid": "scene-actor:73:03",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 55,
+            "record_id_hex": "0x37",
+            "resource_id": "ui-script:0E:055",
+            "text": "汪，汪！"
+          }
+        ],
+        "dialogue_clue_count": 9,
         "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
       }
     ],

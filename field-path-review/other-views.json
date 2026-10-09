@@ -961,54 +961,6 @@
       "symbol": "renderInterfacePage"
     },
     {
-      "file": "views/investigation.js",
-      "kind": "direct_project_data",
-      "expression": "const directory = state.project.facilities?.investigation;",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "renderInvestigation"
-    },
-    {
-      "file": "views/investigation.js",
-      "kind": "direct_project_data",
-      "expression": "const audit = state.project.scenes?.logic || {};",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "renderInvestigation"
-    },
-    {
-      "file": "views/investigation.js",
-      "kind": "direct_project_data",
-      "expression": "const sceneNames = new Map((state.project.scenes?.editable_scenes || []).map(scene => [Number(scene.id), scene.name]));",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "renderInvestigation"
-    },
-    {
-      "file": "views/investigation.js",
-      "kind": "direct_project_data",
-      "expression": "const itemNames = new Map((state.project.game_data?.items?.records || []).map(item => [Number(item.id), item.name]));",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "renderInvestigation"
-    },
-    {
-      "file": "views/investigation.js",
-      "kind": "direct_project_data",
-      "expression": "[\"角色 / 对话交互\", state.project.story?.npc_catalog?.summary?.records || 0, \"角色交互先于当前格/前方格扫描；直接对话、脚本对话、商店、服务和对话触发战斗已在“NPC 对话与交互”页面展开。\", \"角色交互分派\"],",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "matching"
-    },
-    {
-      "file": "views/npcs.js",
-      "kind": "direct_project_data",
-      "expression": "const catalog = state.project.story?.npc_catalog || {};",
-      "verdict": "exclude",
-      "reason": "读取项目目录、资源投影或会话身份用于展示与引用；该处不修改资源字段。",
-      "symbol": "renderNpcs"
-    },
-    {
       "file": "views/story/catalog.js",
       "kind": "direct_project_data",
       "expression": "const story = state.project.story || {};",

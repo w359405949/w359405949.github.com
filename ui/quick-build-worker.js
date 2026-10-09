@@ -1,7 +1,9 @@
-import { createStaticPackageBootstrapProvider, openActiveProjectStore, openProjectSessionFromPackage, bootstrapActiveProjectFromPackage, buildBrowserRom, createProjectStoreRomBuildProvider } from '../js/scene-actors-Cftr7mCE.js';
-import { state } from '../js/emulator-Bl-sLXnd.js';
-import '../js/baseline-assembly-C0KRII8X.js';
-import '../js/project-store-values-klefznSR.js';
+import { createStaticPackageBootstrapProvider, openActiveProjectStore, openProjectSessionFromPackage, bootstrapActiveProjectFromPackage } from '../js/battle-result-script-runtime-B_EClFew.js';
+import { buildBrowserRom, createProjectStoreRomBuildProvider } from '../js/prg-loaders-BmwiQmdC.js';
+import { state } from '../js/emulator-DynsZsth.js';
+import '../js/visual-metasprites-DJP54-bV.js';
+import '../js/package-schema-paths-gCIepLXx.js';
+import '../js/story-event-links-CRjG_25M.js';
 
 // @editor-module 在浏览器 Worker 中执行快速构建，并发布准备子项与构建事件。
 

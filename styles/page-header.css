@@ -19,6 +19,8 @@
 .page-header-row :is(h2, p):not(:where(.module-reference-picker-menu *, dialog *)) { margin: 0; font-size: var(--fs-sm); white-space: nowrap; }
 .page-header-row p:not(:where(.module-reference-picker-menu *, dialog *)) { flex: 0 1 auto; min-width: 0; padding: 0; overflow: hidden; text-overflow: ellipsis; }
 .page-header-row .head-actions { order: 10; margin-left: auto; }
+.page-header-row > div:not(.head-actions) { min-width: 0; flex-wrap: nowrap; margin: 0; padding: 0; }
+.page-header-row > .toolbar { margin: 0; padding: 0; white-space: nowrap; }
 .page-header-row :is(label, .toolbar-field):not(:where(.module-reference-picker-menu *, dialog *)) {
   display: inline-flex;
   align-items: center;
@@ -86,3 +88,5 @@ body[data-compact-page-header="true"] .story-sequence-switcher { display: flex; 
 body[data-compact-page-header="true"] .story-sequence-switcher .module-reference-field { flex: 1; min-width: 0; }
 .state-document-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .state-document-tools .module-reference-field { flex: 1 0 100%; }
+.working-exchange-actions { display: inline-flex; flex: none; align-items: center; gap: 4px; }
+.working-exchange-actions [hidden] { display: none; }
