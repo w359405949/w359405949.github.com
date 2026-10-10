@@ -1,9 +1,9 @@
 {
   "schema": "metalmaxcn.asset-bindings",
   "target_profile_id": "metalmaxcn-cn-v1",
-  "build_map_sha256": "0fa9c9ed4b3cf3bac47ef7fd7b18199d4dd3710f920f001914b13b0083bca918",
+  "build_map_sha256": "80051dac81a18646a82cf14f34099145e396f6c4bebff769549b12df9f812301",
   "annotations_path": "analysis/byte-map/index.json",
-  "annotations_sha256": "2182cc4a21231618823555b77194dd590a91e68d2a6d8a7832153ca77905762f",
+  "annotations_sha256": "066a0c5edda1b9b0ca5555f6db7ea05cfa11bf40021f5fefbd1d779936524d86",
   "bindings": [
     {
       "asset_id": "actor-visual",
@@ -35745,8 +35745,27 @@
             "asset_offset": 27,
             "length": 9,
             "original_sha256": "6884dc1d273ee7445238a06e9259aea360ebd8857dbfa76df0d638b930a47a67"
+          },
+          {
+            "fragment_id": "field-scene-lifecycle-service.scene-remap-reader",
+            "asset_offset": 36,
+            "length": 256,
+            "original_sha256": "3d6876a0146de8576eb2395a858de1213d1b92c65b779df3a331cfd5a4584546"
+          },
+          {
+            "fragment_id": "field-scene-lifecycle-service.scene-remap-gate",
+            "asset_offset": 292,
+            "length": 30,
+            "original_sha256": "0ef38fbbf3f94c9f09ef1abf4bab917599fdf0785bd9ad728e549220abe9de83"
+          },
+          {
+            "fragment_id": "field-scene-lifecycle-service.scene-remap-directory",
+            "asset_offset": 322,
+            "length": 4,
+            "original_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e"
           }
-        ]
+        ],
+        "extension": "scene-object-expansion/v1"
       },
       "priority": 120,
       "confidence": "exact-byte-map-writeback",
@@ -35767,6 +35786,30 @@
           "length": 9,
           "asset_offset": 27,
           "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.scene-remap-reader",
+          "file_offset": 606224,
+          "length": 256,
+          "asset_offset": 36,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.scene-remap-gate",
+          "file_offset": 165648,
+          "length": 30,
+          "asset_offset": 292,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.scene-remap-directory",
+          "file_offset": 606480,
+          "length": 4,
+          "asset_offset": 322,
+          "offset_in_slot": 0
         }
       ],
       "evidence": {
@@ -35776,7 +35819,7 @@
         "statuses": [
           "exact"
         ],
-        "covered_bytes": 36
+        "covered_bytes": 326
       }
     },
     {
@@ -38257,6 +38300,55 @@
             "length": 13,
             "original_sha256": "5d8c373588ef1055b7205a8b48da0f3347852e30faead8f4f8b831648ceae0fd",
             "runtime_address": 47782
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-reader",
+            "asset_offset": 4580,
+            "length": 768,
+            "original_sha256": "069af124b2f3cf012a5020a5fbb99a474031f732f11b3429aac3f1e6beb13aab",
+            "runtime_address": 33280
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-gate",
+            "asset_offset": 5348,
+            "length": 39,
+            "original_sha256": "97ea39c82b2f77639161bc8ea04c45b9a4478f5499d3de034b62c7641f557055",
+            "runtime_address": 47689
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-dispatch",
+            "asset_offset": 5387,
+            "length": 23,
+            "original_sha256": "91aed13be63c7189efa3ca6ad4f1951d1b9e525d2abb6b8facaee36c2a74319a",
+            "runtime_address": 47954
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-current",
+            "asset_offset": 5410,
+            "length": 3,
+            "original_sha256": "747f580430f4ddb353a7674a2c92ea950fc283bba422803c8296fa5a53833a82",
+            "runtime_address": 47929
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-front",
+            "asset_offset": 5413,
+            "length": 3,
+            "original_sha256": "747f580430f4ddb353a7674a2c92ea950fc283bba422803c8296fa5a53833a82",
+            "runtime_address": 47948
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-call",
+            "asset_offset": 5416,
+            "length": 5,
+            "original_sha256": "3e4f318e60880bd9d96dc4688772188c0ae30b93362e218c15a5f93f2cc3ad55",
+            "runtime_address": 47997
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-directory",
+            "asset_offset": 5421,
+            "length": 4,
+            "original_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e",
+            "runtime_address": 34048
           }
         ]
       },
@@ -38311,6 +38403,62 @@
           "length": 13,
           "asset_offset": 4567,
           "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-reader",
+          "file_offset": 606736,
+          "length": 768,
+          "asset_offset": 4580,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-gate",
+          "file_offset": 219737,
+          "length": 39,
+          "asset_offset": 5348,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-dispatch",
+          "file_offset": 220002,
+          "length": 23,
+          "asset_offset": 5387,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-current",
+          "file_offset": 219977,
+          "length": 3,
+          "asset_offset": 5410,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-front",
+          "file_offset": 219996,
+          "length": 3,
+          "asset_offset": 5413,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-call",
+          "file_offset": 220045,
+          "length": 5,
+          "asset_offset": 5416,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "scene-object-expansion.facility-point-directory",
+          "file_offset": 607504,
+          "length": 4,
+          "asset_offset": 5421,
+          "offset_in_slot": 0
         }
       ],
       "evidence": {
@@ -38320,7 +38468,7 @@
         "statuses": [
           "exact"
         ],
-        "covered_bytes": 4580
+        "covered_bytes": 5425
       }
     },
     {
@@ -38435,6 +38583,105 @@
           "exact"
         ],
         "covered_bytes": 3
+      }
+    },
+    {
+      "asset_id": "save-extension-bitmap",
+      "compiler_id": "save-extension-code/v1",
+      "input": {
+        "resource_id": "save-extension-bitmap",
+        "asset_schema": "metalmaxcn.save-extension.asset",
+        "components": [
+          {
+            "fragment_id": "save-extension-bitmap.code",
+            "asset_offset": 0,
+            "length": 1024,
+            "original_sha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2",
+            "runtime_address": 39936
+          },
+          {
+            "fragment_id": "save-extension-bitmap.load-gate",
+            "asset_offset": 1024,
+            "length": 16,
+            "original_sha256": "041739b4a9b50ffcc320e814e5967560df9d3c299489b795ba4506577bacc09d",
+            "runtime_address": 58669
+          },
+          {
+            "fragment_id": "save-extension-bitmap.store-gate",
+            "asset_offset": 1040,
+            "length": 16,
+            "original_sha256": "82015e2de5ad5708fb636b6b640fa144a554d54f92439fb8f749ea930eb9e575",
+            "runtime_address": 58685
+          },
+          {
+            "fragment_id": "save-extension-bitmap.initialize-gate",
+            "asset_offset": 1056,
+            "length": 17,
+            "original_sha256": "e7549be17faecf6b484a42b8a8dda9d8266a2738983ca5144c6cd9deabb919ff",
+            "runtime_address": 55172
+          },
+          {
+            "fragment_id": "save-extension-bitmap.dispatch-gate",
+            "asset_offset": 1073,
+            "length": 12,
+            "original_sha256": "9434fc695d30d773bfc84f290e5bca205046c0315750d197c7d18946526746c9",
+            "runtime_address": 43380
+          }
+        ]
+      },
+      "priority": 130,
+      "confidence": "approved-code-product",
+      "status": "confirmed",
+      "sources": [
+        {
+          "region": "prg",
+          "slot_id": "save-extension.code",
+          "file_offset": 646160,
+          "length": 1024,
+          "asset_offset": 0,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "save-extension.load-gate",
+          "file_offset": 1041725,
+          "length": 16,
+          "asset_offset": 1024,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "save-extension.store-gate",
+          "file_offset": 1041741,
+          "length": 16,
+          "asset_offset": 1040,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "save-extension.initialize-gate",
+          "file_offset": 1038228,
+          "length": 17,
+          "asset_offset": 1056,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "prg",
+          "slot_id": "save-extension.dispatch-gate",
+          "file_offset": 215428,
+          "length": 12,
+          "asset_offset": 1073,
+          "offset_in_slot": 0
+        }
+      ],
+      "evidence": {
+        "producers": [
+          "save-extension-assembly"
+        ],
+        "statuses": [
+          "exact"
+        ],
+        "covered_bytes": 1085
       }
     },
     {
@@ -114548,746 +114795,758 @@
             "original_sha256": "5e0f95b20ac0d8601770e48aec6b6a1cc2b47cbe5e4b0ccf4db29d2524cc63d9"
           },
           {
-            "fragment_id": "shared-chr-bank.bank-50",
+            "fragment_id": "shared-chr-bank.bank-4f",
             "asset_offset": 78848,
+            "length": 1024,
+            "original_sha256": "a0291e246309b5bb40b0b89f2264249f09a1f3cf13053e2d2c0d645e7cd9eade"
+          },
+          {
+            "fragment_id": "shared-chr-bank.bank-50",
+            "asset_offset": 79872,
             "length": 1024,
             "original_sha256": "278d11d7d6ffc676e9686ee81d4beb1274b83dd21d3b2ff6ee660711ae998c1b"
           },
           {
             "fragment_id": "shared-chr-bank.bank-51",
-            "asset_offset": 79872,
+            "asset_offset": 80896,
             "length": 1024,
             "original_sha256": "ccde75b1cb7da2a564b2501761364b46bdb9bc804dd92e7c42904b9f6e7d496c"
           },
           {
             "fragment_id": "shared-chr-bank.bank-52",
-            "asset_offset": 80896,
+            "asset_offset": 81920,
             "length": 1024,
             "original_sha256": "c842e5d6801d726776aa53f51bb1c02a7ae6f05b55649b82830bf6929bf91712"
           },
           {
             "fragment_id": "shared-chr-bank.bank-53",
-            "asset_offset": 81920,
+            "asset_offset": 82944,
             "length": 1024,
             "original_sha256": "4ce3ce557d25a501119cf52d11fb163f40303b9c63b009d17dc3d345e8ecf62a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-54",
-            "asset_offset": 82944,
+            "asset_offset": 83968,
             "length": 1024,
             "original_sha256": "c3d547ba00121fe3c1c5db0099d0b5b488afa2768950eaa9cb90cc7a214b653c"
           },
           {
             "fragment_id": "shared-chr-bank.bank-55",
-            "asset_offset": 83968,
+            "asset_offset": 84992,
             "length": 1024,
             "original_sha256": "6ad1cd1420f3c86118dbe0984e09e8e4b7f695a82aaeda2ac501b5abd638d049"
           },
           {
             "fragment_id": "shared-chr-bank.bank-56",
-            "asset_offset": 84992,
+            "asset_offset": 86016,
             "length": 1024,
             "original_sha256": "71fbe849fec1046090f6c00477753c041a653d8b05a0966eca67673ae6d36073"
           },
           {
             "fragment_id": "shared-chr-bank.bank-57",
-            "asset_offset": 86016,
+            "asset_offset": 87040,
             "length": 1024,
             "original_sha256": "aea40b2f500459bd883020ac420d75401ae2d2c0e00e4388427f6ca64678cf39"
           },
           {
             "fragment_id": "shared-chr-bank.bank-58",
-            "asset_offset": 87040,
+            "asset_offset": 88064,
             "length": 1024,
             "original_sha256": "4f2ba358c7df64c57e9fd1d3ce89e204b101593f9a7b38b14965547f25a247c6"
           },
           {
             "fragment_id": "shared-chr-bank.bank-59",
-            "asset_offset": 88064,
+            "asset_offset": 89088,
             "length": 1024,
             "original_sha256": "678531796f39fe02e0375be73de032bf14544d77c0967042799d41c82a22c169"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5a",
-            "asset_offset": 89088,
+            "asset_offset": 90112,
             "length": 1024,
             "original_sha256": "25c56822c4721aff1750b85b7879c2f901566fee3aeca2e5aa9a0c3a2ad2d2db"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5b",
-            "asset_offset": 90112,
+            "asset_offset": 91136,
             "length": 1024,
             "original_sha256": "feb7419f24960a4c101fd28a0a637cce6304293ea774684bbc427b79282a05e3"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5c",
-            "asset_offset": 91136,
+            "asset_offset": 92160,
             "length": 1024,
             "original_sha256": "4fa378c75072ad8a936a103739d04430dbc53566dff1415e45ed4e58e0aa8cdb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5d",
-            "asset_offset": 92160,
+            "asset_offset": 93184,
             "length": 1024,
             "original_sha256": "f89f281fa52b48717ff4efbcd2792d88e09914b3c41adbe7ef2dfd3e82738304"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5e",
-            "asset_offset": 93184,
+            "asset_offset": 94208,
             "length": 1024,
             "original_sha256": "8b9e4680e8274568dcb464f698fa3207d66350f9d33a32b3fe78b5418fcf6bc3"
           },
           {
             "fragment_id": "shared-chr-bank.bank-5f",
-            "asset_offset": 94208,
+            "asset_offset": 95232,
             "length": 1024,
             "original_sha256": "4597ecf6a5aed100a50bedccd45d17ee11d93fe05151ea68000483dc23faf691"
           },
           {
             "fragment_id": "shared-chr-bank.bank-60",
-            "asset_offset": 95232,
+            "asset_offset": 96256,
             "length": 1024,
             "original_sha256": "8c160364a810168e7c6cee94456e05b840d99cff724a4434118a81c3f6ab816b"
           },
           {
             "fragment_id": "shared-chr-bank.bank-61",
-            "asset_offset": 96256,
+            "asset_offset": 97280,
             "length": 1024,
             "original_sha256": "a27603f30b3e09f0b52b4a76e9ca522eeecfc24f85383e341f5cd26bb2d1a086"
           },
           {
             "fragment_id": "shared-chr-bank.bank-62",
-            "asset_offset": 97280,
+            "asset_offset": 98304,
             "length": 1024,
             "original_sha256": "f3753e1d4a2be75162be1eee741cb54530d1f272e2f504fc9773698f56a61535"
           },
           {
             "fragment_id": "shared-chr-bank.bank-63",
-            "asset_offset": 98304,
+            "asset_offset": 99328,
             "length": 1024,
             "original_sha256": "33c298985999eb1ee551b6d3a90876883af195ba96f003b4d18ecacdcf13227e"
           },
           {
             "fragment_id": "shared-chr-bank.bank-64",
-            "asset_offset": 99328,
+            "asset_offset": 100352,
             "length": 1024,
             "original_sha256": "8b093eea23e726248e514a53354c4353f9a07ebcbf21f329d0fbf58b7176dbd0"
           },
           {
             "fragment_id": "shared-chr-bank.bank-65",
-            "asset_offset": 100352,
+            "asset_offset": 101376,
             "length": 1024,
             "original_sha256": "08af3b19731bbdb31c192be92d7de938b87b60367dcc9a0ab485e6a9a9070dde"
           },
           {
             "fragment_id": "shared-chr-bank.bank-66",
-            "asset_offset": 101376,
+            "asset_offset": 102400,
             "length": 1024,
             "original_sha256": "d5d144386535c5324777418c8778c0c68b39fc2ac2969de116eebe7394848cc4"
           },
           {
             "fragment_id": "shared-chr-bank.bank-67",
-            "asset_offset": 102400,
+            "asset_offset": 103424,
             "length": 1024,
             "original_sha256": "3116134a1b952a8dca34c3faafd648d4c5df8caf449367e9097ce737ccbcda77"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6a",
-            "asset_offset": 103424,
+            "asset_offset": 104448,
             "length": 1024,
             "original_sha256": "5e974c790f791edcc4d4ecb74a227f08685b02b30a140b49748a53f36e489d52"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6b",
-            "asset_offset": 104448,
+            "asset_offset": 105472,
             "length": 1024,
             "original_sha256": "e42db809408f5e094d4c20281561b18408595fd80a00f46d9c423c1a6daee36a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6c",
-            "asset_offset": 105472,
+            "asset_offset": 106496,
             "length": 1024,
             "original_sha256": "8bbcdec71ac6b0401a5449aa18a3d4314c577619d76f0ed431e34930291d39dc"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6d",
-            "asset_offset": 106496,
+            "asset_offset": 107520,
             "length": 1024,
             "original_sha256": "d3cd93925648990740a1a3e5f7c11afe9e74325a59746f5511ebf49f6a2baa25"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6e",
-            "asset_offset": 107520,
+            "asset_offset": 108544,
             "length": 1024,
             "original_sha256": "a33c072ada7d606089c19fe012c24f491e456b93959e6ce9edb0c17bdf8aa4e0"
           },
           {
             "fragment_id": "shared-chr-bank.bank-6f",
-            "asset_offset": 108544,
+            "asset_offset": 109568,
             "length": 1024,
             "original_sha256": "99dfbff4033594556e2510736a912a8b9c5b92dd3a2b5cdf0900f9d5926ce948"
           },
           {
             "fragment_id": "shared-chr-bank.bank-70",
-            "asset_offset": 109568,
+            "asset_offset": 110592,
             "length": 1024,
             "original_sha256": "6693050fd652dc913f61a7f1a33265486df99627a48087051291d401dbf87d56"
           },
           {
             "fragment_id": "shared-chr-bank.bank-71",
-            "asset_offset": 110592,
+            "asset_offset": 111616,
             "length": 1024,
             "original_sha256": "b78da644e23bebf0f249e341e3bfd85bc685756b833758ad22c6dc125af1521c"
           },
           {
             "fragment_id": "shared-chr-bank.bank-72",
-            "asset_offset": 111616,
+            "asset_offset": 112640,
             "length": 1024,
             "original_sha256": "933d39d756f59c72d3979d5900d9bc24b70ffbd803ed440f1fc4283323fc1b00"
           },
           {
             "fragment_id": "shared-chr-bank.bank-73",
-            "asset_offset": 112640,
+            "asset_offset": 113664,
             "length": 1024,
             "original_sha256": "22a55e53d982d6a9cb10df68b8c12e612aaa7a9118fca6f9e91dd051a1f646c5"
           },
           {
             "fragment_id": "shared-chr-bank.bank-74",
-            "asset_offset": 113664,
+            "asset_offset": 114688,
             "length": 1024,
             "original_sha256": "f13e6a01a78e91b6c46dc8fb77d7f19a8c761667c6e9293ed133601375b616a8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-75",
-            "asset_offset": 114688,
+            "asset_offset": 115712,
             "length": 1024,
             "original_sha256": "ceb6bec0283807aee33ccdc06552dd25af179e55fd36070f0a5745695c9e0a97"
           },
           {
             "fragment_id": "shared-chr-bank.bank-76",
-            "asset_offset": 115712,
+            "asset_offset": 116736,
             "length": 1024,
             "original_sha256": "85844f8924d227e549a8ee6451d92f0f2c8bab26e27289393baa5ee0179ae8b4"
           },
           {
             "fragment_id": "shared-chr-bank.bank-77",
-            "asset_offset": 116736,
+            "asset_offset": 117760,
             "length": 1024,
             "original_sha256": "f36e87aa06334cd53abb363b0ed2d186b50fa19b55ada8e3f2ccf729b783f2bb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-78",
-            "asset_offset": 117760,
+            "asset_offset": 118784,
             "length": 1024,
             "original_sha256": "ccf62410bb44d7466b90c3b9fc84fc90c761b44a4534911856e8b48668d3d57b"
           },
           {
             "fragment_id": "shared-chr-bank.bank-79",
-            "asset_offset": 118784,
+            "asset_offset": 119808,
             "length": 1024,
             "original_sha256": "04f98e9111f38c5f4beafa0188d17fa25a7ac3bec5d3f5f9b2fb7368770c5a5c"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7a",
-            "asset_offset": 119808,
+            "asset_offset": 120832,
             "length": 1024,
             "original_sha256": "2e2e089c77751b9a69ccbfa6f86a020d8e7f0cbc907db44bdd5bbe6a57f2ed09"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7b",
-            "asset_offset": 120832,
+            "asset_offset": 121856,
             "length": 1024,
             "original_sha256": "9004aa90d7820de01f4deb8c3006ee8e8b5c506a726aaca4b87ba9e9bedd59f6"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7c",
-            "asset_offset": 121856,
+            "asset_offset": 122880,
             "length": 1024,
             "original_sha256": "b2a90518c8a488364ecd03a0208d6ac76dd0d0c7871043476db95887182d0828"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7d",
-            "asset_offset": 122880,
+            "asset_offset": 123904,
             "length": 1024,
             "original_sha256": "97c1c9799804898f994d0dafbd1af2ea871865ae57277c218a017647dfcd4c40"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7e",
-            "asset_offset": 123904,
+            "asset_offset": 124928,
             "length": 1024,
             "original_sha256": "0cc83c38a6921b7d579b3acd852539646bad8c7bf635f4b3c1985ea915450367"
           },
           {
             "fragment_id": "shared-chr-bank.bank-7f",
-            "asset_offset": 124928,
+            "asset_offset": 125952,
             "length": 1024,
             "original_sha256": "79df0c581fc00b35192c1f8a483d8b6b0995df6f8a2715083ac1114e54c9e06b"
           },
           {
             "fragment_id": "shared-chr-bank.bank-80",
-            "asset_offset": 125952,
+            "asset_offset": 126976,
             "length": 1024,
             "original_sha256": "b7dc041f9fe2cc6c9a39fbcfa314235ed01ea4c8830a8155d3631c7a5412c9f8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-81",
-            "asset_offset": 126976,
+            "asset_offset": 128000,
             "length": 1024,
             "original_sha256": "ceefa4a6ddafc8dc3dc6581db15e510e7b090372d82b30f9ad6245869d808c4f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-82",
-            "asset_offset": 128000,
+            "asset_offset": 129024,
             "length": 1024,
             "original_sha256": "4d5ad69960d3a793d8951d9fe4463986f4b0e114b6117216ea7f8acbbb5772d6"
           },
           {
             "fragment_id": "shared-chr-bank.bank-83",
-            "asset_offset": 129024,
+            "asset_offset": 130048,
             "length": 1024,
             "original_sha256": "835caa9f186cf95c57c1c22658f8b68ed51999e74eabb62c3d6047609f11e8ad"
           },
           {
             "fragment_id": "shared-chr-bank.bank-84",
-            "asset_offset": 130048,
+            "asset_offset": 131072,
             "length": 1024,
             "original_sha256": "cc00eec0f67d5b5d6c75ae0abb5c4c64ee9317539cabbf76f4e64b6d06ef128a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-85",
-            "asset_offset": 131072,
+            "asset_offset": 132096,
             "length": 1024,
             "original_sha256": "89cb2c1842d4756d1ffe315cdebd4e451af5e3188e032a5e35ff75cc20f614a1"
           },
           {
             "fragment_id": "shared-chr-bank.bank-86",
-            "asset_offset": 132096,
+            "asset_offset": 133120,
             "length": 1024,
             "original_sha256": "17ab3f5671722357ff4c4e373619afefc44e9ee73aff015faf085375b6d7b9e6"
           },
           {
             "fragment_id": "shared-chr-bank.bank-87",
-            "asset_offset": 133120,
+            "asset_offset": 134144,
             "length": 1024,
             "original_sha256": "9676c63f3a45c3f51d91bbfde91fc3cb7520ed8f37546834efbad09fc4b6f932"
           },
           {
             "fragment_id": "shared-chr-bank.bank-88",
-            "asset_offset": 134144,
+            "asset_offset": 135168,
             "length": 1024,
             "original_sha256": "286fc2c2ba311cd705a264bfc1e70d823c1696e8461088d4e7fc1fb97aa17b0f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-89",
-            "asset_offset": 135168,
+            "asset_offset": 136192,
             "length": 1024,
             "original_sha256": "1e2cb460a38abc500d0325263244e3d79056b0ebf0e9ba4e27dfa4eca5639ff8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8a",
-            "asset_offset": 136192,
+            "asset_offset": 137216,
             "length": 1024,
             "original_sha256": "fce94198c90ce841f7be398ae8791a57588263e8d4d6ee9dee8a62a37a92b25f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8b",
-            "asset_offset": 137216,
+            "asset_offset": 138240,
             "length": 1024,
             "original_sha256": "0fef0788f89118cd57ef7333696b20eeea31ac47dd9c6397862681459cae5830"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8c",
-            "asset_offset": 138240,
+            "asset_offset": 139264,
             "length": 1024,
             "original_sha256": "6b607c8ba736b0149fb4776054f000805c626442f15c18c3bbcb41b14b238beb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8d",
-            "asset_offset": 139264,
+            "asset_offset": 140288,
             "length": 1024,
             "original_sha256": "f70f79981d8f4af34cd5e0aea3b7c3f11365868b3fd02a6cc77be183f8408ad8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8e",
-            "asset_offset": 140288,
+            "asset_offset": 141312,
             "length": 1024,
             "original_sha256": "057d040b0474641bd01be5c906883117890cbc192d5521585671e5161c3e0892"
           },
           {
             "fragment_id": "shared-chr-bank.bank-8f",
-            "asset_offset": 141312,
+            "asset_offset": 142336,
             "length": 1024,
             "original_sha256": "50c42b1b7aa91061e3cc95e5024a358044edd03fad66b4ccb5aea00f04487e37"
           },
           {
             "fragment_id": "shared-chr-bank.bank-90",
-            "asset_offset": 142336,
+            "asset_offset": 143360,
             "length": 1024,
             "original_sha256": "586593f7e5495f5be08db02f5c19c3380712524affaf1742736ef386b634c583"
           },
           {
             "fragment_id": "shared-chr-bank.bank-91",
-            "asset_offset": 143360,
+            "asset_offset": 144384,
             "length": 1024,
             "original_sha256": "3e80732f3246cd68f50fe2a590f662862e77d27761d01cfe9a7f390cad6a11d9"
           },
           {
             "fragment_id": "shared-chr-bank.bank-93",
-            "asset_offset": 144384,
+            "asset_offset": 145408,
             "length": 1024,
             "original_sha256": "3bfd69e478b0740464fa5ccc4f4d384adda967bc9730015630943db5ae873ce2"
           },
           {
             "fragment_id": "shared-chr-bank.bank-94",
-            "asset_offset": 145408,
+            "asset_offset": 146432,
             "length": 1024,
             "original_sha256": "ff6dd975303ee9d10150ed5d3688928fc7bfcd215b36a60a0f6507eeac38d245"
           },
           {
             "fragment_id": "shared-chr-bank.bank-95",
-            "asset_offset": 146432,
+            "asset_offset": 147456,
             "length": 1024,
             "original_sha256": "7174e141d600aeaf5bd804f29f1c8181c1140abdb34f810367488109d2a3e1bb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-96",
-            "asset_offset": 147456,
+            "asset_offset": 148480,
             "length": 1024,
             "original_sha256": "4cc835de4a160338a2ef01c033400cc7534a1d481af519d6fc8844c978adb5b3"
           },
           {
             "fragment_id": "shared-chr-bank.bank-97",
-            "asset_offset": 148480,
+            "asset_offset": 149504,
             "length": 1024,
             "original_sha256": "eae16a332446b1a936c893f268f49ae5083583ad15cb22ec4156d14ae16ef943"
           },
           {
             "fragment_id": "shared-chr-bank.bank-98",
-            "asset_offset": 149504,
+            "asset_offset": 150528,
             "length": 1024,
             "original_sha256": "aa29bdddeff003280b61539aab946108f17bc30f6cd75acb21923acb4b12097f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-99",
-            "asset_offset": 150528,
+            "asset_offset": 151552,
             "length": 1024,
             "original_sha256": "8921d3c8da0c68ddece3c6b0a57207af6673b9d6db79c9406cbaa3ae2e9cb096"
           },
           {
+            "fragment_id": "shared-chr-bank.bank-9a",
+            "asset_offset": 152576,
+            "length": 1024,
+            "original_sha256": "018ae020a379348c848764b92530c25a9fb895ced15d01dd9de3a523082ed293"
+          },
+          {
             "fragment_id": "shared-chr-bank.bank-9b",
-            "asset_offset": 151552,
+            "asset_offset": 153600,
             "length": 1024,
             "original_sha256": "4dec9ffe6f7451863f6904780c71fd79194e775abad5257b7806a069c779398a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-9c",
-            "asset_offset": 152576,
+            "asset_offset": 154624,
             "length": 1024,
             "original_sha256": "22a8772bc0e6fb4e1cfcf02b9487b6f7f972fabbdd1445761dc8c56d76a6e151"
           },
           {
             "fragment_id": "shared-chr-bank.bank-9d",
-            "asset_offset": 153600,
+            "asset_offset": 155648,
             "length": 1024,
             "original_sha256": "e4000423f882dd94f07226afc5ab7d29c9227857a6ad6799dd8fcaaa3998c872"
           },
           {
             "fragment_id": "shared-chr-bank.bank-9e",
-            "asset_offset": 154624,
+            "asset_offset": 156672,
             "length": 1024,
             "original_sha256": "54d77bd6aca0759de124f03f7556e296cb4690b08dac39e5ce6a09c200f94894"
           },
           {
             "fragment_id": "shared-chr-bank.bank-9f",
-            "asset_offset": 155648,
+            "asset_offset": 157696,
             "length": 1024,
             "original_sha256": "1830c235eeb0505ef6786214ec60e5931f0f5cd7c07979cf7b8251b20e9f3ef2"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a0",
-            "asset_offset": 156672,
+            "asset_offset": 158720,
             "length": 1024,
             "original_sha256": "3d4a669e28166bbf397c80d8ae3b99aa61dc190cd7950e3f06ca517fc6b9b1de"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a1",
-            "asset_offset": 157696,
+            "asset_offset": 159744,
             "length": 1024,
             "original_sha256": "5cebaed715bfee7bbe1acb9718caf91a6b53acd1d999487b8c497628b67f72fe"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a2",
-            "asset_offset": 158720,
+            "asset_offset": 160768,
             "length": 1024,
             "original_sha256": "1b14d90c8afcfccfa3f46ca641e24a4dbae06af4ab18e8977ffc5287f176dd3c"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a3",
-            "asset_offset": 159744,
+            "asset_offset": 161792,
             "length": 1024,
             "original_sha256": "2c9be3a21637ceaaefdf2e0ad5ad341c67bb4341e19f211caa20ce8d98c0c699"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a4",
-            "asset_offset": 160768,
+            "asset_offset": 162816,
             "length": 1024,
             "original_sha256": "3f8daad7c1f6e5d55867a52d0adf9f0102a6ea2e97cfde65bb21932f957e5bd8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a5",
-            "asset_offset": 161792,
+            "asset_offset": 163840,
             "length": 1024,
             "original_sha256": "89a53040c1d790120de040099ef1858c8727697c97d360fd8d6ae31db82ff8ce"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a6",
-            "asset_offset": 162816,
+            "asset_offset": 164864,
             "length": 1024,
             "original_sha256": "b257c5c30cff4f127a7af2184355e9ddcc3e779b6ec1a01d0da4252913efe814"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a7",
-            "asset_offset": 163840,
+            "asset_offset": 165888,
             "length": 1024,
             "original_sha256": "75a79a146060009bd39ed6e950ac961cf36e9f5e5d3672510c2e8d5800e0e873"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a8",
-            "asset_offset": 164864,
+            "asset_offset": 166912,
             "length": 1024,
             "original_sha256": "944aab545e9225c989e6359e6658f896f910affdbd6956ab0309049a7941347a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-a9",
-            "asset_offset": 165888,
+            "asset_offset": 167936,
             "length": 1024,
             "original_sha256": "6611866cd55d814937296cb5de20b71bce73ee43a32aba4b7f9c6757658a44eb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-aa",
-            "asset_offset": 166912,
+            "asset_offset": 168960,
             "length": 1024,
             "original_sha256": "a434e91380e1a7bad958a98eb0c4ba8f40e7534e2bd54e28424f3e9d7b73275d"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ab",
-            "asset_offset": 167936,
+            "asset_offset": 169984,
             "length": 1024,
             "original_sha256": "df0b9b2dd0f0b30aa575962d8f55d93867159badfced4786dee38ef9b212b9de"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ac",
-            "asset_offset": 168960,
+            "asset_offset": 171008,
             "length": 1024,
             "original_sha256": "a891719586ffce348c66e66ab7a7c5941787aea54add3bc58dbd9978cb2dcd07"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ad",
-            "asset_offset": 169984,
+            "asset_offset": 172032,
             "length": 1024,
             "original_sha256": "ad9bdaedf9a47738c62020914804b166d39b70efe54e49161277319d954e24f5"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ae",
-            "asset_offset": 171008,
+            "asset_offset": 173056,
             "length": 1024,
             "original_sha256": "a37ad2e6a55b87e5017b5c8da4ab7d02ef2df188d689dff59d79b2f941661375"
           },
           {
             "fragment_id": "shared-chr-bank.bank-af",
-            "asset_offset": 172032,
+            "asset_offset": 174080,
             "length": 1024,
             "original_sha256": "aacc0aba7d144472d99cea0dbe09ca6f9549ec64fec884e5785085480a1aa76d"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b0",
-            "asset_offset": 173056,
+            "asset_offset": 175104,
             "length": 1024,
             "original_sha256": "c85e199ac42cc584aeebe23132eb4752ba366fa881491be6587f5dae20a4bce3"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b1",
-            "asset_offset": 174080,
+            "asset_offset": 176128,
             "length": 1024,
             "original_sha256": "4e975acfddeaa669cb73971ba739571b4e0bd976dcb419e7b1d37d04d5cddb5f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b2",
-            "asset_offset": 175104,
+            "asset_offset": 177152,
             "length": 1024,
             "original_sha256": "2e2c7f515a8fab36151eb1a2e70d8ca29ca3b952d0d066f7df83434887e71d8f"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b3",
-            "asset_offset": 176128,
+            "asset_offset": 178176,
             "length": 1024,
             "original_sha256": "9a0039845517e0509e560c63fd3f86d4ebb6f4489cceab70da2a6ab6656b512e"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b4",
-            "asset_offset": 177152,
+            "asset_offset": 179200,
             "length": 1024,
             "original_sha256": "d58b3052a50e89c8beb1c1e72056a1907ee0ac78d9f6bd883ce86fb8fc5de641"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b5",
-            "asset_offset": 178176,
+            "asset_offset": 180224,
             "length": 1024,
             "original_sha256": "c2131d442ab731a72861e6a062f3415841413db5c43f63cb131cc8c2598983f0"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b6",
-            "asset_offset": 179200,
+            "asset_offset": 181248,
             "length": 1024,
             "original_sha256": "3155952056f858a17fc6bd626aa4cf002674a1e67a6cb4a08afa9e81d6c4b291"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b7",
-            "asset_offset": 180224,
+            "asset_offset": 182272,
             "length": 1024,
             "original_sha256": "27ddf96a70f178d89a216f1088b17d0ae3519fc3e78995511a163fdb47988415"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b8",
-            "asset_offset": 181248,
+            "asset_offset": 183296,
             "length": 1024,
             "original_sha256": "71fa283d24a5f8c0d1a89181c91de84c675d463590a7191539a7fe8e58c33359"
           },
           {
             "fragment_id": "shared-chr-bank.bank-b9",
-            "asset_offset": 182272,
+            "asset_offset": 184320,
             "length": 1024,
             "original_sha256": "7c743d3e87a08da3d6a4fcba83598ed656f13e458fb0cb2cf53ecdd8e898f654"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ba",
-            "asset_offset": 183296,
+            "asset_offset": 185344,
             "length": 1024,
             "original_sha256": "4be8f23b4418e87b27b4a01b024298a7181c1f73f32906dc6b1174cce41403a8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-bb",
-            "asset_offset": 184320,
+            "asset_offset": 186368,
             "length": 1024,
             "original_sha256": "cab47939f23665dbb7425ddf889afc40510e7b187528041989a669208da6c531"
           },
           {
             "fragment_id": "shared-chr-bank.bank-bc",
-            "asset_offset": 185344,
+            "asset_offset": 187392,
             "length": 1024,
             "original_sha256": "a7f8e7618f00f0e640c000a99065f398a91662e07401221b7ece3ed8abfcc5eb"
           },
           {
             "fragment_id": "shared-chr-bank.bank-bd",
-            "asset_offset": 186368,
+            "asset_offset": 188416,
             "length": 1024,
             "original_sha256": "636ccdfe34e0be44be0bdecbd3d41c2f59229b9e47f7995f033fab4a6d81efac"
           },
           {
             "fragment_id": "shared-chr-bank.bank-be",
-            "asset_offset": 187392,
+            "asset_offset": 189440,
             "length": 1024,
             "original_sha256": "74f82316764e0598e2dc940c2e16582f75ece2284eb7e409204df5b453b84918"
           },
           {
             "fragment_id": "shared-chr-bank.bank-bf",
-            "asset_offset": 188416,
+            "asset_offset": 190464,
             "length": 1024,
             "original_sha256": "08e60ae9ea1121d8d54ce9b8ed27eb414de8e9c280a33fa69e64546236904bf7"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c0",
-            "asset_offset": 189440,
+            "asset_offset": 191488,
             "length": 1024,
             "original_sha256": "2a255fd196c11073ca51e106b27b3b134a2bf8abb81f8abe19fdbdc1e5c4db47"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c1",
-            "asset_offset": 190464,
+            "asset_offset": 192512,
             "length": 1024,
             "original_sha256": "d688515a705b518195eba58d40fed1d75d0d505e78fb5c9621056c64fe04b5fc"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c2",
-            "asset_offset": 191488,
+            "asset_offset": 193536,
             "length": 1024,
             "original_sha256": "e4283dbbb79e6ca83e34b0622c6c240d75c5df0d306299ee4faa6a80aa1a4232"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c3",
-            "asset_offset": 192512,
+            "asset_offset": 194560,
             "length": 1024,
             "original_sha256": "c598cab44edbbf32333f4a536107fdb38dabb2ea1bfa65d0460bfe9bd5b85a9e"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c4",
-            "asset_offset": 193536,
+            "asset_offset": 195584,
             "length": 1024,
             "original_sha256": "c0c08b496e211a31bb46d781f5517b3ba4a9d1894f321626ac348e7602e7bb30"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c5",
-            "asset_offset": 194560,
+            "asset_offset": 196608,
             "length": 1024,
             "original_sha256": "2fa861318951689157f27d0c0dee949780f535f6d8cc67bcd1c15f87ef67c835"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c6",
-            "asset_offset": 195584,
+            "asset_offset": 197632,
             "length": 1024,
             "original_sha256": "8d76a0a6861e845235c5cf9507438d6928c6f64b38e47b70b32b1c7f2a5d031e"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c7",
-            "asset_offset": 196608,
+            "asset_offset": 198656,
             "length": 1024,
             "original_sha256": "55ec9f92b96f7158c10b27c17e770a3e0f2936fa162c7a048b1694c94d108489"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c8",
-            "asset_offset": 197632,
+            "asset_offset": 199680,
             "length": 1024,
             "original_sha256": "1b5e9d5ba91f26086dd983ca1907e996e4d6e8d7c3a9498ae1e83d0dbb6449f2"
           },
           {
             "fragment_id": "shared-chr-bank.bank-c9",
-            "asset_offset": 198656,
+            "asset_offset": 200704,
             "length": 1024,
             "original_sha256": "dd8f49d2015fc160beb1ebe4434860c860739852bcf15d034bcc00c4ce8c8693"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ca",
-            "asset_offset": 199680,
+            "asset_offset": 201728,
             "length": 1024,
             "original_sha256": "5e35ec38209d1e87928c0410c4238155fd6c3f6fe8b83ec6a94e81e73047837a"
           },
           {
             "fragment_id": "shared-chr-bank.bank-cb",
-            "asset_offset": 200704,
+            "asset_offset": 202752,
             "length": 1024,
             "original_sha256": "25d92562699a318c4758f98a357c534a8e3d314885a59a74f07ce87731908fb8"
           },
           {
             "fragment_id": "shared-chr-bank.bank-cc",
-            "asset_offset": 201728,
+            "asset_offset": 203776,
             "length": 1024,
             "original_sha256": "b2f9172f917dfbdc9ed07cefa0fb1ea0765d4fdd945f4aee4770e8e4a03f7448"
           },
           {
             "fragment_id": "shared-chr-bank.bank-cd",
-            "asset_offset": 202752,
+            "asset_offset": 204800,
             "length": 1024,
             "original_sha256": "c003789851686f7a11c11c9fca0d6938fed4f9da50fc84472fb624719de3cdf6"
           },
           {
             "fragment_id": "shared-chr-bank.bank-ce",
-            "asset_offset": 203776,
+            "asset_offset": 205824,
             "length": 1024,
             "original_sha256": "e876107e4390000ffa0db5d1e2c8ce21c7d2eea210ebfc9f2d3de76994cfd719"
           },
           {
             "fragment_id": "shared-chr-bank.bank-cf",
-            "asset_offset": 204800,
+            "asset_offset": 206848,
             "length": 1024,
             "original_sha256": "4cfd41d5bc56ccf519818e34ffcff06b5334f53942c1ad2753f8f53f0274f9c8"
           }
@@ -115916,10 +116175,18 @@
         },
         {
           "region": "chr",
+          "slot_id": "asset.chr.013c00.000400",
+          "file_offset": 1129488,
+          "length": 1024,
+          "asset_offset": 78848,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "chr",
           "slot_id": "asset.chr.014000.000400",
           "file_offset": 1130512,
           "length": 1024,
-          "asset_offset": 78848,
+          "asset_offset": 79872,
           "offset_in_slot": 0
         },
         {
@@ -115927,7 +116194,7 @@
           "slot_id": "asset.chr.014400.000400",
           "file_offset": 1131536,
           "length": 1024,
-          "asset_offset": 79872,
+          "asset_offset": 80896,
           "offset_in_slot": 0
         },
         {
@@ -115935,7 +116202,7 @@
           "slot_id": "asset.chr.014800.000400",
           "file_offset": 1132560,
           "length": 1024,
-          "asset_offset": 80896,
+          "asset_offset": 81920,
           "offset_in_slot": 0
         },
         {
@@ -115943,7 +116210,7 @@
           "slot_id": "asset.chr.014c00.000400",
           "file_offset": 1133584,
           "length": 1024,
-          "asset_offset": 81920,
+          "asset_offset": 82944,
           "offset_in_slot": 0
         },
         {
@@ -115951,7 +116218,7 @@
           "slot_id": "asset.chr.015000.000400",
           "file_offset": 1134608,
           "length": 1024,
-          "asset_offset": 82944,
+          "asset_offset": 83968,
           "offset_in_slot": 0
         },
         {
@@ -115959,7 +116226,7 @@
           "slot_id": "asset.chr.015400.000400",
           "file_offset": 1135632,
           "length": 1024,
-          "asset_offset": 83968,
+          "asset_offset": 84992,
           "offset_in_slot": 0
         },
         {
@@ -115967,7 +116234,7 @@
           "slot_id": "asset.chr.015800.000400",
           "file_offset": 1136656,
           "length": 1024,
-          "asset_offset": 84992,
+          "asset_offset": 86016,
           "offset_in_slot": 0
         },
         {
@@ -115975,7 +116242,7 @@
           "slot_id": "asset.chr.015c00.000400",
           "file_offset": 1137680,
           "length": 1024,
-          "asset_offset": 86016,
+          "asset_offset": 87040,
           "offset_in_slot": 0
         },
         {
@@ -115983,7 +116250,7 @@
           "slot_id": "asset.chr.016000.000400",
           "file_offset": 1138704,
           "length": 1024,
-          "asset_offset": 87040,
+          "asset_offset": 88064,
           "offset_in_slot": 0
         },
         {
@@ -115991,7 +116258,7 @@
           "slot_id": "asset.chr.016400.000400",
           "file_offset": 1139728,
           "length": 1024,
-          "asset_offset": 88064,
+          "asset_offset": 89088,
           "offset_in_slot": 0
         },
         {
@@ -115999,7 +116266,7 @@
           "slot_id": "asset.chr.016800.000400",
           "file_offset": 1140752,
           "length": 1024,
-          "asset_offset": 89088,
+          "asset_offset": 90112,
           "offset_in_slot": 0
         },
         {
@@ -116007,7 +116274,7 @@
           "slot_id": "asset.chr.016c00.000400",
           "file_offset": 1141776,
           "length": 1024,
-          "asset_offset": 90112,
+          "asset_offset": 91136,
           "offset_in_slot": 0
         },
         {
@@ -116015,7 +116282,7 @@
           "slot_id": "asset.chr.017000.000400",
           "file_offset": 1142800,
           "length": 1024,
-          "asset_offset": 91136,
+          "asset_offset": 92160,
           "offset_in_slot": 0
         },
         {
@@ -116023,7 +116290,7 @@
           "slot_id": "asset.chr.017400.000400",
           "file_offset": 1143824,
           "length": 1024,
-          "asset_offset": 92160,
+          "asset_offset": 93184,
           "offset_in_slot": 0
         },
         {
@@ -116031,7 +116298,7 @@
           "slot_id": "asset.chr.017800.000400",
           "file_offset": 1144848,
           "length": 1024,
-          "asset_offset": 93184,
+          "asset_offset": 94208,
           "offset_in_slot": 0
         },
         {
@@ -116039,7 +116306,7 @@
           "slot_id": "asset.chr.017c00.000400",
           "file_offset": 1145872,
           "length": 1024,
-          "asset_offset": 94208,
+          "asset_offset": 95232,
           "offset_in_slot": 0
         },
         {
@@ -116047,7 +116314,7 @@
           "slot_id": "asset.chr.018000.000400",
           "file_offset": 1146896,
           "length": 1024,
-          "asset_offset": 95232,
+          "asset_offset": 96256,
           "offset_in_slot": 0
         },
         {
@@ -116055,7 +116322,7 @@
           "slot_id": "asset.chr.018400.000400",
           "file_offset": 1147920,
           "length": 1024,
-          "asset_offset": 96256,
+          "asset_offset": 97280,
           "offset_in_slot": 0
         },
         {
@@ -116063,7 +116330,7 @@
           "slot_id": "asset.chr.018800.000400",
           "file_offset": 1148944,
           "length": 1024,
-          "asset_offset": 97280,
+          "asset_offset": 98304,
           "offset_in_slot": 0
         },
         {
@@ -116071,7 +116338,7 @@
           "slot_id": "asset.chr.018c00.000400",
           "file_offset": 1149968,
           "length": 1024,
-          "asset_offset": 98304,
+          "asset_offset": 99328,
           "offset_in_slot": 0
         },
         {
@@ -116079,7 +116346,7 @@
           "slot_id": "asset.chr.019000.000400",
           "file_offset": 1150992,
           "length": 1024,
-          "asset_offset": 99328,
+          "asset_offset": 100352,
           "offset_in_slot": 0
         },
         {
@@ -116087,7 +116354,7 @@
           "slot_id": "asset.chr.019400.000400",
           "file_offset": 1152016,
           "length": 1024,
-          "asset_offset": 100352,
+          "asset_offset": 101376,
           "offset_in_slot": 0
         },
         {
@@ -116095,7 +116362,7 @@
           "slot_id": "asset.chr.019800.000400",
           "file_offset": 1153040,
           "length": 1024,
-          "asset_offset": 101376,
+          "asset_offset": 102400,
           "offset_in_slot": 0
         },
         {
@@ -116103,7 +116370,7 @@
           "slot_id": "asset.chr.019c00.000400",
           "file_offset": 1154064,
           "length": 1024,
-          "asset_offset": 102400,
+          "asset_offset": 103424,
           "offset_in_slot": 0
         },
         {
@@ -116111,7 +116378,7 @@
           "slot_id": "asset.chr.01a800.000400",
           "file_offset": 1157136,
           "length": 1024,
-          "asset_offset": 103424,
+          "asset_offset": 104448,
           "offset_in_slot": 0
         },
         {
@@ -116119,7 +116386,7 @@
           "slot_id": "asset.chr.01ac00.000400",
           "file_offset": 1158160,
           "length": 1024,
-          "asset_offset": 104448,
+          "asset_offset": 105472,
           "offset_in_slot": 0
         },
         {
@@ -116127,7 +116394,7 @@
           "slot_id": "asset.chr.01b000.000400",
           "file_offset": 1159184,
           "length": 1024,
-          "asset_offset": 105472,
+          "asset_offset": 106496,
           "offset_in_slot": 0
         },
         {
@@ -116135,7 +116402,7 @@
           "slot_id": "asset.chr.01b400.000400",
           "file_offset": 1160208,
           "length": 1024,
-          "asset_offset": 106496,
+          "asset_offset": 107520,
           "offset_in_slot": 0
         },
         {
@@ -116143,7 +116410,7 @@
           "slot_id": "asset.chr.01b800.000400",
           "file_offset": 1161232,
           "length": 1024,
-          "asset_offset": 107520,
+          "asset_offset": 108544,
           "offset_in_slot": 0
         },
         {
@@ -116151,7 +116418,7 @@
           "slot_id": "asset.chr.01bc00.000400",
           "file_offset": 1162256,
           "length": 1024,
-          "asset_offset": 108544,
+          "asset_offset": 109568,
           "offset_in_slot": 0
         },
         {
@@ -116159,7 +116426,7 @@
           "slot_id": "asset.chr.01c000.000400",
           "file_offset": 1163280,
           "length": 1024,
-          "asset_offset": 109568,
+          "asset_offset": 110592,
           "offset_in_slot": 0
         },
         {
@@ -116167,7 +116434,7 @@
           "slot_id": "asset.chr.01c400.000400",
           "file_offset": 1164304,
           "length": 1024,
-          "asset_offset": 110592,
+          "asset_offset": 111616,
           "offset_in_slot": 0
         },
         {
@@ -116175,7 +116442,7 @@
           "slot_id": "asset.chr.01c800.000400",
           "file_offset": 1165328,
           "length": 1024,
-          "asset_offset": 111616,
+          "asset_offset": 112640,
           "offset_in_slot": 0
         },
         {
@@ -116183,7 +116450,7 @@
           "slot_id": "asset.chr.01cc00.000400",
           "file_offset": 1166352,
           "length": 1024,
-          "asset_offset": 112640,
+          "asset_offset": 113664,
           "offset_in_slot": 0
         },
         {
@@ -116191,7 +116458,7 @@
           "slot_id": "asset.chr.01d000.000400",
           "file_offset": 1167376,
           "length": 1024,
-          "asset_offset": 113664,
+          "asset_offset": 114688,
           "offset_in_slot": 0
         },
         {
@@ -116199,7 +116466,7 @@
           "slot_id": "asset.chr.01d400.000400",
           "file_offset": 1168400,
           "length": 1024,
-          "asset_offset": 114688,
+          "asset_offset": 115712,
           "offset_in_slot": 0
         },
         {
@@ -116207,7 +116474,7 @@
           "slot_id": "asset.chr.01d800.000400",
           "file_offset": 1169424,
           "length": 1024,
-          "asset_offset": 115712,
+          "asset_offset": 116736,
           "offset_in_slot": 0
         },
         {
@@ -116215,7 +116482,7 @@
           "slot_id": "asset.chr.01dc00.000400",
           "file_offset": 1170448,
           "length": 1024,
-          "asset_offset": 116736,
+          "asset_offset": 117760,
           "offset_in_slot": 0
         },
         {
@@ -116223,7 +116490,7 @@
           "slot_id": "asset.chr.01e000.000400",
           "file_offset": 1171472,
           "length": 1024,
-          "asset_offset": 117760,
+          "asset_offset": 118784,
           "offset_in_slot": 0
         },
         {
@@ -116231,7 +116498,7 @@
           "slot_id": "asset.chr.01e400.000400",
           "file_offset": 1172496,
           "length": 1024,
-          "asset_offset": 118784,
+          "asset_offset": 119808,
           "offset_in_slot": 0
         },
         {
@@ -116239,7 +116506,7 @@
           "slot_id": "asset.chr.01e800.000400",
           "file_offset": 1173520,
           "length": 1024,
-          "asset_offset": 119808,
+          "asset_offset": 120832,
           "offset_in_slot": 0
         },
         {
@@ -116247,7 +116514,7 @@
           "slot_id": "asset.chr.01ec00.000400",
           "file_offset": 1174544,
           "length": 1024,
-          "asset_offset": 120832,
+          "asset_offset": 121856,
           "offset_in_slot": 0
         },
         {
@@ -116255,7 +116522,7 @@
           "slot_id": "asset.chr.01f000.000400",
           "file_offset": 1175568,
           "length": 1024,
-          "asset_offset": 121856,
+          "asset_offset": 122880,
           "offset_in_slot": 0
         },
         {
@@ -116263,7 +116530,7 @@
           "slot_id": "asset.chr.01f400.000400",
           "file_offset": 1176592,
           "length": 1024,
-          "asset_offset": 122880,
+          "asset_offset": 123904,
           "offset_in_slot": 0
         },
         {
@@ -116271,7 +116538,7 @@
           "slot_id": "asset.chr.01f800.000400",
           "file_offset": 1177616,
           "length": 1024,
-          "asset_offset": 123904,
+          "asset_offset": 124928,
           "offset_in_slot": 0
         },
         {
@@ -116279,7 +116546,7 @@
           "slot_id": "asset.chr.01fc00.000400",
           "file_offset": 1178640,
           "length": 1024,
-          "asset_offset": 124928,
+          "asset_offset": 125952,
           "offset_in_slot": 0
         },
         {
@@ -116287,7 +116554,7 @@
           "slot_id": "asset.chr.020000.000400",
           "file_offset": 1179664,
           "length": 1024,
-          "asset_offset": 125952,
+          "asset_offset": 126976,
           "offset_in_slot": 0
         },
         {
@@ -116295,7 +116562,7 @@
           "slot_id": "asset.chr.020400.000400",
           "file_offset": 1180688,
           "length": 1024,
-          "asset_offset": 126976,
+          "asset_offset": 128000,
           "offset_in_slot": 0
         },
         {
@@ -116303,7 +116570,7 @@
           "slot_id": "asset.chr.020800.000400",
           "file_offset": 1181712,
           "length": 1024,
-          "asset_offset": 128000,
+          "asset_offset": 129024,
           "offset_in_slot": 0
         },
         {
@@ -116311,7 +116578,7 @@
           "slot_id": "asset.chr.020c00.000400",
           "file_offset": 1182736,
           "length": 1024,
-          "asset_offset": 129024,
+          "asset_offset": 130048,
           "offset_in_slot": 0
         },
         {
@@ -116319,7 +116586,7 @@
           "slot_id": "asset.chr.021000.000400",
           "file_offset": 1183760,
           "length": 1024,
-          "asset_offset": 130048,
+          "asset_offset": 131072,
           "offset_in_slot": 0
         },
         {
@@ -116327,7 +116594,7 @@
           "slot_id": "asset.chr.021400.000400",
           "file_offset": 1184784,
           "length": 1024,
-          "asset_offset": 131072,
+          "asset_offset": 132096,
           "offset_in_slot": 0
         },
         {
@@ -116335,7 +116602,7 @@
           "slot_id": "asset.chr.021800.000400",
           "file_offset": 1185808,
           "length": 1024,
-          "asset_offset": 132096,
+          "asset_offset": 133120,
           "offset_in_slot": 0
         },
         {
@@ -116343,7 +116610,7 @@
           "slot_id": "asset.chr.021c00.000400",
           "file_offset": 1186832,
           "length": 1024,
-          "asset_offset": 133120,
+          "asset_offset": 134144,
           "offset_in_slot": 0
         },
         {
@@ -116351,7 +116618,7 @@
           "slot_id": "asset.chr.022000.000400",
           "file_offset": 1187856,
           "length": 1024,
-          "asset_offset": 134144,
+          "asset_offset": 135168,
           "offset_in_slot": 0
         },
         {
@@ -116359,7 +116626,7 @@
           "slot_id": "asset.chr.022400.000400",
           "file_offset": 1188880,
           "length": 1024,
-          "asset_offset": 135168,
+          "asset_offset": 136192,
           "offset_in_slot": 0
         },
         {
@@ -116367,7 +116634,7 @@
           "slot_id": "asset.chr.022800.000400",
           "file_offset": 1189904,
           "length": 1024,
-          "asset_offset": 136192,
+          "asset_offset": 137216,
           "offset_in_slot": 0
         },
         {
@@ -116375,7 +116642,7 @@
           "slot_id": "asset.chr.022c00.000400",
           "file_offset": 1190928,
           "length": 1024,
-          "asset_offset": 137216,
+          "asset_offset": 138240,
           "offset_in_slot": 0
         },
         {
@@ -116383,7 +116650,7 @@
           "slot_id": "asset.chr.023000.000400",
           "file_offset": 1191952,
           "length": 1024,
-          "asset_offset": 138240,
+          "asset_offset": 139264,
           "offset_in_slot": 0
         },
         {
@@ -116391,7 +116658,7 @@
           "slot_id": "asset.chr.023400.000400",
           "file_offset": 1192976,
           "length": 1024,
-          "asset_offset": 139264,
+          "asset_offset": 140288,
           "offset_in_slot": 0
         },
         {
@@ -116399,7 +116666,7 @@
           "slot_id": "asset.chr.023800.000400",
           "file_offset": 1194000,
           "length": 1024,
-          "asset_offset": 140288,
+          "asset_offset": 141312,
           "offset_in_slot": 0
         },
         {
@@ -116407,7 +116674,7 @@
           "slot_id": "asset.chr.023c00.000400",
           "file_offset": 1195024,
           "length": 1024,
-          "asset_offset": 141312,
+          "asset_offset": 142336,
           "offset_in_slot": 0
         },
         {
@@ -116415,7 +116682,7 @@
           "slot_id": "asset.chr.024000.000400",
           "file_offset": 1196048,
           "length": 1024,
-          "asset_offset": 142336,
+          "asset_offset": 143360,
           "offset_in_slot": 0
         },
         {
@@ -116423,7 +116690,7 @@
           "slot_id": "asset.chr.024400.000400",
           "file_offset": 1197072,
           "length": 1024,
-          "asset_offset": 143360,
+          "asset_offset": 144384,
           "offset_in_slot": 0
         },
         {
@@ -116431,7 +116698,7 @@
           "slot_id": "asset.chr.024c00.000400",
           "file_offset": 1199120,
           "length": 1024,
-          "asset_offset": 144384,
+          "asset_offset": 145408,
           "offset_in_slot": 0
         },
         {
@@ -116439,7 +116706,7 @@
           "slot_id": "asset.chr.025000.000400",
           "file_offset": 1200144,
           "length": 1024,
-          "asset_offset": 145408,
+          "asset_offset": 146432,
           "offset_in_slot": 0
         },
         {
@@ -116447,7 +116714,7 @@
           "slot_id": "asset.chr.025400.000400",
           "file_offset": 1201168,
           "length": 1024,
-          "asset_offset": 146432,
+          "asset_offset": 147456,
           "offset_in_slot": 0
         },
         {
@@ -116455,7 +116722,7 @@
           "slot_id": "asset.chr.025800.000400",
           "file_offset": 1202192,
           "length": 1024,
-          "asset_offset": 147456,
+          "asset_offset": 148480,
           "offset_in_slot": 0
         },
         {
@@ -116463,7 +116730,7 @@
           "slot_id": "asset.chr.025c00.000400",
           "file_offset": 1203216,
           "length": 1024,
-          "asset_offset": 148480,
+          "asset_offset": 149504,
           "offset_in_slot": 0
         },
         {
@@ -116471,7 +116738,7 @@
           "slot_id": "asset.chr.026000.000400",
           "file_offset": 1204240,
           "length": 1024,
-          "asset_offset": 149504,
+          "asset_offset": 150528,
           "offset_in_slot": 0
         },
         {
@@ -116479,7 +116746,15 @@
           "slot_id": "asset.chr.026400.000400",
           "file_offset": 1205264,
           "length": 1024,
-          "asset_offset": 150528,
+          "asset_offset": 151552,
+          "offset_in_slot": 0
+        },
+        {
+          "region": "chr",
+          "slot_id": "asset.chr.026800.000400",
+          "file_offset": 1206288,
+          "length": 1024,
+          "asset_offset": 152576,
           "offset_in_slot": 0
         },
         {
@@ -116487,7 +116762,7 @@
           "slot_id": "asset.chr.026c00.000400",
           "file_offset": 1207312,
           "length": 1024,
-          "asset_offset": 151552,
+          "asset_offset": 153600,
           "offset_in_slot": 0
         },
         {
@@ -116495,7 +116770,7 @@
           "slot_id": "asset.chr.027000.000400",
           "file_offset": 1208336,
           "length": 1024,
-          "asset_offset": 152576,
+          "asset_offset": 154624,
           "offset_in_slot": 0
         },
         {
@@ -116503,7 +116778,7 @@
           "slot_id": "asset.chr.027400.000400",
           "file_offset": 1209360,
           "length": 1024,
-          "asset_offset": 153600,
+          "asset_offset": 155648,
           "offset_in_slot": 0
         },
         {
@@ -116511,7 +116786,7 @@
           "slot_id": "asset.chr.027800.000400",
           "file_offset": 1210384,
           "length": 1024,
-          "asset_offset": 154624,
+          "asset_offset": 156672,
           "offset_in_slot": 0
         },
         {
@@ -116519,7 +116794,7 @@
           "slot_id": "asset.chr.027c00.000400",
           "file_offset": 1211408,
           "length": 1024,
-          "asset_offset": 155648,
+          "asset_offset": 157696,
           "offset_in_slot": 0
         },
         {
@@ -116527,7 +116802,7 @@
           "slot_id": "asset.chr.028000.000400",
           "file_offset": 1212432,
           "length": 1024,
-          "asset_offset": 156672,
+          "asset_offset": 158720,
           "offset_in_slot": 0
         },
         {
@@ -116535,7 +116810,7 @@
           "slot_id": "asset.chr.028400.000400",
           "file_offset": 1213456,
           "length": 1024,
-          "asset_offset": 157696,
+          "asset_offset": 159744,
           "offset_in_slot": 0
         },
         {
@@ -116543,7 +116818,7 @@
           "slot_id": "asset.chr.028800.000400",
           "file_offset": 1214480,
           "length": 1024,
-          "asset_offset": 158720,
+          "asset_offset": 160768,
           "offset_in_slot": 0
         },
         {
@@ -116551,7 +116826,7 @@
           "slot_id": "asset.chr.028c00.000400",
           "file_offset": 1215504,
           "length": 1024,
-          "asset_offset": 159744,
+          "asset_offset": 161792,
           "offset_in_slot": 0
         },
         {
@@ -116559,7 +116834,7 @@
           "slot_id": "asset.chr.029000.000400",
           "file_offset": 1216528,
           "length": 1024,
-          "asset_offset": 160768,
+          "asset_offset": 162816,
           "offset_in_slot": 0
         },
         {
@@ -116567,7 +116842,7 @@
           "slot_id": "asset.chr.029400.000400",
           "file_offset": 1217552,
           "length": 1024,
-          "asset_offset": 161792,
+          "asset_offset": 163840,
           "offset_in_slot": 0
         },
         {
@@ -116575,7 +116850,7 @@
           "slot_id": "asset.chr.029800.000400",
           "file_offset": 1218576,
           "length": 1024,
-          "asset_offset": 162816,
+          "asset_offset": 164864,
           "offset_in_slot": 0
         },
         {
@@ -116583,7 +116858,7 @@
           "slot_id": "asset.chr.029c00.000400",
           "file_offset": 1219600,
           "length": 1024,
-          "asset_offset": 163840,
+          "asset_offset": 165888,
           "offset_in_slot": 0
         },
         {
@@ -116591,7 +116866,7 @@
           "slot_id": "asset.chr.02a000.000400",
           "file_offset": 1220624,
           "length": 1024,
-          "asset_offset": 164864,
+          "asset_offset": 166912,
           "offset_in_slot": 0
         },
         {
@@ -116599,7 +116874,7 @@
           "slot_id": "asset.chr.02a400.000400",
           "file_offset": 1221648,
           "length": 1024,
-          "asset_offset": 165888,
+          "asset_offset": 167936,
           "offset_in_slot": 0
         },
         {
@@ -116607,7 +116882,7 @@
           "slot_id": "asset.chr.02a800.000400",
           "file_offset": 1222672,
           "length": 1024,
-          "asset_offset": 166912,
+          "asset_offset": 168960,
           "offset_in_slot": 0
         },
         {
@@ -116615,7 +116890,7 @@
           "slot_id": "asset.chr.02ac00.000400",
           "file_offset": 1223696,
           "length": 1024,
-          "asset_offset": 167936,
+          "asset_offset": 169984,
           "offset_in_slot": 0
         },
         {
@@ -116623,7 +116898,7 @@
           "slot_id": "asset.chr.02b000.000400",
           "file_offset": 1224720,
           "length": 1024,
-          "asset_offset": 168960,
+          "asset_offset": 171008,
           "offset_in_slot": 0
         },
         {
@@ -116631,7 +116906,7 @@
           "slot_id": "asset.chr.02b400.000400",
           "file_offset": 1225744,
           "length": 1024,
-          "asset_offset": 169984,
+          "asset_offset": 172032,
           "offset_in_slot": 0
         },
         {
@@ -116639,7 +116914,7 @@
           "slot_id": "asset.chr.02b800.000400",
           "file_offset": 1226768,
           "length": 1024,
-          "asset_offset": 171008,
+          "asset_offset": 173056,
           "offset_in_slot": 0
         },
         {
@@ -116647,7 +116922,7 @@
           "slot_id": "asset.chr.02bc00.000400",
           "file_offset": 1227792,
           "length": 1024,
-          "asset_offset": 172032,
+          "asset_offset": 174080,
           "offset_in_slot": 0
         },
         {
@@ -116655,7 +116930,7 @@
           "slot_id": "asset.chr.02c000.000400",
           "file_offset": 1228816,
           "length": 1024,
-          "asset_offset": 173056,
+          "asset_offset": 175104,
           "offset_in_slot": 0
         },
         {
@@ -116663,7 +116938,7 @@
           "slot_id": "asset.chr.02c400.000400",
           "file_offset": 1229840,
           "length": 1024,
-          "asset_offset": 174080,
+          "asset_offset": 176128,
           "offset_in_slot": 0
         },
         {
@@ -116671,7 +116946,7 @@
           "slot_id": "asset.chr.02c800.000400",
           "file_offset": 1230864,
           "length": 1024,
-          "asset_offset": 175104,
+          "asset_offset": 177152,
           "offset_in_slot": 0
         },
         {
@@ -116679,7 +116954,7 @@
           "slot_id": "asset.chr.02cc00.000400",
           "file_offset": 1231888,
           "length": 1024,
-          "asset_offset": 176128,
+          "asset_offset": 178176,
           "offset_in_slot": 0
         },
         {
@@ -116687,7 +116962,7 @@
           "slot_id": "asset.chr.02d000.000400",
           "file_offset": 1232912,
           "length": 1024,
-          "asset_offset": 177152,
+          "asset_offset": 179200,
           "offset_in_slot": 0
         },
         {
@@ -116695,7 +116970,7 @@
           "slot_id": "asset.chr.02d400.000400",
           "file_offset": 1233936,
           "length": 1024,
-          "asset_offset": 178176,
+          "asset_offset": 180224,
           "offset_in_slot": 0
         },
         {
@@ -116703,7 +116978,7 @@
           "slot_id": "asset.chr.02d800.000400",
           "file_offset": 1234960,
           "length": 1024,
-          "asset_offset": 179200,
+          "asset_offset": 181248,
           "offset_in_slot": 0
         },
         {
@@ -116711,7 +116986,7 @@
           "slot_id": "asset.chr.02dc00.000400",
           "file_offset": 1235984,
           "length": 1024,
-          "asset_offset": 180224,
+          "asset_offset": 182272,
           "offset_in_slot": 0
         },
         {
@@ -116719,7 +116994,7 @@
           "slot_id": "asset.chr.02e000.000400",
           "file_offset": 1237008,
           "length": 1024,
-          "asset_offset": 181248,
+          "asset_offset": 183296,
           "offset_in_slot": 0
         },
         {
@@ -116727,7 +117002,7 @@
           "slot_id": "asset.chr.02e400.000400",
           "file_offset": 1238032,
           "length": 1024,
-          "asset_offset": 182272,
+          "asset_offset": 184320,
           "offset_in_slot": 0
         },
         {
@@ -116735,7 +117010,7 @@
           "slot_id": "asset.chr.02e800.000400",
           "file_offset": 1239056,
           "length": 1024,
-          "asset_offset": 183296,
+          "asset_offset": 185344,
           "offset_in_slot": 0
         },
         {
@@ -116743,7 +117018,7 @@
           "slot_id": "asset.chr.02ec00.000400",
           "file_offset": 1240080,
           "length": 1024,
-          "asset_offset": 184320,
+          "asset_offset": 186368,
           "offset_in_slot": 0
         },
         {
@@ -116751,7 +117026,7 @@
           "slot_id": "asset.chr.02f000.000400",
           "file_offset": 1241104,
           "length": 1024,
-          "asset_offset": 185344,
+          "asset_offset": 187392,
           "offset_in_slot": 0
         },
         {
@@ -116759,7 +117034,7 @@
           "slot_id": "asset.chr.02f400.000400",
           "file_offset": 1242128,
           "length": 1024,
-          "asset_offset": 186368,
+          "asset_offset": 188416,
           "offset_in_slot": 0
         },
         {
@@ -116767,7 +117042,7 @@
           "slot_id": "asset.chr.02f800.000400",
           "file_offset": 1243152,
           "length": 1024,
-          "asset_offset": 187392,
+          "asset_offset": 189440,
           "offset_in_slot": 0
         },
         {
@@ -116775,7 +117050,7 @@
           "slot_id": "asset.chr.02fc00.000400",
           "file_offset": 1244176,
           "length": 1024,
-          "asset_offset": 188416,
+          "asset_offset": 190464,
           "offset_in_slot": 0
         },
         {
@@ -116783,7 +117058,7 @@
           "slot_id": "asset.chr.030000.000400",
           "file_offset": 1245200,
           "length": 1024,
-          "asset_offset": 189440,
+          "asset_offset": 191488,
           "offset_in_slot": 0
         },
         {
@@ -116791,7 +117066,7 @@
           "slot_id": "asset.chr.030400.000400",
           "file_offset": 1246224,
           "length": 1024,
-          "asset_offset": 190464,
+          "asset_offset": 192512,
           "offset_in_slot": 0
         },
         {
@@ -116799,7 +117074,7 @@
           "slot_id": "asset.chr.030800.000400",
           "file_offset": 1247248,
           "length": 1024,
-          "asset_offset": 191488,
+          "asset_offset": 193536,
           "offset_in_slot": 0
         },
         {
@@ -116807,7 +117082,7 @@
           "slot_id": "asset.chr.030c00.000400",
           "file_offset": 1248272,
           "length": 1024,
-          "asset_offset": 192512,
+          "asset_offset": 194560,
           "offset_in_slot": 0
         },
         {
@@ -116815,7 +117090,7 @@
           "slot_id": "asset.chr.031000.000400",
           "file_offset": 1249296,
           "length": 1024,
-          "asset_offset": 193536,
+          "asset_offset": 195584,
           "offset_in_slot": 0
         },
         {
@@ -116823,7 +117098,7 @@
           "slot_id": "asset.chr.031400.000400",
           "file_offset": 1250320,
           "length": 1024,
-          "asset_offset": 194560,
+          "asset_offset": 196608,
           "offset_in_slot": 0
         },
         {
@@ -116831,7 +117106,7 @@
           "slot_id": "asset.chr.031800.000400",
           "file_offset": 1251344,
           "length": 1024,
-          "asset_offset": 195584,
+          "asset_offset": 197632,
           "offset_in_slot": 0
         },
         {
@@ -116839,7 +117114,7 @@
           "slot_id": "asset.chr.031c00.000400",
           "file_offset": 1252368,
           "length": 1024,
-          "asset_offset": 196608,
+          "asset_offset": 198656,
           "offset_in_slot": 0
         },
         {
@@ -116847,7 +117122,7 @@
           "slot_id": "asset.chr.032000.000400",
           "file_offset": 1253392,
           "length": 1024,
-          "asset_offset": 197632,
+          "asset_offset": 199680,
           "offset_in_slot": 0
         },
         {
@@ -116855,7 +117130,7 @@
           "slot_id": "asset.chr.032400.000400",
           "file_offset": 1254416,
           "length": 1024,
-          "asset_offset": 198656,
+          "asset_offset": 200704,
           "offset_in_slot": 0
         },
         {
@@ -116863,7 +117138,7 @@
           "slot_id": "asset.chr.032800.000400",
           "file_offset": 1255440,
           "length": 1024,
-          "asset_offset": 199680,
+          "asset_offset": 201728,
           "offset_in_slot": 0
         },
         {
@@ -116871,7 +117146,7 @@
           "slot_id": "asset.chr.032c00.000400",
           "file_offset": 1256464,
           "length": 1024,
-          "asset_offset": 200704,
+          "asset_offset": 202752,
           "offset_in_slot": 0
         },
         {
@@ -116879,7 +117154,7 @@
           "slot_id": "asset.chr.033000.000400",
           "file_offset": 1257488,
           "length": 1024,
-          "asset_offset": 201728,
+          "asset_offset": 203776,
           "offset_in_slot": 0
         },
         {
@@ -116887,7 +117162,7 @@
           "slot_id": "asset.chr.033400.000400",
           "file_offset": 1258512,
           "length": 1024,
-          "asset_offset": 202752,
+          "asset_offset": 204800,
           "offset_in_slot": 0
         },
         {
@@ -116895,7 +117170,7 @@
           "slot_id": "asset.chr.033800.000400",
           "file_offset": 1259536,
           "length": 1024,
-          "asset_offset": 203776,
+          "asset_offset": 205824,
           "offset_in_slot": 0
         },
         {
@@ -116903,7 +117178,7 @@
           "slot_id": "asset.chr.033c00.000400",
           "file_offset": 1260560,
           "length": 1024,
-          "asset_offset": 204800,
+          "asset_offset": 206848,
           "offset_in_slot": 0
         }
       ],
@@ -116914,7 +117189,7 @@
         "statuses": [
           "exact"
         ],
-        "covered_bytes": 205824
+        "covered_bytes": 207872
       }
     },
     {

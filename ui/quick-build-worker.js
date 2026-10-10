@@ -1,9 +1,10 @@
-import { createStaticPackageBootstrapProvider, openActiveProjectStore, openProjectSessionFromPackage, bootstrapActiveProjectFromPackage } from '../js/battle-result-script-runtime-B_EClFew.js';
-import { buildBrowserRom, createProjectStoreRomBuildProvider } from '../js/prg-loaders-BmwiQmdC.js';
-import { state } from '../js/emulator-DynsZsth.js';
-import '../js/visual-metasprites-DJP54-bV.js';
-import '../js/package-schema-paths-gCIepLXx.js';
-import '../js/story-event-links-CRjG_25M.js';
+import { createStaticPackageBootstrapProvider, openActiveProjectStore, openProjectSessionFromPackage, bootstrapActiveProjectFromPackage } from '../js/prg-loaders-DnCSmXk9.js';
+import { buildBrowserRom, createProjectStoreRomBuildProvider } from '../js/asset-compiler-B1MJV5At.js';
+import { state } from '../js/emulator-Bpa8EsFw.js';
+import '../js/baseline-assembly-DW8BWbDB.js';
+import '../js/visual-metasprites-IDA0o2Z8.js';
+import '../js/editor-renderer-n2nBwXk_.js';
+import '../js/physical-field-object-windows-DnQmS3eb.js';
 
 // @editor-module 在浏览器 Worker 中执行快速构建，并发布准备子项与构建事件。
 

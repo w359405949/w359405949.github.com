@@ -1239,7 +1239,7 @@
       }
     },
     "save-container": {
-      "summary": "存档容器与全局字段：SRAM 目录、校验/槽框架及场景、事件、调查物、通缉、统计和金钱字段；$7000-$7FFF 运行工作区已拆出，人物、战车和财产记录由独立实体唯一持有",
+      "summary": "存档容器持有目录、槽校验及场景、事件、调查物、通缉、统计与金钱字段。",
       "owns_spaces": [
         "sram"
       ],
@@ -1248,7 +1248,8 @@
         "wanted-record": "field:save.*.wanted_defeat_level_at_victory[*] 的位置索引 wanted_id",
         "scene": "field:save.slot.*.scene_id / field:save.slot.*.field_object.*.scene_id",
         "application-command": "global_event_flag 的控制器写入路径与受控对象关联",
-        "text-record": "装饰品购买标志的用途引用 record:0D:040–047"
+        "text-record": "装饰品购买标志的用途引用 record:0D:040–047",
+        "save-extension-bitmap": "两槽扩展状态位字段引用扩展位归属。"
       }
     },
     "rental-vehicle-lifecycle-service": {
@@ -2431,7 +2432,7 @@
       }
     },
     "nearby-object-investigation-service": {
-      "summary": "邻近对象调查服务：主菜单调查从当前格角色、当前格/前方坐标、91 条对象记录、6 条专用坐标、metatile 行为与 123 条设施记录逐层分派；持有自己的 handler 表和宝物覆盖/取得解释代码，不持有被解释的资源记录。",
+      "summary": "邻近对象调查服务持有调查分派、设施新增集合及审定整表读取器，原版记录字段由各资源提供。",
       "owns_spaces": [
         "prg"
       ],
@@ -2455,7 +2456,8 @@
         "prg-bank-mapping-service": "固定包装与跨 bank 调查/奖励调用安装 PRG window",
         "runtime-workspace": "$04/$05 调查坐标、$07 行为结果、$AC 对象索引、$CC/$CD 记录参数及运行时地图缓存",
         "save-container": "调查取得位、全局事件 flag 与持久宝物状态",
-        "scene": "当前场景、相机/玩家坐标与专用坐标记录的 scene 字段；123 条普通调查记录；6 条专用坐标记录；91 条宝物/奖励记录",
+        "scene": "场景地图与原版调查记录提供设施整表的原值和当前字段。",
+        "story-interaction-script": "新增设施点的转接只引用不依赖角色现场的当前剧情脚本。",
         "story-action-handler": "乌鲁米井处理器 1A:1D0F-1D20 逐队伍实体调用 3F:1C00 scene-action-vm 执行动作 0A",
         "text-record": "调查结果和对象对话记录",
         "ui-facility": "设施 selector、下注/服务参数与设施 UI provider",
@@ -2616,6 +2618,19 @@
         "story-interaction-script": "剧情来源只显示交互等待与调用投影。",
         "selection-layout": "界面选择控件仍引用选择布局字段对象。",
         "ui-facility": "原生界面来源与组件字段引用由所属字段对象提供。"
+      }
+    },
+    "save-extension-bitmap": {
+      "summary": "256 位扩展状态的归属、两槽运输字段与按使用启用的定值代码。",
+      "owns_spaces": [
+        "prg",
+        "sram"
+      ],
+      "references": {
+        "save-container": "两槽保留尾参加原版 1024 字节校验；原版 G、T 不分配。",
+        "story-script-reader": "扩展位使用时启用 opcode 74–77 的读取器变体。",
+        "prg-bank-mapping-service": "定值门桩通过固定入口选择与恢复 PRG 窗口。",
+        "field-scene-lifecycle-service": "分配归属引用新增场景对象句柄。"
       }
     }
   },

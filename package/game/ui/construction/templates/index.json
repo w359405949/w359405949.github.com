@@ -413762,6 +413762,18 @@
             }
           },
           {
+            "id": "constructor:ending-terminal-mark",
+            "runtime_context": {
+              "mode": 14,
+              "sprite_visibility": "hidden"
+            },
+            "runtime_evidence": {
+              "construction": "PRG $0382F4..$038308 loads bank $14 and calls $BF27; PRG $029F27..$029F7F selects CHR $90/$91 and writes an 8×8 grid at $214C with row stride $10; PRG $038308 loops at $8308",
+              "captured_ppu_used": false,
+              "screenshot_used": false
+            }
+          },
+          {
             "id": "constructor:ending-message-12",
             "runtime_context": {
               "mode": 14,
@@ -413785,7 +413797,7 @@
               "sprite_visibility": "hidden"
             },
             "runtime_evidence": {
-              "construction": "1C:82B6 submits76;1C:82BB selects0B:C0 through3F:FD8D;1A:B701 sets line origin09 and text origin0029",
+              "construction": "PRG 0382B6 selects 0B:C0; PRG 0356F7 sets scroll $50; PRG 035701 sets line origin $09 and window offset $0029; PRG 07F5FC yields text origin $6269, projected to cursor $0129",
               "captured_ppu_used": false,
               "screenshot_used": false
             }
@@ -415045,6 +415057,65 @@
             },
             "use": {
               "preview": "constructor:ending-message-11"
+            }
+          },
+          {
+            "role": "tiles",
+            "reference": {
+              "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+              "resource_id": "shared-chr-bank",
+              "bank": 144
+            },
+            "use": {
+              "preview": "constructor:ending-terminal-mark",
+              "layer": 0
+            }
+          },
+          {
+            "role": "tiles",
+            "reference": {
+              "schema": "metalmaxcn.shared-chr-bank-bank-reference",
+              "resource_id": "shared-chr-bank",
+              "bank": 145
+            },
+            "use": {
+              "preview": "constructor:ending-terminal-mark",
+              "layer": 0
+            }
+          },
+          {
+            "role": "sprites",
+            "reference": {
+              "preview": "constructor:ending-terminal-mark",
+              "field": "sprite_policy"
+            },
+            "use": {
+              "preview": "constructor:ending-terminal-mark"
+            }
+          },
+          {
+            "role": "palette",
+            "palette_kind": "background",
+            "reference": {
+              "preview": "constructor:ending-terminal-mark",
+              "field": "background_palettes"
+            },
+            "use": {
+              "preview": "constructor:ending-terminal-mark"
+            }
+          },
+          {
+            "role": "tiles",
+            "reference": {
+              "schema": "metalmaxcn.shared-chr-bank-pattern-table-reference",
+              "resource_id": "shared-chr-bank",
+              "banks": [
+                10,
+                11
+              ]
+            },
+            "use": {
+              "preview": "constructor:ending-terminal-mark"
             }
           },
           {

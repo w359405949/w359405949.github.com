@@ -3144,6 +3144,42 @@
         "dynamic_advance_operands": [],
         "terminal_side_effect": false,
         "width": 4
+      },
+      {
+        "opcode": 116,
+        "name": "set-extension-flag",
+        "width": 2,
+        "fixed_advance": 2,
+        "dynamic_advance_operands": [],
+        "terminal_side_effect": false
+      },
+      {
+        "opcode": 117,
+        "name": "clear-extension-flag",
+        "width": 2,
+        "fixed_advance": 2,
+        "dynamic_advance_operands": [],
+        "terminal_side_effect": false
+      },
+      {
+        "opcode": 118,
+        "name": "branch-if-extension-set",
+        "width": 3,
+        "fixed_advance": 3,
+        "dynamic_advance_operands": [
+          2
+        ],
+        "terminal_side_effect": false
+      },
+      {
+        "opcode": 119,
+        "name": "branch-if-extension-clear",
+        "width": 3,
+        "fixed_advance": 3,
+        "dynamic_advance_operands": [
+          2
+        ],
+        "terminal_side_effect": false
       }
     ],
     "byte_map": {
@@ -28286,6 +28322,44 @@
       }
     ]
   },
+  "save_extension": {
+    "schema": "metalmaxcn.save-extension",
+    "code": [
+      {
+        "fragment_id": "save-extension-bitmap.code",
+        "slot_id": "save-extension.code",
+        "approved_sha256": "b714cb14e0bd1a223500d8aa141e6b30474e6091822f680f2585f6b3c28632df"
+      },
+      {
+        "fragment_id": "save-extension-bitmap.load-gate",
+        "slot_id": "save-extension.load-gate",
+        "approved_sha256": "7f3e381162619efb3e8dc8db95ae505c76b0b886028f642e8e35ac610bcef9ba"
+      },
+      {
+        "fragment_id": "save-extension-bitmap.store-gate",
+        "slot_id": "save-extension.store-gate",
+        "approved_sha256": "1c8418e7632fd0fa0f0e18774927d28a04c6b4075c7cf250ce890307d78e5414"
+      },
+      {
+        "fragment_id": "save-extension-bitmap.initialize-gate",
+        "slot_id": "save-extension.initialize-gate",
+        "approved_sha256": "d51380932ed90db421ac25fcb158affb67c81840b22f20bca06e07b32760e682"
+      },
+      {
+        "fragment_id": "save-extension-bitmap.dispatch-gate",
+        "slot_id": "save-extension.dispatch-gate",
+        "approved_sha256": "46f3f605275be08066ac5d04678e32619162ff20f039245498b4a0240c8cfc44"
+      }
+    ],
+    "runtime_cpu": 1472,
+    "bytes": 32,
+    "slot_offset": 990,
+    "signature": [
+      69,
+      1
+    ],
+    "story_reader_sha256": "ae6fb63576b11612e8120b919539daed9540ee5134eb12241b2892387eafcfbe"
+  },
   "expansion_shared_pool": {
     "schema": "metalmaxcn.expansion-shared-pool",
     "baseline_sha256": "91e2159244ab52ceb31d0d8f1ffad85e1e4e23434faaec11d7e649310cca4ed4",
@@ -28331,14 +28405,24 @@
         "preimage_sha256": "20fd8f291a5b13c8f7c9b01241b05f08b8f739bb5f676fa4a2c3efe9ac868e5c"
       },
       {
-        "range_id": "expansion-shared-pool.range.4a.0",
+        "range_id": "expansion-shared-pool.range.4a.104",
         "bank_index": 74,
-        "bank_offset": 0,
-        "capacity": 8192,
-        "file_offset": 606224,
-        "runtime_address": 32768,
+        "bank_offset": 260,
+        "capacity": 252,
+        "file_offset": 606484,
+        "runtime_address": 33028,
         "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
-        "preimage_sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        "preimage_sha256": "dc6a17c9570845b5667fe6faa1361f05e471f5ab033213aec9b26acc0aab8849"
+      },
+      {
+        "range_id": "expansion-shared-pool.range.4a.504",
+        "bank_index": 74,
+        "bank_offset": 1284,
+        "capacity": 6908,
+        "file_offset": 607508,
+        "runtime_address": 34052,
+        "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+        "preimage_sha256": "ef13b98edeeb7be60b68e47187c43faa0299415e550768b4c1062b446db5621d"
       },
       {
         "range_id": "expansion-shared-pool.range.4b.0",
@@ -28374,11 +28458,11 @@
         "range_id": "expansion-shared-pool.range.4e.0",
         "bank_index": 78,
         "bank_offset": 0,
-        "capacity": 8192,
+        "capacity": 7168,
         "file_offset": 638992,
         "runtime_address": 32768,
         "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
-        "preimage_sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        "preimage_sha256": "e712c38675e34dd889f2b96aa751eaa98793ffb8316031114bd0fd6da7a0cf13"
       },
       {
         "range_id": "expansion-shared-pool.range.56.1f00",
@@ -28459,7 +28543,7 @@
       {
         "fragment_id": "nearby-object-investigation-service.interaction-reader",
         "slot_id": "scene-interaction.nearby-object-investigation-service.interaction-reader",
-        "approved_sha256": "2e24c0a7ed0fdfb943d32c26a4aaded0a480fdc2c8e87288ad966511ff250afb"
+        "approved_sha256": "3002202620ba45ab475f11de5dbdedac155a7c7628e43e4637d23a1a917eb22c"
       },
       {
         "fragment_id": "field-interaction-dispatch-service.interaction-transfer-gate",
@@ -28479,7 +28563,7 @@
       {
         "fragment_id": "nearby-object-investigation-service.facility-transfer-gate",
         "slot_id": "scene-interaction.nearby-object-investigation-service.facility-transfer-gate",
-        "approved_sha256": "90632fd82aea9ffa8726fa3232b503032dc710aade4ad7791563af588d5a3726"
+        "approved_sha256": "4582608abaada7a8178313d68a92407d3eb8e8a009454f90e403e7a1359cdb62"
       },
       {
         "fragment_id": "nearby-object-investigation-service.special-transfer-gate",
@@ -32022,6 +32106,2523 @@
         }
       ]
     }
+  },
+  "scene_object_expansion": {
+    "schema": "metalmaxcn.scene-object-expansion",
+    "tables": [
+      {
+        "identity": "scene-remap",
+        "resource_id": "field-scene-lifecycle-service",
+        "maximum": 255,
+        "record_bytes": 3,
+        "directory_slot_id": "scene-object-expansion.scene-remap-directory",
+        "directory_fragment_id": "field-scene-lifecycle-service.scene-remap-directory",
+        "original_locations": [
+          {
+            "slot_id": "asset.prg.0286f7.000009",
+            "offset_in_slot": 0,
+            "length": 9
+          }
+        ],
+        "code": [
+          {
+            "fragment_id": "field-scene-lifecycle-service.scene-remap-reader",
+            "slot_id": "scene-object-expansion.scene-remap-reader",
+            "approved_sha256": "b3d695fd6b26841ea540c8463914fd778ba61b0e71bc65574b6df09d326292a9"
+          },
+          {
+            "fragment_id": "field-scene-lifecycle-service.scene-remap-gate",
+            "slot_id": "scene-object-expansion.scene-remap-gate",
+            "approved_sha256": "42b16426136ae0f3975ce214841520c8195fe3d01d2297fc53ea854bf190a0f2"
+          }
+        ]
+      },
+      {
+        "identity": "facility-point",
+        "resource_id": "nearby-object-investigation-service",
+        "maximum": 255,
+        "record_bytes": 10,
+        "original_resources": [
+          "scene:02",
+          "scene:03",
+          "scene:08",
+          "scene:09",
+          "scene:0B",
+          "scene:15",
+          "scene:16",
+          "scene:18",
+          "scene:1B",
+          "scene:20",
+          "scene:24",
+          "scene:2A",
+          "scene:2E",
+          "scene:32",
+          "scene:3C",
+          "scene:3F",
+          "scene:43",
+          "scene:46",
+          "scene:50",
+          "scene:51",
+          "scene:55",
+          "scene:56",
+          "scene:5A",
+          "scene:5C",
+          "scene:5D",
+          "scene:5E",
+          "scene:60",
+          "scene:65",
+          "scene:67",
+          "scene:68",
+          "scene:70",
+          "scene:72",
+          "scene:79",
+          "scene:7C",
+          "scene:7E",
+          "scene:80",
+          "scene:85",
+          "scene:86",
+          "scene:8B",
+          "scene:90",
+          "scene:A3",
+          "scene:A4",
+          "scene:AF",
+          "scene:BD",
+          "scene:BE",
+          "scene:C0",
+          "scene:C5",
+          "scene:C7",
+          "scene:CD",
+          "scene:CE",
+          "scene:CF",
+          "scene:D0",
+          "scene:D1",
+          "scene:D6",
+          "scene:DA",
+          "scene:DE",
+          "scene:DF",
+          "scene:E6",
+          "scene:E7",
+          "scene:E8",
+          "scene:E9",
+          "scene:EC",
+          "scene:EF"
+        ],
+        "original_locations": [
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e3d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f33.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e3e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f34.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e3f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eba.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f35.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e40.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ebb.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f36.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e41.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ebc.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f37.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e42.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ebd.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f38.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e43.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ebe.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f39.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e45.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e46.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e47.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e48.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e49.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f40.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f41.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f42.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f43.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ec9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f44.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e4f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eca.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f45.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e50.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ecb.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f46.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e51.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ecc.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f47.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e52.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ecd.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f48.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e53.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ece.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f49.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e54.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ecf.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e55.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e56.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e57.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e58.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e59.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f4f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f50.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f52.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f51.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f53.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ed9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f54.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e5f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eda.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f55.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e60.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039edb.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f56.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e61.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039edc.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f57.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e62.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039edd.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f58.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e63.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ede.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f59.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e64.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039edf.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e65.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e66.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e67.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e68.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e69.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f5f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f60.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f61.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f62.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f63.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ee9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f64.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e6f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eea.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f65.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e70.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eeb.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f66.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e71.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eec.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f67.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e72.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eed.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f68.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e73.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eee.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f69.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e74.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eef.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e75.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e76.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e77.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e78.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e79.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f6f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f70.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f71.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f72.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f73.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ef9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f74.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e82.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039efd.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f78.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e83.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039efe.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f79.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e84.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eff.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e85.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f00.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f06.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f81.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f07.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f82.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f08.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f83.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f09.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f84.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f85.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e90.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f86.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e91.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f87.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e92.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f88.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e93.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f89.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e94.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f0f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e95.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f10.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e96.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f11.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e97.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f12.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e98.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f13.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f17.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f92.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e99.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f14.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f8f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f15.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f90.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f16.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f91.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f18.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f93.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f19.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f94.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e9f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f95.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f96.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f97.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f98.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f99.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f1f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f20.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f21.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f22.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f23.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ea9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f24.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f9f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eaa.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f25.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eab.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f26.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eac.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f27.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ead.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f28.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eae.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f29.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eaf.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e44.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039ebf.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f3a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e86.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f01.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e87.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f02.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e88.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f03.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e89.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f04.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f7f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e8a.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f05.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f80.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e7f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039efa.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f75.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e80.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039efb.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f76.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039e81.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039efc.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f77.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb0.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2b.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb1.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2c.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb2.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2d.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa8.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb3.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2e.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fa9.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb4.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f2f.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039faa.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb5.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f30.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fab.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb6.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f31.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fac.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039eb7.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039f32.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          },
+          {
+            "resource_id": "scene.config",
+            "slot_id": "asset.prg.039fad.000001",
+            "offset_in_slot": 0,
+            "length": 1
+          }
+        ],
+        "directory_slot_id": "scene-object-expansion.facility-point-directory",
+        "directory_fragment_id": "nearby-object-investigation-service.facility-point-directory",
+        "code": [
+          {
+            "fragment_id": "nearby-object-investigation-service.interaction-reader",
+            "slot_id": "scene-interaction.nearby-object-investigation-service.interaction-reader",
+            "approved_sha256": "3002202620ba45ab475f11de5dbdedac155a7c7628e43e4637d23a1a917eb22c",
+            "shared": true
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-transfer-gate",
+            "slot_id": "scene-interaction.nearby-object-investigation-service.facility-transfer-gate",
+            "approved_sha256": "4582608abaada7a8178313d68a92407d3eb8e8a009454f90e403e7a1359cdb62",
+            "shared": true
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-reader",
+            "slot_id": "scene-object-expansion.facility-point-reader",
+            "approved_sha256": "3c48bb605b76034ac23da671b43f4e072e164172d82b2410f33fff605c8bedb9"
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-gate",
+            "slot_id": "scene-object-expansion.facility-point-gate",
+            "approved_sha256": "5e09d10c7e5ec8da5f5522f6940163cc945a27f31f35b4b02ba3f3364418ae43"
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-dispatch",
+            "slot_id": "scene-object-expansion.facility-point-dispatch",
+            "approved_sha256": "d2becc11d8e09e255db28f0d298c70fec90d7eebfa0dbc276585f1e7ed5376dd"
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-current",
+            "slot_id": "scene-object-expansion.facility-point-current",
+            "approved_sha256": "2ab627a7d8df9c69fbace525384a3cb4c883abed9a4ba393112c65126c5109b1"
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-front",
+            "slot_id": "scene-object-expansion.facility-point-front",
+            "approved_sha256": "2ab627a7d8df9c69fbace525384a3cb4c883abed9a4ba393112c65126c5109b1"
+          },
+          {
+            "fragment_id": "nearby-object-investigation-service.facility-point-call",
+            "slot_id": "scene-object-expansion.facility-point-call",
+            "approved_sha256": "567999c47787f8ae62debbf7f449474320da3d3210eca2b09c551c01f76eb294"
+          }
+        ]
+      }
+    ],
+    "ranges": [
+      {
+        "slot_id": "scene-object-expansion.scene-remap-reader",
+        "space": "prg",
+        "offset": 606208,
+        "length": 256,
+        "bank": 74,
+        "owner": "field-scene-lifecycle-service",
+        "kind": "code",
+        "purpose": "scene-remap-reader",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-object-remap-reader.asm",
+          "project/evidence/scene-object-remap-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.scene-remap-gate",
+        "space": "prg",
+        "offset": 165632,
+        "length": 30,
+        "bank": 20,
+        "owner": "field-scene-lifecycle-service",
+        "kind": "code",
+        "purpose": "scene-remap-gate",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-object-remap-reader.asm",
+          "project/evidence/scene-object-remap-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.scene-remap-directory",
+        "space": "prg",
+        "offset": 606464,
+        "length": 4,
+        "bank": 74,
+        "owner": "field-scene-lifecycle-service",
+        "kind": "data",
+        "purpose": "scene-remap-directory",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-object-remap-reader.asm",
+          "project/evidence/scene-object-remap-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-reader",
+        "space": "prg",
+        "offset": 606720,
+        "length": 768,
+        "bank": 74,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-reader",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-gate",
+        "space": "prg",
+        "offset": 219721,
+        "length": 39,
+        "bank": 26,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-gate",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-dispatch",
+        "space": "prg",
+        "offset": 219986,
+        "length": 23,
+        "bank": 26,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-dispatch",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-current",
+        "space": "prg",
+        "offset": 219961,
+        "length": 3,
+        "bank": 26,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-current",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-front",
+        "space": "prg",
+        "offset": 219980,
+        "length": 3,
+        "bank": 26,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-front",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-call",
+        "space": "prg",
+        "offset": 220029,
+        "length": 5,
+        "bank": 26,
+        "owner": "nearby-object-investigation-service",
+        "kind": "code",
+        "purpose": "facility-point-call",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      },
+      {
+        "slot_id": "scene-object-expansion.facility-point-directory",
+        "space": "prg",
+        "offset": 607488,
+        "length": 4,
+        "bank": 74,
+        "owner": "nearby-object-investigation-service",
+        "kind": "data",
+        "purpose": "facility-point-directory",
+        "confidence": "confirmed",
+        "evidence": [
+          "project/config/scene-facility-point-reader.asm",
+          "project/evidence/scene-facility-point-reader/observations.json"
+        ]
+      }
+    ]
   },
   "slots": [
     {
@@ -37941,6 +40542,23 @@
       "atomic_group": "asset-group.chr.013800.000400"
     },
     {
+      "slot_id": "asset.chr.013c00.000400",
+      "region": "chr",
+      "file_offset": 1129488,
+      "capacity": 1024,
+      "bank_index": 79,
+      "bank_offset": 0,
+      "baseline_bin": "layout/chr/bank_1k/079.bin",
+      "preimage_sha256": "a0291e246309b5bb40b0b89f2264249f09a1f3cf13053e2d2c0d645e7cd9eade",
+      "owner": "shared-chr-bank",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": null,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "asset-group.chr.013c00.000400"
+    },
+    {
       "slot_id": "asset.chr.014000.000400",
       "region": "chr",
       "file_offset": 1130512,
@@ -39146,6 +41764,23 @@
       "alias_of": null,
       "mirror_of": null,
       "atomic_group": "asset-group.chr.026400.000400"
+    },
+    {
+      "slot_id": "asset.chr.026800.000400",
+      "region": "chr",
+      "file_offset": 1206288,
+      "capacity": 1024,
+      "bank_index": 154,
+      "bank_offset": 0,
+      "baseline_bin": "layout/chr/bank_1k/154.bin",
+      "preimage_sha256": "018ae020a379348c848764b92530c25a9fb895ced15d01dd9de3a523082ed293",
+      "owner": "shared-chr-bank",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": null,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "asset-group.chr.026800.000400"
     },
     {
       "slot_id": "asset.chr.026c00.000400",
@@ -178854,6 +181489,91 @@
       "atomic_group": "asset-group.prg.07f133.000024"
     },
     {
+      "slot_id": "save-extension.code",
+      "region": "prg",
+      "file_offset": 646160,
+      "capacity": 1024,
+      "bank_index": 78,
+      "bank_offset": 7168,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2",
+      "owner": "save-extension-bitmap",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 39936,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "save-extension-code"
+    },
+    {
+      "slot_id": "save-extension.dispatch-gate",
+      "region": "prg",
+      "file_offset": 215428,
+      "capacity": 12,
+      "bank_index": 26,
+      "bank_offset": 2420,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "9434fc695d30d773bfc84f290e5bca205046c0315750d197c7d18946526746c9",
+      "owner": "save-extension-bitmap",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 43380,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "save-extension-code"
+    },
+    {
+      "slot_id": "save-extension.initialize-gate",
+      "region": "prg",
+      "file_offset": 1038228,
+      "capacity": 17,
+      "bank_index": 126,
+      "bank_offset": 6020,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "e7549be17faecf6b484a42b8a8dda9d8266a2738983ca5144c6cd9deabb919ff",
+      "owner": "save-extension-bitmap",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 55172,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "save-extension-code"
+    },
+    {
+      "slot_id": "save-extension.load-gate",
+      "region": "prg",
+      "file_offset": 1041725,
+      "capacity": 16,
+      "bank_index": 127,
+      "bank_offset": 1325,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "041739b4a9b50ffcc320e814e5967560df9d3c299489b795ba4506577bacc09d",
+      "owner": "save-extension-bitmap",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 58669,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "save-extension-code"
+    },
+    {
+      "slot_id": "save-extension.store-gate",
+      "region": "prg",
+      "file_offset": 1041741,
+      "capacity": 16,
+      "bank_index": 127,
+      "bank_offset": 1341,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "82015e2de5ad5708fb636b6b640fa144a554d54f92439fb8f749ea930eb9e575",
+      "owner": "save-extension-bitmap",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 58685,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": "save-extension-code"
+    },
+    {
       "slot_id": "scene-interaction.field-exploration-runtime.boundary-transfer-gate",
       "region": "prg",
       "file_offset": 514452,
@@ -183198,6 +185918,176 @@
       "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
       "preimage_sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
       "owner": "scene.config",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 32768,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-call",
+      "region": "prg",
+      "file_offset": 220045,
+      "capacity": 5,
+      "bank_index": 26,
+      "bank_offset": 7037,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "3e4f318e60880bd9d96dc4688772188c0ae30b93362e218c15a5f93f2cc3ad55",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 47997,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-current",
+      "region": "prg",
+      "file_offset": 219977,
+      "capacity": 3,
+      "bank_index": 26,
+      "bank_offset": 6969,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "747f580430f4ddb353a7674a2c92ea950fc283bba422803c8296fa5a53833a82",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 47929,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-directory",
+      "region": "prg",
+      "file_offset": 607504,
+      "capacity": 4,
+      "bank_index": 74,
+      "bank_offset": 1280,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 34048,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-dispatch",
+      "region": "prg",
+      "file_offset": 220002,
+      "capacity": 23,
+      "bank_index": 26,
+      "bank_offset": 6994,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "91aed13be63c7189efa3ca6ad4f1951d1b9e525d2abb6b8facaee36c2a74319a",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 47954,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-front",
+      "region": "prg",
+      "file_offset": 219996,
+      "capacity": 3,
+      "bank_index": 26,
+      "bank_offset": 6988,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "747f580430f4ddb353a7674a2c92ea950fc283bba422803c8296fa5a53833a82",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 47948,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-gate",
+      "region": "prg",
+      "file_offset": 219737,
+      "capacity": 39,
+      "bank_index": 26,
+      "bank_offset": 6729,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "97ea39c82b2f77639161bc8ea04c45b9a4478f5499d3de034b62c7641f557055",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 47689,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.facility-point-reader",
+      "region": "prg",
+      "file_offset": 606736,
+      "capacity": 768,
+      "bank_index": 74,
+      "bank_offset": 512,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "069af124b2f3cf012a5020a5fbb99a474031f732f11b3429aac3f1e6beb13aab",
+      "owner": "nearby-object-investigation-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 33280,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.scene-remap-directory",
+      "region": "prg",
+      "file_offset": 606480,
+      "capacity": 4,
+      "bank_index": 74,
+      "bank_offset": 256,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e",
+      "owner": "field-scene-lifecycle-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 33024,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.scene-remap-gate",
+      "region": "prg",
+      "file_offset": 165648,
+      "capacity": 30,
+      "bank_index": 20,
+      "bank_offset": 1792,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "0ef38fbbf3f94c9f09ef1abf4bab917599fdf0785bd9ad728e549220abe9de83",
+      "owner": "field-scene-lifecycle-service",
+      "alignment": 1,
+      "fill": null,
+      "runtime_address": 42752,
+      "alias_of": null,
+      "mirror_of": null,
+      "atomic_group": null
+    },
+    {
+      "slot_id": "scene-object-expansion.scene-remap-reader",
+      "region": "prg",
+      "file_offset": 606224,
+      "capacity": 256,
+      "bank_index": 74,
+      "bank_offset": 0,
+      "baseline_bin": "targets/metalmaxcn-cn-v1/baseline.nes",
+      "preimage_sha256": "3d6876a0146de8576eb2395a858de1213d1b92c65b779df3a331cfd5a4584546",
+      "owner": "field-scene-lifecycle-service",
       "alignment": 1,
       "fill": null,
       "runtime_address": 32768,

@@ -45,10 +45,10 @@
     "browser_vm_variants": 10,
     "browser_vm_programs": 202,
     "browser_vm_unimplemented_handlers": 16,
-    "cutscene_execution_chains": 145,
+    "cutscene_execution_chains": 146,
     "confirmed_narrative_cutscenes": 117,
     "control_lock_cutscene_candidates": 26,
-    "audited_scene_cutscene_entries": 148
+    "audited_scene_cutscene_entries": 149
   },
   "entrypoints": {
     "load_scene_actor_records": {
@@ -5556,9 +5556,9 @@
             "dispatch": "direct-audio-driver-command",
             "dispatch_cpu": 54096,
             "branch": "event-6f-set-maximal-content",
-            "stage_id": "ending-final-record",
-            "local_frame": 0,
-            "role": "fade-control",
+            "stage_id": null,
+            "local_frame": null,
+            "role": "irq-callback-fade-control",
             "one_shot": true,
             "command_id_hex": "0xF2",
             "resource_id": "audio-control:F2",
@@ -5733,9 +5733,9 @@
             "dispatch": "direct-audio-driver-command",
             "dispatch_cpu": 54096,
             "branch": "event-6f-set-maximal-content",
-            "stage_id": "ending-final-record",
-            "local_frame": 0,
-            "role": "fade-control",
+            "stage_id": null,
+            "local_frame": null,
+            "role": "irq-callback-fade-control",
             "one_shot": true,
             "command_id_hex": "0xF2",
             "resource_id": "audio-control:F2",
@@ -6871,9 +6871,9 @@
               "dispatch": "direct-audio-driver-command",
               "dispatch_cpu": 54096,
               "branch": "event-6f-set-maximal-content",
-              "stage_id": "ending-final-record",
-              "local_frame": 0,
-              "role": "fade-control",
+              "stage_id": null,
+              "local_frame": null,
+              "role": "irq-callback-fade-control",
               "one_shot": true,
               "command_id_hex": "0xF2",
               "resource_id": "audio-control:F2",
@@ -7048,9 +7048,9 @@
               "dispatch": "direct-audio-driver-command",
               "dispatch_cpu": 54096,
               "branch": "event-6f-set-maximal-content",
-              "stage_id": "ending-final-record",
-              "local_frame": 0,
-              "role": "fade-control",
+              "stage_id": null,
+              "local_frame": null,
+              "role": "irq-callback-fade-control",
               "one_shot": true,
               "command_id_hex": "0xF2",
               "resource_id": "audio-control:F2",
@@ -7907,6 +7907,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 0,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+00",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 0
@@ -7928,6 +7929,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 1,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+02",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 1
@@ -7949,6 +7951,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 2,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+04",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 2
@@ -7970,6 +7973,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 3,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+06",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 3
@@ -7991,6 +7995,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 4,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+08",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 4
@@ -8012,6 +8017,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 5,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+0A",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 5
@@ -8033,6 +8039,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 6,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+0C",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 6
@@ -8054,6 +8061,7 @@
             "ui_preview_context": {
               "kind": "vehicle-status",
               "vehicle_slot": 7,
+              "cursor_hidden": true,
               "runtime_state_source": "$64E8+0E",
               "preview_fallback_asset": "vehicle-preset",
               "preview_fallback_preset_id": 7
@@ -8212,6 +8220,10 @@
             "mode": 13,
             "label": "职员表 1 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:000"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8272,6 +8284,10 @@
             "mode": 13,
             "label": "职员表 2 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:001"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8302,6 +8318,10 @@
             "mode": 13,
             "label": "职员表 3 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:002"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8331,6 +8351,10 @@
             "mode": 13,
             "label": "职员表 4 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:003"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8361,6 +8385,10 @@
             "mode": 13,
             "label": "职员表 5 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:004"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8391,6 +8419,10 @@
             "mode": 13,
             "label": "职员表 6 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:005"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8420,6 +8452,10 @@
             "mode": 13,
             "label": "职员表 7 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:006"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8449,6 +8485,10 @@
             "mode": 13,
             "label": "职员表 8 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:007"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8478,6 +8518,10 @@
             "mode": 13,
             "label": "职员表 9 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:008"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8507,6 +8551,10 @@
             "mode": 13,
             "label": "职员表 10 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:009"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8536,6 +8584,10 @@
             "mode": 13,
             "label": "职员表 11 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:010"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8565,6 +8617,10 @@
             "mode": 13,
             "label": "职员表 12 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:011"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8594,6 +8650,10 @@
             "mode": 13,
             "label": "职员表 13 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:012"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8623,6 +8683,10 @@
             "mode": 13,
             "label": "职员表 14 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:013"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8652,6 +8716,10 @@
             "mode": 13,
             "label": "职员表 15 / 15",
             "operation": "ending-credits-record",
+            "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+            "ui_preview_context": {
+              "record": "record:15:014"
+            },
             "duration_frames": 405,
             "fill": "black",
             "dialogue_start_frame": 60,
@@ -8745,60 +8813,13 @@
             "id": "ending-final-record",
             "kind": "machine-code-stage",
             "mode": 14,
-            "label": "结局终页 · RESET 提示",
-            "operation": "ending-terminal-record-loop",
+            "label": "结局终页 · 完",
+            "operation": "ending-terminal-mark-loop",
             "duration_frames": 240,
             "fill": "black",
-            "ui_record": {
-              "region_id": 21,
-              "region_id_hex": "0x15",
-              "record_id": 18,
-              "record_id_hex": "0x12",
-              "record_found": true,
-              "pages": [
-                [
-                  "按RESET键并把开关关了。  "
-                ]
-              ],
-              "page_count": 1,
-              "text": "按RESET键并把开关关了。  ",
-              "line_break_token": 229,
-              "page_break_token": 254
-            },
+            "ui_screen_id": "ui-screen:constructor:ending-terminal-mark",
             "terminal_loop": true,
-            "ending_branch": true,
-            "audio_events": [
-              {
-                "id": "mode-0e-final-record-fade",
-                "command_id": 242,
-                "instruction_prg_offset": 230164,
-                "dispatch": "direct-audio-driver-command",
-                "dispatch_cpu": 54096,
-                "branch": "event-6f-set-maximal-content",
-                "stage_id": "ending-final-record",
-                "local_frame": 0,
-                "role": "fade-control",
-                "one_shot": true,
-                "command_id_hex": "0xF2",
-                "resource_id": "audio-control:F2",
-                "instruction_prg_offset_hex": "0x038314",
-                "instruction_length": 5,
-                "immediate_prg_offset": 230165,
-                "immediate_prg_offset_hex": "0x038315",
-                "call_prg_offset": 230166,
-                "call_prg_offset_hex": "0x038316",
-                "dispatch_cpu_hex": "0xD350",
-                "raw": [
-                  169,
-                  242,
-                  32,
-                  80,
-                  211
-                ],
-                "raw_hex": "A9 F2 20 50 D3",
-                "queue_condition": null
-              }
-            ]
+            "ending_branch": true
           },
           {
             "id": "ending-short-world",
@@ -204848,9 +204869,9 @@
               "dispatch": "direct-audio-driver-command",
               "dispatch_cpu": 54096,
               "branch": "event-6f-set-maximal-content",
-              "stage_id": "ending-final-record",
-              "local_frame": 0,
-              "role": "fade-control",
+              "stage_id": null,
+              "local_frame": null,
+              "role": "irq-callback-fade-control",
               "one_shot": true,
               "command_id_hex": "0xF2",
               "resource_id": "audio-control:F2",
@@ -205025,9 +205046,9 @@
               "dispatch": "direct-audio-driver-command",
               "dispatch_cpu": 54096,
               "branch": "event-6f-set-maximal-content",
-              "stage_id": "ending-final-record",
-              "local_frame": 0,
-              "role": "fade-control",
+              "stage_id": null,
+              "local_frame": null,
+              "role": "irq-callback-fade-control",
               "one_shot": true,
               "command_id_hex": "0xF2",
               "resource_id": "audio-control:F2",
@@ -206163,9 +206184,9 @@
                 "dispatch": "direct-audio-driver-command",
                 "dispatch_cpu": 54096,
                 "branch": "event-6f-set-maximal-content",
-                "stage_id": "ending-final-record",
-                "local_frame": 0,
-                "role": "fade-control",
+                "stage_id": null,
+                "local_frame": null,
+                "role": "irq-callback-fade-control",
                 "one_shot": true,
                 "command_id_hex": "0xF2",
                 "resource_id": "audio-control:F2",
@@ -206340,9 +206361,9 @@
                 "dispatch": "direct-audio-driver-command",
                 "dispatch_cpu": 54096,
                 "branch": "event-6f-set-maximal-content",
-                "stage_id": "ending-final-record",
-                "local_frame": 0,
-                "role": "fade-control",
+                "stage_id": null,
+                "local_frame": null,
+                "role": "irq-callback-fade-control",
                 "one_shot": true,
                 "command_id_hex": "0xF2",
                 "resource_id": "audio-control:F2",
@@ -207199,6 +207220,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 0,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+00",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 0
@@ -207220,6 +207242,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 1,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+02",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 1
@@ -207241,6 +207264,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 2,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+04",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 2
@@ -207262,6 +207286,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 3,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+06",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 3
@@ -207283,6 +207308,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 4,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+08",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 4
@@ -207304,6 +207330,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 5,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0A",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 5
@@ -207325,6 +207352,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 6,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0C",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 6
@@ -207346,6 +207374,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 7,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0E",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 7
@@ -207504,6 +207533,10 @@
               "mode": 13,
               "label": "职员表 1 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:000"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207564,6 +207597,10 @@
               "mode": 13,
               "label": "职员表 2 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:001"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207594,6 +207631,10 @@
               "mode": 13,
               "label": "职员表 3 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:002"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207623,6 +207664,10 @@
               "mode": 13,
               "label": "职员表 4 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:003"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207653,6 +207698,10 @@
               "mode": 13,
               "label": "职员表 5 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:004"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207683,6 +207732,10 @@
               "mode": 13,
               "label": "职员表 6 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:005"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207712,6 +207765,10 @@
               "mode": 13,
               "label": "职员表 7 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:006"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207741,6 +207798,10 @@
               "mode": 13,
               "label": "职员表 8 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:007"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207770,6 +207831,10 @@
               "mode": 13,
               "label": "职员表 9 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:008"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207799,6 +207864,10 @@
               "mode": 13,
               "label": "职员表 10 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:009"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207828,6 +207897,10 @@
               "mode": 13,
               "label": "职员表 11 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:010"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207857,6 +207930,10 @@
               "mode": 13,
               "label": "职员表 12 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:011"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207886,6 +207963,10 @@
               "mode": 13,
               "label": "职员表 13 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:012"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207915,6 +207996,10 @@
               "mode": 13,
               "label": "职员表 14 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:013"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -207944,6 +208029,10 @@
               "mode": 13,
               "label": "职员表 15 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:014"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -208037,60 +208126,13 @@
               "id": "ending-final-record",
               "kind": "machine-code-stage",
               "mode": 14,
-              "label": "结局终页 · RESET 提示",
-              "operation": "ending-terminal-record-loop",
+              "label": "结局终页 · 完",
+              "operation": "ending-terminal-mark-loop",
               "duration_frames": 240,
               "fill": "black",
-              "ui_record": {
-                "region_id": 21,
-                "region_id_hex": "0x15",
-                "record_id": 18,
-                "record_id_hex": "0x12",
-                "record_found": true,
-                "pages": [
-                  [
-                    "按RESET键并把开关关了。  "
-                  ]
-                ],
-                "page_count": 1,
-                "text": "按RESET键并把开关关了。  ",
-                "line_break_token": 229,
-                "page_break_token": 254
-              },
+              "ui_screen_id": "ui-screen:constructor:ending-terminal-mark",
               "terminal_loop": true,
-              "ending_branch": true,
-              "audio_events": [
-                {
-                  "id": "mode-0e-final-record-fade",
-                  "command_id": 242,
-                  "instruction_prg_offset": 230164,
-                  "dispatch": "direct-audio-driver-command",
-                  "dispatch_cpu": 54096,
-                  "branch": "event-6f-set-maximal-content",
-                  "stage_id": "ending-final-record",
-                  "local_frame": 0,
-                  "role": "fade-control",
-                  "one_shot": true,
-                  "command_id_hex": "0xF2",
-                  "resource_id": "audio-control:F2",
-                  "instruction_prg_offset_hex": "0x038314",
-                  "instruction_length": 5,
-                  "immediate_prg_offset": 230165,
-                  "immediate_prg_offset_hex": "0x038315",
-                  "call_prg_offset": 230166,
-                  "call_prg_offset_hex": "0x038316",
-                  "dispatch_cpu_hex": "0xD350",
-                  "raw": [
-                    169,
-                    242,
-                    32,
-                    80,
-                    211
-                  ],
-                  "raw_hex": "A9 F2 20 50 D3",
-                  "queue_condition": null
-                }
-              ]
+              "ending_branch": true
             },
             {
               "id": "ending-short-world",
@@ -213384,19 +213426,17 @@
         "player_control_disabled": true
       },
       {
-        "id": "story-f5-f9",
+        "id": "story-f5",
         "kind": "control-locked-story-sequence",
         "player_control": "locked",
         "blocking_caller_entry": null,
         "entry_variant_id": 245,
         "entry_variant_id_hex": "0xF5",
         "variant_ids": [
-          245,
-          249
+          245
         ],
         "variant_ids_hex": [
-          "0xF5",
-          "0xF9"
+          "0xF5"
         ],
         "shots": [
           {
@@ -213422,21 +213462,9 @@
             "scene_id_hex": "0x84",
             "scene_name": "戈麦斯基地 · 房间",
             "evidence": "rom-opcode-5e-exit-scene-context"
-          },
-          {
-            "shot_index": 2,
-            "kind": "actor-list-shot",
-            "variant_id": 249,
-            "variant_id_hex": "0xF9",
-            "story_state": null,
-            "story_state_hex": null,
-            "scene_id": 36,
-            "scene_id_hex": "0x24",
-            "scene_name": "奥多酒馆大楼 · 酒馆",
-            "evidence": "rom-scene-event-flag-selector"
           }
         ],
-        "shot_count": 3,
+        "shot_count": 2,
         "transitions": [
           {
             "kind": "story-state-shot-transition",
@@ -213453,19 +213481,6 @@
             "target_variant_id": 245,
             "target_variant_id_hex": "0xF5",
             "retains_control_lock": true
-          },
-          {
-            "kind": "scripted-input-locked-scene-continuation",
-            "source_variant_id": 245,
-            "source_variant_id_hex": "0xF5",
-            "ordinary_actor_list_id": 132,
-            "ordinary_actor_list_id_hex": "0x84",
-            "event_flag": 27,
-            "event_flag_hex": "0x1B",
-            "target_variant_id": 249,
-            "target_variant_id_hex": "0xF9",
-            "retains_control_lock": true,
-            "evidence": "ROM $43 control lock + $50-$53 scripted input + scene event-flag selector"
           }
         ],
         "terminal_operations": [
@@ -213488,14 +213503,11 @@
         "completion_predicate": "$0481=0,$0487=0,$002F=1",
         "logical_index": 245,
         "logical_index_hex": "0xF5",
-        "alias_variant_ids": [
-          249
-        ],
-        "alias_variant_ids_hex": [
-          "0xF9"
-        ],
-        "canonical_signature": "control-locked-story-sequence|F5>84>F9",
+        "alias_variant_ids": [],
+        "alias_variant_ids_hex": [],
+        "canonical_signature": "control-locked-story-sequence|F5>84",
         "preview_entry": {
+          "initial_player_direction": "left",
           "initial_event_flags": [
             27,
             130
@@ -213706,6 +213718,47 @@
         "player_control_disabled": false
       },
       {
+        "id": "scene-variant-f9",
+        "kind": "controllable-scene-event-variant",
+        "player_control": "retained",
+        "entry_variant_id": 249,
+        "entry_variant_id_hex": "0xF9",
+        "variant_ids": [
+          249
+        ],
+        "variant_ids_hex": [
+          "0xF9"
+        ],
+        "shots": [
+          {
+            "shot_index": 0,
+            "kind": "actor-list-shot",
+            "variant_id": 249,
+            "variant_id_hex": "0xF9",
+            "story_state": null,
+            "story_state_hex": null,
+            "scene_id": 36,
+            "scene_id_hex": "0x24",
+            "scene_name": "奥多酒馆大楼 · 酒馆",
+            "evidence": "rom-scene-event-flag-selector"
+          }
+        ],
+        "shot_count": 1,
+        "transitions": [],
+        "terminal_operations": [],
+        "completion": "ambient-scene-loop",
+        "completion_predicate": null,
+        "logical_index": 249,
+        "logical_index_hex": "0xF9",
+        "alias_variant_ids": [],
+        "alias_variant_ids_hex": [],
+        "canonical_signature": "controllable-scene-event-variant|F9",
+        "label": "scene-variant-f9",
+        "inventory_classification": "related-non-cutscene-scene-action",
+        "inventory_confidence": "confirmed-not-control-locking",
+        "player_control_disabled": false
+      },
+      {
         "id": "extended-fa-ending",
         "kind": "ordinary-actor-lists-plus-dedicated-modes",
         "label": "冒险结局与职员表",
@@ -213757,7 +213810,7 @@
         "transitions": [],
         "terminal_operations": [],
         "completion": "terminal-ending-loop",
-        "completion_predicate": "MODE $0E record $12 callback remains active until RESET",
+        "completion_predicate": "MODE $0E displays the terminal CHR mark and remains in PRG $038308 JMP $8308 until RESET",
         "logical_index": 250,
         "logical_index_hex": "0xFA",
         "canonical_signature": "actor-list:02|mode:0D|actor-list:03|mode:0E",
@@ -214011,9 +214064,9 @@
                 "dispatch": "direct-audio-driver-command",
                 "dispatch_cpu": 54096,
                 "branch": "event-6f-set-maximal-content",
-                "stage_id": "ending-final-record",
-                "local_frame": 0,
-                "role": "fade-control",
+                "stage_id": null,
+                "local_frame": null,
+                "role": "irq-callback-fade-control",
                 "one_shot": true,
                 "command_id_hex": "0xF2",
                 "resource_id": "audio-control:F2",
@@ -214188,9 +214241,9 @@
                 "dispatch": "direct-audio-driver-command",
                 "dispatch_cpu": 54096,
                 "branch": "event-6f-set-maximal-content",
-                "stage_id": "ending-final-record",
-                "local_frame": 0,
-                "role": "fade-control",
+                "stage_id": null,
+                "local_frame": null,
+                "role": "irq-callback-fade-control",
                 "one_shot": true,
                 "command_id_hex": "0xF2",
                 "resource_id": "audio-control:F2",
@@ -215047,6 +215100,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 0,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+00",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 0
@@ -215068,6 +215122,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 1,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+02",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 1
@@ -215089,6 +215144,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 2,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+04",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 2
@@ -215110,6 +215166,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 3,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+06",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 3
@@ -215131,6 +215188,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 4,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+08",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 4
@@ -215152,6 +215210,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 5,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0A",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 5
@@ -215173,6 +215232,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 6,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0C",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 6
@@ -215194,6 +215254,7 @@
               "ui_preview_context": {
                 "kind": "vehicle-status",
                 "vehicle_slot": 7,
+                "cursor_hidden": true,
                 "runtime_state_source": "$64E8+0E",
                 "preview_fallback_asset": "vehicle-preset",
                 "preview_fallback_preset_id": 7
@@ -215352,6 +215413,10 @@
               "mode": 13,
               "label": "职员表 1 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:000"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215412,6 +215477,10 @@
               "mode": 13,
               "label": "职员表 2 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:001"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215442,6 +215511,10 @@
               "mode": 13,
               "label": "职员表 3 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:002"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215471,6 +215544,10 @@
               "mode": 13,
               "label": "职员表 4 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:003"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215501,6 +215578,10 @@
               "mode": 13,
               "label": "职员表 5 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:004"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215531,6 +215612,10 @@
               "mode": 13,
               "label": "职员表 6 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:005"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215560,6 +215645,10 @@
               "mode": 13,
               "label": "职员表 7 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:006"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215589,6 +215678,10 @@
               "mode": 13,
               "label": "职员表 8 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:007"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215618,6 +215711,10 @@
               "mode": 13,
               "label": "职员表 9 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:008"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215647,6 +215744,10 @@
               "mode": 13,
               "label": "职员表 10 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:009"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215676,6 +215777,10 @@
               "mode": 13,
               "label": "职员表 11 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:010"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215705,6 +215810,10 @@
               "mode": 13,
               "label": "职员表 12 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:011"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215734,6 +215843,10 @@
               "mode": 13,
               "label": "职员表 13 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:012"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215763,6 +215876,10 @@
               "mode": 13,
               "label": "职员表 14 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:013"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215792,6 +215909,10 @@
               "mode": 13,
               "label": "职员表 15 / 15",
               "operation": "ending-credits-record",
+              "ui_screen_id": "ui-screen:interface:ending-credits:state:ending-credits.credits-page",
+              "ui_preview_context": {
+                "record": "record:15:014"
+              },
               "duration_frames": 405,
               "fill": "black",
               "dialogue_start_frame": 60,
@@ -215885,60 +216006,13 @@
               "id": "ending-final-record",
               "kind": "machine-code-stage",
               "mode": 14,
-              "label": "结局终页 · RESET 提示",
-              "operation": "ending-terminal-record-loop",
+              "label": "结局终页 · 完",
+              "operation": "ending-terminal-mark-loop",
               "duration_frames": 240,
               "fill": "black",
-              "ui_record": {
-                "region_id": 21,
-                "region_id_hex": "0x15",
-                "record_id": 18,
-                "record_id_hex": "0x12",
-                "record_found": true,
-                "pages": [
-                  [
-                    "按RESET键并把开关关了。  "
-                  ]
-                ],
-                "page_count": 1,
-                "text": "按RESET键并把开关关了。  ",
-                "line_break_token": 229,
-                "page_break_token": 254
-              },
+              "ui_screen_id": "ui-screen:constructor:ending-terminal-mark",
               "terminal_loop": true,
-              "ending_branch": true,
-              "audio_events": [
-                {
-                  "id": "mode-0e-final-record-fade",
-                  "command_id": 242,
-                  "instruction_prg_offset": 230164,
-                  "dispatch": "direct-audio-driver-command",
-                  "dispatch_cpu": 54096,
-                  "branch": "event-6f-set-maximal-content",
-                  "stage_id": "ending-final-record",
-                  "local_frame": 0,
-                  "role": "fade-control",
-                  "one_shot": true,
-                  "command_id_hex": "0xF2",
-                  "resource_id": "audio-control:F2",
-                  "instruction_prg_offset_hex": "0x038314",
-                  "instruction_length": 5,
-                  "immediate_prg_offset": 230165,
-                  "immediate_prg_offset_hex": "0x038315",
-                  "call_prg_offset": 230166,
-                  "call_prg_offset_hex": "0x038316",
-                  "dispatch_cpu_hex": "0xD350",
-                  "raw": [
-                    169,
-                    242,
-                    32,
-                    80,
-                    211
-                  ],
-                  "raw_hex": "A9 F2 20 50 D3",
-                  "queue_condition": null
-                }
-              ]
+              "ending_branch": true
             },
             {
               "id": "ending-short-world",
@@ -217331,26 +217405,26 @@
         "id": "interaction-list-f2-actor-00-script-05",
         "kind": "interaction-trigger-sequence",
         "player_control": "interaction-trigger",
-        "entry_variant_id": 242,
-        "entry_variant_id_hex": "0xF2",
+        "entry_variant_id": 10,
+        "entry_variant_id_hex": "0x0A",
         "variant_ids": [
-          242
+          10
         ],
         "variant_ids_hex": [
-          "0xF2"
+          "0x0A"
         ],
         "shots": [
           {
             "shot_index": 0,
             "kind": "interaction-trigger-shot",
-            "variant_id": 242,
-            "variant_id_hex": "0xF2",
-            "story_state": 3,
-            "story_state_hex": "0x03",
+            "variant_id": 10,
+            "variant_id_hex": "0x0A",
+            "story_state": 0,
+            "story_state_hex": "0x00",
             "scene_id": 10,
             "scene_id_hex": "0x0A",
             "scene_name": "拉多 · 救治室",
-            "evidence": "rom-scene-actor-list-resolver-and-interaction-reference"
+            "evidence": "PRG $0250A8/$0242E8 共用交互 $05；$0253CF 的 $38 经 $035507 清除剧情状态并重载普通角色表"
           }
         ],
         "shot_count": 1,
@@ -217369,6 +217443,19 @@
         "completion": "interaction-script-end-or-battle-entry",
         "completion_predicate": "opcode $00 or opcode $37 battle entry",
         "canonical_signature": "interaction-trigger|F2:00:05",
+        "logical_index": 10,
+        "logical_index_hex": "0x0A",
+        "alias_variant_ids": [],
+        "alias_variant_ids_hex": [],
+        "interaction_caller": {
+          "sequence_id": "interaction-list-f2-actor-00-script-05",
+          "actor_list_id": 10,
+          "scene_id": 10,
+          "referenced_actor_list_id": 242,
+          "record_handle": "scene-actor:0A:00",
+          "label": "拉多 · 救治室 · 博士交互",
+          "evidence": "PRG $0250A8/$0242E8 共用交互 $05；$0253CF 的 $38 经 $035507 清除剧情状态并重载普通角色表"
+        },
         "label": "拉多 · 博士救治与复活（剧情变体）",
         "inventory_classification": "confirmed-narrative-cutscene",
         "inventory_confidence": "rom-call-chain-and-scene-script-confirmed",
@@ -220095,6 +220182,28 @@
         "completion": "interaction-script-end-or-battle-entry",
         "completion_predicate": "opcode $00 or opcode $37 battle entry",
         "canonical_signature": "interaction-trigger|F9:05:3F",
+        "preview_entry": {
+          "initial_event_flags": [
+            27
+          ],
+          "interaction_bootstrap": {
+            "scene_actor_entry_id": 249,
+            "actor_record_id": 5,
+            "player_direction": "up",
+            "player_distance": 2
+          },
+          "entry_context": {
+            "status": "rom-entry-context-resolved",
+            "trigger": "scene-actor:F9:05-through-counter",
+            "evidence_prg_offsets": [
+              151886,
+              215179,
+              215208,
+              215212,
+              215216
+            ]
+          }
+        },
         "label": "奥多酒馆大楼 · 酒客讲红狼寻人（剧情变体）",
         "inventory_classification": "confirmed-narrative-cutscene",
         "inventory_confidence": "rom-call-chain-and-scene-script-confirmed",
@@ -220418,7 +220527,7 @@
             "scene_id": 132,
             "scene_id_hex": "0x84",
             "scene_name": "戈麦斯基地 · 房间",
-            "evidence": "rom-scene-actor-list-resolver-and-interaction-reference"
+            "evidence": "PRG $024FF8 的角色 $02 使用 $68 与交互 $45；$025B66 的 $3F 按装载相机定位，原生从 (10,10) 行走到 (8,8) 后受阻左向接触"
           }
         ],
         "shot_count": 1,
@@ -220451,6 +220560,34 @@
               154470
             ]
           }
+        },
+        "logical_index": 132,
+        "logical_index_hex": "0x84",
+        "alias_variant_ids": [],
+        "alias_variant_ids_hex": [],
+        "interaction_caller": {
+          "sequence_id": "interaction-list-84-actor-02-script-45",
+          "actor_list_id": 132,
+          "scene_id": 132,
+          "record_handle": "scene-actor:84:02",
+          "label": "戈麦斯基地 · 红狼交互",
+          "preview_field_inputs": [
+            {
+              "direction": "left",
+              "steps": 2
+            },
+            {
+              "direction": "up",
+              "steps": 2
+            },
+            {
+              "direction": "left",
+              "steps": 1,
+              "turn_only": true,
+              "wait_frames": 32
+            }
+          ],
+          "evidence": "PRG $024FF8 的角色 $02 使用 $68 与交互 $45；$025B66 的 $3F 按装载相机定位，原生从 (10,10) 行走到 (8,8) 后受阻左向接触"
         },
         "label": "戈麦斯基地 · 戈麦斯威吓与求饶",
         "inventory_classification": "confirmed-narrative-cutscene",
@@ -238973,10 +239110,10 @@
         "source_variant_id": 245,
         "source_variant_id_hex": "0xF5",
         "bootstrap_control_lock": true,
-        "next_event_variant_id": 249,
-        "next_event_variant_id_hex": "0xF9",
-        "next_event_flag": 27,
-        "next_event_flag_hex": "0x1B",
+        "next_event_variant_id": null,
+        "next_event_variant_id_hex": null,
+        "next_event_flag": null,
+        "next_event_flag_hex": null,
         "actors": [
           {
             "record_id": 0,
@@ -240237,7 +240374,7 @@
         ],
         "unimplemented_handler_opcodes": [],
         "unimplemented_handler_opcodes_hex": [],
-        "preview_status": "rom-vm-supported-opcodes"
+        "preview_status": "partial-rom-vm"
       }
     ],
     "extended_actor_lists": [
@@ -418398,7 +418535,37 @@
         "tile_lookup_prg": 215358,
         "tile_lookup_prg_hex": "0x03493E",
         "blocked_attribute_mask": 124,
-        "blocked_attribute_value": 24
+        "blocked_attribute_value": 24,
+        "damage_cells": [
+          {
+            "x": 0,
+            "y": 0,
+            "damage": 199
+          },
+          {
+            "x": 0,
+            "y": -1,
+            "damage": 99
+          },
+          {
+            "x": 0,
+            "y": 1,
+            "damage": 99
+          },
+          {
+            "x": -1,
+            "y": 0,
+            "damage": 99
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "damage": 99
+          }
+        ],
+        "damage_table_prg": 217543,
+        "damage_handler_prg": 217480,
+        "damage_target": "living-unmounted-human-party-members"
       },
       {
         "opcode": 67,
@@ -419255,6 +419422,40 @@
         "handler_cpu_hex": "0xB4E6",
         "operation": "terminate-or-change-mode",
         "fidelity": "partial"
+      },
+      {
+        "opcode": 116,
+        "opcode_hex": "0x74",
+        "handler_cpu": 40448,
+        "handler_cpu_hex": "0x9E00",
+        "operation": "set-extension-flag",
+        "fidelity": "exact"
+      },
+      {
+        "opcode": 117,
+        "opcode_hex": "0x75",
+        "handler_cpu": 40448,
+        "handler_cpu_hex": "0x9E00",
+        "operation": "clear-extension-flag",
+        "fidelity": "exact"
+      },
+      {
+        "opcode": 118,
+        "opcode_hex": "0x76",
+        "handler_cpu": 40448,
+        "handler_cpu_hex": "0x9E00",
+        "operation": "branch-if-extension-set",
+        "branch_operand_index": 1,
+        "fidelity": "exact"
+      },
+      {
+        "opcode": 119,
+        "opcode_hex": "0x77",
+        "handler_cpu": 40448,
+        "handler_cpu_hex": "0x9E00",
+        "operation": "branch-if-extension-clear",
+        "branch_operand_index": 1,
+        "fidelity": "exact"
       }
     ],
     "coverage": {
@@ -419794,13 +419995,13 @@
     "selection_policy": "include every confirmed narrative chain; if plot purpose is unresolved, include every scene chain with a persistent story state, autonomous $0487 lock, or dedicated blocking mode",
     "generic_interaction_policy": "$0356A1 temporarily forces $0487=$FF while the ordinary interaction runner executes. That transient lock alone does not turn all NPC dialogue into a cutscene; explicit interaction-owned locks remain visible in related_entries.",
     "summary": {
-      "execution_chains": 145,
+      "execution_chains": 146,
       "confirmed_narrative_cutscenes": 117,
       "control_lock_cutscene_candidates": 26,
-      "listed_non_cutscene_scene_actions": 2,
+      "listed_non_cutscene_scene_actions": 3,
       "player_control_disabled_chains": 31,
       "related_non_lock_or_interaction_owned_entries": 3,
-      "total_audited_scene_entries": 148,
+      "total_audited_scene_entries": 149,
       "field_modes_audited": 15,
       "narrative_field_modes": [
         7,
@@ -420247,7 +420448,7 @@
         "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
       },
       {
-        "id": "story-f5-f9",
+        "id": "story-f5",
         "label": "戈麦斯基地 · 人质胁迫与红狼永别",
         "classification": "confirmed-narrative-cutscene",
         "confidence": "rom-call-chain-and-scene-script-confirmed",
@@ -420260,41 +420461,31 @@
         ],
         "actor_list_ids": [
           245,
-          249,
           132
         ],
         "actor_list_ids_hex": [
           "0xF5",
-          "0xF9",
           "0x84"
         ],
         "scene_ids": [
-          132,
-          36
+          132
         ],
         "scene_ids_hex": [
-          "0x84",
-          "0x24"
+          "0x84"
         ],
         "source_script_ids": [
           107,
           106,
           104,
           105,
-          108,
-          54,
-          0,
-          68
+          108
         ],
         "source_script_ids_hex": [
           "0x6B",
           "0x6A",
           "0x68",
           "0x69",
-          "0x6C",
-          "0x36",
-          "0x00",
-          "0x44"
+          "0x6C"
         ],
         "entry_evidence": null,
         "completion": "natural-return-to-controllable-field-mode",
@@ -420307,29 +420498,9 @@
             "preview": null,
             "package": "game/scenes/132-scene-84/scene.json",
             "evidence": "rom-story-mode-scene-camera-table"
-          },
-          {
-            "scene_id": 36,
-            "scene_id_hex": "0x24",
-            "name": "奥多酒馆大楼 · 酒馆",
-            "kind": "unclassified",
-            "preview": null,
-            "package": "game/scenes/036-scene-24/scene.json",
-            "evidence": "rom-scene-event-flag-selector"
           }
         ],
         "dialogue_clues": [
-          {
-            "actor_list_id": 36,
-            "actor_list_id_hex": "0x24",
-            "actor_uid": "scene-actor:24:01",
-            "region_id": 14,
-            "region_id_hex": "0x0E",
-            "record_id": 39,
-            "record_id_hex": "0x27",
-            "resource_id": "ui-script:0E:039",
-            "text": "最近有些坏家伙常到店里来，真让人反感。瞧，在那儿坐着的就是那帮家伙！"
-          },
           {
             "actor_list_id": 132,
             "actor_list_id_hex": "0x84",
@@ -420342,51 +420513,51 @@
             "text": "几时到这儿来的？以为红狼在这儿呢？"
           },
           {
-            "actor_list_id": 249,
-            "actor_list_id_hex": "0xF9",
-            "actor_uid": "scene-actor:F9:01",
+            "actor_list_id": 132,
+            "actor_list_id_hex": "0x84",
+            "actor_uid": "scene-actor:84:01",
+            "region_id": 11,
+            "region_id_hex": "0x0B",
+            "record_id": 175,
+            "record_id_hex": "0xAF",
+            "resource_id": "ui-script:0B:175",
+            "text": "还没有跟我决出胜负呢！可爱的小狗仍然爱叫……"
+          },
+          {
+            "actor_list_id": 132,
+            "actor_list_id_hex": "0x84",
+            "actor_uid": "scene-actor:84:01",
             "region_id": 14,
             "region_id_hex": "0x0E",
-            "record_id": 45,
-            "record_id_hex": "0x2D",
-            "resource_id": "ui-script:0E:045",
-            "text": "我呀，曾经见过那个红狼！"
+            "record_id": 180,
+            "record_id_hex": "0xB4",
+            "resource_id": "ui-script:0E:180",
+            "text": "坐我的战车去吧。如果在哪儿见到叫尼娜的女人的话，就跟她说红狼已经忘掉从前的恋人了，永别了……"
           },
           {
-            "actor_list_id": 36,
-            "actor_list_id_hex": "0x24",
-            "actor_uid": "scene-actor:24:02",
+            "actor_list_id": 132,
+            "actor_list_id_hex": "0x84",
+            "actor_uid": "scene-actor:84:02",
             "region_id": 14,
             "region_id_hex": "0x0E",
-            "record_id": 40,
-            "record_id_hex": "0x28",
-            "resource_id": "ui-script:0E:040",
-            "text": "这帮野蛮的士兵们成群结伙的来这里又吵又闹的！真不像话！"
+            "record_id": 135,
+            "record_id_hex": "0x87",
+            "resource_id": "ui-script:0E:135",
+            "text": "小子！你真想的打死我吗？"
           },
           {
-            "actor_list_id": 36,
-            "actor_list_id_hex": "0x24",
-            "actor_uid": "scene-actor:24:03",
-            "region_id": 5,
-            "region_id_hex": "0x05",
-            "record_id": 98,
-            "record_id_hex": "0x62",
-            "resource_id": "ui-script:05:098",
-            "text": "喝酒吗？小孩儿？"
-          },
-          {
-            "actor_list_id": 36,
-            "actor_list_id_hex": "0x24",
-            "actor_uid": "scene-actor:24:03",
-            "region_id": 5,
-            "region_id_hex": "0x05",
-            "record_id": 204,
-            "record_id_hex": "0xCC",
-            "resource_id": "ui-script:05:204",
-            "text": "哎！"
+            "actor_list_id": 132,
+            "actor_list_id_hex": "0x84",
+            "actor_uid": "scene-actor:84:03",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 179,
+            "record_id_hex": "0xB3",
+            "resource_id": "ui-script:0E:179",
+            "text": "其实，那个叫戈麦斯的家伙威胁说要杀红狼所以让我来冒充尼娜，请原谅我！"
           }
         ],
-        "dialogue_clue_count": 21,
+        "dialogue_clue_count": 5,
         "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
       },
       {
@@ -420718,6 +420889,123 @@
           }
         ],
         "dialogue_clue_count": 9,
+        "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
+      },
+      {
+        "id": "scene-variant-f9",
+        "label": "scene-variant-f9",
+        "classification": "related-non-cutscene-scene-action",
+        "confidence": "confirmed-not-control-locking",
+        "inventory_disposition": "listed-but-excluded-from-cutscenes",
+        "player_control": "retained",
+        "player_control_disabled": false,
+        "control_mechanisms": [
+          "normal field loop remains active; no autonomous persistent lock"
+        ],
+        "actor_list_ids": [
+          249
+        ],
+        "actor_list_ids_hex": [
+          "0xF9"
+        ],
+        "scene_ids": [
+          36
+        ],
+        "scene_ids_hex": [
+          "0x24"
+        ],
+        "source_script_ids": [
+          54,
+          0,
+          68
+        ],
+        "source_script_ids_hex": [
+          "0x36",
+          "0x00",
+          "0x44"
+        ],
+        "entry_evidence": null,
+        "completion": "ambient-scene-loop",
+        "scene_contexts": [
+          {
+            "scene_id": 36,
+            "scene_id_hex": "0x24",
+            "name": "奥多酒馆大楼 · 酒馆",
+            "kind": "unclassified",
+            "preview": null,
+            "package": "game/scenes/036-scene-24/scene.json",
+            "evidence": "rom-scene-event-flag-selector"
+          }
+        ],
+        "dialogue_clues": [
+          {
+            "actor_list_id": 36,
+            "actor_list_id_hex": "0x24",
+            "actor_uid": "scene-actor:24:01",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 39,
+            "record_id_hex": "0x27",
+            "resource_id": "ui-script:0E:039",
+            "text": "最近有些坏家伙常到店里来，真让人反感。瞧，在那儿坐着的就是那帮家伙！"
+          },
+          {
+            "actor_list_id": 249,
+            "actor_list_id_hex": "0xF9",
+            "actor_uid": "scene-actor:F9:01",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 45,
+            "record_id_hex": "0x2D",
+            "resource_id": "ui-script:0E:045",
+            "text": "我呀，曾经见过那个红狼！"
+          },
+          {
+            "actor_list_id": 36,
+            "actor_list_id_hex": "0x24",
+            "actor_uid": "scene-actor:24:02",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 40,
+            "record_id_hex": "0x28",
+            "resource_id": "ui-script:0E:040",
+            "text": "这帮野蛮的士兵们成群结伙的来这里又吵又闹的！真不像话！"
+          },
+          {
+            "actor_list_id": 36,
+            "actor_list_id_hex": "0x24",
+            "actor_uid": "scene-actor:24:03",
+            "region_id": 5,
+            "region_id_hex": "0x05",
+            "record_id": 98,
+            "record_id_hex": "0x62",
+            "resource_id": "ui-script:05:098",
+            "text": "喝酒吗？小孩儿？"
+          },
+          {
+            "actor_list_id": 36,
+            "actor_list_id_hex": "0x24",
+            "actor_uid": "scene-actor:24:03",
+            "region_id": 5,
+            "region_id_hex": "0x05",
+            "record_id": 204,
+            "record_id_hex": "0xCC",
+            "resource_id": "ui-script:05:204",
+            "text": "哎！"
+          },
+          {
+            "actor_list_id": 36,
+            "actor_list_id_hex": "0x24",
+            "actor_uid": "scene-actor:24:04",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 41,
+            "record_id_hex": "0x29",
+            "resource_id": "ui-script:0E:041",
+            "text": "在柜台喝洒的红发女人……好象是位挺了不起的军人！如果不是出色的男人，她理都不理……"
+          }
+        ],
+        "dialogue_clue_count": 16,
         "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
       },
       {
@@ -422787,14 +423075,13 @@
         "player_control": "interaction-trigger",
         "player_control_disabled": false,
         "control_mechanisms": [
-          "autonomous opcode $43 toggles persistent $0487 control lock",
           "normal field loop remains active; no autonomous persistent lock"
         ],
         "actor_list_ids": [
-          242
+          10
         ],
         "actor_list_ids_hex": [
-          "0xF2"
+          "0x0A"
         ],
         "scene_ids": [
           10
@@ -422802,31 +423089,47 @@
         "scene_ids_hex": [
           "0x0A"
         ],
-        "source_script_ids": [
-          16,
-          18,
-          17
-        ],
-        "source_script_ids_hex": [
-          "0x10",
-          "0x12",
-          "0x11"
-        ],
+        "source_script_ids": [],
+        "source_script_ids_hex": [],
         "entry_evidence": null,
         "completion": "interaction-script-end-or-battle-entry",
-        "scene_contexts": [
+        "scene_contexts": [],
+        "dialogue_clues": [
           {
-            "scene_id": 10,
-            "scene_id_hex": "0x0A",
-            "name": "拉多 · 救治室",
-            "kind": "unclassified",
-            "preview": null,
-            "package": "game/scenes/010-scene-0a/scene.json",
-            "evidence": "rom-story-mode-scene-camera-table"
+            "actor_list_id": 10,
+            "actor_list_id_hex": "0x0A",
+            "actor_uid": "scene-actor:0A:01",
+            "region_id": 5,
+            "region_id_hex": "0x05",
+            "record_id": 0,
+            "record_id_hex": "0x00",
+            "resource_id": "ui-script:05:000",
+            "text": "眼前没人。"
+          },
+          {
+            "actor_list_id": 10,
+            "actor_list_id_hex": "0x0A",
+            "actor_uid": "scene-actor:0A:03",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 157,
+            "record_id_hex": "0x9D",
+            "resource_id": "ui-script:0E:157",
+            "text": "嗯！"
+          },
+          {
+            "actor_list_id": 10,
+            "actor_list_id_hex": "0x0A",
+            "actor_uid": "scene-actor:0A:04",
+            "region_id": 14,
+            "region_id_hex": "0x0E",
+            "record_id": 155,
+            "record_id_hex": "0x9B",
+            "resource_id": "ui-script:0E:155",
+            "text": "我叫罗拉，是世界上最漂亮的农民！"
           }
         ],
-        "dialogue_clues": [],
-        "dialogue_clue_count": 0,
+        "dialogue_clue_count": 3,
         "dialogue_clue_policy": "up to six distinct ROM text records linked through the source actor lists or their scene ids, reserving one clue per source before filling in ROM order; clues support human classification but never create a cutscene entry"
       },
       {

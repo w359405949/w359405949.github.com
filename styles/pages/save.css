@@ -134,4 +134,24 @@ body[data-page="save"] {
 
 .save-event-groups > div { min-width: 0; }
 
+.save-flag-capacity { margin-bottom: 14px; }
+.save-flag-capacity h3 { margin: 0; }
+.save-flag-capacity p { margin: 5px 0 8px; color: var(--text-dim); }
+.save-flag-grid { display: grid; grid-template-columns: repeat(16, minmax(32px, 1fr)); gap: 3px; }
+.save-flag-cell {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 5px 2px;
+  border: 1px solid var(--border); border-radius: 3px;
+  color: var(--text); background: var(--surface-1); text-decoration: none; font-family: var(--mono);
+}
+.save-flag-cell small { font-size: 10px; font-family: var(--sans); }
+.save-flag-cell[data-capacity-status="used"], .save-flag-cell[data-capacity-status="allocated"] {
+  border-color: var(--accent); background: var(--accent-soft);
+}
+.save-flag-cell[data-capacity-status="uncertain"] { border-style: dashed; color: var(--amber); }
+.save-flag-cell [data-save-flag-value] { color: var(--text-dim); }
+.save-flag-cell[data-save-flag-active="true"] [data-save-flag-value] { color: var(--amber); }
+.save-flag-cell:hover, .save-flag-cell:focus-visible, .save-flag-cell[aria-current="true"] {
+  outline: 2px solid var(--accent); outline-offset: 1px;
+}
+
 }

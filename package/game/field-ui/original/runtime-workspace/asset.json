@@ -1544,6 +1544,56 @@
           ]
         },
         {
+          "id": "parameter.partySlot",
+          "handle": "runtime-workspace:A3",
+          "count": 1,
+          "width": 1,
+          "encoding": "u8",
+          "knowledge": "confirmed",
+          "view_of": "inherited.serviceScratch",
+          "physical": {
+            "space": "ram",
+            "offset": 209,
+            "length": 1
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-motion-sequence-and-lifecycle-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 217354,
+                "length": 5
+              },
+              "raw_hex": "A5 D1 20 1F FD"
+            }
+          ]
+        },
+        {
+          "id": "party.relocatedEntity",
+          "handle": "runtime-workspace:A4",
+          "count": 1,
+          "width": 3,
+          "encoding": "bytes",
+          "knowledge": "confirmed",
+          "view_of": "inherited.inputAndTransfer",
+          "physical": {
+            "space": "ram",
+            "offset": 1161,
+            "length": 3
+          },
+          "evidence": [
+            {
+              "location": "project/evidence/reverse-engineering/scene-action-motion-sequence-and-lifecycle-handlers/context.asm",
+              "address": {
+                "space": "prg",
+                "offset": 217359,
+                "length": 15
+              },
+              "raw_hex": "8E 89 04 BD 58 03 8D 8A 04 BD 5C 03 8D 8B 04"
+            }
+          ]
+        },
+        {
           "id": "parameter.result",
           "handle": "runtime-workspace:3B",
           "count": 1,

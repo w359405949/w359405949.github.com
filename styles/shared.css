@@ -1636,6 +1636,12 @@ button.text-encoding-token:hover { border-color: var(--accent); }
 }
 .module-reference-data-preview b { font: 11px/1.1 var(--sans); white-space: normal; }
 .module-reference-data-preview small { color: var(--cyan); font: 9px var(--mono); }
+.encounter-formation-members { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; width: 100%; }
+.encounter-formation-member { display: grid; gap: 4px; min-width: 0; text-align: center; }
+.encounter-formation-member .monster-module-preview { display: grid; justify-items: center; min-width: 0; }
+.encounter-formation-member .monster-module-preview canvas { display: block; width: 100%; height: 132px; object-fit: contain; image-rendering: pixelated; }
+.encounter-formation-member .monster-module-preview > small { display: none; }
+.encounter-formation-member > small { color: var(--text); font: 11px/1.3 var(--sans); }
 .item-entry-preview { display: grid; place-items: center; }
 .item-entry-preview .item-equipment-icon { width: 24px; height: 24px; image-rendering: pixelated; }
 .entity-detail-layout { display: grid; grid-template-columns: minmax(160px, 220px) minmax(0, 1fr); gap: 16px; align-items: start; }
@@ -1750,19 +1756,21 @@ button.text-encoding-token:hover { border-color: var(--accent); }
 }
 .shop-configuration-picker .scene-shop-product {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 5px;
   min-width: 0;
 }
-.shop-configuration-picker .scene-shop-product .item-entry-preview,
-.shop-configuration-picker .scene-shop-product-glyph {
+.shop-configuration-picker .scene-shop-product.has-preview {
+  grid-template-columns: 28px minmax(0, 1fr);
+}
+.shop-configuration-picker .scene-shop-product .item-entry-preview {
   width: 26px;
   height: 26px;
   display: grid;
   place-items: center;
 }
-.shop-configuration-picker .scene-shop-product > span:nth-child(2) {
+.shop-configuration-picker .scene-shop-product > span:last-child {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2807,10 +2815,7 @@ animated-resource-picker[disabled] { opacity: .66; }
 
 
 
-.data-tabs {
-  display: flex; gap: 7px; margin: 14px 0 20px; padding: 9px;
-  border: 1px solid var(--line); background: var(--surface-2);
-}
+
 .facility-visual-table table { min-width: 1120px; }
 .facility-visual-table td { vertical-align: middle; }
 .facility-preview-stage {
@@ -2836,14 +2841,23 @@ animated-resource-picker[disabled] { opacity: .66; }
   margin: 3px 0 12px;
   font: 600 var(--fs-md) var(--sans);
 }
-.screen-workbench-facts { display: grid; gap: 1px; margin: 0 0 12px; }
+.screen-workbench-facts {
+  display: grid;
+  grid-template-columns: var(--facts-label-width, minmax(72px, 30%)) minmax(0, 1fr);
+  gap: 1px 10px;
+  margin: 0 0 12px;
+}
 .screen-workbench-facts > div {
   display: grid;
-  grid-template-columns: minmax(72px, auto) minmax(0, 1fr);
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   gap: 10px;
   padding: 7px 8px;
   background: var(--surface-0);
 }
+.screen-workbench-facts > dt { grid-column: 1; }
+.screen-workbench-facts > dd { grid-column: 2; }
+.screen-workbench-facts > :is(dt, dd) { padding-block: 4px; align-self: baseline; }
 .screen-workbench-facts dt { color: var(--text-faint); font-size: var(--fs-xs); }
 .screen-workbench-facts dd {
   min-width: 0;
@@ -2853,6 +2867,7 @@ animated-resource-picker[disabled] { opacity: .66; }
   font-size: var(--fs-sm);
   text-align: right;
 }
+.screen-workbench-facts > dd { text-align: left; }
 .screen-workbench-note {
   margin: 10px 0 0;
   color: var(--text-faint);
@@ -4315,8 +4330,6 @@ tr.is-changed td { background: color-mix(in srgb, var(--surface-2) 60%, #ec58b4 
   .character-editor-toolbar p, .data-editor-toolbar p { order: 4; flex-basis: 100%; }
   .character-number-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .character-number-grid label.wide { grid-column: span 2; }
-  .data-tabs { overflow-x: auto; }
-  .data-tabs .button { min-width: max-content; }
   .data-filter small { display: none; }
   .entry-grid { grid-template-columns: 1fr; }
   .rom-memory-toolbar > .button { margin-left: 0; }

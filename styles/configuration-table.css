@@ -1,0 +1,32 @@
+.compact-config { min-width: 0; max-width: 100%; }
+.shop-page-config { grid-template-columns: minmax(0, 1fr); }
+.compact-config .table-wrap { min-width: 0; max-width: 100%; max-height: none; overflow-x: auto; overflow-y: visible; }
+.compact-config .data-table :is(th, td) { padding: 4px 6px; vertical-align: middle; }
+.compact-config .data-table :is(th, td) :is(.resource-handle, .resource-uid, .resource-record-id, [data-resource-handle]) {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.compact-config .data-table :is(select, input:not([type="checkbox"]), .module-reference-picker) {
+  width: 100%;
+}
+.compact-config .data-table :is(.module-reference-picker-current-copy > b, .item-picker-current-name) {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+.compact-config .shop-slot-field { gap: 0; }
+.compact-config .shop-slot-field > span:first-child:not([data-shop-purchase-flag]) { display: none; }
+.compact-config .shop-raw-control > small { display: none; }
+.compact-config .shop-raw-control { display: block; }
+.compact-config .shop-slot-field select.shop-slot { max-width: none; }
+.compact-config .shop-instance-actions { align-items: center; }
+.compact-config .data-table .configuration-amount { width: 68px; }
+.configuration-sections { display: grid; gap: 8px; min-width: 0; }
+.configuration-section { min-width: 0; max-width: 100%; }
+.configuration-section > h2 { margin: 6px 0; font-size: var(--fs-sm); }
+.configuration-section .module-resource-select { margin: 4px 0; }
+.configuration-section [data-page-module-host] > div:empty { display: none; }
+#wanted-record-page .wanted-target-name { display: flex; align-items: center; gap: 8px; }
+#wanted-record-page .wanted-target-name canvas { max-width: 32px; max-height: 32px; }
+#wanted-record-page .wanted-location-list { display: flex; flex-wrap: wrap; gap: 4px; }
+#wanted-record-page .wanted-location { flex: 1 1 140px; min-width: 0; }
